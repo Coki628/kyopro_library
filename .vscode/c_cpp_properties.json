@@ -2,10 +2,10 @@
     "configurations": [
         {
             "name": "Linux",
-            // "includePath": [
-            //     "${env:HOMEPATH}/repos/kyopro_library/src",
-            //     "${env:HOMEPATH}/repos/ac-library"
-            // ],
+            "includePath": [
+                "${env:HOMEPATH}/repos/kyopro_library/src",
+                "${env:HOMEPATH}/repos/ac-library"
+            ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
@@ -14,11 +14,10 @@
         },
         {
             "name": "Win32",
-            // 結局Github上でverify時に見えないから意味がない
-            // "includePath": [
-            //     "${env:HOMEPATH}\\repos\\kyopro_library\\src",
-            //     "${env:HOMEPATH}\\repos\\ac-library"
-            // ],
+            "includePath": [
+                "${env:HOMEPATH}\\repos\\kyopro_library\\src",
+                "${env:HOMEPATH}\\repos\\ac-library"
+            ],
             "defines": [],
             "compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe",
             "cStandard": "c11",
