@@ -1,169 +1,169 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/ModTools.hpp
     title: src/combinatorics/ModTools.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/combinations.hpp
     title: src/combinatorics/combinations.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/factorial.hpp
     title: src/combinatorics/factorial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/nC2.hpp
     title: src/combinatorics/nC2.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/permutations.hpp
     title: src/combinatorics/permutations.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/Compress.hpp
     title: src/common/Compress.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/Counter.hpp
     title: src/common/Counter.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/RLE.hpp
     title: src/common/RLE.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bit_length.hpp
     title: src/common/bit_length.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/ceil.hpp
     title: src/common/ceil.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/chmax.hpp
     title: src/common/chmax.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/chmin.hpp
     title: src/common/chmin.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/join.hpp
     title: src/common/join.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/max.hpp
     title: src/common/max.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/min.hpp
     title: src/common/min.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/modulo.hpp
     title: src/common/modulo.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/mul_overflow.hpp
     title: src/common/mul_overflow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/popcount.hpp
     title: src/common/popcount.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/reversed.hpp
     title: src/common/reversed.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/sorted.hpp
     title: src/common/sorted.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/split.hpp
     title: src/common/split.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/to_string.hpp
     title: src/common/to_string.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/tochar.hpp
     title: src/common/tochar.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/toint.hpp
     title: src/common/toint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/zip.hpp
     title: src/common/zip.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/grid/constants/dir4.hpp
     title: src/grid/constants/dir4.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/grid/constants/directions.hpp
     title: src/grid/constants/directions.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/grid/gridtoid.hpp
     title: src/grid/gridtoid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/mystl/defaultdict.hpp
     title: src/mystl/defaultdict.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/divisors.hpp
     title: src/numbers/divisors.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/factorize.hpp
     title: src/numbers/factorize.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/gcd.hpp
     title: src/numbers/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/isqrt.hpp
     title: src/numbers/isqrt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/lcm.hpp
     title: src/numbers/lcm.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/segment/BIT.hpp
     title: src/segment/BIT.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/segment/SegmentTree.hpp
     title: src/segment/SegmentTree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/bin.hpp
     title: src/string/bin.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/constants/ascii_lowercase.hpp
     title: src/string/constants/ascii_lowercase.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/constants/ascii_uppercase.hpp
     title: src/string/constants/ascii_uppercase.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/constants/digits.hpp
     title: src/string/constants/digits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/zfill.hpp
     title: src/string/zfill.hpp
   _extendedRequiredBy: []
@@ -171,12 +171,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/bfs.test.cpp
     title: test/graph/bfs.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -763,7 +763,7 @@ data:
   path: src/template.hpp
   requiredBy: []
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/common/bisect.test.cpp
   - test/graph/bfs.test.cpp

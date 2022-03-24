@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/ModTools.hpp
     title: src/combinatorics/ModTools.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'

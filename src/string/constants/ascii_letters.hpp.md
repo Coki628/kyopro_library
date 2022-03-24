@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/constants/ascii_lowercase.hpp
     title: src/string/constants/ascii_lowercase.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/constants/ascii_uppercase.hpp
     title: src/string/constants/ascii_uppercase.hpp
   _extendedRequiredBy: []

@@ -1,185 +1,185 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/ModTools.hpp
     title: src/combinatorics/ModTools.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/combinations.hpp
     title: src/combinatorics/combinations.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/factorial.hpp
     title: src/combinatorics/factorial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/nC2.hpp
     title: src/combinatorics/nC2.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/permutations.hpp
     title: src/combinatorics/permutations.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/Compress.hpp
     title: src/common/Compress.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/Counter.hpp
     title: src/common/Counter.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/RLE.hpp
     title: src/common/RLE.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bit_length.hpp
     title: src/common/bit_length.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/ceil.hpp
     title: src/common/ceil.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/chmax.hpp
     title: src/common/chmax.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/chmin.hpp
     title: src/common/chmin.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/join.hpp
     title: src/common/join.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/max.hpp
     title: src/common/max.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/min.hpp
     title: src/common/min.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/modulo.hpp
     title: src/common/modulo.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/mul_overflow.hpp
     title: src/common/mul_overflow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/popcount.hpp
     title: src/common/popcount.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/reversed.hpp
     title: src/common/reversed.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/sorted.hpp
     title: src/common/sorted.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/split.hpp
     title: src/common/split.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/to_string.hpp
     title: src/common/to_string.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/tochar.hpp
     title: src/common/tochar.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/toint.hpp
     title: src/common/toint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/zip.hpp
     title: src/common/zip.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/bfs.hpp
     title: src/graph/bfs.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/grid/constants/dir4.hpp
     title: src/grid/constants/dir4.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/grid/constants/directions.hpp
     title: src/grid/constants/directions.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/grid/gridtoid.hpp
     title: src/grid/gridtoid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/mystl/defaultdict.hpp
     title: src/mystl/defaultdict.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/divisors.hpp
     title: src/numbers/divisors.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/factorize.hpp
     title: src/numbers/factorize.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/gcd.hpp
     title: src/numbers/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/isqrt.hpp
     title: src/numbers/isqrt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/numbers/lcm.hpp
     title: src/numbers/lcm.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/segment/BIT.hpp
     title: src/segment/BIT.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/segment/SegmentTree.hpp
     title: src/segment/SegmentTree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/bin.hpp
     title: src/string/bin.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/constants/ascii_lowercase.hpp
     title: src/string/constants/ascii_lowercase.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/constants/ascii_uppercase.hpp
     title: src/string/constants/ascii_uppercase.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/constants/digits.hpp
     title: src/string/constants/digits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/string/zfill.hpp
     title: src/string/zfill.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/11/ALDS1_11_C
@@ -628,12 +628,12 @@ data:
     \        cin >> u;\n        u--;\n        ll k;\n        cin >> k;\n        rep(_,\
     \ 0, k) {\n            ll v;\n            cin >> v;\n            v--;\n      \
     \      nodes[u].pb(v);\n        }\n    }\n\n    auto res = bfs(nodes, {0});\n\
-    \    vector<pll> ans(N);\n    rep(i, 0, N) {\n        ans[i].first = i + 1;\n\
-    \        ans[i].second = res[i];\n    }\n    for (auto &p : ans) print(p);\n}\n\
-    \nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout <<\
-    \ fixed << setprecision(15);\n\n    // single test case\n    solve();\n\n    //\
-    \ multi test cases\n    // int T;\n    // cin >> T;\n    // while (T--) solve();\n\
-    \n    return 0;\n}\n"
+    \    vector<pll> ans(N);\n    rep(i, N) {\n        if (res[i] >= INF) {\n    \
+    \        res[i] = -1;\n        }\n        ans[i].first = i + 1;\n        ans[i].second\
+    \ = res[i];\n    }\n    for (auto &p : ans) print(p);\n}\n\nint main() {\n   \
+    \ cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout << fixed << setprecision(15);\n\
+    \n    // single test case\n    solve();\n\n    // multi test cases\n    // int\
+    \ T;\n    // cin >> T;\n    // while (T--) solve();\n\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/11/ALDS1_11_C\"\
     \n\n// #pragma GCC target(\"avx2\")\n// #pragma GCC optimize(\"O3\")\n// #pragma\
     \ GCC optimize(\"unroll-loops\")\n\n#define CONSTANTS\n// #define CAST_MINT_TO_LL\n\
@@ -646,11 +646,12 @@ data:
     \        ll u;\n        cin >> u;\n        u--;\n        ll k;\n        cin >>\
     \ k;\n        rep(_, 0, k) {\n            ll v;\n            cin >> v;\n     \
     \       v--;\n            nodes[u].pb(v);\n        }\n    }\n\n    auto res =\
-    \ bfs(nodes, {0});\n    vector<pll> ans(N);\n    rep(i, 0, N) {\n        ans[i].first\
-    \ = i + 1;\n        ans[i].second = res[i];\n    }\n    for (auto &p : ans) print(p);\n\
-    }\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout\
-    \ << fixed << setprecision(15);\n\n    // single test case\n    solve();\n\n \
-    \   // multi test cases\n    // int T;\n    // cin >> T;\n    // while (T--) solve();\n\
+    \ bfs(nodes, {0});\n    vector<pll> ans(N);\n    rep(i, N) {\n        if (res[i]\
+    \ >= INF) {\n            res[i] = -1;\n        }\n        ans[i].first = i + 1;\n\
+    \        ans[i].second = res[i];\n    }\n    for (auto &p : ans) print(p);\n}\n\
+    \nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout <<\
+    \ fixed << setprecision(15);\n\n    // single test case\n    solve();\n\n    //\
+    \ multi test cases\n    // int T;\n    // cin >> T;\n    // while (T--) solve();\n\
     \n    return 0;\n}\n"
   dependsOn:
   - src/base.hpp
@@ -714,8 +715,8 @@ data:
   isVerificationFile: true
   path: test/graph/bfs.test.cpp
   requiredBy: []
-  timestamp: '2022-03-24 11:51:43+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-03-24 12:03:26+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/bfs.test.cpp
 layout: document

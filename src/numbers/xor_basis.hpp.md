@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: src/base.hpp
+    title: src/base.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/common/chmin.hpp
+    title: src/common/chmin.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -8,25 +14,25 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.10.2/x64/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/opt/hostedtoolcache/Python/3.10.2/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.10.2/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \  File \"/opt/hostedtoolcache/Python/3.10.2/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: base.hpp: line\
-    \ -1: no such header\n"
-  code: "#include \"base.hpp\"\n#include \"../common/chmin.hpp\"\n\n// XOR\u57FA\u5E95\
-    \ntemplate<typename T>\nvector<T> get_xor_basis(const vector<T> &A) {\n    vector<T>\
-    \ basis;\n    for (auto a : A) {\n        for (auto b : basis) {\n           \
-    \ chmin(a, a^b);\n        }\n        if (a > 0) basis.eb(a);\n    }\n    return\
-    \ basis;\n}\n"
-  dependsOn: []
+  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
+    using namespace std;\n#line 2 \"src/common/chmin.hpp\"\n\ntemplate<typename T>\n\
+    bool chmin(T &x, T y) {\n    return (y < x) ? x = y, true : false;\n}\n#line 3\
+    \ \"src/numbers/xor_basis.hpp\"\n\n// XOR\u57FA\u5E95\ntemplate<typename T>\n\
+    vector<T> get_xor_basis(const vector<T> &A) {\n    vector<T> basis;\n    for (auto\
+    \ a : A) {\n        for (auto b : basis) {\n            chmin(a, a^b);\n     \
+    \   }\n        if (a > 0) basis.eb(a);\n    }\n    return basis;\n}\n"
+  code: "#include \"../base.hpp\"\n#include \"../common/chmin.hpp\"\n\n// XOR\u57FA\
+    \u5E95\ntemplate<typename T>\nvector<T> get_xor_basis(const vector<T> &A) {\n\
+    \    vector<T> basis;\n    for (auto a : A) {\n        for (auto b : basis) {\n\
+    \            chmin(a, a^b);\n        }\n        if (a > 0) basis.eb(a);\n    }\n\
+    \    return basis;\n}\n"
+  dependsOn:
+  - src/base.hpp
+  - src/common/chmin.hpp
   isVerificationFile: false
   path: src/numbers/xor_basis.hpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
+  timestamp: '2022-03-24 12:02:57+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/xor_basis.hpp
