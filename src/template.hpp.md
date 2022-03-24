@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -49,13 +49,13 @@ data:
   - icon: ':warning:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
     path: src/common/join.hpp
     title: src/common/join.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
   - icon: ':warning:'
@@ -76,7 +76,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -88,7 +88,7 @@ data:
   - icon: ':warning:'
     path: src/common/split.hpp
     title: src/common/split.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
   - icon: ':warning:'
@@ -121,7 +121,7 @@ data:
   - icon: ':warning:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'

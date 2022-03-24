@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -11,10 +11,13 @@ data:
   - icon: ':warning:'
     path: src/math/garner.hpp
     title: src/math/garner.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/matrix/MatPow.test.cpp
+    title: test/matrix/MatPow.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://ei1333.github.io/library/math/combinatorics/mod-int.cpp
@@ -96,8 +99,9 @@ data:
   - src/math/garner.hpp
   - src/math/fps/pow_term2.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/matrix/MatPow.test.cpp
 documentation_of: src/combinatorics/ModInt.hpp
 layout: document
 redirect_from:

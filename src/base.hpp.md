@@ -8,7 +8,7 @@ data:
   - icon: ':warning:'
     path: src/combinatorics/ArbitraryModInt.hpp
     title: src/combinatorics/ArbitraryModInt.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
   - icon: ':warning:'
@@ -74,7 +74,7 @@ data:
   - icon: ':warning:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
@@ -83,7 +83,7 @@ data:
   - icon: ':warning:'
     path: src/common/join.hpp
     title: src/common/join.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
   - icon: ':warning:'
@@ -104,7 +104,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -119,7 +119,7 @@ data:
   - icon: ':warning:'
     path: src/common/split.hpp
     title: src/common/split.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
   - icon: ':warning:'
@@ -272,7 +272,7 @@ data:
   - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -308,7 +308,7 @@ data:
   - icon: ':warning:'
     path: src/math/lagrange_polynomial.hpp
     title: src/math/lagrange_polynomial.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
   - icon: ':warning:'
@@ -323,7 +323,7 @@ data:
   - icon: ':warning:'
     path: src/matrix/gauss_jordan_real.hpp
     title: src/matrix/gauss_jordan_real.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
   - icon: ':warning:'
@@ -510,12 +510,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/bfs.test.cpp
     title: test/graph/bfs.test.cpp
+  - icon: ':x:'
+    path: test/matrix/MatPow.test.cpp
+    title: test/matrix/MatPow.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/segment/Accumulate.test.cpp
     title: test/segment/Accumulate.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "src/base.hpp"
@@ -708,8 +711,9 @@ data:
   - src/grid/gridtoid.hpp
   - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/matrix/MatPow.test.cpp
   - test/segment/Accumulate.test.cpp
   - test/common/bisect.test.cpp
   - test/graph/bfs.test.cpp

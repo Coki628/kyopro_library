@@ -26,10 +26,10 @@ data:
       title: src/acl/twosat.hpp
   - name: src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/base.hpp
       title: src/base.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/macros.hpp
       title: src/macros.hpp
     - icon: ':warning:'
@@ -43,7 +43,7 @@ data:
     - icon: ':warning:'
       path: src/combinatorics/ArbitraryModInt.hpp
       title: src/combinatorics/ArbitraryModInt.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/combinatorics/ModInt.hpp
       title: src/combinatorics/ModInt.hpp
     - icon: ':warning:'
@@ -129,7 +129,7 @@ data:
     - icon: ':warning:'
       path: src/common/floor.hpp
       title: src/common/floor.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/common/input.hpp
       title: src/common/input.hpp
     - icon: ':warning:'
@@ -138,7 +138,7 @@ data:
     - icon: ':warning:'
       path: src/common/join.hpp
       title: src/common/join.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/common/listnd.hpp
       title: src/common/listnd.hpp
     - icon: ':warning:'
@@ -165,7 +165,7 @@ data:
     - icon: ':warning:'
       path: src/common/pow.hpp
       title: src/common/pow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/common/print.hpp
       title: src/common/print.hpp
     - icon: ':warning:'
@@ -180,7 +180,7 @@ data:
     - icon: ':warning:'
       path: src/common/split.hpp
       title: src/common/split.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/common/sum.hpp
       title: src/common/sum.hpp
     - icon: ':warning:'
@@ -392,7 +392,7 @@ data:
       title: src/math/fps/pow_term2.hpp
   - name: src/matrix
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/matrix/MatPow.hpp
       title: src/matrix/MatPow.hpp
     - icon: ':warning:'
@@ -407,7 +407,7 @@ data:
     - icon: ':warning:'
       path: src/matrix/gauss_jordan_real.hpp
       title: src/matrix/gauss_jordan_real.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/matrix/mat_dot.hpp
       title: src/matrix/mat_dot.hpp
     - icon: ':warning:'
@@ -614,6 +614,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/bfs.test.cpp
       title: test/graph/bfs.test.cpp
+  - name: test/matrix
+    pages:
+    - icon: ':x:'
+      path: test/matrix/MatPow.test.cpp
+      title: test/matrix/MatPow.test.cpp
   - name: test/segment
     pages:
     - icon: ':heavy_check_mark:'
