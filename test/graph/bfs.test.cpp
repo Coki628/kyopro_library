@@ -6,7 +6,7 @@
 
 #define CONSTANTS
 // #define CAST_MINT_TO_LL
-#include "../../src/base.hpp"
+#include "base.hpp"
 
 constexpr long long INF = 1e18;
 // constexpr long long INF = LONG_LONG_MAX;
@@ -15,10 +15,10 @@ constexpr int MOD = 1000000007;
 constexpr long double EPS = 1e-10;
 constexpr long double PI = M_PI;
 
-#include "../../src/macros.hpp"
-#include "../../src/common/print.hpp"
+#include "macros.hpp"
+#include "common/print.hpp"
 
-#include "../../src/graph/bfs.hpp"
+#include "graph/bfs.hpp"
 
 void solve() {
     ll N;
