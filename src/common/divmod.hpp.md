@@ -1,0 +1,51 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/base.hpp
+    title: src/base.hpp
+  _extendedRequiredBy:
+  - icon: ':question:'
+    path: src/grid/idtogrid.hpp
+    title: src/grid/idtogrid.hpp
+  - icon: ':question:'
+    path: src/template.hpp
+    title: src/template.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/common/bisect.test.cpp
+    title: test/common/bisect.test.cpp
+  - icon: ':x:'
+    path: test/graph/bfs.test.cpp
+    title: test/graph/bfs.test.cpp
+  _isVerificationFailed: true
+  _pathExtension: hpp
+  _verificationStatusIcon: ':question:'
+  attributes:
+    links: []
+  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
+    using namespace std;\n#line 3 \"src/common/divmod.hpp\"\n\ntemplate<typename T>\n\
+    pair<T, T> divmod(T a, T b) {\n    T d = a / b;\n    T m = a % b;\n    return\
+    \ {d, m};\n}\n"
+  code: "#pragma once\n#include \"../base.hpp\"\n\ntemplate<typename T>\npair<T, T>\
+    \ divmod(T a, T b) {\n    T d = a / b;\n    T m = a % b;\n    return {d, m};\n\
+    }\n"
+  dependsOn:
+  - src/base.hpp
+  isVerificationFile: false
+  path: src/common/divmod.hpp
+  requiredBy:
+  - src/grid/idtogrid.hpp
+  - src/template.hpp
+  timestamp: '2022-03-24 10:49:13+09:00'
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/common/bisect.test.cpp
+  - test/graph/bfs.test.cpp
+documentation_of: src/common/divmod.hpp
+layout: document
+redirect_from:
+- /library/src/common/divmod.hpp
+- /library/src/common/divmod.hpp.html
+title: src/common/divmod.hpp
+---
