@@ -1,2 +1,4 @@
+*.exe
+
 # compressed files
-_dist/
+dist/
