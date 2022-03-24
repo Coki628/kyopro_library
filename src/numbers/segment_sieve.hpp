@@ -1,4 +1,4 @@
-#include "macros.hpp"
+#include "../macros.hpp"
 
 // 区間[l,r)内の各素因数の個数(エラトステネスの区間篩) 
 map<ll, ll> segment_sieve(ll l, ll r) {

@@ -1,4 +1,4 @@
-#include "base.hpp"
+#include "../base.hpp"
 #include "../common/chmin.hpp"
 
 // XOR基底
