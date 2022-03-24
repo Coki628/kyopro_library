@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/string/zfill.hpp
     title: src/string/zfill.hpp
   _extendedRequiredBy: []

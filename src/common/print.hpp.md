@@ -8,7 +8,7 @@ data:
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
   - icon: ':warning:'
@@ -32,7 +32,7 @@ data:
   - icon: ':warning:'
     path: src/mystl/my_vector.hpp
     title: src/mystl/my_vector.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:

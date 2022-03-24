@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/toint.hpp
     title: src/common/toint.hpp
   - icon: ':heavy_check_mark:'

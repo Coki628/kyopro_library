@@ -8,16 +8,13 @@ data:
   - icon: ':warning:'
     path: src/common/LIS.hpp
     title: src/common/LIS.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/bfs.test.cpp
-    title: test/graph/bfs.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -45,7 +42,6 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/common/bisect.test.cpp
-  - test/graph/bfs.test.cpp
 documentation_of: src/common/bisect.hpp
 layout: document
 redirect_from:

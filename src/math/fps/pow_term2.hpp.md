@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/combinatorics/ModTools.hpp
     title: src/combinatorics/ModTools.hpp
   - icon: ':heavy_check_mark:'

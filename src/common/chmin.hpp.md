@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/min.hpp
     title: src/common/min.hpp
   - icon: ':warning:'
@@ -23,13 +23,10 @@ data:
   - icon: ':warning:'
     path: src/numbers/xor_basis.hpp
     title: src/numbers/xor_basis.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/common/bisect.test.cpp
-    title: test/common/bisect.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/bfs.test.cpp
     title: test/graph/bfs.test.cpp
@@ -57,7 +54,6 @@ data:
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/common/bisect.test.cpp
   - test/graph/bfs.test.cpp
 documentation_of: src/common/chmin.hpp
 layout: document

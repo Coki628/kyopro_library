@@ -32,7 +32,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/macros.hpp
       title: src/macros.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/template.hpp
       title: src/template.hpp
   - name: src/combinatorics
@@ -43,25 +43,25 @@ data:
     - icon: ':warning:'
       path: src/combinatorics/ArbitraryModInt.hpp
       title: src/combinatorics/ArbitraryModInt.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/combinatorics/ModInt.hpp
       title: src/combinatorics/ModInt.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/combinatorics/ModTools.hpp
       title: src/combinatorics/ModTools.hpp
     - icon: ':warning:'
       path: src/combinatorics/bell.hpp
       title: src/combinatorics/bell.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/combinatorics/combinations.hpp
       title: src/combinatorics/combinations.hpp
     - icon: ':warning:'
       path: src/combinatorics/combinations_with_replacement.hpp
       title: src/combinatorics/combinations_with_replacement.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/combinatorics/factorial.hpp
       title: src/combinatorics/factorial.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/combinatorics/nC2.hpp
       title: src/combinatorics/nC2.hpp
     - icon: ':warning:'
@@ -70,7 +70,7 @@ data:
     - icon: ':warning:'
       path: src/combinatorics/partition.hpp
       title: src/combinatorics/partition.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/combinatorics/permutations.hpp
       title: src/combinatorics/permutations.hpp
     - icon: ':warning:'
@@ -78,10 +78,10 @@ data:
       title: src/combinatorics/stirling.hpp
   - name: src/common
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/Compress.hpp
       title: src/common/Compress.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/Counter.hpp
       title: src/common/Counter.hpp
     - icon: ':warning:'
@@ -90,7 +90,7 @@ data:
     - icon: ':warning:'
       path: src/common/LIS.hpp
       title: src/common/LIS.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/RLE.hpp
       title: src/common/RLE.hpp
     - icon: ':warning:'
@@ -99,7 +99,7 @@ data:
     - icon: ':warning:'
       path: src/common/_doubling.hpp
       title: src/common/_doubling.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/bisearch.hpp
       title: src/common/bisearch.hpp
     - icon: ':warning:'
@@ -108,13 +108,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/common/bisect.hpp
       title: src/common/bisect.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/bit_length.hpp
       title: src/common/bit_length.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/ceil.hpp
       title: src/common/ceil.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/chmax.hpp
       title: src/common/chmax.hpp
     - icon: ':heavy_check_mark:'
@@ -123,7 +123,7 @@ data:
     - icon: ':warning:'
       path: src/common/custom_hash.hpp
       title: src/common/custom_hash.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/divmod.hpp
       title: src/common/divmod.hpp
     - icon: ':warning:'
@@ -135,34 +135,34 @@ data:
     - icon: ':warning:'
       path: src/common/interactive.hpp
       title: src/common/interactive.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/join.hpp
       title: src/common/join.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/listnd.hpp
       title: src/common/listnd.hpp
     - icon: ':warning:'
       path: src/common/mapping.hpp
       title: src/common/mapping.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/max.hpp
       title: src/common/max.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/min.hpp
       title: src/common/min.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/modulo.hpp
       title: src/common/modulo.hpp
     - icon: ':warning:'
       path: src/common/mt.hpp
       title: src/common/mt.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/mul_overflow.hpp
       title: src/common/mul_overflow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/popcount.hpp
       title: src/common/popcount.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/pow.hpp
       title: src/common/pow.hpp
     - icon: ':heavy_check_mark:'
@@ -171,25 +171,25 @@ data:
     - icon: ':warning:'
       path: src/common/randrange.hpp
       title: src/common/randrange.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/reversed.hpp
       title: src/common/reversed.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/sorted.hpp
       title: src/common/sorted.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/split.hpp
       title: src/common/split.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/sum.hpp
       title: src/common/sum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/to_string.hpp
       title: src/common/to_string.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/tochar.hpp
       title: src/common/tochar.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/toint.hpp
       title: src/common/toint.hpp
     - icon: ':warning:'
@@ -198,10 +198,10 @@ data:
     - icon: ':warning:'
       path: src/common/trisearch_real.hpp
       title: src/common/trisearch_real.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/yesno.hpp
       title: src/common/yesno.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/common/zip.hpp
       title: src/common/zip.hpp
   - name: src/geometry
@@ -280,7 +280,7 @@ data:
     - icon: ':warning:'
       path: src/graph/ReRooting.hpp
       title: src/graph/ReRooting.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/graph/UnionFind.hpp
       title: src/graph/UnionFind.hpp
     - icon: ':warning:'
@@ -318,10 +318,10 @@ data:
     - icon: ':warning:'
       path: src/grid/flip.hpp
       title: src/grid/flip.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/grid/gridtoid.hpp
       title: src/grid/gridtoid.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/grid/idtogrid.hpp
       title: src/grid/idtogrid.hpp
     - icon: ':warning:'
@@ -338,7 +338,7 @@ data:
       title: src/grid/transpose.hpp
   - name: src/grid/constants
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/grid/constants/dir4.hpp
       title: src/grid/constants/dir4.hpp
     - icon: ':warning:'
@@ -347,7 +347,7 @@ data:
     - icon: ':warning:'
       path: src/grid/constants/dir_diagonals.hpp
       title: src/grid/constants/dir_diagonals.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/grid/constants/directions.hpp
       title: src/grid/constants/directions.hpp
   - name: src/math
@@ -415,7 +415,7 @@ data:
       title: src/matrix/rotate.hpp
   - name: src/mystl
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/mystl/defaultdict.hpp
       title: src/mystl/defaultdict.hpp
     - icon: ':warning:'
@@ -453,7 +453,7 @@ data:
     - icon: ':warning:'
       path: src/numbers/digit_sum.hpp
       title: src/numbers/digit_sum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/numbers/divisors.hpp
       title: src/numbers/divisors.hpp
     - icon: ':warning:'
@@ -462,10 +462,10 @@ data:
     - icon: ':warning:'
       path: src/numbers/extgcd.hpp
       title: src/numbers/extgcd.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/numbers/factorize.hpp
       title: src/numbers/factorize.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/numbers/gcd.hpp
       title: src/numbers/gcd.hpp
     - icon: ':warning:'
@@ -477,10 +477,10 @@ data:
     - icon: ':warning:'
       path: src/numbers/is_prime.hpp
       title: src/numbers/is_prime.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/numbers/isqrt.hpp
       title: src/numbers/isqrt.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/numbers/lcm.hpp
       title: src/numbers/lcm.hpp
     - icon: ':warning:'
@@ -503,13 +503,13 @@ data:
       title: src/numbers/xor_basis.hpp
   - name: src/segment
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/segment/Accumulate.hpp
       title: src/segment/Accumulate.hpp
     - icon: ':warning:'
       path: src/segment/Accumulate2D.hpp
       title: src/segment/Accumulate2D.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/segment/BIT.hpp
       title: src/segment/BIT.hpp
     - icon: ':warning:'
@@ -533,7 +533,7 @@ data:
     - icon: ':warning:'
       path: src/segment/RangeSet.hpp
       title: src/segment/RangeSet.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/segment/SegmentTree.hpp
       title: src/segment/SegmentTree.hpp
     - icon: ':warning:'
@@ -574,7 +574,7 @@ data:
     - icon: ':warning:'
       path: src/string/Trie.hpp
       title: src/string/Trie.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/string/bin.hpp
       title: src/string/bin.hpp
     - icon: ':warning:'
@@ -586,7 +586,7 @@ data:
     - icon: ':warning:'
       path: src/string/replace.hpp
       title: src/string/replace.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/string/zfill.hpp
       title: src/string/zfill.hpp
   - name: src/string/constants
@@ -594,13 +594,13 @@ data:
     - icon: ':warning:'
       path: src/string/constants/ascii_letters.hpp
       title: src/string/constants/ascii_letters.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/string/constants/ascii_lowercase.hpp
       title: src/string/constants/ascii_lowercase.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/string/constants/ascii_uppercase.hpp
       title: src/string/constants/ascii_uppercase.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/string/constants/digits.hpp
       title: src/string/constants/digits.hpp
   verificationCategories:

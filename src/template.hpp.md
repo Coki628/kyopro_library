@@ -4,179 +4,173 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/combinatorics/ModTools.hpp
     title: src/combinatorics/ModTools.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/combinatorics/combinations.hpp
     title: src/combinatorics/combinations.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/combinatorics/factorial.hpp
     title: src/combinatorics/factorial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/combinatorics/nC2.hpp
     title: src/combinatorics/nC2.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/combinatorics/permutations.hpp
     title: src/combinatorics/permutations.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/Compress.hpp
     title: src/common/Compress.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/Counter.hpp
     title: src/common/Counter.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/RLE.hpp
     title: src/common/RLE.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
   - icon: ':heavy_check_mark:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/bit_length.hpp
     title: src/common/bit_length.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/ceil.hpp
     title: src/common/ceil.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/chmax.hpp
     title: src/common/chmax.hpp
   - icon: ':heavy_check_mark:'
     path: src/common/chmin.hpp
     title: src/common/chmin.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
   - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/join.hpp
     title: src/common/join.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/max.hpp
     title: src/common/max.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/min.hpp
     title: src/common/min.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/modulo.hpp
     title: src/common/modulo.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/mul_overflow.hpp
     title: src/common/mul_overflow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/popcount.hpp
     title: src/common/popcount.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
   - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/reversed.hpp
     title: src/common/reversed.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/sorted.hpp
     title: src/common/sorted.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/split.hpp
     title: src/common/split.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/to_string.hpp
     title: src/common/to_string.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/tochar.hpp
     title: src/common/tochar.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/toint.hpp
     title: src/common/toint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/common/zip.hpp
     title: src/common/zip.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/grid/constants/dir4.hpp
     title: src/grid/constants/dir4.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/grid/constants/directions.hpp
     title: src/grid/constants/directions.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/grid/gridtoid.hpp
     title: src/grid/gridtoid.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/mystl/defaultdict.hpp
     title: src/mystl/defaultdict.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/numbers/divisors.hpp
     title: src/numbers/divisors.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/numbers/factorize.hpp
     title: src/numbers/factorize.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/numbers/gcd.hpp
     title: src/numbers/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/numbers/isqrt.hpp
     title: src/numbers/isqrt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/numbers/lcm.hpp
     title: src/numbers/lcm.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/segment/BIT.hpp
     title: src/segment/BIT.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/segment/SegmentTree.hpp
     title: src/segment/SegmentTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/string/bin.hpp
     title: src/string/bin.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/string/constants/ascii_lowercase.hpp
     title: src/string/constants/ascii_lowercase.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/string/constants/ascii_uppercase.hpp
     title: src/string/constants/ascii_uppercase.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/string/constants/digits.hpp
     title: src/string/constants/digits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/string/zfill.hpp
     title: src/string/zfill.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/common/bisect.test.cpp
-    title: test/common/bisect.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/bfs.test.cpp
-    title: test/graph/bfs.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -763,10 +757,8 @@ data:
   path: src/template.hpp
   requiredBy: []
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/common/bisect.test.cpp
-  - test/graph/bfs.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/template.hpp
 layout: document
 redirect_from:

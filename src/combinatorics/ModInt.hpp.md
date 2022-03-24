@@ -11,16 +11,10 @@ data:
   - icon: ':warning:'
     path: src/math/garner.hpp
     title: src/math/garner.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/common/bisect.test.cpp
-    title: test/common/bisect.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/bfs.test.cpp
-    title: test/graph/bfs.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links:
     - https://ei1333.github.io/library/math/combinatorics/mod-int.cpp
@@ -102,10 +96,8 @@ data:
   - src/math/garner.hpp
   - src/math/fps/pow_term2.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/common/bisect.test.cpp
-  - test/graph/bfs.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/combinatorics/ModInt.hpp
 layout: document
 redirect_from:
