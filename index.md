@@ -26,10 +26,10 @@ data:
       title: src/acl/twosat.hpp
   - name: src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/base.hpp
       title: src/base.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/macros.hpp
       title: src/macros.hpp
     - icon: ':warning:'
@@ -138,7 +138,7 @@ data:
     - icon: ':warning:'
       path: src/common/join.hpp
       title: src/common/join.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/common/listnd.hpp
       title: src/common/listnd.hpp
     - icon: ':warning:'
@@ -165,7 +165,7 @@ data:
     - icon: ':warning:'
       path: src/common/pow.hpp
       title: src/common/pow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/common/print.hpp
       title: src/common/print.hpp
     - icon: ':warning:'
@@ -503,7 +503,7 @@ data:
       title: src/numbers/xor_basis.hpp
   - name: src/segment
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/segment/Accumulate.hpp
       title: src/segment/Accumulate.hpp
     - icon: ':warning:'
@@ -614,5 +614,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/bfs.test.cpp
       title: test/graph/bfs.test.cpp
+  - name: test/segment
+    pages:
+    - icon: ':x:'
+      path: test/segment/Accumulate.test.cpp
+      title: test/segment/Accumulate.test.cpp
 layout: toppage
 ---

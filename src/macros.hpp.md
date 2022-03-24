@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -74,7 +74,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -299,7 +299,7 @@ data:
   - icon: ':warning:'
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
   - icon: ':warning:'
@@ -360,9 +360,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/bfs.test.cpp
     title: test/graph/bfs.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/segment/Accumulate.test.cpp
+    title: test/segment/Accumulate.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -518,8 +521,9 @@ data:
   - src/grid/gridtoid.hpp
   - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/segment/Accumulate.test.cpp
   - test/common/bisect.test.cpp
   - test/graph/bfs.test.cpp
 documentation_of: src/macros.hpp

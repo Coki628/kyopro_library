@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -32,10 +32,13 @@ data:
   - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/segment/Accumulate.test.cpp
+    title: test/segment/Accumulate.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -68,8 +71,9 @@ data:
   - src/grid/bfs.hpp
   - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/segment/Accumulate.test.cpp
 documentation_of: src/common/listnd.hpp
 layout: document
 redirect_from:
