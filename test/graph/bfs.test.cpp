@@ -41,7 +41,10 @@ void solve() {
 
     auto res = bfs(nodes, {0});
     vector<pll> ans(N);
-    rep(i, 0, N) {
+    rep(i, N) {
+        if (res[i] >= INF) {
+            res[i] = -1;
+        }
         ans[i].first = i + 1;
         ans[i].second = res[i];
     }
