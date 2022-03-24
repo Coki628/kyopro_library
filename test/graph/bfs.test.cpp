@@ -16,8 +16,7 @@ constexpr long double EPS = 1e-10;
 constexpr long double PI = M_PI;
 
 #include "../../src/macros.hpp"
-#include "../../src/combinatorics/ModInt.hpp"
-#include "../../src/template.hpp"
+#include "../../src/common/print.hpp"
 
 #include "../../src/graph/bfs.hpp"
 
