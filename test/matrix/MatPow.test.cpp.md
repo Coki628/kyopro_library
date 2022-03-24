@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/1299
@@ -51,7 +51,7 @@ data:
     \ target(\"avx2\")\n// #pragma GCC optimize(\"O3\")\n// #pragma GCC optimize(\"\
     unroll-loops\")\n\n#define CONSTANTS\n// #define CAST_MINT_TO_LL\n#include \"\
     base.hpp\"\n\nconstexpr long long INF = 1e18;\n// constexpr long long INF = LONG_LONG_MAX;\n\
-    constexpr int MOD = 1000000007;\n// constexpr int MOD = 998244353;\nconstexpr\
+    // constexpr int MOD = 1000000007;\nconstexpr int MOD = 998244353;\nconstexpr\
     \ long double EPS = 1e-10;\nconstexpr long double PI = M_PI;\n\n#include \"macros.hpp\"\
     \n#include \"common/input.hpp\"\n#include \"common/print.hpp\"\n#include \"common/sum.hpp\"\
     \n#include \"combinatorics/ModInt.hpp\"\n\n#include \"matrix/MatPow.hpp\"\n\n\
@@ -76,8 +76,8 @@ data:
   isVerificationFile: true
   path: test/matrix/MatPow.test.cpp
   requiredBy: []
-  timestamp: '2022-03-24 21:59:10+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-03-24 22:01:11+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/matrix/MatPow.test.cpp
 layout: document
