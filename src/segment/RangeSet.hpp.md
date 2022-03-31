@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy: []
@@ -16,7 +16,7 @@ data:
     using namespace std;\n#line 2 \"src/segment/RangeSet.hpp\"\n\n// \u53C2\u8003\uFF1A\
     https://mugen1337.hatenablog.com/entry/2020/10/14/134022\n// \u9589\u533A\u9593\
     \u306E\u7BC4\u56F2\u3092\u7BA1\u7406\ntemplate<typename T>\nstruct RangeSet {\n\
-    \    set<pair<T,T>> st;\n    T TINF;\n \n    RangeSet() {\n        TINF=numeric_limits<T>::max()/2;\n\
+    \    set<pair<T,T>> st;\n    T TINF;\n\n    RangeSet() {\n        TINF=numeric_limits<T>::max()/2;\n\
     \        st.emplace(TINF,TINF);\n        st.emplace(-TINF,-TINF);\n    }\n   \
     \ // [l,r] covered?\n    bool covered(T l,T r) {\n        assert(l<=r);\n    \
     \    auto ite=prev(st.lower_bound({l+1,l+1}));\n        return ite->first<=l and\
@@ -43,7 +43,7 @@ data:
     1\u3064\u306E\u533A\u9593\u306B\u5305\u542B\u3055\u308C\u3066\u3044\u308B\n  \
     \          if (ite->first<l)  st.emplace(ite->first,l-1);\n            if (r<ite->second)\
     \ st.emplace(r+1,ite->second);\n            st.erase(ite);\n            return\
-    \ r-l+1;\n        }\n \n        T ret=T(0);\n        if (ite->first<=l and l<=ite->second)\
+    \ r-l+1;\n        }\n\n        T ret=T(0);\n        if (ite->first<=l and l<=ite->second)\
     \ {\n            ret+=ite->second-l+1;// \u6D88\u3048\u305F\n            if (ite->first<l)\
     \ st.emplace(ite->first,l-1);\n            ite=st.erase(ite);// \u6B21\u3078\n\
     \        } else ite=next(ite);\n        while (ite->second<=r) {\n           \
@@ -64,9 +64,9 @@ data:
     \ r);\n        }\n        return res;\n    }\n};\n"
   code: "#include \"../base.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://mugen1337.hatenablog.com/entry/2020/10/14/134022\n\
     // \u9589\u533A\u9593\u306E\u7BC4\u56F2\u3092\u7BA1\u7406\ntemplate<typename T>\n\
-    struct RangeSet {\n    set<pair<T,T>> st;\n    T TINF;\n \n    RangeSet() {\n\
-    \        TINF=numeric_limits<T>::max()/2;\n        st.emplace(TINF,TINF);\n  \
-    \      st.emplace(-TINF,-TINF);\n    }\n    // [l,r] covered?\n    bool covered(T\
+    struct RangeSet {\n    set<pair<T,T>> st;\n    T TINF;\n\n    RangeSet() {\n \
+    \       TINF=numeric_limits<T>::max()/2;\n        st.emplace(TINF,TINF);\n   \
+    \     st.emplace(-TINF,-TINF);\n    }\n    // [l,r] covered?\n    bool covered(T\
     \ l,T r) {\n        assert(l<=r);\n        auto ite=prev(st.lower_bound({l+1,l+1}));\n\
     \        return ite->first<=l and r<=ite->second;\n    }\n    bool covered(T x)\
     \ {\n        return covered(x,x);\n    }\n    // [l, r]\u304C\u30AB\u30D0\u30FC\
@@ -92,7 +92,7 @@ data:
     1\u3064\u306E\u533A\u9593\u306B\u5305\u542B\u3055\u308C\u3066\u3044\u308B\n  \
     \          if (ite->first<l)  st.emplace(ite->first,l-1);\n            if (r<ite->second)\
     \ st.emplace(r+1,ite->second);\n            st.erase(ite);\n            return\
-    \ r-l+1;\n        }\n \n        T ret=T(0);\n        if (ite->first<=l and l<=ite->second)\
+    \ r-l+1;\n        }\n\n        T ret=T(0);\n        if (ite->first<=l and l<=ite->second)\
     \ {\n            ret+=ite->second-l+1;// \u6D88\u3048\u305F\n            if (ite->first<l)\
     \ st.emplace(ite->first,l-1);\n            ite=st.erase(ite);// \u6B21\u3078\n\
     \        } else ite=next(ite);\n        while (ite->second<=r) {\n           \
@@ -116,7 +116,7 @@ data:
   isVerificationFile: false
   path: src/segment/RangeSet.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-03-31 10:55:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/segment/RangeSet.hpp

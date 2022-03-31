@@ -26,10 +26,10 @@ data:
       title: src/acl/twosat.hpp
   - name: src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/base.hpp
       title: src/base.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/macros.hpp
       title: src/macros.hpp
     - icon: ':warning:'
@@ -99,13 +99,13 @@ data:
     - icon: ':warning:'
       path: src/common/_doubling.hpp
       title: src/common/_doubling.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/common/bisearch.hpp
       title: src/common/bisearch.hpp
     - icon: ':warning:'
       path: src/common/bisearch_real.hpp
       title: src/common/bisearch_real.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/common/bisect.hpp
       title: src/common/bisect.hpp
     - icon: ':warning:'
@@ -129,7 +129,7 @@ data:
     - icon: ':warning:'
       path: src/common/floor.hpp
       title: src/common/floor.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/common/input.hpp
       title: src/common/input.hpp
     - icon: ':warning:'
@@ -165,7 +165,7 @@ data:
     - icon: ':warning:'
       path: src/common/pow.hpp
       title: src/common/pow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/common/print.hpp
       title: src/common/print.hpp
     - icon: ':warning:'
@@ -309,6 +309,9 @@ data:
     - icon: ':warning:'
       path: src/grid/bfs.hpp
       title: src/grid/bfs.hpp
+    - icon: ':warning:'
+      path: src/grid/bfs_restore.hpp
+      title: src/grid/bfs_restore.hpp
     - icon: ':warning:'
       path: src/grid/build_grid.hpp
       title: src/grid/build_grid.hpp
@@ -503,7 +506,7 @@ data:
       title: src/numbers/xor_basis.hpp
   - name: src/segment
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/segment/Accumulate.hpp
       title: src/segment/Accumulate.hpp
     - icon: ':warning:'
@@ -621,7 +624,7 @@ data:
       title: test/matrix/MatPow.test.cpp
   - name: test/segment
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/segment/Accumulate.test.cpp
       title: test/segment/Accumulate.test.cpp
 layout: toppage

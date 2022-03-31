@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://atcoder.jp/contests/abc149/tasks/abc149_e
@@ -71,8 +71,8 @@ data:
   isVerificationFile: true
   path: test/segment/Accumulate.test.cpp
   requiredBy: []
-  timestamp: '2022-03-24 15:49:36+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-03-31 10:55:07+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/segment/Accumulate.test.cpp
 layout: document

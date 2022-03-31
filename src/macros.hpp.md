@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -47,7 +47,7 @@ data:
   - icon: ':warning:'
     path: src/common/_doubling.hpp
     title: src/common/_doubling.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
   - icon: ':warning:'
@@ -56,7 +56,7 @@ data:
   - icon: ':warning:'
     path: src/common/bit_length.hpp
     title: src/common/bit_length.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
@@ -74,7 +74,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -179,6 +179,9 @@ data:
   - icon: ':warning:'
     path: src/grid/bfs.hpp
     title: src/grid/bfs.hpp
+  - icon: ':warning:'
+    path: src/grid/bfs_restore.hpp
+    title: src/grid/bfs_restore.hpp
   - icon: ':warning:'
     path: src/grid/build_grid.hpp
     title: src/grid/build_grid.hpp
@@ -299,7 +302,7 @@ data:
   - icon: ':warning:'
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
   - icon: ':warning:'
@@ -363,12 +366,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/segment/Accumulate.test.cpp
     title: test/segment/Accumulate.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -520,11 +523,12 @@ data:
   - src/grid/constants/dir_diagonals.hpp
   - src/grid/constants/dir4.hpp
   - src/grid/bfs.hpp
+  - src/grid/bfs_restore.hpp
   - src/grid/dijkstra.hpp
   - src/grid/gridtoid.hpp
   - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/matrix/MatPow.test.cpp
   - test/segment/Accumulate.test.cpp

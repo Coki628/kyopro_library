@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -28,10 +28,10 @@ data:
   - icon: ':warning:'
     path: src/common/RLE.hpp
     title: src/common/RLE.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
   - icon: ':warning:'
@@ -49,7 +49,7 @@ data:
   - icon: ':warning:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
@@ -76,7 +76,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -121,7 +121,7 @@ data:
   - icon: ':warning:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -142,7 +142,7 @@ data:
   - icon: ':warning:'
     path: src/numbers/lcm.hpp
     title: src/numbers/lcm.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
   - icon: ':warning:'
@@ -198,25 +198,29 @@ data:
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
     #line 2 \"src/common/input.hpp\"\n\ntemplate<typename T=ll> vector<T> LIST(ll\
     \ N) {\n    vector<T> A(N);\n    rep(i, N) {\n        cin >> A[i];\n    }\n  \
-    \  return A;\n}\n#line 3 \"src/common/print.hpp\"\n\nvoid print() {\n    cout\
-    \ << '\\n';\n}\n\ntemplate<typename T>\nvoid print(T out) {\n    cout << out <<\
-    \ '\\n';\n}\n\ntemplate<typename T1, typename T2>\nvoid print(const pair<T1, T2>\
-    \ &p) {\n    cout << p.first << ' ' << p.second << '\\n';\n}\n\ntemplate<typename\
-    \ T1, typename T2, typename T3>\nvoid print(const tuple<T1, T2, T3> &tp) {\n \
-    \   cout << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) << '\\n';\n}\n\
-    \ntemplate<typename T1, typename T2, typename T3, typename T4>\nvoid print(const\
-    \ tuple<T1, T2, T3, T4> &tp) { \n    cout << get<0>(tp) << ' ' << get<1>(tp) <<\
-    \ ' ' << get<2>(tp) << ' ' << get<3>(tp) << '\\n';\n}\n\ntemplate<typename T1,\
-    \ typename T2>\nvoid print(const vector<pair<T1, T2>> &V) {\n    for (auto& p\
-    \ : V) print(p);\n}\n\ntemplate<typename T>\nvoid print(const vector<T> &V) {\n\
-    \    rep(i, V.size()) {\n        cout << V[i];\n        if (i != V.size()-1) cout\
-    \ << ' ';\n    }\n    cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid\
-    \ print(const array<T, SZ> &arr) {\n    rep(i, arr.size()) {\n        cout <<\
-    \ arr[i];\n        if (i != arr.size()-1) cout << ' ';\n    }\n    cout << '\\\
-    n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid print(const vector<array<T, SZ>>\
-    \ &V) {\n    for (auto& arr : V) print(arr);\n}\n\ntemplate<typename T>\nvoid\
-    \ print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n    print(V);\n}\n\
-    \ntemplate<typename T>\nvoid print(const set<T> &se) {\n    vector<T> V(ALL(se));\n\
+    \  return A;\n}\n\n// pair\u5165\u529B\u4E00\u62EC\u53D7\u3051\u53D6\u308A\ntemplate<typename\
+    \ T1, typename T2>\nistream &operator>>(istream &is, pair<T1, T2> &p) {\n    is\
+    \ >> p.first >> p.second;\n    return is;\n}\n\n// vector\u5165\u529B\u4E00\u62EC\
+    \u53D7\u3051\u53D6\u308A\ntemplate<typename T>\nistream &operator>>(istream &is,\
+    \ vector<T> &v) {\n    for (T &in: v) is >> in;\n    return is;\n}\n#line 3 \"\
+    src/common/print.hpp\"\n\nvoid print() {\n    cout << '\\n';\n}\n\ntemplate<typename\
+    \ T>\nvoid print(T out) {\n    cout << out << '\\n';\n}\n\ntemplate<typename T1,\
+    \ typename T2>\nvoid print(const pair<T1, T2> &p) {\n    cout << p.first << '\
+    \ ' << p.second << '\\n';\n}\n\ntemplate<typename T1, typename T2, typename T3>\n\
+    void print(const tuple<T1, T2, T3> &tp) {\n    cout << get<0>(tp) << ' ' << get<1>(tp)\
+    \ << ' ' << get<2>(tp) << '\\n';\n}\n\ntemplate<typename T1, typename T2, typename\
+    \ T3, typename T4>\nvoid print(const tuple<T1, T2, T3, T4> &tp) { \n    cout <<\
+    \ get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) << ' ' << get<3>(tp) <<\
+    \ '\\n';\n}\n\ntemplate<typename T1, typename T2>\nvoid print(const vector<pair<T1,\
+    \ T2>> &V) {\n    for (auto& p : V) print(p);\n}\n\ntemplate<typename T>\nvoid\
+    \ print(const vector<T> &V) {\n    rep(i, V.size()) {\n        cout << V[i];\n\
+    \        if (i != V.size()-1) cout << ' ';\n    }\n    cout << '\\n';\n}\n\ntemplate<typename\
+    \ T, size_t SZ>\nvoid print(const array<T, SZ> &arr) {\n    rep(i, arr.size())\
+    \ {\n        cout << arr[i];\n        if (i != arr.size()-1) cout << ' ';\n  \
+    \  }\n    cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid print(const\
+    \ vector<array<T, SZ>> &V) {\n    for (auto& arr : V) print(arr);\n}\n\ntemplate<typename\
+    \ T>\nvoid print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n    print(V);\n\
+    }\n\ntemplate<typename T>\nvoid print(const set<T> &se) {\n    vector<T> V(ALL(se));\n\
     \    print(V);\n}\n\n#define debug(x) (cout << #x << \": \", print(x));\n#line\
     \ 2 \"src/common/yesno.hpp\"\n\nvoid Yes() { print(\"Yes\"); }\n\nvoid No() {\
     \ print(\"No\"); }\n\nvoid YES() { print(\"YES\"); }\n\nvoid NO() { print(\"NO\"\
@@ -756,7 +760,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-03-31 10:55:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

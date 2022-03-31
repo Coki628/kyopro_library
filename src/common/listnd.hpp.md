@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -20,6 +20,9 @@ data:
   - icon: ':warning:'
     path: src/grid/bfs.hpp
     title: src/grid/bfs.hpp
+  - icon: ':warning:'
+    path: src/grid/bfs_restore.hpp
+    title: src/grid/bfs_restore.hpp
   - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
@@ -69,6 +72,7 @@ data:
   - src/common/_doubling.hpp
   - src/grid/transpose.hpp
   - src/grid/bfs.hpp
+  - src/grid/bfs_restore.hpp
   - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_ALL_AC

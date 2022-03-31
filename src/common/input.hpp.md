@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/segment/Accumulate.test.cpp
     title: test/segment/Accumulate.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -44,10 +44,18 @@ data:
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
     src/common/input.hpp\"\n\ntemplate<typename T=ll> vector<T> LIST(ll N) {\n   \
     \ vector<T> A(N);\n    rep(i, N) {\n        cin >> A[i];\n    }\n    return A;\n\
-    }\n"
+    }\n\n// pair\u5165\u529B\u4E00\u62EC\u53D7\u3051\u53D6\u308A\ntemplate<typename\
+    \ T1, typename T2>\nistream &operator>>(istream &is, pair<T1, T2> &p) {\n    is\
+    \ >> p.first >> p.second;\n    return is;\n}\n\n// vector\u5165\u529B\u4E00\u62EC\
+    \u53D7\u3051\u53D6\u308A\ntemplate<typename T>\nistream &operator>>(istream &is,\
+    \ vector<T> &v) {\n    for (T &in: v) is >> in;\n    return is;\n}\n"
   code: "#include \"../macros.hpp\"\n\ntemplate<typename T=ll> vector<T> LIST(ll N)\
     \ {\n    vector<T> A(N);\n    rep(i, N) {\n        cin >> A[i];\n    }\n    return\
-    \ A;\n}\n"
+    \ A;\n}\n\n// pair\u5165\u529B\u4E00\u62EC\u53D7\u3051\u53D6\u308A\ntemplate<typename\
+    \ T1, typename T2>\nistream &operator>>(istream &is, pair<T1, T2> &p) {\n    is\
+    \ >> p.first >> p.second;\n    return is;\n}\n\n// vector\u5165\u529B\u4E00\u62EC\
+    \u53D7\u3051\u53D6\u308A\ntemplate<typename T>\nistream &operator>>(istream &is,\
+    \ vector<T> &v) {\n    for (T &in: v) is >> in;\n    return is;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -55,8 +63,8 @@ data:
   path: src/common/input.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-03-31 10:55:07+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/matrix/MatPow.test.cpp
   - test/segment/Accumulate.test.cpp
