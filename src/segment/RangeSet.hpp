@@ -6,7 +6,7 @@ template<typename T>
 struct RangeSet {
     set<pair<T,T>> st;
     T TINF;
- 
+
     RangeSet() {
         TINF=numeric_limits<T>::max()/2;
         st.emplace(TINF,TINF);
@@ -68,7 +68,7 @@ struct RangeSet {
             st.erase(ite);
             return r-l+1;
         }
- 
+
         T ret=T(0);
         if (ite->first<=l and l<=ite->second) {
             ret+=ite->second-l+1;// 消えた
