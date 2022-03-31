@@ -4,6 +4,6 @@
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://Coki628.github.io/kyopro_library/)
 
 - 動作環境はC++17を想定。
-- 基本的にローカルで使う時は別途用意した提出用リポジトリからoj bundleやPythonやvscodeの機能等で呼び出すようにしてる。
+- 基本的にローカルで使う時は別途用意した提出用リポジトリからoj-bundleやpythonやvscodeの機能等で呼び出すようにしてる。
 - テストは気が向いたら少しずつ増やす予定。(あんまりやる気ない)
 - 作り込んでない物も多いですが、不具合等見かけたらご一報いただけると嬉しいです。
