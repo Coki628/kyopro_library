@@ -29,7 +29,6 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc149/tasks/abc149_e
     links:
     - https://atcoder.jp/contests/abc149/tasks/abc149_e
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.10.2/x64/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -41,9 +40,11 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: base.hpp: line\
     \ -1: no such header\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc149/tasks/abc149_e\"\n\n\
-    // #pragma GCC target(\"avx2\")\n// #pragma GCC optimize(\"O3\")\n// #pragma GCC\
-    \ optimize(\"unroll-loops\")\n\n#define CONSTANTS\n// #define CAST_MINT_TO_LL\n\
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc149/tasks/abc149_e\"\n\
+    // \u203BDROPBOX_TOKEN\u306E\u671F\u9650\u304C\u3059\u3050\u5207\u308C\u3066\u3057\
+    \u307E\u3046\u3088\u3046\u306A\u306E\u3067\u3001\u4E00\u65E6\u505C\u6B62\u3002\
+    \n\n// #pragma GCC target(\"avx2\")\n// #pragma GCC optimize(\"O3\")\n// #pragma\
+    \ GCC optimize(\"unroll-loops\")\n\n#define CONSTANTS\n// #define CAST_MINT_TO_LL\n\
     #include \"base.hpp\"\n\nconstexpr long long INF = 1e18;\n// constexpr long long\
     \ INF = LONG_LONG_MAX;\nconstexpr int MOD = 1000000007;\n// constexpr int MOD\
     \ = 998244353;\nconstexpr long double EPS = 1e-10;\nconstexpr long double PI =\
@@ -71,7 +72,7 @@ data:
   isVerificationFile: true
   path: test/segment/Accumulate.test.cpp
   requiredBy: []
-  timestamp: '2022-03-31 10:55:07+09:00'
+  timestamp: '2022-04-01 22:35:23+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/segment/Accumulate.test.cpp
