@@ -56,13 +56,13 @@ data:
   - icon: ':warning:'
     path: src/common/_doubling.hpp
     title: src/common/_doubling.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
   - icon: ':warning:'
     path: src/common/bisearch_real.hpp
     title: src/common/bisearch_real.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
   - icon: ':warning:'
@@ -74,7 +74,7 @@ data:
   - icon: ':warning:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
@@ -104,7 +104,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -275,7 +275,7 @@ data:
   - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -407,7 +407,7 @@ data:
   - icon: ':warning:'
     path: src/numbers/xor_basis.hpp
     title: src/numbers/xor_basis.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
   - icon: ':warning:'
@@ -495,6 +495,9 @@ data:
     path: src/string/constants/digits.hpp
     title: src/string/constants/digits.hpp
   - icon: ':warning:'
+    path: src/string/get_next_indices.hpp
+    title: src/string/get_next_indices.hpp
+  - icon: ':warning:'
     path: src/string/is_palindrome.hpp
     title: src/string/is_palindrome.hpp
   - icon: ':warning:'
@@ -516,12 +519,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  - icon: ':x:'
-    path: test/segment/Accumulate.test.cpp
-    title: test/segment/Accumulate.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "src/base.hpp"
@@ -609,6 +609,7 @@ data:
   - src/matrix/gauss_jordan_f2.hpp
   - src/string/replace.hpp
   - src/string/zfill.hpp
+  - src/string/get_next_indices.hpp
   - src/string/Trie.hpp
   - src/string/bin.hpp
   - src/string/compare.hpp
@@ -715,10 +716,9 @@ data:
   - src/grid/gridtoid.hpp
   - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp
-  - test/segment/Accumulate.test.cpp
   - test/common/bisect.test.cpp
   - test/graph/bfs.test.cpp
 documentation_of: src/base.hpp

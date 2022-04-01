@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -47,7 +47,7 @@ data:
   - icon: ':warning:'
     path: src/common/_doubling.hpp
     title: src/common/_doubling.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
   - icon: ':warning:'
@@ -56,7 +56,7 @@ data:
   - icon: ':warning:'
     path: src/common/bit_length.hpp
     title: src/common/bit_length.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
@@ -74,7 +74,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -302,7 +302,7 @@ data:
   - icon: ':warning:'
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
   - icon: ':warning:'
@@ -348,6 +348,9 @@ data:
     path: src/string/compare.hpp
     title: src/string/compare.hpp
   - icon: ':warning:'
+    path: src/string/get_next_indices.hpp
+    title: src/string/get_next_indices.hpp
+  - icon: ':warning:'
     path: src/string/is_palindrome.hpp
     title: src/string/is_palindrome.hpp
   - icon: ':warning:'
@@ -366,12 +369,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  - icon: ':x:'
-    path: test/segment/Accumulate.test.cpp
-    title: test/segment/Accumulate.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -457,6 +457,7 @@ data:
   - src/matrix/MatPow.hpp
   - src/matrix/gauss_jordan_f2.hpp
   - src/string/zfill.hpp
+  - src/string/get_next_indices.hpp
   - src/string/bin.hpp
   - src/string/compare.hpp
   - src/string/is_palindrome.hpp
@@ -528,10 +529,9 @@ data:
   - src/grid/gridtoid.hpp
   - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp
-  - test/segment/Accumulate.test.cpp
   - test/common/bisect.test.cpp
   - test/graph/bfs.test.cpp
 documentation_of: src/macros.hpp

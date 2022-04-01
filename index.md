@@ -26,10 +26,10 @@ data:
       title: src/acl/twosat.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/base.hpp
       title: src/base.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/macros.hpp
       title: src/macros.hpp
     - icon: ':warning:'
@@ -99,13 +99,13 @@ data:
     - icon: ':warning:'
       path: src/common/_doubling.hpp
       title: src/common/_doubling.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: src/common/bisearch.hpp
       title: src/common/bisearch.hpp
     - icon: ':warning:'
       path: src/common/bisearch_real.hpp
       title: src/common/bisearch_real.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/common/bisect.hpp
       title: src/common/bisect.hpp
     - icon: ':warning:'
@@ -129,7 +129,7 @@ data:
     - icon: ':warning:'
       path: src/common/floor.hpp
       title: src/common/floor.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/common/input.hpp
       title: src/common/input.hpp
     - icon: ':warning:'
@@ -165,7 +165,7 @@ data:
     - icon: ':warning:'
       path: src/common/pow.hpp
       title: src/common/pow.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/common/print.hpp
       title: src/common/print.hpp
     - icon: ':warning:'
@@ -506,7 +506,7 @@ data:
       title: src/numbers/xor_basis.hpp
   - name: src/segment
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: src/segment/Accumulate.hpp
       title: src/segment/Accumulate.hpp
     - icon: ':warning:'
@@ -584,6 +584,9 @@ data:
       path: src/string/compare.hpp
       title: src/string/compare.hpp
     - icon: ':warning:'
+      path: src/string/get_next_indices.hpp
+      title: src/string/get_next_indices.hpp
+    - icon: ':warning:'
       path: src/string/is_palindrome.hpp
       title: src/string/is_palindrome.hpp
     - icon: ':warning:'
@@ -622,10 +625,5 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/matrix/MatPow.test.cpp
       title: test/matrix/MatPow.test.cpp
-  - name: test/segment
-    pages:
-    - icon: ':x:'
-      path: test/segment/Accumulate.test.cpp
-      title: test/segment/Accumulate.test.cpp
 layout: toppage
 ---

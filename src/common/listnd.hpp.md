@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -32,6 +32,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
+  - icon: ':warning:'
+    path: src/string/get_next_indices.hpp
+    title: src/string/get_next_indices.hpp
   - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
@@ -66,6 +69,7 @@ data:
   requiredBy:
   - src/matrix/mat_dot.hpp
   - src/matrix/MatPow.hpp
+  - src/string/get_next_indices.hpp
   - src/combinatorics/partition.hpp
   - src/combinatorics/nCr.hpp
   - src/common/Doubling.hpp
