@@ -66,7 +66,7 @@ struct Eratosthenes {
         return res;
     }
 
-    // 高速約数列挙(未verify)
+    // 高速約数列挙
     vector<int> divisors(int n) {
         vector<int> res = {1};
         auto fact = factorize(n);

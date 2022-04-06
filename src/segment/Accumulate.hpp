@@ -3,35 +3,35 @@
 // 累積和
 template<typename T>
 struct Accumulate {
-    vector<T> acc;
+    vector<T> dat;
     int N;
 
     Accumulate(int N) : N(N) {
-        acc.resize(N);
+        dat.resize(N);
     }
 
-    Accumulate(const vector<T> &A) : N(A.size()), acc(A) {
+    Accumulate(const vector<T> &A) : N(A.size()), dat(A) {
         build();
     }
 
     void set(int i, T a) {
-        acc[i] = a;
+        dat[i] = a;
     }
 
     void add(int i, T a) {
-        acc[i] += a;
+        dat[i] += a;
     }
 
     void build() {
         rep(i, N-1) {
-            acc[i+1] += acc[i];
+            dat[i+1] += dat[i];
         }
-        acc.insert(acc.begin(), 0);
+        dat.insert(dat.begin(), 0);
     }
 
     T query(int l, int r) {
         assert(0 <= l and l <= N and 0 <= r and r <= N);
-        return acc[r]-acc[l];
+        return dat[r]-dat[l];
     }
 
     T get(int i) {
