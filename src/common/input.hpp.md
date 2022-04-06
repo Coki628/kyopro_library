@@ -63,8 +63,8 @@ data:
   timestamp: '2022-03-31 10:55:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/matrix/MatPow.test.cpp
   - test/common/bisect.test.cpp
+  - test/matrix/MatPow.test.cpp
 documentation_of: src/common/input.hpp
 layout: document
 redirect_from:

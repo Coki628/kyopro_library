@@ -219,6 +219,9 @@ data:
       path: src/geometry/Segment.hpp
       title: src/geometry/Segment.hpp
     - icon: ':warning:'
+      path: src/geometry/angle.hpp
+      title: src/geometry/angle.hpp
+    - icon: ':warning:'
       path: src/geometry/ccw.hpp
       title: src/geometry/ccw.hpp
     - icon: ':warning:'
@@ -240,8 +243,8 @@ data:
       path: src/geometry/get_a_and_b.hpp
       title: src/geometry/get_a_and_b.hpp
     - icon: ':warning:'
-      path: src/geometry/get_degree.hpp
-      title: src/geometry/get_degree.hpp
+      path: src/geometry/get_cross_point.hpp
+      title: src/geometry/get_cross_point.hpp
     - icon: ':warning:'
       path: src/geometry/intersect.hpp
       title: src/geometry/intersect.hpp

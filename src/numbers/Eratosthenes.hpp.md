@@ -55,13 +55,13 @@ data:
     \   int cnt = 0;\n            while (minfactor[x] == p) {\n                x /=\
     \ p;\n                cnt++;\n            }\n            res.pb({p, cnt});\n \
     \       }\n        return res;\n    }\n\n    // \u9AD8\u901F\u7D04\u6570\u5217\
-    \u6319(\u672Averify)\n    vector<int> divisors(int n) {\n        vector<int> res\
-    \ = {1};\n        auto fact = factorize(n);\n        for (auto [p, cnt] : fact)\
-    \ {\n            int m = res.size();\n            rep(i, m) {\n              \
-    \  int v = 1;\n                rep(j, cnt) {\n                    v *= p;\n  \
-    \                  res.pb(res[i] * v);\n                }\n            }\n   \
-    \     }\n        return res;\n    }\n\n    // \u7D20\u56E0\u6570\u306E\u7A2E\u985E\
-    \u6570(\u672Averify)\n    vector<int> get_cntfactor() {\n        return cntfactor;\n\
+    \u6319\n    vector<int> divisors(int n) {\n        vector<int> res = {1};\n  \
+    \      auto fact = factorize(n);\n        for (auto [p, cnt] : fact) {\n     \
+    \       int m = res.size();\n            rep(i, m) {\n                int v =\
+    \ 1;\n                rep(j, cnt) {\n                    v *= p;\n           \
+    \         res.pb(res[i] * v);\n                }\n            }\n        }\n \
+    \       return res;\n    }\n\n    // \u7D20\u56E0\u6570\u306E\u7A2E\u985E\u6570\
+    (\u672Averify)\n    vector<int> get_cntfactor() {\n        return cntfactor;\n\
     \    }\n\n    // \u7D04\u6570\u306E\u500B\u6570(\u672Averify)\n    vector<int>\
     \ get_cntdivisor() {\n        assert(not loglog);\n        return cntdivisor;\n\
     \    }\n\n    // \u7D04\u6570\u306E\u7DCF\u548C(\u672Averify)\n    vector<int>\
@@ -93,13 +93,13 @@ data:
     \   int cnt = 0;\n            while (minfactor[x] == p) {\n                x /=\
     \ p;\n                cnt++;\n            }\n            res.pb({p, cnt});\n \
     \       }\n        return res;\n    }\n\n    // \u9AD8\u901F\u7D04\u6570\u5217\
-    \u6319(\u672Averify)\n    vector<int> divisors(int n) {\n        vector<int> res\
-    \ = {1};\n        auto fact = factorize(n);\n        for (auto [p, cnt] : fact)\
-    \ {\n            int m = res.size();\n            rep(i, m) {\n              \
-    \  int v = 1;\n                rep(j, cnt) {\n                    v *= p;\n  \
-    \                  res.pb(res[i] * v);\n                }\n            }\n   \
-    \     }\n        return res;\n    }\n\n    // \u7D20\u56E0\u6570\u306E\u7A2E\u985E\
-    \u6570(\u672Averify)\n    vector<int> get_cntfactor() {\n        return cntfactor;\n\
+    \u6319\n    vector<int> divisors(int n) {\n        vector<int> res = {1};\n  \
+    \      auto fact = factorize(n);\n        for (auto [p, cnt] : fact) {\n     \
+    \       int m = res.size();\n            rep(i, m) {\n                int v =\
+    \ 1;\n                rep(j, cnt) {\n                    v *= p;\n           \
+    \         res.pb(res[i] * v);\n                }\n            }\n        }\n \
+    \       return res;\n    }\n\n    // \u7D20\u56E0\u6570\u306E\u7A2E\u985E\u6570\
+    (\u672Averify)\n    vector<int> get_cntfactor() {\n        return cntfactor;\n\
     \    }\n\n    // \u7D04\u6570\u306E\u500B\u6570(\u672Averify)\n    vector<int>\
     \ get_cntdivisor() {\n        assert(not loglog);\n        return cntdivisor;\n\
     \    }\n\n    // \u7D04\u6570\u306E\u7DCF\u548C(\u672Averify)\n    vector<int>\
@@ -112,7 +112,7 @@ data:
   isVerificationFile: false
   path: src/numbers/Eratosthenes.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-04-06 17:44:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/Eratosthenes.hpp

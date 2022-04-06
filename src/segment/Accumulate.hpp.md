@@ -34,14 +34,14 @@ data:
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
     src/segment/Accumulate.hpp\"\n\n// \u7D2F\u7A4D\u548C\ntemplate<typename T>\n\
-    struct Accumulate {\n    vector<T> acc;\n    int N;\n\n    Accumulate(int N) :\
-    \ N(N) {\n        acc.resize(N);\n    }\n\n    Accumulate(const vector<T> &A)\
-    \ : N(A.size()), acc(A) {\n        build();\n    }\n\n    void set(int i, T a)\
-    \ {\n        acc[i] = a;\n    }\n\n    void add(int i, T a) {\n        acc[i]\
-    \ += a;\n    }\n\n    void build() {\n        rep(i, N-1) {\n            acc[i+1]\
-    \ += acc[i];\n        }\n        acc.insert(acc.begin(), 0);\n    }\n\n    T query(int\
+    struct Accumulate {\n    vector<T> dat;\n    int N;\n\n    Accumulate(int N) :\
+    \ N(N) {\n        dat.resize(N);\n    }\n\n    Accumulate(const vector<T> &A)\
+    \ : N(A.size()), dat(A) {\n        build();\n    }\n\n    void set(int i, T a)\
+    \ {\n        dat[i] = a;\n    }\n\n    void add(int i, T a) {\n        dat[i]\
+    \ += a;\n    }\n\n    void build() {\n        rep(i, N-1) {\n            dat[i+1]\
+    \ += dat[i];\n        }\n        dat.insert(dat.begin(), 0);\n    }\n\n    T query(int\
     \ l, int r) {\n        assert(0 <= l and l <= N and 0 <= r and r <= N);\n    \
-    \    return acc[r]-acc[l];\n    }\n\n    T get(int i) {\n        return query(i,\
+    \    return dat[r]-dat[l];\n    }\n\n    T get(int i) {\n        return query(i,\
     \ i+1);\n    }\n\n    T operator[](int i) {\n        return query(i, i+1);\n \
     \   }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\u5411\u304B\
     \u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_fore(int\
@@ -60,14 +60,14 @@ data:
     \    ng = mid;\n            }\n        }\n        if (ok != l-1) {\n         \
     \   return ok;\n        } else {\n            return -1;\n        }\n    }\n};\n"
   code: "#include \"../macros.hpp\"\n\n// \u7D2F\u7A4D\u548C\ntemplate<typename T>\n\
-    struct Accumulate {\n    vector<T> acc;\n    int N;\n\n    Accumulate(int N) :\
-    \ N(N) {\n        acc.resize(N);\n    }\n\n    Accumulate(const vector<T> &A)\
-    \ : N(A.size()), acc(A) {\n        build();\n    }\n\n    void set(int i, T a)\
-    \ {\n        acc[i] = a;\n    }\n\n    void add(int i, T a) {\n        acc[i]\
-    \ += a;\n    }\n\n    void build() {\n        rep(i, N-1) {\n            acc[i+1]\
-    \ += acc[i];\n        }\n        acc.insert(acc.begin(), 0);\n    }\n\n    T query(int\
+    struct Accumulate {\n    vector<T> dat;\n    int N;\n\n    Accumulate(int N) :\
+    \ N(N) {\n        dat.resize(N);\n    }\n\n    Accumulate(const vector<T> &A)\
+    \ : N(A.size()), dat(A) {\n        build();\n    }\n\n    void set(int i, T a)\
+    \ {\n        dat[i] = a;\n    }\n\n    void add(int i, T a) {\n        dat[i]\
+    \ += a;\n    }\n\n    void build() {\n        rep(i, N-1) {\n            dat[i+1]\
+    \ += dat[i];\n        }\n        dat.insert(dat.begin(), 0);\n    }\n\n    T query(int\
     \ l, int r) {\n        assert(0 <= l and l <= N and 0 <= r and r <= N);\n    \
-    \    return acc[r]-acc[l];\n    }\n\n    T get(int i) {\n        return query(i,\
+    \    return dat[r]-dat[l];\n    }\n\n    T get(int i) {\n        return query(i,\
     \ i+1);\n    }\n\n    T operator[](int i) {\n        return query(i, i+1);\n \
     \   }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\u5411\u304B\
     \u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_fore(int\
@@ -92,7 +92,7 @@ data:
   path: src/segment/Accumulate.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-04-06 17:44:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/segment/Accumulate.hpp

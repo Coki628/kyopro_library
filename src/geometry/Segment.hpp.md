@@ -12,6 +12,9 @@ data:
     title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/geometry/get_cross_point.hpp
+    title: src/geometry/get_cross_point.hpp
+  - icon: ':warning:'
     path: src/geometry/intersect.hpp
     title: src/geometry/intersect.hpp
   - icon: ':warning:'
@@ -76,6 +79,7 @@ data:
   path: src/geometry/Segment.hpp
   requiredBy:
   - src/geometry/reflect.hpp
+  - src/geometry/get_cross_point.hpp
   - src/geometry/intersect.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS

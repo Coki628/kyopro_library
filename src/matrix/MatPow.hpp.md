@@ -39,11 +39,11 @@ data:
     \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
-    src/common/listnd.hpp\"\n\ntemplate<typename T> vector<vector<T>> list2d(int N,\
-    \ int M, T init) {\n    return vector<vector<T>>(N, vector<T>(M, init));\n}\n\n\
-    template<typename T> vector<vector<vector<T>>> list3d(int N, int M, int L, T init)\
-    \ {\n    return vector<vector<vector<T>>>(N, vector<vector<T>>(M, vector<T>(L,\
-    \ init)));\n}\n\ntemplate<typename T> vector<vector<vector<vector<T>>>> list4d(int\
+    src/common/listnd.hpp\"\n\ntemplate<typename T>\nvector<vector<T>> list2d(int\
+    \ N, int M, T init) {\n    return vector<vector<T>>(N, vector<T>(M, init));\n\
+    }\n\ntemplate<typename T>\nvector<vector<vector<T>>> list3d(int N, int M, int\
+    \ L, T init) {\n    return vector<vector<vector<T>>>(N, vector<vector<T>>(M, vector<T>(L,\
+    \ init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>> list4d(int\
     \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
     #line 4 \"src/matrix/mat_dot.hpp\"\n\n// \u884C\u5217\u306E\u7A4D\ntemplate<typename\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: false
   path: src/matrix/MatPow.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-04-06 17:44:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp

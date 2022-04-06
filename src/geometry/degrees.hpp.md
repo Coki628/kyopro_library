@@ -7,10 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/geometry/get_degree.hpp
-    title: src/geometry/get_degree.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -48,8 +45,7 @@ data:
   - src/base.hpp
   isVerificationFile: false
   path: src/geometry/degrees.hpp
-  requiredBy:
-  - src/geometry/get_degree.hpp
+  requiredBy: []
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

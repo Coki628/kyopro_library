@@ -15,6 +15,9 @@ data:
     path: src/geometry/Segment.hpp
     title: src/geometry/Segment.hpp
   - icon: ':warning:'
+    path: src/geometry/angle.hpp
+    title: src/geometry/angle.hpp
+  - icon: ':warning:'
     path: src/geometry/ccw.hpp
     title: src/geometry/ccw.hpp
   - icon: ':warning:'
@@ -23,6 +26,9 @@ data:
   - icon: ':warning:'
     path: src/geometry/dot.hpp
     title: src/geometry/dot.hpp
+  - icon: ':warning:'
+    path: src/geometry/get_cross_point.hpp
+    title: src/geometry/get_cross_point.hpp
   - icon: ':warning:'
     path: src/geometry/intersect.hpp
     title: src/geometry/intersect.hpp
@@ -109,17 +115,19 @@ data:
   isVerificationFile: false
   path: src/geometry/Point.hpp
   requiredBy:
-  - src/geometry/pick_theorem.hpp
-  - src/geometry/Segment.hpp
-  - src/geometry/Circle.hpp
-  - src/geometry/project.hpp
-  - src/geometry/reflect.hpp
-  - src/geometry/cross.hpp
   - src/geometry/rotate.hpp
-  - src/geometry/dot.hpp
+  - src/geometry/reflect.hpp
+  - src/geometry/project.hpp
+  - src/geometry/Circle.hpp
+  - src/geometry/angle.hpp
+  - src/geometry/get_cross_point.hpp
   - src/geometry/intersect.hpp
+  - src/geometry/dot.hpp
+  - src/geometry/pick_theorem.hpp
+  - src/geometry/cross.hpp
   - src/geometry/monotone_chain.hpp
   - src/geometry/ccw.hpp
+  - src/geometry/Segment.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

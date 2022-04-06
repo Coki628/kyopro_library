@@ -48,18 +48,18 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/common/listnd.hpp\"\n\ntemplate<typename T>\
-    \ vector<vector<T>> list2d(int N, int M, T init) {\n    return vector<vector<T>>(N,\
-    \ vector<T>(M, init));\n}\n\ntemplate<typename T> vector<vector<vector<T>>> list3d(int\
+    using namespace std;\n#line 3 \"src/common/listnd.hpp\"\n\ntemplate<typename T>\n\
+    vector<vector<T>> list2d(int N, int M, T init) {\n    return vector<vector<T>>(N,\
+    \ vector<T>(M, init));\n}\n\ntemplate<typename T>\nvector<vector<vector<T>>> list3d(int\
     \ N, int M, int L, T init) {\n    return vector<vector<vector<T>>>(N, vector<vector<T>>(M,\
-    \ vector<T>(L, init)));\n}\n\ntemplate<typename T> vector<vector<vector<vector<T>>>>\
+    \ vector<T>(L, init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>>\
     \ list4d(int N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n"
-  code: "#pragma once\n#include \"../base.hpp\"\n\ntemplate<typename T> vector<vector<T>>\
+  code: "#pragma once\n#include \"../base.hpp\"\n\ntemplate<typename T>\nvector<vector<T>>\
     \ list2d(int N, int M, T init) {\n    return vector<vector<T>>(N, vector<T>(M,\
-    \ init));\n}\n\ntemplate<typename T> vector<vector<vector<T>>> list3d(int N, int\
-    \ M, int L, T init) {\n    return vector<vector<vector<T>>>(N, vector<vector<T>>(M,\
-    \ vector<T>(L, init)));\n}\n\ntemplate<typename T> vector<vector<vector<vector<T>>>>\
+    \ init));\n}\n\ntemplate<typename T>\nvector<vector<vector<T>>> list3d(int N,\
+    \ int M, int L, T init) {\n    return vector<vector<vector<T>>>(N, vector<vector<T>>(M,\
+    \ vector<T>(L, init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>>\
     \ list4d(int N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n"
   dependsOn:
@@ -67,18 +67,18 @@ data:
   isVerificationFile: false
   path: src/common/listnd.hpp
   requiredBy:
-  - src/matrix/mat_dot.hpp
-  - src/matrix/MatPow.hpp
-  - src/string/get_next_indices.hpp
-  - src/combinatorics/partition.hpp
-  - src/combinatorics/nCr.hpp
-  - src/common/Doubling.hpp
   - src/common/_doubling.hpp
-  - src/grid/transpose.hpp
+  - src/common/Doubling.hpp
+  - src/matrix/MatPow.hpp
+  - src/matrix/mat_dot.hpp
   - src/grid/bfs.hpp
   - src/grid/bfs_restore.hpp
+  - src/grid/transpose.hpp
+  - src/string/get_next_indices.hpp
   - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  - src/combinatorics/partition.hpp
+  - src/combinatorics/nCr.hpp
+  timestamp: '2022-04-06 17:44:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp
