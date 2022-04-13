@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -76,7 +76,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -106,7 +106,7 @@ data:
   - icon: ':warning:'
     path: src/common/zip.hpp
     title: src/common/zip.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
   - icon: ':warning:'
@@ -121,7 +121,7 @@ data:
   - icon: ':warning:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -389,7 +389,7 @@ data:
     \ 1 \"src/combinatorics/factorial.hpp\"\n// \u968E\u4E57\uFF1AO(N)\ntemplate<typename\
     \ T>\nT factorial(int x) {\n    T res = 1;\n    for (int i=1; i<=x; i++) res *=\
     \ i;\n    return res;\n}\n#line 40 \"src/template.hpp\"\n\n// from graph\n#line\
-    \ 2 \"src/graph/UnionFind.hpp\"\n\nstruct UnionFind {\n\n    int n, groupcnt;\n\
+    \ 3 \"src/graph/UnionFind.hpp\"\n\nstruct UnionFind {\n\n    int n, groupcnt;\n\
     \    vector<int> par, rank, sz;\n    vector<bool> tree;\n\n    UnionFind(int n)\
     \ : n(n) {\n        par.assign(n, 0);\n        rank.assign(n, 0);\n        sz.assign(n,\
     \ 1);\n        tree.assign(n, true);\n        rep(i, n) par[i] = i;\n        groupcnt\
@@ -401,17 +401,17 @@ data:
     \ x;\n        } else {\n            par[x] = find(par[x]);\n            return\
     \ par[x];\n        }\n    }\n\n    // \u4F75\u5408(\u30DE\u30FC\u30B8\u5F8C\u306E\
     \u96C6\u5408\u306E\u6839\u3092\u8FD4\u3059)\n    int merge(int a, int b) {\n \
-    \       int x = find(a);\n        int y = find(b);\n\n        if (x == y) {\n\
-    \            tree[x] = false;\n            return x;\n        }\n        if (!tree[x]\
-    \ or !tree[y]) {\n            tree[x] = tree[y] = false;\n        }\n\n      \
-    \  groupcnt--;\n        if (rank[x] < rank[y]) {\n            par[x] = y;\n  \
-    \          sz[y] += sz[x];\n            return y;\n        } else {\n        \
-    \    par[y] = x;\n            sz[x] += sz[y];\n            if (rank[x] == rank[y])\
-    \ {\n                rank[x]++;\n            }\n            return x;\n      \
-    \  }\n    }\n\n    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\
-    \u5B9A\n    bool same(int a, int b) {\n        return find(a) == find(b);\n  \
-    \  }\n\n    // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\u3059\u308B\u96C6\u5408\
-    \u306E\u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n        return sz[find(x)];\n\
+    \       int x = find(a);\n        int y = find(b);\n        if (x == y) {\n  \
+    \          tree[x] = false;\n            return x;\n        }\n        if (!tree[x]\
+    \ or !tree[y]) {\n            tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n\
+    \        if (rank[x] < rank[y]) {\n            par[x] = y;\n            sz[y]\
+    \ += sz[x];\n            return y;\n        } else {\n            par[y] = x;\n\
+    \            sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n        \
+    \        rank[x]++;\n            }\n            return x;\n        }\n    }\n\n\
+    \    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\u5B9A\n \
+    \   bool same(int a, int b) {\n        return find(a) == find(b);\n    }\n\n \
+    \   // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\u3059\u308B\u96C6\u5408\u306E\
+    \u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n        return sz[find(x)];\n\
     \    }\n\n    // \u96C6\u5408\u306E\u6570\n    int size() {\n        return groupcnt;\n\
     \    }\n\n    // \u6728\u304B\u3069\u3046\u304B\u306E\u5224\u5B9A\n    bool is_tree(int\
     \ x) {\n        return tree[find(x)];\n    }\n\n    // \u5168\u3066\u306E\u6839\
@@ -760,7 +760,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2022-04-06 17:44:14+09:00'
+  timestamp: '2022-04-14 02:59:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

@@ -4,28 +4,28 @@ data:
   - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/common/chmin.hpp
-    title: src/common/chmin.hpp
   - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/graph/bfs.hpp
-    title: src/graph/bfs.hpp
+  - icon: ':x:'
+    path: src/graph/UnionFind.hpp
+    title: src/graph/UnionFind.hpp
+  - icon: ':x:'
+    path: src/graph/WeightedUnionFind.hpp
+    title: src/graph/WeightedUnionFind.hpp
   - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/11/ALDS1_11_C
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_B
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/11/ALDS1_11_C
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_B
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.10.4/x64/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/opt/hostedtoolcache/Python/3.10.4/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
@@ -35,40 +35,40 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: base.hpp: line\
     \ -1: no such header\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/11/ALDS1_11_C\"\
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_B\"\
     \n\n// #pragma GCC target(\"avx2\")\n// #pragma GCC optimize(\"O3\")\n// #pragma\
     \ GCC optimize(\"unroll-loops\")\n\n#define CONSTANTS\n// #define CAST_MINT_TO_LL\n\
     #include \"base.hpp\"\n\nconstexpr long long INF = 1e18;\n// constexpr long long\
     \ INF = LONG_LONG_MAX;\nconstexpr int MOD = 1000000007;\n// constexpr int MOD\
     \ = 998244353;\nconstexpr long double EPS = 1e-10;\nconstexpr long double PI =\
     \ M_PI;\n\n#include \"macros.hpp\"\n#include \"common/print.hpp\"\n\n#include\
-    \ \"graph/bfs.hpp\"\n\nvoid solve() {\n    ll N;\n    cin >> N;\n    vvi nodes(N);\n\
-    \    rep(_, N) {\n        ll u;\n        cin >> u;\n        u--;\n        ll k;\n\
-    \        cin >> k;\n        rep(_, 0, k) {\n            ll v;\n            cin\
-    \ >> v;\n            v--;\n            nodes[u].pb(v);\n        }\n    }\n\n \
-    \   auto res = bfs(nodes, {0});\n    vector<pll> ans(N);\n    rep(i, N) {\n  \
-    \      if (res[i] >= INF) {\n            res[i] = -1;\n        }\n        ans[i].first\
-    \ = i + 1;\n        ans[i].second = res[i];\n    }\n    for (auto &p : ans) print(p);\n\
-    }\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout\
-    \ << fixed << setprecision(15);\n\n    // single test case\n    solve();\n\n \
-    \   // multi test cases\n    // int T;\n    // cin >> T;\n    // while (T--) solve();\n\
-    \n    return 0;\n}\n"
+    \ \"graph/WeightedUnionFind.hpp\"\n\nvoid solve() {\n    ll N, Q;\n    cin >>\
+    \ N >> Q;\n\n    WeightedUnionFind<ll> uf(N);\n    rep(_, Q) {\n        ll op;\n\
+    \        cin >> op;\n        if (op == 0) {\n            ll x, y, z;\n       \
+    \     cin >> x >> y >> z;\n            uf.merge(x, y, z);\n        } else {\n\
+    \            ll x, y;\n            cin >> x >> y;\n            if (uf.same(x,\
+    \ y)) {\n                ll res = uf.diff(x, y);\n                print(res);\n\
+    \            } else {\n                print('?');\n            }\n        }\n\
+    \    }\n}\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n\
+    \    cout << fixed << setprecision(15);\n\n    // single test case\n    solve();\n\
+    \n    // multi test cases\n    // int T;\n    // cin >> T;\n    // while (T--)\
+    \ solve();\n\n    return 0;\n}\n"
   dependsOn:
   - src/base.hpp
   - src/macros.hpp
   - src/common/print.hpp
-  - src/graph/bfs.hpp
-  - src/common/chmin.hpp
+  - src/graph/WeightedUnionFind.hpp
+  - src/graph/UnionFind.hpp
   isVerificationFile: true
-  path: test/graph/bfs.test.cpp
+  path: test/graph/WeightedUnionFind.test.cpp
   requiredBy: []
-  timestamp: '2022-03-24 15:41:00+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-04-14 02:59:46+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/graph/bfs.test.cpp
+documentation_of: test/graph/WeightedUnionFind.test.cpp
 layout: document
 redirect_from:
-- /verify/test/graph/bfs.test.cpp
-- /verify/test/graph/bfs.test.cpp.html
-title: test/graph/bfs.test.cpp
+- /verify/test/graph/WeightedUnionFind.test.cpp
+- /verify/test/graph/WeightedUnionFind.test.cpp.html
+title: test/graph/WeightedUnionFind.test.cpp
 ---

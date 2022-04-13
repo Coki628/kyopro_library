@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
     path: src/geometry/Point.hpp
     title: src/geometry/Point.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -78,9 +78,9 @@ data:
   path: src/geometry/cross.hpp
   requiredBy:
   - src/geometry/get_cross_point.hpp
+  - src/geometry/ccw.hpp
   - src/geometry/intersect.hpp
   - src/geometry/pick_theorem.hpp
-  - src/geometry/ccw.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

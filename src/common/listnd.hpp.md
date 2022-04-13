@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -71,13 +71,13 @@ data:
   - src/common/Doubling.hpp
   - src/matrix/MatPow.hpp
   - src/matrix/mat_dot.hpp
-  - src/grid/bfs.hpp
-  - src/grid/bfs_restore.hpp
-  - src/grid/transpose.hpp
-  - src/string/get_next_indices.hpp
   - src/template.hpp
+  - src/string/get_next_indices.hpp
   - src/combinatorics/partition.hpp
   - src/combinatorics/nCr.hpp
+  - src/grid/bfs.hpp
+  - src/grid/transpose.hpp
+  - src/grid/bfs_restore.hpp
   timestamp: '2022-04-06 17:44:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

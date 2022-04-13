@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -39,15 +39,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
+  - icon: ':x:'
+    path: test/graph/WeightedUnionFind.test.cpp
+    title: test/graph/WeightedUnionFind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/bfs.test.cpp
     title: test/graph/bfs.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -112,20 +115,21 @@ data:
   path: src/common/print.hpp
   requiredBy:
   - src/common/yesno.hpp
-  - src/template.hpp
   - src/mystl/my_multiset.hpp
+  - src/mystl/my_vector.hpp
   - src/mystl/my_deque.hpp
   - src/mystl/my_set.hpp
-  - src/mystl/my_vector.hpp
-  - src/math/FormalPowerSeries.hpp
-  - src/math/fps/pow.hpp
   - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/common/bisect.test.cpp
   - test/matrix/MatPow.test.cpp
   - test/graph/bfs.test.cpp
+  - test/graph/WeightedUnionFind.test.cpp
 documentation_of: src/common/print.hpp
 layout: document
 redirect_from:
