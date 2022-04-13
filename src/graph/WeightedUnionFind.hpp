@@ -26,16 +26,18 @@ struct WeightedUnionFind : UnionFind {
     }
 
     // 併合
-    int merge(int a, int b, ll w) {
+    int merge(int a, int b, T w) {
         int x = find(a);
         int y = find(b);
         int r = UnionFind::merge(a, b);
         if (r == y) {
             weight[x] = w - weight[a] + weight[b];
             return y;
-        } else {
+        } elif (r == x) {
             weight[y] = - w - weight[b] + weight[a];
             return x;
+        } else {
+            return -1;
         }
     }
 

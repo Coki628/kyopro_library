@@ -38,13 +38,13 @@ struct UnionFind {
         }
     }
 
-    // 併合(マージ後の集合の根を返す)
+    // 併合(マージ後の集合の根(マージ済なら-1)を返す)
     int merge(int a, int b) {
         int x = find(a);
         int y = find(b);
         if (x == y) {
             tree[x] = false;
-            return x;
+            return -1;
         }
         if (!tree[x] or !tree[y]) {
             tree[x] = tree[y] = false;
