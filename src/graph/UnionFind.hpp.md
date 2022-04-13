@@ -50,24 +50,24 @@ data:
     \u53F7)\n    int find(int x) {\n        if (par[x] == x) {\n            return\
     \ x;\n        } else {\n            par[x] = find(par[x]);\n            return\
     \ par[x];\n        }\n    }\n\n    // \u4F75\u5408(\u30DE\u30FC\u30B8\u5F8C\u306E\
-    \u96C6\u5408\u306E\u6839\u3092\u8FD4\u3059)\n    int merge(int a, int b) {\n \
-    \       int x = find(a);\n        int y = find(b);\n        if (x == y) {\n  \
-    \          tree[x] = false;\n            return x;\n        }\n        if (!tree[x]\
-    \ or !tree[y]) {\n            tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n\
-    \        if (rank[x] < rank[y]) {\n            par[x] = y;\n            sz[y]\
-    \ += sz[x];\n            return y;\n        } else {\n            par[y] = x;\n\
-    \            sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n        \
-    \        rank[x]++;\n            }\n            return x;\n        }\n    }\n\n\
-    \    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\u5B9A\n \
-    \   bool same(int a, int b) {\n        return find(a) == find(b);\n    }\n\n \
-    \   // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\u3059\u308B\u96C6\u5408\u306E\
-    \u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n        return sz[find(x)];\n\
-    \    }\n\n    // \u96C6\u5408\u306E\u6570\n    int size() {\n        return groupcnt;\n\
-    \    }\n\n    // \u6728\u304B\u3069\u3046\u304B\u306E\u5224\u5B9A\n    bool is_tree(int\
-    \ x) {\n        return tree[find(x)];\n    }\n\n    // \u5168\u3066\u306E\u6839\
-    \u3092\u53D6\u5F97\n    set<int> get_roots() {\n        set<int> res;\n      \
-    \  rep(i, n) {\n            res.insert(find(i));\n        }\n        return res;\n\
-    \    }\n};\n"
+    \u96C6\u5408\u306E\u6839(\u30DE\u30FC\u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\
+    )\n    int merge(int a, int b) {\n        int x = find(a);\n        int y = find(b);\n\
+    \        if (x == y) {\n            tree[x] = false;\n            return -1;\n\
+    \        }\n        if (!tree[x] or !tree[y]) {\n            tree[x] = tree[y]\
+    \ = false;\n        }\n        groupcnt--;\n        if (rank[x] < rank[y]) {\n\
+    \            par[x] = y;\n            sz[y] += sz[x];\n            return y;\n\
+    \        } else {\n            par[y] = x;\n            sz[x] += sz[y];\n    \
+    \        if (rank[x] == rank[y]) {\n                rank[x]++;\n            }\n\
+    \            return x;\n        }\n    }\n\n    // \u540C\u3058\u96C6\u5408\u306B\
+    \u5C5E\u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int b) {\n        return\
+    \ find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\
+    \u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n\
+    \        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\u306E\u6570\n    int\
+    \ size() {\n        return groupcnt;\n    }\n\n    // \u6728\u304B\u3069\u3046\
+    \u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n        return tree[find(x)];\n\
+    \    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\u5F97\n    set<int> get_roots()\
+    \ {\n        set<int> res;\n        rep(i, n) {\n            res.insert(find(i));\n\
+    \        }\n        return res;\n    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\nstruct UnionFind {\n\n    int\
     \ n, groupcnt;\n    vector<int> par, rank, sz;\n    vector<bool> tree;\n\n   \
     \ UnionFind(int n) : n(n) {\n        par.assign(n, 0);\n        rank.assign(n,\
@@ -79,24 +79,24 @@ data:
     (\u30B0\u30EB\u30FC\u30D7\u756A\u53F7)\n    int find(int x) {\n        if (par[x]\
     \ == x) {\n            return x;\n        } else {\n            par[x] = find(par[x]);\n\
     \            return par[x];\n        }\n    }\n\n    // \u4F75\u5408(\u30DE\u30FC\
-    \u30B8\u5F8C\u306E\u96C6\u5408\u306E\u6839\u3092\u8FD4\u3059)\n    int merge(int\
-    \ a, int b) {\n        int x = find(a);\n        int y = find(b);\n        if\
-    \ (x == y) {\n            tree[x] = false;\n            return x;\n        }\n\
-    \        if (!tree[x] or !tree[y]) {\n            tree[x] = tree[y] = false;\n\
-    \        }\n        groupcnt--;\n        if (rank[x] < rank[y]) {\n          \
-    \  par[x] = y;\n            sz[y] += sz[x];\n            return y;\n        }\
-    \ else {\n            par[y] = x;\n            sz[x] += sz[y];\n            if\
-    \ (rank[x] == rank[y]) {\n                rank[x]++;\n            }\n        \
-    \    return x;\n        }\n    }\n\n    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\
-    \u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int b) {\n        return\
-    \ find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\
-    \u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n\
-    \        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\u306E\u6570\n    int\
-    \ size() {\n        return groupcnt;\n    }\n\n    // \u6728\u304B\u3069\u3046\
-    \u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n        return tree[find(x)];\n\
-    \    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\u5F97\n    set<int> get_roots()\
-    \ {\n        set<int> res;\n        rep(i, n) {\n            res.insert(find(i));\n\
-    \        }\n        return res;\n    }\n};\n"
+    \u30B8\u5F8C\u306E\u96C6\u5408\u306E\u6839(\u30DE\u30FC\u30B8\u6E08\u306A\u3089\
+    -1)\u3092\u8FD4\u3059)\n    int merge(int a, int b) {\n        int x = find(a);\n\
+    \        int y = find(b);\n        if (x == y) {\n            tree[x] = false;\n\
+    \            return -1;\n        }\n        if (!tree[x] or !tree[y]) {\n    \
+    \        tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n        if\
+    \ (rank[x] < rank[y]) {\n            par[x] = y;\n            sz[y] += sz[x];\n\
+    \            return y;\n        } else {\n            par[y] = x;\n          \
+    \  sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n                rank[x]++;\n\
+    \            }\n            return x;\n        }\n    }\n\n    // \u540C\u3058\
+    \u96C6\u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int\
+    \ b) {\n        return find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\
+    \u30FC\u30C9\u306E\u5C5E\u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\
+    \n    ll size(int x) {\n        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\
+    \u306E\u6570\n    int size() {\n        return groupcnt;\n    }\n\n    // \u6728\
+    \u304B\u3069\u3046\u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n      \
+    \  return tree[find(x)];\n    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\
+    \u5F97\n    set<int> get_roots() {\n        set<int> res;\n        rep(i, n) {\n\
+    \            res.insert(find(i));\n        }\n        return res;\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -105,7 +105,7 @@ data:
   requiredBy:
   - src/graph/WeightedUnionFind.hpp
   - src/template.hpp
-  timestamp: '2022-04-14 02:59:34+09:00'
+  timestamp: '2022-04-14 03:14:34+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/graph/WeightedUnionFind.test.cpp

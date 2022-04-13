@@ -62,7 +62,7 @@ data:
   isVerificationFile: true
   path: test/graph/WeightedUnionFind.test.cpp
   requiredBy: []
-  timestamp: '2022-04-14 02:59:46+09:00'
+  timestamp: '2022-04-14 03:14:34+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/graph/WeightedUnionFind.test.cpp
