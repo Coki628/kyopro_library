@@ -1,19 +1,15 @@
 #include "../macros.hpp"
+#include "UnionFind.hpp"
 
 // 重み付きUF
 template<typename T>
-struct WeightedUnionFind {
+struct WeightedUnionFind : UnionFind {
 
-    int n;
-    vector<int> par, rank;
     vector<T> weight;
     
-    WeightedUnionFind(int n) : n(n) {
-        par.resize(n);
-        rank.resize(n);
+    WeightedUnionFind(int n) : UnionFind(n) {
         // 根への距離を管理
         weight.resize(n);
-        rep(i, n) par[i] = i;
     }
 
     // 検索
@@ -30,30 +26,17 @@ struct WeightedUnionFind {
     }
 
     // 併合
-    int merge(int x, int y, ll w) {
-        int rx = find(x);
-        int ry = find(y);
-        if (rx == ry) return rx;
-
-        // xの木の高さ < yの木の高さ
-        if (rank[rx] < rank[ry]) {
-            par[rx] = ry;
-            weight[rx] = w - weight[x] + weight[y];
-            return ry;
+    int merge(int a, int b, ll w) {
+        int x = find(a);
+        int y = find(b);
+        int r = UnionFind::merge(a, b);
+        if (r == y) {
+            weight[x] = w - weight[a] + weight[b];
+            return y;
         } else {
-            par[ry] = rx;
-            weight[ry] = - w - weight[y] + weight[x];
-            // 木の高さが同じだった場合の処理
-            if (rank[rx] == rank[ry]) {
-                rank[rx]++;
-            }
-            return rx;
+            weight[y] = - w - weight[b] + weight[a];
+            return x;
         }
-    }
-
-    // 同じ集合に属するか
-    bool same(int x, int y) {
-        return find(x) == find(y);
     }
 
     // xからyへのコスト

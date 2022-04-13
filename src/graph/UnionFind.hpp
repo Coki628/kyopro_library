@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 struct UnionFind {
@@ -41,7 +42,6 @@ struct UnionFind {
     int merge(int a, int b) {
         int x = find(a);
         int y = find(b);
-
         if (x == y) {
             tree[x] = false;
             return x;
@@ -49,7 +49,6 @@ struct UnionFind {
         if (!tree[x] or !tree[y]) {
             tree[x] = tree[y] = false;
         }
-
         groupcnt--;
         if (rank[x] < rank[y]) {
             par[x] = y;
