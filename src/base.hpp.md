@@ -104,7 +104,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -212,10 +212,10 @@ data:
   - icon: ':warning:'
     path: src/graph/ReRooting.hpp
     title: src/graph/ReRooting.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/WeightedUnionFind.hpp
     title: src/graph/WeightedUnionFind.hpp
   - icon: ':warning:'
@@ -278,7 +278,7 @@ data:
   - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -516,7 +516,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: test/graph/UnionFind.test.cpp
+    title: test/graph/UnionFind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/WeightedUnionFind.test.cpp
     title: test/graph/WeightedUnionFind.test.cpp
   - icon: ':heavy_check_mark:'
@@ -525,9 +528,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "src/base.hpp"
@@ -723,11 +726,12 @@ data:
   - src/geometry/radians.hpp
   - src/geometry/pick_theorem.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/common/bisect.test.cpp
   - test/matrix/MatPow.test.cpp
   - test/graph/bfs.test.cpp
+  - test/graph/UnionFind.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
 documentation_of: src/base.hpp
 layout: document

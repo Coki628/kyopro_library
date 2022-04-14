@@ -26,10 +26,10 @@ data:
       title: src/acl/twosat.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/base.hpp
       title: src/base.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/macros.hpp
       title: src/macros.hpp
     - icon: ':warning:'
@@ -165,7 +165,7 @@ data:
     - icon: ':warning:'
       path: src/common/pow.hpp
       title: src/common/pow.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/common/print.hpp
       title: src/common/print.hpp
     - icon: ':warning:'
@@ -283,10 +283,10 @@ data:
     - icon: ':warning:'
       path: src/graph/ReRooting.hpp
       title: src/graph/ReRooting.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/UnionFind.hpp
       title: src/graph/UnionFind.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/WeightedUnionFind.hpp
       title: src/graph/WeightedUnionFind.hpp
     - icon: ':warning:'
@@ -620,7 +620,10 @@ data:
       title: test/common/bisect.test.cpp
   - name: test/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
+      path: test/graph/UnionFind.test.cpp
+      title: test/graph/UnionFind.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/graph/WeightedUnionFind.test.cpp
       title: test/graph/WeightedUnionFind.test.cpp
     - icon: ':heavy_check_mark:'

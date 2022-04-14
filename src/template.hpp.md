@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -76,7 +76,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -106,7 +106,7 @@ data:
   - icon: ':warning:'
     path: src/common/zip.hpp
     title: src/common/zip.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
   - icon: ':warning:'
@@ -121,7 +121,7 @@ data:
   - icon: ':warning:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -396,34 +396,35 @@ data:
     \ = n;\n    }\n\n    UnionFind() {}\n\n    void resize(int _n) {\n        n =\
     \ _n;\n        par.assign(n, 0);\n        rank.assign(n, 0);\n        sz.assign(n,\
     \ 1);\n        tree.assign(n, true);\n        rep(i, n) par[i] = i;\n        groupcnt\
-    \ = n;\n    }\n\n    // \u6839\u306E\u691C\u7D22(\u30B0\u30EB\u30FC\u30D7\u756A\
-    \u53F7)\n    int find(int x) {\n        if (par[x] == x) {\n            return\
-    \ x;\n        } else {\n            par[x] = find(par[x]);\n            return\
-    \ par[x];\n        }\n    }\n\n    // \u4F75\u5408(\u30DE\u30FC\u30B8\u5F8C\u306E\
-    \u96C6\u5408\u306E\u6839(\u30DE\u30FC\u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\
-    )\n    int merge(int a, int b) {\n        int x = find(a);\n        int y = find(b);\n\
-    \        if (x == y) {\n            tree[x] = false;\n            return -1;\n\
-    \        }\n        if (!tree[x] or !tree[y]) {\n            tree[x] = tree[y]\
-    \ = false;\n        }\n        groupcnt--;\n        if (rank[x] < rank[y]) {\n\
-    \            par[x] = y;\n            sz[y] += sz[x];\n            return y;\n\
-    \        } else {\n            par[y] = x;\n            sz[x] += sz[y];\n    \
-    \        if (rank[x] == rank[y]) {\n                rank[x]++;\n            }\n\
-    \            return x;\n        }\n    }\n\n    // \u540C\u3058\u96C6\u5408\u306B\
-    \u5C5E\u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int b) {\n        return\
-    \ find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\
-    \u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n\
-    \        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\u306E\u6570\n    int\
-    \ size() {\n        return groupcnt;\n    }\n\n    // \u6728\u304B\u3069\u3046\
-    \u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n        return tree[find(x)];\n\
-    \    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\u5F97\n    set<int> get_roots()\
-    \ {\n        set<int> res;\n        rep(i, n) {\n            res.insert(find(i));\n\
-    \        }\n        return res;\n    }\n};\n#line 43 \"src/template.hpp\"\n\n\
-    // from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\n\n// 4\u65B9\u5411\nconst\
-    \ vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n#line 3 \"src/grid/constants/directions.hpp\"\
-    \n\n// \u5F8C\u65B9\u4E92\u63DB\u7528\n#define directions dir4\n#line 2 \"src/grid/gridtoid.hpp\"\
-    \n\n// \u30B0\u30EA\u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll\
-    \ j, ll W) { return i*W+j; }\n#line 3 \"src/grid/idtogrid.hpp\"\n\n// \u5217\u21D2\
-    \u30B0\u30EA\u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W) { return divmod(id,\
+    \ = n;\n    }\n\n    // \u6839(\u30B0\u30EB\u30FC\u30D7\u756A\u53F7)\u306E\u691C\
+    \u7D22\n    virtual int find(int x) {\n        if (par[x] == x) {\n          \
+    \  return x;\n        } else {\n            par[x] = find(par[x]);\n         \
+    \   return par[x];\n        }\n    }\n\n    // \u4F75\u5408\uFF1A\u30DE\u30FC\u30B8\
+    \u5F8C\u306E\u96C6\u5408\u306E\u6839(\u30DE\u30FC\u30B8\u6E08\u306A\u3089-1)\u3092\
+    \u8FD4\u3059\n    int merge(int a, int b) {\n        int x = find(a);\n      \
+    \  int y = find(b);\n        if (x == y) {\n            tree[x] = false;\n   \
+    \         return -1;\n        }\n        if (!tree[x] or !tree[y]) {\n       \
+    \     tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n        if (rank[x]\
+    \ < rank[y]) {\n            par[x] = y;\n            sz[y] += sz[x];\n       \
+    \     return y;\n        } else {\n            par[y] = x;\n            sz[x]\
+    \ += sz[y];\n            if (rank[x] == rank[y]) {\n                rank[x]++;\n\
+    \            }\n            return x;\n        }\n    }\n\n    // \u540C\u3058\
+    \u96C6\u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int\
+    \ b) {\n        return find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\
+    \u30FC\u30C9\u306E\u5C5E\u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\
+    \n    ll size(int x) {\n        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\
+    \u306E\u6570\n    int size() {\n        return groupcnt;\n    }\n\n    // \u6728\
+    \u304B\u3069\u3046\u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n      \
+    \  return tree[find(x)];\n    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\
+    \u5F97\n    set<int> get_roots() {\n        set<int> res;\n        rep(i, n) {\n\
+    \            res.insert(find(i));\n        }\n        return res;\n    }\n};\n\
+    #line 43 \"src/template.hpp\"\n\n// from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\
+    \n\n// 4\u65B9\u5411\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0,\
+    \ 1}};\n#line 3 \"src/grid/constants/directions.hpp\"\n\n// \u5F8C\u65B9\u4E92\
+    \u63DB\u7528\n#define directions dir4\n#line 2 \"src/grid/gridtoid.hpp\"\n\n//\
+    \ \u30B0\u30EA\u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll j, ll\
+    \ W) { return i*W+j; }\n#line 3 \"src/grid/idtogrid.hpp\"\n\n// \u5217\u21D2\u30B0\
+    \u30EA\u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W) { return divmod(id,\
     \ W); }\n#line 48 \"src/template.hpp\"\n\n// from mystl\n#line 2 \"src/mystl/defaultdict.hpp\"\
     \n\n// \u6A19\u6E96map\u3092\u7D99\u627F\u3057\u305Fdefaultdict\ntemplate<typename\
     \ _Key, typename _Tp>\nstruct defaultdict : map<_Key, _Tp> {\n    const _Tp init;\n\
@@ -760,7 +761,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2022-04-14 03:14:34+09:00'
+  timestamp: '2022-04-14 10:24:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp
