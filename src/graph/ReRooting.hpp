@@ -71,3 +71,10 @@ template<typename sum_t, typename key_t, typename F1, typename F2>
 ReRooting<sum_t, key_t, F1, F2> get_rerooting(int N, const F1& f1, const F2& f2, const sum_t& M1, const key_t& M2) {
     return {N, f1, f2, M1};
 }
+
+// auto f1 = [](sum_t a, sum_t b) -> sum_t {
+//     return merge(a, b);
+// };
+// auto f2 = [](sum_t a, key_t v) -> sum_t {
+//     return add(a, v);
+// };

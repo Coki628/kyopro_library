@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // 参考：https://ei1333.github.io/library/structure/segment-tree/lazy-segment-tree.cpp
@@ -93,6 +94,10 @@ struct LazySegmentTree {
     }
 
     Monoid operator[](const int &k) {
+        return query(k, k + 1);
+    }
+
+    Monoid get(const int &k) {
         return query(k, k + 1);
     }
 

@@ -30,6 +30,8 @@
 #include "common/join.hpp"
 #include "common/sorted.hpp"
 #include "common/reversed.hpp"
+#include "common/concat.hpp"
+#include "common/subarray.hpp"
 
 // from combinatorics
 #include "combinatorics/ModTools.hpp"

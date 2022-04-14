@@ -1,6 +1,6 @@
-#include "geometry/Point.hpp"
-#include "geometry/Segment.hpp"
-#include "geometry/cross.hpp"
+#include "Point.hpp"
+#include "Segment.hpp"
+#include "cross.hpp"
 
 // 参考：https://qiita.com/zu_rin/items/09876d2c7ec12974bc0f
 // 線分seg1と線分seg2の交点
