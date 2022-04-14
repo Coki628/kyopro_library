@@ -28,8 +28,8 @@ struct UnionFind {
         groupcnt = n;
     }
 
-    // 根の検索(グループ番号)
-    int find(int x) {
+    // 根(グループ番号)の検索
+    virtual int find(int x) {
         if (par[x] == x) {
             return x;
         } else {
@@ -38,7 +38,7 @@ struct UnionFind {
         }
     }
 
-    // 併合(マージ後の集合の根(マージ済なら-1)を返す)
+    // 併合：マージ後の集合の根(マージ済なら-1)を返す
     int merge(int a, int b) {
         int x = find(a);
         int y = find(b);

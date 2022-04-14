@@ -13,7 +13,7 @@ struct WeightedUnionFind : UnionFind {
     }
 
     // 検索
-    int find(int x) {
+    int find(int x) override {
         if (par[x] == x) {
             return x;
         } else {
@@ -29,7 +29,7 @@ struct WeightedUnionFind : UnionFind {
     int merge(int a, int b, T w) {
         int x = find(a);
         int y = find(b);
-        int r = UnionFind::merge(a, b);
+        int r = UnionFind::merge(x, y);
         if (r == y) {
             weight[x] = w - weight[a] + weight[b];
             return y;
