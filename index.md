@@ -121,6 +121,9 @@ data:
       path: src/common/chmin.hpp
       title: src/common/chmin.hpp
     - icon: ':warning:'
+      path: src/common/concat.hpp
+      title: src/common/concat.hpp
+    - icon: ':warning:'
       path: src/common/custom_hash.hpp
       title: src/common/custom_hash.hpp
     - icon: ':warning:'
@@ -180,6 +183,9 @@ data:
     - icon: ':warning:'
       path: src/common/split.hpp
       title: src/common/split.hpp
+    - icon: ':warning:'
+      path: src/common/subarray.hpp
+      title: src/common/subarray.hpp
     - icon: ':heavy_check_mark:'
       path: src/common/sum.hpp
       title: src/common/sum.hpp
@@ -298,6 +304,9 @@ data:
     - icon: ':warning:'
       path: src/graph/bfs01.hpp
       title: src/graph/bfs01.hpp
+    - icon: ':warning:'
+      path: src/graph/dfs.hpp
+      title: src/graph/dfs.hpp
     - icon: ':warning:'
       path: src/graph/dijkstra_v2.hpp
       title: src/graph/dijkstra_v2.hpp
@@ -533,6 +542,9 @@ data:
     - icon: ':warning:'
       path: src/segment/LazySegmentTree.hpp
       title: src/segment/LazySegmentTree.hpp
+    - icon: ':warning:'
+      path: src/segment/LazySegmentTreeArithmetric.hpp
+      title: src/segment/LazySegmentTreeArithmetric.hpp
     - icon: ':warning:'
       path: src/segment/Mo.hpp
       title: src/segment/Mo.hpp

@@ -69,6 +69,9 @@ data:
     path: src/common/bit_length.hpp
     title: src/common/bit_length.hpp
   - icon: ':warning:'
+    path: src/common/concat.hpp
+    title: src/common/concat.hpp
+  - icon: ':warning:'
     path: src/common/custom_hash.hpp
     title: src/common/custom_hash.hpp
   - icon: ':warning:'
@@ -119,6 +122,9 @@ data:
   - icon: ':warning:'
     path: src/common/split.hpp
     title: src/common/split.hpp
+  - icon: ':warning:'
+    path: src/common/subarray.hpp
+    title: src/common/subarray.hpp
   - icon: ':heavy_check_mark:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
@@ -227,6 +233,9 @@ data:
   - icon: ':warning:'
     path: src/graph/bfs01.hpp
     title: src/graph/bfs01.hpp
+  - icon: ':warning:'
+    path: src/graph/dfs.hpp
+    title: src/graph/dfs.hpp
   - icon: ':warning:'
     path: src/graph/dijkstra_v2.hpp
     title: src/graph/dijkstra_v2.hpp
@@ -435,6 +444,9 @@ data:
     path: src/segment/LazySegmentTree.hpp
     title: src/segment/LazySegmentTree.hpp
   - icon: ':warning:'
+    path: src/segment/LazySegmentTreeArithmetric.hpp
+    title: src/segment/LazySegmentTreeArithmetric.hpp
+  - icon: ':warning:'
     path: src/segment/Mo.hpp
     title: src/segment/Mo.hpp
   - icon: ':warning:'
@@ -570,6 +582,8 @@ data:
   - src/common/bisearch.hpp
   - src/common/Doubling.hpp
   - src/common/join.hpp
+  - src/common/subarray.hpp
+  - src/common/concat.hpp
   - src/common/yesno.hpp
   - src/common/trisearch.hpp
   - src/common/pow.hpp
@@ -625,6 +639,7 @@ data:
   - src/graph/topological_sort.hpp
   - src/graph/HeavyLightDecomposition.hpp
   - src/graph/RangeEdgeGraph.hpp
+  - src/graph/dfs.hpp
   - src/graph/dijkstra_v2.hpp
   - src/graph/UnionFind.hpp
   - src/graph/bfs01.hpp
@@ -634,6 +649,7 @@ data:
   - src/segment/SuccinctIndexableDictionary.hpp
   - src/segment/SegmentTreeIndex.hpp
   - src/segment/WaveletMatrix.hpp
+  - src/segment/LazySegmentTreeArithmetric.hpp
   - src/segment/BIT2.hpp
   - src/segment/SegmentTreeBeats.hpp
   - src/segment/RangeSet.hpp

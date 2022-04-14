@@ -33,18 +33,24 @@ data:
     src/common/interactive.hpp\"\n\n// \u30A4\u30F3\u30BF\u30E9\u30AF\u30C6\u30A3\u30D6\
     \u7528\nll ask(ll i) {\n    ll res;\n    cout << \"? \" << i+1 << endl;\n    cin\
     \ >> res;\n    res--;\n    return res;\n}\n\nvoid answer(ll i) {\n    cout <<\
-    \ \"! \" << i+1 << endl;\n}\n"
+    \ \"! \" << i+1 << endl;\n}\n\nvoid answer(const vector<ll>& A) {\n    int N =\
+    \ A.size();\n    rep(i, N) {\n        cout << A[i];\n        if (i == N-1) {\n\
+    \            cout << endl;\n        } else {\n            cout << ' ';\n     \
+    \   }\n    }\n}\n"
   code: "#include \"../macros.hpp\"\n\n// \u30A4\u30F3\u30BF\u30E9\u30AF\u30C6\u30A3\
     \u30D6\u7528\nll ask(ll i) {\n    ll res;\n    cout << \"? \" << i+1 << endl;\n\
     \    cin >> res;\n    res--;\n    return res;\n}\n\nvoid answer(ll i) {\n    cout\
-    \ << \"! \" << i+1 << endl;\n}\n"
+    \ << \"! \" << i+1 << endl;\n}\n\nvoid answer(const vector<ll>& A) {\n    int\
+    \ N = A.size();\n    rep(i, N) {\n        cout << A[i];\n        if (i == N-1)\
+    \ {\n            cout << endl;\n        } else {\n            cout << ' ';\n \
+    \       }\n    }\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/interactive.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-04-14 14:32:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/interactive.hpp

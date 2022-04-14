@@ -171,6 +171,9 @@ data:
     path: src/graph/bfs01.hpp
     title: src/graph/bfs01.hpp
   - icon: ':warning:'
+    path: src/graph/dfs.hpp
+    title: src/graph/dfs.hpp
+  - icon: ':warning:'
     path: src/graph/dijkstra_v2.hpp
     title: src/graph/dijkstra_v2.hpp
   - icon: ':warning:'
@@ -327,6 +330,9 @@ data:
     path: src/segment/LazySegmentTree.hpp
     title: src/segment/LazySegmentTree.hpp
   - icon: ':warning:'
+    path: src/segment/LazySegmentTreeArithmetric.hpp
+    title: src/segment/LazySegmentTreeArithmetric.hpp
+  - icon: ':warning:'
     path: src/segment/SegmentTreeBeats.hpp
     title: src/segment/SegmentTreeBeats.hpp
   - icon: ':warning:'
@@ -460,11 +466,13 @@ data:
   - src/graph/WeightedUnionFind.hpp
   - src/graph/topological_sort.hpp
   - src/graph/HeavyLightDecomposition.hpp
+  - src/graph/dfs.hpp
   - src/graph/dijkstra_v2.hpp
   - src/graph/UnionFind.hpp
   - src/graph/bfs01.hpp
   - src/template.hpp
   - src/segment/merge_segment.hpp
+  - src/segment/LazySegmentTreeArithmetric.hpp
   - src/segment/BIT2.hpp
   - src/segment/SegmentTreeBeats.hpp
   - src/segment/BIT.hpp

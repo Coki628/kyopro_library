@@ -44,7 +44,9 @@ data:
     \      dfs_all(0, -1, ident);\n        return dp;\n    }\n};\n\ntemplate<typename\
     \ sum_t, typename key_t, typename F1, typename F2>\nReRooting<sum_t, key_t, F1,\
     \ F2> get_rerooting(int N, const F1& f1, const F2& f2, const sum_t& M1, const\
-    \ key_t& M2) {\n    return {N, f1, f2, M1};\n}\n"
+    \ key_t& M2) {\n    return {N, f1, f2, M1};\n}\n\n// auto f1 = [](sum_t a, sum_t\
+    \ b) -> sum_t {\n//     return merge(a, b);\n// };\n// auto f2 = [](sum_t a, key_t\
+    \ v) -> sum_t {\n//     return add(a, v);\n// };\n"
   code: "#include \"../base.hpp\"\n\n// \u5168\u65B9\u4F4D\u6728DP\n// \u30FB\u4E3B\
     \u306A\u4F7F\u7528\u65B9\u6CD5\n// \u3000\u30FBf1\u306F\u96C6\u5408\u540C\u58EB\
     \u306E\u30DE\u30FC\u30B8\u3001f2\u306F\u3042\u308B\u96C6\u5408\u306B\u65B0\u3057\
@@ -77,13 +79,15 @@ data:
     \ return dp;\n    }\n};\n\ntemplate<typename sum_t, typename key_t, typename F1,\
     \ typename F2>\nReRooting<sum_t, key_t, F1, F2> get_rerooting(int N, const F1&\
     \ f1, const F2& f2, const sum_t& M1, const key_t& M2) {\n    return {N, f1, f2,\
-    \ M1};\n}\n"
+    \ M1};\n}\n\n// auto f1 = [](sum_t a, sum_t b) -> sum_t {\n//     return merge(a,\
+    \ b);\n// };\n// auto f2 = [](sum_t a, key_t v) -> sum_t {\n//     return add(a,\
+    \ v);\n// };\n"
   dependsOn:
   - src/base.hpp
   isVerificationFile: false
   path: src/graph/ReRooting.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-04-14 14:32:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/ReRooting.hpp

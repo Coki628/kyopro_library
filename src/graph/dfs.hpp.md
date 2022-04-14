@@ -7,10 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/template.hpp
-    title: src/template.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -33,38 +30,25 @@ data:
     \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
-    src/common/Counter.hpp\"\n\ntemplate<typename T>\nmap<T, ll> Counter(const vector<T>\
-    \ &A) {\n    map<T, ll> res;\n    for (T a : A) {\n        res[a]++;\n    }\n\
-    \    return res;\n}\n\ntemplate<typename T>\nvector<ll> Counter(const vector<T>\
-    \ &A, int mx) {\n    vector<ll> res(mx+1);\n    for (T a : A) {\n        res[a]++;\n\
-    \    }\n    return res;\n}\n\nmap<char, ll> Counter(const string &S) {\n    map<char,\
-    \ ll> res;\n    for (char c : S) {\n        res[c]++;\n    }\n    return res;\n\
-    }\n\ntemplate<typename T>\nvector<pair<ll, T>> most_common(const map<T, ll>& C)\
-    \ {\n    vector<pair<ll, T>> res;\n    for (auto [k, v] : C) {\n        res.eb(v,\
-    \ k);\n    }\n    sort(res.rbegin(), res.rend());\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\ntemplate<typename T>\nmap<T, ll> Counter(const\
-    \ vector<T> &A) {\n    map<T, ll> res;\n    for (T a : A) {\n        res[a]++;\n\
-    \    }\n    return res;\n}\n\ntemplate<typename T>\nvector<ll> Counter(const vector<T>\
-    \ &A, int mx) {\n    vector<ll> res(mx+1);\n    for (T a : A) {\n        res[a]++;\n\
-    \    }\n    return res;\n}\n\nmap<char, ll> Counter(const string &S) {\n    map<char,\
-    \ ll> res;\n    for (char c : S) {\n        res[c]++;\n    }\n    return res;\n\
-    }\n\ntemplate<typename T>\nvector<pair<ll, T>> most_common(const map<T, ll>& C)\
-    \ {\n    vector<pair<ll, T>> res;\n    for (auto [k, v] : C) {\n        res.eb(v,\
-    \ k);\n    }\n    sort(res.rbegin(), res.rend());\n    return res;\n}\n"
+    src/graph/dfs.hpp\"\n\n// \u6728DP\u7528\u5B9A\u578B\u90E8\u5206\nauto dfs = [&](auto&&\
+    \ f, ll u, ll prv) -> void {\n    for (auto v : nodes[u]) {\n        if (v ==\
+    \ prv) continue;\n        f(f, v, u);\n    }\n};\n"
+  code: "#include \"../macros.hpp\"\n\n// \u6728DP\u7528\u5B9A\u578B\u90E8\u5206\n\
+    auto dfs = [&](auto&& f, ll u, ll prv) -> void {\n    for (auto v : nodes[u])\
+    \ {\n        if (v == prv) continue;\n        f(f, v, u);\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
-  path: src/common/Counter.hpp
-  requiredBy:
-  - src/template.hpp
+  path: src/graph/dfs.hpp
+  requiredBy: []
   timestamp: '2022-04-14 14:32:07+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/common/Counter.hpp
+documentation_of: src/graph/dfs.hpp
 layout: document
 redirect_from:
-- /library/src/common/Counter.hpp
-- /library/src/common/Counter.hpp.html
-title: src/common/Counter.hpp
+- /library/src/graph/dfs.hpp
+- /library/src/graph/dfs.hpp.html
+title: src/graph/dfs.hpp
 ---
