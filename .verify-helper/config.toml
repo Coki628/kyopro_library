@@ -1,4 +1,8 @@
 [[languages.cpp.environments]]
 CXX = "g++"
 # default options and custom include path
-CXXFLAGS = ["--std=c++17", "-O2", "-Wall", "-g", "-I", "/home/runner/work/kyopro_library/kyopro_library/src"]
+CXXFLAGS = [
+    "--std=c++17", "-O2", "-Wall", "-g",
+    "-I", "src",
+    "-I", "ac-library"
+]
