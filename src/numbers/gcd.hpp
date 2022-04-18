@@ -1,7 +1,8 @@
 #pragma once
 #include "../macros.hpp"
 
-ll gcd(ll a, ll b) { return __gcd(a, b); }
+template<typename T>
+T gcd(T a, T b) { return __gcd(a, b); }
 
 template<typename T>
 T gcd(const vector<T> &A) {

@@ -1,7 +1,7 @@
-#include "../base.hpp"
+#include "../macros.hpp"
 #include "../common/chmin.hpp"
 
-// XOR基底
+// XOR基底(クラス版作ったけど、何回か使うまで一応こっちも取っておく)
 template<typename T>
 vector<T> get_xor_basis(const vector<T> &A) {
     vector<T> basis;

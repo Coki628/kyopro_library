@@ -17,6 +17,10 @@ struct SegmentTree {
 
     SegmentTree(const F f, const Monoid &M1) : f(f), M1(M1) {}
 
+    SegmentTree(const vector<Monoid>& A, const F f, const Monoid &M1) : f(f), M1(M1) {
+        build(A);
+    }
+
     void resize(int n) {
         sz = 1;
         while(sz < n) sz <<= 1;
@@ -135,4 +139,9 @@ SegmentTree<Monoid, F> get_segment_tree(int N, const F& f, const Monoid& M1) {
 template<typename Monoid, typename F>
 SegmentTree<Monoid, F> get_segment_tree(const F& f, const Monoid& M1) {
     return {f, M1};
+}
+
+template<typename Monoid, typename F>
+SegmentTree<Monoid, F> get_segment_tree(const vector<Monoid>& A, const F& f, const Monoid& M1) {
+    return {A, f, M1};
 }
