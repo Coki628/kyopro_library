@@ -33,14 +33,10 @@ data:
     \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
-    src/common/bit_length.hpp\"\n\nint bit_length(ll x) { return x != 0 ? floor(log2((ld)x))+1\
-    \ : 0; }\n"
-  code: '#include "../macros.hpp"
-
-
-    int bit_length(ll x) { return x != 0 ? floor(log2((ld)x))+1 : 0; }
-
-    '
+    src/common/bit_length.hpp\"\n\nint bit_length(ll x) {\n    int res = 0;\n    while\
+    \ (x) {\n        res++;\n        x /= 2;\n    }\n    return res;\n}\n"
+  code: "#include \"../macros.hpp\"\n\nint bit_length(ll x) {\n    int res = 0;\n\
+    \    while (x) {\n        res++;\n        x /= 2;\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -48,7 +44,7 @@ data:
   path: src/common/bit_length.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-04-19 01:28:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/bit_length.hpp

@@ -37,7 +37,7 @@ data:
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
     src/common/to_string.hpp\"\n\nstring to_string(const string &S) { return S; }\n\
-    string to_string(char c) { return {c}; }\n#line 3 \"src/common/join.hpp\"\n\n\
+    \nstring to_string(char c) { return {c}; }\n#line 3 \"src/common/join.hpp\"\n\n\
     template<typename T>\nstring join(const vector<T> &A, char separator=0) {\n  \
     \  int N = A.size();\n    string res;\n    rep(i, N) {\n        res += tostr(A[i]);\n\
     \        if (separator != 0 and i != N-1) res += separator;\n    }\n    return\
@@ -54,7 +54,7 @@ data:
   path: src/common/join.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-04-19 01:28:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/join.hpp

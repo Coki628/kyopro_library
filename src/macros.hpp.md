@@ -60,6 +60,9 @@ data:
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
+    path: src/common/int128.hpp
+    title: src/common/int128.hpp
+  - icon: ':warning:'
     path: src/common/interactive.hpp
     title: src/common/interactive.hpp
   - icon: ':warning:'
@@ -83,6 +86,9 @@ data:
   - icon: ':warning:'
     path: src/common/split.hpp
     title: src/common/split.hpp
+  - icon: ':warning:'
+    path: src/common/to_string.hpp
+    title: src/common/to_string.hpp
   - icon: ':warning:'
     path: src/common/trisearch.hpp
     title: src/common/trisearch.hpp
@@ -267,6 +273,12 @@ data:
     path: src/numbers/Eratosthenes.hpp
     title: src/numbers/Eratosthenes.hpp
   - icon: ':warning:'
+    path: src/numbers/Fraction.hpp
+    title: src/numbers/Fraction.hpp
+  - icon: ':warning:'
+    path: src/numbers/XorBasis.hpp
+    title: src/numbers/XorBasis.hpp
+  - icon: ':warning:'
     path: src/numbers/_eratosthenes_sieve.hpp
     title: src/numbers/_eratosthenes_sieve.hpp
   - icon: ':warning:'
@@ -308,6 +320,9 @@ data:
   - icon: ':warning:'
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
+  - icon: ':warning:'
+    path: src/numbers/xor_basis.hpp
+    title: src/numbers/xor_basis.hpp
   - icon: ':warning:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
@@ -429,6 +444,7 @@ data:
   - src/common/RLE.hpp
   - src/common/randrange.hpp
   - src/common/bisearch_real.hpp
+  - src/common/to_string.hpp
   - src/common/LIS.hpp
   - src/common/_doubling.hpp
   - src/common/bisearch.hpp
@@ -436,6 +452,7 @@ data:
   - src/common/join.hpp
   - src/common/yesno.hpp
   - src/common/trisearch.hpp
+  - src/common/int128.hpp
   - src/common/pow.hpp
   - src/common/Compress.hpp
   - src/common/interactive.hpp
@@ -493,6 +510,7 @@ data:
   - src/numbers/Eratosthenes.hpp
   - src/numbers/is_prime.hpp
   - src/numbers/number_le_n_with_a_b.hpp
+  - src/numbers/xor_basis.hpp
   - src/numbers/pythagorean_triple.hpp
   - src/numbers/digit_sum.hpp
   - src/numbers/osa_k.hpp
@@ -501,8 +519,10 @@ data:
   - src/numbers/_eratosthenes_sieve.hpp
   - src/numbers/segment_sieve.hpp
   - src/numbers/lcm.hpp
+  - src/numbers/Fraction.hpp
   - src/numbers/_factorize.hpp
   - src/numbers/gcd.hpp
+  - src/numbers/XorBasis.hpp
   - src/numbers/divisors.hpp
   - src/numbers/isqrt.hpp
   - src/combinatorics/permutations.hpp

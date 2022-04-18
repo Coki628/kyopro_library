@@ -81,6 +81,9 @@ data:
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
+    path: src/common/int128.hpp
+    title: src/common/int128.hpp
+  - icon: ':warning:'
     path: src/common/interactive.hpp
     title: src/common/interactive.hpp
   - icon: ':warning:'
@@ -369,6 +372,12 @@ data:
     path: src/numbers/Eratosthenes.hpp
     title: src/numbers/Eratosthenes.hpp
   - icon: ':warning:'
+    path: src/numbers/Fraction.hpp
+    title: src/numbers/Fraction.hpp
+  - icon: ':warning:'
+    path: src/numbers/XorBasis.hpp
+    title: src/numbers/XorBasis.hpp
+  - icon: ':warning:'
     path: src/numbers/_eratosthenes_sieve.hpp
     title: src/numbers/_eratosthenes_sieve.hpp
   - icon: ':warning:'
@@ -586,6 +595,7 @@ data:
   - src/common/concat.hpp
   - src/common/yesno.hpp
   - src/common/trisearch.hpp
+  - src/common/int128.hpp
   - src/common/pow.hpp
   - src/common/listnd.hpp
   - src/common/min.hpp
@@ -691,9 +701,11 @@ data:
   - src/numbers/_eratosthenes_sieve.hpp
   - src/numbers/segment_sieve.hpp
   - src/numbers/lcm.hpp
+  - src/numbers/Fraction.hpp
   - src/numbers/_factorize.hpp
   - src/numbers/gcd.hpp
   - src/numbers/gcd_convolution.hpp
+  - src/numbers/XorBasis.hpp
   - src/numbers/divisors.hpp
   - src/numbers/isqrt.hpp
   - src/combinatorics/permutations.hpp

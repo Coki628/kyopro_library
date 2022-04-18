@@ -21,6 +21,9 @@ data:
     path: src/graph/warshall_floyd.hpp
     title: src/graph/warshall_floyd.hpp
   - icon: ':warning:'
+    path: src/numbers/XorBasis.hpp
+    title: src/numbers/XorBasis.hpp
+  - icon: ':warning:'
     path: src/numbers/xor_basis.hpp
     title: src/numbers/xor_basis.hpp
   - icon: ':warning:'
@@ -51,6 +54,7 @@ data:
   - src/graph/bfs01.hpp
   - src/template.hpp
   - src/numbers/xor_basis.hpp
+  - src/numbers/XorBasis.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

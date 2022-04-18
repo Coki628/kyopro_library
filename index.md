@@ -136,6 +136,9 @@ data:
       path: src/common/input.hpp
       title: src/common/input.hpp
     - icon: ':warning:'
+      path: src/common/int128.hpp
+      title: src/common/int128.hpp
+    - icon: ':warning:'
       path: src/common/interactive.hpp
       title: src/common/interactive.hpp
     - icon: ':warning:'
@@ -456,6 +459,12 @@ data:
     - icon: ':warning:'
       path: src/numbers/Eratosthenes.hpp
       title: src/numbers/Eratosthenes.hpp
+    - icon: ':warning:'
+      path: src/numbers/Fraction.hpp
+      title: src/numbers/Fraction.hpp
+    - icon: ':warning:'
+      path: src/numbers/XorBasis.hpp
+      title: src/numbers/XorBasis.hpp
     - icon: ':warning:'
       path: src/numbers/_eratosthenes_sieve.hpp
       title: src/numbers/_eratosthenes_sieve.hpp
