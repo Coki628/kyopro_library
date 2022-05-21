@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -56,7 +56,7 @@ data:
   isVerificationFile: true
   path: test/graph/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2022-04-14 10:24:30+09:00'
+  timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/UnionFind.test.cpp

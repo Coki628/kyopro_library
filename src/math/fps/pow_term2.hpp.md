@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
   - icon: ':warning:'
     path: src/combinatorics/ModTools.hpp
     title: src/combinatorics/ModTools.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -68,42 +68,41 @@ data:
     \ get_mod() { return mod; }\n\n    #ifdef CAST_MINT_TO_LL\n        // mint\u304B\
     \u3089\u623B\u3057\u305F\u3044\u5834\u9762\u304C\u3042\u3063\u305F\u3089\u30B3\
     \u30E1\u30F3\u30C8\u5916\u3059\n        // operator int() const { return x; }\n\
-    \        operator ll() const { return x; }\n    #endif\n};\nusing mint = ModInt<MOD>;\n\
-    #line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull = unsigned long\
-    \ long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\nusing pii = pair<int,\
-    \ int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int, ll>;\nusing vvl = vector<vector<ll>>;\n\
-    using vvi = vector<vector<int>>;\nusing vvpll = vector<vector<pll>>;\nusing vvpli\
-    \ = vector<vector<pli>>;\nusing vvpil = vector<vector<pil>>;\n#define name4(i,\
-    \ a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4, rep3, rep2,\
-    \ rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i < _aa; i++)\n\
-    #define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define rep3(i, a,\
-    \ b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c < 0 && a >=\
-    \ i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define\
-    \ pb push_back\n#define eb emplace_back\n#define mkp make_pair\n#define ALL(A)\
-    \ A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
-    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
-    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/combinatorics/ModTools.hpp\"\
-    \n\n// Mod\u6570\u3048\u4E0A\u3052\u6F14\u7B97\u30C4\u30FC\u30EB\ntemplate<typename\
-    \ Mint>\nstruct ModTools {\n\n    int MAX;\n    vector<Mint> _fact, _factinv,\
-    \ inv;\n\n    // nCr\u306A\u3089n\u3001nHr\u306A\u3089n+r\u307E\u3067\u4F5C\u308B\
-    \n    ModTools(int mx) : MAX(++mx) {\n        _fact.resize(MAX);\n        _factinv.resize(MAX);\n\
-    \        inv.resize(MAX);\n        _fact[0] = _fact[1] = 1;\n        rep(i, 2,\
-    \ MAX) {\n            _fact[i] = _fact[i-1]*(Mint)i;\n        }\n        _factinv[MAX-1]\
-    \ = (Mint)1/_fact[MAX-1];\n        rep(i, MAX-2, -1, -1) {\n            _factinv[i]\
-    \ = _factinv[i+1]*(Mint)(i+1);\n        }\n        rep(i, MAX-1, 0, -1) {\n  \
-    \          inv[i] = _factinv[i]*_fact[i-1];\n        }\n    }\n\n    // \u6E96\
-    \u5099O(N)\u3001\u64CD\u4F5CO(1)\u3067log\u304C\u4E57\u3089\u306A\u3044mod\u9664\
-    \u7B97\n    Mint div(Mint a, int b) {\n        return a*inv[b];\n    }\n\n   \
-    \ Mint fact(int x) {\n        assert(x < MAX);\n        return _fact[x];\n   \
-    \ }\n\n    Mint factinv(int x) {\n        assert(x < MAX);\n        return _factinv[x];\n\
-    \    }\n\n    Mint nCr(int n, int r) {\n        if (n < r or r < 0) return 0;\n\
-    \        r = min(r, n-r);\n        Mint num = _fact[n];\n        Mint den = _factinv[r]\
-    \ * _factinv[n-r];\n        return num * den;\n    }\n\n    Mint nHr(int n, int\
-    \ r) {\n        assert(r+n-1 < MAX);\n        return nCr(r+n-1, r);\n    }\n\n\
-    \    Mint nPr(int n, int r) {\n        if (n < r or r < 0) return 0;\n       \
-    \ return _fact[n] * _factinv[n-r];\n    }\n\n    // \u4E8C\u91CD\u968E\u4E57\n\
-    \    // \u53C2\u8003\uFF1Ahttps://ja.wikipedia.org/wiki/%E4%BA%8C%E9%87%8D%E9%9A%8E%E4%B9%97\n\
+    \        operator ll() const { return x; }\n    #endif\n};\n#line 3 \"src/macros.hpp\"\
+    \n\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
+    using pll = pair<ll, ll>;\nusing pii = pair<int, int>;\nusing pli = pair<ll, int>;\n\
+    using pil = pair<int, ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\n\
+    using vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing\
+    \ vvpil = vector<vector<pil>>;\n#define name4(i, a, b, c, d, e, ...) e\n#define\
+    \ rep(...) name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i,\
+    \ a) for (ll i = 0, _aa = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i =\
+    \ a, _bb = b; i < _bb; i++)\n#define rep3(i, a, b, c) for (ll i = a, _bb = b;\
+    \ (c > 0 && a <= i && i < _bb) or (c < 0 && a >= i && i > _bb); i += c)\n#define\
+    \ rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n\
+    #define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)),\
+    \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
+    \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
+    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
+    src/combinatorics/ModTools.hpp\"\n\n// Mod\u6570\u3048\u4E0A\u3052\u6F14\u7B97\
+    \u30C4\u30FC\u30EB\ntemplate<typename Mint>\nstruct ModTools {\n\n    int MAX;\n\
+    \    vector<Mint> _fact, _factinv, inv;\n\n    // nCr\u306A\u3089n\u3001nHr\u306A\
+    \u3089n+r\u307E\u3067\u4F5C\u308B\n    ModTools(int mx) : MAX(++mx) {\n      \
+    \  _fact.resize(MAX);\n        _factinv.resize(MAX);\n        inv.resize(MAX);\n\
+    \        _fact[0] = _fact[1] = 1;\n        rep(i, 2, MAX) {\n            _fact[i]\
+    \ = _fact[i-1]*(Mint)i;\n        }\n        _factinv[MAX-1] = (Mint)1/_fact[MAX-1];\n\
+    \        rep(i, MAX-2, -1, -1) {\n            _factinv[i] = _factinv[i+1]*(Mint)(i+1);\n\
+    \        }\n        rep(i, MAX-1, 0, -1) {\n            inv[i] = _factinv[i]*_fact[i-1];\n\
+    \        }\n    }\n\n    // \u6E96\u5099O(N)\u3001\u64CD\u4F5CO(1)\u3067log\u304C\
+    \u4E57\u3089\u306A\u3044mod\u9664\u7B97\n    Mint div(Mint a, int b) {\n     \
+    \   return a*inv[b];\n    }\n\n    Mint fact(int x) {\n        assert(x < MAX);\n\
+    \        return _fact[x];\n    }\n\n    Mint factinv(int x) {\n        assert(x\
+    \ < MAX);\n        return _factinv[x];\n    }\n\n    Mint nCr(int n, int r) {\n\
+    \        if (n < r or r < 0) return 0;\n        r = min(r, n-r);\n        Mint\
+    \ num = _fact[n];\n        Mint den = _factinv[r] * _factinv[n-r];\n        return\
+    \ num * den;\n    }\n\n    Mint nHr(int n, int r) {\n        assert(r+n-1 < MAX);\n\
+    \        return nCr(r+n-1, r);\n    }\n\n    Mint nPr(int n, int r) {\n      \
+    \  if (n < r or r < 0) return 0;\n        return _fact[n] * _factinv[n-r];\n \
+    \   }\n\n    // \u4E8C\u91CD\u968E\u4E57\n    // \u53C2\u8003\uFF1Ahttps://ja.wikipedia.org/wiki/%E4%BA%8C%E9%87%8D%E9%9A%8E%E4%B9%97\n\
     \    Mint double_factorial(int n) {\n        if (n%2 == 0) {\n            int\
     \ k = n/2;\n            return Mint(2).pow(k)*fact(k);\n        } else {\n   \
     \         int k = (n+1)/2;\n            return fact(2*k)/Mint(2).pow(k)/fact(k);\n\
@@ -117,15 +116,15 @@ data:
     \ tuple<T1, T2, T3, T4> &tp) { \n    cout << get<0>(tp) << ' ' << get<1>(tp) <<\
     \ ' ' << get<2>(tp) << ' ' << get<3>(tp) << '\\n';\n}\n\ntemplate<typename T1,\
     \ typename T2>\nvoid print(const vector<pair<T1, T2>> &V) {\n    for (auto& p\
-    \ : V) print(p);\n}\n\ntemplate<typename T>\nvoid print(const vector<T> &V) {\n\
-    \    rep(i, V.size()) {\n        cout << V[i];\n        if (i != V.size()-1) cout\
-    \ << ' ';\n    }\n    cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid\
-    \ print(const array<T, SZ> &arr) {\n    rep(i, arr.size()) {\n        cout <<\
-    \ arr[i];\n        if (i != arr.size()-1) cout << ' ';\n    }\n    cout << '\\\
-    n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid print(const vector<array<T, SZ>>\
-    \ &V) {\n    for (auto& arr : V) print(arr);\n}\n\ntemplate<typename T>\nvoid\
-    \ print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n    print(V);\n}\n\
-    \ntemplate<typename T>\nvoid print(const set<T> &se) {\n    vector<T> V(ALL(se));\n\
+    \ : V) print(p);\n}\n\ntemplate<typename T>\nvoid print(const vector<T> &V, char\
+    \ sep=' ') {\n    rep(i, V.size()) {\n        cout << V[i];\n        if (i !=\
+    \ V.size()-1) cout << sep;\n    }\n    cout << '\\n';\n}\n\ntemplate<typename\
+    \ T, size_t SZ>\nvoid print(const array<T, SZ> &arr) {\n    rep(i, arr.size())\
+    \ {\n        cout << arr[i];\n        if (i != arr.size()-1) cout << ' ';\n  \
+    \  }\n    cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid print(const\
+    \ vector<array<T, SZ>> &V) {\n    for (auto& arr : V) print(arr);\n}\n\ntemplate<typename\
+    \ T>\nvoid print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n    print(V);\n\
+    }\n\ntemplate<typename T>\nvoid print(const set<T> &se) {\n    vector<T> V(ALL(se));\n\
     \    print(V);\n}\n\n#define debug(x) (cout << #x << \": \", print(x));\n#line\
     \ 3 \"src/math/FastFourierTransform.hpp\"\n\nnamespace FastFourierTransform {\n\
     \    using real = double;\n\n    struct C {\n        real x, y;\n\n        C()\
@@ -395,7 +394,7 @@ data:
   isVerificationFile: false
   path: src/math/fps/pow_term2.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/fps/pow_term2.hpp

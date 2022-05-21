@@ -26,10 +26,10 @@ data:
       title: src/acl/twosat.hpp
   - name: src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/base.hpp
       title: src/base.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/macros.hpp
       title: src/macros.hpp
     - icon: ':warning:'
@@ -43,7 +43,7 @@ data:
     - icon: ':warning:'
       path: src/combinatorics/ArbitraryModInt.hpp
       title: src/combinatorics/ArbitraryModInt.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/combinatorics/ModInt.hpp
       title: src/combinatorics/ModInt.hpp
     - icon: ':warning:'
@@ -132,7 +132,7 @@ data:
     - icon: ':warning:'
       path: src/common/floor.hpp
       title: src/common/floor.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/common/input.hpp
       title: src/common/input.hpp
     - icon: ':warning:'
@@ -144,7 +144,7 @@ data:
     - icon: ':warning:'
       path: src/common/join.hpp
       title: src/common/join.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/common/listnd.hpp
       title: src/common/listnd.hpp
     - icon: ':warning:'
@@ -171,7 +171,7 @@ data:
     - icon: ':warning:'
       path: src/common/pow.hpp
       title: src/common/pow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/common/print.hpp
       title: src/common/print.hpp
     - icon: ':warning:'
@@ -189,7 +189,7 @@ data:
     - icon: ':warning:'
       path: src/common/subarray.hpp
       title: src/common/subarray.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/common/sum.hpp
       title: src/common/sum.hpp
     - icon: ':warning:'
@@ -284,8 +284,14 @@ data:
       path: src/graph/HeavyLightDecomposition.hpp
       title: src/graph/HeavyLightDecomposition.hpp
     - icon: ':warning:'
+      path: src/graph/OfflineDynamicConnectivity.hpp
+      title: src/graph/OfflineDynamicConnectivity.hpp
+    - icon: ':warning:'
       path: src/graph/PartiallyPersistentUnionFind.hpp
       title: src/graph/PartiallyPersistentUnionFind.hpp
+    - icon: ':warning:'
+      path: src/graph/PersistentUnionFind.hpp
+      title: src/graph/PersistentUnionFind.hpp
     - icon: ':warning:'
       path: src/graph/RangeEdgeGraph.hpp
       title: src/graph/RangeEdgeGraph.hpp
@@ -295,6 +301,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/UnionFind.hpp
       title: src/graph/UnionFind.hpp
+    - icon: ':warning:'
+      path: src/graph/UnionFindUndo.hpp
+      title: src/graph/UnionFindUndo.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/WeightedUnionFind.hpp
       title: src/graph/WeightedUnionFind.hpp
@@ -410,7 +419,7 @@ data:
       title: src/math/fps/pow_term2.hpp
   - name: src/matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/matrix/MatPow.hpp
       title: src/matrix/MatPow.hpp
     - icon: ':warning:'
@@ -425,7 +434,7 @@ data:
     - icon: ':warning:'
       path: src/matrix/gauss_jordan_real.hpp
       title: src/matrix/gauss_jordan_real.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/matrix/mat_dot.hpp
       title: src/matrix/mat_dot.hpp
     - icon: ':warning:'
@@ -474,6 +483,9 @@ data:
     - icon: ':warning:'
       path: src/numbers/arithmetic_sequence_sum.hpp
       title: src/numbers/arithmetic_sequence_sum.hpp
+    - icon: ':warning:'
+      path: src/numbers/bsgs.hpp
+      title: src/numbers/bsgs.hpp
     - icon: ':warning:'
       path: src/numbers/digit_sum.hpp
       title: src/numbers/digit_sum.hpp
@@ -545,6 +557,9 @@ data:
     - icon: ':warning:'
       path: src/segment/DynamicLiChaoTree.hpp
       title: src/segment/DynamicLiChaoTree.hpp
+    - icon: ':warning:'
+      path: src/segment/Imos.hpp
+      title: src/segment/Imos.hpp
     - icon: ':warning:'
       path: src/segment/Imos2D.hpp
       title: src/segment/Imos2D.hpp
@@ -652,7 +667,7 @@ data:
       title: test/graph/bfs.test.cpp
   - name: test/matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/matrix/MatPow.test.cpp
       title: test/matrix/MatPow.test.cpp
 layout: toppage

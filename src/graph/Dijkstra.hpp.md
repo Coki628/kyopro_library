@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
@@ -10,7 +10,7 @@ data:
   - icon: ':warning:'
     path: src/graph/_dijkstra.hpp
     title: src/graph/_dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -41,7 +41,7 @@ data:
     \ \u203B\u7D50\u5C40\u3053\u3063\u3061\u306E\u304C\u4F7F\u3044\u52DD\u624B\u3044\
     \u3044\u304B\u3089\u6B8B\u3057\u3066\u304A\u304F\u3002\n\n// \u30C0\u30A4\u30AF\
     \u30B9\u30C8\u30E9\ntemplate<typename T>\nvector<T> dijkstra(const vector<vector<pair<int,\
-    \ T>>> &nodes, int src, int goal=-1) {\n\n    int N = nodes.size();\n    vector<T>\
+    \ T>>> &nodes, int src, int goal=-1) {\n    int N = nodes.size();\n    vector<T>\
     \ res(N, INF);\n    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T,\
     \ int>>> que;\n    res[src] = 0;\n    que.push({0, src});\n\n    while (!que.empty())\
     \ {\n        auto [dist, u] = que.top(); que.pop();\n        if (u == goal) return\
@@ -113,7 +113,7 @@ data:
   isVerificationFile: false
   path: src/graph/Dijkstra.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/Dijkstra.hpp

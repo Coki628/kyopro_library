@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy: []
@@ -38,7 +38,11 @@ data:
     \ >\n    void build(const A &add, const E &erase, const O &out) {\n        build(add,\
     \ add, erase, erase, out);\n    }\n};\n// auto add = [&](int i) -> void {\n//\
     \ };\n// auto erase = [&](int i) -> void {\n// };\n// auto out = [&](int i) ->\
-    \ void {\n// };\n"
+    \ void {\n// };\n\n// \u5DE6\u53F3\u306B\u533A\u5225\u304C\u3042\u308B\u6642\u306F\
+    \u3053\u3063\u3061\n// auto add_left = [&](int i) -> void {\n// };\n// auto erase_left\
+    \ = [&](int i) -> void {\n// };\n// auto add_right = [&](int i) -> void {\n//\
+    \ };\n// auto erase_right = [&](int i) -> void {\n// };\n// auto out = [&](int\
+    \ i) -> void {\n// };\n"
   code: "#include \"../base.hpp\"\n\nstruct Mo {\n    int n;\n    vector< pair< int,\
     \ int > > lr;\n\n    explicit Mo(int n) : n(n) {}\n\n    // \u30AF\u30A8\u30EA\
     \u3092\u534A\u958B\u533A\u9593[l,r)\u3067\u9806\u756A\u306B\u8FFD\u52A0\n    void\
@@ -64,13 +68,18 @@ data:
     \u3067OK\n    template< typename A, typename E, typename O >\n    void build(const\
     \ A &add, const E &erase, const O &out) {\n        build(add, add, erase, erase,\
     \ out);\n    }\n};\n// auto add = [&](int i) -> void {\n// };\n// auto erase =\
-    \ [&](int i) -> void {\n// };\n// auto out = [&](int i) -> void {\n// };\n"
+    \ [&](int i) -> void {\n// };\n// auto out = [&](int i) -> void {\n// };\n\n//\
+    \ \u5DE6\u53F3\u306B\u533A\u5225\u304C\u3042\u308B\u6642\u306F\u3053\u3063\u3061\
+    \n// auto add_left = [&](int i) -> void {\n// };\n// auto erase_left = [&](int\
+    \ i) -> void {\n// };\n// auto add_right = [&](int i) -> void {\n// };\n// auto\
+    \ erase_right = [&](int i) -> void {\n// };\n// auto out = [&](int i) -> void\
+    \ {\n// };\n"
   dependsOn:
   - src/base.hpp
   isVerificationFile: false
   path: src/segment/Mo.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/segment/Mo.hpp

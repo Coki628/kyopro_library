@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/1299
@@ -76,8 +76,8 @@ data:
   isVerificationFile: true
   path: test/matrix/MatPow.test.cpp
   requiredBy: []
-  timestamp: '2022-04-06 17:44:14+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-05-22 00:24:51+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/matrix/MatPow.test.cpp
 layout: document

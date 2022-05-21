@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -59,7 +59,7 @@ data:
   isVerificationFile: true
   path: test/common/bisect.test.cpp
   requiredBy: []
-  timestamp: '2022-03-31 10:55:07+09:00'
+  timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/common/bisect.test.cpp

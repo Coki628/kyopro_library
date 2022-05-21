@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -52,13 +52,13 @@ data:
   - icon: ':warning:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
     path: src/common/join.hpp
     title: src/common/join.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
   - icon: ':warning:'
@@ -79,7 +79,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -94,7 +94,7 @@ data:
   - icon: ':warning:'
     path: src/common/subarray.hpp
     title: src/common/subarray.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
   - icon: ':warning:'
@@ -127,7 +127,7 @@ data:
   - icon: ':warning:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -386,7 +386,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2022-04-19 01:28:42+09:00'
+  timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

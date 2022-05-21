@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -26,10 +26,10 @@ data:
   - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
   - icon: ':warning:'
@@ -39,12 +39,12 @@ data:
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -67,19 +67,19 @@ data:
   isVerificationFile: false
   path: src/common/listnd.hpp
   requiredBy:
-  - src/common/_doubling.hpp
-  - src/common/Doubling.hpp
-  - src/matrix/MatPow.hpp
   - src/matrix/mat_dot.hpp
+  - src/matrix/MatPow.hpp
   - src/template.hpp
   - src/string/get_next_indices.hpp
-  - src/combinatorics/partition.hpp
-  - src/combinatorics/nCr.hpp
+  - src/common/Doubling.hpp
+  - src/common/_doubling.hpp
   - src/grid/bfs.hpp
-  - src/grid/transpose.hpp
   - src/grid/bfs_restore.hpp
+  - src/grid/transpose.hpp
+  - src/combinatorics/nCr.hpp
+  - src/combinatorics/partition.hpp
   timestamp: '2022-04-06 17:44:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/matrix/MatPow.test.cpp
 documentation_of: src/common/listnd.hpp

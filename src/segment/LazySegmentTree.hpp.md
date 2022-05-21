@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -46,13 +46,16 @@ data:
     \        data.assign(2 * sz, M1);\n        lazy.assign(2 * sz, OM0);\n    }\n\n\
     \    LazySegmentTree(const F f, const G g, const H h,\n                      \
     \              const Monoid &M1, const OperatorMonoid OM0)\n            : f(f),\
-    \ g(g), h(h), M1(M1), OM0(OM0) {}\n\n    void set(int k, const Monoid &x) {\n\
-    \        data[k + sz] = x;\n    }\n\n    void build() {\n        for(int k = sz\
-    \ - 1; k > 0; k--) {\n            data[k] = f(data[2 * k + 0], data[2 * k + 1]);\n\
-    \        }\n    }\n\n    void build(const vector<Monoid> &A) {\n        int n\
-    \ = A.size();\n        sz = 1;\n        height = 0;\n        while(sz < n) sz\
-    \ <<= 1, height++;\n        data.assign(2 * sz, M1);\n        lazy.assign(2 *\
-    \ sz, OM0);\n        for (int i=0; i<n; i++) set(i, A[i]);\n        build();\n\
+    \ g(g), h(h), M1(M1), OM0(OM0) {}\n\n    LazySegmentTree(const vector<Monoid>\
+    \ &A, const F f, const G g, const H h,\n                                    const\
+    \ Monoid &M1, const OperatorMonoid OM0)\n            : f(f), g(g), h(h), M1(M1),\
+    \ OM0(OM0) {\n        build(A);\n    }\n\n    void set(int k, const Monoid &x)\
+    \ {\n        data[k + sz] = x;\n    }\n\n    void build() {\n        for(int k\
+    \ = sz - 1; k > 0; k--) {\n            data[k] = f(data[2 * k + 0], data[2 * k\
+    \ + 1]);\n        }\n    }\n\n    void build(const vector<Monoid> &A) {\n    \
+    \    int n = A.size();\n        sz = 1;\n        height = 0;\n        while(sz\
+    \ < n) sz <<= 1, height++;\n        data.assign(2 * sz, M1);\n        lazy.assign(2\
+    \ * sz, OM0);\n        for (int i=0; i<n; i++) set(i, A[i]);\n        build();\n\
     \    }\n\n    inline void propagate(int k) {\n        if(lazy[k] == OM0) return;\n\
     \        lazy[2 * k + 0] = h(lazy[2 * k + 0], lazy[k]);\n        lazy[2 * k +\
     \ 1] = h(lazy[2 * k + 1], lazy[k]);\n        data[k] = apply(k);\n        lazy[k]\
@@ -74,9 +77,9 @@ data:
     \ &k) {\n        return query(k, k + 1);\n    }\n\n    void update(int i, const\
     \ OperatorMonoid &x) {\n        update(i, i+1, x);\n    }\n\n    template<typename\
     \ P=ll>\n    void print(int n) {\n        for (int i=0; i<n; i++) {\n        \
-    \    cout << (P)query(i, i+1);\n            if (i == n-1) cout << '\\n';\n   \
-    \         else cout << ' ';\n        }\n    }\n\n    template<typename C>\n  \
-    \  int find_subtree(int a, const C &check, Monoid &M, bool type) {\n        while(a\
+    \    cout << (P)query(i, i+1);\n            if (i == n-1) cout << endl;\n    \
+    \        else cout << ' ';\n        }\n    }\n\n    template<typename C>\n   \
+    \ int find_subtree(int a, const C &check, Monoid &M, bool type) {\n        while(a\
     \ < sz) {\n            propagate(a);\n            Monoid nxt = type ? f(apply(2\
     \ * a + type), M) : f(M, apply(2 * a + type));\n            if(check(nxt)) a =\
     \ 2 * a + type;\n            else M = nxt, a = 2 * a + 1 - type;\n        }\n\
@@ -105,7 +108,10 @@ data:
     \ ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
     \ E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(int N, const F& f,\
     \ const G& g, const H& h, const T& ti, const E& ei) {\n    return {N, f, g, h,\
-    \ ti, ei};\n}\n"
+    \ ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
+    \ E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const vector<T> &A,\
+    \ const F& f, const G& g, const H& h, const T& ti, const E& ei) {\n    return\
+    \ {A, f, g, h, ti, ei};\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/segment-tree/lazy-segment-tree.cpp\n\
     // \u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\ntemplate<typename\
     \ F, typename G, typename H, typename Monoid, typename OperatorMonoid>\nstruct\
@@ -118,13 +124,16 @@ data:
     \        data.assign(2 * sz, M1);\n        lazy.assign(2 * sz, OM0);\n    }\n\n\
     \    LazySegmentTree(const F f, const G g, const H h,\n                      \
     \              const Monoid &M1, const OperatorMonoid OM0)\n            : f(f),\
-    \ g(g), h(h), M1(M1), OM0(OM0) {}\n\n    void set(int k, const Monoid &x) {\n\
-    \        data[k + sz] = x;\n    }\n\n    void build() {\n        for(int k = sz\
-    \ - 1; k > 0; k--) {\n            data[k] = f(data[2 * k + 0], data[2 * k + 1]);\n\
-    \        }\n    }\n\n    void build(const vector<Monoid> &A) {\n        int n\
-    \ = A.size();\n        sz = 1;\n        height = 0;\n        while(sz < n) sz\
-    \ <<= 1, height++;\n        data.assign(2 * sz, M1);\n        lazy.assign(2 *\
-    \ sz, OM0);\n        for (int i=0; i<n; i++) set(i, A[i]);\n        build();\n\
+    \ g(g), h(h), M1(M1), OM0(OM0) {}\n\n    LazySegmentTree(const vector<Monoid>\
+    \ &A, const F f, const G g, const H h,\n                                    const\
+    \ Monoid &M1, const OperatorMonoid OM0)\n            : f(f), g(g), h(h), M1(M1),\
+    \ OM0(OM0) {\n        build(A);\n    }\n\n    void set(int k, const Monoid &x)\
+    \ {\n        data[k + sz] = x;\n    }\n\n    void build() {\n        for(int k\
+    \ = sz - 1; k > 0; k--) {\n            data[k] = f(data[2 * k + 0], data[2 * k\
+    \ + 1]);\n        }\n    }\n\n    void build(const vector<Monoid> &A) {\n    \
+    \    int n = A.size();\n        sz = 1;\n        height = 0;\n        while(sz\
+    \ < n) sz <<= 1, height++;\n        data.assign(2 * sz, M1);\n        lazy.assign(2\
+    \ * sz, OM0);\n        for (int i=0; i<n; i++) set(i, A[i]);\n        build();\n\
     \    }\n\n    inline void propagate(int k) {\n        if(lazy[k] == OM0) return;\n\
     \        lazy[2 * k + 0] = h(lazy[2 * k + 0], lazy[k]);\n        lazy[2 * k +\
     \ 1] = h(lazy[2 * k + 1], lazy[k]);\n        data[k] = apply(k);\n        lazy[k]\
@@ -146,9 +155,9 @@ data:
     \ &k) {\n        return query(k, k + 1);\n    }\n\n    void update(int i, const\
     \ OperatorMonoid &x) {\n        update(i, i+1, x);\n    }\n\n    template<typename\
     \ P=ll>\n    void print(int n) {\n        for (int i=0; i<n; i++) {\n        \
-    \    cout << (P)query(i, i+1);\n            if (i == n-1) cout << '\\n';\n   \
-    \         else cout << ' ';\n        }\n    }\n\n    template<typename C>\n  \
-    \  int find_subtree(int a, const C &check, Monoid &M, bool type) {\n        while(a\
+    \    cout << (P)query(i, i+1);\n            if (i == n-1) cout << endl;\n    \
+    \        else cout << ' ';\n        }\n    }\n\n    template<typename C>\n   \
+    \ int find_subtree(int a, const C &check, Monoid &M, bool type) {\n        while(a\
     \ < sz) {\n            propagate(a);\n            Monoid nxt = type ? f(apply(2\
     \ * a + type), M) : f(M, apply(2 * a + type));\n            if(check(nxt)) a =\
     \ 2 * a + type;\n            else M = nxt, a = 2 * a + 1 - type;\n        }\n\
@@ -177,7 +186,10 @@ data:
     \ ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
     \ E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(int N, const F& f,\
     \ const G& g, const H& h, const T& ti, const E& ei) {\n    return {N, f, g, h,\
-    \ ti, ei};\n}\n"
+    \ ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
+    \ E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const vector<T> &A,\
+    \ const F& f, const G& g, const H& h, const T& ti, const E& ei) {\n    return\
+    \ {A, f, g, h, ti, ei};\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -185,7 +197,7 @@ data:
   path: src/segment/LazySegmentTree.hpp
   requiredBy:
   - src/segment/LazySegmentTreeArithmetric.hpp
-  timestamp: '2022-04-14 14:32:07+09:00'
+  timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/segment/LazySegmentTree.hpp

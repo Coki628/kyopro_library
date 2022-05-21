@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -12,12 +12,12 @@ data:
     path: src/math/garner.hpp
     title: src/math/garner.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://ei1333.github.io/library/math/combinatorics/mod-int.cpp
@@ -56,7 +56,7 @@ data:
     \ get_mod() { return mod; }\n\n    #ifdef CAST_MINT_TO_LL\n        // mint\u304B\
     \u3089\u623B\u3057\u305F\u3044\u5834\u9762\u304C\u3042\u3063\u305F\u3089\u30B3\
     \u30E1\u30F3\u30C8\u5916\u3059\n        // operator int() const { return x; }\n\
-    \        operator ll() const { return x; }\n    #endif\n};\nusing mint = ModInt<MOD>;\n"
+    \        operator ll() const { return x; }\n    #endif\n};\n"
   code: "#pragma once\n#include \"../base.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/math/combinatorics/mod-int.cpp\n\
     // ModInt\ntemplate<int mod>\nstruct ModInt {\n    int x;\n\n    ModInt() : x(0)\
     \ {}\n\n    ModInt(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod)\
@@ -90,16 +90,16 @@ data:
     \ get_mod() { return mod; }\n\n    #ifdef CAST_MINT_TO_LL\n        // mint\u304B\
     \u3089\u623B\u3057\u305F\u3044\u5834\u9762\u304C\u3042\u3063\u305F\u3089\u30B3\
     \u30E1\u30F3\u30C8\u5916\u3059\n        // operator int() const { return x; }\n\
-    \        operator ll() const { return x; }\n    #endif\n};\nusing mint = ModInt<MOD>;\n"
+    \        operator ll() const { return x; }\n    #endif\n};\n"
   dependsOn:
   - src/base.hpp
   isVerificationFile: false
   path: src/combinatorics/ModInt.hpp
   requiredBy:
-  - src/math/fps/pow_term2.hpp
   - src/math/garner.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - src/math/fps/pow_term2.hpp
+  timestamp: '2022-05-22 00:24:51+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/matrix/MatPow.test.cpp
 documentation_of: src/combinatorics/ModInt.hpp

@@ -4,16 +4,13 @@ data:
   - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
+  - icon: ':warning:'
+    path: src/common/pow.hpp
+    title: src/common/pow.hpp
   - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/numbers/bsgs.hpp
-    title: src/numbers/bsgs.hpp
-  - icon: ':warning:'
-    path: src/template.hpp
-    title: src/template.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -42,29 +39,36 @@ data:
     \ pow((ll)x, (ll)n); }\n\nll pow(ll x, ll n, int mod) {\n    x %= mod;\n    ll\
     \ res = 1;\n    while (n > 0) {\n        if (n & 1) {\n            res = (res\
     \ * x) % mod;\n        }\n        x = (x * x) % mod;\n        n >>= 1;\n    }\n\
-    \    return res;\n}\n"
-  code: "#pragma once\n#include \"../macros.hpp\"\n\nll pow(ll x, ll n) {\n    ll\
-    \ res = 1;\n    rep(_, n) res *= x;\n    return res;\n}\n\nll pow(int x, ll n)\
-    \ { return pow((ll)x, n); }\n\nll pow(ll x, int n) { return pow(x, (ll)n); }\n\
-    \nll pow(int x, int n) { return pow((ll)x, (ll)n); }\n\nll pow(ll x, ll n, int\
-    \ mod) {\n    x %= mod;\n    ll res = 1;\n    while (n > 0) {\n        if (n &\
-    \ 1) {\n            res = (res * x) % mod;\n        }\n        x = (x * x) % mod;\n\
-    \        n >>= 1;\n    }\n    return res;\n}\n"
+    \    return res;\n}\n#line 3 \"src/numbers/bsgs.hpp\"\n\n// x^k \u2261 y (mod\
+    \ m) \u3068\u306A\u308B\u3088\u3046\u306A k \u3092\u6C42\u3081\u308B\nll bsgs(ll\
+    \ x, ll y, ll m) {\n    ll z = 1;\n    map<ll, ll> C = {{z, 0}};\n    ll sq =\
+    \ int(sqrt(m)) + 1;\n\n    // Baby-step\n    rep(i, sq) {\n        z = z * x %\
+    \ m;\n        C[z] = i + 1;\n    }\n    if (C.count(y)) {\n        return C[y];\n\
+    \    }\n\n    // Giant-step\n    ll r = pow(z, m-2, m); // r = x^(-sq);\n    rep(i,\
+    \ 1, sq+1) {\n        y = y * r % m;\n        if (C.count(y)) {\n            return\
+    \ C[y] + i*sq;\n        }\n    }\n    return -1;\n}\n"
+  code: "#include \"../macros.hpp\"\n#include \"../common/pow.hpp\"\n\n// x^k \u2261\
+    \ y (mod m) \u3068\u306A\u308B\u3088\u3046\u306A k \u3092\u6C42\u3081\u308B\n\
+    ll bsgs(ll x, ll y, ll m) {\n    ll z = 1;\n    map<ll, ll> C = {{z, 0}};\n  \
+    \  ll sq = int(sqrt(m)) + 1;\n\n    // Baby-step\n    rep(i, sq) {\n        z\
+    \ = z * x % m;\n        C[z] = i + 1;\n    }\n    if (C.count(y)) {\n        return\
+    \ C[y];\n    }\n\n    // Giant-step\n    ll r = pow(z, m-2, m); // r = x^(-sq);\n\
+    \    rep(i, 1, sq+1) {\n        y = y * r % m;\n        if (C.count(y)) {\n  \
+    \          return C[y] + i*sq;\n        }\n    }\n    return -1;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
+  - src/common/pow.hpp
   isVerificationFile: false
-  path: src/common/pow.hpp
-  requiredBy:
-  - src/numbers/bsgs.hpp
-  - src/template.hpp
+  path: src/numbers/bsgs.hpp
+  requiredBy: []
   timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/common/pow.hpp
+documentation_of: src/numbers/bsgs.hpp
 layout: document
 redirect_from:
-- /library/src/common/pow.hpp
-- /library/src/common/pow.hpp.html
-title: src/common/pow.hpp
+- /library/src/numbers/bsgs.hpp
+- /library/src/numbers/bsgs.hpp.html
+title: src/numbers/bsgs.hpp
 ---

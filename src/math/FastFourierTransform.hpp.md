@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -115,10 +115,10 @@ data:
   isVerificationFile: false
   path: src/math/FastFourierTransform.hpp
   requiredBy:
-  - src/math/fps/pow_term2.hpp
-  - src/math/fps/pow.hpp
   - src/math/FormalPowerSeries.hpp
   - src/math/ArbitraryModConvolution.hpp
+  - src/math/fps/pow.hpp
+  - src/math/fps/pow_term2.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
