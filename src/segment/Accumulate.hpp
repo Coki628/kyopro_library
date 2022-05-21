@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // 累積和
@@ -29,7 +30,7 @@ struct Accumulate {
         dat.insert(dat.begin(), 0);
     }
 
-    T query(int l, int r) {
+    virtual T query(int l, int r) {
         assert(0 <= l and l <= N and 0 <= r and r <= N);
         return dat[r]-dat[l];
     }

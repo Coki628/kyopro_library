@@ -108,4 +108,3 @@ struct ModInt {
         operator ll() const { return x; }
     #endif
 };
-using mint = ModInt<MOD>;

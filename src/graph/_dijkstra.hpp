@@ -7,7 +7,6 @@
 // ダイクストラ
 template<typename T>
 vector<T> dijkstra(const vector<vector<pair<int, T>>> &nodes, int src, int goal=-1) {
-
     int N = nodes.size();
     vector<T> res(N, INF);
     priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T, int>>> que;

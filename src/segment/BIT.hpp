@@ -2,43 +2,51 @@
 
 // Binary Indexed Tree
 template<typename T>
-struct BIT {
+class BIT {
+private:
+    int n;
+    vector<T> dat;
 
-    int sz;
-    vector<T> tree;
+public:
+    BIT() =  default;
 
-    BIT(int n) {
-        // 0-indexed
-        n++;
-        sz = 1;
-        while (sz < n) {
-            sz *= 2;
-        }
-        tree.resize(sz);
+    explicit BIT(int n) : n(n) {
+        dat.assign(n+1, 0);
     }
 
-    // [0, i]を合計する
-    T sum(int i) {
-        T s = 0;
-        i++;
-        while (i > 0) {
-            s += tree[i-1];
-            i -= i & -i;
+    explicit BIT(const vector<T> &v) : BIT((int)v.size()) {
+        build(v);
+    }
+
+    void build(const vector<T> &v) {
+        assert(n == (int)v.size());
+        for (int i = 1; i <= n; i++) {
+            dat[i] = v[i - 1];
+        }
+        for (int i = 1; i <= n; i++) {
+            int j = i + (i & -i);
+            if (j <= n) dat[j] += dat[i];
+        }
+    }
+
+    // [0, r)を合計する
+    T sum(int r) {
+        T s = T();
+        for (; r > 0; r -= r & -r) {
+            s += dat[r];
         }
         return s;
     }
 
-    void add(int i, T x) {
-        i++;
-        while (i <= sz) {
-            tree[i-1] += x;
-            i += i & -i;
+    void add(int k, const T &x) {
+        for (++k; k <= n; k += k & -k) {
+            dat[k] += x;
         }
     }
 
     // 区間和の取得 [l, r)
     T query(int l, int r) {
-        return sum(r-1) - sum(l-1);
+        return sum(r) - sum(l);
     }
 
     T get(int i) {
@@ -46,14 +54,14 @@ struct BIT {
     }
 
     void update(int i, T x) {
-        add(i, x - get(i));
+        add(i, x-get(i));
     }
 
     T operator[](int i) {
         return query(i, i+1);
     }
 
-    void print(int n) {
+    void print() {
         rep(i, n) {
             cout << query(i, i+1);
             if (i == n-1) cout << endl;
@@ -64,12 +72,12 @@ struct BIT {
     // 区間[l, r]を左から右に向かってx番目の値がある位置
     ll bisearch_fore(int l, int r, ll x) {
         if (l > r) return -1;
-        ll l_sm = sum(l-1);
+        ll l_sm = sum(l);
         int ok = r + 1;
         int ng = l - 1;
         while (ng+1 < ok) {
             int mid = (ok+ng) / 2;
-            if (sum(mid) - l_sm >= x) {
+            if (sum(mid+1) - l_sm >= x) {
                 ok = mid;
             } else {
                 ng = mid;
@@ -85,12 +93,12 @@ struct BIT {
     // 区間[l, r]を右から左に向かってx番目の値がある位置
     ll bisearch_back(int l, int r, ll x) {
         if (l > r) return -1;
-        ll r_sm = sum(r);
+        ll r_sm = sum(r+1);
         int ok = l - 1;
         int ng = r + 1;
         while (ok+1 < ng) {
             int mid = (ok+ng) / 2;
-            if (r_sm - sum(mid-1) >= x) {
+            if (r_sm - sum(mid) >= x) {
                 ok = mid;
             } else {
                 ng = mid;
@@ -101,5 +109,31 @@ struct BIT {
         } else {
             return -1;
         }
+    }
+
+    // 参考：https://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp
+    // 区間[0,k]の総和がx以上となる最小のkを返す。数列が単調増加であることを要求する。
+    // (logが1つなので、TL厳しい時はこちらを使う。)
+    int lower_bound(T x) const {
+        int i = 0;
+        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {
+            if (i + k <= n && dat[i+k] < x) {
+                x -= dat[i+k];
+                i += k;
+            }
+        }
+        return i;
+    }
+
+    // 区間[0,k]の総和がxを上回る最小のkを返す。数列が単調増加であることを要求する。(未verify)
+    int upper_bound(T x) const {
+        int i = 0;
+        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {
+            if (i + k <= n && dat[i+k] <= x) {
+                x -= dat[i+k];
+                i += k;
+            }
+        }
+        return i;
     }
 };

@@ -47,3 +47,15 @@ struct Mo {
 // };
 // auto out = [&](int i) -> void {
 // };
+
+// 左右に区別がある時はこっち
+// auto add_left = [&](int i) -> void {
+// };
+// auto erase_left = [&](int i) -> void {
+// };
+// auto add_right = [&](int i) -> void {
+// };
+// auto erase_right = [&](int i) -> void {
+// };
+// auto out = [&](int i) -> void {
+// };

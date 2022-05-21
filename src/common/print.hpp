@@ -31,10 +31,10 @@ void print(const vector<pair<T1, T2>> &V) {
 }
 
 template<typename T>
-void print(const vector<T> &V) {
+void print(const vector<T> &V, char sep=' ') {
     rep(i, V.size()) {
         cout << V[i];
-        if (i != V.size()-1) cout << ' ';
+        if (i != V.size()-1) cout << sep;
     }
     cout << '\n';
 }

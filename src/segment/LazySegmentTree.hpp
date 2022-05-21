@@ -28,6 +28,12 @@ struct LazySegmentTree {
                                     const Monoid &M1, const OperatorMonoid OM0)
             : f(f), g(g), h(h), M1(M1), OM0(OM0) {}
 
+    LazySegmentTree(const vector<Monoid> &A, const F f, const G g, const H h,
+                                    const Monoid &M1, const OperatorMonoid OM0)
+            : f(f), g(g), h(h), M1(M1), OM0(OM0) {
+        build(A);
+    }
+
     void set(int k, const Monoid &x) {
         data[k + sz] = x;
     }
@@ -109,7 +115,7 @@ struct LazySegmentTree {
     void print(int n) {
         for (int i=0; i<n; i++) {
             cout << (P)query(i, i+1);
-            if (i == n-1) cout << '\n';
+            if (i == n-1) cout << endl;
             else cout << ' ';
         }
     }
@@ -175,4 +181,9 @@ LazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const F& f, const G& g, con
 template<typename F, typename G, typename H, typename T, typename E>
 LazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(int N, const F& f, const G& g, const H& h, const T& ti, const E& ei) {
     return {N, f, g, h, ti, ei};
+}
+
+template<typename F, typename G, typename H, typename T, typename E>
+LazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const vector<T> &A, const F& f, const G& g, const H& h, const T& ti, const E& ei) {
+    return {A, f, g, h, ti, ei};
 }

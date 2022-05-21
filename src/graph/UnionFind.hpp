@@ -8,6 +8,28 @@ struct UnionFind {
     vector<bool> tree;
 
     UnionFind(int n) : n(n) {
+        build();
+    }
+
+    UnionFind() {}
+
+    // 既存の連結情報からUFを生成
+    UnionFind(const vector<int>& info) : n(info.size()) {
+        build();
+        vvi adj(n);
+        rep(i, n) {
+            adj[info[i]].eb(i);
+        }
+        rep(i, n) {
+            if (adj[i].size()) {
+                rep(j, adj[i].size()-1) {
+                    merge(adj[i][j], adj[i][j+1]);
+                }
+            }
+        }
+    }
+
+    void build() {
         par.assign(n, 0);
         rank.assign(n, 0);
         sz.assign(n, 1);
@@ -15,8 +37,6 @@ struct UnionFind {
         rep(i, n) par[i] = i;
         groupcnt = n;
     }
-
-    UnionFind() {}
 
     void resize(int _n) {
         n = _n;
@@ -89,6 +109,15 @@ struct UnionFind {
         set<int> res;
         rep(i, n) {
             res.insert(find(i));
+        }
+        return res;
+    }
+
+    // 全頂点のグループ番号を取得
+    vector<int> get_info() {
+        vector<int> res(n);
+        rep(i, n) {
+            res[i] = find(i);
         }
         return res;
     }
