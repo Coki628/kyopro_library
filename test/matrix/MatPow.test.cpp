@@ -20,6 +20,7 @@ constexpr long double PI = M_PI;
 #include "common/print.hpp"
 #include "common/sum.hpp"
 #include "combinatorics/ModInt.hpp"
+using mint = ModInt<MOD>;
 
 #include "matrix/MatPow.hpp"
 
