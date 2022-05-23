@@ -8,7 +8,7 @@ data:
   - icon: ':warning:'
     path: src/combinatorics/ArbitraryModInt.hpp
     title: src/combinatorics/ArbitraryModInt.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
   - icon: ':warning:'
@@ -77,7 +77,7 @@ data:
   - icon: ':warning:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
@@ -89,7 +89,7 @@ data:
   - icon: ':warning:'
     path: src/common/join.hpp
     title: src/common/join.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
   - icon: ':warning:'
@@ -110,7 +110,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -128,7 +128,7 @@ data:
   - icon: ':warning:'
     path: src/common/subarray.hpp
     title: src/common/subarray.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
   - icon: ':warning:'
@@ -299,7 +299,7 @@ data:
   - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -335,7 +335,7 @@ data:
   - icon: ':warning:'
     path: src/math/lagrange_polynomial.hpp
     title: src/math/lagrange_polynomial.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
   - icon: ':warning:'
@@ -350,7 +350,7 @@ data:
   - icon: ':warning:'
     path: src/matrix/gauss_jordan_real.hpp
     title: src/matrix/gauss_jordan_real.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
   - icon: ':warning:'
@@ -561,12 +561,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/bfs.test.cpp
     title: test/graph/bfs.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "src/base.hpp"
@@ -774,7 +774,7 @@ data:
   - src/graph/HeavyLightDecomposition.hpp
   - src/graph/UnionFindUndo.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp
   - test/common/bisect.test.cpp

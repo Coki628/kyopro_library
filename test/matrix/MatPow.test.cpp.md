@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/combinatorics/ModInt.hpp
     title: src/combinatorics/ModInt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/1299
@@ -54,15 +54,15 @@ data:
     // constexpr int MOD = 1000000007;\nconstexpr int MOD = 998244353;\nconstexpr\
     \ long double EPS = 1e-10;\nconstexpr long double PI = M_PI;\n\n#include \"macros.hpp\"\
     \n#include \"common/input.hpp\"\n#include \"common/print.hpp\"\n#include \"common/sum.hpp\"\
-    \n#include \"combinatorics/ModInt.hpp\"\n\n#include \"matrix/MatPow.hpp\"\n\n\
-    void solve() {\n    ll N, K;\n    cin >> N >> K;\n    auto A = LIST(N);\n\n  \
-    \  mint invN = (mint)1/(mint)N;\n    vector<vector<mint>> mat = {\n        {1,\
-    \ N},\n        {invN, 1},\n    };\n    vector<mint> init = { sum(A), (mint)sum(A)*invN\
-    \ };\n    MatPow<mint> mp;\n    auto res = mp.solve(mat, init, K);\n    print(res[0]);\n\
-    }\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n    cout\
-    \ << fixed << setprecision(15);\n\n    // single test case\n    solve();\n\n \
-    \   // multi test cases\n    // int T;\n    // cin >> T;\n    // while (T--) solve();\n\
-    \n    return 0;\n}\n"
+    \n#include \"combinatorics/ModInt.hpp\"\nusing mint = ModInt<MOD>;\n\n#include\
+    \ \"matrix/MatPow.hpp\"\n\nvoid solve() {\n    ll N, K;\n    cin >> N >> K;\n\
+    \    auto A = LIST(N);\n\n    mint invN = (mint)1/(mint)N;\n    vector<vector<mint>>\
+    \ mat = {\n        {1, N},\n        {invN, 1},\n    };\n    vector<mint> init\
+    \ = { sum(A), (mint)sum(A)*invN };\n    MatPow<mint> mp;\n    auto res = mp.solve(mat,\
+    \ init, K);\n    print(res[0]);\n}\n\nint main() {\n    cin.tie(0);\n    ios::sync_with_stdio(false);\n\
+    \    cout << fixed << setprecision(15);\n\n    // single test case\n    solve();\n\
+    \n    // multi test cases\n    // int T;\n    // cin >> T;\n    // while (T--)\
+    \ solve();\n\n    return 0;\n}\n"
   dependsOn:
   - src/base.hpp
   - src/macros.hpp
@@ -76,8 +76,8 @@ data:
   isVerificationFile: true
   path: test/matrix/MatPow.test.cpp
   requiredBy: []
-  timestamp: '2022-05-22 00:24:51+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2022-05-23 10:42:27+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/matrix/MatPow.test.cpp
 layout: document

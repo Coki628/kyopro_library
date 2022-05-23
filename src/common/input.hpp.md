@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -61,7 +61,7 @@ data:
   requiredBy:
   - src/template.hpp
   timestamp: '2022-03-31 10:55:07+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp
   - test/common/bisect.test.cpp
