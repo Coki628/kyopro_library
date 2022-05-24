@@ -88,6 +88,15 @@ data:
       path: src/common/Doubling.hpp
       title: src/common/Doubling.hpp
     - icon: ':warning:'
+      path: src/common/HashMap.hpp
+      title: src/common/HashMap.hpp
+    - icon: ':warning:'
+      path: src/common/HashMapImpl.hpp
+      title: src/common/HashMapImpl.hpp
+    - icon: ':warning:'
+      path: src/common/HashSet.hpp
+      title: src/common/HashSet.hpp
+    - icon: ':warning:'
       path: src/common/LIS.hpp
       title: src/common/LIS.hpp
     - icon: ':warning:'

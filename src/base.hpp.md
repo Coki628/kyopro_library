@@ -45,6 +45,15 @@ data:
     path: src/common/Doubling.hpp
     title: src/common/Doubling.hpp
   - icon: ':warning:'
+    path: src/common/HashMap.hpp
+    title: src/common/HashMap.hpp
+  - icon: ':warning:'
+    path: src/common/HashMapImpl.hpp
+    title: src/common/HashMapImpl.hpp
+  - icon: ':warning:'
+    path: src/common/HashSet.hpp
+    title: src/common/HashSet.hpp
+  - icon: ':warning:'
     path: src/common/LIS.hpp
     title: src/common/LIS.hpp
   - icon: ':warning:'
@@ -663,11 +672,14 @@ data:
   - src/common/join.hpp
   - src/common/print.hpp
   - src/common/listnd.hpp
+  - src/common/HashMap.hpp
   - src/common/bisect.hpp
   - src/common/yesno.hpp
   - src/common/Timer.hpp
   - src/common/sorted.hpp
   - src/common/Doubling.hpp
+  - src/common/HashSet.hpp
+  - src/common/HashMapImpl.hpp
   - src/common/RLE.hpp
   - src/common/mapping.hpp
   - src/common/split.hpp
