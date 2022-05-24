@@ -1,27 +1,78 @@
 #include "../base.hpp"
 #include "UnionFindUndo.hpp"
+#include "common/HashMap.hpp"
 
 // 参考：https://ei1333.github.io/library/other/offline-dynamic-connectivity.cpp
 // 　　　https://ei1333.github.io/luzhiled/snippets/other/offline-dynamic-connectivity.html
+// 　　　https://nyaannyaan.github.io/library/graph/offline-dynamic-connectivity.hpp
 // オフラインダイコネ
 struct OfflineDynamicConnectivity {
     using edge = pair< int, int >;
 
-    UnionFindUndo uf;
+private:
     int V, Q, segsz;
     vector< vector< edge > > seg;
+    vector< pair< pair< int, int >, edge > > pend;
+    HashMap< edge, int > cnt, appear;
+
+    void add(int l, int r, const edge &e) {
+        int L = l + segsz;
+        int R = r + segsz;
+        while (L < R) {
+            if (L & 1) seg[L++].push_back(e);
+            if (R & 1) seg[--R].push_back(e);
+            L >>= 1, R >>= 1;
+        }
+    }
+
+    // クエリを全て与えた後に呼び出す
+    void build() {
+        for (auto &p : cnt) {
+            if (p.second > 0) pend.emplace_back(make_pair(appear[p.first], Q), p.first);
+        }
+        for (auto &s : pend) {
+            add(s.first.first, s.first.second, s.second);
+        }
+    }
+
+    template<typename F>
+    void _run(const F &f, int k, int l, int r) {
+        if (Q <= l) return;
+        int tmp = 0;
+        for (auto &e : seg[k]) {
+            tmp += uf.merge(e.first, e.second);
+        }
+        comp -= tmp;
+        if (l + 1 == r) {
+            f(l);
+        } else {
+            _run(f, 2 * k + 0, l, (l+r) >> 1);
+            _run(f, 2 * k + 1, (l+r) >> 1, r);
+        }
+        for (auto &e : seg[k]) {
+            uf.undo();
+        }
+        comp += tmp;
+    }
+
+public:
+    UnionFindUndo uf;
     // 連結成分数
     int comp;
 
-    vector< pair< pair< int, int >, edge > > pend;
-    map< edge, int > cnt, appear;
-
     // 頂点数V、Q個のクエリで初期化
-    // (このQ個には、辺の追加・削除・回答クエリ全てが含まれる。クエリ数と言うより経過時間の最大)
+    // (このQ個には、辺の追加・削除・回答クエリ全てが含まれる。クエリ数と言うより経過時間の最大。
+    //  なお、次のクエリが来るまでの辺の追加削除は同時刻にまとめてOK。)
     OfflineDynamicConnectivity(int V, int Q) : uf(V), V(V), Q(Q), comp(V) {
         segsz = 1;
         while (segsz < Q) segsz <<= 1;
-        seg.resize(2 * segsz - 1);
+        seg.resize(2 * segsz);
+    }
+
+    // 一応作ったんだけど、これやっても速くならなかった。
+    void reserve(int n) {
+        cnt.reserve(n);
+        appear.reserve(n);
     }
 
     // 時刻idxに辺(s,t)を追加
@@ -36,48 +87,10 @@ struct OfflineDynamicConnectivity {
         if (--cnt[e] == 0) pend.emplace_back(make_pair(appear[e], idx), e);
     }
 
-    void add(int a, int b, const edge &e, int k, int l, int r) {
-        if (r <= a || b <= l) return;
-        if (a <= l && r <= b) {
-            seg[k].emplace_back(e);
-            return;
-        }
-        add(a, b, e, 2 * k + 1, l, (l + r) >> 1);
-        add(a, b, e, 2 * k + 2, (l + r) >> 1, r);
-    }
-
-    void add(int a, int b, const edge &e) {
-        add(a, b, e, 0, 0, segsz);
-    }
-
-    // クエリを全て与えた後に呼び出す
-    void build() {
-        for (auto &p : cnt) {
-            if (p.second > 0) pend.emplace_back(make_pair(appear[p.first], Q), p.first);
-        }
-        for (auto &s : pend) {
-            add(s.first.first, s.first.second, s.second);
-        }
-    }
-
-    // build()実行後に呼び出す、各i(0<=i<Q)についてf(i)が呼び出される
+    // build()実行後に動作、各i(0<=i<Q)についてf(i)が呼び出される
     template<typename F>
-    void run(const F &f, int k = 0) {
-        int add = 0;
-        for (auto &e : seg[k]) {
-            add += uf.merge(e.first, e.second);
-        }
-        comp -= add;
-        if (k < segsz - 1) {
-            run(f, 2 * k + 1);
-            run(f, 2 * k + 2);
-        } else if (k - (segsz - 1) < Q) {
-            int query_index = k - (segsz - 1);
-            f(query_index);
-        }
-        for (auto &e : seg[k]) {
-            uf.undo();
-        }
-        comp += add;
+    void run(const F &f) {
+        build();
+        _run(f, 1, 0, segsz);
     }
 };
