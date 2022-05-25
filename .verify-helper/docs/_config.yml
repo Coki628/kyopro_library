@@ -1,1 +1,1 @@
-exclude: ["ac-library", ".gitmodules"]
+exclude: ["ac-library"]
