@@ -6,8 +6,8 @@ data:
     title: src/base.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: src/segment/WaveletMatrix.hpp
-    title: src/segment/WaveletMatrix.hpp
+    path: src/segment/_WaveletMatrix.hpp
+    title: src/segment/_WaveletMatrix.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -47,7 +47,7 @@ data:
   isVerificationFile: false
   path: src/segment/SuccinctIndexableDictionary.hpp
   requiredBy:
-  - src/segment/WaveletMatrix.hpp
+  - src/segment/_WaveletMatrix.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

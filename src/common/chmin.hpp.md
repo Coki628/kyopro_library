@@ -24,8 +24,8 @@ data:
     path: src/numbers/XorBasis.hpp
     title: src/numbers/XorBasis.hpp
   - icon: ':warning:'
-    path: src/numbers/xor_basis.hpp
-    title: src/numbers/xor_basis.hpp
+    path: src/numbers/_xor_basis.hpp
+    title: src/numbers/_xor_basis.hpp
   - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
@@ -47,7 +47,7 @@ data:
   path: src/common/chmin.hpp
   requiredBy:
   - src/numbers/XorBasis.hpp
-  - src/numbers/xor_basis.hpp
+  - src/numbers/_xor_basis.hpp
   - src/template.hpp
   - src/common/min.hpp
   - src/graph/warshall_floyd.hpp

@@ -285,6 +285,9 @@ data:
     path: src/numbers/_factorize.hpp
     title: src/numbers/_factorize.hpp
   - icon: ':warning:'
+    path: src/numbers/_xor_basis.hpp
+    title: src/numbers/_xor_basis.hpp
+  - icon: ':warning:'
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
   - icon: ':warning:'
@@ -323,9 +326,6 @@ data:
   - icon: ':warning:'
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
-  - icon: ':warning:'
-    path: src/numbers/xor_basis.hpp
-    title: src/numbers/xor_basis.hpp
   - icon: ':warning:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
@@ -453,6 +453,7 @@ data:
   - src/numbers/divisors.hpp
   - src/numbers/bsgs.hpp
   - src/numbers/isqrt.hpp
+  - src/numbers/_xor_basis.hpp
   - src/numbers/dton.hpp
   - src/numbers/digit_sum.hpp
   - src/numbers/number_le_n_with_a_b.hpp
@@ -460,7 +461,6 @@ data:
   - src/numbers/Eratosthenes.hpp
   - src/numbers/segment_sieve.hpp
   - src/numbers/_eratosthenes_sieve.hpp
-  - src/numbers/xor_basis.hpp
   - src/numbers/ntod.hpp
   - src/numbers/pythagorean_triple.hpp
   - src/numbers/gcd.hpp

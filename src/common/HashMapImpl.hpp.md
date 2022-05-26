@@ -14,6 +14,9 @@ data:
   - icon: ':warning:'
     path: src/graph/OfflineDynamicConnectivity.hpp
     title: src/graph/OfflineDynamicConnectivity.hpp
+  - icon: ':warning:'
+    path: src/numbers/bsgs.hpp
+    title: src/numbers/bsgs.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -250,6 +253,7 @@ data:
   isVerificationFile: false
   path: src/common/HashMapImpl.hpp
   requiredBy:
+  - src/numbers/bsgs.hpp
   - src/common/HashMap.hpp
   - src/common/HashSet.hpp
   - src/graph/OfflineDynamicConnectivity.hpp

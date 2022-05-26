@@ -490,6 +490,9 @@ data:
       path: src/numbers/_factorize.hpp
       title: src/numbers/_factorize.hpp
     - icon: ':warning:'
+      path: src/numbers/_xor_basis.hpp
+      title: src/numbers/_xor_basis.hpp
+    - icon: ':warning:'
       path: src/numbers/arithmetic_sequence_sum.hpp
       title: src/numbers/arithmetic_sequence_sum.hpp
     - icon: ':warning:'
@@ -543,9 +546,6 @@ data:
     - icon: ':warning:'
       path: src/numbers/segment_sieve.hpp
       title: src/numbers/segment_sieve.hpp
-    - icon: ':warning:'
-      path: src/numbers/xor_basis.hpp
-      title: src/numbers/xor_basis.hpp
   - name: src/segment
     pages:
     - icon: ':warning:'
@@ -563,6 +563,9 @@ data:
     - icon: ':warning:'
       path: src/segment/BIT2D.hpp
       title: src/segment/BIT2D.hpp
+    - icon: ':warning:'
+      path: src/segment/BinaryTrie.hpp
+      title: src/segment/BinaryTrie.hpp
     - icon: ':warning:'
       path: src/segment/DynamicLiChaoTree.hpp
       title: src/segment/DynamicLiChaoTree.hpp
@@ -605,6 +608,9 @@ data:
     - icon: ':warning:'
       path: src/segment/WaveletMatrix.hpp
       title: src/segment/WaveletMatrix.hpp
+    - icon: ':warning:'
+      path: src/segment/_WaveletMatrix.hpp
+      title: src/segment/_WaveletMatrix.hpp
     - icon: ':warning:'
       path: src/segment/_accumulate.hpp
       title: src/segment/_accumulate.hpp

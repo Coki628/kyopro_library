@@ -402,6 +402,9 @@ data:
     path: src/numbers/_factorize.hpp
     title: src/numbers/_factorize.hpp
   - icon: ':warning:'
+    path: src/numbers/_xor_basis.hpp
+    title: src/numbers/_xor_basis.hpp
+  - icon: ':warning:'
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
   - icon: ':warning:'
@@ -447,9 +450,6 @@ data:
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
   - icon: ':warning:'
-    path: src/numbers/xor_basis.hpp
-    title: src/numbers/xor_basis.hpp
-  - icon: ':warning:'
     path: src/segment/Accumulate.hpp
     title: src/segment/Accumulate.hpp
   - icon: ':warning:'
@@ -464,6 +464,9 @@ data:
   - icon: ':warning:'
     path: src/segment/BIT2D.hpp
     title: src/segment/BIT2D.hpp
+  - icon: ':warning:'
+    path: src/segment/BinaryTrie.hpp
+    title: src/segment/BinaryTrie.hpp
   - icon: ':warning:'
     path: src/segment/DynamicLiChaoTree.hpp
     title: src/segment/DynamicLiChaoTree.hpp
@@ -506,6 +509,9 @@ data:
   - icon: ':warning:'
     path: src/segment/WaveletMatrix.hpp
     title: src/segment/WaveletMatrix.hpp
+  - icon: ':warning:'
+    path: src/segment/_WaveletMatrix.hpp
+    title: src/segment/_WaveletMatrix.hpp
   - icon: ':warning:'
     path: src/segment/_accumulate.hpp
     title: src/segment/_accumulate.hpp
@@ -609,6 +615,7 @@ data:
   - src/numbers/bsgs.hpp
   - src/numbers/isqrt.hpp
   - src/numbers/gcd_convolution.hpp
+  - src/numbers/_xor_basis.hpp
   - src/numbers/factorize.hpp
   - src/numbers/dton.hpp
   - src/numbers/digit_sum.hpp
@@ -617,7 +624,6 @@ data:
   - src/numbers/Eratosthenes.hpp
   - src/numbers/segment_sieve.hpp
   - src/numbers/_eratosthenes_sieve.hpp
-  - src/numbers/xor_basis.hpp
   - src/numbers/ntod.hpp
   - src/numbers/pythagorean_triple.hpp
   - src/numbers/gcd.hpp
@@ -707,6 +713,7 @@ data:
   - src/segment/_accumulate.hpp
   - src/segment/SuccinctIndexableDictionary.hpp
   - src/segment/Imos2D.hpp
+  - src/segment/_WaveletMatrix.hpp
   - src/segment/WaveletMatrix.hpp
   - src/segment/Accumulate2D.hpp
   - src/segment/SegmentTree.hpp
@@ -723,6 +730,7 @@ data:
   - src/segment/Mo.hpp
   - src/segment/get_inversion.hpp
   - src/segment/BIT2.hpp
+  - src/segment/BinaryTrie.hpp
   - src/segment/LazySegmentTreeArithmetric.hpp
   - src/geometry/Circle.hpp
   - src/geometry/cross.hpp

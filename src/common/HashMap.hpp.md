@@ -11,6 +11,9 @@ data:
   - icon: ':warning:'
     path: src/graph/OfflineDynamicConnectivity.hpp
     title: src/graph/OfflineDynamicConnectivity.hpp
+  - icon: ':warning:'
+    path: src/numbers/bsgs.hpp
+    title: src/numbers/bsgs.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -146,7 +149,8 @@ data:
     \ (base::dflag[h] == true) base::data[h].second = Val();\n                return\
     \ base::data[h].second;\n            }\n            h = (h + 1) & (base::cap -\
     \ 1);\n        }\n    }\n\n    typename base::itr emplace(const Key& key, const\
-    \ Val& val) {\n        return base::insert(Data(key, val));\n    }\n};\n"
+    \ Val& val) {\n        return base::insert(Data(key, val));\n    }\n\n    bool\
+    \ count(const Key& k) {\n        return this->contain(k);\n    }\n};\n"
   code: "#pragma once\n#include \"../base.hpp\"\n#include \"HashMapImpl.hpp\"\n\n\
     // \u53C2\u8003\uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashmap.hpp\n\
     template <typename Key, typename Val>\nstruct HashMap : HashMapImpl::HashMapBase<Key,\
@@ -163,15 +167,17 @@ data:
     \ (base::dflag[h] == true) base::data[h].second = Val();\n                return\
     \ base::data[h].second;\n            }\n            h = (h + 1) & (base::cap -\
     \ 1);\n        }\n    }\n\n    typename base::itr emplace(const Key& key, const\
-    \ Val& val) {\n        return base::insert(Data(key, val));\n    }\n};\n"
+    \ Val& val) {\n        return base::insert(Data(key, val));\n    }\n\n    bool\
+    \ count(const Key& k) {\n        return this->contain(k);\n    }\n};\n"
   dependsOn:
   - src/base.hpp
   - src/common/HashMapImpl.hpp
   isVerificationFile: false
   path: src/common/HashMap.hpp
   requiredBy:
+  - src/numbers/bsgs.hpp
   - src/graph/OfflineDynamicConnectivity.hpp
-  timestamp: '2022-05-24 16:45:48+09:00'
+  timestamp: '2022-05-27 01:45:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/HashMap.hpp

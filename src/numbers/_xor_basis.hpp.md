@@ -34,7 +34,7 @@ data:
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
     src/common/chmin.hpp\"\n\ntemplate<typename T>\nbool chmin(T &x, T y) {\n    return\
-    \ (y < x) ? x = y, true : false;\n}\n#line 3 \"src/numbers/xor_basis.hpp\"\n\n\
+    \ (y < x) ? x = y, true : false;\n}\n#line 3 \"src/numbers/_xor_basis.hpp\"\n\n\
     // XOR\u57FA\u5E95(\u30AF\u30E9\u30B9\u7248\u4F5C\u3063\u305F\u3051\u3069\u3001\
     \u4F55\u56DE\u304B\u4F7F\u3046\u307E\u3067\u4E00\u5FDC\u3053\u3063\u3061\u3082\
     \u53D6\u3063\u3066\u304A\u304F)\ntemplate<typename T>\nvector<T> get_xor_basis(const\
@@ -53,15 +53,15 @@ data:
   - src/base.hpp
   - src/common/chmin.hpp
   isVerificationFile: false
-  path: src/numbers/xor_basis.hpp
+  path: src/numbers/_xor_basis.hpp
   requiredBy: []
-  timestamp: '2022-04-19 01:28:42+09:00'
+  timestamp: '2022-05-27 01:45:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/numbers/xor_basis.hpp
+documentation_of: src/numbers/_xor_basis.hpp
 layout: document
 redirect_from:
-- /library/src/numbers/xor_basis.hpp
-- /library/src/numbers/xor_basis.hpp.html
-title: src/numbers/xor_basis.hpp
+- /library/src/numbers/_xor_basis.hpp
+- /library/src/numbers/_xor_basis.hpp.html
+title: src/numbers/_xor_basis.hpp
 ---

@@ -6,6 +6,9 @@ data:
     path: src/combinatorics/AnyModTools.hpp
     title: src/combinatorics/AnyModTools.hpp
   - icon: ':warning:'
+    path: src/numbers/bsgs.hpp
+    title: src/numbers/bsgs.hpp
+  - icon: ':warning:'
     path: src/numbers/inv_mod.hpp
     title: src/numbers/inv_mod.hpp
   _extendedVerifiedWith: []
@@ -28,6 +31,7 @@ data:
   isVerificationFile: false
   path: src/numbers/extgcd.hpp
   requiredBy:
+  - src/numbers/bsgs.hpp
   - src/numbers/inv_mod.hpp
   - src/combinatorics/AnyModTools.hpp
   timestamp: '2022-03-24 10:49:13+09:00'

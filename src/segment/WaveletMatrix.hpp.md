@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':warning:'
-    path: src/segment/SuccinctIndexableDictionary.hpp
-    title: src/segment/SuccinctIndexableDictionary.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -14,164 +11,150 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links:
-    - https://ei1333.github.io/library/structure/wavelet/wavelet-matrix.cpp
+    - https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/segment/SuccinctIndexableDictionary.hpp\"\n\
-    \n// \u5B8C\u5099\u8F9E\u66F8(Wavelet Matrix\u3068\u30BB\u30C3\u30C8\u3067\u4F7F\
-    \u3046)\nstruct SuccinctIndexableDictionary {\n    size_t length;\n    size_t\
-    \ blocks;\n    vector< unsigned > bit, sum;\n\n    SuccinctIndexableDictionary()\
-    \ = default;\n\n    SuccinctIndexableDictionary(size_t length) : length(length),\
-    \ blocks((length + 31) >> 5) {\n        bit.assign(blocks, 0U);\n        sum.assign(blocks,\
-    \ 0U);\n    }\n\n    void set(int k) {\n        bit[k >> 5] |= 1U << (k & 31);\n\
-    \    }\n\n    void build() {\n        sum[0] = 0U;\n        for(int i = 1; i <\
-    \ blocks; i++) {\n        sum[i] = sum[i - 1] + __builtin_popcount(bit[i - 1]);\n\
-    \        }\n    }\n\n    bool operator[](int k) {\n        return (bool((bit[k\
-    \ >> 5] >> (k & 31)) & 1));\n    }\n\n    int rank(int k) {\n        return (sum[k\
-    \ >> 5] + __builtin_popcount(bit[k >> 5] & ((1U << (k & 31)) - 1)));\n    }\n\n\
-    \    int rank(bool val, int k) {\n        return (val ? rank(k) : k - rank(k));\n\
-    \    }\n};\n#line 3 \"src/segment/WaveletMatrix.hpp\"\n\n// \u53C2\u8003\uFF1A\
-    https://ei1333.github.io/library/structure/wavelet/wavelet-matrix.cpp\n// Wavelet\
-    \ Matrix\n// \u4F7F\u7528\u4E0A\u306E\u6CE8\u610F\u70B9\n// \u30FB\u5165\u308C\
-    \u308B\u5024\u306F\u8CA0\u6570\u3060\u3068(Compressed\u306E\u65B9\u3092\u4F7F\u3046\
-    \u3068\u3057\u3066\u3082)\u30D0\u30B0\u308B\u306E\u3067\u3001\n// \u3000\u8CA0\
-    \u6570\u304C\u3042\u308B\u6642\u306F\u5FC5\u305A\u4E88\u3081\u5EA7\u5727\u3057\
-    \u3066\u304B\u3089\u4F7F\u3046\u3053\u3068\u3002\n\n// Wavelet Matrix\ntemplate<\
-    \ typename T, int MAXLOG >\nstruct WaveletMatrix {\n    size_t length;\n    SuccinctIndexableDictionary\
-    \ matrix[MAXLOG];\n    int mid[MAXLOG];\n\n    WaveletMatrix() = default;\n\n\
-    \    WaveletMatrix(vector< T > v) : length(v.size()) {\n        vector< T > l(length),\
-    \ r(length);\n        for(int level = MAXLOG - 1; level >= 0; level--) {\n   \
-    \     matrix[level] = SuccinctIndexableDictionary(length + 1);\n        int left\
-    \ = 0, right = 0;\n        for(int i = 0; i < length; i++) {\n            if(((v[i]\
-    \ >> level) & 1)) {\n            matrix[level].set(i);\n            r[right++]\
-    \ = v[i];\n            } else {\n            l[left++] = v[i];\n            }\n\
-    \        }\n        mid[level] = left;\n        matrix[level].build();\n     \
-    \   v.swap(l);\n        for(int i = 0; i < right; i++) {\n            v[left +\
-    \ i] = r[i];\n        }\n        }\n    }\n\n    pair< int, int > succ(bool f,\
-    \ int l, int r, int level) {\n        return {matrix[level].rank(f, l) + mid[level]\
-    \ * f, matrix[level].rank(f, r) + mid[level] * f};\n    }\n\n    // v[k]\n   \
-    \ T access(int k) {\n        T ret = 0;\n        for(int level = MAXLOG - 1; level\
-    \ >= 0; level--) {\n        bool f = matrix[level][k];\n        if(f) ret |= T(1)\
-    \ << level;\n        k = matrix[level].rank(f, k) + mid[level] * f;\n        }\n\
-    \        return ret;\n    }\n\n    T operator[](const int &k) {\n        return\
-    \ access(k);\n    }\n\n    // count i s.t. (0 <= i < r) && v[i] == x\n    int\
-    \ rank(const T &x, int r) {\n        int l = 0;\n        for(int level = MAXLOG\
-    \ - 1; level >= 0; level--) {\n        tie(l, r) = succ((x >> level) & 1, l, r,\
-    \ level);\n        }\n        return r - l;\n    }\n\n    // k-th(0-indexed) smallest\
-    \ number in v[l,r)\n    T kth_smallest(int l, int r, int k) {\n        assert(0\
-    \ <= k && k < r - l);\n        T ret = 0;\n        for(int level = MAXLOG - 1;\
-    \ level >= 0; level--) {\n        int cnt = matrix[level].rank(false, r) - matrix[level].rank(false,\
-    \ l);\n        bool f = cnt <= k;\n        if(f) {\n            ret |= T(1) <<\
-    \ level;\n            k -= cnt;\n        }\n        tie(l, r) = succ(f, l, r,\
-    \ level);\n        }\n        return ret;\n    }\n\n    // k-th(0-indexed) largest\
-    \ number in v[l,r)\n    T kth_largest(int l, int r, int k) {\n        return kth_smallest(l,\
-    \ r, r - l - k - 1);\n    }\n\n    // count i s.t. (l <= i < r) && (v[i] < upper)\n\
-    \    int range_freq(int l, int r, T upper) {\n        assert(upper >= 0);\n  \
-    \      int ret = 0;\n        for(int level = MAXLOG - 1; level >= 0; level--)\
-    \ {\n        bool f = ((upper >> level) & 1);\n        if(f) ret += matrix[level].rank(false,\
-    \ r) - matrix[level].rank(false, l);\n        tie(l, r) = succ(f, l, r, level);\n\
-    \        }\n        return ret;\n    }\n\n    // count i s.t. (l <= i < r) &&\
-    \ (lower <= v[i] < upper)\n    int range_freq(int l, int r, T lower, T upper)\
-    \ {\n        return range_freq(l, r, upper) - range_freq(l, r, lower);\n    }\n\
-    \n    // max v[i] s.t. (l <= i < r) && (v[i] < upper)\n    T prev_value(int l,\
-    \ int r, T upper) {\n        int cnt = range_freq(l, r, upper);\n        return\
-    \ cnt == 0 ? T(-1) : kth_smallest(l, r, cnt - 1);\n    }\n\n    // min v[i] s.t.\
-    \ (l <= i < r) && (lower <= v[i])\n    T next_value(int l, int r, T lower) {\n\
-    \        int cnt = range_freq(l, r, lower);\n        return cnt == r - l ? T(-1)\
-    \ : kth_smallest(l, r, cnt);\n    }\n};\n\ntemplate< typename T, int MAXLOG >\n\
-    struct CompressedWaveletMatrix {\n    WaveletMatrix< int, MAXLOG > mat;\n    vector<\
-    \ T > ys;\n\n    CompressedWaveletMatrix(const vector< T > &v) : ys(v) {\n   \
-    \     sort(begin(ys), end(ys));\n        ys.erase(unique(begin(ys), end(ys)),\
-    \ end(ys));\n        vector< int > t(v.size());\n        for(int i = 0; i < v.size();\
-    \ i++) t[i] = get(v[i]);\n        mat = WaveletMatrix< int, MAXLOG >(t);\n   \
-    \ }\n\n    inline int get(const T& x) {\n        return lower_bound(begin(ys),\
-    \ end(ys), x) - begin(ys);\n    }\n\n    T access(int k) {\n        return ys[mat.access(k)];\n\
-    \    }\n\n    T operator[](const int &k) {\n        return access(k);\n    }\n\
-    \n    int rank(const T &x, int r) {\n        auto pos = get(x);\n        if(pos\
-    \ == ys.size() || ys[pos] != x) return 0;\n        return mat.rank(pos, r);\n\
-    \    }\n\n    T kth_smallest(int l, int r, int k) {\n        return ys[mat.kth_smallest(l,\
-    \ r, k)];\n    }\n\n    T kth_largest(int l, int r, int k) {\n        return ys[mat.kth_largest(l,\
-    \ r, k)];\n    }\n\n    int range_freq(int l, int r, T upper) {\n        return\
-    \ mat.range_freq(l, r, get(upper));\n    }\n\n    int range_freq(int l, int r,\
-    \ T lower, T upper) {\n        return mat.range_freq(l, r, get(lower), get(upper));\n\
-    \    }\n\n    T prev_value(int l, int r, T upper) {\n        auto ret = mat.prev_value(l,\
-    \ r, get(upper));\n        return ret == -1 ? T(-1) : ys[ret];\n    }\n\n    T\
-    \ next_value(int l, int r, T lower) {\n        auto ret = mat.next_value(l, r,\
-    \ get(lower));\n        return ret == -1 ? T(-1) : ys[ret];\n    }\n};\n"
-  code: "#include \"../base.hpp\"\n#include \"SuccinctIndexableDictionary.hpp\"\n\n\
-    // \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/wavelet/wavelet-matrix.cpp\n\
-    // Wavelet Matrix\n// \u4F7F\u7528\u4E0A\u306E\u6CE8\u610F\u70B9\n// \u30FB\u5165\
-    \u308C\u308B\u5024\u306F\u8CA0\u6570\u3060\u3068(Compressed\u306E\u65B9\u3092\u4F7F\
-    \u3046\u3068\u3057\u3066\u3082)\u30D0\u30B0\u308B\u306E\u3067\u3001\n// \u3000\
-    \u8CA0\u6570\u304C\u3042\u308B\u6642\u306F\u5FC5\u305A\u4E88\u3081\u5EA7\u5727\
-    \u3057\u3066\u304B\u3089\u4F7F\u3046\u3053\u3068\u3002\n\n// Wavelet Matrix\n\
-    template< typename T, int MAXLOG >\nstruct WaveletMatrix {\n    size_t length;\n\
-    \    SuccinctIndexableDictionary matrix[MAXLOG];\n    int mid[MAXLOG];\n\n   \
-    \ WaveletMatrix() = default;\n\n    WaveletMatrix(vector< T > v) : length(v.size())\
-    \ {\n        vector< T > l(length), r(length);\n        for(int level = MAXLOG\
-    \ - 1; level >= 0; level--) {\n        matrix[level] = SuccinctIndexableDictionary(length\
-    \ + 1);\n        int left = 0, right = 0;\n        for(int i = 0; i < length;\
-    \ i++) {\n            if(((v[i] >> level) & 1)) {\n            matrix[level].set(i);\n\
-    \            r[right++] = v[i];\n            } else {\n            l[left++] =\
-    \ v[i];\n            }\n        }\n        mid[level] = left;\n        matrix[level].build();\n\
-    \        v.swap(l);\n        for(int i = 0; i < right; i++) {\n            v[left\
-    \ + i] = r[i];\n        }\n        }\n    }\n\n    pair< int, int > succ(bool\
-    \ f, int l, int r, int level) {\n        return {matrix[level].rank(f, l) + mid[level]\
-    \ * f, matrix[level].rank(f, r) + mid[level] * f};\n    }\n\n    // v[k]\n   \
-    \ T access(int k) {\n        T ret = 0;\n        for(int level = MAXLOG - 1; level\
-    \ >= 0; level--) {\n        bool f = matrix[level][k];\n        if(f) ret |= T(1)\
-    \ << level;\n        k = matrix[level].rank(f, k) + mid[level] * f;\n        }\n\
-    \        return ret;\n    }\n\n    T operator[](const int &k) {\n        return\
-    \ access(k);\n    }\n\n    // count i s.t. (0 <= i < r) && v[i] == x\n    int\
-    \ rank(const T &x, int r) {\n        int l = 0;\n        for(int level = MAXLOG\
-    \ - 1; level >= 0; level--) {\n        tie(l, r) = succ((x >> level) & 1, l, r,\
-    \ level);\n        }\n        return r - l;\n    }\n\n    // k-th(0-indexed) smallest\
-    \ number in v[l,r)\n    T kth_smallest(int l, int r, int k) {\n        assert(0\
-    \ <= k && k < r - l);\n        T ret = 0;\n        for(int level = MAXLOG - 1;\
-    \ level >= 0; level--) {\n        int cnt = matrix[level].rank(false, r) - matrix[level].rank(false,\
-    \ l);\n        bool f = cnt <= k;\n        if(f) {\n            ret |= T(1) <<\
-    \ level;\n            k -= cnt;\n        }\n        tie(l, r) = succ(f, l, r,\
-    \ level);\n        }\n        return ret;\n    }\n\n    // k-th(0-indexed) largest\
-    \ number in v[l,r)\n    T kth_largest(int l, int r, int k) {\n        return kth_smallest(l,\
-    \ r, r - l - k - 1);\n    }\n\n    // count i s.t. (l <= i < r) && (v[i] < upper)\n\
-    \    int range_freq(int l, int r, T upper) {\n        assert(upper >= 0);\n  \
-    \      int ret = 0;\n        for(int level = MAXLOG - 1; level >= 0; level--)\
-    \ {\n        bool f = ((upper >> level) & 1);\n        if(f) ret += matrix[level].rank(false,\
-    \ r) - matrix[level].rank(false, l);\n        tie(l, r) = succ(f, l, r, level);\n\
-    \        }\n        return ret;\n    }\n\n    // count i s.t. (l <= i < r) &&\
-    \ (lower <= v[i] < upper)\n    int range_freq(int l, int r, T lower, T upper)\
-    \ {\n        return range_freq(l, r, upper) - range_freq(l, r, lower);\n    }\n\
-    \n    // max v[i] s.t. (l <= i < r) && (v[i] < upper)\n    T prev_value(int l,\
-    \ int r, T upper) {\n        int cnt = range_freq(l, r, upper);\n        return\
-    \ cnt == 0 ? T(-1) : kth_smallest(l, r, cnt - 1);\n    }\n\n    // min v[i] s.t.\
-    \ (l <= i < r) && (lower <= v[i])\n    T next_value(int l, int r, T lower) {\n\
-    \        int cnt = range_freq(l, r, lower);\n        return cnt == r - l ? T(-1)\
-    \ : kth_smallest(l, r, cnt);\n    }\n};\n\ntemplate< typename T, int MAXLOG >\n\
-    struct CompressedWaveletMatrix {\n    WaveletMatrix< int, MAXLOG > mat;\n    vector<\
-    \ T > ys;\n\n    CompressedWaveletMatrix(const vector< T > &v) : ys(v) {\n   \
-    \     sort(begin(ys), end(ys));\n        ys.erase(unique(begin(ys), end(ys)),\
-    \ end(ys));\n        vector< int > t(v.size());\n        for(int i = 0; i < v.size();\
-    \ i++) t[i] = get(v[i]);\n        mat = WaveletMatrix< int, MAXLOG >(t);\n   \
-    \ }\n\n    inline int get(const T& x) {\n        return lower_bound(begin(ys),\
-    \ end(ys), x) - begin(ys);\n    }\n\n    T access(int k) {\n        return ys[mat.access(k)];\n\
-    \    }\n\n    T operator[](const int &k) {\n        return access(k);\n    }\n\
-    \n    int rank(const T &x, int r) {\n        auto pos = get(x);\n        if(pos\
-    \ == ys.size() || ys[pos] != x) return 0;\n        return mat.rank(pos, r);\n\
-    \    }\n\n    T kth_smallest(int l, int r, int k) {\n        return ys[mat.kth_smallest(l,\
-    \ r, k)];\n    }\n\n    T kth_largest(int l, int r, int k) {\n        return ys[mat.kth_largest(l,\
-    \ r, k)];\n    }\n\n    int range_freq(int l, int r, T upper) {\n        return\
-    \ mat.range_freq(l, r, get(upper));\n    }\n\n    int range_freq(int l, int r,\
-    \ T lower, T upper) {\n        return mat.range_freq(l, r, get(lower), get(upper));\n\
-    \    }\n\n    T prev_value(int l, int r, T upper) {\n        auto ret = mat.prev_value(l,\
-    \ r, get(upper));\n        return ret == -1 ? T(-1) : ys[ret];\n    }\n\n    T\
-    \ next_value(int l, int r, T lower) {\n        auto ret = mat.next_value(l, r,\
-    \ get(lower));\n        return ret == -1 ? T(-1) : ys[ret];\n    }\n};\n"
+    using namespace std;\n#line 2 \"src/segment/WaveletMatrix.hpp\"\n#include <immintrin.h>\n\
+    \n// \u53C2\u8003\uFF1Ahttps://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp\n\
+    // Wavelet Matrix\n// \u4F7F\u7528\u4E0A\u306E\u6CE8\u610F\u70B9\n// \u30FB\u8CA0\
+    \u6570\u304C\u3042\u308B\u6642\u306F\u5EA7\u5727\u304B\u4E0B\u99C4\u5C65\u304B\
+    \u3059\u304B\u3059\u308B\u3002\n// \u4EE5\u524D\u306E\u304B\u3089\u306E\u5909\u66F4\
+    \u70B9\n// \u30FB\u6700\u5927\u30D3\u30C3\u30C8\u6307\u5B9A\u3057\u306A\u304F\u3066\
+    \u3088\u304F\u306A\u3063\u305F\u3002\n// \u30FB\u521D\u671F\u5316\u306F\u914D\u5217\
+    \u6E21\u3059\u4EE5\u5916\u306B\u3001\u30B5\u30A4\u30BA\u6307\u5B9A\u3057\u3066\
+    \u5F8C\u304B\u3089set\u3057\u3066build\u306E\u65B9\u3082\u3067\u304D\u308B\u3088\
+    \u3046\u306B\u306A\u3063\u305F\u3002\n// \u30FB\u3053\u3063\u3061\u306E\u304C\u3061\
+    \u3087\u3063\u3068\u901F\u3044\u3002(\u591A\u5206)\n\nstruct bit_vector {\n  \
+    \  using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
+    \n    static constexpr u32 w = 64;\n    vector<u64> block;\n    vector<u32> count;\n\
+    \    u32 n, zeros;\n\n    inline u32 get(u32 i) const { return u32(block[i / w]\
+    \ >> (i % w)) & 1u; }\n    inline void set(u32 i) { block[i / w] |= 1LL << (i\
+    \ % w); }\n\n    bit_vector() {}\n    bit_vector(int _n) { init(_n); }\n    __attribute__((optimize(\"\
+    O3\", \"unroll-loops\"))) void init(int _n) {\n        n = zeros = _n;\n     \
+    \   block.resize(n / w + 1, 0);\n        count.resize(block.size(), 0);\n    }\n\
+    \n    __attribute__((target(\"popcnt\"))) void build() {\n        for (u32 i =\
+    \ 1; i < block.size(); ++i)\n            count[i] = count[i - 1] + _mm_popcnt_u64(block[i\
+    \ - 1]);\n        zeros = rank0(n);\n    }\n\n    inline u32 rank0(u32 i) const\
+    \ { return i - rank1(i); }\n    __attribute__((target(\"bmi2,popcnt\"))) inline\
+    \ u32 rank1(u32 i) const {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i\
+    \ / w], i % w));\n    }\n};\n\ntemplate <typename T>\nstruct WaveletMatrix {\n\
+    \    using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
+    \n    int n, lg;\n    vector<T> a;\n    vector<bit_vector> bv;\n\n    WaveletMatrix(u32\
+    \ _n) : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const vector<T>& _a) :\
+    \ n(_a.size()), a(_a) { build(); }\n\n    __attribute__((optimize(\"O3\"))) void\
+    \ build() {\n        lg = __lg(max<T>(*max_element(begin(a), end(a)), 1)) + 1;\n\
+    \        bv.assign(lg, n);\n        vector<T> cur = a, nxt(n);\n        for (int\
+    \ h = lg - 1; h >= 0; --h) {\n            for (int i = 0; i < n; ++i)\n      \
+    \          if ((cur[i] >> h) & 1) bv[h].set(i);\n            bv[h].build();\n\
+    \            array<decltype(begin(nxt)), 2> it{begin(nxt), begin(nxt) + bv[h].zeros};\n\
+    \            for (int i = 0; i < n; ++i) *it[bv[h].get(i)]++ = cur[i];\n     \
+    \       swap(cur, nxt);\n        }\n        return;\n    }\n\n    void set(u32\
+    \ i, const T& x) { \n        assert(x >= 0);\n        a[i] = x; \n    }\n\n  \
+    \  inline pair<u32, u32> succ0(int l, int r, int h) const {\n        return make_pair(bv[h].rank0(l),\
+    \ bv[h].rank0(r));\n    }\n\n    inline pair<u32, u32> succ1(int l, int r, int\
+    \ h) const {\n        u32 l0 = bv[h].rank0(l);\n        u32 r0 = bv[h].rank0(r);\n\
+    \        u32 zeros = bv[h].zeros;\n        return make_pair(l + zeros - l0, r\
+    \ + zeros - r0);\n    }\n\n    // return a[k]\n    T access(u32 k) const {\n \
+    \       T ret = 0;\n        for (int h = lg - 1; h >= 0; --h) {\n            u32\
+    \ f = bv[h].get(k);\n            ret |= f ? T(1) << h : 0;\n            k = f\
+    \ ? bv[h].rank1(k) + bv[h].zeros : bv[h].rank0(k);\n        }\n        return\
+    \ ret;\n    }\n\n    // k-th (0-indexed) smallest number in a[l, r)\n    T kth_smallest(u32\
+    \ l, u32 r, u32 k) const {\n        T res = 0;\n        for (int h = lg - 1; h\
+    \ >= 0; --h) {\n            u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);\n  \
+    \          if (k < r0 - l0)\n                l = l0, r = r0;\n            else\
+    \ {\n                k -= r0 - l0;\n                res |= (T)1 << h;\n      \
+    \          l += bv[h].zeros - l0;\n                r += bv[h].zeros - r0;\n  \
+    \          }\n        }\n        return res;\n    }\n\n    // k-th (0-indexed)\
+    \ largest number in a[l, r)\n    T kth_largest(int l, int r, int k) {\n      \
+    \  return kth_smallest(l, r, r - l - k - 1);\n    }\n\n    // count i s.t. (l\
+    \ <= i < r) && (v[i] < upper)\n    int range_freq(int l, int r, T upper) {\n \
+    \       if (upper >= (T(1) << lg)) return r - l;\n        int ret = 0;\n     \
+    \   for (int h = lg - 1; h >= 0; --h) {\n            bool f = (upper >> h) & 1;\n\
+    \            u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);\n            if (f)\
+    \ {\n                ret += r0 - l0;\n                l += bv[h].zeros - l0;\n\
+    \                r += bv[h].zeros - r0;\n            } else {\n              \
+    \  l = l0;\n                r = r0;\n            }\n        }\n        return\
+    \ ret;\n    }\n\n    int range_freq(int l, int r, T lower, T upper) {\n      \
+    \  return range_freq(l, r, upper) - range_freq(l, r, lower);\n    }\n\n    //\
+    \ max v[i] s.t. (l <= i < r) && (v[i] < upper)\n    T prev_value(int l, int r,\
+    \ T upper) {\n        int cnt = range_freq(l, r, upper);\n        return cnt ==\
+    \ 0 ? T(-1) : kth_smallest(l, r, cnt - 1);\n    }\n\n    // min v[i] s.t. (l <=\
+    \ i < r) && (lower <= v[i])\n    T next_value(int l, int r, T lower) {\n     \
+    \   int cnt = range_freq(l, r, lower);\n        return cnt == r - l ? T(-1) :\
+    \ kth_smallest(l, r, cnt);\n    }\n};\n"
+  code: "#include \"../base.hpp\"\n#include <immintrin.h>\n\n// \u53C2\u8003\uFF1A\
+    https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp\n//\
+    \ Wavelet Matrix\n// \u4F7F\u7528\u4E0A\u306E\u6CE8\u610F\u70B9\n// \u30FB\u8CA0\
+    \u6570\u304C\u3042\u308B\u6642\u306F\u5EA7\u5727\u304B\u4E0B\u99C4\u5C65\u304B\
+    \u3059\u304B\u3059\u308B\u3002\n// \u4EE5\u524D\u306E\u304B\u3089\u306E\u5909\u66F4\
+    \u70B9\n// \u30FB\u6700\u5927\u30D3\u30C3\u30C8\u6307\u5B9A\u3057\u306A\u304F\u3066\
+    \u3088\u304F\u306A\u3063\u305F\u3002\n// \u30FB\u521D\u671F\u5316\u306F\u914D\u5217\
+    \u6E21\u3059\u4EE5\u5916\u306B\u3001\u30B5\u30A4\u30BA\u6307\u5B9A\u3057\u3066\
+    \u5F8C\u304B\u3089set\u3057\u3066build\u306E\u65B9\u3082\u3067\u304D\u308B\u3088\
+    \u3046\u306B\u306A\u3063\u305F\u3002\n// \u30FB\u3053\u3063\u3061\u306E\u304C\u3061\
+    \u3087\u3063\u3068\u901F\u3044\u3002(\u591A\u5206)\n\nstruct bit_vector {\n  \
+    \  using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
+    \n    static constexpr u32 w = 64;\n    vector<u64> block;\n    vector<u32> count;\n\
+    \    u32 n, zeros;\n\n    inline u32 get(u32 i) const { return u32(block[i / w]\
+    \ >> (i % w)) & 1u; }\n    inline void set(u32 i) { block[i / w] |= 1LL << (i\
+    \ % w); }\n\n    bit_vector() {}\n    bit_vector(int _n) { init(_n); }\n    __attribute__((optimize(\"\
+    O3\", \"unroll-loops\"))) void init(int _n) {\n        n = zeros = _n;\n     \
+    \   block.resize(n / w + 1, 0);\n        count.resize(block.size(), 0);\n    }\n\
+    \n    __attribute__((target(\"popcnt\"))) void build() {\n        for (u32 i =\
+    \ 1; i < block.size(); ++i)\n            count[i] = count[i - 1] + _mm_popcnt_u64(block[i\
+    \ - 1]);\n        zeros = rank0(n);\n    }\n\n    inline u32 rank0(u32 i) const\
+    \ { return i - rank1(i); }\n    __attribute__((target(\"bmi2,popcnt\"))) inline\
+    \ u32 rank1(u32 i) const {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i\
+    \ / w], i % w));\n    }\n};\n\ntemplate <typename T>\nstruct WaveletMatrix {\n\
+    \    using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
+    \n    int n, lg;\n    vector<T> a;\n    vector<bit_vector> bv;\n\n    WaveletMatrix(u32\
+    \ _n) : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const vector<T>& _a) :\
+    \ n(_a.size()), a(_a) { build(); }\n\n    __attribute__((optimize(\"O3\"))) void\
+    \ build() {\n        lg = __lg(max<T>(*max_element(begin(a), end(a)), 1)) + 1;\n\
+    \        bv.assign(lg, n);\n        vector<T> cur = a, nxt(n);\n        for (int\
+    \ h = lg - 1; h >= 0; --h) {\n            for (int i = 0; i < n; ++i)\n      \
+    \          if ((cur[i] >> h) & 1) bv[h].set(i);\n            bv[h].build();\n\
+    \            array<decltype(begin(nxt)), 2> it{begin(nxt), begin(nxt) + bv[h].zeros};\n\
+    \            for (int i = 0; i < n; ++i) *it[bv[h].get(i)]++ = cur[i];\n     \
+    \       swap(cur, nxt);\n        }\n        return;\n    }\n\n    void set(u32\
+    \ i, const T& x) { \n        assert(x >= 0);\n        a[i] = x; \n    }\n\n  \
+    \  inline pair<u32, u32> succ0(int l, int r, int h) const {\n        return make_pair(bv[h].rank0(l),\
+    \ bv[h].rank0(r));\n    }\n\n    inline pair<u32, u32> succ1(int l, int r, int\
+    \ h) const {\n        u32 l0 = bv[h].rank0(l);\n        u32 r0 = bv[h].rank0(r);\n\
+    \        u32 zeros = bv[h].zeros;\n        return make_pair(l + zeros - l0, r\
+    \ + zeros - r0);\n    }\n\n    // return a[k]\n    T access(u32 k) const {\n \
+    \       T ret = 0;\n        for (int h = lg - 1; h >= 0; --h) {\n            u32\
+    \ f = bv[h].get(k);\n            ret |= f ? T(1) << h : 0;\n            k = f\
+    \ ? bv[h].rank1(k) + bv[h].zeros : bv[h].rank0(k);\n        }\n        return\
+    \ ret;\n    }\n\n    // k-th (0-indexed) smallest number in a[l, r)\n    T kth_smallest(u32\
+    \ l, u32 r, u32 k) const {\n        T res = 0;\n        for (int h = lg - 1; h\
+    \ >= 0; --h) {\n            u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);\n  \
+    \          if (k < r0 - l0)\n                l = l0, r = r0;\n            else\
+    \ {\n                k -= r0 - l0;\n                res |= (T)1 << h;\n      \
+    \          l += bv[h].zeros - l0;\n                r += bv[h].zeros - r0;\n  \
+    \          }\n        }\n        return res;\n    }\n\n    // k-th (0-indexed)\
+    \ largest number in a[l, r)\n    T kth_largest(int l, int r, int k) {\n      \
+    \  return kth_smallest(l, r, r - l - k - 1);\n    }\n\n    // count i s.t. (l\
+    \ <= i < r) && (v[i] < upper)\n    int range_freq(int l, int r, T upper) {\n \
+    \       if (upper >= (T(1) << lg)) return r - l;\n        int ret = 0;\n     \
+    \   for (int h = lg - 1; h >= 0; --h) {\n            bool f = (upper >> h) & 1;\n\
+    \            u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);\n            if (f)\
+    \ {\n                ret += r0 - l0;\n                l += bv[h].zeros - l0;\n\
+    \                r += bv[h].zeros - r0;\n            } else {\n              \
+    \  l = l0;\n                r = r0;\n            }\n        }\n        return\
+    \ ret;\n    }\n\n    int range_freq(int l, int r, T lower, T upper) {\n      \
+    \  return range_freq(l, r, upper) - range_freq(l, r, lower);\n    }\n\n    //\
+    \ max v[i] s.t. (l <= i < r) && (v[i] < upper)\n    T prev_value(int l, int r,\
+    \ T upper) {\n        int cnt = range_freq(l, r, upper);\n        return cnt ==\
+    \ 0 ? T(-1) : kth_smallest(l, r, cnt - 1);\n    }\n\n    // min v[i] s.t. (l <=\
+    \ i < r) && (lower <= v[i])\n    T next_value(int l, int r, T lower) {\n     \
+    \   int cnt = range_freq(l, r, lower);\n        return cnt == r - l ? T(-1) :\
+    \ kth_smallest(l, r, cnt);\n    }\n};"
   dependsOn:
   - src/base.hpp
-  - src/segment/SuccinctIndexableDictionary.hpp
   isVerificationFile: false
   path: src/segment/WaveletMatrix.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-05-25 18:51:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/segment/WaveletMatrix.hpp

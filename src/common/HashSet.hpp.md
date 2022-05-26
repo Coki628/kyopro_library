@@ -130,17 +130,19 @@ data:
     \n}  // namespace HashMapImpl\n#line 3 \"src/common/HashSet.hpp\"\n\n// \u53C2\
     \u8003\uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashset.hpp\ntemplate\
     \ <typename Key>\nstruct HashSet : HashMapImpl::HashMapBase<Key, Key> {\n    using\
-    \ HashMapImpl::HashMapBase<Key, Key>::HashMapBase;\n};\n"
+    \ HashMapImpl::HashMapBase<Key, Key>::HashMapBase;\n\n    bool count(const Key&\
+    \ k) {\n        return this->contain(k);\n    }\n};\n"
   code: "#pragma once\n#include \"HashMapImpl.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashset.hpp\n\
     template <typename Key>\nstruct HashSet : HashMapImpl::HashMapBase<Key, Key> {\n\
-    \    using HashMapImpl::HashMapBase<Key, Key>::HashMapBase;\n};\n"
+    \    using HashMapImpl::HashMapBase<Key, Key>::HashMapBase;\n\n    bool count(const\
+    \ Key& k) {\n        return this->contain(k);\n    }\n};\n"
   dependsOn:
   - src/common/HashMapImpl.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/HashSet.hpp
   requiredBy: []
-  timestamp: '2022-05-24 16:45:48+09:00'
+  timestamp: '2022-05-27 01:45:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/HashSet.hpp
