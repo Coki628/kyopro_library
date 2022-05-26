@@ -5,4 +5,8 @@
 template <typename Key>
 struct HashSet : HashMapImpl::HashMapBase<Key, Key> {
     using HashMapImpl::HashMapBase<Key, Key>::HashMapBase;
+
+    bool count(const Key& k) {
+        return this->contain(k);
+    }
 };

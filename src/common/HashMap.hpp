@@ -35,4 +35,8 @@ struct HashMap : HashMapImpl::HashMapBase<Key, pair<Key, Val>> {
     typename base::itr emplace(const Key& key, const Val& val) {
         return base::insert(Data(key, val));
     }
+
+    bool count(const Key& k) {
+        return this->contain(k);
+    }
 };
