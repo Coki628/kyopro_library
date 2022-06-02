@@ -46,6 +46,7 @@ public:
 
     // 区間和の取得 [l, r)
     T query(int l, int r) {
+        if (l >= r) return 0;
         return sum(r) - sum(l);
     }
 
