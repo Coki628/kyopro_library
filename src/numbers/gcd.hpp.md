@@ -52,9 +52,9 @@ data:
   isVerificationFile: false
   path: src/numbers/gcd.hpp
   requiredBy:
-  - src/numbers/Fraction.hpp
-  - src/numbers/lcm.hpp
   - src/template.hpp
+  - src/numbers/lcm.hpp
+  - src/numbers/Fraction.hpp
   timestamp: '2022-04-19 01:28:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

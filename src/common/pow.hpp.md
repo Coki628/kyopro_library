@@ -56,8 +56,8 @@ data:
   isVerificationFile: false
   path: src/common/pow.hpp
   requiredBy:
-  - src/numbers/bsgs.hpp
   - src/template.hpp
+  - src/numbers/bsgs.hpp
   timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

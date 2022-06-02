@@ -118,22 +118,22 @@ data:
   isVerificationFile: false
   path: src/common/print.hpp
   requiredBy:
-  - src/math/FormalPowerSeries.hpp
-  - src/math/fps/pow.hpp
-  - src/math/fps/pow_term2.hpp
-  - src/mystl/my_deque.hpp
-  - src/mystl/my_multiset.hpp
-  - src/mystl/my_set.hpp
   - src/mystl/my_vector.hpp
-  - src/template.hpp
+  - src/mystl/my_deque.hpp
+  - src/mystl/my_set.hpp
+  - src/mystl/my_multiset.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
   - src/common/yesno.hpp
+  - src/template.hpp
   timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp
   - test/common/bisect.test.cpp
-  - test/graph/UnionFind.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
+  - test/graph/UnionFind.test.cpp
   - test/graph/bfs.test.cpp
 documentation_of: src/common/print.hpp
 layout: document

@@ -117,8 +117,8 @@ data:
   requiredBy:
   - src/math/FormalPowerSeries.hpp
   - src/math/ArbitraryModConvolution.hpp
-  - src/math/fps/pow.hpp
   - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

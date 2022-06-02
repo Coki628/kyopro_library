@@ -585,6 +585,9 @@ data:
       path: src/segment/Mo.hpp
       title: src/segment/Mo.hpp
     - icon: ':warning:'
+      path: src/segment/PersistentSegmentTree.hpp
+      title: src/segment/PersistentSegmentTree.hpp
+    - icon: ':warning:'
       path: src/segment/RangeSet.hpp
       title: src/segment/RangeSet.hpp
     - icon: ':warning:'

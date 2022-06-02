@@ -51,8 +51,8 @@ data:
   isVerificationFile: false
   path: src/math/coeff_of_rational_function.hpp
   requiredBy:
-  - src/math/kth_term_of_linearly_recurrent_sequence.hpp
   - src/math/BM.hpp
+  - src/math/kth_term_of_linearly_recurrent_sequence.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

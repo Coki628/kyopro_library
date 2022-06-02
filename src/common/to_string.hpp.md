@@ -55,8 +55,8 @@ data:
   isVerificationFile: false
   path: src/common/to_string.hpp
   requiredBy:
-  - src/template.hpp
   - src/common/join.hpp
+  - src/template.hpp
   timestamp: '2022-04-19 01:28:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
