@@ -100,6 +100,9 @@ data:
       path: src/common/LIS.hpp
       title: src/common/LIS.hpp
     - icon: ':warning:'
+      path: src/common/PersistentArray.hpp
+      title: src/common/PersistentArray.hpp
+    - icon: ':warning:'
       path: src/common/RLE.hpp
       title: src/common/RLE.hpp
     - icon: ':warning:'
@@ -584,6 +587,9 @@ data:
     - icon: ':warning:'
       path: src/segment/Mo.hpp
       title: src/segment/Mo.hpp
+    - icon: ':warning:'
+      path: src/segment/PersistentLazySegmentTree.hpp
+      title: src/segment/PersistentLazySegmentTree.hpp
     - icon: ':warning:'
       path: src/segment/PersistentSegmentTree.hpp
       title: src/segment/PersistentSegmentTree.hpp

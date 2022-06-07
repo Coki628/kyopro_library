@@ -72,41 +72,38 @@ data:
     \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
-    src/common/print.hpp\"\n\nvoid print() {\n    cout << '\\n';\n}\n\ntemplate<typename\
-    \ T>\nvoid print(T out) {\n    cout << out << '\\n';\n}\n\ntemplate<typename T1,\
-    \ typename T2>\nvoid print(const pair<T1, T2> &p) {\n    cout << p.first << '\
-    \ ' << p.second << '\\n';\n}\n\ntemplate<typename T1, typename T2, typename T3>\n\
-    void print(const tuple<T1, T2, T3> &tp) {\n    cout << get<0>(tp) << ' ' << get<1>(tp)\
-    \ << ' ' << get<2>(tp) << '\\n';\n}\n\ntemplate<typename T1, typename T2, typename\
-    \ T3, typename T4>\nvoid print(const tuple<T1, T2, T3, T4> &tp) { \n    cout <<\
-    \ get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) << ' ' << get<3>(tp) <<\
-    \ '\\n';\n}\n\ntemplate<typename T1, typename T2>\nvoid print(const vector<pair<T1,\
-    \ T2>> &V) {\n    for (auto& p : V) print(p);\n}\n\ntemplate<typename T>\nvoid\
-    \ print(const vector<T> &V, char sep=' ') {\n    rep(i, V.size()) {\n        cout\
-    \ << V[i];\n        if (i != V.size()-1) cout << sep;\n    }\n    cout << '\\\
-    n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid print(const array<T, SZ> &arr)\
-    \ {\n    rep(i, arr.size()) {\n        cout << arr[i];\n        if (i != arr.size()-1)\
-    \ cout << ' ';\n    }\n    cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\n\
-    void print(const vector<array<T, SZ>> &V) {\n    for (auto& arr : V) print(arr);\n\
-    }\n\ntemplate<typename T>\nvoid print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n\
-    \    print(V);\n}\n\ntemplate<typename T>\nvoid print(const set<T> &se) {\n  \
-    \  vector<T> V(ALL(se));\n    print(V);\n}\n\n#define debug(x) (cout << #x <<\
-    \ \": \", print(x));\n"
-  code: "#pragma once\n#include \"../macros.hpp\"\n\nvoid print() {\n    cout << '\\\
-    n';\n}\n\ntemplate<typename T>\nvoid print(T out) {\n    cout << out << '\\n';\n\
-    }\n\ntemplate<typename T1, typename T2>\nvoid print(const pair<T1, T2> &p) {\n\
-    \    cout << p.first << ' ' << p.second << '\\n';\n}\n\ntemplate<typename T1,\
-    \ typename T2, typename T3>\nvoid print(const tuple<T1, T2, T3> &tp) {\n    cout\
-    \ << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) << '\\n';\n}\n\ntemplate<typename\
-    \ T1, typename T2, typename T3, typename T4>\nvoid print(const tuple<T1, T2, T3,\
-    \ T4> &tp) { \n    cout << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp)\
-    \ << ' ' << get<3>(tp) << '\\n';\n}\n\ntemplate<typename T1, typename T2>\nvoid\
-    \ print(const vector<pair<T1, T2>> &V) {\n    for (auto& p : V) print(p);\n}\n\
-    \ntemplate<typename T>\nvoid print(const vector<T> &V, char sep=' ') {\n    rep(i,\
-    \ V.size()) {\n        cout << V[i];\n        if (i != V.size()-1) cout << sep;\n\
-    \    }\n    cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid print(const\
-    \ array<T, SZ> &arr) {\n    rep(i, arr.size()) {\n        cout << arr[i];\n  \
-    \      if (i != arr.size()-1) cout << ' ';\n    }\n    cout << '\\n';\n}\n\ntemplate<typename\
+    src/common/print.hpp\"\n\ntemplate<typename T1, typename T2>\nostream &operator<<(ostream\
+    \ &os, const pair<T1, T2> &p) {\n    return os << p.first << ' ' << p.second;\n\
+    }\n\nvoid print() {\n    cout << '\\n';\n}\n\ntemplate<typename T>\nvoid print(T\
+    \ out) {\n    cout << out << '\\n';\n}\n\ntemplate<typename T1, typename T2, typename\
+    \ T3>\nvoid print(const tuple<T1, T2, T3> &tp) {\n    cout << get<0>(tp) << '\
+    \ ' << get<1>(tp) << ' ' << get<2>(tp) << '\\n';\n}\n\ntemplate<typename T1, typename\
+    \ T2, typename T3, typename T4>\nvoid print(const tuple<T1, T2, T3, T4> &tp) {\
+    \ \n    cout << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) << ' ' <<\
+    \ get<3>(tp) << '\\n';\n}\n\ntemplate<typename T>\nvoid print(const vector<T>\
+    \ &V, char sep=' ') {\n    rep(i, V.size()) {\n        cout << V[i];\n       \
+    \ if (i != V.size()-1) cout << sep;\n    }\n    cout << '\\n';\n}\n\ntemplate<typename\
+    \ T, size_t SZ>\nvoid print(const array<T, SZ> &arr) {\n    rep(i, arr.size())\
+    \ {\n        cout << arr[i];\n        if (i != arr.size()-1) cout << ' ';\n  \
+    \  }\n    cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid print(const\
+    \ vector<array<T, SZ>> &V) {\n    for (auto& arr : V) print(arr);\n}\n\ntemplate<typename\
+    \ T>\nvoid print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n    print(V);\n\
+    }\n\ntemplate<typename T>\nvoid print(const set<T> &se) {\n    vector<T> V(ALL(se));\n\
+    \    print(V);\n}\n\n#define debug(x) (cout << #x << \": \", print(x));\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\ntemplate<typename T1, typename\
+    \ T2>\nostream &operator<<(ostream &os, const pair<T1, T2> &p) {\n    return os\
+    \ << p.first << ' ' << p.second;\n}\n\nvoid print() {\n    cout << '\\n';\n}\n\
+    \ntemplate<typename T>\nvoid print(T out) {\n    cout << out << '\\n';\n}\n\n\
+    template<typename T1, typename T2, typename T3>\nvoid print(const tuple<T1, T2,\
+    \ T3> &tp) {\n    cout << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp)\
+    \ << '\\n';\n}\n\ntemplate<typename T1, typename T2, typename T3, typename T4>\n\
+    void print(const tuple<T1, T2, T3, T4> &tp) { \n    cout << get<0>(tp) << ' '\
+    \ << get<1>(tp) << ' ' << get<2>(tp) << ' ' << get<3>(tp) << '\\n';\n}\n\ntemplate<typename\
+    \ T>\nvoid print(const vector<T> &V, char sep=' ') {\n    rep(i, V.size()) {\n\
+    \        cout << V[i];\n        if (i != V.size()-1) cout << sep;\n    }\n   \
+    \ cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid print(const array<T,\
+    \ SZ> &arr) {\n    rep(i, arr.size()) {\n        cout << arr[i];\n        if (i\
+    \ != arr.size()-1) cout << ' ';\n    }\n    cout << '\\n';\n}\n\ntemplate<typename\
     \ T, size_t SZ>\nvoid print(const vector<array<T, SZ>> &V) {\n    for (auto& arr\
     \ : V) print(arr);\n}\n\ntemplate<typename T>\nvoid print(const deque<T> &que)\
     \ {\n    vector<T> V(ALL(que));\n    print(V);\n}\n\ntemplate<typename T>\nvoid\
@@ -127,7 +124,7 @@ data:
   - src/math/fps/pow.hpp
   - src/common/yesno.hpp
   - src/template.hpp
-  timestamp: '2022-05-22 00:24:51+09:00'
+  timestamp: '2022-06-07 11:55:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp

@@ -57,6 +57,9 @@ data:
     path: src/common/LIS.hpp
     title: src/common/LIS.hpp
   - icon: ':warning:'
+    path: src/common/PersistentArray.hpp
+    title: src/common/PersistentArray.hpp
+  - icon: ':warning:'
     path: src/common/RLE.hpp
     title: src/common/RLE.hpp
   - icon: ':warning:'
@@ -486,6 +489,9 @@ data:
     path: src/segment/Mo.hpp
     title: src/segment/Mo.hpp
   - icon: ':warning:'
+    path: src/segment/PersistentLazySegmentTree.hpp
+    title: src/segment/PersistentLazySegmentTree.hpp
+  - icon: ':warning:'
     path: src/segment/PersistentSegmentTree.hpp
     title: src/segment/PersistentSegmentTree.hpp
   - icon: ':warning:'
@@ -653,6 +659,7 @@ data:
   - src/common/yesno.hpp
   - src/common/input.hpp
   - src/common/HashMap.hpp
+  - src/common/PersistentArray.hpp
   - src/common/bisearch_real.hpp
   - src/common/sum.hpp
   - src/common/Compress.hpp
@@ -740,6 +747,7 @@ data:
   - src/graph/OfflineDynamicConnectivity.hpp
   - src/graph/Dijkstra.hpp
   - src/graph/topological_sort.hpp
+  - src/segment/PersistentLazySegmentTree.hpp
   - src/segment/SuccinctIndexableDictionary.hpp
   - src/segment/BIT2.hpp
   - src/segment/SparseTable.hpp

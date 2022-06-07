@@ -56,7 +56,7 @@ data:
   isVerificationFile: true
   path: test/graph/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2022-05-22 00:24:51+09:00'
+  timestamp: '2022-06-07 11:55:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/UnionFind.test.cpp

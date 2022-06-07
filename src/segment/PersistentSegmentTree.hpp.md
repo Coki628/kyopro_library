@@ -46,11 +46,14 @@ data:
     \           return k->data;\n        } else {\n            return f(query(a, b,\
     \ k->l, l, (l + r) >> 1),\n                     query(a, b, k->r, (l + r) >> 1,\
     \ r));\n        }\n    }\n\n    Monoid query(Node* t, int a, int b) {\n      \
-    \  return query(a, b, t, 0, sz);\n    }\n\n    Monoid get(Node* t, int a) {\n\
+    \  return query(a, b, t, 0, sz);\n    }\n\n    Monoid all(Node* node) {\n    \
+    \    return node ? node->data : M1;\n    }\n\n    Monoid get(Node* t, int a) {\n\
     \        return query(t, a, a+1);\n    }\n\n    void print(Node* t, int n) {\n\
     \        for (int i=0; i<n; i++) {\n            cout << query(t, i, i+1);\n  \
     \          if (i == n-1) cout << endl;\n            else cout << ' ';\n      \
-    \  }\n    }\n};\n"
+    \  }\n    }\n};\n\ntemplate<typename Monoid, typename F>\nPersistentSegmentTree<Monoid,\
+    \ F> get_persistent_segment_tree(const F& f, const Monoid& M1) {\n    return {f,\
+    \ M1};\n}\n"
   code: "#include \"../base.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/segment-tree/persistent-segment-tree.cpp\n\
     // \u6C38\u7D9A\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n// \u4F7F\u3044\u65B9\n//\
     \ \u30FB\u57FA\u672C\u7684\u306B\u306F\u666E\u901A\u306E\u30BB\u30B0\u6728\u3068\
@@ -83,17 +86,20 @@ data:
     \           return k->data;\n        } else {\n            return f(query(a, b,\
     \ k->l, l, (l + r) >> 1),\n                     query(a, b, k->r, (l + r) >> 1,\
     \ r));\n        }\n    }\n\n    Monoid query(Node* t, int a, int b) {\n      \
-    \  return query(a, b, t, 0, sz);\n    }\n\n    Monoid get(Node* t, int a) {\n\
+    \  return query(a, b, t, 0, sz);\n    }\n\n    Monoid all(Node* node) {\n    \
+    \    return node ? node->data : M1;\n    }\n\n    Monoid get(Node* t, int a) {\n\
     \        return query(t, a, a+1);\n    }\n\n    void print(Node* t, int n) {\n\
     \        for (int i=0; i<n; i++) {\n            cout << query(t, i, i+1);\n  \
     \          if (i == n-1) cout << endl;\n            else cout << ' ';\n      \
-    \  }\n    }\n};\n"
+    \  }\n    }\n};\n\ntemplate<typename Monoid, typename F>\nPersistentSegmentTree<Monoid,\
+    \ F> get_persistent_segment_tree(const F& f, const Monoid& M1) {\n    return {f,\
+    \ M1};\n}\n"
   dependsOn:
   - src/base.hpp
   isVerificationFile: false
   path: src/segment/PersistentSegmentTree.hpp
   requiredBy: []
-  timestamp: '2022-06-02 15:13:07+09:00'
+  timestamp: '2022-06-07 11:55:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/segment/PersistentSegmentTree.hpp

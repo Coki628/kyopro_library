@@ -40,14 +40,13 @@ data:
     \ LazySegmentTree {\n    int sz, height;\n    vector<Monoid> data;\n    vector<OperatorMonoid>\
     \ lazy;\n    const F f;\n    const G g;\n    const H h;\n    const Monoid M1;\n\
     \    const OperatorMonoid OM0;\n\n    LazySegmentTree(int n, const F f, const\
-    \ G g, const H h,\n                                    const Monoid &M1, const\
-    \ OperatorMonoid OM0)\n            : f(f), g(g), h(h), M1(M1), OM0(OM0) {\n  \
-    \      sz = 1;\n        height = 0;\n        while(sz < n) sz <<= 1, height++;\n\
-    \        data.assign(2 * sz, M1);\n        lazy.assign(2 * sz, OM0);\n    }\n\n\
-    \    LazySegmentTree(const F f, const G g, const H h,\n                      \
-    \              const Monoid &M1, const OperatorMonoid OM0)\n            : f(f),\
-    \ g(g), h(h), M1(M1), OM0(OM0) {}\n\n    LazySegmentTree(const vector<Monoid>\
-    \ &A, const F f, const G g, const H h,\n                                    const\
+    \ G g, const H h,\n                    const Monoid &M1, const OperatorMonoid\
+    \ OM0)\n            : f(f), g(g), h(h), M1(M1), OM0(OM0) {\n        sz = 1;\n\
+    \        height = 0;\n        while(sz < n) sz <<= 1, height++;\n        data.assign(2\
+    \ * sz, M1);\n        lazy.assign(2 * sz, OM0);\n    }\n\n    LazySegmentTree(const\
+    \ F f, const G g, const H h,\n                    const Monoid &M1, const OperatorMonoid\
+    \ OM0)\n            : f(f), g(g), h(h), M1(M1), OM0(OM0) {}\n\n    LazySegmentTree(const\
+    \ vector<Monoid> &A, const F f, const G g, const H h,\n                    const\
     \ Monoid &M1, const OperatorMonoid OM0)\n            : f(f), g(g), h(h), M1(M1),\
     \ OM0(OM0) {\n        build(A);\n    }\n\n    void set(int k, const Monoid &x)\
     \ {\n        data[k + sz] = x;\n    }\n\n    void build() {\n        for(int k\
@@ -118,14 +117,13 @@ data:
     \ LazySegmentTree {\n    int sz, height;\n    vector<Monoid> data;\n    vector<OperatorMonoid>\
     \ lazy;\n    const F f;\n    const G g;\n    const H h;\n    const Monoid M1;\n\
     \    const OperatorMonoid OM0;\n\n    LazySegmentTree(int n, const F f, const\
-    \ G g, const H h,\n                                    const Monoid &M1, const\
-    \ OperatorMonoid OM0)\n            : f(f), g(g), h(h), M1(M1), OM0(OM0) {\n  \
-    \      sz = 1;\n        height = 0;\n        while(sz < n) sz <<= 1, height++;\n\
-    \        data.assign(2 * sz, M1);\n        lazy.assign(2 * sz, OM0);\n    }\n\n\
-    \    LazySegmentTree(const F f, const G g, const H h,\n                      \
-    \              const Monoid &M1, const OperatorMonoid OM0)\n            : f(f),\
-    \ g(g), h(h), M1(M1), OM0(OM0) {}\n\n    LazySegmentTree(const vector<Monoid>\
-    \ &A, const F f, const G g, const H h,\n                                    const\
+    \ G g, const H h,\n                    const Monoid &M1, const OperatorMonoid\
+    \ OM0)\n            : f(f), g(g), h(h), M1(M1), OM0(OM0) {\n        sz = 1;\n\
+    \        height = 0;\n        while(sz < n) sz <<= 1, height++;\n        data.assign(2\
+    \ * sz, M1);\n        lazy.assign(2 * sz, OM0);\n    }\n\n    LazySegmentTree(const\
+    \ F f, const G g, const H h,\n                    const Monoid &M1, const OperatorMonoid\
+    \ OM0)\n            : f(f), g(g), h(h), M1(M1), OM0(OM0) {}\n\n    LazySegmentTree(const\
+    \ vector<Monoid> &A, const F f, const G g, const H h,\n                    const\
     \ Monoid &M1, const OperatorMonoid OM0)\n            : f(f), g(g), h(h), M1(M1),\
     \ OM0(OM0) {\n        build(A);\n    }\n\n    void set(int k, const Monoid &x)\
     \ {\n        data[k + sz] = x;\n    }\n\n    void build() {\n        for(int k\
@@ -197,7 +195,7 @@ data:
   path: src/segment/LazySegmentTree.hpp
   requiredBy:
   - src/segment/LazySegmentTreeArithmetric.hpp
-  timestamp: '2022-05-22 00:24:51+09:00'
+  timestamp: '2022-06-07 11:55:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/segment/LazySegmentTree.hpp
