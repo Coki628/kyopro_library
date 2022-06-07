@@ -69,6 +69,10 @@ struct PersistentSegmentTree {
         return query(a, b, t, 0, sz);
     }
 
+    Monoid all(Node* node) {
+        return node ? node->data : M1;
+    }
+
     Monoid get(Node* t, int a) {
         return query(t, a, a+1);
     }
@@ -81,3 +85,8 @@ struct PersistentSegmentTree {
         }
     }
 };
+
+template<typename Monoid, typename F>
+PersistentSegmentTree<Monoid, F> get_persistent_segment_tree(const F& f, const Monoid& M1) {
+    return {f, M1};
+}

@@ -1,6 +1,11 @@
 #pragma once
 #include "../macros.hpp"
 
+template<typename T1, typename T2>
+ostream &operator<<(ostream &os, const pair<T1, T2> &p) {
+    return os << p.first << ' ' << p.second;
+}
+
 void print() {
     cout << '\n';
 }
@@ -8,11 +13,6 @@ void print() {
 template<typename T>
 void print(T out) {
     cout << out << '\n';
-}
-
-template<typename T1, typename T2>
-void print(const pair<T1, T2> &p) {
-    cout << p.first << ' ' << p.second << '\n';
 }
 
 template<typename T1, typename T2, typename T3>
@@ -23,11 +23,6 @@ void print(const tuple<T1, T2, T3> &tp) {
 template<typename T1, typename T2, typename T3, typename T4>
 void print(const tuple<T1, T2, T3, T4> &tp) { 
     cout << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) << ' ' << get<3>(tp) << '\n';
-}
-
-template<typename T1, typename T2>
-void print(const vector<pair<T1, T2>> &V) {
-    for (auto& p : V) print(p);
 }
 
 template<typename T>
