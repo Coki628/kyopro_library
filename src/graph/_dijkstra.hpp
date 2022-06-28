@@ -13,7 +13,7 @@ vector<T> dijkstra(const vector<vector<pair<int, T>>> &nodes, int src, int goal=
     res[src] = 0;
     que.push({0, src});
 
-    while (!que.empty()) {
+    while (que.size()) {
         auto [dist, u] = que.top(); que.pop();
         if (u == goal) return res;
         if (res[u] < dist) continue;
