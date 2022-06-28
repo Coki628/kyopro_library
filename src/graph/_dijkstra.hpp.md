@@ -43,7 +43,7 @@ data:
     \u30B9\u30C8\u30E9\ntemplate<typename T>\nvector<T> dijkstra(const vector<vector<pair<int,\
     \ T>>> &nodes, int src, int goal=-1) {\n    int N = nodes.size();\n    vector<T>\
     \ res(N, INF);\n    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T,\
-    \ int>>> que;\n    res[src] = 0;\n    que.push({0, src});\n\n    while (!que.empty())\
+    \ int>>> que;\n    res[src] = 0;\n    que.push({0, src});\n\n    while (que.size())\
     \ {\n        auto [dist, u] = que.top(); que.pop();\n        if (u == goal) return\
     \ res;\n        if (res[u] < dist) continue;\n        for (auto [v, cost] : nodes[u])\
     \ {\n            if (chmin(res[v], dist+cost)) {\n                que.push({dist+cost,\
@@ -54,7 +54,7 @@ data:
     \u30AF\u30B9\u30C8\u30E9\ntemplate<typename T>\nvector<T> dijkstra(const vector<vector<pair<int,\
     \ T>>> &nodes, int src, int goal=-1) {\n    int N = nodes.size();\n    vector<T>\
     \ res(N, INF);\n    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T,\
-    \ int>>> que;\n    res[src] = 0;\n    que.push({0, src});\n\n    while (!que.empty())\
+    \ int>>> que;\n    res[src] = 0;\n    que.push({0, src});\n\n    while (que.size())\
     \ {\n        auto [dist, u] = que.top(); que.pop();\n        if (u == goal) return\
     \ res;\n        if (res[u] < dist) continue;\n        for (auto [v, cost] : nodes[u])\
     \ {\n            if (chmin(res[v], dist+cost)) {\n                que.push({dist+cost,\
@@ -67,7 +67,7 @@ data:
   path: src/graph/_dijkstra.hpp
   requiredBy:
   - src/graph/Dijkstra.hpp
-  timestamp: '2022-05-22 00:24:51+09:00'
+  timestamp: '2022-06-28 16:28:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/_dijkstra.hpp

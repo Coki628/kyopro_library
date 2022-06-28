@@ -436,8 +436,8 @@ data:
   isVerificationFile: false
   path: src/math/FormalPowerSeries.hpp
   requiredBy:
-  - src/math/fps/pow_term2.hpp
   - src/math/fps/pow.hpp
+  - src/math/fps/pow_term2.hpp
   timestamp: '2022-06-07 11:55:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

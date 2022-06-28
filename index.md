@@ -552,6 +552,9 @@ data:
   - name: src/segment
     pages:
     - icon: ':warning:'
+      path: src/segment/AbstructBeats.hpp
+      title: src/segment/AbstructBeats.hpp
+    - icon: ':warning:'
       path: src/segment/Accumulate.hpp
       title: src/segment/Accumulate.hpp
     - icon: ':warning:'

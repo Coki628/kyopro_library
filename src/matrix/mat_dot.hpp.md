@@ -51,15 +51,30 @@ data:
     \ &B) {\n    int n1 = A.size();\n    int n2 = A[0].size();\n    int m2 = B[0].size();\n\
     \    auto res = list2d(n1, m2, (T)0);\n    rep(i, n1) {\n        rep(k, n2) {\n\
     \            if (A[i][k] == 0) continue;\n            rep(j, m2) {\n         \
-    \       res[i][j] += A[i][k]*B[k][j];\n            }\n        }\n    }\n    return\
-    \ res;\n}\n"
+    \       res[i][j] += A[i][k] * B[k][j];\n            }\n        }\n    }\n   \
+    \ return res;\n}\n\ntemplate<typename T, size_t SZ1, size_t SZ2, size_t SZ3>\n\
+    array<array<T, SZ3>, SZ1> mat_dot(const array<array<T, SZ2>, SZ1> &A, const array<array<T,\
+    \ SZ3>, SZ2> &B) {\n    // \u30B0\u30ED\u30FC\u30D0\u30EB\u3067\u306A\u3044array\u306F\
+    \u521D\u671F\u5316\u3055\u308C\u306A\u3044\u306E\u3067{}\u3067\u521D\u671F\u5316\
+    (0\u57CB\u3081)\u3059\u308B\n    array<array<T, SZ3>, SZ1> res{};\n    rep(i,\
+    \ SZ1) {\n        rep(k, SZ2) {\n            if (A[i][k] == 0) continue;\n   \
+    \         rep(j, SZ3) {\n                res[i][j] += A[i][k] * B[k][j];\n   \
+    \         }\n        }\n    }\n    return res;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\
     \n\n// \u884C\u5217\u306E\u7A4D\ntemplate<typename T>\nvector<vector<T>> mat_dot(const\
     \ vector<vector<T>> &A, const vector<vector<T>> &B) {\n    int n1 = A.size();\n\
     \    int n2 = A[0].size();\n    int m2 = B[0].size();\n    auto res = list2d(n1,\
     \ m2, (T)0);\n    rep(i, n1) {\n        rep(k, n2) {\n            if (A[i][k]\
-    \ == 0) continue;\n            rep(j, m2) {\n                res[i][j] += A[i][k]*B[k][j];\n\
-    \            }\n        }\n    }\n    return res;\n}\n"
+    \ == 0) continue;\n            rep(j, m2) {\n                res[i][j] += A[i][k]\
+    \ * B[k][j];\n            }\n        }\n    }\n    return res;\n}\n\ntemplate<typename\
+    \ T, size_t SZ1, size_t SZ2, size_t SZ3>\narray<array<T, SZ3>, SZ1> mat_dot(const\
+    \ array<array<T, SZ2>, SZ1> &A, const array<array<T, SZ3>, SZ2> &B) {\n    //\
+    \ \u30B0\u30ED\u30FC\u30D0\u30EB\u3067\u306A\u3044array\u306F\u521D\u671F\u5316\
+    \u3055\u308C\u306A\u3044\u306E\u3067{}\u3067\u521D\u671F\u5316(0\u57CB\u3081)\u3059\
+    \u308B\n    array<array<T, SZ3>, SZ1> res{};\n    rep(i, SZ1) {\n        rep(k,\
+    \ SZ2) {\n            if (A[i][k] == 0) continue;\n            rep(j, SZ3) {\n\
+    \                res[i][j] += A[i][k] * B[k][j];\n            }\n        }\n \
+    \   }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -68,7 +83,7 @@ data:
   path: src/matrix/mat_dot.hpp
   requiredBy:
   - src/matrix/MatPow.hpp
-  timestamp: '2022-04-06 17:44:14+09:00'
+  timestamp: '2022-06-28 16:28:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp

@@ -39,13 +39,17 @@ data:
     \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
-    src/numbers/gcd.hpp\"\n\ntemplate<typename T>\nT gcd(T a, T b) { return __gcd(a,\
-    \ b); }\n\ntemplate<typename T>\nT gcd(const vector<T> &A) {\n    T res = 0;\n\
-    \    for (auto a : A) res = gcd(res, a);\n    return res;\n}\n#line 4 \"src/numbers/lcm.hpp\"\
-    \n\n// \u9664\u7B97\u3092\u524D\u306B\u51FA\u3057\u3066\u30AA\u30FC\u30D0\u30FC\
-    \u30D5\u30ED\u30FC\u3092\u9632\u3050\ntemplate<typename T>\nT lcm(T x, T y) {\
-    \ return x/gcd(x, y)*y; }\n\ntemplate<typename T>\nT lcm(const vector<T> &A) {\n\
-    \    T res = 1;\n    for (auto a : A) res = lcm(res, a);\n    return res;\n}\n"
+    src/numbers/gcd.hpp\"\n\n// \u975E\u518D\u5E30\u7248\u4F5C\u3063\u3066\u307F\u305F\
+    \u3051\u3069\u3001\u901F\u5EA6\u3042\u3093\u307E\u5909\u308F\u3089\u306A\u305D\
+    \u3046\u2026\u3002\ntemplate<typename T>\nT gcd(T a, T b) {\n    while (b) {\n\
+    \        T t = a % b;\n        a = b;\n        b = t;\n    }\n    return a;\n\
+    }\n\n// template<typename T>\n// T gcd(T a, T b) { return __gcd(a, b); }\n\ntemplate<typename\
+    \ T>\nT gcd(const vector<T> &A) {\n    T res = 0;\n    for (auto a : A) res =\
+    \ gcd(res, a);\n    return res;\n}\n#line 4 \"src/numbers/lcm.hpp\"\n\n// \u9664\
+    \u7B97\u3092\u524D\u306B\u51FA\u3057\u3066\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\
+    \u30FC\u3092\u9632\u3050\ntemplate<typename T>\nT lcm(T x, T y) { return x/gcd(x,\
+    \ y)*y; }\n\ntemplate<typename T>\nT lcm(const vector<T> &A) {\n    T res = 1;\n\
+    \    for (auto a : A) res = lcm(res, a);\n    return res;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n#include \"gcd.hpp\"\n\n// \u9664\
     \u7B97\u3092\u524D\u306B\u51FA\u3057\u3066\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\
     \u30FC\u3092\u9632\u3050\ntemplate<typename T>\nT lcm(T x, T y) { return x/gcd(x,\
@@ -60,7 +64,7 @@ data:
   requiredBy:
   - src/template.hpp
   - src/numbers/Fraction.hpp
-  timestamp: '2022-04-19 01:28:42+09:00'
+  timestamp: '2022-06-28 16:28:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/lcm.hpp

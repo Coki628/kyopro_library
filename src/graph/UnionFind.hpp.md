@@ -131,8 +131,8 @@ data:
   timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/WeightedUnionFind.test.cpp
   - test/graph/UnionFind.test.cpp
+  - test/graph/WeightedUnionFind.test.cpp
 documentation_of: src/graph/UnionFind.hpp
 layout: document
 redirect_from:
