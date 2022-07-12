@@ -7,7 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/geometry/rotate.hpp
+    title: src/geometry/rotate.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -43,7 +46,8 @@ data:
   - src/base.hpp
   isVerificationFile: false
   path: src/geometry/radians.hpp
-  requiredBy: []
+  requiredBy:
+  - src/geometry/rotate.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

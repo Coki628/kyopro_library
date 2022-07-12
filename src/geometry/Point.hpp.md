@@ -33,6 +33,9 @@ data:
     path: src/geometry/intersect.hpp
     title: src/geometry/intersect.hpp
   - icon: ':warning:'
+    path: src/geometry/intersectCC.hpp
+    title: src/geometry/intersectCC.hpp
+  - icon: ':warning:'
     path: src/geometry/monotone_chain.hpp
     title: src/geometry/monotone_chain.hpp
   - icon: ':warning:'
@@ -115,19 +118,20 @@ data:
   isVerificationFile: false
   path: src/geometry/Point.hpp
   requiredBy:
-  - src/geometry/monotone_chain.hpp
-  - src/geometry/reflect.hpp
-  - src/geometry/ccw.hpp
-  - src/geometry/project.hpp
-  - src/geometry/cross.hpp
-  - src/geometry/pick_theorem.hpp
-  - src/geometry/rotate.hpp
   - src/geometry/intersect.hpp
-  - src/geometry/get_cross_point.hpp
+  - src/geometry/reflect.hpp
+  - src/geometry/project.hpp
+  - src/geometry/ccw.hpp
+  - src/geometry/cross.hpp
+  - src/geometry/monotone_chain.hpp
   - src/geometry/dot.hpp
-  - src/geometry/Circle.hpp
   - src/geometry/Segment.hpp
+  - src/geometry/pick_theorem.hpp
+  - src/geometry/get_cross_point.hpp
   - src/geometry/angle.hpp
+  - src/geometry/Circle.hpp
+  - src/geometry/intersectCC.hpp
+  - src/geometry/rotate.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

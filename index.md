@@ -270,6 +270,9 @@ data:
       path: src/geometry/intersect.hpp
       title: src/geometry/intersect.hpp
     - icon: ':warning:'
+      path: src/geometry/intersectCC.hpp
+      title: src/geometry/intersectCC.hpp
+    - icon: ':warning:'
       path: src/geometry/monotone_chain.hpp
       title: src/geometry/monotone_chain.hpp
     - icon: ':warning:'
@@ -611,6 +614,9 @@ data:
     - icon: ':warning:'
       path: src/segment/SegmentTreeIndex.hpp
       title: src/segment/SegmentTreeIndex.hpp
+    - icon: ':warning:'
+      path: src/segment/SparseBIT2D.hpp
+      title: src/segment/SparseBIT2D.hpp
     - icon: ':warning:'
       path: src/segment/SparseTable.hpp
       title: src/segment/SparseTable.hpp

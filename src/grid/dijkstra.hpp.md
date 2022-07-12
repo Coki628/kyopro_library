@@ -5,6 +5,12 @@ data:
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
+    path: src/common/chmin.hpp
+    title: src/common/chmin.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/common/listnd.hpp
+    title: src/common/listnd.hpp
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,42 +35,53 @@ data:
     #define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)),\
     \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
-    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
-    src/grid/dijkstra.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u30C0\u30A4\u30AF\u30B9\
-    \u30C8\u30E9(H*W\u30B0\u30EA\u30C3\u30C9, \u59CB\u70B9{h, w}) \nusing P = tuple<ll,\
-    \ int, int>;\nvvl dijkstra(const vvl &grid, pii src, ll invalid=-1) {\n\n    int\
+    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
+    src/common/listnd.hpp\"\n\ntemplate<typename T>\nvector<vector<T>> list2d(int\
+    \ N, int M, T init) {\n    return vector<vector<T>>(N, vector<T>(M, init));\n\
+    }\n\ntemplate<typename T>\nvector<vector<vector<T>>> list3d(int N, int M, int\
+    \ L, T init) {\n    return vector<vector<vector<T>>>(N, vector<vector<T>>(M, vector<T>(L,\
+    \ init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>> list4d(int\
+    \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
+    \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
+    #line 2 \"src/common/chmin.hpp\"\n\ntemplate<typename T>\nbool chmin(T &x, T y)\
+    \ {\n    return (y < x) ? x = y, true : false;\n}\n#line 4 \"src/grid/dijkstra.hpp\"\
+    \n\n// \u30B0\u30EA\u30C3\u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\
+    \u30C3\u30C9, \u59CB\u70B9{h, w}) \nusing P = tuple<ll, int, int>;\nvvl dijkstra(const\
+    \ vvl &grid, pii src, ll invalid=-1) {\n    int H = grid.size();\n    int W =\
+    \ grid[0].size();\n    auto res = list2d(H, W, INF);\n    const vector<pii> directions\
+    \ = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n    priority_queue<P, vector<P>, greater<P>>\
+    \ que;\n    auto [sh, sw] = src;\n    que.push({0, sh, sw});\n    res[sh][sw]\
+    \ = 0;\n\n    while (que.size()) {\n        auto [dist, h, w] = que.top(); que.pop();\n\
+    \        if (res[h][w] < dist) continue;\n        for (auto [dh, dw] : directions)\
+    \ {\n            int nh = h + dh;\n            int nw = w + dw;\n            if\
+    \ (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw]\
+    \ == invalid) continue;\n            ll cost = grid[nh][nw];\n            if (chmin(res[nh][nw],\
+    \ dist+cost)) {\n                que.push({dist+cost, nh, nw});\n            }\n\
+    \        }\n    }\n    return res;\n}\n"
+  code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n#include \"\
+    ../common/chmin.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\
+    \u30E9(H*W\u30B0\u30EA\u30C3\u30C9, \u59CB\u70B9{h, w}) \nusing P = tuple<ll,\
+    \ int, int>;\nvvl dijkstra(const vvl &grid, pii src, ll invalid=-1) {\n    int\
     \ H = grid.size();\n    int W = grid[0].size();\n    auto res = list2d(H, W, INF);\n\
     \    const vector<pii> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n    priority_queue<P,\
     \ vector<P>, greater<P>> que;\n    auto [sh, sw] = src;\n    que.push({0, sh,\
-    \ sw});\n    res[sh][sw] = 0;\n\n    while (!que.empty()) {\n        auto [dist,\
+    \ sw});\n    res[sh][sw] = 0;\n\n    while (que.size()) {\n        auto [dist,\
     \ h, w] = que.top(); que.pop();\n        if (res[h][w] < dist) continue;\n   \
-    \     for (auto [dh, dw] : directions) {\n            int nh = h+dh;\n       \
-    \     int nw = w+dw;\n            if (nh < 0 or nw < 0 or nh >= H or nw >= W)\
-    \ continue;\n            if (grid[nh][nw] == invalid) continue;\n            ll\
-    \ cost = grid[nh][nw];\n            if (dist+cost < res[nh][nw]) {\n         \
-    \       res[nh][nw] = dist+cost;\n                que.push({dist+cost, nh, nw});\n\
-    \            }\n        }\n    }\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u30C0\u30A4\u30AF\
-    \u30B9\u30C8\u30E9(H*W\u30B0\u30EA\u30C3\u30C9, \u59CB\u70B9{h, w}) \nusing P\
-    \ = tuple<ll, int, int>;\nvvl dijkstra(const vvl &grid, pii src, ll invalid=-1)\
-    \ {\n\n    int H = grid.size();\n    int W = grid[0].size();\n    auto res = list2d(H,\
-    \ W, INF);\n    const vector<pii> directions = {{-1, 0}, {1, 0}, {0, -1}, {0,\
-    \ 1}};\n    priority_queue<P, vector<P>, greater<P>> que;\n    auto [sh, sw] =\
-    \ src;\n    que.push({0, sh, sw});\n    res[sh][sw] = 0;\n\n    while (!que.empty())\
-    \ {\n        auto [dist, h, w] = que.top(); que.pop();\n        if (res[h][w]\
-    \ < dist) continue;\n        for (auto [dh, dw] : directions) {\n            int\
-    \ nh = h+dh;\n            int nw = w+dw;\n            if (nh < 0 or nw < 0 or\
-    \ nh >= H or nw >= W) continue;\n            if (grid[nh][nw] == invalid) continue;\n\
-    \            ll cost = grid[nh][nw];\n            if (dist+cost < res[nh][nw])\
-    \ {\n                res[nh][nw] = dist+cost;\n                que.push({dist+cost,\
-    \ nh, nw});\n            }\n        }\n    }\n    return res;\n}\n"
+    \     for (auto [dh, dw] : directions) {\n            int nh = h + dh;\n     \
+    \       int nw = w + dw;\n            if (nh < 0 or nw < 0 or nh >= H or nw >=\
+    \ W) continue;\n            if (grid[nh][nw] == invalid) continue;\n         \
+    \   ll cost = grid[nh][nw];\n            if (chmin(res[nh][nw], dist+cost)) {\n\
+    \                que.push({dist+cost, nh, nw});\n            }\n        }\n  \
+    \  }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
+  - src/common/listnd.hpp
+  - src/common/chmin.hpp
   isVerificationFile: false
   path: src/grid/dijkstra.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-07-12 10:50:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/dijkstra.hpp

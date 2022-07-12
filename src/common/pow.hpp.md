@@ -9,6 +9,9 @@ data:
     title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/geometry/intersectCC.hpp
+    title: src/geometry/intersectCC.hpp
+  - icon: ':warning:'
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
   - icon: ':warning:'
@@ -58,6 +61,7 @@ data:
   requiredBy:
   - src/template.hpp
   - src/numbers/bsgs.hpp
+  - src/geometry/intersectCC.hpp
   timestamp: '2022-05-22 00:24:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

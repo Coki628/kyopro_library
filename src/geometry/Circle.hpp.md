@@ -10,7 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/geometry/intersectCC.hpp
+    title: src/geometry/intersectCC.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -52,20 +55,21 @@ data:
     \ 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return std::abs(x-p.x)\
     \ + std::abs(y-p.y); }\n    void print() { cout << x << ' ' << y << '\\n'; }\n\
     };\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout << p.x << ' ' <<\
-    \ p.y << '\\n';\n}\n#line 3 \"src/geometry/Circle.hpp\"\n\ntemplate<typename T>\n\
-    struct Circle {\n    Point<T> c;\n    ld r;\n    Circle(Point<T> c={0, 0}, ld\
-    \ r=0.0) : c(c), r(r) {}\n};\n"
-  code: "#include \"../macros.hpp\"\n#include \"Point.hpp\"\n\ntemplate<typename T>\n\
-    struct Circle {\n    Point<T> c;\n    ld r;\n    Circle(Point<T> c={0, 0}, ld\
-    \ r=0.0) : c(c), r(r) {}\n};\n"
+    \ p.y << '\\n';\n}\n#line 4 \"src/geometry/Circle.hpp\"\n\ntemplate<typename T>\n\
+    struct Circle {\n    Point<T> c;\n    T r;\n    Circle(Point<T> c={0, 0}, T r=0)\
+    \ : c(c), r(r) {}\n};\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n#include \"Point.hpp\"\n\ntemplate<typename\
+    \ T>\nstruct Circle {\n    Point<T> c;\n    T r;\n    Circle(Point<T> c={0, 0},\
+    \ T r=0) : c(c), r(r) {}\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   - src/geometry/Point.hpp
   isVerificationFile: false
   path: src/geometry/Circle.hpp
-  requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  requiredBy:
+  - src/geometry/intersectCC.hpp
+  timestamp: '2022-07-12 10:50:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/Circle.hpp

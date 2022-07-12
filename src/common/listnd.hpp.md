@@ -24,6 +24,9 @@ data:
     path: src/grid/bfs_restore.hpp
     title: src/grid/bfs_restore.hpp
   - icon: ':warning:'
+    path: src/grid/dijkstra.hpp
+    title: src/grid/dijkstra.hpp
+  - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
   - icon: ':heavy_check_mark:'
@@ -67,17 +70,18 @@ data:
   isVerificationFile: false
   path: src/common/listnd.hpp
   requiredBy:
-  - src/template.hpp
-  - src/common/Doubling.hpp
   - src/common/_doubling.hpp
-  - src/grid/bfs_restore.hpp
-  - src/grid/transpose.hpp
-  - src/grid/bfs.hpp
+  - src/common/Doubling.hpp
   - src/combinatorics/nCr.hpp
   - src/combinatorics/partition.hpp
-  - src/string/get_next_indices.hpp
+  - src/template.hpp
   - src/matrix/MatPow.hpp
   - src/matrix/mat_dot.hpp
+  - src/grid/bfs_restore.hpp
+  - src/grid/dijkstra.hpp
+  - src/grid/bfs.hpp
+  - src/grid/transpose.hpp
+  - src/string/get_next_indices.hpp
   timestamp: '2022-04-06 17:44:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

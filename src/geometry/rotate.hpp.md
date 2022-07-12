@@ -7,6 +7,9 @@ data:
   - icon: ':warning:'
     path: src/geometry/Point.hpp
     title: src/geometry/Point.hpp
+  - icon: ':warning:'
+    path: src/geometry/radians.hpp
+    title: src/geometry/radians.hpp
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
@@ -52,28 +55,30 @@ data:
     \ 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return std::abs(x-p.x)\
     \ + std::abs(y-p.y); }\n    void print() { cout << x << ' ' << y << '\\n'; }\n\
     };\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout << p.x << ' ' <<\
-    \ p.y << '\\n';\n}\n#line 3 \"src/geometry/rotate.hpp\"\n\n// \u56DE\u8EE2\u884C\
-    \u5217\uFF1A\u5EA7\u6A19c\u3092\u8EF8\u306B\u5EA7\u6A19p\u304B\u3089\u534A\u6642\
-    \u8A08\u56DE\u308A\u306Bdig\u5EA6\u56DE\u8EE2\u3055\u305B\u305F\u5EA7\u6A19\u3092\
-    \u8FD4\u3059\ntemplate<typename T>\nPoint<T> rotate(Point<T> c, Point<T> p, ld\
-    \ dig) {\n    T x = (p.x-c.x)*cos(radians(dig)) - (p.y-c.y)*sin(radians(dig))\
+    \ p.y << '\\n';\n}\n#line 2 \"src/geometry/radians.hpp\"\n\nld radians(ld degrees)\
+    \ { return degrees * PI / 180.0; }\n#line 4 \"src/geometry/rotate.hpp\"\n\n//\
+    \ \u56DE\u8EE2\u884C\u5217\uFF1A\u5EA7\u6A19c\u3092\u8EF8\u306B\u5EA7\u6A19p\u304B\
+    \u3089\u534A\u6642\u8A08\u56DE\u308A\u306Bdig\u5EA6\u56DE\u8EE2\u3055\u305B\u305F\
+    \u5EA7\u6A19\u3092\u8FD4\u3059\ntemplate<typename T>\nPoint<T> rotate(Point<T>\
+    \ c, Point<T> p, ld dig) {\n    T x = (p.x-c.x)*cos(radians(dig)) - (p.y-c.y)*sin(radians(dig))\
     \ + c.x;\n    T y = (p.x-c.x)*sin(radians(dig)) + (p.y-c.y)*cos(radians(dig))\
     \ + c.y;\n    return {x, y};\n}\n"
-  code: "#include \"../macros.hpp\"\n#include \"Point.hpp\"\n\n// \u56DE\u8EE2\u884C\
-    \u5217\uFF1A\u5EA7\u6A19c\u3092\u8EF8\u306B\u5EA7\u6A19p\u304B\u3089\u534A\u6642\
-    \u8A08\u56DE\u308A\u306Bdig\u5EA6\u56DE\u8EE2\u3055\u305B\u305F\u5EA7\u6A19\u3092\
-    \u8FD4\u3059\ntemplate<typename T>\nPoint<T> rotate(Point<T> c, Point<T> p, ld\
-    \ dig) {\n    T x = (p.x-c.x)*cos(radians(dig)) - (p.y-c.y)*sin(radians(dig))\
+  code: "#include \"../macros.hpp\"\n#include \"Point.hpp\"\n#include \"radians.hpp\"\
+    \n\n// \u56DE\u8EE2\u884C\u5217\uFF1A\u5EA7\u6A19c\u3092\u8EF8\u306B\u5EA7\u6A19\
+    p\u304B\u3089\u534A\u6642\u8A08\u56DE\u308A\u306Bdig\u5EA6\u56DE\u8EE2\u3055\u305B\
+    \u305F\u5EA7\u6A19\u3092\u8FD4\u3059\ntemplate<typename T>\nPoint<T> rotate(Point<T>\
+    \ c, Point<T> p, ld dig) {\n    T x = (p.x-c.x)*cos(radians(dig)) - (p.y-c.y)*sin(radians(dig))\
     \ + c.x;\n    T y = (p.x-c.x)*sin(radians(dig)) + (p.y-c.y)*cos(radians(dig))\
     \ + c.y;\n    return {x, y};\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   - src/geometry/Point.hpp
+  - src/geometry/radians.hpp
   isVerificationFile: false
   path: src/geometry/rotate.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-07-12 10:50:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/rotate.hpp

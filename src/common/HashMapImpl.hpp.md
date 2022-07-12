@@ -17,6 +17,9 @@ data:
   - icon: ':warning:'
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
+  - icon: ':warning:'
+    path: src/segment/SparseBIT2D.hpp
+    title: src/segment/SparseBIT2D.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -253,10 +256,11 @@ data:
   isVerificationFile: false
   path: src/common/HashMapImpl.hpp
   requiredBy:
-  - src/numbers/bsgs.hpp
   - src/common/HashSet.hpp
   - src/common/HashMap.hpp
+  - src/segment/SparseBIT2D.hpp
   - src/graph/OfflineDynamicConnectivity.hpp
+  - src/numbers/bsgs.hpp
   timestamp: '2022-05-24 16:45:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

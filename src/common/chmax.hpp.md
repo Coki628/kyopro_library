@@ -22,8 +22,8 @@ data:
   isVerificationFile: false
   path: src/common/chmax.hpp
   requiredBy:
-  - src/template.hpp
   - src/common/max.hpp
+  - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
