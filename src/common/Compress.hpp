@@ -6,19 +6,33 @@ struct Compress {
 
     int N;
     vector<T> dat;
+    bool built = false;
 
-    Compress(vector<T> A) {
-        sort(A.begin(), A.end());
-        A.erase(unique(A.begin(), A.end()), A.end());
-        N = A.size();
-        dat = A;
+    Compress() {}
+
+    Compress(const vector<T> &A) : dat(A) {
+        build();
+    }
+
+    void build() {
+        sort(dat.begin(), dat.end());
+        dat.erase(unique(dat.begin(), dat.end()), dat.end());
+        N = dat.size();
+        built = true;
+    }
+
+    void add(T x) {
+        assert(not built);
+        dat.eb(x);
     }
 
     int zip(T x) {
+        assert(built);
         return bisect_left(dat, x);
     }
 
     T unzip(int x) {
+        assert(built);
         return dat[x];
     }
 
@@ -27,6 +41,7 @@ struct Compress {
     }
 
     int size() {
+        assert(built);
         return dat.size();
     }
 
