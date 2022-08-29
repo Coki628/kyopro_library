@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // HL分解
@@ -90,7 +91,7 @@ public:
         return es;
     }
 
-    explicit HeavyLightDecomposition(vvi &g, int root=0) : g(g) {
+    explicit HeavyLightDecomposition(const vvi &g, int root=0) : g(g) {
         build(root);
     }
 

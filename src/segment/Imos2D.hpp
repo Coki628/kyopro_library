@@ -1,11 +1,12 @@
 #include "../macros.hpp"
 
-// 2次元いもす(未verify)
+// 2次元いもす
 template<typename T>
 class Imos2D {
     int H;
     int W;
     vector<vector<T>> dat;
+    bool built = false;
 
 public:
     Imos2D(int H, int W) : H(H), W(W) {
@@ -22,6 +23,7 @@ public:
     }
 
     void build() {
+        built = true;
         rep(i, H+1) {
             rep(j, W) {
                 dat[i][j+1] += dat[i][j];
@@ -36,6 +38,7 @@ public:
 
     // (h,w)の1点取得
     T get(int h, int w) {
+        assert(built);
         return dat[h][w];
     }
 };

@@ -5,7 +5,7 @@
 // ModInt
 template<int mod>
 struct ModInt {
-    int x;
+    int x = 0;
 
     ModInt() : x(0) {}
 

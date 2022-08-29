@@ -15,3 +15,15 @@ template<typename T>
 vector<vector<vector<vector<T>>>> list4d(int N, int M, int L, int O, T init) {
     return vector<vector<vector<vector<T>>>>(N, vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));
 }
+
+// 任意次元vector
+// 参考：https://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp
+template<typename T>
+vector<T> listnd(size_t a, T b) {
+    return vector<T>(a, b);
+}
+
+template<typename... Ts>
+auto listnd(size_t a, Ts... ts) {
+    return vector<decltype(listnd(ts...))>(a, listnd(ts...));
+}

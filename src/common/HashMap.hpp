@@ -3,6 +3,16 @@
 #include "HashMapImpl.hpp"
 
 // 参考：https://nyaannyaan.github.io/library/hashmap/hashmap.hpp
+// ・めちゃ速い。
+// 注意点
+// ・eraseしてsize取るみたいな操作してたらなんかローカルは大丈夫だけど
+// 　コードテストで挙動が一定でなくなったので、それやりたい時は別変数でsize管理した方がいいかも。
+// ・色々試した感じ、そもそもeraseやることが非推奨と考えた方が良さそう。
+// ・HashMap<int, mint>みたいので += やる時に、足される側の添字アクセスでextendが走ると、
+// 　要素の位置が変わってしまうため、先に評価されて既に返している足す側の参照が壊れるっぽい。
+// 　なんかintだと大丈夫っぽいので、mintみたいにオブジェクトだとダメなんかな多分。
+// ・DPの2次元目に使ったら、メモリを食うと結構重くなるようだったので、
+// 　配列節約テクは使った方が良さげ。
 template <typename Key, typename Val>
 struct HashMap : HashMapImpl::HashMapBase<Key, pair<Key, Val>> {
     using base = typename HashMapImpl::HashMapBase<Key, pair<Key, Val>>;

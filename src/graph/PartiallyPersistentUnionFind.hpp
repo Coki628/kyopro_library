@@ -1,6 +1,8 @@
 #include "../base.hpp"
 
 // 部分永続UF
+// 使い方
+// ・初期状態が0となるので、1回目の連結時刻は0ではなく1から始める。
 struct PartiallyPersistentUnionFind {
 
     int n;

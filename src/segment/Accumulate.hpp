@@ -6,6 +6,7 @@ template<typename T>
 struct Accumulate {
     vector<T> dat;
     int N;
+    bool built = false;
 
     Accumulate(int N) : N(N) {
         dat.resize(N);
@@ -28,11 +29,13 @@ struct Accumulate {
             dat[i+1] += dat[i];
         }
         dat.insert(dat.begin(), 0);
+        built = true;
     }
 
     virtual T query(int l, int r) {
+        assert(built);
         assert(0 <= l and l <= N and 0 <= r and r <= N);
-        return dat[r]-dat[l];
+        return dat[r] - dat[l];
     }
 
     T get(int i) {

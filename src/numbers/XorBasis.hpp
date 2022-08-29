@@ -47,6 +47,11 @@ struct XorBasis {
         }
         return *this;
     }
+
+    void clear() {
+        basis = {};
+        rank = 0;
+    }
 };
 
 // XOR基底(vector版)
