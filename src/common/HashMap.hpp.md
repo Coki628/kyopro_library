@@ -9,14 +9,26 @@ data:
     title: src/common/HashMapImpl.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/common/Counter.hpp
+    title: src/common/Counter.hpp
+  - icon: ':warning:'
+    path: src/graph/AuxiliaryTree.hpp
+    title: src/graph/AuxiliaryTree.hpp
+  - icon: ':warning:'
     path: src/graph/OfflineDynamicConnectivity.hpp
     title: src/graph/OfflineDynamicConnectivity.hpp
+  - icon: ':warning:'
+    path: src/mystl/defaultdict.hpp
+    title: src/mystl/defaultdict.hpp
   - icon: ':warning:'
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
   - icon: ':warning:'
     path: src/segment/SparseBIT2D.hpp
     title: src/segment/SparseBIT2D.hpp
+  - icon: ':warning:'
+    path: src/template.hpp
+    title: src/template.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -137,15 +149,37 @@ data:
     \ Data>\nuint64_t HashMapBase<Key, Data>::r =\n    chrono::duration_cast<chrono::nanoseconds>(\n\
     \        chrono::high_resolution_clock::now().time_since_epoch())\n        .count();\n\
     \n}  // namespace HashMapImpl\n#line 4 \"src/common/HashMap.hpp\"\n\n// \u53C2\
-    \u8003\uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashmap.hpp\ntemplate\
-    \ <typename Key, typename Val>\nstruct HashMap : HashMapImpl::HashMapBase<Key,\
-    \ pair<Key, Val>> {\n    using base = typename HashMapImpl::HashMapBase<Key, pair<Key,\
-    \ Val>>;\n    using HashMapImpl::HashMapBase<Key, pair<Key, Val>>::HashMapBase;\n\
-    \    using Data = pair<Key, Val>;\n\n    Val& operator[](const Key& k) {\n   \
-    \     typename base::u32 h = base::inner_hash(k);\n        while (true) {\n  \
-    \          if (base::flag[h] == false) {\n                if (base::extend_rate(base::s\
-    \ + 1)) {\n                    base::extend();\n                    h = base::hash(k);\n\
-    \                    continue;\n                }\n                base::data[h].first\
+    \u8003\uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashmap.hpp\n// \u30FB\
+    \u3081\u3061\u3083\u901F\u3044\u3002\n// \u6CE8\u610F\u70B9\n// \u30FBerase\u3057\
+    \u3066size\u53D6\u308B\u307F\u305F\u3044\u306A\u64CD\u4F5C\u3057\u3066\u305F\u3089\
+    \u306A\u3093\u304B\u30ED\u30FC\u30AB\u30EB\u306F\u5927\u4E08\u592B\u3060\u3051\
+    \u3069\n// \u3000\u30B3\u30FC\u30C9\u30C6\u30B9\u30C8\u3067\u6319\u52D5\u304C\u4E00\
+    \u5B9A\u3067\u306A\u304F\u306A\u3063\u305F\u306E\u3067\u3001\u305D\u308C\u3084\
+    \u308A\u305F\u3044\u6642\u306F\u5225\u5909\u6570\u3067size\u7BA1\u7406\u3057\u305F\
+    \u65B9\u304C\u3044\u3044\u304B\u3082\u3002\n// \u30FB\u8272\u3005\u8A66\u3057\u305F\
+    \u611F\u3058\u3001\u305D\u3082\u305D\u3082erase\u3084\u308B\u3053\u3068\u304C\u975E\
+    \u63A8\u5968\u3068\u8003\u3048\u305F\u65B9\u304C\u826F\u3055\u305D\u3046\u3002\
+    \n// \u30FBHashMap<int, mint>\u307F\u305F\u3044\u306E\u3067 += \u3084\u308B\u6642\
+    \u306B\u3001\u8DB3\u3055\u308C\u308B\u5074\u306E\u6DFB\u5B57\u30A2\u30AF\u30BB\
+    \u30B9\u3067extend\u304C\u8D70\u308B\u3068\u3001\n// \u3000\u8981\u7D20\u306E\u4F4D\
+    \u7F6E\u304C\u5909\u308F\u3063\u3066\u3057\u307E\u3046\u305F\u3081\u3001\u5148\
+    \u306B\u8A55\u4FA1\u3055\u308C\u3066\u65E2\u306B\u8FD4\u3057\u3066\u3044\u308B\
+    \u8DB3\u3059\u5074\u306E\u53C2\u7167\u304C\u58CA\u308C\u308B\u3063\u307D\u3044\
+    \u3002\n// \u3000\u306A\u3093\u304Bint\u3060\u3068\u5927\u4E08\u592B\u3063\u307D\
+    \u3044\u306E\u3067\u3001mint\u307F\u305F\u3044\u306B\u30AA\u30D6\u30B8\u30A7\u30AF\
+    \u30C8\u3060\u3068\u30C0\u30E1\u306A\u3093\u304B\u306A\u591A\u5206\u3002\n// \u30FB\
+    DP\u306E2\u6B21\u5143\u76EE\u306B\u4F7F\u3063\u305F\u3089\u3001\u30E1\u30E2\u30EA\
+    \u3092\u98DF\u3046\u3068\u7D50\u69CB\u91CD\u304F\u306A\u308B\u3088\u3046\u3060\
+    \u3063\u305F\u306E\u3067\u3001\n// \u3000\u914D\u5217\u7BC0\u7D04\u30C6\u30AF\u306F\
+    \u4F7F\u3063\u305F\u65B9\u304C\u826F\u3055\u3052\u3002\ntemplate <typename Key,\
+    \ typename Val>\nstruct HashMap : HashMapImpl::HashMapBase<Key, pair<Key, Val>>\
+    \ {\n    using base = typename HashMapImpl::HashMapBase<Key, pair<Key, Val>>;\n\
+    \    using HashMapImpl::HashMapBase<Key, pair<Key, Val>>::HashMapBase;\n    using\
+    \ Data = pair<Key, Val>;\n\n    Val& operator[](const Key& k) {\n        typename\
+    \ base::u32 h = base::inner_hash(k);\n        while (true) {\n            if (base::flag[h]\
+    \ == false) {\n                if (base::extend_rate(base::s + 1)) {\n       \
+    \             base::extend();\n                    h = base::hash(k);\n      \
+    \              continue;\n                }\n                base::data[h].first\
     \ = k;\n                base::data[h].second = Val();\n                base::flag[h]\
     \ = true;\n                ++base::s;\n                return base::data[h].second;\n\
     \            }\n            if (base::data[h].first == k) {\n                if\
@@ -156,7 +190,29 @@ data:
     \ count(const Key& k) {\n        return this->contain(k);\n    }\n};\n"
   code: "#pragma once\n#include \"../base.hpp\"\n#include \"HashMapImpl.hpp\"\n\n\
     // \u53C2\u8003\uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashmap.hpp\n\
-    template <typename Key, typename Val>\nstruct HashMap : HashMapImpl::HashMapBase<Key,\
+    // \u30FB\u3081\u3061\u3083\u901F\u3044\u3002\n// \u6CE8\u610F\u70B9\n// \u30FB\
+    erase\u3057\u3066size\u53D6\u308B\u307F\u305F\u3044\u306A\u64CD\u4F5C\u3057\u3066\
+    \u305F\u3089\u306A\u3093\u304B\u30ED\u30FC\u30AB\u30EB\u306F\u5927\u4E08\u592B\
+    \u3060\u3051\u3069\n// \u3000\u30B3\u30FC\u30C9\u30C6\u30B9\u30C8\u3067\u6319\u52D5\
+    \u304C\u4E00\u5B9A\u3067\u306A\u304F\u306A\u3063\u305F\u306E\u3067\u3001\u305D\
+    \u308C\u3084\u308A\u305F\u3044\u6642\u306F\u5225\u5909\u6570\u3067size\u7BA1\u7406\
+    \u3057\u305F\u65B9\u304C\u3044\u3044\u304B\u3082\u3002\n// \u30FB\u8272\u3005\u8A66\
+    \u3057\u305F\u611F\u3058\u3001\u305D\u3082\u305D\u3082erase\u3084\u308B\u3053\u3068\
+    \u304C\u975E\u63A8\u5968\u3068\u8003\u3048\u305F\u65B9\u304C\u826F\u3055\u305D\
+    \u3046\u3002\n// \u30FBHashMap<int, mint>\u307F\u305F\u3044\u306E\u3067 += \u3084\
+    \u308B\u6642\u306B\u3001\u8DB3\u3055\u308C\u308B\u5074\u306E\u6DFB\u5B57\u30A2\
+    \u30AF\u30BB\u30B9\u3067extend\u304C\u8D70\u308B\u3068\u3001\n// \u3000\u8981\u7D20\
+    \u306E\u4F4D\u7F6E\u304C\u5909\u308F\u3063\u3066\u3057\u307E\u3046\u305F\u3081\
+    \u3001\u5148\u306B\u8A55\u4FA1\u3055\u308C\u3066\u65E2\u306B\u8FD4\u3057\u3066\
+    \u3044\u308B\u8DB3\u3059\u5074\u306E\u53C2\u7167\u304C\u58CA\u308C\u308B\u3063\
+    \u307D\u3044\u3002\n// \u3000\u306A\u3093\u304Bint\u3060\u3068\u5927\u4E08\u592B\
+    \u3063\u307D\u3044\u306E\u3067\u3001mint\u307F\u305F\u3044\u306B\u30AA\u30D6\u30B8\
+    \u30A7\u30AF\u30C8\u3060\u3068\u30C0\u30E1\u306A\u3093\u304B\u306A\u591A\u5206\
+    \u3002\n// \u30FBDP\u306E2\u6B21\u5143\u76EE\u306B\u4F7F\u3063\u305F\u3089\u3001\
+    \u30E1\u30E2\u30EA\u3092\u98DF\u3046\u3068\u7D50\u69CB\u91CD\u304F\u306A\u308B\
+    \u3088\u3046\u3060\u3063\u305F\u306E\u3067\u3001\n// \u3000\u914D\u5217\u7BC0\u7D04\
+    \u30C6\u30AF\u306F\u4F7F\u3063\u305F\u65B9\u304C\u826F\u3055\u3052\u3002\ntemplate\
+    \ <typename Key, typename Val>\nstruct HashMap : HashMapImpl::HashMapBase<Key,\
     \ pair<Key, Val>> {\n    using base = typename HashMapImpl::HashMapBase<Key, pair<Key,\
     \ Val>>;\n    using HashMapImpl::HashMapBase<Key, pair<Key, Val>>::HashMapBase;\n\
     \    using Data = pair<Key, Val>;\n\n    Val& operator[](const Key& k) {\n   \
@@ -178,10 +234,14 @@ data:
   isVerificationFile: false
   path: src/common/HashMap.hpp
   requiredBy:
-  - src/segment/SparseBIT2D.hpp
+  - src/common/Counter.hpp
   - src/graph/OfflineDynamicConnectivity.hpp
+  - src/graph/AuxiliaryTree.hpp
   - src/numbers/bsgs.hpp
-  timestamp: '2022-05-27 01:45:51+09:00'
+  - src/mystl/defaultdict.hpp
+  - src/segment/SparseBIT2D.hpp
+  - src/template.hpp
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/HashMap.hpp

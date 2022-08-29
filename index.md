@@ -178,6 +178,9 @@ data:
       path: src/common/mul_overflow.hpp
       title: src/common/mul_overflow.hpp
     - icon: ':warning:'
+      path: src/common/pair.hpp
+      title: src/common/pair.hpp
+    - icon: ':warning:'
       path: src/common/popcount.hpp
       title: src/common/popcount.hpp
     - icon: ':warning:'
@@ -292,6 +295,9 @@ data:
       title: src/geometry/rotate.hpp
   - name: src/graph
     pages:
+    - icon: ':warning:'
+      path: src/graph/AuxiliaryTree.hpp
+      title: src/graph/AuxiliaryTree.hpp
     - icon: ':warning:'
       path: src/graph/Dijkstra.hpp
       title: src/graph/Dijkstra.hpp

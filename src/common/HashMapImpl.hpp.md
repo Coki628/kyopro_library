@@ -6,20 +6,32 @@ data:
     title: src/base.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/common/Counter.hpp
+    title: src/common/Counter.hpp
+  - icon: ':warning:'
     path: src/common/HashMap.hpp
     title: src/common/HashMap.hpp
   - icon: ':warning:'
     path: src/common/HashSet.hpp
     title: src/common/HashSet.hpp
   - icon: ':warning:'
+    path: src/graph/AuxiliaryTree.hpp
+    title: src/graph/AuxiliaryTree.hpp
+  - icon: ':warning:'
     path: src/graph/OfflineDynamicConnectivity.hpp
     title: src/graph/OfflineDynamicConnectivity.hpp
+  - icon: ':warning:'
+    path: src/mystl/defaultdict.hpp
+    title: src/mystl/defaultdict.hpp
   - icon: ':warning:'
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
   - icon: ':warning:'
     path: src/segment/SparseBIT2D.hpp
     title: src/segment/SparseBIT2D.hpp
+  - icon: ':warning:'
+    path: src/template.hpp
+    title: src/template.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -257,10 +269,14 @@ data:
   path: src/common/HashMapImpl.hpp
   requiredBy:
   - src/common/HashSet.hpp
+  - src/common/Counter.hpp
   - src/common/HashMap.hpp
-  - src/segment/SparseBIT2D.hpp
   - src/graph/OfflineDynamicConnectivity.hpp
+  - src/graph/AuxiliaryTree.hpp
   - src/numbers/bsgs.hpp
+  - src/mystl/defaultdict.hpp
+  - src/segment/SparseBIT2D.hpp
+  - src/template.hpp
   timestamp: '2022-05-24 16:45:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -37,68 +37,68 @@ data:
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
     src/segment/Accumulate.hpp\"\n\n// \u7D2F\u7A4D\u548C\ntemplate<typename T>\n\
-    struct Accumulate {\n    vector<T> dat;\n    int N;\n\n    Accumulate(int N) :\
-    \ N(N) {\n        dat.resize(N);\n    }\n\n    Accumulate(const vector<T> &A)\
-    \ : N(A.size()), dat(A) {\n        build();\n    }\n\n    void set(int i, T a)\
-    \ {\n        dat[i] = a;\n    }\n\n    void add(int i, T a) {\n        dat[i]\
-    \ += a;\n    }\n\n    void build() {\n        rep(i, N-1) {\n            dat[i+1]\
-    \ += dat[i];\n        }\n        dat.insert(dat.begin(), 0);\n    }\n\n    virtual\
-    \ T query(int l, int r) {\n        assert(0 <= l and l <= N and 0 <= r and r <=\
-    \ N);\n        return dat[r]-dat[l];\n    }\n\n    T get(int i) {\n        return\
-    \ query(i, i+1);\n    }\n\n    T operator[](int i) {\n        return query(i,\
-    \ i+1);\n    }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\
-    \u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\
-    \n    ll bisearch_fore(int l, int r, ll x) {\n        if (l > r) return -1;\n\
-    \        ll l_sm = query(0, l);\n        int ok = r + 1;\n        int ng = l -\
-    \ 1;\n        while (ng+1 < ok) {\n            int mid = (ok+ng) / 2;\n      \
-    \      if (query(0, mid+1) - l_sm >= x) {\n                ok = mid;\n       \
-    \     } else {\n                ng = mid;\n            }\n        }\n        if\
-    \ (ok != r+1) {\n            return ok;\n        } else {\n            return\
-    \ -1;\n        }\n    }\n\n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\
-    \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
-    \u7F6E\n    ll bisearch_back(int l, int r, ll x) {\n        if (l > r) return\
-    \ -1;\n        ll r_sm = query(0, r+1);\n        int ok = l - 1;\n        int\
-    \ ng = r + 1;\n        while (ok+1 < ng) {\n            int mid = (ok+ng) / 2;\n\
-    \            if (r_sm - query(0, mid) >= x) {\n                ok = mid;\n   \
-    \         } else {\n                ng = mid;\n            }\n        }\n    \
-    \    if (ok != l-1) {\n            return ok;\n        } else {\n            return\
-    \ -1;\n        }\n    }\n};\n"
+    struct Accumulate {\n    vector<T> dat;\n    int N;\n    bool built = false;\n\
+    \n    Accumulate(int N) : N(N) {\n        dat.resize(N);\n    }\n\n    Accumulate(const\
+    \ vector<T> &A) : N(A.size()), dat(A) {\n        build();\n    }\n\n    void set(int\
+    \ i, T a) {\n        dat[i] = a;\n    }\n\n    void add(int i, T a) {\n      \
+    \  dat[i] += a;\n    }\n\n    void build() {\n        rep(i, N-1) {\n        \
+    \    dat[i+1] += dat[i];\n        }\n        dat.insert(dat.begin(), 0);\n   \
+    \     built = true;\n    }\n\n    virtual T query(int l, int r) {\n        assert(built);\n\
+    \        assert(0 <= l and l <= N and 0 <= r and r <= N);\n        return dat[r]\
+    \ - dat[l];\n    }\n\n    T get(int i) {\n        return query(i, i+1);\n    }\n\
+    \n    T operator[](int i) {\n        return query(i, i+1);\n    }\n\n    // \u533A\
+    \u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\u5411\u304B\u3063\u3066x\u756A\
+    \u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_fore(int l,\
+    \ int r, ll x) {\n        if (l > r) return -1;\n        ll l_sm = query(0, l);\n\
+    \        int ok = r + 1;\n        int ng = l - 1;\n        while (ng+1 < ok) {\n\
+    \            int mid = (ok+ng) / 2;\n            if (query(0, mid+1) - l_sm >=\
+    \ x) {\n                ok = mid;\n            } else {\n                ng =\
+    \ mid;\n            }\n        }\n        if (ok != r+1) {\n            return\
+    \ ok;\n        } else {\n            return -1;\n        }\n    }\n\n    // \u533A\
+    \u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\u3066x\u756A\
+    \u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_back(int l,\
+    \ int r, ll x) {\n        if (l > r) return -1;\n        ll r_sm = query(0, r+1);\n\
+    \        int ok = l - 1;\n        int ng = r + 1;\n        while (ok+1 < ng) {\n\
+    \            int mid = (ok+ng) / 2;\n            if (r_sm - query(0, mid) >= x)\
+    \ {\n                ok = mid;\n            } else {\n                ng = mid;\n\
+    \            }\n        }\n        if (ok != l-1) {\n            return ok;\n\
+    \        } else {\n            return -1;\n        }\n    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u7D2F\u7A4D\u548C\ntemplate<typename\
-    \ T>\nstruct Accumulate {\n    vector<T> dat;\n    int N;\n\n    Accumulate(int\
-    \ N) : N(N) {\n        dat.resize(N);\n    }\n\n    Accumulate(const vector<T>\
-    \ &A) : N(A.size()), dat(A) {\n        build();\n    }\n\n    void set(int i,\
-    \ T a) {\n        dat[i] = a;\n    }\n\n    void add(int i, T a) {\n        dat[i]\
-    \ += a;\n    }\n\n    void build() {\n        rep(i, N-1) {\n            dat[i+1]\
-    \ += dat[i];\n        }\n        dat.insert(dat.begin(), 0);\n    }\n\n    virtual\
-    \ T query(int l, int r) {\n        assert(0 <= l and l <= N and 0 <= r and r <=\
-    \ N);\n        return dat[r]-dat[l];\n    }\n\n    T get(int i) {\n        return\
-    \ query(i, i+1);\n    }\n\n    T operator[](int i) {\n        return query(i,\
-    \ i+1);\n    }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\
-    \u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\
-    \n    ll bisearch_fore(int l, int r, ll x) {\n        if (l > r) return -1;\n\
-    \        ll l_sm = query(0, l);\n        int ok = r + 1;\n        int ng = l -\
-    \ 1;\n        while (ng+1 < ok) {\n            int mid = (ok+ng) / 2;\n      \
-    \      if (query(0, mid+1) - l_sm >= x) {\n                ok = mid;\n       \
-    \     } else {\n                ng = mid;\n            }\n        }\n        if\
-    \ (ok != r+1) {\n            return ok;\n        } else {\n            return\
-    \ -1;\n        }\n    }\n\n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\
-    \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
-    \u7F6E\n    ll bisearch_back(int l, int r, ll x) {\n        if (l > r) return\
-    \ -1;\n        ll r_sm = query(0, r+1);\n        int ok = l - 1;\n        int\
-    \ ng = r + 1;\n        while (ok+1 < ng) {\n            int mid = (ok+ng) / 2;\n\
-    \            if (r_sm - query(0, mid) >= x) {\n                ok = mid;\n   \
-    \         } else {\n                ng = mid;\n            }\n        }\n    \
-    \    if (ok != l-1) {\n            return ok;\n        } else {\n            return\
-    \ -1;\n        }\n    }\n};\n"
+    \ T>\nstruct Accumulate {\n    vector<T> dat;\n    int N;\n    bool built = false;\n\
+    \n    Accumulate(int N) : N(N) {\n        dat.resize(N);\n    }\n\n    Accumulate(const\
+    \ vector<T> &A) : N(A.size()), dat(A) {\n        build();\n    }\n\n    void set(int\
+    \ i, T a) {\n        dat[i] = a;\n    }\n\n    void add(int i, T a) {\n      \
+    \  dat[i] += a;\n    }\n\n    void build() {\n        rep(i, N-1) {\n        \
+    \    dat[i+1] += dat[i];\n        }\n        dat.insert(dat.begin(), 0);\n   \
+    \     built = true;\n    }\n\n    virtual T query(int l, int r) {\n        assert(built);\n\
+    \        assert(0 <= l and l <= N and 0 <= r and r <= N);\n        return dat[r]\
+    \ - dat[l];\n    }\n\n    T get(int i) {\n        return query(i, i+1);\n    }\n\
+    \n    T operator[](int i) {\n        return query(i, i+1);\n    }\n\n    // \u533A\
+    \u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\u5411\u304B\u3063\u3066x\u756A\
+    \u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_fore(int l,\
+    \ int r, ll x) {\n        if (l > r) return -1;\n        ll l_sm = query(0, l);\n\
+    \        int ok = r + 1;\n        int ng = l - 1;\n        while (ng+1 < ok) {\n\
+    \            int mid = (ok+ng) / 2;\n            if (query(0, mid+1) - l_sm >=\
+    \ x) {\n                ok = mid;\n            } else {\n                ng =\
+    \ mid;\n            }\n        }\n        if (ok != r+1) {\n            return\
+    \ ok;\n        } else {\n            return -1;\n        }\n    }\n\n    // \u533A\
+    \u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\u3066x\u756A\
+    \u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_back(int l,\
+    \ int r, ll x) {\n        if (l > r) return -1;\n        ll r_sm = query(0, r+1);\n\
+    \        int ok = l - 1;\n        int ng = r + 1;\n        while (ok+1 < ng) {\n\
+    \            int mid = (ok+ng) / 2;\n            if (r_sm - query(0, mid) >= x)\
+    \ {\n                ok = mid;\n            } else {\n                ng = mid;\n\
+    \            }\n        }\n        if (ok != l-1) {\n            return ok;\n\
+    \        } else {\n            return -1;\n        }\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/segment/Accumulate.hpp
   requiredBy:
-  - src/template.hpp
   - src/segment/Imos.hpp
-  timestamp: '2022-05-22 00:24:51+09:00'
+  - src/template.hpp
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/segment/Accumulate.hpp

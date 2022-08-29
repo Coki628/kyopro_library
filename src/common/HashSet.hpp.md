@@ -7,7 +7,10 @@ data:
   - icon: ':warning:'
     path: src/common/HashMapImpl.hpp
     title: src/common/HashMapImpl.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/template.hpp
+    title: src/template.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -141,7 +144,8 @@ data:
   - src/base.hpp
   isVerificationFile: false
   path: src/common/HashSet.hpp
-  requiredBy: []
+  requiredBy:
+  - src/template.hpp
   timestamp: '2022-05-27 01:45:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

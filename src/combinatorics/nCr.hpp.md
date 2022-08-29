@@ -40,13 +40,17 @@ data:
     \ init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>> list4d(int\
     \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
-    #line 3 \"src/combinatorics/nCr.hpp\"\n\n// nCr\u5217\u6319 (\u8A08\u7B97\u91CF\
-    \uFF1AO(n*r))\ntemplate<typename T>\nvector<vector<T>> nCr(int n, int r) {\n \
-    \   auto dp = list2d(n+1, r+1, (T)0);\n    dp[0][0] = 1;\n    rep(i, 1, n+1) {\n\
-    \        dp[i][0] = 1;\n        rep(j, 1, r+1) {\n            dp[i][j] = dp[i-1][j-1]+dp[i-1][j];\n\
-    \        }\n    }\n    return dp;\n}\n\n// nCr (\u8A08\u7B97\u91CF\uFF1AO(r))\n\
-    template<typename T>\nT nCr(int n, int r) {\n    T res = 1;\n    rep(i, r) res\
-    \ = res*(T)(n-i)/(T)(i+1);\n    return res;\n}\n"
+    \n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
+    \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
+    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/combinatorics/nCr.hpp\"\
+    \n\n// nCr\u5217\u6319 (\u8A08\u7B97\u91CF\uFF1AO(n*r))\ntemplate<typename T>\n\
+    vector<vector<T>> nCr(int n, int r) {\n    auto dp = list2d(n+1, r+1, (T)0);\n\
+    \    dp[0][0] = 1;\n    rep(i, 1, n+1) {\n        dp[i][0] = 1;\n        rep(j,\
+    \ 1, r+1) {\n            dp[i][j] = dp[i-1][j-1]+dp[i-1][j];\n        }\n    }\n\
+    \    return dp;\n}\n\n// nCr (\u8A08\u7B97\u91CF\uFF1AO(r))\ntemplate<typename\
+    \ T>\nT nCr(int n, int r) {\n    T res = 1;\n    rep(i, r) res = res*(T)(n-i)/(T)(i+1);\n\
+    \    return res;\n}\n"
   code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n\n// nCr\u5217\
     \u6319 (\u8A08\u7B97\u91CF\uFF1AO(n*r))\ntemplate<typename T>\nvector<vector<T>>\
     \ nCr(int n, int r) {\n    auto dp = list2d(n+1, r+1, (T)0);\n    dp[0][0] = 1;\n\
@@ -62,7 +66,7 @@ data:
   isVerificationFile: false
   path: src/combinatorics/nCr.hpp
   requiredBy: []
-  timestamp: '2022-04-06 17:44:14+09:00'
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/combinatorics/nCr.hpp

@@ -117,6 +117,9 @@ data:
     path: src/common/mt.hpp
     title: src/common/mt.hpp
   - icon: ':warning:'
+    path: src/common/pair.hpp
+    title: src/common/pair.hpp
+  - icon: ':warning:'
     path: src/common/popcount.hpp
     title: src/common/popcount.hpp
   - icon: ':warning:'
@@ -221,6 +224,9 @@ data:
   - icon: ':warning:'
     path: src/geometry/rotate.hpp
     title: src/geometry/rotate.hpp
+  - icon: ':warning:'
+    path: src/graph/AuxiliaryTree.hpp
+    title: src/graph/AuxiliaryTree.hpp
   - icon: ':warning:'
     path: src/graph/Dijkstra.hpp
     title: src/graph/Dijkstra.hpp
@@ -624,206 +630,208 @@ data:
   isVerificationFile: false
   path: src/base.hpp
   requiredBy:
-  - src/common/HashSet.hpp
-  - src/common/max.hpp
-  - src/common/Counter.hpp
-  - src/common/bit_length.hpp
-  - src/common/listnd.hpp
-  - src/common/reversed.hpp
-  - src/common/bisearch.hpp
-  - src/common/mapping.hpp
-  - src/common/yesno.hpp
-  - src/common/divmod.hpp
-  - src/common/bisect.hpp
-  - src/common/subarray.hpp
+  - src/geometry/monotone_chain.hpp
+  - src/geometry/degrees.hpp
+  - src/geometry/dot.hpp
+  - src/geometry/dist3d.hpp
+  - src/geometry/project.hpp
+  - src/geometry/Point.hpp
+  - src/geometry/Circle.hpp
+  - src/geometry/pick_theorem.hpp
+  - src/geometry/intersect.hpp
+  - src/geometry/get_a_and_b.hpp
+  - src/geometry/ccw.hpp
+  - src/geometry/get_cross_point.hpp
+  - src/geometry/cross.hpp
+  - src/geometry/intersectCC.hpp
+  - src/geometry/angle.hpp
+  - src/geometry/cos_formula.hpp
+  - src/geometry/rotate.hpp
+  - src/geometry/Segment.hpp
+  - src/geometry/reflect.hpp
+  - src/geometry/radians.hpp
   - src/common/min.hpp
-  - src/common/PersistentArray.hpp
-  - src/common/interactive.hpp
-  - src/common/trisearch.hpp
+  - src/common/max.hpp
+  - src/common/divmod.hpp
+  - src/common/pair.hpp
   - src/common/sorted.hpp
-  - src/common/_doubling.hpp
-  - src/common/HashMap.hpp
-  - src/common/popcount.hpp
-  - src/common/int128.hpp
   - src/common/sum.hpp
-  - src/common/LIS.hpp
-  - src/common/Compress.hpp
   - src/common/RLE.hpp
-  - src/common/split.hpp
-  - src/common/zip.hpp
   - src/common/mt.hpp
-  - src/common/bisearch_real.hpp
-  - src/common/input.hpp
-  - src/common/join.hpp
-  - src/common/custom_hash.hpp
-  - src/common/concat.hpp
-  - src/common/randrange.hpp
-  - src/common/HashMapImpl.hpp
-  - src/common/pow.hpp
+  - src/common/split.hpp
+  - src/common/yesno.hpp
+  - src/common/interactive.hpp
   - src/common/Timer.hpp
-  - src/common/Doubling.hpp
-  - src/common/trisearch_real.hpp
-  - src/common/to_string.hpp
+  - src/common/zip.hpp
+  - src/common/bisearch.hpp
+  - src/common/bit_length.hpp
   - src/common/print.hpp
+  - src/common/PersistentArray.hpp
+  - src/common/mapping.hpp
+  - src/common/LIS.hpp
+  - src/common/concat.hpp
+  - src/common/Doubling.hpp
+  - src/common/trisearch.hpp
+  - src/common/to_string.hpp
+  - src/common/randrange.hpp
+  - src/common/custom_hash.hpp
+  - src/common/pow.hpp
+  - src/common/reversed.hpp
+  - src/common/listnd.hpp
+  - src/common/HashSet.hpp
+  - src/common/Counter.hpp
+  - src/common/int128.hpp
+  - src/common/Compress.hpp
+  - src/common/popcount.hpp
+  - src/common/subarray.hpp
+  - src/common/HashMapImpl.hpp
+  - src/common/_doubling.hpp
+  - src/common/trisearch_real.hpp
+  - src/common/bisearch_real.hpp
+  - src/common/bisect.hpp
+  - src/common/input.hpp
+  - src/common/HashMap.hpp
   - src/common/toint.hpp
-  - src/combinatorics/AnyModTools.hpp
-  - src/combinatorics/combinations_with_replacement.hpp
-  - src/combinatorics/nC2.hpp
-  - src/combinatorics/nCr.hpp
-  - src/combinatorics/combinations.hpp
-  - src/combinatorics/permutations.hpp
-  - src/combinatorics/stirling.hpp
+  - src/common/join.hpp
   - src/combinatorics/ModInt.hpp
-  - src/combinatorics/partition.hpp
+  - src/combinatorics/combinations_with_replacement.hpp
   - src/combinatorics/ArbitraryModInt.hpp
+  - src/combinatorics/nCr.hpp
   - src/combinatorics/ModTools.hpp
-  - src/math/FormalPowerSeries.hpp
-  - src/math/coeff_of_rational_function.hpp
-  - src/math/ArbitraryModConvolution.hpp
+  - src/combinatorics/combinations.hpp
+  - src/combinatorics/stirling.hpp
+  - src/combinatorics/permutations.hpp
+  - src/combinatorics/partition.hpp
+  - src/combinatorics/AnyModTools.hpp
+  - src/combinatorics/nC2.hpp
+  - src/graph/PartiallyPersistentUnionFind.hpp
+  - src/graph/bfs01.hpp
+  - src/graph/dijkstra_v2.hpp
+  - src/graph/bfs.hpp
+  - src/graph/PersistentUnionFind.hpp
+  - src/graph/Dijkstra.hpp
+  - src/graph/RangeEdgeGraph.hpp
+  - src/graph/OfflineDynamicConnectivity.hpp
+  - src/graph/topological_sort.hpp
+  - src/graph/ReRooting.hpp
+  - src/graph/HeavyLightDecomposition.hpp
+  - src/graph/dfs.hpp
+  - src/graph/UnionFindUndo.hpp
+  - src/graph/_dijkstra.hpp
+  - src/graph/warshall_floyd.hpp
+  - src/graph/UnionFind.hpp
+  - src/graph/WeightedUnionFind.hpp
+  - src/graph/AuxiliaryTree.hpp
   - src/math/garner.hpp
   - src/math/BM.hpp
-  - src/math/lagrange_polynomial.hpp
-  - src/math/kitamasa.hpp
-  - src/math/FastFourierTransform.hpp
-  - src/math/kth_term_of_linearly_recurrent_sequence.hpp
   - src/math/fps/pow_term2.hpp
   - src/math/fps/pow.hpp
-  - src/macros.hpp
-  - src/template.hpp
-  - src/segment/BinaryTrie.hpp
-  - src/segment/Accumulate.hpp
-  - src/segment/SegmentTree2D.hpp
-  - src/segment/SparseTable.hpp
-  - src/segment/LazySegmentTree.hpp
-  - src/segment/DynamicLiChaoTree.hpp
-  - src/segment/Mo.hpp
-  - src/segment/RangeSet.hpp
-  - src/segment/BIT2D.hpp
-  - src/segment/WaveletMatrix.hpp
-  - src/segment/Accumulate2D.hpp
-  - src/segment/_accumulate.hpp
-  - src/segment/Imos2D.hpp
-  - src/segment/get_inversion.hpp
-  - src/segment/SegmentTree.hpp
-  - src/segment/PersistentSegmentTree.hpp
-  - src/segment/SparseBIT2D.hpp
-  - src/segment/SegmentTreeIndex.hpp
-  - src/segment/LazySegmentTreeArithmetric.hpp
-  - src/segment/Imos.hpp
-  - src/segment/_WaveletMatrix.hpp
-  - src/segment/SegmentTreeBeats.hpp
-  - src/segment/merge_segment.hpp
-  - src/segment/AbstructBeats.hpp
-  - src/segment/BIT.hpp
-  - src/segment/PersistentLazySegmentTree.hpp
-  - src/segment/BIT2.hpp
-  - src/segment/SuccinctIndexableDictionary.hpp
-  - src/segment/slide_min.hpp
-  - src/graph/WeightedUnionFind.hpp
-  - src/graph/HeavyLightDecomposition.hpp
-  - src/graph/_dijkstra.hpp
-  - src/graph/PartiallyPersistentUnionFind.hpp
-  - src/graph/warshall_floyd.hpp
-  - src/graph/PersistentUnionFind.hpp
-  - src/graph/bfs.hpp
-  - src/graph/ReRooting.hpp
-  - src/graph/UnionFindUndo.hpp
-  - src/graph/Dijkstra.hpp
-  - src/graph/UnionFind.hpp
-  - src/graph/topological_sort.hpp
-  - src/graph/dfs.hpp
-  - src/graph/dijkstra_v2.hpp
-  - src/graph/OfflineDynamicConnectivity.hpp
-  - src/graph/RangeEdgeGraph.hpp
-  - src/graph/bfs01.hpp
-  - src/matrix/MatPow.hpp
-  - src/matrix/affine_mat_inverse.hpp
-  - src/matrix/gauss_jordan_f2.hpp
-  - src/matrix/mat_dot.hpp
-  - src/matrix/gauss_jordan_real.hpp
-  - src/matrix/flip.hpp
-  - src/matrix/rotate.hpp
-  - src/numbers/lcm.hpp
-  - src/numbers/divisors.hpp
-  - src/numbers/XorBasis.hpp
-  - src/numbers/_factorize.hpp
-  - src/numbers/isqrt.hpp
-  - src/numbers/ntod.hpp
-  - src/numbers/digit_sum.hpp
-  - src/numbers/dton.hpp
-  - src/numbers/bsgs.hpp
-  - src/numbers/Fraction.hpp
-  - src/numbers/number_le_n_with_a_b.hpp
-  - src/numbers/gcd.hpp
-  - src/numbers/Eratosthenes.hpp
-  - src/numbers/is_prime.hpp
-  - src/numbers/gcd_convolution.hpp
-  - src/numbers/pythagorean_triple.hpp
-  - src/numbers/_eratosthenes_sieve.hpp
-  - src/numbers/_xor_basis.hpp
-  - src/numbers/factorize.hpp
-  - src/numbers/segment_sieve.hpp
-  - src/numbers/osa_k.hpp
-  - src/mystl/my_set.hpp
-  - src/mystl/my_vector.hpp
-  - src/mystl/my_multiset.hpp
-  - src/mystl/my_deque.hpp
-  - src/mystl/my_priority_queue.hpp
-  - src/mystl/defaultdict.hpp
-  - src/mystl/my_queue.hpp
-  - src/geometry/intersect.hpp
-  - src/geometry/reflect.hpp
-  - src/geometry/project.hpp
-  - src/geometry/ccw.hpp
-  - src/geometry/radians.hpp
-  - src/geometry/cross.hpp
-  - src/geometry/degrees.hpp
-  - src/geometry/monotone_chain.hpp
-  - src/geometry/dot.hpp
-  - src/geometry/Segment.hpp
-  - src/geometry/get_a_and_b.hpp
-  - src/geometry/pick_theorem.hpp
-  - src/geometry/dist3d.hpp
-  - src/geometry/get_cross_point.hpp
-  - src/geometry/angle.hpp
-  - src/geometry/Circle.hpp
-  - src/geometry/intersectCC.hpp
-  - src/geometry/rotate.hpp
-  - src/geometry/cos_formula.hpp
-  - src/geometry/Point.hpp
-  - src/grid/bfs_restore.hpp
+  - src/math/kitamasa.hpp
+  - src/math/ArbitraryModConvolution.hpp
+  - src/math/FastFourierTransform.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/math/lagrange_polynomial.hpp
+  - src/math/coeff_of_rational_function.hpp
+  - src/math/kth_term_of_linearly_recurrent_sequence.hpp
   - src/grid/build_grid.hpp
   - src/grid/dijkstra.hpp
-  - src/grid/idtogrid.hpp
-  - src/grid/gridtoid.hpp
-  - src/grid/bfs.hpp
-  - src/grid/scale.hpp
-  - src/grid/constants/directions.hpp
+  - src/grid/transpose.hpp
   - src/grid/constants/dir4.hpp
   - src/grid/constants/dir_diagonals.hpp
   - src/grid/constants/dir8.hpp
-  - src/grid/transpose.hpp
+  - src/grid/constants/directions.hpp
+  - src/grid/gridtoid.hpp
+  - src/grid/bfs.hpp
+  - src/grid/scale.hpp
   - src/grid/flip.hpp
   - src/grid/rot90.hpp
-  - src/string/bin.hpp
+  - src/grid/bfs_restore.hpp
+  - src/grid/idtogrid.hpp
+  - src/string/constants/ascii_uppercase.hpp
+  - src/string/constants/digits.hpp
+  - src/string/constants/ascii_lowercase.hpp
+  - src/string/constants/ascii_letters.hpp
+  - src/string/RollingHash.hpp
   - src/string/is_palindrome.hpp
+  - src/string/compare.hpp
   - src/string/get_next_indices.hpp
   - src/string/Trie.hpp
-  - src/string/zfill.hpp
-  - src/string/constants/digits.hpp
-  - src/string/constants/ascii_letters.hpp
-  - src/string/constants/ascii_uppercase.hpp
-  - src/string/constants/ascii_lowercase.hpp
   - src/string/replace.hpp
-  - src/string/RollingHash.hpp
-  - src/string/compare.hpp
+  - src/string/zfill.hpp
+  - src/string/bin.hpp
+  - src/matrix/mat_dot.hpp
+  - src/matrix/affine_mat_inverse.hpp
+  - src/matrix/MatPow.hpp
+  - src/matrix/gauss_jordan_real.hpp
+  - src/matrix/gauss_jordan_f2.hpp
+  - src/matrix/flip.hpp
+  - src/matrix/rotate.hpp
+  - src/numbers/bsgs.hpp
+  - src/numbers/divisors.hpp
+  - src/numbers/ntod.hpp
+  - src/numbers/Eratosthenes.hpp
+  - src/numbers/factorize.hpp
+  - src/numbers/isqrt.hpp
+  - src/numbers/_xor_basis.hpp
+  - src/numbers/gcd_convolution.hpp
+  - src/numbers/dton.hpp
+  - src/numbers/XorBasis.hpp
+  - src/numbers/_eratosthenes_sieve.hpp
+  - src/numbers/segment_sieve.hpp
+  - src/numbers/Fraction.hpp
+  - src/numbers/pythagorean_triple.hpp
+  - src/numbers/number_le_n_with_a_b.hpp
+  - src/numbers/lcm.hpp
+  - src/numbers/osa_k.hpp
+  - src/numbers/gcd.hpp
+  - src/numbers/digit_sum.hpp
+  - src/numbers/_factorize.hpp
+  - src/numbers/is_prime.hpp
+  - src/mystl/my_set.hpp
+  - src/mystl/my_priority_queue.hpp
+  - src/mystl/my_queue.hpp
+  - src/mystl/my_vector.hpp
+  - src/mystl/my_multiset.hpp
+  - src/mystl/defaultdict.hpp
+  - src/mystl/my_deque.hpp
+  - src/segment/DynamicLiChaoTree.hpp
+  - src/segment/PersistentLazySegmentTree.hpp
+  - src/segment/SegmentTree2D.hpp
+  - src/segment/LazySegmentTreeArithmetric.hpp
+  - src/segment/BIT2D.hpp
+  - src/segment/Mo.hpp
+  - src/segment/SparseBIT2D.hpp
+  - src/segment/SuccinctIndexableDictionary.hpp
+  - src/segment/_accumulate.hpp
+  - src/segment/Imos2D.hpp
+  - src/segment/BinaryTrie.hpp
+  - src/segment/RangeSet.hpp
+  - src/segment/Accumulate.hpp
+  - src/segment/SegmentTreeBeats.hpp
+  - src/segment/SegmentTree.hpp
+  - src/segment/AbstructBeats.hpp
+  - src/segment/BIT.hpp
+  - src/segment/Imos.hpp
+  - src/segment/BIT2.hpp
+  - src/segment/PersistentSegmentTree.hpp
+  - src/segment/SegmentTreeIndex.hpp
+  - src/segment/WaveletMatrix.hpp
+  - src/segment/merge_segment.hpp
+  - src/segment/_WaveletMatrix.hpp
+  - src/segment/LazySegmentTree.hpp
+  - src/segment/slide_min.hpp
+  - src/segment/Accumulate2D.hpp
+  - src/segment/SparseTable.hpp
+  - src/segment/get_inversion.hpp
+  - src/macros.hpp
+  - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/common/bisect.test.cpp
+  - test/graph/WeightedUnionFind.test.cpp
   - test/graph/UnionFind.test.cpp
   - test/graph/bfs.test.cpp
-  - test/graph/WeightedUnionFind.test.cpp
   - test/matrix/MatPow.test.cpp
 documentation_of: src/base.hpp
 layout: document

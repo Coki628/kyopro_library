@@ -43,15 +43,19 @@ data:
     \ init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>> list4d(int\
     \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
-    #line 2 \"src/common/chmin.hpp\"\n\ntemplate<typename T>\nbool chmin(T &x, T y)\
-    \ {\n    return (y < x) ? x = y, true : false;\n}\n#line 4 \"src/grid/dijkstra.hpp\"\
-    \n\n// \u30B0\u30EA\u30C3\u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\
-    \u30C3\u30C9, \u59CB\u70B9{h, w}) \nusing P = tuple<ll, int, int>;\nvvl dijkstra(const\
-    \ vvl &grid, pii src, ll invalid=-1) {\n    int H = grid.size();\n    int W =\
-    \ grid[0].size();\n    auto res = list2d(H, W, INF);\n    const vector<pii> directions\
-    \ = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n    priority_queue<P, vector<P>, greater<P>>\
-    \ que;\n    auto [sh, sw] = src;\n    que.push({0, sh, sw});\n    res[sh][sw]\
-    \ = 0;\n\n    while (que.size()) {\n        auto [dist, h, w] = que.top(); que.pop();\n\
+    \n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
+    \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
+    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 2 \"src/common/chmin.hpp\"\
+    \n\ntemplate<typename T>\nbool chmin(T &x, T y) {\n    return (y < x) ? x = y,\
+    \ true : false;\n}\n#line 4 \"src/grid/dijkstra.hpp\"\n\n// \u30B0\u30EA\u30C3\
+    \u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\u30C3\u30C9, \u59CB\
+    \u70B9{h, w}) \nusing P = tuple<ll, int, int>;\nvvl dijkstra(const vvl &grid,\
+    \ pii src, ll invalid=-1) {\n    int H = grid.size();\n    int W = grid[0].size();\n\
+    \    auto res = list2d(H, W, INF);\n    const vector<pii> directions = {{-1, 0},\
+    \ {1, 0}, {0, -1}, {0, 1}};\n    priority_queue<P, vector<P>, greater<P>> que;\n\
+    \    auto [sh, sw] = src;\n    que.push({0, sh, sw});\n    res[sh][sw] = 0;\n\n\
+    \    while (que.size()) {\n        auto [dist, h, w] = que.top(); que.pop();\n\
     \        if (res[h][w] < dist) continue;\n        for (auto [dh, dw] : directions)\
     \ {\n            int nh = h + dh;\n            int nw = w + dw;\n            if\
     \ (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw]\
@@ -81,7 +85,7 @@ data:
   isVerificationFile: false
   path: src/grid/dijkstra.hpp
   requiredBy: []
-  timestamp: '2022-07-12 10:50:41+09:00'
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/dijkstra.hpp

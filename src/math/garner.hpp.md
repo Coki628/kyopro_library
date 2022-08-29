@@ -17,8 +17,8 @@ data:
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
     using namespace std;\n#line 3 \"src/combinatorics/ModInt.hpp\"\n\n// \u53C2\u8003\
     \uFF1Ahttps://ei1333.github.io/library/math/combinatorics/mod-int.cpp\n// ModInt\n\
-    template<int mod>\nstruct ModInt {\n    int x;\n\n    ModInt() : x(0) {}\n\n \
-    \   ModInt(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\n\
+    template<int mod>\nstruct ModInt {\n    int x = 0;\n\n    ModInt() : x(0) {}\n\
+    \n    ModInt(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\n\
     \    ModInt &operator++() {\n        x++;\n        if (x == mod) x = 0;\n    \
     \    return *this;\n    }\n\n    ModInt &operator--() {\n        if (x == 0) x\
     \ = mod;\n        x--;\n        return *this;\n    }\n\n    ModInt &operator+=(const\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: false
   path: src/math/garner.hpp
   requiredBy: []
-  timestamp: '2022-05-22 00:24:51+09:00'
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/garner.hpp

@@ -40,14 +40,17 @@ data:
     \ init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>> list4d(int\
     \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
-    #line 3 \"src/combinatorics/partition.hpp\"\n\n// \u5206\u5272\u6570(\u7389\u533A\
-    \u5225\u306A\u3057\u3001\u7BB1\u533A\u5225\u306A\u3057\u3001\u5236\u9650\u306A\
-    \u3057) \u203B\u672AVerify\nll partition(int N, int K) {\n    // dp[i][j] := j\u306E\
-    i\u5206\u5272\u306E\u7DCF\u6570\n    auto dp = list2d(K+1, N+1, 0LL);\n    dp[0][0]\
-    \ = 1;\n    rep(i, 1, K+1) {\n        rep(j, N+1) {\n            dp[i][j] += dp[i-1][j];\n\
-    \            if (j - i >= 0) {\n                dp[i][j] += dp[i][j-i];\n    \
-    \        }\n            dp[i][j] %= MOD;\n        }\n    }\n    return dp[K][N];\n\
-    }\n"
+    \n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
+    \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
+    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/combinatorics/partition.hpp\"\
+    \n\n// \u5206\u5272\u6570(\u7389\u533A\u5225\u306A\u3057\u3001\u7BB1\u533A\u5225\
+    \u306A\u3057\u3001\u5236\u9650\u306A\u3057) \u203B\u672AVerify\nll partition(int\
+    \ N, int K) {\n    // dp[i][j] := j\u306Ei\u5206\u5272\u306E\u7DCF\u6570\n   \
+    \ auto dp = list2d(K+1, N+1, 0LL);\n    dp[0][0] = 1;\n    rep(i, 1, K+1) {\n\
+    \        rep(j, N+1) {\n            dp[i][j] += dp[i-1][j];\n            if (j\
+    \ - i >= 0) {\n                dp[i][j] += dp[i][j-i];\n            }\n      \
+    \      dp[i][j] %= MOD;\n        }\n    }\n    return dp[K][N];\n}\n"
   code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n\n// \u5206\
     \u5272\u6570(\u7389\u533A\u5225\u306A\u3057\u3001\u7BB1\u533A\u5225\u306A\u3057\
     \u3001\u5236\u9650\u306A\u3057) \u203B\u672AVerify\nll partition(int N, int K)\
@@ -63,7 +66,7 @@ data:
   isVerificationFile: false
   path: src/combinatorics/partition.hpp
   requiredBy: []
-  timestamp: '2022-04-06 17:44:14+09:00'
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/combinatorics/partition.hpp

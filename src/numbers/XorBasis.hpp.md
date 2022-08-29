@@ -51,10 +51,11 @@ data:
     \ W> merge(const XorBasis<T, W>& a) {\n        if (rank == W or a.rank == 0) {\n\
     \            return *this;\n        }\n        if (a.rank == W or rank == 0) {\n\
     \            return a;\n        }\n        rep(i, a.rank) {\n            add(a.basis[i]);\n\
-    \        }\n        return *this;\n    }\n};\n\n// XOR\u57FA\u5E95(vector\u7248\
-    )\n// template<typename T>\n// struct XorBasis {\n//     vector<T> basis;\n\n\
-    //     XorBasis() {}\n\n//     XorBasis(const vector<T>& A) : basis(A) {}\n\n\
-    //     // \u57FA\u5E95\u306Ba\u3092\u8FFD\u52A0\u3001\u57FA\u5E95\u304C\u66F4\u65B0\
+    \        }\n        return *this;\n    }\n\n    void clear() {\n        basis\
+    \ = {};\n        rank = 0;\n    }\n};\n\n// XOR\u57FA\u5E95(vector\u7248)\n//\
+    \ template<typename T>\n// struct XorBasis {\n//     vector<T> basis;\n\n//  \
+    \   XorBasis() {}\n\n//     XorBasis(const vector<T>& A) : basis(A) {}\n\n// \
+    \    // \u57FA\u5E95\u306Ba\u3092\u8FFD\u52A0\u3001\u57FA\u5E95\u304C\u66F4\u65B0\
     \u3055\u308C\u305F\u3089true\u3092\u8FD4\u3059\n//     bool add(T a) {\n//   \
     \      if (a == 0) return false;\n//         for (auto b : basis) {\n//      \
     \       chmin(a, a^b);\n//         }\n//         if (a > 0) {\n//            \
@@ -81,10 +82,11 @@ data:
     \ W> merge(const XorBasis<T, W>& a) {\n        if (rank == W or a.rank == 0) {\n\
     \            return *this;\n        }\n        if (a.rank == W or rank == 0) {\n\
     \            return a;\n        }\n        rep(i, a.rank) {\n            add(a.basis[i]);\n\
-    \        }\n        return *this;\n    }\n};\n\n// XOR\u57FA\u5E95(vector\u7248\
-    )\n// template<typename T>\n// struct XorBasis {\n//     vector<T> basis;\n\n\
-    //     XorBasis() {}\n\n//     XorBasis(const vector<T>& A) : basis(A) {}\n\n\
-    //     // \u57FA\u5E95\u306Ba\u3092\u8FFD\u52A0\u3001\u57FA\u5E95\u304C\u66F4\u65B0\
+    \        }\n        return *this;\n    }\n\n    void clear() {\n        basis\
+    \ = {};\n        rank = 0;\n    }\n};\n\n// XOR\u57FA\u5E95(vector\u7248)\n//\
+    \ template<typename T>\n// struct XorBasis {\n//     vector<T> basis;\n\n//  \
+    \   XorBasis() {}\n\n//     XorBasis(const vector<T>& A) : basis(A) {}\n\n// \
+    \    // \u57FA\u5E95\u306Ba\u3092\u8FFD\u52A0\u3001\u57FA\u5E95\u304C\u66F4\u65B0\
     \u3055\u308C\u305F\u3089true\u3092\u8FD4\u3059\n//     bool add(T a) {\n//   \
     \      if (a == 0) return false;\n//         for (auto b : basis) {\n//      \
     \       chmin(a, a^b);\n//         }\n//         if (a > 0) {\n//            \
@@ -101,7 +103,7 @@ data:
   isVerificationFile: false
   path: src/numbers/XorBasis.hpp
   requiredBy: []
-  timestamp: '2022-04-19 01:28:42+09:00'
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/XorBasis.hpp

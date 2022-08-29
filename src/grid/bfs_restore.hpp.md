@@ -40,24 +40,28 @@ data:
     \ init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>> list4d(int\
     \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
-    #line 3 \"src/grid/bfs_restore.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9BFS(\u7D4C\u8DEF\
-    \u5FA9\u5143)\nstring bfs(const vector<string> &grid, const pii &src, const pii\
-    \ &goal, char invalid='#') {\n\n    int H = grid.size();\n    int W = grid[0].size();\n\
-    \    auto dist = list2d(H, W, INF);\n    auto prv = list2d(H, W, -1);\n    const\
-    \ vector<pii> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n    queue<pii>\
-    \ que;\n    auto [sh, sw] = src;\n    que.push({sh, sw});\n    dist[sh][sw] =\
-    \ 0;\n    while (!que.empty()) {\n        auto [h, w] = que.front(); que.pop();\n\
-    \        rep(d, 4) {\n            auto [dh, dw] = directions[d];\n           \
-    \ int nh = h + dh;\n            int nw = w + dw;\n            if (nh < 0 or nw\
-    \ < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw] == invalid)\
-    \ continue;\n            if (dist[nh][nw] == INF) {\n                dist[nh][nw]\
-    \ = dist[h][w] + 1;\n                prv[nh][nw] = d%2 == 0 ? d+1 : d-1;\n   \
-    \             que.push({nh, nw});\n            }\n        }\n    }\n\n    // \u7D4C\
-    \u8DEF\u5FA9\u5143\n    string res;\n    vector<char> itoc = {'U', 'D', 'L', 'R'};\n\
-    \    auto [ch, cw] = goal;\n    while (ch != sh or cw != sw) {\n        int d\
-    \ = prv[ch][cw];\n        auto [dh, dw] = directions[d];\n        ch += dh;\n\
-    \        cw += dw;\n        res += itoc[d%2 == 0 ? d+1 : d-1];\n    }\n    reverse(ALL(res));\n\
-    \    return res;\n}\n"
+    \n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
+    \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
+    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/grid/bfs_restore.hpp\"\
+    \n\n// \u30B0\u30EA\u30C3\u30C9BFS(\u7D4C\u8DEF\u5FA9\u5143)\nstring bfs(const\
+    \ vector<string> &grid, const pii &src, const pii &goal, char invalid='#') {\n\
+    \n    int H = grid.size();\n    int W = grid[0].size();\n    auto dist = list2d(H,\
+    \ W, INF);\n    auto prv = list2d(H, W, -1);\n    const vector<pii> directions\
+    \ = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n    queue<pii> que;\n    auto [sh, sw]\
+    \ = src;\n    que.push({sh, sw});\n    dist[sh][sw] = 0;\n    while (!que.empty())\
+    \ {\n        auto [h, w] = que.front(); que.pop();\n        rep(d, 4) {\n    \
+    \        auto [dh, dw] = directions[d];\n            int nh = h + dh;\n      \
+    \      int nw = w + dw;\n            if (nh < 0 or nw < 0 or nh >= H or nw >=\
+    \ W) continue;\n            if (grid[nh][nw] == invalid) continue;\n         \
+    \   if (dist[nh][nw] == INF) {\n                dist[nh][nw] = dist[h][w] + 1;\n\
+    \                prv[nh][nw] = d%2 == 0 ? d+1 : d-1;\n                que.push({nh,\
+    \ nw});\n            }\n        }\n    }\n\n    // \u7D4C\u8DEF\u5FA9\u5143\n\
+    \    string res;\n    vector<char> itoc = {'U', 'D', 'L', 'R'};\n    auto [ch,\
+    \ cw] = goal;\n    while (ch != sh or cw != sw) {\n        int d = prv[ch][cw];\n\
+    \        auto [dh, dw] = directions[d];\n        ch += dh;\n        cw += dw;\n\
+    \        res += itoc[d%2 == 0 ? d+1 : d-1];\n    }\n    reverse(ALL(res));\n \
+    \   return res;\n}\n"
   code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n\n// \u30B0\
     \u30EA\u30C3\u30C9BFS(\u7D4C\u8DEF\u5FA9\u5143)\nstring bfs(const vector<string>\
     \ &grid, const pii &src, const pii &goal, char invalid='#') {\n\n    int H = grid.size();\n\
@@ -83,7 +87,7 @@ data:
   isVerificationFile: false
   path: src/grid/bfs_restore.hpp
   requiredBy: []
-  timestamp: '2022-04-06 17:44:14+09:00'
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/bfs_restore.hpp

@@ -62,8 +62,8 @@ data:
   isVerificationFile: false
   path: src/numbers/lcm.hpp
   requiredBy:
-  - src/template.hpp
   - src/numbers/Fraction.hpp
+  - src/template.hpp
   timestamp: '2022-06-28 16:28:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

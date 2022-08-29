@@ -79,8 +79,8 @@ data:
   path: src/geometry/Segment.hpp
   requiredBy:
   - src/geometry/intersect.hpp
-  - src/geometry/reflect.hpp
   - src/geometry/get_cross_point.hpp
+  - src/geometry/reflect.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

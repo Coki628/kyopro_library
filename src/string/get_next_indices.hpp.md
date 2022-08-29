@@ -40,14 +40,18 @@ data:
     \ init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>> list4d(int\
     \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
-    #line 3 \"src/string/get_next_indices.hpp\"\n\n// \u5F15\u6570\u3000\uFF1A\u6570\
-    \u5217A\u3068\u5024\u306E\u7A2E\u985E\u6570M\n// \u623B\u308A\u5024\uFF1Anxt[i][c]\
-    \ := \u4F4D\u7F6Ei\u304B\u3089\u898B\u3066\u3001\u5024c\u304C\u6B21\u56DE\u51FA\
-    \u73FE\u3059\u308Bindex\nvvi get_next_indices(const vector<int>& A, int M) {\n\
-    \    int N = A.size();\n    auto nxt = list2d(N+1, M, -1);\n    rep(i, N-1, 0,\
-    \ -1) {\n        rep(c, M) {\n            if (c == A[i]) {\n                nxt[i-1][c]\
-    \ = i;\n            } else {\n                nxt[i-1][c] = nxt[i][c];\n     \
-    \       }\n        }\n    }\n    return nxt;\n}\n"
+    \n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
+    \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
+    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/string/get_next_indices.hpp\"\
+    \n\n// \u5F15\u6570\u3000\uFF1A\u6570\u5217A\u3068\u5024\u306E\u7A2E\u985E\u6570\
+    M\n// \u623B\u308A\u5024\uFF1Anxt[i][c] := \u4F4D\u7F6Ei\u304B\u3089\u898B\u3066\
+    \u3001\u5024c\u304C\u6B21\u56DE\u51FA\u73FE\u3059\u308Bindex\nvvi get_next_indices(const\
+    \ vector<int>& A, int M) {\n    int N = A.size();\n    auto nxt = list2d(N+1,\
+    \ M, -1);\n    rep(i, N-1, 0, -1) {\n        rep(c, M) {\n            if (c ==\
+    \ A[i]) {\n                nxt[i-1][c] = i;\n            } else {\n          \
+    \      nxt[i-1][c] = nxt[i][c];\n            }\n        }\n    }\n    return nxt;\n\
+    }\n"
   code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n\n// \u5F15\
     \u6570\u3000\uFF1A\u6570\u5217A\u3068\u5024\u306E\u7A2E\u985E\u6570M\n// \u623B\
     \u308A\u5024\uFF1Anxt[i][c] := \u4F4D\u7F6Ei\u304B\u3089\u898B\u3066\u3001\u5024\
@@ -63,7 +67,7 @@ data:
   isVerificationFile: false
   path: src/string/get_next_indices.hpp
   requiredBy: []
-  timestamp: '2022-04-06 17:44:14+09:00'
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/get_next_indices.hpp

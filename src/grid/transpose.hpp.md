@@ -40,15 +40,19 @@ data:
     \ init)));\n}\n\ntemplate<typename T> \nvector<vector<vector<vector<T>>>> list4d(int\
     \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
     \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
-    #line 3 \"src/grid/transpose.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u8EE2\u7F6E\n\
-    template<typename T>\nvector<vector<T>> transpose(const vector<vector<T>> &grid)\
-    \ {\n    int H = grid.size();\n    int W = grid[0].size();\n    auto res = list2d(W,\
-    \ H, (T)0);\n    rep(i, H) {\n        rep(j, W) {\n            res[j][i] = grid[i][j];\n\
-    \        }\n    }\n    return res;\n}\n\n// \u30B0\u30EA\u30C3\u30C9\u8EE2\u7F6E\
-    (\u6587\u5B57\u5217)\nvector<string> transpose(const vector<string> &grid) {\n\
-    \    int H = grid.size();\n    int W = grid[0].size();\n    vector<string> res(W,\
-    \ string(H, '*'));\n    rep(i, H) {\n        rep(j, W) {\n            res[j][i]\
-    \ = grid[i][j];\n        }\n    }\n    return res;\n}\n"
+    \n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
+    \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
+    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/grid/transpose.hpp\"\
+    \n\n// \u30B0\u30EA\u30C3\u30C9\u8EE2\u7F6E\ntemplate<typename T>\nvector<vector<T>>\
+    \ transpose(const vector<vector<T>> &grid) {\n    int H = grid.size();\n    int\
+    \ W = grid[0].size();\n    auto res = list2d(W, H, (T)0);\n    rep(i, H) {\n \
+    \       rep(j, W) {\n            res[j][i] = grid[i][j];\n        }\n    }\n \
+    \   return res;\n}\n\n// \u30B0\u30EA\u30C3\u30C9\u8EE2\u7F6E(\u6587\u5B57\u5217\
+    )\nvector<string> transpose(const vector<string> &grid) {\n    int H = grid.size();\n\
+    \    int W = grid[0].size();\n    vector<string> res(W, string(H, '*'));\n   \
+    \ rep(i, H) {\n        rep(j, W) {\n            res[j][i] = grid[i][j];\n    \
+    \    }\n    }\n    return res;\n}\n"
   code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n\n// \u30B0\
     \u30EA\u30C3\u30C9\u8EE2\u7F6E\ntemplate<typename T>\nvector<vector<T>> transpose(const\
     \ vector<vector<T>> &grid) {\n    int H = grid.size();\n    int W = grid[0].size();\n\
@@ -66,7 +70,7 @@ data:
   isVerificationFile: false
   path: src/grid/transpose.hpp
   requiredBy: []
-  timestamp: '2022-04-06 17:44:14+09:00'
+  timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/transpose.hpp
