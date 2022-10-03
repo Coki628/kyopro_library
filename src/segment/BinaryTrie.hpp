@@ -3,7 +3,7 @@
 // 参考：https://nyaannyaan.github.io/library/data-structure/binary-trie.hpp
 // Binary Trie
 // 特徴
-// ・中央値の取得が座圧なしでさくっといける。
+// ・中央値の取得が座圧なしでさくっといける。(abc218_gを参照)
 // ・テンプレート引数NODESを少なめに取れば、メモリ削減・速度改善するけど、思ったより減らせない。
 // 　実装を見る限り、多分「add,delを使う最大回数*(MAX_LOG+2)」で足りるぽいけど、確証はない。
 // 　試してうまくいっただけ。

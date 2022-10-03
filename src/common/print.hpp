@@ -20,7 +20,7 @@ template<typename T, size_t SZ>
 ostream &operator<<(ostream &os, const array<T, SZ> &arr) {
     rep(i, arr.size()) {
         os << arr[i];
-        if (i != arr.size()-1) {
+        if (i != (ll)arr.size()-1) {
             os << ' ';
         }
     }
@@ -31,7 +31,7 @@ template<typename T>
 ostream &operator<<(ostream &os, const vector<T> &vec) {
     rep(i, vec.size()) {
         os << vec[i];
-        if (i != vec.size()-1) {
+        if (i != (ll)vec.size()-1) {
             os << ' ';
         }
     }
@@ -61,7 +61,7 @@ template<typename T>
 void print(const vector<T> &V, char sep=' ') {
     rep(i, V.size()) {
         cout << V[i];
-        if (i != V.size()-1) cout << sep;
+        if (i != (ll)V.size()-1) cout << sep;
     }
     cout << '\n';
 }
@@ -70,7 +70,7 @@ template<typename T, size_t SZ>
 void print(const array<T, SZ> &arr, char sep=' ') {
     rep(i, arr.size()) {
         cout << arr[i];
-        if (i != arr.size()-1) cout << sep;
+        if (i != (ll)arr.size()-1) cout << sep;
     }
     cout << '\n';
 }
