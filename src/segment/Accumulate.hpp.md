@@ -96,8 +96,8 @@ data:
   isVerificationFile: false
   path: src/segment/Accumulate.hpp
   requiredBy:
-  - src/segment/Imos.hpp
   - src/template.hpp
+  - src/segment/Imos.hpp
   timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

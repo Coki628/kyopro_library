@@ -331,6 +331,9 @@ data:
     - icon: ':warning:'
       path: src/graph/_dijkstra.hpp
       title: src/graph/_dijkstra.hpp
+    - icon: ':warning:'
+      path: src/graph/bellman_ford.hpp
+      title: src/graph/bellman_ford.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/bfs.hpp
       title: src/graph/bfs.hpp
@@ -649,6 +652,9 @@ data:
       title: src/segment/slide_min.hpp
   - name: src/string
     pages:
+    - icon: ':warning:'
+      path: src/string/AhoCorasick.hpp
+      title: src/string/AhoCorasick.hpp
     - icon: ':warning:'
       path: src/string/RollingHash.hpp
       title: src/string/RollingHash.hpp

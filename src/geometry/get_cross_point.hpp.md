@@ -50,18 +50,26 @@ data:
     \    Point &operator*=(const Point &p) { x *= p.x, y *= p.y; return *this; }\n\
     \    Point &operator/=(const Point &p) { x /= p.x, y /= p.y; return *this; }\n\
     \    bool operator<(const Point &p) { return mkp(x, y) < mkp(p.x, p.y); }\n  \
-    \  bool operator==(const Point &p) { return std::abs(x-p.x) < EPS and std::abs(y-p.y)\
-    \ < EPS; }\n    bool operator!=(const Point &p) { return std::abs(x-p.x) >= EPS\
-    \ or std::abs(y-p.y) >= EPS; }\n    Point operator*(T k) { return {x*k, y*k};\
-    \ }\n    Point operator/(T k) { return {x/k, y/k}; }\n    T norm() { return x*x\
-    \ + y*y; }\n    T abs() { return sqrt(norm()); }\n    T abs(const Point &p) {\
-    \ return hypot(x-p.x, y-p.y); }\n    T abs2(const Point &p) { return pow(x-p.x,\
+    \  // \u5B9F\u6570\u306E\u540C\u5024\u5224\u5B9A\n    // bool operator==(const\
+    \ Point &p) { return std::abs(x-p.x) < EPS and std::abs(y-p.y) < EPS; }\n    //\
+    \ bool operator!=(const Point &p) { return std::abs(x-p.x) >= EPS or std::abs(y-p.y)\
+    \ >= EPS; }\n    // \u6574\u6570\u306E\u540C\u5024\u5224\u5B9A\n    bool operator==(const\
+    \ Point &p) { return x == p.x and y == p.y; }\n    bool operator!=(const Point\
+    \ &p) { return x != p.x or y != p.y; }\n    Point operator*(T k) { return {x*k,\
+    \ y*k}; }\n    Point operator/(T k) { return {x/k, y/k}; }\n    T norm() { return\
+    \ x*x + y*y; }\n    T abs() { return sqrt(norm()); }\n    T abs(const Point &p)\
+    \ { return hypot(x-p.x, y-p.y); }\n    T abs2(const Point &p) { return pow(x-p.x,\
     \ 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return std::abs(x-p.x)\
     \ + std::abs(y-p.y); }\n    void print() { cout << x << ' ' << y << '\\n'; }\n\
-    };\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout << p.x << ' ' <<\
-    \ p.y << '\\n';\n}\n#line 3 \"src/geometry/Segment.hpp\"\n\ntemplate<typename\
-    \ T> struct Segment { Point<T> p1, p2; };\n#line 3 \"src/geometry/cross.hpp\"\n\
-    \n// \u5916\u7A4D\ntemplate<typename T> T cross(const Point<T> a, const Point<T>\
+    \    operator pair<T, T>() const { return {x, y}; }\n};\n\ntemplate<typename T>\n\
+    void print(Point<T> p) {\n    cout << p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename\
+    \ T>\nostream &operator<<(ostream &os, const Point<T> &p) {\n    return os <<\
+    \ p.x << ' ' << p.y;\n}\n\ntemplate<typename T>\nbool operator<(const Point<T>\
+    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) < mkp(p2.x, p2.y);\n\
+    }\n\ntemplate<typename T>\nbool operator==(const Point<T> &p1, const Point<T>\
+    \ &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n}\n#line 3 \"src/geometry/Segment.hpp\"\
+    \n\ntemplate<typename T> struct Segment { Point<T> p1, p2; };\n#line 3 \"src/geometry/cross.hpp\"\
+    \n\n// \u5916\u7A4D\ntemplate<typename T> T cross(const Point<T> a, const Point<T>\
     \ b) {\n    return a.x*b.y - a.y*b.x;\n}\n#line 4 \"src/geometry/get_cross_point.hpp\"\
     \n\n// \u53C2\u8003\uFF1Ahttps://qiita.com/zu_rin/items/09876d2c7ec12974bc0f\n\
     // \u7DDA\u5206seg1\u3068\u7DDA\u5206seg2\u306E\u4EA4\u70B9\ntemplate<typename\
@@ -93,7 +101,7 @@ data:
   isVerificationFile: false
   path: src/geometry/get_cross_point.hpp
   requiredBy: []
-  timestamp: '2022-04-14 14:32:07+09:00'
+  timestamp: '2022-10-04 01:47:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/get_cross_point.hpp

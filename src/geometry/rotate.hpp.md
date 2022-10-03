@@ -46,20 +46,28 @@ data:
     \    Point &operator*=(const Point &p) { x *= p.x, y *= p.y; return *this; }\n\
     \    Point &operator/=(const Point &p) { x /= p.x, y /= p.y; return *this; }\n\
     \    bool operator<(const Point &p) { return mkp(x, y) < mkp(p.x, p.y); }\n  \
-    \  bool operator==(const Point &p) { return std::abs(x-p.x) < EPS and std::abs(y-p.y)\
-    \ < EPS; }\n    bool operator!=(const Point &p) { return std::abs(x-p.x) >= EPS\
-    \ or std::abs(y-p.y) >= EPS; }\n    Point operator*(T k) { return {x*k, y*k};\
-    \ }\n    Point operator/(T k) { return {x/k, y/k}; }\n    T norm() { return x*x\
-    \ + y*y; }\n    T abs() { return sqrt(norm()); }\n    T abs(const Point &p) {\
-    \ return hypot(x-p.x, y-p.y); }\n    T abs2(const Point &p) { return pow(x-p.x,\
+    \  // \u5B9F\u6570\u306E\u540C\u5024\u5224\u5B9A\n    // bool operator==(const\
+    \ Point &p) { return std::abs(x-p.x) < EPS and std::abs(y-p.y) < EPS; }\n    //\
+    \ bool operator!=(const Point &p) { return std::abs(x-p.x) >= EPS or std::abs(y-p.y)\
+    \ >= EPS; }\n    // \u6574\u6570\u306E\u540C\u5024\u5224\u5B9A\n    bool operator==(const\
+    \ Point &p) { return x == p.x and y == p.y; }\n    bool operator!=(const Point\
+    \ &p) { return x != p.x or y != p.y; }\n    Point operator*(T k) { return {x*k,\
+    \ y*k}; }\n    Point operator/(T k) { return {x/k, y/k}; }\n    T norm() { return\
+    \ x*x + y*y; }\n    T abs() { return sqrt(norm()); }\n    T abs(const Point &p)\
+    \ { return hypot(x-p.x, y-p.y); }\n    T abs2(const Point &p) { return pow(x-p.x,\
     \ 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return std::abs(x-p.x)\
     \ + std::abs(y-p.y); }\n    void print() { cout << x << ' ' << y << '\\n'; }\n\
-    };\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout << p.x << ' ' <<\
-    \ p.y << '\\n';\n}\n#line 2 \"src/geometry/radians.hpp\"\n\nld radians(ld degrees)\
-    \ { return degrees * PI / 180.0; }\n#line 4 \"src/geometry/rotate.hpp\"\n\n//\
-    \ \u56DE\u8EE2\u884C\u5217\uFF1A\u5EA7\u6A19c\u3092\u8EF8\u306B\u5EA7\u6A19p\u304B\
-    \u3089\u534A\u6642\u8A08\u56DE\u308A\u306Bdig\u5EA6\u56DE\u8EE2\u3055\u305B\u305F\
-    \u5EA7\u6A19\u3092\u8FD4\u3059\ntemplate<typename T>\nPoint<T> rotate(Point<T>\
+    \    operator pair<T, T>() const { return {x, y}; }\n};\n\ntemplate<typename T>\n\
+    void print(Point<T> p) {\n    cout << p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename\
+    \ T>\nostream &operator<<(ostream &os, const Point<T> &p) {\n    return os <<\
+    \ p.x << ' ' << p.y;\n}\n\ntemplate<typename T>\nbool operator<(const Point<T>\
+    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) < mkp(p2.x, p2.y);\n\
+    }\n\ntemplate<typename T>\nbool operator==(const Point<T> &p1, const Point<T>\
+    \ &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n}\n#line 2 \"src/geometry/radians.hpp\"\
+    \n\nld radians(ld degrees) { return degrees * PI / 180.0; }\n#line 4 \"src/geometry/rotate.hpp\"\
+    \n\n// \u56DE\u8EE2\u884C\u5217\uFF1A\u5EA7\u6A19c\u3092\u8EF8\u306B\u5EA7\u6A19\
+    p\u304B\u3089\u534A\u6642\u8A08\u56DE\u308A\u306Bdig\u5EA6\u56DE\u8EE2\u3055\u305B\
+    \u305F\u5EA7\u6A19\u3092\u8FD4\u3059\ntemplate<typename T>\nPoint<T> rotate(Point<T>\
     \ c, Point<T> p, ld dig) {\n    T x = (p.x-c.x)*cos(radians(dig)) - (p.y-c.y)*sin(radians(dig))\
     \ + c.x;\n    T y = (p.x-c.x)*sin(radians(dig)) + (p.y-c.y)*cos(radians(dig))\
     \ + c.y;\n    return {x, y};\n}\n"
@@ -78,7 +86,7 @@ data:
   isVerificationFile: false
   path: src/geometry/rotate.hpp
   requiredBy: []
-  timestamp: '2022-07-12 10:50:41+09:00'
+  timestamp: '2022-10-04 01:47:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/rotate.hpp
