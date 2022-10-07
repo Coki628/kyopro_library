@@ -63,30 +63,54 @@ data:
     \u308B\n    array<array<T, SZ3>, SZ1> res{};\n    rep(i, SZ1) {\n        rep(k,\
     \ SZ2) {\n            if (A[i][k] == 0) continue;\n            rep(j, SZ3) {\n\
     \                res[i][j] += A[i][k] * B[k][j];\n            }\n        }\n \
-    \   }\n    return res;\n}\n#line 3 \"src/matrix/MatPow.hpp\"\n\n// \u884C\u5217\
-    \u7D2F\u4E57\ntemplate<typename T>\nstruct MatPow {\n\n    MatPow() {}\n\n   \
-    \ vector<vector<T>> mat_pow(vector<vector<T>> mat, ll k) {\n        int n = mat.size();\n\
-    \        auto res = list2d(n, n, (T)0);\n        rep(i, n) {\n            res[i][i]\
+    \   }\n    return res;\n}\n#line 3 \"src/matrix/MatPow.hpp\"\n\n// \u30E1\u30E2\
+    \n// \u30FBDP\u9077\u79FB\u3068\u306E\u5BFE\u5FDC\u306FABC129f\u3042\u305F\u308A\
+    \u304C\u898B\u3084\u3059\u305D\u3046\u3002\n\n// \u884C\u5217\u7D2F\u4E57\ntemplate<typename\
+    \ T>\nstruct MatPow {\n\n    MatPow() {}\n\n    vector<vector<T>> mat_pow(vector<vector<T>>\
+    \ mat, ll k) {\n        int n = mat.size();\n        auto res = list2d(n, n, (T)0);\n\
+    \        rep(i, n) {\n            res[i][i] = 1;\n        }\n        while (k\
+    \ > 0) {\n            if (k & 1) {\n                res = mat_dot(res, mat);\n\
+    \            }\n            mat = mat_dot(mat, mat);\n            k >>= 1;\n \
+    \       }\n        return res;\n    }\n\n    template<size_t SZ>\n    array<array<T,\
+    \ SZ>, SZ> mat_pow(array<array<T, SZ>, SZ> mat, ll k) {\n        int n = mat.size();\n\
+    \        array<array<T, SZ>, SZ> res = {};\n        rep(i, n) {\n            res[i][i]\
     \ = 1;\n        }\n        while (k > 0) {\n            if (k & 1) {\n       \
     \         res = mat_dot(res, mat);\n            }\n            mat = mat_dot(mat,\
     \ mat);\n            k >>= 1;\n        }\n        return res;\n    }\n\n    vector<T>\
-    \ solve(vector<vector<T>> mat, const vector<T> &_init, ll K) {\n        int n\
-    \ = mat.size();\n        auto init = list2d(n, 1, (T)0);\n        rep(i, n) init[i][0]\
-    \ = _init[i];\n        auto res = mat_pow(mat, K);\n        res = mat_dot(res,\
-    \ init);\n        vector<T> ret(n, 0);\n        rep(i, n) ret[i] = res[i][0];\n\
-    \        return ret;\n    }\n};\n"
-  code: "#include \"../macros.hpp\"\n#include \"mat_dot.hpp\"\n\n// \u884C\u5217\u7D2F\
-    \u4E57\ntemplate<typename T>\nstruct MatPow {\n\n    MatPow() {}\n\n    vector<vector<T>>\
-    \ mat_pow(vector<vector<T>> mat, ll k) {\n        int n = mat.size();\n      \
-    \  auto res = list2d(n, n, (T)0);\n        rep(i, n) {\n            res[i][i]\
+    \ solve(vector<vector<T>> mat, const vector<T> &init, ll K) {\n        int n =\
+    \ mat.size();\n        auto base = list2d(n, 1, (T)0);\n        rep(i, n) base[i][0]\
+    \ = init[i];\n        auto res = mat_pow(mat, K);\n        base = mat_dot(res,\
+    \ base);\n        vector<T> ret(n, 0);\n        rep(i, n) ret[i] = base[i][0];\n\
+    \        return ret;\n    }\n\n    template<size_t SZ>\n    array<T, SZ> solve(array<array<T,\
+    \ SZ>, SZ> mat, const array<T, SZ> &init, ll K) {\n        int n = mat.size();\n\
+    \        array<array<T, 1>, SZ> base = {};\n        rep(i, n) base[i][0] = init[i];\n\
+    \        auto res = mat_pow(mat, K);\n        base = mat_dot(res, base);\n   \
+    \     array<T, SZ> ret = {};\n        rep(i, n) ret[i] = base[i][0];\n       \
+    \ return ret;\n    }\n};\n"
+  code: "#include \"../macros.hpp\"\n#include \"mat_dot.hpp\"\n\n// \u30E1\u30E2\n\
+    // \u30FBDP\u9077\u79FB\u3068\u306E\u5BFE\u5FDC\u306FABC129f\u3042\u305F\u308A\
+    \u304C\u898B\u3084\u3059\u305D\u3046\u3002\n\n// \u884C\u5217\u7D2F\u4E57\ntemplate<typename\
+    \ T>\nstruct MatPow {\n\n    MatPow() {}\n\n    vector<vector<T>> mat_pow(vector<vector<T>>\
+    \ mat, ll k) {\n        int n = mat.size();\n        auto res = list2d(n, n, (T)0);\n\
+    \        rep(i, n) {\n            res[i][i] = 1;\n        }\n        while (k\
+    \ > 0) {\n            if (k & 1) {\n                res = mat_dot(res, mat);\n\
+    \            }\n            mat = mat_dot(mat, mat);\n            k >>= 1;\n \
+    \       }\n        return res;\n    }\n\n    template<size_t SZ>\n    array<array<T,\
+    \ SZ>, SZ> mat_pow(array<array<T, SZ>, SZ> mat, ll k) {\n        int n = mat.size();\n\
+    \        array<array<T, SZ>, SZ> res = {};\n        rep(i, n) {\n            res[i][i]\
     \ = 1;\n        }\n        while (k > 0) {\n            if (k & 1) {\n       \
     \         res = mat_dot(res, mat);\n            }\n            mat = mat_dot(mat,\
     \ mat);\n            k >>= 1;\n        }\n        return res;\n    }\n\n    vector<T>\
-    \ solve(vector<vector<T>> mat, const vector<T> &_init, ll K) {\n        int n\
-    \ = mat.size();\n        auto init = list2d(n, 1, (T)0);\n        rep(i, n) init[i][0]\
-    \ = _init[i];\n        auto res = mat_pow(mat, K);\n        res = mat_dot(res,\
-    \ init);\n        vector<T> ret(n, 0);\n        rep(i, n) ret[i] = res[i][0];\n\
-    \        return ret;\n    }\n};\n"
+    \ solve(vector<vector<T>> mat, const vector<T> &init, ll K) {\n        int n =\
+    \ mat.size();\n        auto base = list2d(n, 1, (T)0);\n        rep(i, n) base[i][0]\
+    \ = init[i];\n        auto res = mat_pow(mat, K);\n        base = mat_dot(res,\
+    \ base);\n        vector<T> ret(n, 0);\n        rep(i, n) ret[i] = base[i][0];\n\
+    \        return ret;\n    }\n\n    template<size_t SZ>\n    array<T, SZ> solve(array<array<T,\
+    \ SZ>, SZ> mat, const array<T, SZ> &init, ll K) {\n        int n = mat.size();\n\
+    \        array<array<T, 1>, SZ> base = {};\n        rep(i, n) base[i][0] = init[i];\n\
+    \        auto res = mat_pow(mat, K);\n        base = mat_dot(res, base);\n   \
+    \     array<T, SZ> ret = {};\n        rep(i, n) ret[i] = base[i][0];\n       \
+    \ return ret;\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -95,7 +119,7 @@ data:
   isVerificationFile: false
   path: src/matrix/MatPow.hpp
   requiredBy: []
-  timestamp: '2022-08-29 14:43:01+09:00'
+  timestamp: '2022-10-07 19:12:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp

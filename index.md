@@ -650,6 +650,9 @@ data:
     - icon: ':warning:'
       path: src/segment/slide_min.hpp
       title: src/segment/slide_min.hpp
+    - icon: ':warning:'
+      path: src/segment/tree.hpp
+      title: src/segment/tree.hpp
   - name: src/string
     pages:
     - icon: ':warning:'
