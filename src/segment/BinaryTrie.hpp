@@ -7,6 +7,7 @@
 // ・テンプレート引数NODESを少なめに取れば、メモリ削減・速度改善するけど、思ったより減らせない。
 // 　実装を見る限り、多分「add,delを使う最大回数*(MAX_LOG+2)」で足りるぽいけど、確証はない。
 // 　試してうまくいっただけ。
+// ・get_kthをやる時、元々0が入っているようで、1-indexっぽく取る。
 
 template <typename T, int MAX_LOG, int NODES = 16777216>
 struct BinaryTrie {
