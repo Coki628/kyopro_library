@@ -1,147 +1,117 @@
 #include "../base.hpp"
 
-// 参考：https://nyaannyaan.github.io/library/data-structure/binary-trie.hpp
+// 参考：https://ei1333.github.io/library/structure/trie/binary-trie.hpp
 // Binary Trie
 // 特徴
 // ・中央値の取得が座圧なしでさくっといける。(abc218_gを参照)
-// ・テンプレート引数NODESを少なめに取れば、メモリ削減・速度改善するけど、思ったより減らせない。
-// 　実装を見る限り、多分「add,delを使う最大回数*(MAX_LOG+2)」で足りるぽいけど、確証はない。
-// 　試してうまくいっただけ。
-// ・get_kthをやる時、元々0が入っているようで、1-indexっぽく取る。
+// ・kth_elementは0-indexed
+// ・indexをacceptに格納しておけるけど、eraseで消す訳じゃないぽいので、
+// 　削除がある時はここ当てにせず別配列持った方がいいぽい。
+// ・count_less使えば「k番目の値」じゃなくて「値xは何番目か」も取れる。(past202203_mを参照)
 
-template <typename T, int MAX_LOG, int NODES = 16777216>
+template< typename T, int MAX_LOG, typename D = int >
 struct BinaryTrie {
-    using Container = vector<int>;
+public:
     struct Node {
         Node *nxt[2];
-        int exist;
-        Container accept;
-        Node() {}
+        D exist;
+        vector< int > accept;
+
+        Node() : nxt{nullptr, nullptr}, exist(0) {}
     };
 
-    Node *pool;
-    int pid;
-    T lazy;
-    Node *nil;
     Node *root;
-    int sz;
 
-    BinaryTrie() : pid(0), lazy(T(0)), nil(nullptr), sz(0) {
-        pool = new Node[NODES];
-        nil = my_new();
-        nil->nxt[0] = nil->nxt[1] = root = nil;
+    explicit BinaryTrie() : root(new Node()) {}
+
+    explicit BinaryTrie(Node *root) : root(root) {}
+
+    void add(const T &bit, int idx = -1, D delta = 1, T xor_val = 0) {
+        root = add(root, bit, idx, MAX_LOG, delta, xor_val);
     }
 
-    Node *my_new(int exist_ = 0, int id = -1) {
-        pool[pid].nxt[0] = pool[pid].nxt[1] = nil;
-        pool[pid].exist = exist_;
-        if (id != -1) pool[pid].accept.push_back(id);
-        return &(pool[pid++]);
+    void erase(const T &bit, T xor_val = 0) {
+        add(bit, -1, -1, xor_val);
     }
 
-    Node *merge(Node *l, Node *r) {
-        pool[pid].nxt[0] = l;
-        pool[pid].nxt[1] = r;
-        pool[pid].exist = l->exist + r->exist;
-        return &(pool[pid++]);
+    Node *find(const T &bit, T xor_val = 0) {
+        return find(root, bit, MAX_LOG, xor_val);
+    }
+
+    D count(const T &bit, T xor_val = 0) {
+        auto node = find(bit, xor_val);
+        return node ? node->exist : 0;
+    }
+
+    pair< T, Node * > min_element(T xor_val = 0) {
+        assert(root->exist > 0);
+        return kth_element(0, xor_val);
+    }
+
+    pair< T, Node * > max_element(T xor_val = 0) {
+        assert(root->exist > 0);
+        return kth_element(root->exist - 1, xor_val);
+    }
+
+    pair< T, Node * > kth_element(D k, T xor_val = 0) { // 0-indexed
+        assert(0 <= k && k < root->exist);
+        return kth_element(root, k, MAX_LOG, xor_val);
+    }
+
+    D count_less(const T &bit, T xor_val = 0) { // < bit
+        return count_less(root, bit, MAX_LOG, xor_val);
     }
 
 private:
-    Node *add_(const T &x, int id, Node *n, int bit_idx) {
-        if (bit_idx == -1) {
-            if (n == nil) return my_new(1, id);
-            n->exist++;
-            n->accept.push_back(id);
-            return n;
+
+    virtual Node *clone(Node *t) { return t; }
+
+    Node *add(Node *t, T bit, int idx, int depth, D x, T xor_val, bool need = true) {
+        if(need) t = clone(t);
+        if(depth == -1) {
+            t->exist += x;
+            if(idx >= 0) t->accept.emplace_back(idx);
         } else {
-            if (((lazy >> bit_idx) & 1) == ((x >> bit_idx) & 1))
-                return merge(add_(x, id, n->nxt[0], bit_idx - 1), n->nxt[1]);
-            else
-                return merge(n->nxt[0], add_(x, id, n->nxt[1], bit_idx - 1));
+            bool f = (xor_val >> depth) & 1;
+            auto &to = t->nxt[f ^ ((bit >> depth) & 1)];
+            if(!to) to = new Node(), need = false;
+            to = add(to, bit, idx, depth - 1, x, xor_val, need);
+            t->exist += x;
         }
+        return t;
     }
 
-public:
-    void add(const T &x, int id = -1) { root = add_(x, id, root, MAX_LOG); sz++; }
-
-private:
-    Node *del_(const T &x, int id, Node *n, int bit_idx) {
-        if (bit_idx == -1) {
-            n->exist--;
-            return n;
+    Node *find(Node *t, T bit, int depth, T xor_val) {
+        if(depth == -1) {
+            return t;
         } else {
-            if (((lazy >> bit_idx) & 1) == ((x >> bit_idx) & 1))
-                return merge(del_(x, id, n->nxt[0], bit_idx - 1), n->nxt[1]);
-            else
-                return merge(n->nxt[0], del_(x, id, n->nxt[1], bit_idx - 1));
+            bool f = (xor_val >> depth) & 1;
+            auto &to = t->nxt[f ^ ((bit >> depth) & 1)];
+            return to ? find(to, bit, depth - 1, xor_val) : nullptr;
         }
     }
 
-public:
-    void del(const T &x, int id = -1) { root = del_(x, id, root, MAX_LOG); sz--; }
-
-private:
-    pair<int, Container &> find_(const T &x, Node *n, int bit_idx) {
-        if (bit_idx == -1)
-            return pair<int, Container &>(n->exist, n->accept);
-        else {
-            if (((lazy >> bit_idx) & 1) == ((x >> bit_idx) & 1))
-                return find_(x, n->nxt[0], bit_idx - 1);
-            else
-                return find_(x, n->nxt[1], bit_idx - 1);
-        }
-    }
-
-public:
-    pair<int, Container &> find(const T &x) { return find_(x, root, MAX_LOG); }
-
-private:
-    pair<T, Container &> max_element_(Node *n, int bit_idx) {
-        if (bit_idx == -1) return pair<T, Container &>(0, n->accept);
-        if (n->nxt[~(lazy >> bit_idx) & 1]->exist) {
-            auto ret = max_element_(n->nxt[~(lazy >> bit_idx) & 1], bit_idx - 1);
-            ret.first |= T(1) << bit_idx;
-            return ret;
+    pair< T, Node * > kth_element(Node *t, D k, int bit_index, T xor_val) { // 0-indexed
+        if(bit_index == -1) {
+            return {0, t};
         } else {
-            return max_element_(n->nxt[(lazy >> bit_idx) & 1], bit_idx - 1);
+            bool f = (xor_val >> bit_index) & 1;
+            if((t->nxt[f] ? t->nxt[f]->exist : 0) <= k) {
+                auto ret = kth_element(t->nxt[f ^ 1], k - (t->nxt[f] ? t->nxt[f]->exist : 0), bit_index - 1, xor_val);
+                ret.first |= T(1) << bit_index;
+                return ret;
+            } else {
+                return kth_element(t->nxt[f], k, bit_index - 1, xor_val);
+            }
         }
     }
 
-public:
-    pair<T, Container &> max_element() { return max_element_(root, MAX_LOG); }
-
-private:
-    pair<T, Container &> min_element_(Node *n, int bit_idx) {
-        if (bit_idx == -1) return pair<T, Container &>(0, n->accept);
-        if (n->nxt[(lazy >> bit_idx) & 1]->exist) {
-            return min_element_(n->nxt[(lazy >> bit_idx) & 1], bit_idx - 1);
-        } else {
-            auto ret = min_element_(n->nxt[~(lazy >> bit_idx) & 1], bit_idx - 1);
-            ret.first |= T(1) << bit_idx;
-            return ret;
-        }
+    D count_less(Node *t, const T &bit, int bit_index, T xor_val) {
+        if(bit_index == -1) return 0;
+        D ret = 0;
+        bool f = (xor_val >> bit_index) & 1;
+        if((bit >> bit_index & 1) and t->nxt[f]) ret += t->nxt[f]->exist;
+        if(t->nxt[f ^ (bit >> bit_index & 1)]) ret += count_less(t->nxt[f ^ (bit >> bit_index & 1)], bit, bit_index - 1, xor_val);
+        return ret;
     }
-
-public:
-    pair<T, Container &> min_element() { return min_element_(root, MAX_LOG); }
-
-private:
-    pair<T, Container &> get_kth_(Node *n, int64_t k, int bit_idx) {
-        if (bit_idx == -1) return pair<T, Container &>(0, n->accept);
-        int ex0 = n->nxt[(lazy >> bit_idx) & 1]->exist;
-        if (ex0 < k) {
-            auto ret = get_kth_(n->nxt[~(lazy >> bit_idx) & 1], k - ex0, bit_idx - 1);
-            ret.first |= T(1) << bit_idx;
-            return ret;
-        } else {
-            return get_kth_(n->nxt[(lazy >> bit_idx) & 1], k, bit_idx - 1);
-        }
-    }
-
-public:
-    pair<T, Container &> get_kth(int64_t k) { return get_kth_(root, k, MAX_LOG); }
-
-    void operate_xor(T x) { lazy ^= x; }
-
-    int size() { return sz; }
 };
