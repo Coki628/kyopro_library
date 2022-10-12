@@ -381,6 +381,9 @@ data:
     path: src/segment/slide_min.hpp
     title: src/segment/slide_min.hpp
   - icon: ':warning:'
+    path: src/string/SuffixArray.hpp
+    title: src/string/SuffixArray.hpp
+  - icon: ':warning:'
     path: src/string/bin.hpp
     title: src/string/bin.hpp
   - icon: ':warning:'
@@ -455,6 +458,7 @@ data:
   isVerificationFile: false
   path: src/macros.hpp
   requiredBy:
+  - src/string/SuffixArray.hpp
   - src/string/compare.hpp
   - src/string/is_palindrome.hpp
   - src/string/get_next_indices.hpp

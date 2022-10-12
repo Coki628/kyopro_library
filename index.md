@@ -636,6 +636,9 @@ data:
       path: src/segment/WaveletMatrix.hpp
       title: src/segment/WaveletMatrix.hpp
     - icon: ':warning:'
+      path: src/segment/_BinaryTrie.hpp
+      title: src/segment/_BinaryTrie.hpp
+    - icon: ':warning:'
       path: src/segment/_WaveletMatrix.hpp
       title: src/segment/_WaveletMatrix.hpp
     - icon: ':warning:'
@@ -661,6 +664,9 @@ data:
     - icon: ':warning:'
       path: src/string/RollingHash.hpp
       title: src/string/RollingHash.hpp
+    - icon: ':warning:'
+      path: src/string/SuffixArray.hpp
+      title: src/string/SuffixArray.hpp
     - icon: ':warning:'
       path: src/string/Trie.hpp
       title: src/string/Trie.hpp

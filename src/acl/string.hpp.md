@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/string/SuffixArray.hpp
+    title: src/string/SuffixArray.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -23,7 +26,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/acl/string.hpp
-  requiredBy: []
+  requiredBy:
+  - src/string/SuffixArray.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
