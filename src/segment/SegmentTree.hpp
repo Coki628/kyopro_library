@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 template<typename Monoid, typename F>
