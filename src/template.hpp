@@ -60,10 +60,10 @@
 #include "numbers/divisors.hpp"
 #include "numbers/isqrt.hpp"
 
-// from segment
-#include "segment/Accumulate.hpp"
-#include "segment/BIT.hpp"
-#include "segment/SegmentTree.hpp"
+// from datastructure
+#include "datastructure/Accumulate.hpp"
+#include "datastructure/BIT.hpp"
+#include "datastructure/SegmentTree.hpp"
 
 // from string
 #include "string/constants/digits.hpp"
