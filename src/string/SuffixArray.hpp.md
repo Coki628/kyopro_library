@@ -1,18 +1,6 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':warning:'
-    path: src/acl/string.hpp
-    title: src/acl/string.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/base.hpp
-    title: src/base.hpp
-  - icon: ':heavy_check_mark:'
-    path: src/macros.hpp
-    title: src/macros.hpp
-  - icon: ':warning:'
-    path: src/segment/SegmentTree.hpp
-    title: src/segment/SegmentTree.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -26,10 +14,8 @@ data:
     , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.10.7/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
     \  File \"/opt/hostedtoolcache/Python/3.10.7/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \  File \"/opt/hostedtoolcache/Python/3.10.7/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/string:\
+    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: ../segment/SegmentTree.hpp:\
     \ line -1: no such header\n"
   code: "#include \"../macros.hpp\"\n#include \"../segment/SegmentTree.hpp\"\n#include\
     \ \"../acl/string.hpp\"\n\nauto f = [](int a, int b) { return min(a, b); };\n\n\
@@ -42,15 +28,11 @@ data:
     \n    // S[i]\u3068S[j]\u306ELCP\u3092\u53D6\u5F97\n    int get_lcp(int i, int\
     \ j) {\n        assert(use_seg);\n        int l = rsa[i], r = rsa[j];\n      \
     \  if (l > r) swap(l, r);\n        return seg.query(l, r);\n    }\n};\n"
-  dependsOn:
-  - src/macros.hpp
-  - src/base.hpp
-  - src/segment/SegmentTree.hpp
-  - src/acl/string.hpp
+  dependsOn: []
   isVerificationFile: false
   path: src/string/SuffixArray.hpp
   requiredBy: []
-  timestamp: '2022-10-12 17:00:16+09:00'
+  timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/SuffixArray.hpp

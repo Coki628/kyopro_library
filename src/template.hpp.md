@@ -121,6 +121,15 @@ data:
   - icon: ':warning:'
     path: src/common/zip.hpp
     title: src/common/zip.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Accumulate.hpp
+    title: src/datastructure/Accumulate.hpp
+  - icon: ':warning:'
+    path: src/datastructure/BIT.hpp
+    title: src/datastructure/BIT.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SegmentTree.hpp
+    title: src/datastructure/SegmentTree.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
@@ -157,15 +166,6 @@ data:
   - icon: ':warning:'
     path: src/numbers/lcm.hpp
     title: src/numbers/lcm.hpp
-  - icon: ':warning:'
-    path: src/segment/Accumulate.hpp
-    title: src/segment/Accumulate.hpp
-  - icon: ':warning:'
-    path: src/segment/BIT.hpp
-    title: src/segment/BIT.hpp
-  - icon: ':warning:'
-    path: src/segment/SegmentTree.hpp
-    title: src/segment/SegmentTree.hpp
   - icon: ':warning:'
     path: src/string/bin.hpp
     title: src/string/bin.hpp
@@ -316,13 +316,13 @@ data:
     #include "numbers/isqrt.hpp"
 
 
-    // from segment
+    // from datastructure
 
-    #include "segment/Accumulate.hpp"
+    #include "datastructure/Accumulate.hpp"
 
-    #include "segment/BIT.hpp"
+    #include "datastructure/BIT.hpp"
 
-    #include "segment/SegmentTree.hpp"
+    #include "datastructure/SegmentTree.hpp"
 
 
     // from string
@@ -391,9 +391,9 @@ data:
   - src/numbers/factorize.hpp
   - src/numbers/divisors.hpp
   - src/numbers/isqrt.hpp
-  - src/segment/Accumulate.hpp
-  - src/segment/BIT.hpp
-  - src/segment/SegmentTree.hpp
+  - src/datastructure/Accumulate.hpp
+  - src/datastructure/BIT.hpp
+  - src/datastructure/SegmentTree.hpp
   - src/string/constants/digits.hpp
   - src/string/constants/ascii_lowercase.hpp
   - src/string/constants/ascii_uppercase.hpp
@@ -402,7 +402,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2022-10-12 17:00:16+09:00'
+  timestamp: '2022-10-18 16:40:19+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

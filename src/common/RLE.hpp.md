@@ -9,6 +9,9 @@ data:
     title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/numbers/FastPrimeFactorization.hpp
+    title: src/numbers/FastPrimeFactorization.hpp
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith: []
@@ -32,7 +35,7 @@ data:
     #define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)),\
     \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
-    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
+    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
     src/common/RLE.hpp\"\n\n// \u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E\n\
     template<typename T>\nvector<pair<T, int>> RLE(const vector<T> &A) {\n    if (A.empty())\
     \ return {};\n    int N = A.size();\n    vector<pair<T, int>> res;\n    T cur\
@@ -46,11 +49,11 @@ data:
     \ {\n            cnt++;\n        } else {\n            res.pb({cur, cnt});\n \
     \           cnt = 1;\n            cur = S[i];\n        }\n    }\n    res.pb({cur,\
     \ cnt});\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\
-    \u7E2E\ntemplate<typename T>\nvector<pair<T, int>> RLE(const vector<T> &A) {\n\
-    \    if (A.empty()) return {};\n    int N = A.size();\n    vector<pair<T, int>>\
-    \ res;\n    T cur = A[0];\n    int cnt = 1;\n    rep(i, 1, N) {\n        if (A[i]\
-    \ == A[i-1]) {\n            cnt++;\n        } else {\n            res.pb({cur,\
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u30E9\u30F3\u30EC\u30F3\u30B0\
+    \u30B9\u5727\u7E2E\ntemplate<typename T>\nvector<pair<T, int>> RLE(const vector<T>\
+    \ &A) {\n    if (A.empty()) return {};\n    int N = A.size();\n    vector<pair<T,\
+    \ int>> res;\n    T cur = A[0];\n    int cnt = 1;\n    rep(i, 1, N) {\n      \
+    \  if (A[i] == A[i-1]) {\n            cnt++;\n        } else {\n            res.pb({cur,\
     \ cnt});\n            cnt = 1;\n            cur = A[i];\n        }\n    }\n  \
     \  res.pb({cur, cnt});\n    return res;\n}\n\n// \u30E9\u30F3\u30EC\u30F3\u30B0\
     \u30B9\u5727\u7E2E(\u6587\u5B57\u5217)\nvector<pair<char, int>> RLE(const string\
@@ -65,8 +68,9 @@ data:
   isVerificationFile: false
   path: src/common/RLE.hpp
   requiredBy:
+  - src/numbers/FastPrimeFactorization.hpp
   - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-10-18 16:40:19+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/RLE.hpp

@@ -57,9 +57,6 @@ data:
     path: src/common/LIS.hpp
     title: src/common/LIS.hpp
   - icon: ':warning:'
-    path: src/common/PersistentArray.hpp
-    title: src/common/PersistentArray.hpp
-  - icon: ':warning:'
     path: src/common/RLE.hpp
     title: src/common/RLE.hpp
   - icon: ':warning:'
@@ -165,6 +162,99 @@ data:
     path: src/common/zip.hpp
     title: src/common/zip.hpp
   - icon: ':warning:'
+    path: src/datastructure/AbstructBeats.hpp
+    title: src/datastructure/AbstructBeats.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Accumulate.hpp
+    title: src/datastructure/Accumulate.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Accumulate2D.hpp
+    title: src/datastructure/Accumulate2D.hpp
+  - icon: ':warning:'
+    path: src/datastructure/BIT.hpp
+    title: src/datastructure/BIT.hpp
+  - icon: ':warning:'
+    path: src/datastructure/BIT2.hpp
+    title: src/datastructure/BIT2.hpp
+  - icon: ':warning:'
+    path: src/datastructure/BIT2D.hpp
+    title: src/datastructure/BIT2D.hpp
+  - icon: ':warning:'
+    path: src/datastructure/BinaryTrie.hpp
+    title: src/datastructure/BinaryTrie.hpp
+  - icon: ':warning:'
+    path: src/datastructure/DynamicLiChaoTree.hpp
+    title: src/datastructure/DynamicLiChaoTree.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Imos.hpp
+    title: src/datastructure/Imos.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Imos2D.hpp
+    title: src/datastructure/Imos2D.hpp
+  - icon: ':warning:'
+    path: src/datastructure/LazySegmentTree.hpp
+    title: src/datastructure/LazySegmentTree.hpp
+  - icon: ':warning:'
+    path: src/datastructure/LazySegmentTreeArithmetric.hpp
+    title: src/datastructure/LazySegmentTreeArithmetric.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Mo.hpp
+    title: src/datastructure/Mo.hpp
+  - icon: ':warning:'
+    path: src/datastructure/PersistentArray.hpp
+    title: src/datastructure/PersistentArray.hpp
+  - icon: ':warning:'
+    path: src/datastructure/PersistentLazySegmentTree.hpp
+    title: src/datastructure/PersistentLazySegmentTree.hpp
+  - icon: ':warning:'
+    path: src/datastructure/PersistentSegmentTree.hpp
+    title: src/datastructure/PersistentSegmentTree.hpp
+  - icon: ':warning:'
+    path: src/datastructure/RangeSet.hpp
+    title: src/datastructure/RangeSet.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SegmentTree.hpp
+    title: src/datastructure/SegmentTree.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SegmentTree2D.hpp
+    title: src/datastructure/SegmentTree2D.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SegmentTreeBeats.hpp
+    title: src/datastructure/SegmentTreeBeats.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SegmentTreeIndex.hpp
+    title: src/datastructure/SegmentTreeIndex.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SparseBIT2D.hpp
+    title: src/datastructure/SparseBIT2D.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SparseTable.hpp
+    title: src/datastructure/SparseTable.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SuccinctIndexableDictionary.hpp
+    title: src/datastructure/SuccinctIndexableDictionary.hpp
+  - icon: ':warning:'
+    path: src/datastructure/WaveletMatrix.hpp
+    title: src/datastructure/WaveletMatrix.hpp
+  - icon: ':warning:'
+    path: src/datastructure/_BinaryTrie.hpp
+    title: src/datastructure/_BinaryTrie.hpp
+  - icon: ':warning:'
+    path: src/datastructure/_WaveletMatrix.hpp
+    title: src/datastructure/_WaveletMatrix.hpp
+  - icon: ':warning:'
+    path: src/datastructure/_accumulate.hpp
+    title: src/datastructure/_accumulate.hpp
+  - icon: ':warning:'
+    path: src/datastructure/get_inversion.hpp
+    title: src/datastructure/get_inversion.hpp
+  - icon: ':warning:'
+    path: src/datastructure/merge_segment.hpp
+    title: src/datastructure/merge_segment.hpp
+  - icon: ':warning:'
+    path: src/datastructure/slide_min.hpp
+    title: src/datastructure/slide_min.hpp
+  - icon: ':warning:'
     path: src/geometry/Circle.hpp
     title: src/geometry/Circle.hpp
   - icon: ':warning:'
@@ -239,9 +329,6 @@ data:
   - icon: ':warning:'
     path: src/graph/PartiallyPersistentUnionFind.hpp
     title: src/graph/PartiallyPersistentUnionFind.hpp
-  - icon: ':warning:'
-    path: src/graph/PersistentUnionFind.hpp
-    title: src/graph/PersistentUnionFind.hpp
   - icon: ':warning:'
     path: src/graph/RangeEdgeGraph.hpp
     title: src/graph/RangeEdgeGraph.hpp
@@ -405,6 +492,9 @@ data:
     path: src/numbers/Eratosthenes.hpp
     title: src/numbers/Eratosthenes.hpp
   - icon: ':warning:'
+    path: src/numbers/FastPrimeFactorization.hpp
+    title: src/numbers/FastPrimeFactorization.hpp
+  - icon: ':warning:'
     path: src/numbers/Fraction.hpp
     title: src/numbers/Fraction.hpp
   - icon: ':warning:'
@@ -465,104 +555,11 @@ data:
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
   - icon: ':warning:'
-    path: src/segment/AbstructBeats.hpp
-    title: src/segment/AbstructBeats.hpp
-  - icon: ':warning:'
-    path: src/segment/Accumulate.hpp
-    title: src/segment/Accumulate.hpp
-  - icon: ':warning:'
-    path: src/segment/Accumulate2D.hpp
-    title: src/segment/Accumulate2D.hpp
-  - icon: ':warning:'
-    path: src/segment/BIT.hpp
-    title: src/segment/BIT.hpp
-  - icon: ':warning:'
-    path: src/segment/BIT2.hpp
-    title: src/segment/BIT2.hpp
-  - icon: ':warning:'
-    path: src/segment/BIT2D.hpp
-    title: src/segment/BIT2D.hpp
-  - icon: ':warning:'
-    path: src/segment/BinaryTrie.hpp
-    title: src/segment/BinaryTrie.hpp
-  - icon: ':warning:'
-    path: src/segment/DynamicLiChaoTree.hpp
-    title: src/segment/DynamicLiChaoTree.hpp
-  - icon: ':warning:'
-    path: src/segment/Imos.hpp
-    title: src/segment/Imos.hpp
-  - icon: ':warning:'
-    path: src/segment/Imos2D.hpp
-    title: src/segment/Imos2D.hpp
-  - icon: ':warning:'
-    path: src/segment/LazySegmentTree.hpp
-    title: src/segment/LazySegmentTree.hpp
-  - icon: ':warning:'
-    path: src/segment/LazySegmentTreeArithmetric.hpp
-    title: src/segment/LazySegmentTreeArithmetric.hpp
-  - icon: ':warning:'
-    path: src/segment/Mo.hpp
-    title: src/segment/Mo.hpp
-  - icon: ':warning:'
-    path: src/segment/PersistentLazySegmentTree.hpp
-    title: src/segment/PersistentLazySegmentTree.hpp
-  - icon: ':warning:'
-    path: src/segment/PersistentSegmentTree.hpp
-    title: src/segment/PersistentSegmentTree.hpp
-  - icon: ':warning:'
-    path: src/segment/RangeSet.hpp
-    title: src/segment/RangeSet.hpp
-  - icon: ':warning:'
-    path: src/segment/SegmentTree.hpp
-    title: src/segment/SegmentTree.hpp
-  - icon: ':warning:'
-    path: src/segment/SegmentTree2D.hpp
-    title: src/segment/SegmentTree2D.hpp
-  - icon: ':warning:'
-    path: src/segment/SegmentTreeBeats.hpp
-    title: src/segment/SegmentTreeBeats.hpp
-  - icon: ':warning:'
-    path: src/segment/SegmentTreeIndex.hpp
-    title: src/segment/SegmentTreeIndex.hpp
-  - icon: ':warning:'
-    path: src/segment/SparseBIT2D.hpp
-    title: src/segment/SparseBIT2D.hpp
-  - icon: ':warning:'
-    path: src/segment/SparseTable.hpp
-    title: src/segment/SparseTable.hpp
-  - icon: ':warning:'
-    path: src/segment/SuccinctIndexableDictionary.hpp
-    title: src/segment/SuccinctIndexableDictionary.hpp
-  - icon: ':warning:'
-    path: src/segment/WaveletMatrix.hpp
-    title: src/segment/WaveletMatrix.hpp
-  - icon: ':warning:'
-    path: src/segment/_BinaryTrie.hpp
-    title: src/segment/_BinaryTrie.hpp
-  - icon: ':warning:'
-    path: src/segment/_WaveletMatrix.hpp
-    title: src/segment/_WaveletMatrix.hpp
-  - icon: ':warning:'
-    path: src/segment/_accumulate.hpp
-    title: src/segment/_accumulate.hpp
-  - icon: ':warning:'
-    path: src/segment/get_inversion.hpp
-    title: src/segment/get_inversion.hpp
-  - icon: ':warning:'
-    path: src/segment/merge_segment.hpp
-    title: src/segment/merge_segment.hpp
-  - icon: ':warning:'
-    path: src/segment/slide_min.hpp
-    title: src/segment/slide_min.hpp
-  - icon: ':warning:'
     path: src/string/AhoCorasick.hpp
     title: src/string/AhoCorasick.hpp
   - icon: ':warning:'
     path: src/string/RollingHash.hpp
     title: src/string/RollingHash.hpp
-  - icon: ':warning:'
-    path: src/string/SuffixArray.hpp
-    title: src/string/SuffixArray.hpp
   - icon: ':warning:'
     path: src/string/Trie.hpp
     title: src/string/Trie.hpp
@@ -642,7 +639,6 @@ data:
   isVerificationFile: false
   path: src/base.hpp
   requiredBy:
-  - src/string/SuffixArray.hpp
   - src/string/compare.hpp
   - src/string/constants/ascii_uppercase.hpp
   - src/string/constants/ascii_letters.hpp
@@ -697,6 +693,7 @@ data:
   - src/numbers/segment_sieve.hpp
   - src/numbers/gcd.hpp
   - src/numbers/factorize.hpp
+  - src/numbers/FastPrimeFactorization.hpp
   - src/numbers/_xor_basis.hpp
   - src/numbers/digit_sum.hpp
   - src/numbers/osa_k.hpp
@@ -704,36 +701,6 @@ data:
   - src/numbers/number_le_n_with_a_b.hpp
   - src/template.hpp
   - src/macros.hpp
-  - src/segment/Accumulate2D.hpp
-  - src/segment/RangeSet.hpp
-  - src/segment/BIT2D.hpp
-  - src/segment/Imos2D.hpp
-  - src/segment/BIT2.hpp
-  - src/segment/merge_segment.hpp
-  - src/segment/_accumulate.hpp
-  - src/segment/SparseTable.hpp
-  - src/segment/DynamicLiChaoTree.hpp
-  - src/segment/Mo.hpp
-  - src/segment/Accumulate.hpp
-  - src/segment/LazySegmentTree.hpp
-  - src/segment/SegmentTreeBeats.hpp
-  - src/segment/_WaveletMatrix.hpp
-  - src/segment/slide_min.hpp
-  - src/segment/WaveletMatrix.hpp
-  - src/segment/BIT.hpp
-  - src/segment/SegmentTree2D.hpp
-  - src/segment/PersistentSegmentTree.hpp
-  - src/segment/BinaryTrie.hpp
-  - src/segment/LazySegmentTreeArithmetric.hpp
-  - src/segment/SparseBIT2D.hpp
-  - src/segment/SegmentTreeIndex.hpp
-  - src/segment/AbstructBeats.hpp
-  - src/segment/Imos.hpp
-  - src/segment/_BinaryTrie.hpp
-  - src/segment/SegmentTree.hpp
-  - src/segment/PersistentLazySegmentTree.hpp
-  - src/segment/SuccinctIndexableDictionary.hpp
-  - src/segment/get_inversion.hpp
   - src/math/FormalPowerSeries.hpp
   - src/math/kitamasa.hpp
   - src/math/FastFourierTransform.hpp
@@ -792,7 +759,6 @@ data:
   - src/common/subarray.hpp
   - src/common/custom_hash.hpp
   - src/common/input.hpp
-  - src/common/PersistentArray.hpp
   - src/common/split.hpp
   - src/common/bisearch.hpp
   - src/common/HashMap.hpp
@@ -822,6 +788,37 @@ data:
   - src/common/sum.hpp
   - src/common/print.hpp
   - src/common/min.hpp
+  - src/datastructure/Accumulate2D.hpp
+  - src/datastructure/RangeSet.hpp
+  - src/datastructure/BIT2D.hpp
+  - src/datastructure/Imos2D.hpp
+  - src/datastructure/BIT2.hpp
+  - src/datastructure/merge_segment.hpp
+  - src/datastructure/_accumulate.hpp
+  - src/datastructure/SparseTable.hpp
+  - src/datastructure/DynamicLiChaoTree.hpp
+  - src/datastructure/Mo.hpp
+  - src/datastructure/Accumulate.hpp
+  - src/datastructure/LazySegmentTree.hpp
+  - src/datastructure/SegmentTreeBeats.hpp
+  - src/datastructure/_WaveletMatrix.hpp
+  - src/datastructure/slide_min.hpp
+  - src/datastructure/WaveletMatrix.hpp
+  - src/datastructure/BIT.hpp
+  - src/datastructure/SegmentTree2D.hpp
+  - src/datastructure/PersistentArray.hpp
+  - src/datastructure/PersistentSegmentTree.hpp
+  - src/datastructure/BinaryTrie.hpp
+  - src/datastructure/LazySegmentTreeArithmetric.hpp
+  - src/datastructure/SparseBIT2D.hpp
+  - src/datastructure/SegmentTreeIndex.hpp
+  - src/datastructure/AbstructBeats.hpp
+  - src/datastructure/Imos.hpp
+  - src/datastructure/_BinaryTrie.hpp
+  - src/datastructure/SegmentTree.hpp
+  - src/datastructure/PersistentLazySegmentTree.hpp
+  - src/datastructure/SuccinctIndexableDictionary.hpp
+  - src/datastructure/get_inversion.hpp
   - src/graph/dfs.hpp
   - src/graph/Dijkstra.hpp
   - src/graph/UnionFind.hpp
@@ -838,7 +835,6 @@ data:
   - src/graph/_dijkstra.hpp
   - src/graph/RangeEdgeGraph.hpp
   - src/graph/bfs.hpp
-  - src/graph/PersistentUnionFind.hpp
   - src/graph/warshall_floyd.hpp
   - src/graph/AuxiliaryTree.hpp
   timestamp: '2022-03-24 10:49:13+09:00'

@@ -15,6 +15,9 @@ data:
     path: src/common/HashSet.hpp
     title: src/common/HashSet.hpp
   - icon: ':warning:'
+    path: src/datastructure/SparseBIT2D.hpp
+    title: src/datastructure/SparseBIT2D.hpp
+  - icon: ':warning:'
     path: src/graph/AuxiliaryTree.hpp
     title: src/graph/AuxiliaryTree.hpp
   - icon: ':warning:'
@@ -26,9 +29,6 @@ data:
   - icon: ':warning:'
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
-  - icon: ':warning:'
-    path: src/segment/SparseBIT2D.hpp
-    title: src/segment/SparseBIT2D.hpp
   - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
@@ -270,11 +270,11 @@ data:
   requiredBy:
   - src/numbers/bsgs.hpp
   - src/template.hpp
-  - src/segment/SparseBIT2D.hpp
   - src/mystl/defaultdict.hpp
   - src/common/Counter.hpp
   - src/common/HashMap.hpp
   - src/common/HashSet.hpp
+  - src/datastructure/SparseBIT2D.hpp
   - src/graph/OfflineDynamicConnectivity.hpp
   - src/graph/AuxiliaryTree.hpp
   timestamp: '2022-05-24 16:45:48+09:00'

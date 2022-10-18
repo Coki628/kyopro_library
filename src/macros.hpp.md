@@ -99,6 +99,51 @@ data:
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
   - icon: ':warning:'
+    path: src/datastructure/Accumulate.hpp
+    title: src/datastructure/Accumulate.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Accumulate2D.hpp
+    title: src/datastructure/Accumulate2D.hpp
+  - icon: ':warning:'
+    path: src/datastructure/BIT.hpp
+    title: src/datastructure/BIT.hpp
+  - icon: ':warning:'
+    path: src/datastructure/BIT2.hpp
+    title: src/datastructure/BIT2.hpp
+  - icon: ':warning:'
+    path: src/datastructure/DynamicLiChaoTree.hpp
+    title: src/datastructure/DynamicLiChaoTree.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Imos.hpp
+    title: src/datastructure/Imos.hpp
+  - icon: ':warning:'
+    path: src/datastructure/Imos2D.hpp
+    title: src/datastructure/Imos2D.hpp
+  - icon: ':warning:'
+    path: src/datastructure/LazySegmentTree.hpp
+    title: src/datastructure/LazySegmentTree.hpp
+  - icon: ':warning:'
+    path: src/datastructure/LazySegmentTreeArithmetric.hpp
+    title: src/datastructure/LazySegmentTreeArithmetric.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SegmentTreeBeats.hpp
+    title: src/datastructure/SegmentTreeBeats.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SparseTable.hpp
+    title: src/datastructure/SparseTable.hpp
+  - icon: ':warning:'
+    path: src/datastructure/_accumulate.hpp
+    title: src/datastructure/_accumulate.hpp
+  - icon: ':warning:'
+    path: src/datastructure/get_inversion.hpp
+    title: src/datastructure/get_inversion.hpp
+  - icon: ':warning:'
+    path: src/datastructure/merge_segment.hpp
+    title: src/datastructure/merge_segment.hpp
+  - icon: ':warning:'
+    path: src/datastructure/slide_min.hpp
+    title: src/datastructure/slide_min.hpp
+  - icon: ':warning:'
     path: src/geometry/Circle.hpp
     title: src/geometry/Circle.hpp
   - icon: ':warning:'
@@ -282,6 +327,9 @@ data:
     path: src/numbers/Eratosthenes.hpp
     title: src/numbers/Eratosthenes.hpp
   - icon: ':warning:'
+    path: src/numbers/FastPrimeFactorization.hpp
+    title: src/numbers/FastPrimeFactorization.hpp
+  - icon: ':warning:'
     path: src/numbers/Fraction.hpp
     title: src/numbers/Fraction.hpp
   - icon: ':warning:'
@@ -335,54 +383,6 @@ data:
   - icon: ':warning:'
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
-  - icon: ':warning:'
-    path: src/segment/Accumulate.hpp
-    title: src/segment/Accumulate.hpp
-  - icon: ':warning:'
-    path: src/segment/Accumulate2D.hpp
-    title: src/segment/Accumulate2D.hpp
-  - icon: ':warning:'
-    path: src/segment/BIT.hpp
-    title: src/segment/BIT.hpp
-  - icon: ':warning:'
-    path: src/segment/BIT2.hpp
-    title: src/segment/BIT2.hpp
-  - icon: ':warning:'
-    path: src/segment/DynamicLiChaoTree.hpp
-    title: src/segment/DynamicLiChaoTree.hpp
-  - icon: ':warning:'
-    path: src/segment/Imos.hpp
-    title: src/segment/Imos.hpp
-  - icon: ':warning:'
-    path: src/segment/Imos2D.hpp
-    title: src/segment/Imos2D.hpp
-  - icon: ':warning:'
-    path: src/segment/LazySegmentTree.hpp
-    title: src/segment/LazySegmentTree.hpp
-  - icon: ':warning:'
-    path: src/segment/LazySegmentTreeArithmetric.hpp
-    title: src/segment/LazySegmentTreeArithmetric.hpp
-  - icon: ':warning:'
-    path: src/segment/SegmentTreeBeats.hpp
-    title: src/segment/SegmentTreeBeats.hpp
-  - icon: ':warning:'
-    path: src/segment/SparseTable.hpp
-    title: src/segment/SparseTable.hpp
-  - icon: ':warning:'
-    path: src/segment/_accumulate.hpp
-    title: src/segment/_accumulate.hpp
-  - icon: ':warning:'
-    path: src/segment/get_inversion.hpp
-    title: src/segment/get_inversion.hpp
-  - icon: ':warning:'
-    path: src/segment/merge_segment.hpp
-    title: src/segment/merge_segment.hpp
-  - icon: ':warning:'
-    path: src/segment/slide_min.hpp
-    title: src/segment/slide_min.hpp
-  - icon: ':warning:'
-    path: src/string/SuffixArray.hpp
-    title: src/string/SuffixArray.hpp
   - icon: ':warning:'
     path: src/string/bin.hpp
     title: src/string/bin.hpp
@@ -458,7 +458,6 @@ data:
   isVerificationFile: false
   path: src/macros.hpp
   requiredBy:
-  - src/string/SuffixArray.hpp
   - src/string/compare.hpp
   - src/string/is_palindrome.hpp
   - src/string/get_next_indices.hpp
@@ -500,27 +499,13 @@ data:
   - src/numbers/lcm.hpp
   - src/numbers/segment_sieve.hpp
   - src/numbers/gcd.hpp
+  - src/numbers/FastPrimeFactorization.hpp
   - src/numbers/_xor_basis.hpp
   - src/numbers/digit_sum.hpp
   - src/numbers/osa_k.hpp
   - src/numbers/bsgs.hpp
   - src/numbers/number_le_n_with_a_b.hpp
   - src/template.hpp
-  - src/segment/Accumulate2D.hpp
-  - src/segment/Imos2D.hpp
-  - src/segment/BIT2.hpp
-  - src/segment/merge_segment.hpp
-  - src/segment/_accumulate.hpp
-  - src/segment/SparseTable.hpp
-  - src/segment/DynamicLiChaoTree.hpp
-  - src/segment/Accumulate.hpp
-  - src/segment/LazySegmentTree.hpp
-  - src/segment/SegmentTreeBeats.hpp
-  - src/segment/slide_min.hpp
-  - src/segment/BIT.hpp
-  - src/segment/LazySegmentTreeArithmetric.hpp
-  - src/segment/Imos.hpp
-  - src/segment/get_inversion.hpp
   - src/math/FormalPowerSeries.hpp
   - src/math/lagrange_polynomial.hpp
   - src/math/BM.hpp
@@ -577,6 +562,21 @@ data:
   - src/common/mapping.hpp
   - src/common/popcount.hpp
   - src/common/print.hpp
+  - src/datastructure/Accumulate2D.hpp
+  - src/datastructure/Imos2D.hpp
+  - src/datastructure/BIT2.hpp
+  - src/datastructure/merge_segment.hpp
+  - src/datastructure/_accumulate.hpp
+  - src/datastructure/SparseTable.hpp
+  - src/datastructure/DynamicLiChaoTree.hpp
+  - src/datastructure/Accumulate.hpp
+  - src/datastructure/LazySegmentTree.hpp
+  - src/datastructure/SegmentTreeBeats.hpp
+  - src/datastructure/slide_min.hpp
+  - src/datastructure/BIT.hpp
+  - src/datastructure/LazySegmentTreeArithmetric.hpp
+  - src/datastructure/Imos.hpp
+  - src/datastructure/get_inversion.hpp
   - src/graph/dfs.hpp
   - src/graph/Dijkstra.hpp
   - src/graph/UnionFind.hpp
