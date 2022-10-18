@@ -12,6 +12,8 @@
 // 　がしかし40万クエリの問題に永続UFで2,4,8,16を試しに使ったところ、
 // 　速度は(4,8,16で大差ないものの)8分木が一番速くて、メモリは(4,8で大差ないけど)4分木が一番軽かった。
 // 　2分木になると急に色々悪くなった。結局、うしさんが初期設定にしてたLOG=3が一番妥当っぽい？
+// ・特定の時点での状態の記録/復元にはポインタを用いる。
+// 　なるべく直感的に操作できるようにメソッドを生やしておいた。
 
 template< typename T, int LOG >
 struct PersistentArray {
@@ -73,7 +75,21 @@ public:
         return get(root, k);
     }
 
+    T operator[](int i) {
+        return get(i);
+    }
+
     void update(const int &k, const T &v) {
         *mutable_get(k) = v;
+    }
+
+    // 現在の配列の状態を記録する
+    Node *save() {
+        return root;
+    }
+
+    // ポインタp時点の配列の状態を復元する
+    void load(Node *p) {
+        root = p;
     }
 };
