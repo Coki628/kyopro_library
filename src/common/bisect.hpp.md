@@ -36,8 +36,8 @@ data:
   isVerificationFile: false
   path: src/common/bisect.hpp
   requiredBy:
-  - src/template.hpp
   - src/common/LIS.hpp
+  - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -57,22 +57,23 @@ data:
     \ &p) { return x != p.x or y != p.y; }\n    Point operator*(T k) { return {x*k,\
     \ y*k}; }\n    Point operator/(T k) { return {x/k, y/k}; }\n    T norm() { return\
     \ x*x + y*y; }\n    T abs() { return sqrt(norm()); }\n    T abs(const Point &p)\
-    \ { return hypot(x-p.x, y-p.y); }\n    T abs2(const Point &p) { return pow(x-p.x,\
-    \ 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return std::abs(x-p.x)\
-    \ + std::abs(y-p.y); }\n    void print() { cout << x << ' ' << y << '\\n'; }\n\
-    \    operator pair<T, T>() const { return {x, y}; }\n};\n\ntemplate<typename T>\n\
-    void print(Point<T> p) {\n    cout << p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename\
-    \ T>\nostream &operator<<(ostream &os, const Point<T> &p) {\n    return os <<\
-    \ p.x << ' ' << p.y;\n}\n\ntemplate<typename T>\nbool operator<(const Point<T>\
-    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) < mkp(p2.x, p2.y);\n\
-    }\n\ntemplate<typename T>\nbool operator==(const Point<T> &p1, const Point<T>\
-    \ &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n}\n#line 3 \"src/geometry/dot.hpp\"\
-    \n\n// \u5185\u7A4D\ntemplate<typename T> T dot(const Point<T> a, const Point<T>\
-    \ b) {\n    return a.x*b.x + a.y*b.y;\n}\n#line 4 \"src/geometry/project.hpp\"\
-    \n\n// \u7DDA\u5206seg\u306B\u5BFE\u3059\u308B\u70B9p\u306E\u5C04\u5F71\ntemplate<typename\
-    \ T> \nPoint<T> project(Segment<T> seg, Point<T> p) {\n    auto base = seg.p2\
-    \ - seg.p1;\n    T r = dot(p-seg.p1, base) / base.norm();\n    return seg.p1 +\
-    \ base*r;\n}\n"
+    \ { return hypot(x-p.x, y-p.y); }\n    // \u6574\u6570\u306E\u307E\u307E\u8DDD\
+    \u96E2\u306E\u5927\u5C0F\u3092\u898B\u305F\u3044\u6642\u306F\u3053\u3063\u3061\
+    \n    T abs2(const Point &p) { return pow(x-p.x, 2)+pow(y-p.y, 2); }\n    T manhattan(const\
+    \ Point &p) { return std::abs(x-p.x) + std::abs(y-p.y); }\n    void print() {\
+    \ cout << x << ' ' << y << '\\n'; }\n    operator pair<T, T>() const { return\
+    \ {x, y}; }\n};\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout <<\
+    \ p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename T>\nostream &operator<<(ostream\
+    \ &os, const Point<T> &p) {\n    return os << p.x << ' ' << p.y;\n}\n\ntemplate<typename\
+    \ T>\nbool operator<(const Point<T> &p1, const Point<T> &p2) {\n    return mkp(p1.x,\
+    \ p1.y) < mkp(p2.x, p2.y);\n}\n\ntemplate<typename T>\nbool operator==(const Point<T>\
+    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n\
+    }\n#line 3 \"src/geometry/dot.hpp\"\n\n// \u5185\u7A4D\ntemplate<typename T> T\
+    \ dot(const Point<T> a, const Point<T> b) {\n    return a.x*b.x + a.y*b.y;\n}\n\
+    #line 4 \"src/geometry/project.hpp\"\n\n// \u7DDA\u5206seg\u306B\u5BFE\u3059\u308B\
+    \u70B9p\u306E\u5C04\u5F71\ntemplate<typename T> \nPoint<T> project(Segment<T>\
+    \ seg, Point<T> p) {\n    auto base = seg.p2 - seg.p1;\n    T r = dot(p-seg.p1,\
+    \ base) / base.norm();\n    return seg.p1 + base*r;\n}\n"
   code: "#pragma once\n#include \"Point.hpp\"\n#include \"dot.hpp\"\n\n// \u7DDA\u5206\
     seg\u306B\u5BFE\u3059\u308B\u70B9p\u306E\u5C04\u5F71\ntemplate<typename T> \n\
     Point<T> project(Segment<T> seg, Point<T> p) {\n    auto base = seg.p2 - seg.p1;\n\
@@ -86,7 +87,7 @@ data:
   path: src/geometry/project.hpp
   requiredBy:
   - src/geometry/reflect.hpp
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2022-10-31 12:05:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/project.hpp

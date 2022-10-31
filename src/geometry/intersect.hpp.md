@@ -63,34 +63,35 @@ data:
     \ &p) { return x != p.x or y != p.y; }\n    Point operator*(T k) { return {x*k,\
     \ y*k}; }\n    Point operator/(T k) { return {x/k, y/k}; }\n    T norm() { return\
     \ x*x + y*y; }\n    T abs() { return sqrt(norm()); }\n    T abs(const Point &p)\
-    \ { return hypot(x-p.x, y-p.y); }\n    T abs2(const Point &p) { return pow(x-p.x,\
-    \ 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return std::abs(x-p.x)\
-    \ + std::abs(y-p.y); }\n    void print() { cout << x << ' ' << y << '\\n'; }\n\
-    \    operator pair<T, T>() const { return {x, y}; }\n};\n\ntemplate<typename T>\n\
-    void print(Point<T> p) {\n    cout << p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename\
-    \ T>\nostream &operator<<(ostream &os, const Point<T> &p) {\n    return os <<\
-    \ p.x << ' ' << p.y;\n}\n\ntemplate<typename T>\nbool operator<(const Point<T>\
-    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) < mkp(p2.x, p2.y);\n\
-    }\n\ntemplate<typename T>\nbool operator==(const Point<T> &p1, const Point<T>\
-    \ &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n}\n#line 3 \"src/geometry/Segment.hpp\"\
-    \n\ntemplate<typename T> struct Segment { Point<T> p1, p2; };\n#line 3 \"src/geometry/cross.hpp\"\
-    \n\n// \u5916\u7A4D\ntemplate<typename T> T cross(const Point<T> a, const Point<T>\
-    \ b) {\n    return a.x*b.y - a.y*b.x;\n}\n#line 3 \"src/geometry/dot.hpp\"\n\n\
-    // \u5185\u7A4D\ntemplate<typename T> T dot(const Point<T> a, const Point<T> b)\
-    \ {\n    return a.x*b.x + a.y*b.y;\n}\n#line 5 \"src/geometry/ccw.hpp\"\n\n//\
-    \ \u7DDA\u5206p0,p1\u304B\u3089\u7DDA\u5206p0,p2\u3078\u306E\u56DE\u8EE2\u65B9\
-    \u5411\ntemplate<typename T>\nint ccw(Point<T> p0, Point<T> p1, Point<T> p2) {\n\
-    \    Point<T> a = p1-p0;\n    Point<T> b = p2-p0;\n    // \u53CD\u6642\u8A08\u56DE\
-    \u308A\n    if (cross(a, b) > EPS) return 1;\n    // \u6642\u8A08\u56DE\u308A\n\
-    \    if (cross(a, b) < -EPS) return -1;\n    // \u76F4\u7DDA\u4E0A(p2 => p0 =>\
-    \ p1)\n    if (dot(a, b) < -EPS) return 2;\n    // \u76F4\u7DDA\u4E0A(p0 => p1\
-    \ => p2)\n    if (a.norm() < b.norm()) return -2;\n    // \u76F4\u7DDA\u4E0A(p0\
-    \ => p2 => p1)\n    return 0;\n}\n#line 3 \"src/geometry/intersect.hpp\"\n\n//\
-    \ \u7DDA\u5206seg1\u3068\u7DDA\u5206seg2\u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate<typename\
-    \ T>\nbool intersect(Segment<T> seg1, Segment<T> seg2) {\n    return (\n     \
-    \   ccw(seg1.p1, seg1.p2, seg2.p1) * ccw(seg1.p1, seg1.p2, seg2.p2) <= 0 and\n\
-    \        ccw(seg2.p1, seg2.p2, seg1.p1) * ccw(seg2.p1, seg2.p2, seg1.p2) <= 0\n\
-    \    );\n}\n"
+    \ { return hypot(x-p.x, y-p.y); }\n    // \u6574\u6570\u306E\u307E\u307E\u8DDD\
+    \u96E2\u306E\u5927\u5C0F\u3092\u898B\u305F\u3044\u6642\u306F\u3053\u3063\u3061\
+    \n    T abs2(const Point &p) { return pow(x-p.x, 2)+pow(y-p.y, 2); }\n    T manhattan(const\
+    \ Point &p) { return std::abs(x-p.x) + std::abs(y-p.y); }\n    void print() {\
+    \ cout << x << ' ' << y << '\\n'; }\n    operator pair<T, T>() const { return\
+    \ {x, y}; }\n};\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout <<\
+    \ p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename T>\nostream &operator<<(ostream\
+    \ &os, const Point<T> &p) {\n    return os << p.x << ' ' << p.y;\n}\n\ntemplate<typename\
+    \ T>\nbool operator<(const Point<T> &p1, const Point<T> &p2) {\n    return mkp(p1.x,\
+    \ p1.y) < mkp(p2.x, p2.y);\n}\n\ntemplate<typename T>\nbool operator==(const Point<T>\
+    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n\
+    }\n#line 3 \"src/geometry/Segment.hpp\"\n\ntemplate<typename T> struct Segment\
+    \ { Point<T> p1, p2; };\n#line 3 \"src/geometry/cross.hpp\"\n\n// \u5916\u7A4D\
+    \ntemplate<typename T> T cross(const Point<T> a, const Point<T> b) {\n    return\
+    \ a.x*b.y - a.y*b.x;\n}\n#line 3 \"src/geometry/dot.hpp\"\n\n// \u5185\u7A4D\n\
+    template<typename T> T dot(const Point<T> a, const Point<T> b) {\n    return a.x*b.x\
+    \ + a.y*b.y;\n}\n#line 5 \"src/geometry/ccw.hpp\"\n\n// \u7DDA\u5206p0,p1\u304B\
+    \u3089\u7DDA\u5206p0,p2\u3078\u306E\u56DE\u8EE2\u65B9\u5411\ntemplate<typename\
+    \ T>\nint ccw(Point<T> p0, Point<T> p1, Point<T> p2) {\n    Point<T> a = p1-p0;\n\
+    \    Point<T> b = p2-p0;\n    // \u53CD\u6642\u8A08\u56DE\u308A\n    if (cross(a,\
+    \ b) > EPS) return 1;\n    // \u6642\u8A08\u56DE\u308A\n    if (cross(a, b) <\
+    \ -EPS) return -1;\n    // \u76F4\u7DDA\u4E0A(p2 => p0 => p1)\n    if (dot(a,\
+    \ b) < -EPS) return 2;\n    // \u76F4\u7DDA\u4E0A(p0 => p1 => p2)\n    if (a.norm()\
+    \ < b.norm()) return -2;\n    // \u76F4\u7DDA\u4E0A(p0 => p2 => p1)\n    return\
+    \ 0;\n}\n#line 3 \"src/geometry/intersect.hpp\"\n\n// \u7DDA\u5206seg1\u3068\u7DDA\
+    \u5206seg2\u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate<typename T>\nbool intersect(Segment<T>\
+    \ seg1, Segment<T> seg2) {\n    return (\n        ccw(seg1.p1, seg1.p2, seg2.p1)\
+    \ * ccw(seg1.p1, seg1.p2, seg2.p2) <= 0 and\n        ccw(seg2.p1, seg2.p2, seg1.p1)\
+    \ * ccw(seg2.p1, seg2.p2, seg1.p2) <= 0\n    );\n}\n"
   code: "#include \"Segment.hpp\"\n#include \"ccw.hpp\"\n\n// \u7DDA\u5206seg1\u3068\
     \u7DDA\u5206seg2\u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate<typename T>\nbool intersect(Segment<T>\
     \ seg1, Segment<T> seg2) {\n    return (\n        ccw(seg1.p1, seg1.p2, seg2.p1)\
@@ -107,7 +108,7 @@ data:
   isVerificationFile: false
   path: src/geometry/intersect.hpp
   requiredBy: []
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2022-10-31 12:05:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/intersect.hpp

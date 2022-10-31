@@ -51,42 +51,43 @@ data:
     \ &p) { return x != p.x or y != p.y; }\n    Point operator*(T k) { return {x*k,\
     \ y*k}; }\n    Point operator/(T k) { return {x/k, y/k}; }\n    T norm() { return\
     \ x*x + y*y; }\n    T abs() { return sqrt(norm()); }\n    T abs(const Point &p)\
-    \ { return hypot(x-p.x, y-p.y); }\n    T abs2(const Point &p) { return pow(x-p.x,\
-    \ 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return std::abs(x-p.x)\
-    \ + std::abs(y-p.y); }\n    void print() { cout << x << ' ' << y << '\\n'; }\n\
-    \    operator pair<T, T>() const { return {x, y}; }\n};\n\ntemplate<typename T>\n\
-    void print(Point<T> p) {\n    cout << p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename\
-    \ T>\nostream &operator<<(ostream &os, const Point<T> &p) {\n    return os <<\
-    \ p.x << ' ' << p.y;\n}\n\ntemplate<typename T>\nbool operator<(const Point<T>\
-    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) < mkp(p2.x, p2.y);\n\
-    }\n\ntemplate<typename T>\nbool operator==(const Point<T> &p1, const Point<T>\
-    \ &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n}\n#line 3 \"src/geometry/monotone_chain.hpp\"\
-    \n\n// \u30A2\u30F3\u30C9\u30EA\u30E5\u30FC\u306E\u30A2\u30EB\u30B4\u30EA\u30BA\
-    \u30E0(Monotone Chain)\uFF1A\u51F8\u5305\u306B\u4F7F\u3063\u305F\u5EA7\u6A19\u3068\
-    \u8DDD\u96E2\u3092\u8FD4\u3059\ntemplate<typename T>\nvector<pair<Point<T>, ld>>\
-    \ monotone_chain(vector<Point<T>> li) {\n    int N = li.size();\n    assert(N\
-    \ >= 2);\n\n    sort(ALL(li), [](Point<T> a, Point<T> b) {\n        // \u30BD\u30FC\
-    \u30C8\u6761\u4EF6\u306By\u3082\u4F7F\u3046\n        if (a.x == b.x) return a.y\
-    \ < b.y;\n        else return a.x < b.x; \n    });\n\n    // \u4E0A\u534A\u5206\
-    \n    // \u4F7F\u3046\u5EA7\u6A19\u3068\u8DDD\u96E2\u3092\u4FDD\u6301\n    vector<pair<Point<T>,\
-    \ ld>> stack;\n    stack.pb({li[0], 0});\n    stack.pb({li[1], li[0].abs(li[1])});\n\
-    \    rep(i, 2, N) {\n        // 1\u3064\u524D->\u6B21 \u3068 1\u3064\u524D->2\u3064\
-    \u524D \u306E\u30D9\u30AF\u30C8\u30EB\u3067\u5916\u7A4D\u3092\u30C1\u30A7\u30C3\
-    \u30AF\u3057\u3066\u5411\u304D\u3092\u5224\u5B9A\u3059\u308B\n        while (stack.size()\
-    \ >= 2 and ccw(stack[stack.size()-2].first, stack[stack.size()-1].first, li[i])\
-    \ == 1) {\n            // \u6B21\u304C\u53CD\u6642\u8A08\u56DE\u308A\u5074\u306B\
-    \u3042\u308B\u6642\u306F1\u3064\u524D\u3092\u5916\u3059\n            stack.pop_back();\n\
-    \        }\n        // \u6B21\u304C\u6642\u8A08\u56DE\u308A\u5074\u306B\u3042\u308C\
-    \u3070OK\u306A\u306E\u3067\u9032\u3081\u308B\n        stack.pb({li[i], stack.back().first.abs(li[i])});\n\
-    \    }\n    vector<pair<Point<T>, ld>> res;\n    rep(i, 1, stack.size()) {\n \
-    \       res.pb(stack[i]);\n    }\n\n    // \u4E0B\u534A\u5206(\u3084\u308B\u3053\
-    \u3068\u306F\u540C\u3058)\n    stack.clear();\n    stack.pb({li[li.size()-1],\
-    \ 0});\n    stack.pb({li[li.size()-2], li[li.size()-1].abs(li[li.size()-2])});\n\
-    \    rrep(i, N-3, -1) {\n        while (stack.size() >= 2 and ccw(stack[stack.size()-2].first,\
-    \ stack[stack.size()-1].first, li[i]) == 1) {\n            stack.pop_back();\n\
-    \        }\n        stack.pb({li[i], stack.back().first.abs(li[i])});\n    }\n\
-    \    rep(i, 1, stack.size()) {\n        res.pb(stack[i]);\n    }\n    return res;\n\
-    }\n"
+    \ { return hypot(x-p.x, y-p.y); }\n    // \u6574\u6570\u306E\u307E\u307E\u8DDD\
+    \u96E2\u306E\u5927\u5C0F\u3092\u898B\u305F\u3044\u6642\u306F\u3053\u3063\u3061\
+    \n    T abs2(const Point &p) { return pow(x-p.x, 2)+pow(y-p.y, 2); }\n    T manhattan(const\
+    \ Point &p) { return std::abs(x-p.x) + std::abs(y-p.y); }\n    void print() {\
+    \ cout << x << ' ' << y << '\\n'; }\n    operator pair<T, T>() const { return\
+    \ {x, y}; }\n};\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout <<\
+    \ p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename T>\nostream &operator<<(ostream\
+    \ &os, const Point<T> &p) {\n    return os << p.x << ' ' << p.y;\n}\n\ntemplate<typename\
+    \ T>\nbool operator<(const Point<T> &p1, const Point<T> &p2) {\n    return mkp(p1.x,\
+    \ p1.y) < mkp(p2.x, p2.y);\n}\n\ntemplate<typename T>\nbool operator==(const Point<T>\
+    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n\
+    }\n#line 3 \"src/geometry/monotone_chain.hpp\"\n\n// \u30A2\u30F3\u30C9\u30EA\u30E5\
+    \u30FC\u306E\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0(Monotone Chain)\uFF1A\u51F8\u5305\
+    \u306B\u4F7F\u3063\u305F\u5EA7\u6A19\u3068\u8DDD\u96E2\u3092\u8FD4\u3059\ntemplate<typename\
+    \ T>\nvector<pair<Point<T>, ld>> monotone_chain(vector<Point<T>> li) {\n    int\
+    \ N = li.size();\n    assert(N >= 2);\n\n    sort(ALL(li), [](Point<T> a, Point<T>\
+    \ b) {\n        // \u30BD\u30FC\u30C8\u6761\u4EF6\u306By\u3082\u4F7F\u3046\n \
+    \       if (a.x == b.x) return a.y < b.y;\n        else return a.x < b.x; \n \
+    \   });\n\n    // \u4E0A\u534A\u5206\n    // \u4F7F\u3046\u5EA7\u6A19\u3068\u8DDD\
+    \u96E2\u3092\u4FDD\u6301\n    vector<pair<Point<T>, ld>> stack;\n    stack.pb({li[0],\
+    \ 0});\n    stack.pb({li[1], li[0].abs(li[1])});\n    rep(i, 2, N) {\n       \
+    \ // 1\u3064\u524D->\u6B21 \u3068 1\u3064\u524D->2\u3064\u524D \u306E\u30D9\u30AF\
+    \u30C8\u30EB\u3067\u5916\u7A4D\u3092\u30C1\u30A7\u30C3\u30AF\u3057\u3066\u5411\
+    \u304D\u3092\u5224\u5B9A\u3059\u308B\n        while (stack.size() >= 2 and ccw(stack[stack.size()-2].first,\
+    \ stack[stack.size()-1].first, li[i]) == 1) {\n            // \u6B21\u304C\u53CD\
+    \u6642\u8A08\u56DE\u308A\u5074\u306B\u3042\u308B\u6642\u306F1\u3064\u524D\u3092\
+    \u5916\u3059\n            stack.pop_back();\n        }\n        // \u6B21\u304C\
+    \u6642\u8A08\u56DE\u308A\u5074\u306B\u3042\u308C\u3070OK\u306A\u306E\u3067\u9032\
+    \u3081\u308B\n        stack.pb({li[i], stack.back().first.abs(li[i])});\n    }\n\
+    \    vector<pair<Point<T>, ld>> res;\n    rep(i, 1, stack.size()) {\n        res.pb(stack[i]);\n\
+    \    }\n\n    // \u4E0B\u534A\u5206(\u3084\u308B\u3053\u3068\u306F\u540C\u3058\
+    )\n    stack.clear();\n    stack.pb({li[li.size()-1], 0});\n    stack.pb({li[li.size()-2],\
+    \ li[li.size()-1].abs(li[li.size()-2])});\n    rrep(i, N-3, -1) {\n        while\
+    \ (stack.size() >= 2 and ccw(stack[stack.size()-2].first, stack[stack.size()-1].first,\
+    \ li[i]) == 1) {\n            stack.pop_back();\n        }\n        stack.pb({li[i],\
+    \ stack.back().first.abs(li[i])});\n    }\n    rep(i, 1, stack.size()) {\n   \
+    \     res.pb(stack[i]);\n    }\n    return res;\n}\n"
   code: "#include \"../macros.hpp\"\n#include \"Point.hpp\"\n\n// \u30A2\u30F3\u30C9\
     \u30EA\u30E5\u30FC\u306E\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0(Monotone Chain)\uFF1A\
     \u51F8\u5305\u306B\u4F7F\u3063\u305F\u5EA7\u6A19\u3068\u8DDD\u96E2\u3092\u8FD4\
@@ -120,7 +121,7 @@ data:
   isVerificationFile: false
   path: src/geometry/monotone_chain.hpp
   requiredBy: []
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2022-10-31 12:05:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/monotone_chain.hpp

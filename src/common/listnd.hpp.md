@@ -21,6 +21,9 @@ data:
     path: src/grid/bfs.hpp
     title: src/grid/bfs.hpp
   - icon: ':warning:'
+    path: src/grid/bfs01.hpp
+    title: src/grid/bfs01.hpp
+  - icon: ':warning:'
     path: src/grid/bfs_restore.hpp
     title: src/grid/bfs_restore.hpp
   - icon: ':warning:'
@@ -79,18 +82,19 @@ data:
   isVerificationFile: false
   path: src/common/listnd.hpp
   requiredBy:
-  - src/string/get_next_indices.hpp
+  - src/grid/transpose.hpp
+  - src/grid/bfs.hpp
+  - src/grid/bfs_restore.hpp
+  - src/grid/dijkstra.hpp
+  - src/grid/bfs01.hpp
   - src/combinatorics/nCr.hpp
   - src/combinatorics/partition.hpp
-  - src/grid/bfs_restore.hpp
-  - src/grid/bfs.hpp
-  - src/grid/dijkstra.hpp
-  - src/grid/transpose.hpp
-  - src/template.hpp
-  - src/matrix/MatPow.hpp
   - src/matrix/mat_dot.hpp
-  - src/common/Doubling.hpp
+  - src/matrix/MatPow.hpp
   - src/common/_doubling.hpp
+  - src/common/Doubling.hpp
+  - src/template.hpp
+  - src/string/get_next_indices.hpp
   timestamp: '2022-08-29 14:43:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

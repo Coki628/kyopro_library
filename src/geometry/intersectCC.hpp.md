@@ -65,30 +65,32 @@ data:
     \ != p.y; }\n    Point operator*(T k) { return {x*k, y*k}; }\n    Point operator/(T\
     \ k) { return {x/k, y/k}; }\n    T norm() { return x*x + y*y; }\n    T abs() {\
     \ return sqrt(norm()); }\n    T abs(const Point &p) { return hypot(x-p.x, y-p.y);\
-    \ }\n    T abs2(const Point &p) { return pow(x-p.x, 2)+pow(y-p.y, 2); }\n    T\
-    \ manhattan(const Point &p) { return std::abs(x-p.x) + std::abs(y-p.y); }\n  \
-    \  void print() { cout << x << ' ' << y << '\\n'; }\n    operator pair<T, T>()\
-    \ const { return {x, y}; }\n};\n\ntemplate<typename T>\nvoid print(Point<T> p)\
-    \ {\n    cout << p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename T>\nostream\
-    \ &operator<<(ostream &os, const Point<T> &p) {\n    return os << p.x << ' ' <<\
-    \ p.y;\n}\n\ntemplate<typename T>\nbool operator<(const Point<T> &p1, const Point<T>\
-    \ &p2) {\n    return mkp(p1.x, p1.y) < mkp(p2.x, p2.y);\n}\n\ntemplate<typename\
-    \ T>\nbool operator==(const Point<T> &p1, const Point<T> &p2) {\n    return mkp(p1.x,\
-    \ p1.y) == mkp(p2.x, p2.y);\n}\n#line 4 \"src/geometry/Circle.hpp\"\n\ntemplate<typename\
-    \ T>\nstruct Circle {\n    Point<T> c;\n    T r;\n    Circle(Point<T> c={0, 0},\
-    \ T r=0) : c(c), r(r) {}\n};\n#line 4 \"src/geometry/intersectCC.hpp\"\n\n// \u53C2\
-    \u8003\uFF1Ahttps://manabitimes.jp/math/745\n// \u5186c1\u3068\u5186c2\u306E\u4EA4\
-    \u5DEE\u5224\u5B9A(2\u4E57\u306E\u307E\u307E\u6574\u6570\u3067\u5224\u5B9A\u3067\
-    \u304D\u308B\u3088\u3046\u306B\u3057\u3066\u3042\u308B)\ntemplate<typename T>\n\
-    int intersectCC(Circle<T> c1, Circle<T> c2) {\n    T d2 = pow(c1.c.x-c2.c.x, 2)\
-    \ + pow(c1.c.y-c2.c.y, 2);\n    // \u4E00\u65B9\u304C\u4ED6\u65B9\u3092\u5185\u5305\
-    \n    if (d2 < pow(abs(c1.r-c2.r), 2)) {\n        return 1;\n    }\n    // \u5185\
-    \u63A5\u3059\u308B\n    if (d2 == pow(abs(c1.r-c2.r), 2)) {\n        return 2;\n\
-    \    }\n    // 2\u70B9\u3067\u4EA4\u308F\u308B\n    if (pow(abs(c1.r-c2.r), 2)\
-    \ < d2 and d2 < pow(c1.r+c2.r, 2)) {\n        return 3;\n    }\n    // \u5916\u63A5\
-    \u3059\u308B\n    if (d2 == pow(c1.r+c2.r, 2)) {\n        return 4;\n    }\n \
-    \   // 2\u5186\u304C\u96E2\u308C\u3066\u308B\n    if (d2 > pow(c1.r+c2.r, 2))\
-    \ {\n        return 5;\n    }\n    assert(0);\n}\n"
+    \ }\n    // \u6574\u6570\u306E\u307E\u307E\u8DDD\u96E2\u306E\u5927\u5C0F\u3092\
+    \u898B\u305F\u3044\u6642\u306F\u3053\u3063\u3061\n    T abs2(const Point &p) {\
+    \ return pow(x-p.x, 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return\
+    \ std::abs(x-p.x) + std::abs(y-p.y); }\n    void print() { cout << x << ' ' <<\
+    \ y << '\\n'; }\n    operator pair<T, T>() const { return {x, y}; }\n};\n\ntemplate<typename\
+    \ T>\nvoid print(Point<T> p) {\n    cout << p.x << ' ' << p.y << '\\n';\n}\n\n\
+    template<typename T>\nostream &operator<<(ostream &os, const Point<T> &p) {\n\
+    \    return os << p.x << ' ' << p.y;\n}\n\ntemplate<typename T>\nbool operator<(const\
+    \ Point<T> &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) < mkp(p2.x,\
+    \ p2.y);\n}\n\ntemplate<typename T>\nbool operator==(const Point<T> &p1, const\
+    \ Point<T> &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n}\n#line 4\
+    \ \"src/geometry/Circle.hpp\"\n\ntemplate<typename T>\nstruct Circle {\n    Point<T>\
+    \ c;\n    T r;\n    Circle(Point<T> c={0, 0}, T r=0) : c(c), r(r) {}\n};\n#line\
+    \ 4 \"src/geometry/intersectCC.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://manabitimes.jp/math/745\n\
+    // \u5186c1\u3068\u5186c2\u306E\u4EA4\u5DEE\u5224\u5B9A(2\u4E57\u306E\u307E\u307E\
+    \u6574\u6570\u3067\u5224\u5B9A\u3067\u304D\u308B\u3088\u3046\u306B\u3057\u3066\
+    \u3042\u308B)\ntemplate<typename T>\nint intersectCC(Circle<T> c1, Circle<T> c2)\
+    \ {\n    T d2 = pow(c1.c.x-c2.c.x, 2) + pow(c1.c.y-c2.c.y, 2);\n    // \u4E00\u65B9\
+    \u304C\u4ED6\u65B9\u3092\u5185\u5305\n    if (d2 < pow(abs(c1.r-c2.r), 2)) {\n\
+    \        return 1;\n    }\n    // \u5185\u63A5\u3059\u308B\n    if (d2 == pow(abs(c1.r-c2.r),\
+    \ 2)) {\n        return 2;\n    }\n    // 2\u70B9\u3067\u4EA4\u308F\u308B\n  \
+    \  if (pow(abs(c1.r-c2.r), 2) < d2 and d2 < pow(c1.r+c2.r, 2)) {\n        return\
+    \ 3;\n    }\n    // \u5916\u63A5\u3059\u308B\n    if (d2 == pow(c1.r+c2.r, 2))\
+    \ {\n        return 4;\n    }\n    // 2\u5186\u304C\u96E2\u308C\u3066\u308B\n\
+    \    if (d2 > pow(c1.r+c2.r, 2)) {\n        return 5;\n    }\n    assert(0);\n\
+    }\n"
   code: "#include \"../base.hpp\"\n#include \"../common/pow.hpp\"\n#include \"Circle.hpp\"\
     \n\n// \u53C2\u8003\uFF1Ahttps://manabitimes.jp/math/745\n// \u5186c1\u3068\u5186\
     c2\u306E\u4EA4\u5DEE\u5224\u5B9A(2\u4E57\u306E\u307E\u307E\u6574\u6570\u3067\u5224\
@@ -111,7 +113,7 @@ data:
   isVerificationFile: false
   path: src/geometry/intersectCC.hpp
   requiredBy: []
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2022-10-31 12:05:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/intersectCC.hpp

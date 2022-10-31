@@ -58,29 +58,31 @@ data:
     \ &p) { return x != p.x or y != p.y; }\n    Point operator*(T k) { return {x*k,\
     \ y*k}; }\n    Point operator/(T k) { return {x/k, y/k}; }\n    T norm() { return\
     \ x*x + y*y; }\n    T abs() { return sqrt(norm()); }\n    T abs(const Point &p)\
-    \ { return hypot(x-p.x, y-p.y); }\n    T abs2(const Point &p) { return pow(x-p.x,\
-    \ 2)+pow(y-p.y, 2); }\n    T manhattan(const Point &p) { return std::abs(x-p.x)\
-    \ + std::abs(y-p.y); }\n    void print() { cout << x << ' ' << y << '\\n'; }\n\
-    \    operator pair<T, T>() const { return {x, y}; }\n};\n\ntemplate<typename T>\n\
-    void print(Point<T> p) {\n    cout << p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename\
-    \ T>\nostream &operator<<(ostream &os, const Point<T> &p) {\n    return os <<\
-    \ p.x << ' ' << p.y;\n}\n\ntemplate<typename T>\nbool operator<(const Point<T>\
-    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) < mkp(p2.x, p2.y);\n\
-    }\n\ntemplate<typename T>\nbool operator==(const Point<T> &p1, const Point<T>\
-    \ &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n}\n#line 3 \"src/geometry/Segment.hpp\"\
-    \n\ntemplate<typename T> struct Segment { Point<T> p1, p2; };\n#line 3 \"src/geometry/cross.hpp\"\
-    \n\n// \u5916\u7A4D\ntemplate<typename T> T cross(const Point<T> a, const Point<T>\
-    \ b) {\n    return a.x*b.y - a.y*b.x;\n}\n#line 4 \"src/geometry/get_cross_point.hpp\"\
-    \n\n// \u53C2\u8003\uFF1Ahttps://qiita.com/zu_rin/items/09876d2c7ec12974bc0f\n\
-    // \u7DDA\u5206seg1\u3068\u7DDA\u5206seg2\u306E\u4EA4\u70B9\ntemplate<typename\
-    \ T>\nPoint<T> get_cross_point(Segment<T> seg1, Segment<T> seg2) {\n    T deno\
-    \ = cross(seg1.p2 - seg1.p1, seg2.p2 - seg2.p1);\n    if (abs(deno) < EPS) {\n\
-    \        // \u7DDA\u5206\u304C\u5E73\u884C\n        throw -1;\n    }\n    T s\
-    \ = cross(seg2.p1 - seg1.p1, seg2.p2 - seg2.p1) / deno;\n    T t = cross(seg1.p2\
-    \ - seg1.p1, seg1.p1 - seg2.p1) / deno;\n    if (s < -EPS or 1.0 < s-EPS or t\
-    \ < -EPS or 1.0 < t-EPS) {\n        // \u7DDA\u5206\u304C\u4EA4\u5DEE\u3057\u3066\
-    \u3044\u306A\u3044\n        throw -1;\n    }\n    return { seg1.p1.x + s * (seg1.p2\
-    \ - seg1.p1).x, seg1.p1.y + s * (seg1.p2 - seg1.p1).y };\n}\n"
+    \ { return hypot(x-p.x, y-p.y); }\n    // \u6574\u6570\u306E\u307E\u307E\u8DDD\
+    \u96E2\u306E\u5927\u5C0F\u3092\u898B\u305F\u3044\u6642\u306F\u3053\u3063\u3061\
+    \n    T abs2(const Point &p) { return pow(x-p.x, 2)+pow(y-p.y, 2); }\n    T manhattan(const\
+    \ Point &p) { return std::abs(x-p.x) + std::abs(y-p.y); }\n    void print() {\
+    \ cout << x << ' ' << y << '\\n'; }\n    operator pair<T, T>() const { return\
+    \ {x, y}; }\n};\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout <<\
+    \ p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename T>\nostream &operator<<(ostream\
+    \ &os, const Point<T> &p) {\n    return os << p.x << ' ' << p.y;\n}\n\ntemplate<typename\
+    \ T>\nbool operator<(const Point<T> &p1, const Point<T> &p2) {\n    return mkp(p1.x,\
+    \ p1.y) < mkp(p2.x, p2.y);\n}\n\ntemplate<typename T>\nbool operator==(const Point<T>\
+    \ &p1, const Point<T> &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n\
+    }\n#line 3 \"src/geometry/Segment.hpp\"\n\ntemplate<typename T> struct Segment\
+    \ { Point<T> p1, p2; };\n#line 3 \"src/geometry/cross.hpp\"\n\n// \u5916\u7A4D\
+    \ntemplate<typename T> T cross(const Point<T> a, const Point<T> b) {\n    return\
+    \ a.x*b.y - a.y*b.x;\n}\n#line 4 \"src/geometry/get_cross_point.hpp\"\n\n// \u53C2\
+    \u8003\uFF1Ahttps://qiita.com/zu_rin/items/09876d2c7ec12974bc0f\n// \u7DDA\u5206\
+    seg1\u3068\u7DDA\u5206seg2\u306E\u4EA4\u70B9\ntemplate<typename T>\nPoint<T> get_cross_point(Segment<T>\
+    \ seg1, Segment<T> seg2) {\n    T deno = cross(seg1.p2 - seg1.p1, seg2.p2 - seg2.p1);\n\
+    \    if (abs(deno) < EPS) {\n        // \u7DDA\u5206\u304C\u5E73\u884C\n     \
+    \   throw -1;\n    }\n    T s = cross(seg2.p1 - seg1.p1, seg2.p2 - seg2.p1) /\
+    \ deno;\n    T t = cross(seg1.p2 - seg1.p1, seg1.p1 - seg2.p1) / deno;\n    if\
+    \ (s < -EPS or 1.0 < s-EPS or t < -EPS or 1.0 < t-EPS) {\n        // \u7DDA\u5206\
+    \u304C\u4EA4\u5DEE\u3057\u3066\u3044\u306A\u3044\n        throw -1;\n    }\n \
+    \   return { seg1.p1.x + s * (seg1.p2 - seg1.p1).x, seg1.p1.y + s * (seg1.p2 -\
+    \ seg1.p1).y };\n}\n"
   code: "#include \"Point.hpp\"\n#include \"Segment.hpp\"\n#include \"cross.hpp\"\n\
     \n// \u53C2\u8003\uFF1Ahttps://qiita.com/zu_rin/items/09876d2c7ec12974bc0f\n//\
     \ \u7DDA\u5206seg1\u3068\u7DDA\u5206seg2\u306E\u4EA4\u70B9\ntemplate<typename\
@@ -101,7 +103,7 @@ data:
   isVerificationFile: false
   path: src/geometry/get_cross_point.hpp
   requiredBy: []
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2022-10-31 12:05:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/get_cross_point.hpp

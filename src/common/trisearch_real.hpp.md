@@ -35,22 +35,32 @@ data:
     \ ll times) {\n    ld m1 = lo;\n    ld m2 = hi;\n    rep(_, times) {\n       \
     \ m1 = (lo*2+hi) / 3;\n        m2 = (lo+hi*2) / 3;\n        ld res1 = func(m1);\n\
     \        ld res2 = func(m2);\n        if (res1 <= res2) {\n            hi = m2;\n\
-    \        } else {\n            lo = m1;\n        }\n    }\n    ld i = min(m1,\
-    \ m2);\n    ld val = func(i);\n    return {i, val};\n}\n"
+    \        } else {\n            lo = m1;\n        }\n    }\n    return {m1, func(m1)};\n\
+    }\n\n// \u4E09\u5206\u63A2\u7D22(\u5B9F\u6570)\ntemplate<typename F>\npair<ld,\
+    \ ld> trisearch_max(ld lo, ld hi, const F &func, ll times) {\n    ld m1 = lo;\n\
+    \    ld m2 = hi;\n    rep(_, times) {\n        m1 = (lo*2+hi) / 3;\n        m2\
+    \ = (lo+hi*2) / 3;\n        ld res1 = func(m1);\n        ld res2 = func(m2);\n\
+    \        if (res1 >= res2) {\n            hi = m2;\n        } else {\n       \
+    \     lo = m1;\n        }\n    }\n    return {m1, func(m1)};\n}\n"
   code: "#include \"../macros.hpp\"\n\n// \u4E09\u5206\u63A2\u7D22(\u5B9F\u6570)\n\
     template<typename F>\npair<ld, ld> trisearch_min(ld lo, ld hi, const F &func,\
     \ ll times) {\n    ld m1 = lo;\n    ld m2 = hi;\n    rep(_, times) {\n       \
     \ m1 = (lo*2+hi) / 3;\n        m2 = (lo+hi*2) / 3;\n        ld res1 = func(m1);\n\
     \        ld res2 = func(m2);\n        if (res1 <= res2) {\n            hi = m2;\n\
-    \        } else {\n            lo = m1;\n        }\n    }\n    ld i = min(m1,\
-    \ m2);\n    ld val = func(i);\n    return {i, val};\n}\n"
+    \        } else {\n            lo = m1;\n        }\n    }\n    return {m1, func(m1)};\n\
+    }\n\n// \u4E09\u5206\u63A2\u7D22(\u5B9F\u6570)\ntemplate<typename F>\npair<ld,\
+    \ ld> trisearch_max(ld lo, ld hi, const F &func, ll times) {\n    ld m1 = lo;\n\
+    \    ld m2 = hi;\n    rep(_, times) {\n        m1 = (lo*2+hi) / 3;\n        m2\
+    \ = (lo+hi*2) / 3;\n        ld res1 = func(m1);\n        ld res2 = func(m2);\n\
+    \        if (res1 >= res2) {\n            hi = m2;\n        } else {\n       \
+    \     lo = m1;\n        }\n    }\n    return {m1, func(m1)};\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/trisearch_real.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-10-31 12:05:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/trisearch_real.hpp
