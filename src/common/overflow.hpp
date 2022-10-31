@@ -5,3 +5,10 @@ bool mul_overflow(T x, T y) {
     T z;
     return __builtin_mul_overflow(x, y, &z);
 }
+
+// 加算のオーバーフロー検知(未verify)
+template<typename T>
+bool add_overflow(T x, T y) {
+    T z;
+    return __builtin_add_overflow(x, y, &z);
+}

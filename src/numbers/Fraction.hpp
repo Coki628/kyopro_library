@@ -11,11 +11,16 @@ struct Fraction {
     Fraction(T nu) : numerator(nu), denominator((T)1) {}
 
     Fraction(T nu, T de) : numerator(nu), denominator(de) {
-        assert(de != 0);
+        assert(de != (T)0);
+        // マイナスを分子側に
+        if (de < (T)0) {
+            numerator *= -1;
+            denominator *= -1;
+        }
     }
 
     Fraction(const Fraction<T> &a) : numerator(a.numerator), denominator(a.denominator) {
-        assert(a.denominator != 0);
+        assert(a.denominator != (T)0);
     }
 
     // 通分
@@ -29,7 +34,9 @@ struct Fraction {
     // 約分
     void simplify() {
         if (denominator == (T)1) return;
-        T g = gcd(numerator, denominator);
+        assert(denominator >= 1);
+        // gcdやる時は正数に
+        T g = gcd(abs(numerator), denominator);
         numerator /= g;
         denominator /= g;
     }
@@ -63,6 +70,11 @@ struct Fraction {
         assert(a.numerator != (T)0);
         numerator *= a.denominator;
         denominator *= a.numerator;
+        // マイナスを分子側に
+        if (a.numerator < (T)0) {
+            numerator *= -1;
+            denominator *= -1;
+        }
         simplify();
         return *this;
     }
@@ -109,6 +121,24 @@ struct Fraction {
 
     bool operator<(const Fraction<T>& a) const {
         return numerator*a.denominator < a.numerator*denominator;
+    }
+
+    bool operator<=(const Fraction<T>& a) const {
+        return numerator*a.denominator <= a.numerator*denominator;
+    }
+
+    bool operator>(const Fraction<T>& a) const {
+        return numerator*a.denominator > a.numerator*denominator;
+    }
+
+    bool operator>=(const Fraction<T>& a) const {
+        return numerator*a.denominator >= a.numerator*denominator;
+    }
+
+    friend istream &operator>>(istream& is, Fraction<T>& a) {
+        is >> a.numerator;
+        a.denominator = 1;
+        return (is);
     }
 
     friend ostream& operator<<(ostream& os, const Fraction<T>& a) {
