@@ -63,7 +63,8 @@ public:
         return query(i, i+1);
     }
 
-    void print() {
+    void print(int n=-1) {
+        if (n == -1) n = this->n;
         rep(i, n) {
             cout << query(i, i+1);
             if (i == n-1) cout << endl;

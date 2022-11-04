@@ -22,13 +22,13 @@ struct PersistentSegmentTree {
     int sz;
     const F f;
     const Monoid M1;
-    Node* cur;
+    Node* root;
 
     PersistentSegmentTree(const F f, const Monoid &M1) : f(f), M1(M1) {}
 
     void build(const vector< Monoid > &v) {
         sz = (int) v.size();
-        cur = build(0, (int) v.size(), v);
+        root = build(0, (int) v.size(), v);
     }
 
     Node *merge(Node *l, Node *r) {
@@ -46,7 +46,7 @@ struct PersistentSegmentTree {
     Node *update(int a, const Monoid &x, Node *k, int l, int r) {
         if(r <= a || a + 1 <= l) {
             return k;
-        } else if(a <= l && r <= a + 1) {
+        } else if (a <= l && r <= a + 1) {
             return new Node(x);
         } else {
             return merge(update(a, x, k->l, l, (l + r) >> 1), update(a, x, k->r, (l + r) >> 1, r));
@@ -54,7 +54,7 @@ struct PersistentSegmentTree {
     }
 
     void update(int k, const Monoid &x) {
-        cur = update(k, x, cur, 0, sz);
+        root = update(k, x, root, 0, sz);
     }
 
     Monoid query(int a, int b, Node *k, int l, int r) {
@@ -69,11 +69,11 @@ struct PersistentSegmentTree {
     }
 
     Monoid query(int a, int b) {
-        return query(a, b, cur, 0, sz);
+        return query(a, b, root, 0, sz);
     }
 
     Monoid all() {
-        return cur->data;
+        return root->data;
     }
 
     Monoid get(int i) {
@@ -82,18 +82,18 @@ struct PersistentSegmentTree {
 
     void print(int n) {
         for (int i=0; i<n; i++) {
-            cout << query(cur, i, i+1);
+            cout << query(root, i, i+1);
             if (i == n-1) cout << endl;
             else cout << ' ';
         }
     }
 
     Node* save() {
-        return cur;
+        return root;
     }
 
     void load(Node* p) {
-        cur = p;
+        root = p;
     }
 };
 
