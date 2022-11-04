@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // Binary Indexed Tree
@@ -18,7 +19,7 @@ public:
         build(v);
     }
 
-    void build(const vector<T> &v) {
+    virtual void build(const vector<T> &v) {
         assert(n == (int)v.size());
         for (int i = 1; i <= n; i++) {
             dat[i] = v[i - 1];
@@ -30,7 +31,7 @@ public:
     }
 
     // [0, r)を合計する
-    T sum(int r) {
+    virtual T sum(int r) {
         T s = T();
         for (; r > 0; r -= r & -r) {
             s += dat[r];
@@ -38,7 +39,7 @@ public:
         return s;
     }
 
-    void add(int k, const T &x) {
+    virtual void add(int k, const T &x) {
         for (++k; k <= n; k += k & -k) {
             dat[k] += x;
         }
@@ -115,7 +116,7 @@ public:
     // 参考：https://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp
     // 区間[0,k]の総和がx以上となる最小のkを返す。数列が単調増加であることを要求する。
     // (logが1つなので、TL厳しい時はこちらを使う。)
-    int lower_bound(T x) const {
+    virtual int lower_bound(T x) const {
         int i = 0;
         for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {
             if (i + k <= n && dat[i+k] < x) {
@@ -127,7 +128,7 @@ public:
     }
 
     // 区間[0,k]の総和がxを上回る最小のkを返す。数列が単調増加であることを要求する。(未verify)
-    int upper_bound(T x) const {
+    virtual int upper_bound(T x) const {
         int i = 0;
         for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {
             if (i + k <= n && dat[i+k] <= x) {

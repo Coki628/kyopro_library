@@ -1,5 +1,5 @@
 #include "../base.hpp"
-#include "../common/PersistentArray.hpp"
+#include "../datastructure/PersistentArray.hpp"
 
 // 参考：https://ei1333.github.io/library/structure/union-find/persistent-union-find.cpp
 // 永続UF

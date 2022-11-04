@@ -6,7 +6,7 @@ template<typename T>
 struct WeightedUnionFind : UnionFind {
 
     vector<T> weight;
-    
+
     WeightedUnionFind(int n) : UnionFind(n) {
         // 根への距離を管理
         weight.resize(n);

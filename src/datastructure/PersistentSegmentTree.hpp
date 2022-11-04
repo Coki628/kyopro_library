@@ -6,6 +6,8 @@
 // ・基本的には普通のセグ木と一緒。ただし更新・取得ともに時点を示すポインタを引数に渡す必要がある。
 // ・更新(と初期化)の時にその更新完了時点のポインタが返るので、
 // 　それを配列とかに保持しておくと、任意の時点の情報を取り出せる。(実装例はabc253_fを参照)
+// ・仕様変えた。更新・取得時にはポインタ渡したりしなくてよくて、
+// 　状態を保持したい時に使うsaveと復元したい時に使うloadを実装した。
 
 template<typename Monoid, typename F>
 struct PersistentSegmentTree {
@@ -20,12 +22,13 @@ struct PersistentSegmentTree {
     int sz;
     const F f;
     const Monoid M1;
+    Node* cur;
 
     PersistentSegmentTree(const F f, const Monoid &M1) : f(f), M1(M1) {}
 
-    Node *build(const vector< Monoid > &v) {
+    void build(const vector< Monoid > &v) {
         sz = (int) v.size();
-        return build(0, (int) v.size(), v);
+        cur = build(0, (int) v.size(), v);
     }
 
     Node *merge(Node *l, Node *r) {
@@ -50,8 +53,8 @@ struct PersistentSegmentTree {
         }
     }
 
-    Node *update(Node *t, int k, const Monoid &x) {
-        return update(k, x, t, 0, sz);
+    void update(int k, const Monoid &x) {
+        cur = update(k, x, cur, 0, sz);
     }
 
     Monoid query(int a, int b, Node *k, int l, int r) {
@@ -65,24 +68,32 @@ struct PersistentSegmentTree {
         }
     }
 
-    Monoid query(Node* t, int a, int b) {
-        return query(a, b, t, 0, sz);
+    Monoid query(int a, int b) {
+        return query(a, b, cur, 0, sz);
     }
 
-    Monoid all(Node* node) {
-        return node ? node->data : M1;
+    Monoid all() {
+        return cur->data;
     }
 
-    Monoid get(Node* t, int a) {
-        return query(t, a, a+1);
+    Monoid get(int i) {
+        return query(i, i+1);
     }
 
-    void print(Node* t, int n) {
+    void print(int n) {
         for (int i=0; i<n; i++) {
-            cout << query(t, i, i+1);
+            cout << query(cur, i, i+1);
             if (i == n-1) cout << endl;
             else cout << ' ';
         }
+    }
+
+    Node* save() {
+        return cur;
+    }
+
+    void load(Node* p) {
+        cur = p;
     }
 };
 
