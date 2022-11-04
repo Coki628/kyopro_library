@@ -204,6 +204,9 @@ data:
     path: src/datastructure/PersistentArray.hpp
     title: src/datastructure/PersistentArray.hpp
   - icon: ':warning:'
+    path: src/datastructure/PersistentBIT.hpp
+    title: src/datastructure/PersistentBIT.hpp
+  - icon: ':warning:'
     path: src/datastructure/PersistentLazySegmentTree.hpp
     title: src/datastructure/PersistentLazySegmentTree.hpp
   - icon: ':warning:'
@@ -329,6 +332,9 @@ data:
   - icon: ':warning:'
     path: src/graph/PartiallyPersistentUnionFind.hpp
     title: src/graph/PartiallyPersistentUnionFind.hpp
+  - icon: ':warning:'
+    path: src/graph/PersistentUnionFind.hpp
+    title: src/graph/PersistentUnionFind.hpp
   - icon: ':warning:'
     path: src/graph/RangeEdgeGraph.hpp
     title: src/graph/RangeEdgeGraph.hpp
@@ -682,6 +688,7 @@ data:
   - src/graph/UnionFind.hpp
   - src/graph/_dijkstra.hpp
   - src/graph/PartiallyPersistentUnionFind.hpp
+  - src/graph/PersistentUnionFind.hpp
   - src/graph/ReRooting.hpp
   - src/graph/bellman_ford.hpp
   - src/graph/topological_sort.hpp
@@ -774,6 +781,7 @@ data:
   - src/datastructure/Imos.hpp
   - src/datastructure/merge_segment.hpp
   - src/datastructure/DynamicLiChaoTree.hpp
+  - src/datastructure/PersistentBIT.hpp
   - src/datastructure/SparseBIT2D.hpp
   - src/datastructure/SuccinctIndexableDictionary.hpp
   - src/datastructure/Mo.hpp

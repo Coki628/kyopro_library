@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/graph/PersistentUnionFind.hpp
+    title: src/graph/PersistentUnionFind.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -121,7 +124,8 @@ data:
   - src/base.hpp
   isVerificationFile: false
   path: src/datastructure/PersistentArray.hpp
-  requiredBy: []
+  requiredBy:
+  - src/graph/PersistentUnionFind.hpp
   timestamp: '2022-10-18 16:41:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

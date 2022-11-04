@@ -76,10 +76,10 @@ data:
     \ n) {\n            res[i] = find(i);\n        }\n        return res;\n    }\n\
     };\n#line 3 \"src/graph/WeightedUnionFind.hpp\"\n\n// \u91CD\u307F\u4ED8\u304D\
     UF\ntemplate<typename T>\nstruct WeightedUnionFind : UnionFind {\n\n    vector<T>\
-    \ weight;\n    \n    WeightedUnionFind(int n) : UnionFind(n) {\n        // \u6839\
-    \u3078\u306E\u8DDD\u96E2\u3092\u7BA1\u7406\n        weight.resize(n);\n    }\n\
-    \n    // \u691C\u7D22\n    int find(int x) override {\n        if (par[x] == x)\
-    \ {\n            return x;\n        } else {\n            int y = find(par[x]);\n\
+    \ weight;\n\n    WeightedUnionFind(int n) : UnionFind(n) {\n        // \u6839\u3078\
+    \u306E\u8DDD\u96E2\u3092\u7BA1\u7406\n        weight.resize(n);\n    }\n\n   \
+    \ // \u691C\u7D22\n    int find(int x) override {\n        if (par[x] == x) {\n\
+    \            return x;\n        } else {\n            int y = find(par[x]);\n\
     \            // \u89AA\u3078\u306E\u91CD\u307F\u3092\u8FFD\u52A0\u3057\u306A\u304C\
     \u3089\u6839\u307E\u3067\u8D70\u67FB\n            weight[x] += weight[par[x]];\n\
     \            par[x] = y;\n            return y;\n        }\n    }\n\n    // \u4F75\
@@ -93,8 +93,8 @@ data:
     \    }\n};\n"
   code: "#include \"../macros.hpp\"\n#include \"UnionFind.hpp\"\n\n// \u91CD\u307F\
     \u4ED8\u304DUF\ntemplate<typename T>\nstruct WeightedUnionFind : UnionFind {\n\
-    \n    vector<T> weight;\n    \n    WeightedUnionFind(int n) : UnionFind(n) {\n\
-    \        // \u6839\u3078\u306E\u8DDD\u96E2\u3092\u7BA1\u7406\n        weight.resize(n);\n\
+    \n    vector<T> weight;\n\n    WeightedUnionFind(int n) : UnionFind(n) {\n   \
+    \     // \u6839\u3078\u306E\u8DDD\u96E2\u3092\u7BA1\u7406\n        weight.resize(n);\n\
     \    }\n\n    // \u691C\u7D22\n    int find(int x) override {\n        if (par[x]\
     \ == x) {\n            return x;\n        } else {\n            int y = find(par[x]);\n\
     \            // \u89AA\u3078\u306E\u91CD\u307F\u3092\u8FFD\u52A0\u3057\u306A\u304C\
@@ -115,7 +115,7 @@ data:
   isVerificationFile: false
   path: src/graph/WeightedUnionFind.hpp
   requiredBy: []
-  timestamp: '2022-05-22 00:24:51+09:00'
+  timestamp: '2022-11-04 11:06:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/WeightedUnionFind.test.cpp

@@ -270,6 +270,9 @@ data:
       path: src/datastructure/PersistentArray.hpp
       title: src/datastructure/PersistentArray.hpp
     - icon: ':warning:'
+      path: src/datastructure/PersistentBIT.hpp
+      title: src/datastructure/PersistentBIT.hpp
+    - icon: ':warning:'
       path: src/datastructure/PersistentLazySegmentTree.hpp
       title: src/datastructure/PersistentLazySegmentTree.hpp
     - icon: ':warning:'

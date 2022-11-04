@@ -126,6 +126,9 @@ data:
     path: src/datastructure/LazySegmentTreeArithmetric.hpp
     title: src/datastructure/LazySegmentTreeArithmetric.hpp
   - icon: ':warning:'
+    path: src/datastructure/PersistentBIT.hpp
+    title: src/datastructure/PersistentBIT.hpp
+  - icon: ':warning:'
     path: src/datastructure/SegmentTreeBeats.hpp
     title: src/datastructure/SegmentTreeBeats.hpp
   - icon: ':warning:'
@@ -547,6 +550,7 @@ data:
   - src/datastructure/Imos.hpp
   - src/datastructure/merge_segment.hpp
   - src/datastructure/DynamicLiChaoTree.hpp
+  - src/datastructure/PersistentBIT.hpp
   - src/datastructure/Accumulate.hpp
   - src/datastructure/Imos2D.hpp
   - src/string/is_palindrome.hpp
