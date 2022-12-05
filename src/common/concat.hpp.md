@@ -14,20 +14,12 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.0/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.0/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.0/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
-    \ File \"/opt/hostedtoolcache/Python/3.11.0/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: base.hpp: line\
-    \ -1: no such header\n"
-  code: "#include \"base.hpp\"\n\ntemplate<typename T>\nvector<T> concat(const vector<T>&\
-    \ A, const vector<T>& B) {\n    vector<T> res = A;\n    res.insert(res.end(),\
+  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
+    using namespace std;\n#line 2 \"src/common/concat.hpp\"\n\ntemplate<typename T>\n\
+    vector<T> concat(const vector<T>& A, const vector<T>& B) {\n    vector<T> res\
+    \ = A;\n    res.insert(res.end(), B.begin(), B.end());\n    return res;\n}\n"
+  code: "#include \"../base.hpp\"\n\ntemplate<typename T>\nvector<T> concat(const\
+    \ vector<T>& A, const vector<T>& B) {\n    vector<T> res = A;\n    res.insert(res.end(),\
     \ B.begin(), B.end());\n    return res;\n}\n"
   dependsOn:
   - src/base.hpp
@@ -35,7 +27,7 @@ data:
   path: src/common/concat.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2022-04-14 14:32:07+09:00'
+  timestamp: '2022-12-05 11:44:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/concat.hpp

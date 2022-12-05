@@ -220,6 +220,9 @@ data:
       path: src/common/trisearch_real.hpp
       title: src/common/trisearch_real.hpp
     - icon: ':warning:'
+      path: src/common/vector.hpp
+      title: src/common/vector.hpp
+    - icon: ':warning:'
       path: src/common/yesno.hpp
       title: src/common/yesno.hpp
     - icon: ':warning:'
@@ -691,6 +694,9 @@ data:
     - icon: ':warning:'
       path: src/string/is_palindrome.hpp
       title: src/string/is_palindrome.hpp
+    - icon: ':warning:'
+      path: src/string/number_format.hpp
+      title: src/string/number_format.hpp
     - icon: ':warning:'
       path: src/string/replace.hpp
       title: src/string/replace.hpp

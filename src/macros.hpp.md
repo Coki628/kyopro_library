@@ -96,6 +96,9 @@ data:
     path: src/common/trisearch_real.hpp
     title: src/common/trisearch_real.hpp
   - icon: ':warning:'
+    path: src/common/vector.hpp
+    title: src/common/vector.hpp
+  - icon: ':warning:'
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
   - icon: ':warning:'
@@ -402,6 +405,9 @@ data:
     path: src/string/is_palindrome.hpp
     title: src/string/is_palindrome.hpp
   - icon: ':warning:'
+    path: src/string/number_format.hpp
+    title: src/string/number_format.hpp
+  - icon: ':warning:'
     path: src/string/zfill.hpp
     title: src/string/zfill.hpp
   - icon: ':warning:'
@@ -525,6 +531,7 @@ data:
   - src/geometry/get_a_and_b.hpp
   - src/string/is_palindrome.hpp
   - src/string/bin.hpp
+  - src/string/number_format.hpp
   - src/string/zfill.hpp
   - src/string/get_next_indices.hpp
   - src/string/compare.hpp
@@ -569,6 +576,7 @@ data:
   - src/common/interactive.hpp
   - src/common/_doubling.hpp
   - src/common/trisearch_real.hpp
+  - src/common/vector.hpp
   - src/common/Doubling.hpp
   - src/common/yesno.hpp
   - src/common/bisearch_real.hpp

@@ -31,48 +31,50 @@ data:
     \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
     \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
     src/common/trisearch.hpp\"\n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570) [lo,hi)\n\
-    template<typename F>\npll trisearch_min(ll lo, ll hi, const F &func, ll offset=1)\
-    \ {\n    ll m1 = lo, l = lo;\n    ll m2 = hi, r = hi;\n    while (lo+2 < hi) {\n\
-    \        m1 = (lo*2+hi) / 3;\n        m2 = (lo+hi*2) / 3;\n        ll res1 = func(m1);\n\
-    \        ll res2 = func(m2);\n        if (res1 <= res2) {\n            hi = m2;\n\
-    \        } else {\n            lo = m1;\n        }\n    }\n    ll mn = numeric_limits<ll>::max();\n\
-    \    pll res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        ll\
-    \ val = func(i);\n        if (val < mn) {\n            mn = val;\n           \
-    \ res = {i, val};\n        }\n    }\n    return res;\n}\n\n\n// \u4E09\u5206\u63A2\
-    \u7D22(\u6574\u6570) [lo,hi)\ntemplate<typename F>\npll trisearch_max(ll lo, ll\
-    \ hi, const F &func, ll offset=1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi,\
+    template<typename T=ll, typename F>\npair<ll, T> trisearch_min(ll lo, ll hi, const\
+    \ F &func, ll offset=1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi, r = hi;\n\
+    \    while (lo+2 < hi) {\n        m1 = (lo*2+hi) / 3;\n        m2 = (lo+hi*2)\
+    \ / 3;\n        T res1 = func(m1);\n        T res2 = func(m2);\n        if (res1\
+    \ <= res2) {\n            hi = m2;\n        } else {\n            lo = m1;\n \
+    \       }\n    }\n    T mn = numeric_limits<T>::max();\n    pair<ll, T> res;\n\
+    \    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        T val = func(i);\n\
+    \        if (val < mn) {\n            mn = val;\n            res = {i, val};\n\
+    \        }\n    }\n    return res;\n}\n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570\
+    ) [lo,hi)\ntemplate<typename T=ll, typename F>\npair<ll, T> trisearch_max(ll lo,\
+    \ ll hi, const F &func, ll offset=1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi,\
     \ r = hi;\n    while (lo+2 < hi) {\n        m1 = (lo*2+hi) / 3;\n        m2 =\
     \ (lo+hi*2) / 3;\n        ll res1 = func(m1);\n        ll res2 = func(m2);\n \
     \       if (res1 >= res2) {\n            hi = m2;\n        } else {\n        \
-    \    lo = m1;\n        }\n    }\n    ll mx = numeric_limits<ll>::min();\n    pll\
-    \ res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        ll val = func(i);\n\
-    \        if (val > mx) {\n            mx = val;\n            res = {i, val};\n\
-    \        }\n    }\n    return res;\n}\n"
+    \    lo = m1;\n        }\n    }\n    T mx = numeric_limits<T>::min();\n    pair<ll,\
+    \ T> res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        T val =\
+    \ func(i);\n        if (val > mx) {\n            mx = val;\n            res =\
+    \ {i, val};\n        }\n    }\n    return res;\n}\n"
   code: "#include \"../macros.hpp\"\n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570) [lo,hi)\n\
-    template<typename F>\npll trisearch_min(ll lo, ll hi, const F &func, ll offset=1)\
-    \ {\n    ll m1 = lo, l = lo;\n    ll m2 = hi, r = hi;\n    while (lo+2 < hi) {\n\
-    \        m1 = (lo*2+hi) / 3;\n        m2 = (lo+hi*2) / 3;\n        ll res1 = func(m1);\n\
-    \        ll res2 = func(m2);\n        if (res1 <= res2) {\n            hi = m2;\n\
-    \        } else {\n            lo = m1;\n        }\n    }\n    ll mn = numeric_limits<ll>::max();\n\
-    \    pll res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        ll\
-    \ val = func(i);\n        if (val < mn) {\n            mn = val;\n           \
-    \ res = {i, val};\n        }\n    }\n    return res;\n}\n\n\n// \u4E09\u5206\u63A2\
-    \u7D22(\u6574\u6570) [lo,hi)\ntemplate<typename F>\npll trisearch_max(ll lo, ll\
-    \ hi, const F &func, ll offset=1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi,\
+    template<typename T=ll, typename F>\npair<ll, T> trisearch_min(ll lo, ll hi, const\
+    \ F &func, ll offset=1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi, r = hi;\n\
+    \    while (lo+2 < hi) {\n        m1 = (lo*2+hi) / 3;\n        m2 = (lo+hi*2)\
+    \ / 3;\n        T res1 = func(m1);\n        T res2 = func(m2);\n        if (res1\
+    \ <= res2) {\n            hi = m2;\n        } else {\n            lo = m1;\n \
+    \       }\n    }\n    T mn = numeric_limits<T>::max();\n    pair<ll, T> res;\n\
+    \    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        T val = func(i);\n\
+    \        if (val < mn) {\n            mn = val;\n            res = {i, val};\n\
+    \        }\n    }\n    return res;\n}\n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570\
+    ) [lo,hi)\ntemplate<typename T=ll, typename F>\npair<ll, T> trisearch_max(ll lo,\
+    \ ll hi, const F &func, ll offset=1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi,\
     \ r = hi;\n    while (lo+2 < hi) {\n        m1 = (lo*2+hi) / 3;\n        m2 =\
     \ (lo+hi*2) / 3;\n        ll res1 = func(m1);\n        ll res2 = func(m2);\n \
     \       if (res1 >= res2) {\n            hi = m2;\n        } else {\n        \
-    \    lo = m1;\n        }\n    }\n    ll mx = numeric_limits<ll>::min();\n    pll\
-    \ res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        ll val = func(i);\n\
-    \        if (val > mx) {\n            mx = val;\n            res = {i, val};\n\
-    \        }\n    }\n    return res;\n}\n"
+    \    lo = m1;\n        }\n    }\n    T mx = numeric_limits<T>::min();\n    pair<ll,\
+    \ T> res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        T val =\
+    \ func(i);\n        if (val > mx) {\n            mx = val;\n            res =\
+    \ {i, val};\n        }\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/trisearch.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2022-12-05 11:44:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/trisearch.hpp

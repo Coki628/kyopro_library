@@ -74,18 +74,18 @@ data:
     \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
     \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
     \ // (log\u304C1\u3064\u306A\u306E\u3067\u3001TL\u53B3\u3057\u3044\u6642\u306F\
-    \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    virtual int lower_bound(T x)\
-    \ const {\n        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0;\
-    \ k >>= 1) {\n            if (i + k <= n && dat[i+k] < x) {\n                x\
-    \ -= dat[i+k];\n                i += k;\n            }\n        }\n        return\
-    \ i;\n    }\n\n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\
-    \u308B\u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\
-    \u5897\u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\
-    (\u672Averify)\n    virtual int upper_bound(T x) const {\n        int i = 0;\n\
-    \        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i\
-    \ + k <= n && dat[i+k] <= x) {\n                x -= dat[i+k];\n             \
-    \   i += k;\n            }\n        }\n        return i;\n    }\n};\n#line 3 \"\
-    src/datastructure/PersistentBIT.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://suisen-cp.github.io/cp-library-cpp/library/datastructure/fenwick_tree/persistent_fenwick_tree.hpp\n\
+    \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    int lower_bound(T x) const {\n\
+    \        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1)\
+    \ {\n            if (i + k <= n && dat[i+k] < x) {\n                x -= dat[i+k];\n\
+    \                i += k;\n            }\n        }\n        return i;\n    }\n\
+    \n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\u308B\u6700\
+    \u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\u52A0\
+    \u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002(\u672Averify)\n\
+    \    int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1\
+    \ << (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i+k]\
+    \ <= x) {\n                x -= dat[i+k];\n                i += k;\n         \
+    \   }\n        }\n        return i;\n    }\n};\n#line 3 \"src/datastructure/PersistentBIT.hpp\"\
+    \n\n// \u53C2\u8003\uFF1Ahttps://suisen-cp.github.io/cp-library-cpp/library/datastructure/fenwick_tree/persistent_fenwick_tree.hpp\n\
     // \u6C38\u7D9ABIT\n// \u30FBBIT\u306E\u6B6F\u629C\u3051\u306E2\u5206\u6728\u3067\
     \u30BB\u30B0\u6728\u3068\u540C\u3058\u3088\u3046\u306B\u3084\u308B\u306E\u306F\
     \u96E3\u3057\u3044\u3093\u3058\u3083\u306A\u3044\u304B\u3068\u601D\u3063\u305F\
@@ -127,15 +127,7 @@ data:
     \                } else {\n                    cur->data += x;\n             \
     \       break;\n                }\n            } else {\n                cur->data\
     \ += x;\n                cur = cur->l = new Node(cur->l);\n            }\n   \
-    \         p >>= 1;\n        }\n    }\n\n    // (\u672Averify)\n    int lower_bound(T\
-    \ x) {\n        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k\
-    \ >>= 1) {\n            if (i + k <= n && nodes[i+k]->data < x) {\n          \
-    \      x -= nodes[i+k]->data;\n                i += k;\n            }\n      \
-    \  }\n        return i;\n    }\n\n    // (\u672Averify)\n    int upper_bound(T\
-    \ x) {\n        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k\
-    \ >>= 1) {\n            if (i + k <= n && nodes[i+k]->data <= x) {\n         \
-    \       x -= nodes[i+k]->data;\n                i += k;\n            }\n     \
-    \   }\n        return i;\n    }\n\n    Node* save() {\n        return root;\n\
+    \         p >>= 1;\n        }\n    }\n\n    Node* save() {\n        return root;\n\
     \    }\n\n    void load(Node* p) {\n        root = p;\n    }\n};\n"
   code: "#include \"../base.hpp\"\n#include \"BIT.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://suisen-cp.github.io/cp-library-cpp/library/datastructure/fenwick_tree/persistent_fenwick_tree.hpp\n\
     // \u6C38\u7D9ABIT\n// \u30FBBIT\u306E\u6B6F\u629C\u3051\u306E2\u5206\u6728\u3067\
@@ -179,15 +171,7 @@ data:
     \                } else {\n                    cur->data += x;\n             \
     \       break;\n                }\n            } else {\n                cur->data\
     \ += x;\n                cur = cur->l = new Node(cur->l);\n            }\n   \
-    \         p >>= 1;\n        }\n    }\n\n    // (\u672Averify)\n    int lower_bound(T\
-    \ x) {\n        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k\
-    \ >>= 1) {\n            if (i + k <= n && nodes[i+k]->data < x) {\n          \
-    \      x -= nodes[i+k]->data;\n                i += k;\n            }\n      \
-    \  }\n        return i;\n    }\n\n    // (\u672Averify)\n    int upper_bound(T\
-    \ x) {\n        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k\
-    \ >>= 1) {\n            if (i + k <= n && nodes[i+k]->data <= x) {\n         \
-    \       x -= nodes[i+k]->data;\n                i += k;\n            }\n     \
-    \   }\n        return i;\n    }\n\n    Node* save() {\n        return root;\n\
+    \         p >>= 1;\n        }\n    }\n\n    Node* save() {\n        return root;\n\
     \    }\n\n    void load(Node* p) {\n        root = p;\n    }\n};\n"
   dependsOn:
   - src/base.hpp
@@ -196,7 +180,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/PersistentBIT.hpp
   requiredBy: []
-  timestamp: '2022-11-04 15:09:21+09:00'
+  timestamp: '2022-12-05 11:44:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/PersistentBIT.hpp

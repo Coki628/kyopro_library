@@ -44,21 +44,23 @@ data:
     template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
     \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
     \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/combinatorics/nCr.hpp\"\
-    \n\n// nCr\u5217\u6319 (\u8A08\u7B97\u91CF\uFF1AO(n*r))\ntemplate<typename T>\n\
-    vector<vector<T>> nCr(int n, int r) {\n    auto dp = list2d(n+1, r+1, (T)0);\n\
-    \    dp[0][0] = 1;\n    rep(i, 1, n+1) {\n        dp[i][0] = 1;\n        rep(j,\
-    \ 1, r+1) {\n            dp[i][j] = dp[i-1][j-1]+dp[i-1][j];\n        }\n    }\n\
-    \    return dp;\n}\n\n// nCr (\u8A08\u7B97\u91CF\uFF1AO(r))\ntemplate<typename\
+    \n\n// nCr\u5217\u6319 (\u8A08\u7B97\u91CF\uFF1AO(n*r))\n// template<typename\
+    \ T>\n// vector<vector<T>> nCr(int n, int r) {\n//     auto dp = list2d(n+1, r+1,\
+    \ (T)0);\n//     dp[0][0] = 1;\n//     rep(i, 1, n+1) {\n//         dp[i][0] =\
+    \ 1;\n//         rep(j, 1, r+1) {\n//             dp[i][j] = dp[i-1][j-1]+dp[i-1][j];\n\
+    //         }\n//     }\n//     return dp;\n// }\n\n// N\u304C\u3067\u304B\u304F\
+    \u3066\u3082\u3044\u3051\u308BnCr (\u8A08\u7B97\u91CF\uFF1AO(r))\ntemplate<typename\
     \ T>\nT nCr(int n, int r) {\n    T res = 1;\n    rep(i, r) res = res*(T)(n-i)/(T)(i+1);\n\
     \    return res;\n}\n"
   code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n\n// nCr\u5217\
-    \u6319 (\u8A08\u7B97\u91CF\uFF1AO(n*r))\ntemplate<typename T>\nvector<vector<T>>\
-    \ nCr(int n, int r) {\n    auto dp = list2d(n+1, r+1, (T)0);\n    dp[0][0] = 1;\n\
-    \    rep(i, 1, n+1) {\n        dp[i][0] = 1;\n        rep(j, 1, r+1) {\n     \
-    \       dp[i][j] = dp[i-1][j-1]+dp[i-1][j];\n        }\n    }\n    return dp;\n\
-    }\n\n// nCr (\u8A08\u7B97\u91CF\uFF1AO(r))\ntemplate<typename T>\nT nCr(int n,\
-    \ int r) {\n    T res = 1;\n    rep(i, r) res = res*(T)(n-i)/(T)(i+1);\n    return\
-    \ res;\n}\n"
+    \u6319 (\u8A08\u7B97\u91CF\uFF1AO(n*r))\n// template<typename T>\n// vector<vector<T>>\
+    \ nCr(int n, int r) {\n//     auto dp = list2d(n+1, r+1, (T)0);\n//     dp[0][0]\
+    \ = 1;\n//     rep(i, 1, n+1) {\n//         dp[i][0] = 1;\n//         rep(j, 1,\
+    \ r+1) {\n//             dp[i][j] = dp[i-1][j-1]+dp[i-1][j];\n//         }\n//\
+    \     }\n//     return dp;\n// }\n\n// N\u304C\u3067\u304B\u304F\u3066\u3082\u3044\
+    \u3051\u308BnCr (\u8A08\u7B97\u91CF\uFF1AO(r))\ntemplate<typename T>\nT nCr(int\
+    \ n, int r) {\n    T res = 1;\n    rep(i, r) res = res*(T)(n-i)/(T)(i+1);\n  \
+    \  return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -66,7 +68,7 @@ data:
   isVerificationFile: false
   path: src/combinatorics/nCr.hpp
   requiredBy: []
-  timestamp: '2022-08-29 14:43:01+09:00'
+  timestamp: '2022-12-05 11:44:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/combinatorics/nCr.hpp

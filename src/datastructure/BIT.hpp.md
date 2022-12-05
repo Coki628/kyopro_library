@@ -77,17 +77,17 @@ data:
     \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
     \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
     \ // (log\u304C1\u3064\u306A\u306E\u3067\u3001TL\u53B3\u3057\u3044\u6642\u306F\
-    \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    virtual int lower_bound(T x)\
-    \ const {\n        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0;\
-    \ k >>= 1) {\n            if (i + k <= n && dat[i+k] < x) {\n                x\
-    \ -= dat[i+k];\n                i += k;\n            }\n        }\n        return\
-    \ i;\n    }\n\n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\
-    \u308B\u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\
-    \u5897\u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\
-    (\u672Averify)\n    virtual int upper_bound(T x) const {\n        int i = 0;\n\
-    \        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i\
-    \ + k <= n && dat[i+k] <= x) {\n                x -= dat[i+k];\n             \
-    \   i += k;\n            }\n        }\n        return i;\n    }\n};\n"
+    \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    int lower_bound(T x) const {\n\
+    \        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1)\
+    \ {\n            if (i + k <= n && dat[i+k] < x) {\n                x -= dat[i+k];\n\
+    \                i += k;\n            }\n        }\n        return i;\n    }\n\
+    \n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\u308B\u6700\
+    \u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\u52A0\
+    \u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002(\u672Averify)\n\
+    \    int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1\
+    \ << (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i+k]\
+    \ <= x) {\n                x -= dat[i+k];\n                i += k;\n         \
+    \   }\n        }\n        return i;\n    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// Binary Indexed Tree\ntemplate<typename\
     \ T>\nclass BIT {\nprivate:\n    int n;\n    vector<T> dat;\n\npublic:\n    BIT()\
     \ =  default;\n\n    explicit BIT(int n) : n(n) {\n        dat.assign(n+1, 0);\n\
@@ -128,17 +128,17 @@ data:
     \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
     \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
     \ // (log\u304C1\u3064\u306A\u306E\u3067\u3001TL\u53B3\u3057\u3044\u6642\u306F\
-    \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    virtual int lower_bound(T x)\
-    \ const {\n        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0;\
-    \ k >>= 1) {\n            if (i + k <= n && dat[i+k] < x) {\n                x\
-    \ -= dat[i+k];\n                i += k;\n            }\n        }\n        return\
-    \ i;\n    }\n\n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\
-    \u308B\u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\
-    \u5897\u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\
-    (\u672Averify)\n    virtual int upper_bound(T x) const {\n        int i = 0;\n\
-    \        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i\
-    \ + k <= n && dat[i+k] <= x) {\n                x -= dat[i+k];\n             \
-    \   i += k;\n            }\n        }\n        return i;\n    }\n};\n"
+    \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    int lower_bound(T x) const {\n\
+    \        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1)\
+    \ {\n            if (i + k <= n && dat[i+k] < x) {\n                x -= dat[i+k];\n\
+    \                i += k;\n            }\n        }\n        return i;\n    }\n\
+    \n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\u308B\u6700\
+    \u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\u52A0\
+    \u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002(\u672Averify)\n\
+    \    int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1\
+    \ << (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i+k]\
+    \ <= x) {\n                x -= dat[i+k];\n                i += k;\n         \
+    \   }\n        }\n        return i;\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -147,7 +147,7 @@ data:
   requiredBy:
   - src/datastructure/PersistentBIT.hpp
   - src/template.hpp
-  timestamp: '2022-11-04 15:09:21+09:00'
+  timestamp: '2022-12-05 11:44:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/BIT.hpp
