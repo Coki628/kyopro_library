@@ -86,10 +86,10 @@ data:
   isVerificationFile: false
   path: src/geometry/dot.hpp
   requiredBy:
-  - src/geometry/ccw.hpp
   - src/geometry/reflect.hpp
-  - src/geometry/project.hpp
   - src/geometry/intersect.hpp
+  - src/geometry/project.hpp
+  - src/geometry/ccw.hpp
   timestamp: '2022-10-31 12:05:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
