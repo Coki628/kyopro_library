@@ -23,3 +23,10 @@ oj-verify run test/xxx/xxx.test.cpp
 - cloneしてくる時はsubmoduleにしているACLを含めたいので、  
 `git clone --recursive https://github.com/Coki628/kyopro_library.git`  
 のようにオプション付きでやる。
+
+## プリコンパイル
+ちょっと速くなってる、かもしれない。
+```bash
+cd src
+sudo g++ template.hpp -std=c++17
+```
