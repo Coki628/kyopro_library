@@ -102,30 +102,6 @@ public:
         }
     }
 
-    // (未verify)
-    int lower_bound(T x) {
-        int i = 0;
-        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {
-            if (i + k <= n && nodes[i+k]->data < x) {
-                x -= nodes[i+k]->data;
-                i += k;
-            }
-        }
-        return i;
-    }
-
-    // (未verify)
-    int upper_bound(T x) {
-        int i = 0;
-        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {
-            if (i + k <= n && nodes[i+k]->data <= x) {
-                x -= nodes[i+k]->data;
-                i += k;
-            }
-        }
-        return i;
-    }
-
     Node* save() {
         return root;
     }

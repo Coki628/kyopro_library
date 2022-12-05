@@ -32,8 +32,8 @@
 #include "common/reversed.hpp"
 #include "common/concat.hpp"
 #include "common/subarray.hpp"
-#include "common/HashSet.hpp"
 #include "common/HashMap.hpp"
+#include "common/vector.hpp"
 
 // from combinatorics
 #include "combinatorics/ModTools.hpp"
