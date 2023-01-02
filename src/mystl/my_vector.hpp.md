@@ -69,14 +69,20 @@ data:
     \n\ntemplate<typename _Tp>\nstruct my_vector : vector<_Tp> {\n    // \u30B3\u30F3\
     \u30B9\u30C8\u30E9\u30AF\u30BF\u306E\u7D99\u627F\n    using vector<_Tp>::vector;\n\
     \    _Tp pop() {\n        _Tp res = this->back();\n        this->pop_back();\n\
-    \        return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const my_vector<T>\
-    \ &A) {\n    vector<T> V(A.begin(), A.end());\n    print(V);\n}\n"
+    \        return res;\n    }\n\n    template<typename F>\n    auto map(F f) {\n\
+    \        vector<decltype(f(_Tp()))> res;\n        for (auto& val : *this) {\n\
+    \            res.eb(f(val));\n        }\n        return res;\n    }\n};\n\ntemplate<typename\
+    \ T>\nvoid print(const my_vector<T> &A) {\n    vector<T> V(A.begin(), A.end());\n\
+    \    print(V);\n}\n"
   code: "#pragma once\n#include \"../base.hpp\"\n#include \"../common/print.hpp\"\n\
     \ntemplate<typename _Tp>\nstruct my_vector : vector<_Tp> {\n    // \u30B3\u30F3\
     \u30B9\u30C8\u30E9\u30AF\u30BF\u306E\u7D99\u627F\n    using vector<_Tp>::vector;\n\
     \    _Tp pop() {\n        _Tp res = this->back();\n        this->pop_back();\n\
-    \        return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const my_vector<T>\
-    \ &A) {\n    vector<T> V(A.begin(), A.end());\n    print(V);\n}\n"
+    \        return res;\n    }\n\n    template<typename F>\n    auto map(F f) {\n\
+    \        vector<decltype(f(_Tp()))> res;\n        for (auto& val : *this) {\n\
+    \            res.eb(f(val));\n        }\n        return res;\n    }\n};\n\ntemplate<typename\
+    \ T>\nvoid print(const my_vector<T> &A) {\n    vector<T> V(A.begin(), A.end());\n\
+    \    print(V);\n}\n"
   dependsOn:
   - src/base.hpp
   - src/common/print.hpp
@@ -85,7 +91,7 @@ data:
   path: src/mystl/my_vector.hpp
   requiredBy:
   - src/graph/AuxiliaryTree.hpp
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2023-01-03 02:49:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/mystl/my_vector.hpp

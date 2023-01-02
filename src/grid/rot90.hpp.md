@@ -34,19 +34,27 @@ data:
     \u306B90\u5EA6\u56DE\u8EE2\nvector<string> rot90(const vector<string> &grid) {\n\
     \    int H = grid.size();\n    int W = grid[0].size();\n    vector<string> res(W,\
     \ string(H, '*'));\n    rep(i, H) {\n        rep(j, W) {\n            res[j][H-i-1]\
-    \ = grid[i][j];\n        }\n    }\n    return res;\n}\n"
+    \ = grid[i][j];\n        }\n    }\n    return res;\n}\n\ntemplate<typename T>\n\
+    vector<vector<T>> rot90(const vector<vector<T>> &grid) {\n    int H = grid.size();\n\
+    \    int W = grid[0].size();\n    vector<vector<T>> res(W, vector<T>(H));\n  \
+    \  rep(i, H) {\n        rep(j, W) {\n            res[j][H-i-1] = grid[i][j];\n\
+    \        }\n    }\n    return res;\n}\n"
   code: "#include \"../macros.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u3092\u6642\u8A08\
     \u56DE\u308A\u306B90\u5EA6\u56DE\u8EE2\nvector<string> rot90(const vector<string>\
     \ &grid) {\n    int H = grid.size();\n    int W = grid[0].size();\n    vector<string>\
     \ res(W, string(H, '*'));\n    rep(i, H) {\n        rep(j, W) {\n            res[j][H-i-1]\
-    \ = grid[i][j];\n        }\n    }\n    return res;\n}\n"
+    \ = grid[i][j];\n        }\n    }\n    return res;\n}\n\ntemplate<typename T>\n\
+    vector<vector<T>> rot90(const vector<vector<T>> &grid) {\n    int H = grid.size();\n\
+    \    int W = grid[0].size();\n    vector<vector<T>> res(W, vector<T>(H));\n  \
+    \  rep(i, H) {\n        rep(j, W) {\n            res[j][H-i-1] = grid[i][j];\n\
+    \        }\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/grid/rot90.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-01-03 02:49:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/rot90.hpp

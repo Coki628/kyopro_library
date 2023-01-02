@@ -179,6 +179,9 @@ data:
     path: src/string/constants/digits.hpp
     title: src/string/constants/digits.hpp
   - icon: ':warning:'
+    path: src/string/isdigit.hpp
+    title: src/string/isdigit.hpp
+  - icon: ':warning:'
     path: src/string/zfill.hpp
     title: src/string/zfill.hpp
   _extendedRequiredBy: []
@@ -510,17 +513,17 @@ data:
     \ y, &z);\n}\n\n// \u52A0\u7B97\u306E\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\
     \u691C\u77E5(\u672Averify)\ntemplate<typename T>\nbool add_overflow(T x, T y)\
     \ {\n    T z;\n    return __builtin_add_overflow(x, y, &z);\n}\n#line 3 \"src/common/split.hpp\"\
-    \n\nvector<ll> split(const string &S, char separator) {\n    int N = S.size();\n\
-    \    vector<ll> res;\n    string cur;\n    rep(i, N) {\n        if (S[i] == separator)\
-    \ {\n            res.eb(toint(cur));\n            cur = \"\";\n        } else\
-    \ {\n            cur += S[i];\n        }\n    }\n    if (cur.size()) res.eb(toint(cur));\n\
-    \    return res;\n}\n\n// \u6587\u5B57\u5217\u306E\u307E\u307E\u7248(\u5F15\u6570\
-    \u4E00\u7DD2\u306A\u306E\u3067\u5171\u5B58\u3067\u304D\u306A\u3044)\n// vector<string>\
-    \ split(const string &S, char separator) {\n//     int N = S.size();\n//     vector<string>\
+    \n\n// \u203Bint\u5909\u63DB\u306F\u5225\u9014\u5BFE\u5FDC\u3059\u308B\n// vector<ll>\
+    \ split(const string &S, char separator) {\n//     int N = S.size();\n//     vector<ll>\
     \ res;\n//     string cur;\n//     rep(i, N) {\n//         if (S[i] == separator)\
-    \ {\n//             res.eb(cur);\n//             cur = \"\";\n//         } else\
-    \ {\n//             cur += S[i];\n//         }\n//     }\n//     if (cur.size())\
-    \ res.eb(cur);\n//     return res;\n// }\n#line 3 \"src/common/to_string.hpp\"\
+    \ {\n//             res.eb(toint(cur));\n//             cur = \"\";\n//      \
+    \   } else {\n//             cur += S[i];\n//         }\n//     }\n//     if (cur.size())\
+    \ res.eb(toint(cur));\n//     return res;\n// }\n\n// \u6587\u5B57\u5217\u306E\
+    \u307E\u307E\u7248\nvector<string> split(const string &S, char separator) {\n\
+    \    int N = S.size();\n    vector<string> res;\n    string cur;\n    rep(i, N)\
+    \ {\n        if (S[i] == separator) {\n            res.eb(cur);\n            cur\
+    \ = \"\";\n        } else {\n            cur += S[i];\n        }\n    }\n    if\
+    \ (cur.size()) res.eb(cur);\n    return res;\n}\n#line 3 \"src/common/to_string.hpp\"\
     \n\nstring to_string(const string &S) { return S; }\n\nstring to_string(char c)\
     \ { return {c}; }\n#line 3 \"src/common/join.hpp\"\n\ntemplate<typename T>\nstring\
     \ join(const vector<T> &A, char separator=0) {\n    int N = A.size();\n    string\
@@ -806,8 +809,10 @@ data:
     }\n#line 2 \"src/string/bin.hpp\"\n\nstring bin(ll x) {\n    string res;\n   \
     \ while (x) {\n        if (x & 1) {\n            res += '1';\n        } else {\n\
     \            res += '0';\n        }\n        x >>= 1;\n    }\n    reverse(ALL(res));\n\
-    \    if (res == \"\") res += '0';\n    return res;\n}\n#line 74 \"src/template.hpp\"\
-    \n"
+    \    if (res == \"\") res += '0';\n    return res;\n}\n#line 2 \"src/string/isdigit.hpp\"\
+    \n\nbool isdigit(string S) {\n    for (auto c : S) {\n        if (not isdigit(c))\
+    \ {\n            return false;\n        }\n    }\n    return true;\n}\n#line 75\
+    \ \"src/template.hpp\"\n"
   code: '#include "base.hpp"
 
     #include "macros.hpp"
@@ -946,6 +951,8 @@ data:
 
     #include "string/bin.hpp"
 
+    #include "string/isdigit.hpp"
+
     '
   dependsOn:
   - src/base.hpp
@@ -1008,10 +1015,11 @@ data:
   - src/string/constants/ascii_uppercase.hpp
   - src/string/zfill.hpp
   - src/string/bin.hpp
+  - src/string/isdigit.hpp
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2022-12-05 11:44:34+09:00'
+  timestamp: '2023-01-03 02:49:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

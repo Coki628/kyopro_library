@@ -64,20 +64,22 @@ data:
     \ print(const set<T> &se) {\n    vector<T> V(ALL(se));\n    print(V);\n}\n\n#define\
     \ debug(x) (cout << #x << \": \", print(x));\n#line 3 \"src/mystl/my_set.hpp\"\
     \n\ntemplate<typename _Key>\nstruct my_set : set<_Key> {\n    using set<_Key>::set;\n\
-    \    _Key front() {\n        return *this->begin();\n    }\n    _Key pop_front()\
-    \ {\n        _Key res = this->front();\n        this->erase(this->begin());\n\
-    \        return res;\n    }\n    _Key back() {\n        return *this->rbegin();\n\
-    \    }\n    _Key pop_back() {\n        _Key res = this->back();\n        this->erase(prev(this->end()));\n\
-    \        return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const my_set<T>\
-    \ &se) {\n    vector<T> V(se.begin(), se.end());\n    print(V);\n}\n"
+    \    _Key front() {\n        assert(this->size());\n        return *this->begin();\n\
+    \    }\n    _Key pop_front() {\n        _Key res = this->front();\n        this->erase(this->begin());\n\
+    \        return res;\n    }\n    _Key back() {\n        assert(this->size());\n\
+    \        return *this->rbegin();\n    }\n    _Key pop_back() {\n        _Key res\
+    \ = this->back();\n        this->erase(prev(this->end()));\n        return res;\n\
+    \    }\n};\n\ntemplate<typename T>\nvoid print(const my_set<T> &se) {\n    vector<T>\
+    \ V(se.begin(), se.end());\n    print(V);\n}\n"
   code: "#include \"../base.hpp\"\n#include \"../common/print.hpp\"\n\ntemplate<typename\
     \ _Key>\nstruct my_set : set<_Key> {\n    using set<_Key>::set;\n    _Key front()\
-    \ {\n        return *this->begin();\n    }\n    _Key pop_front() {\n        _Key\
-    \ res = this->front();\n        this->erase(this->begin());\n        return res;\n\
-    \    }\n    _Key back() {\n        return *this->rbegin();\n    }\n    _Key pop_back()\
-    \ {\n        _Key res = this->back();\n        this->erase(prev(this->end()));\n\
-    \        return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const my_set<T>\
-    \ &se) {\n    vector<T> V(se.begin(), se.end());\n    print(V);\n}\n"
+    \ {\n        assert(this->size());\n        return *this->begin();\n    }\n  \
+    \  _Key pop_front() {\n        _Key res = this->front();\n        this->erase(this->begin());\n\
+    \        return res;\n    }\n    _Key back() {\n        assert(this->size());\n\
+    \        return *this->rbegin();\n    }\n    _Key pop_back() {\n        _Key res\
+    \ = this->back();\n        this->erase(prev(this->end()));\n        return res;\n\
+    \    }\n};\n\ntemplate<typename T>\nvoid print(const my_set<T> &se) {\n    vector<T>\
+    \ V(se.begin(), se.end());\n    print(V);\n}\n"
   dependsOn:
   - src/base.hpp
   - src/common/print.hpp
@@ -85,7 +87,7 @@ data:
   isVerificationFile: false
   path: src/mystl/my_set.hpp
   requiredBy: []
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2023-01-03 02:49:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/mystl/my_set.hpp

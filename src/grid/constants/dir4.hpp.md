@@ -9,6 +9,9 @@ data:
     title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/grid/bfs.hpp
+    title: src/grid/bfs.hpp
+  - icon: ':warning:'
     path: src/grid/constants/directions.hpp
     title: src/grid/constants/directions.hpp
   - icon: ':warning:'
@@ -46,6 +49,7 @@ data:
   isVerificationFile: false
   path: src/grid/constants/dir4.hpp
   requiredBy:
+  - src/grid/bfs.hpp
   - src/grid/constants/directions.hpp
   - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'

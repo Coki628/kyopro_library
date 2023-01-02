@@ -7,6 +7,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
+  - icon: ':warning:'
+    path: src/grid/constants/dir4.hpp
+    title: src/grid/constants/dir4.hpp
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
@@ -43,39 +46,40 @@ data:
     \n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
     template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
     \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
-    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/grid/bfs.hpp\"\
-    \n\n// \u30B0\u30EA\u30C3\u30C9BFS\nvvl bfs(const vector<string> &grid, const\
-    \ vector<pii> &src, char invalid='#') {\n\n    int H = grid.size();\n    int W\
-    \ = grid[0].size();\n    auto res = list2d(H, W, INF);\n    const vector<pii>\
-    \ directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n    queue<pii> que;\n    for\
-    \ (auto [h, w] : src) {\n        que.push({h, w});\n        res[h][w] = 0;\n \
-    \   }\n    while (!que.empty()) {\n        auto [h, w] = que.front(); que.pop();\n\
-    \        for (auto [dh, dw] : directions) {\n            int nh = h + dh;\n  \
-    \          int nw = w + dw;\n            if (nh < 0 or nw < 0 or nh >= H or nw\
-    \ >= W) continue;\n            if (grid[nh][nw] == invalid) continue;\n      \
-    \      if (res[nh][nw] == INF) {\n                res[nh][nw] = res[h][w] + 1;\n\
-    \                que.push({nh, nw});\n            }\n        }\n    }\n    return\
-    \ res;\n}\n"
-  code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n\n// \u30B0\
-    \u30EA\u30C3\u30C9BFS\nvvl bfs(const vector<string> &grid, const vector<pii> &src,\
-    \ char invalid='#') {\n\n    int H = grid.size();\n    int W = grid[0].size();\n\
-    \    auto res = list2d(H, W, INF);\n    const vector<pii> directions = {{-1, 0},\
-    \ {1, 0}, {0, -1}, {0, 1}};\n    queue<pii> que;\n    for (auto [h, w] : src)\
-    \ {\n        que.push({h, w});\n        res[h][w] = 0;\n    }\n    while (!que.empty())\
-    \ {\n        auto [h, w] = que.front(); que.pop();\n        for (auto [dh, dw]\
-    \ : directions) {\n            int nh = h + dh;\n            int nw = w + dw;\n\
-    \            if (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n         \
-    \   if (grid[nh][nw] == invalid) continue;\n            if (res[nh][nw] == INF)\
-    \ {\n                res[nh][nw] = res[h][w] + 1;\n                que.push({nh,\
-    \ nw});\n            }\n        }\n    }\n    return res;\n}\n"
+    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/grid/constants/dir4.hpp\"\
+    \n\n// 4\u65B9\u5411\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0,\
+    \ 1}};\n#line 4 \"src/grid/bfs.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9BFS\nvvl bfs(const\
+    \ vector<string> &grid, const vector<pii> &src, char invalid='#') {\n\n    int\
+    \ H = grid.size();\n    int W = grid[0].size();\n    auto res = list2d(H, W, INF);\n\
+    \    queue<pii> que;\n    for (auto [h, w] : src) {\n        que.push({h, w});\n\
+    \        res[h][w] = 0;\n    }\n    while (!que.empty()) {\n        auto [h, w]\
+    \ = que.front(); que.pop();\n        for (auto [dh, dw] : dir4) {\n          \
+    \  int nh = h + dh;\n            int nw = w + dw;\n            if (nh < 0 or nw\
+    \ < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw] == invalid)\
+    \ continue;\n            if (res[nh][nw] == INF) {\n                res[nh][nw]\
+    \ = res[h][w] + 1;\n                que.push({nh, nw});\n            }\n     \
+    \   }\n    }\n    return res;\n}\n"
+  code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n#include \"\
+    constants/dir4.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9BFS\nvvl bfs(const vector<string>\
+    \ &grid, const vector<pii> &src, char invalid='#') {\n\n    int H = grid.size();\n\
+    \    int W = grid[0].size();\n    auto res = list2d(H, W, INF);\n    queue<pii>\
+    \ que;\n    for (auto [h, w] : src) {\n        que.push({h, w});\n        res[h][w]\
+    \ = 0;\n    }\n    while (!que.empty()) {\n        auto [h, w] = que.front();\
+    \ que.pop();\n        for (auto [dh, dw] : dir4) {\n            int nh = h + dh;\n\
+    \            int nw = w + dw;\n            if (nh < 0 or nw < 0 or nh >= H or\
+    \ nw >= W) continue;\n            if (grid[nh][nw] == invalid) continue;\n   \
+    \         if (res[nh][nw] == INF) {\n                res[nh][nw] = res[h][w] +\
+    \ 1;\n                que.push({nh, nw});\n            }\n        }\n    }\n \
+    \   return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   - src/common/listnd.hpp
+  - src/grid/constants/dir4.hpp
   isVerificationFile: false
   path: src/grid/bfs.hpp
   requiredBy: []
-  timestamp: '2022-08-29 14:43:01+09:00'
+  timestamp: '2023-01-03 02:49:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/bfs.hpp

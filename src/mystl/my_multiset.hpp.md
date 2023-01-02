@@ -64,20 +64,33 @@ data:
     \ print(const set<T> &se) {\n    vector<T> V(ALL(se));\n    print(V);\n}\n\n#define\
     \ debug(x) (cout << #x << \": \", print(x));\n#line 3 \"src/mystl/my_multiset.hpp\"\
     \n\ntemplate<typename _Key>\nstruct my_multiset : multiset<_Key> {\n    using\
-    \ multiset<_Key>::multiset;\n    _Key front() {\n        return *this->begin();\n\
-    \    }\n    _Key pop_front() {\n        _Key res = this->front();\n        this->erase(this->begin());\n\
-    \        return res;\n    }\n    _Key back() {\n        return *this->rbegin();\n\
-    \    }\n    _Key pop_back() {\n        _Key res = this->back();\n        this->erase(prev(this->end()));\n\
-    \        return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const multiset<T>\
-    \ &se) {\n    vector<T> V(se.begin(), se.end());\n    print(V);\n}\n"
+    \ multiset<_Key>::multiset;\n    _Key front() {\n        assert(this->size());\n\
+    \        return *this->begin();\n    }\n    _Key pop_front() {\n        _Key res\
+    \ = this->front();\n        // \u7A7A\u306E\u6642\u306B\u3053\u306E\u64CD\u4F5C\
+    \u3092\u3084\u308B\u3068\u63D0\u51FA\u30D3\u30EB\u30C9\u3060\u3068RE\u3058\u3083\
+    \u306A\u304F\u3066TLE\u306B\u306A\u308B\u2026\u3002\n        this->erase(this->begin());\n\
+    \        return res;\n    }\n    _Key back() {\n        assert(this->size());\n\
+    \        return *this->rbegin();\n    }\n    _Key pop_back() {\n        _Key res\
+    \ = this->back();\n        this->erase(prev(this->end()));\n        return res;\n\
+    \    }\n    // count\u304CO(\u500B\u6570)\u3068\u306E\u8A71\u304C\u3042\u308B\u305F\
+    \u3081\u5FF5\u306E\u305F\u3081\u4F5C\u3063\u3066\u304A\u304F\n    bool exist(_Key\
+    \ x) {\n        return this->find(x) != this->end();\n    }\n};\n\ntemplate<typename\
+    \ T>\nvoid print(const multiset<T> &se) {\n    vector<T> V(se.begin(), se.end());\n\
+    \    print(V);\n}\n"
   code: "#include \"../base.hpp\"\n#include \"../common/print.hpp\"\n\ntemplate<typename\
     \ _Key>\nstruct my_multiset : multiset<_Key> {\n    using multiset<_Key>::multiset;\n\
-    \    _Key front() {\n        return *this->begin();\n    }\n    _Key pop_front()\
-    \ {\n        _Key res = this->front();\n        this->erase(this->begin());\n\
-    \        return res;\n    }\n    _Key back() {\n        return *this->rbegin();\n\
+    \    _Key front() {\n        assert(this->size());\n        return *this->begin();\n\
+    \    }\n    _Key pop_front() {\n        _Key res = this->front();\n        //\
+    \ \u7A7A\u306E\u6642\u306B\u3053\u306E\u64CD\u4F5C\u3092\u3084\u308B\u3068\u63D0\
+    \u51FA\u30D3\u30EB\u30C9\u3060\u3068RE\u3058\u3083\u306A\u304F\u3066TLE\u306B\u306A\
+    \u308B\u2026\u3002\n        this->erase(this->begin());\n        return res;\n\
+    \    }\n    _Key back() {\n        assert(this->size());\n        return *this->rbegin();\n\
     \    }\n    _Key pop_back() {\n        _Key res = this->back();\n        this->erase(prev(this->end()));\n\
-    \        return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const multiset<T>\
-    \ &se) {\n    vector<T> V(se.begin(), se.end());\n    print(V);\n}\n"
+    \        return res;\n    }\n    // count\u304CO(\u500B\u6570)\u3068\u306E\u8A71\
+    \u304C\u3042\u308B\u305F\u3081\u5FF5\u306E\u305F\u3081\u4F5C\u3063\u3066\u304A\
+    \u304F\n    bool exist(_Key x) {\n        return this->find(x) != this->end();\n\
+    \    }\n};\n\ntemplate<typename T>\nvoid print(const multiset<T> &se) {\n    vector<T>\
+    \ V(se.begin(), se.end());\n    print(V);\n}\n"
   dependsOn:
   - src/base.hpp
   - src/common/print.hpp
@@ -85,7 +98,7 @@ data:
   isVerificationFile: false
   path: src/mystl/my_multiset.hpp
   requiredBy: []
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2023-01-03 02:49:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/mystl/my_multiset.hpp

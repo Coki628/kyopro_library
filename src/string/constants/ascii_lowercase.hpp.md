@@ -44,8 +44,8 @@ data:
   isVerificationFile: false
   path: src/string/constants/ascii_lowercase.hpp
   requiredBy:
-  - src/string/constants/ascii_letters.hpp
   - src/template.hpp
+  - src/string/constants/ascii_letters.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

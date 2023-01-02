@@ -39,30 +39,30 @@ data:
     src/common/toint.hpp\"\n\nll toint(string s) {\n    assert(s.size() < 20);\n \
     \   ll res = 0;\n    for (char &c : s) {\n        res *= 10;\n        res += c\
     \ - '0';\n    }\n    return res;\n}\n\nint toint(char num) {\n    return num -\
-    \ '0';\n}\n#line 3 \"src/common/split.hpp\"\n\nvector<ll> split(const string &S,\
-    \ char separator) {\n    int N = S.size();\n    vector<ll> res;\n    string cur;\n\
-    \    rep(i, N) {\n        if (S[i] == separator) {\n            res.eb(toint(cur));\n\
-    \            cur = \"\";\n        } else {\n            cur += S[i];\n       \
-    \ }\n    }\n    if (cur.size()) res.eb(toint(cur));\n    return res;\n}\n\n//\
-    \ \u6587\u5B57\u5217\u306E\u307E\u307E\u7248(\u5F15\u6570\u4E00\u7DD2\u306A\u306E\
-    \u3067\u5171\u5B58\u3067\u304D\u306A\u3044)\n// vector<string> split(const string\
-    \ &S, char separator) {\n//     int N = S.size();\n//     vector<string> res;\n\
-    //     string cur;\n//     rep(i, N) {\n//         if (S[i] == separator) {\n\
-    //             res.eb(cur);\n//             cur = \"\";\n//         } else {\n\
-    //             cur += S[i];\n//         }\n//     }\n//     if (cur.size()) res.eb(cur);\n\
-    //     return res;\n// }\n"
-  code: "#include \"../macros.hpp\"\n#include \"toint.hpp\"\n\nvector<ll> split(const\
-    \ string &S, char separator) {\n    int N = S.size();\n    vector<ll> res;\n \
-    \   string cur;\n    rep(i, N) {\n        if (S[i] == separator) {\n         \
-    \   res.eb(toint(cur));\n            cur = \"\";\n        } else {\n         \
-    \   cur += S[i];\n        }\n    }\n    if (cur.size()) res.eb(toint(cur));\n\
-    \    return res;\n}\n\n// \u6587\u5B57\u5217\u306E\u307E\u307E\u7248(\u5F15\u6570\
-    \u4E00\u7DD2\u306A\u306E\u3067\u5171\u5B58\u3067\u304D\u306A\u3044)\n// vector<string>\
-    \ split(const string &S, char separator) {\n//     int N = S.size();\n//     vector<string>\
-    \ res;\n//     string cur;\n//     rep(i, N) {\n//         if (S[i] == separator)\
-    \ {\n//             res.eb(cur);\n//             cur = \"\";\n//         } else\
+    \ '0';\n}\n#line 3 \"src/common/split.hpp\"\n\n// \u203Bint\u5909\u63DB\u306F\u5225\
+    \u9014\u5BFE\u5FDC\u3059\u308B\n// vector<ll> split(const string &S, char separator)\
+    \ {\n//     int N = S.size();\n//     vector<ll> res;\n//     string cur;\n//\
+    \     rep(i, N) {\n//         if (S[i] == separator) {\n//             res.eb(toint(cur));\n\
+    //             cur = \"\";\n//         } else {\n//             cur += S[i];\n\
+    //         }\n//     }\n//     if (cur.size()) res.eb(toint(cur));\n//     return\
+    \ res;\n// }\n\n// \u6587\u5B57\u5217\u306E\u307E\u307E\u7248\nvector<string>\
+    \ split(const string &S, char separator) {\n    int N = S.size();\n    vector<string>\
+    \ res;\n    string cur;\n    rep(i, N) {\n        if (S[i] == separator) {\n \
+    \           res.eb(cur);\n            cur = \"\";\n        } else {\n        \
+    \    cur += S[i];\n        }\n    }\n    if (cur.size()) res.eb(cur);\n    return\
+    \ res;\n}\n"
+  code: "#include \"../macros.hpp\"\n#include \"toint.hpp\"\n\n// \u203Bint\u5909\u63DB\
+    \u306F\u5225\u9014\u5BFE\u5FDC\u3059\u308B\n// vector<ll> split(const string &S,\
+    \ char separator) {\n//     int N = S.size();\n//     vector<ll> res;\n//    \
+    \ string cur;\n//     rep(i, N) {\n//         if (S[i] == separator) {\n//   \
+    \          res.eb(toint(cur));\n//             cur = \"\";\n//         } else\
     \ {\n//             cur += S[i];\n//         }\n//     }\n//     if (cur.size())\
-    \ res.eb(cur);\n//     return res;\n// }\n"
+    \ res.eb(toint(cur));\n//     return res;\n// }\n\n// \u6587\u5B57\u5217\u306E\
+    \u307E\u307E\u7248\nvector<string> split(const string &S, char separator) {\n\
+    \    int N = S.size();\n    vector<string> res;\n    string cur;\n    rep(i, N)\
+    \ {\n        if (S[i] == separator) {\n            res.eb(cur);\n            cur\
+    \ = \"\";\n        } else {\n            cur += S[i];\n        }\n    }\n    if\
+    \ (cur.size()) res.eb(cur);\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -71,7 +71,7 @@ data:
   path: src/common/split.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-01-03 02:49:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/split.hpp

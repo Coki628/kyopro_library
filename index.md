@@ -695,6 +695,9 @@ data:
       path: src/string/is_palindrome.hpp
       title: src/string/is_palindrome.hpp
     - icon: ':warning:'
+      path: src/string/isdigit.hpp
+      title: src/string/isdigit.hpp
+    - icon: ':warning:'
       path: src/string/number_format.hpp
       title: src/string/number_format.hpp
     - icon: ':warning:'
