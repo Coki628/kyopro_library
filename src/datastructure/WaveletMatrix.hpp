@@ -52,6 +52,7 @@ struct WaveletMatrix {
     int n, lg;
     vector<T> a;
     vector<bit_vector> bv;
+    vector<vector<T>> sum;
 
     WaveletMatrix(u32 _n) : n(max<u32>(_n, 1)), a(n) {}
     WaveletMatrix(const vector<T>& _a) : n(_a.size()), a(_a) { build(); }
@@ -59,14 +60,26 @@ struct WaveletMatrix {
     __attribute__((optimize("O3"))) void build() {
         lg = __lg(max<T>(*max_element(begin(a), end(a)), 1)) + 1;
         bv.assign(lg, n);
+        sum.assign(lg, vector<T>(n + 1));
+        vector<T> l(n), r(n);
         vector<T> cur = a, nxt(n);
         for (int h = lg - 1; h >= 0; --h) {
-            for (int i = 0; i < n; ++i)
-                if ((cur[i] >> h) & 1) bv[h].set(i);
+            int left = 0, right = 0;
+            for (int i = 0; i < n; ++i) {
+                if ((cur[i] >> h) & 1) {
+                    bv[h].set(i);
+                    r[right++] = cur[i];
+                } else {
+                    l[left++] = cur[i];
+                }
+            }
             bv[h].build();
-            array<decltype(begin(nxt)), 2> it{begin(nxt), begin(nxt) + bv[h].zeros};
-            for (int i = 0; i < n; ++i) *it[bv[h].get(i)]++ = cur[i];
-            swap(cur, nxt);
+            swap(cur, l);
+            copy(r.begin(), r.begin() + right, cur.begin() + left);
+            sum[h][0] = 0;
+            for (int i = 0; i < n; i++) {
+                sum[h][i + 1] = sum[h][i] + cur[i];
+            }
         }
         return;
     }
@@ -118,6 +131,35 @@ struct WaveletMatrix {
     // k-th (0-indexed) largest number in a[l, r)
     T kth_largest(int l, int r, int k) {
         return kth_smallest(l, r, r - l - k - 1);
+    }
+
+    // 参考：https://twitter.com/US_kyopro/status/1601792850886242304
+    // 　　　https://atcoder.jp/contests/abc281/submissions/37200871
+    // sum of [0,k)th smallest elements([l, r))
+    T kth_smallest_sum(int l, int r, int k) const {
+        assert(0 <= l && l <= r && r <= n);
+        assert(0 <= k && k <= r - l);
+        T res = 0;
+        for(int h = lg - 1; h >= 0; h--) {
+            u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);
+            if (k < r0 - l0) {
+                l = l0, r = r0;
+            } else {
+                k -= r0 - l0;
+                res += sum[h][r0] - sum[h][l0];
+                l += bv[h].zeros - l0;
+                r += bv[h].zeros - r0;
+            }
+        }
+        if (k) res += sum[0][l + k] - sum[0][l];
+        return res;
+    }
+
+    // sum of [0,k)th largest elements([l, r))
+    T kth_largest_sum(int l, int r, int k) const {
+        assert(0 <= l && l <= r && r <= n);
+        assert(0 <= k && k <= r - l);
+        return  kth_smallest_sum(l, r, r - l) - kth_smallest_sum(l, r, r - l - k);
     }
 
     // count i s.t. (l <= i < r) && (v[i] < upper)

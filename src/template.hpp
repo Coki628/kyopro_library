@@ -71,3 +71,4 @@
 #include "string/constants/ascii_uppercase.hpp"
 #include "string/zfill.hpp"
 #include "string/bin.hpp"
+#include "string/isdigit.hpp"

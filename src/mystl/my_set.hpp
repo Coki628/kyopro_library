@@ -5,6 +5,7 @@ template<typename _Key>
 struct my_set : set<_Key> {
     using set<_Key>::set;
     _Key front() {
+        assert(this->size());
         return *this->begin();
     }
     _Key pop_front() {
@@ -13,6 +14,7 @@ struct my_set : set<_Key> {
         return res;
     }
     _Key back() {
+        assert(this->size());
         return *this->rbegin();
     }
     _Key pop_back() {
