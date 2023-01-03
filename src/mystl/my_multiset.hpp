@@ -30,7 +30,7 @@ struct my_multiset : multiset<_Key> {
 };
 
 template<typename T>
-void print(const multiset<T> &se) {
+void print(const my_multiset<T> &se) {
     vector<T> V(se.begin(), se.end());
     print(V);
 }
