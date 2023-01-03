@@ -75,7 +75,7 @@ data:
     \    }\n    // count\u304CO(\u500B\u6570)\u3068\u306E\u8A71\u304C\u3042\u308B\u305F\
     \u3081\u5FF5\u306E\u305F\u3081\u4F5C\u3063\u3066\u304A\u304F\n    bool exist(_Key\
     \ x) {\n        return this->find(x) != this->end();\n    }\n};\n\ntemplate<typename\
-    \ T>\nvoid print(const multiset<T> &se) {\n    vector<T> V(se.begin(), se.end());\n\
+    \ T>\nvoid print(const my_multiset<T> &se) {\n    vector<T> V(se.begin(), se.end());\n\
     \    print(V);\n}\n"
   code: "#include \"../base.hpp\"\n#include \"../common/print.hpp\"\n\ntemplate<typename\
     \ _Key>\nstruct my_multiset : multiset<_Key> {\n    using multiset<_Key>::multiset;\n\
@@ -89,8 +89,8 @@ data:
     \        return res;\n    }\n    // count\u304CO(\u500B\u6570)\u3068\u306E\u8A71\
     \u304C\u3042\u308B\u305F\u3081\u5FF5\u306E\u305F\u3081\u4F5C\u3063\u3066\u304A\
     \u304F\n    bool exist(_Key x) {\n        return this->find(x) != this->end();\n\
-    \    }\n};\n\ntemplate<typename T>\nvoid print(const multiset<T> &se) {\n    vector<T>\
-    \ V(se.begin(), se.end());\n    print(V);\n}\n"
+    \    }\n};\n\ntemplate<typename T>\nvoid print(const my_multiset<T> &se) {\n \
+    \   vector<T> V(se.begin(), se.end());\n    print(V);\n}\n"
   dependsOn:
   - src/base.hpp
   - src/common/print.hpp
@@ -98,7 +98,7 @@ data:
   isVerificationFile: false
   path: src/mystl/my_multiset.hpp
   requiredBy: []
-  timestamp: '2023-01-03 02:49:03+09:00'
+  timestamp: '2023-01-04 03:40:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/mystl/my_multiset.hpp
