@@ -5,18 +5,30 @@ data:
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
+    path: src/geometry/Line.hpp
+    title: src/geometry/Line.hpp
+  - icon: ':warning:'
     path: src/geometry/Point.hpp
     title: src/geometry/Point.hpp
   - icon: ':warning:'
     path: src/geometry/Segment.hpp
     title: src/geometry/Segment.hpp
+  - icon: ':warning:'
+    path: src/geometry/ccw.hpp
+    title: src/geometry/ccw.hpp
+  - icon: ':warning:'
+    path: src/geometry/cross.hpp
+    title: src/geometry/cross.hpp
+  - icon: ':warning:'
+    path: src/geometry/dot.hpp
+    title: src/geometry/dot.hpp
+  - icon: ':warning:'
+    path: src/geometry/intersect.hpp
+    title: src/geometry/intersect.hpp
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/geometry/get_distance.hpp
-    title: src/geometry/get_distance.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -72,33 +84,73 @@ data:
     \ T>\nT norm(Point<T> p) {\n    return p.x * p.x + p.y * p.y;\n}\n\ntemplate<typename\
     \ T>\nT abs(Point<T> p) {\n    return sqrt(norm(p));\n}\n#line 3 \"src/geometry/Segment.hpp\"\
     \n\ntemplate<typename T> struct Segment { Point<T> p1, p2; };\n#line 3 \"src/geometry/Line.hpp\"\
-    \n\ntemplate<typename T>\nusing Line = Segment<T>;\n"
-  code: '#pragma once
-
-    #include "Segment.hpp"
-
-
-    template<typename T>
-
-    using Line = Segment<T>;
-
-    '
+    \n\ntemplate<typename T>\nusing Line = Segment<T>;\n#line 3 \"src/geometry/dot.hpp\"\
+    \n\n// \u5185\u7A4D\ntemplate<typename T> T dot(const Point<T> a, const Point<T>\
+    \ b) {\n    return a.x*b.x + a.y*b.y;\n}\n#line 3 \"src/geometry/cross.hpp\"\n\
+    \n// \u5916\u7A4D\ntemplate<typename T> T cross(const Point<T> a, const Point<T>\
+    \ b) {\n    return a.x*b.y - a.y*b.x;\n}\n#line 5 \"src/geometry/ccw.hpp\"\n\n\
+    // \u7DDA\u5206p0,p1\u304B\u3089\u7DDA\u5206p0,p2\u3078\u306E\u56DE\u8EE2\u65B9\
+    \u5411\ntemplate<typename T>\nint ccw(Point<T> p0, Point<T> p1, Point<T> p2) {\n\
+    \    Point<T> a = p1-p0;\n    Point<T> b = p2-p0;\n    // \u53CD\u6642\u8A08\u56DE\
+    \u308A\n    if (cross(a, b) > EPS) return 1;\n    // \u6642\u8A08\u56DE\u308A\n\
+    \    if (cross(a, b) < -EPS) return -1;\n    // \u76F4\u7DDA\u4E0A(p2 => p0 =>\
+    \ p1)\n    if (dot(a, b) < -EPS) return 2;\n    // \u76F4\u7DDA\u4E0A(p0 => p1\
+    \ => p2)\n    if (a.norm() < b.norm()) return -2;\n    // \u76F4\u7DDA\u4E0A(p0\
+    \ => p2 => p1)\n    return 0;\n}\n#line 3 \"src/geometry/intersect.hpp\"\n\n//\
+    \ \u7DDA\u5206seg1\u3068\u7DDA\u5206seg2\u306E\u4EA4\u5DEE\u5224\u5B9A\ntemplate<typename\
+    \ T>\nbool intersect(Segment<T> seg1, Segment<T> seg2) {\n    return (\n     \
+    \   ccw(seg1.p1, seg1.p2, seg2.p1) * ccw(seg1.p1, seg1.p2, seg2.p2) <= 0 and\n\
+    \        ccw(seg2.p1, seg2.p2, seg1.p1) * ccw(seg2.p1, seg2.p2, seg1.p2) <= 0\n\
+    \    );\n}\n#line 7 \"src/geometry/get_distance.hpp\"\n\ntemplate<typename T>\n\
+    T get_distance_PP(Point<T> p1, Point<T> p2) {\n\n    return hypot(p1.x - p2.x,\
+    \ p1.y - p2.y);\n}\n\n// \u76F4\u7DDAline\u3068\u70B9p\u306E\u8DDD\u96E2\ntemplate<typename\
+    \ T>\nT get_distance_LP(Line<T> line, Point<T> p) {\n\n    return std::abs(cross(line.p2\
+    \ - line.p1, p - line.p1) / abs(line.p2 - line.p1));\n}\n\n// \u7DDA\u5206seg\u3068\
+    \u70B9p\u306E\u8DDD\u96E2\ntemplate<typename T>\nT get_distance_SP(Segment<T>\
+    \ seg, Point<T> p) {\n\n    if (dot(seg.p2 - seg.p1, p - seg.p1) < 0) {\n    \
+    \    return abs(p - seg.p1);\n    }\n    if (dot(seg.p1 - seg.p2, p - seg.p2)\
+    \ < 0) {\n        return abs(p - seg.p2);\n    }\n    return get_distance_LP(seg,\
+    \ p);\n}\n\n // \u7DDA\u5206seg1\u3068\u7DDA\u5206seg2\u306E\u8DDD\u96E2\ntemplate<typename\
+    \ T>\nT get_distance_SS(Segment<T> seg1, Segment<T> seg2) {\n\n    if (intersect(seg1,\
+    \ seg2)) {\n        return 0;\n    }\n    return min({\n        get_distance_SP(seg1,\
+    \ seg2.p1), get_distance_SP(seg1, seg2.p2),\n        get_distance_SP(seg2, seg1.p1),\
+    \ get_distance_SP(seg2, seg1.p2),\n    });\n}\n"
+  code: "#include \"Point.hpp\"\n#include \"Line.hpp\"\n#include \"Segment.hpp\"\n\
+    #include \"dot.hpp\"\n#include \"cross.hpp\"\n#include \"intersect.hpp\"\n\ntemplate<typename\
+    \ T>\nT get_distance_PP(Point<T> p1, Point<T> p2) {\n\n    return hypot(p1.x -\
+    \ p2.x, p1.y - p2.y);\n}\n\n// \u76F4\u7DDAline\u3068\u70B9p\u306E\u8DDD\u96E2\
+    \ntemplate<typename T>\nT get_distance_LP(Line<T> line, Point<T> p) {\n\n    return\
+    \ std::abs(cross(line.p2 - line.p1, p - line.p1) / abs(line.p2 - line.p1));\n\
+    }\n\n// \u7DDA\u5206seg\u3068\u70B9p\u306E\u8DDD\u96E2\ntemplate<typename T>\n\
+    T get_distance_SP(Segment<T> seg, Point<T> p) {\n\n    if (dot(seg.p2 - seg.p1,\
+    \ p - seg.p1) < 0) {\n        return abs(p - seg.p1);\n    }\n    if (dot(seg.p1\
+    \ - seg.p2, p - seg.p2) < 0) {\n        return abs(p - seg.p2);\n    }\n    return\
+    \ get_distance_LP(seg, p);\n}\n\n // \u7DDA\u5206seg1\u3068\u7DDA\u5206seg2\u306E\
+    \u8DDD\u96E2\ntemplate<typename T>\nT get_distance_SS(Segment<T> seg1, Segment<T>\
+    \ seg2) {\n\n    if (intersect(seg1, seg2)) {\n        return 0;\n    }\n    return\
+    \ min({\n        get_distance_SP(seg1, seg2.p1), get_distance_SP(seg1, seg2.p2),\n\
+    \        get_distance_SP(seg2, seg1.p1), get_distance_SP(seg2, seg1.p2),\n   \
+    \ });\n}\n"
   dependsOn:
-  - src/geometry/Segment.hpp
   - src/geometry/Point.hpp
   - src/macros.hpp
   - src/base.hpp
+  - src/geometry/Line.hpp
+  - src/geometry/Segment.hpp
+  - src/geometry/dot.hpp
+  - src/geometry/cross.hpp
+  - src/geometry/intersect.hpp
+  - src/geometry/ccw.hpp
   isVerificationFile: false
-  path: src/geometry/Line.hpp
-  requiredBy:
-  - src/geometry/get_distance.hpp
+  path: src/geometry/get_distance.hpp
+  requiredBy: []
   timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/geometry/Line.hpp
+documentation_of: src/geometry/get_distance.hpp
 layout: document
 redirect_from:
-- /library/src/geometry/Line.hpp
-- /library/src/geometry/Line.hpp.html
-title: src/geometry/Line.hpp
+- /library/src/geometry/get_distance.hpp
+- /library/src/geometry/get_distance.hpp.html
+title: src/geometry/get_distance.hpp
 ---

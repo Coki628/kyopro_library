@@ -20,22 +20,22 @@ data:
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
     \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...)\
-    \ name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a)\
-    \ for (ll i = 0, _aa = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a,\
-    \ _bb = b; i < _bb; i++)\n#define rep3(i, a, b, c) for (ll i = a, _bb = b; (c\
-    \ > 0 && a <= i && i < _bb) or (c < 0 && a >= i && i > _bb); i += c)\n#define\
-    \ rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n\
-    #define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)),\
-    \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
-    \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
-    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
-    src/string/number_format.hpp\"\n\n// \u6570\u5024\u30923\u6841\u30B3\u30F3\u30DE\
-    \u533A\u5207\u308A\nstring number_format(ll num) {\n    string s = tostr(num);\n\
-    \    reverse(ALL(s));\n    string res;\n    rep(i, s.size()) {\n        res +=\
-    \ s[i];\n        if (i%3 == 2) {\n            res += ',';\n        }\n    }\n\
-    \    if (res.back() == ',') {\n        res.pop_back();\n    }\n    reverse(ALL(res));\n\
-    \    return res;\n}\n"
+    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
+    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
+    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
+    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
+    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
+    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
+    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
+    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/string/number_format.hpp\"\
+    \n\n// \u6570\u5024\u30923\u6841\u30B3\u30F3\u30DE\u533A\u5207\u308A\nstring number_format(ll\
+    \ num) {\n    string s = tostr(num);\n    reverse(ALL(s));\n    string res;\n\
+    \    rep(i, s.size()) {\n        res += s[i];\n        if (i%3 == 2) {\n     \
+    \       res += ',';\n        }\n    }\n    if (res.back() == ',') {\n        res.pop_back();\n\
+    \    }\n    reverse(ALL(res));\n    return res;\n}\n"
   code: "#include \"../macros.hpp\"\n\n// \u6570\u5024\u30923\u6841\u30B3\u30F3\u30DE\
     \u533A\u5207\u308A\nstring number_format(ll num) {\n    string s = tostr(num);\n\
     \    reverse(ALL(s));\n    string res;\n    rep(i, s.size()) {\n        res +=\
@@ -48,7 +48,7 @@ data:
   isVerificationFile: false
   path: src/string/number_format.hpp
   requiredBy: []
-  timestamp: '2022-12-05 11:44:34+09:00'
+  timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/number_format.hpp

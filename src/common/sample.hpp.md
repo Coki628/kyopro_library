@@ -4,6 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
+  - icon: ':warning:'
+    path: src/common/mt.hpp
+    title: src/common/mt.hpp
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
@@ -30,33 +33,31 @@ data:
     #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/common/interactive.hpp\"\
-    \n\n// \u30A4\u30F3\u30BF\u30E9\u30AF\u30C6\u30A3\u30D6\u7528\nll ask(ll i) {\n\
-    \    ll res;\n    cout << \"? \" << i+1 << endl;\n    cin >> res;\n    res--;\n\
-    \    return res;\n}\n\nvoid answer(ll i) {\n    cout << \"! \" << i+1 << endl;\n\
-    }\n\nvoid answer(const vector<ll>& A) {\n    int N = A.size();\n    rep(i, N)\
-    \ {\n        cout << A[i];\n        if (i == N-1) {\n            cout << endl;\n\
-    \        } else {\n            cout << ' ';\n        }\n    }\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u30A4\u30F3\u30BF\u30E9\u30AF\u30C6\u30A3\
-    \u30D6\u7528\nll ask(ll i) {\n    ll res;\n    cout << \"? \" << i+1 << endl;\n\
-    \    cin >> res;\n    res--;\n    return res;\n}\n\nvoid answer(ll i) {\n    cout\
-    \ << \"! \" << i+1 << endl;\n}\n\nvoid answer(const vector<ll>& A) {\n    int\
-    \ N = A.size();\n    rep(i, N) {\n        cout << A[i];\n        if (i == N-1)\
-    \ {\n            cout << endl;\n        } else {\n            cout << ' ';\n \
-    \       }\n    }\n}\n"
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/mt.hpp\"\
+    \n\n// \u30B7\u30FC\u30C9\u751F\u6210\nmt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
+    #line 3 \"src/common/sample.hpp\"\n\n// std\u306B\u3042\u3063\u305F\u3051\u3069\
+    \u3001python\u98A8\u306E\u30E9\u30C3\u30D1\u30FC\u4F5C\u3063\u3068\u304F\ntemplate<typename\
+    \ T>\nvector<T> sample(vector<T> vec, int n) {\n    vector<T> res;\n    std::sample(ALL(vec),\
+    \ back_inserter(res), n, mt);\n    return res;\n}\n"
+  code: "#include \"../macros.hpp\"\n#include \"mt.hpp\"\n\n// std\u306B\u3042\u3063\
+    \u305F\u3051\u3069\u3001python\u98A8\u306E\u30E9\u30C3\u30D1\u30FC\u4F5C\u3063\
+    \u3068\u304F\ntemplate<typename T>\nvector<T> sample(vector<T> vec, int n) {\n\
+    \    vector<T> res;\n    std::sample(ALL(vec), back_inserter(res), n, mt);\n \
+    \   return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
+  - src/common/mt.hpp
   isVerificationFile: false
-  path: src/common/interactive.hpp
+  path: src/common/sample.hpp
   requiredBy: []
   timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/common/interactive.hpp
+documentation_of: src/common/sample.hpp
 layout: document
 redirect_from:
-- /library/src/common/interactive.hpp
-- /library/src/common/interactive.hpp.html
-title: src/common/interactive.hpp
+- /library/src/common/sample.hpp
+- /library/src/common/sample.hpp.html
+title: src/common/sample.hpp
 ---

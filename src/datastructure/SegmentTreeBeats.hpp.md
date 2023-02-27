@@ -20,48 +20,49 @@ data:
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
     \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...)\
-    \ name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a)\
-    \ for (ll i = 0, _aa = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a,\
-    \ _bb = b; i < _bb; i++)\n#define rep3(i, a, b, c) for (ll i = a, _bb = b; (c\
-    \ > 0 && a <= i && i < _bb) or (c < 0 && a >= i && i > _bb); i += c)\n#define\
-    \ rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n\
-    #define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)),\
-    \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
-    \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
-    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
-    src/datastructure/SegmentTreeBeats.hpp\"\n\n// Segment Tree Beats\nclass SegmentTreeBeats\
-    \ {\n    static const ll inf = 1e18;\n    struct Node {\n        Node *left, *right;\n\
-    \        ll max_v, smax_v, max_c;\n        ll min_v, smin_v, min_c;\n        ll\
-    \ sum;\n        ll len, ladd, lval;\n \n        Node() : left(0), right(0), ladd(0),\
-    \ lval(inf) {}\n \n        void init(ll x) {\n            max_v = min_v = sum\
-    \ = x;\n            smax_v = -inf;\n            smin_v = inf;\n            max_c\
-    \ = min_c = 1;\n        }\n \n        void init_empty() {\n            max_v =\
-    \ smax_v = -inf;\n            min_v = smin_v = inf;\n            max_c = min_c\
-    \ = 0;\n        }\n \n        void update_max(ll x) {\n            sum += (x -\
-    \ max_v) * max_c;\n \n            if (max_v == min_v) {\n                max_v\
-    \ = min_v = x;\n            } else if (max_v == smin_v) {\n                max_v\
-    \ = smin_v = x;\n            } else {\n                max_v = x;\n          \
-    \  }\n \n            if (lval != inf && x < lval) {\n                lval = x;\n\
-    \            }\n        }\n \n        void update_min(ll x) {\n            sum\
-    \ += (x - min_v) * min_c;\n \n            if (max_v == min_v) {\n            \
-    \    max_v = min_v = x;\n            } else if (max_v == smin_v) {\n         \
-    \       min_v = smax_v = x;\n            } else {\n                min_v = x;\n\
-    \            }\n \n            if (lval != inf && lval < x) {\n              \
-    \  lval = x;\n            }\n        }\n \n        void addall(ll x) {\n     \
-    \       max_v += x;\n            if (smax_v != -inf) smax_v += x;\n          \
-    \  min_v += x;\n            if (smin_v != inf) smin_v += x;\n \n            sum\
-    \ += len * x;\n            if (lval != inf) {\n                lval += x;\n  \
-    \          } else {\n                ladd += x;\n            }\n        }\n \n\
-    \        void updateall(ll x) {\n            max_v = min_v = x;\n            smax_v\
-    \ = -inf;\n            smin_v = inf;\n            max_c = min_c = len;\n \n  \
-    \          sum = len * x;\n            lval = x;\n            ladd = 0;\n    \
-    \    }\n \n        void push() {\n            if (lval != inf) {\n           \
-    \     left->updateall(lval);\n                right->updateall(lval);\n      \
-    \          lval = inf;\n                return;\n            }\n \n          \
-    \  if (ladd != 0) {\n                left->addall(ladd);\n                right->addall(ladd);\n\
-    \                ladd = 0;\n            }\n \n            if (max_v < left->max_v)\
-    \ {\n                left->update_max(max_v);\n            }\n            if (left->min_v\
+    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
+    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
+    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
+    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
+    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
+    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
+    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
+    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/datastructure/SegmentTreeBeats.hpp\"\
+    \n\n// Segment Tree Beats\nclass SegmentTreeBeats {\n    static const ll inf =\
+    \ 1e18;\n    struct Node {\n        Node *left, *right;\n        ll max_v, smax_v,\
+    \ max_c;\n        ll min_v, smin_v, min_c;\n        ll sum;\n        ll len, ladd,\
+    \ lval;\n \n        Node() : left(0), right(0), ladd(0), lval(inf) {}\n \n   \
+    \     void init(ll x) {\n            max_v = min_v = sum = x;\n            smax_v\
+    \ = -inf;\n            smin_v = inf;\n            max_c = min_c = 1;\n       \
+    \ }\n \n        void init_empty() {\n            max_v = smax_v = -inf;\n    \
+    \        min_v = smin_v = inf;\n            max_c = min_c = 0;\n        }\n \n\
+    \        void update_max(ll x) {\n            sum += (x - max_v) * max_c;\n \n\
+    \            if (max_v == min_v) {\n                max_v = min_v = x;\n     \
+    \       } else if (max_v == smin_v) {\n                max_v = smin_v = x;\n \
+    \           } else {\n                max_v = x;\n            }\n \n         \
+    \   if (lval != inf && x < lval) {\n                lval = x;\n            }\n\
+    \        }\n \n        void update_min(ll x) {\n            sum += (x - min_v)\
+    \ * min_c;\n \n            if (max_v == min_v) {\n                max_v = min_v\
+    \ = x;\n            } else if (max_v == smin_v) {\n                min_v = smax_v\
+    \ = x;\n            } else {\n                min_v = x;\n            }\n \n \
+    \           if (lval != inf && lval < x) {\n                lval = x;\n      \
+    \      }\n        }\n \n        void addall(ll x) {\n            max_v += x;\n\
+    \            if (smax_v != -inf) smax_v += x;\n            min_v += x;\n     \
+    \       if (smin_v != inf) smin_v += x;\n \n            sum += len * x;\n    \
+    \        if (lval != inf) {\n                lval += x;\n            } else {\n\
+    \                ladd += x;\n            }\n        }\n \n        void updateall(ll\
+    \ x) {\n            max_v = min_v = x;\n            smax_v = -inf;\n         \
+    \   smin_v = inf;\n            max_c = min_c = len;\n \n            sum = len\
+    \ * x;\n            lval = x;\n            ladd = 0;\n        }\n \n        void\
+    \ push() {\n            if (lval != inf) {\n                left->updateall(lval);\n\
+    \                right->updateall(lval);\n                lval = inf;\n      \
+    \          return;\n            }\n \n            if (ladd != 0) {\n         \
+    \       left->addall(ladd);\n                right->addall(ladd);\n          \
+    \      ladd = 0;\n            }\n \n            if (max_v < left->max_v) {\n \
+    \               left->update_max(max_v);\n            }\n            if (left->min_v\
     \ < min_v) {\n                left->update_min(min_v);\n            }\n \n   \
     \         if (max_v < right->max_v) {\n                right->update_max(max_v);\n\
     \            }\n            if (right->min_v < min_v) {\n                right->update_min(min_v);\n\
@@ -258,7 +259,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/SegmentTreeBeats.hpp
   requiredBy: []
-  timestamp: '2022-10-18 16:39:53+09:00'
+  timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/SegmentTreeBeats.hpp

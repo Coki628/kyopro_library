@@ -23,29 +23,46 @@ data:
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
     \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...)\
-    \ name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a)\
-    \ for (ll i = 0, _aa = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a,\
-    \ _bb = b; i < _bb; i++)\n#define rep3(i, a, b, c) for (ll i = a, _bb = b; (c\
-    \ > 0 && a <= i && i < _bb) or (c < 0 && a >= i && i > _bb); i += c)\n#define\
-    \ rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n\
-    #define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)),\
-    \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
-    \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
-    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"\
-    src/common/chmin.hpp\"\n\ntemplate<typename T>\nbool chmin(T &x, T y) {\n    return\
-    \ (y < x) ? x = y, true : false;\n}\n#line 3 \"src/graph/warshall_floyd.hpp\"\n\
-    \ntemplate<typename T>\nvector<vector<T>> warshall_floyd(vector<vector<T>> G)\
-    \ {\n    ll N = G.size();\n    rep(i, N) G[i][i] = 0;\n    rep(k, N) {\n     \
-    \   rep(i, N) {\n            rep(j, N) {\n                chmin(G[i][j], G[i][k]\
-    \ + G[k][j]);\n            }\n        }\n    }\n    rep(i, N) {\n        if (G[i][i]\
-    \ < 0) {\n            return {};\n        }\n    }\n    return G;\n}\n"
+    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
+    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
+    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
+    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
+    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
+    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
+    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
+    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/common/chmin.hpp\"\
+    \n\ntemplate<typename T>\nbool chmin(T &x, T y) {\n    return (y < x) ? x = y,\
+    \ true : false;\n}\n#line 3 \"src/graph/warshall_floyd.hpp\"\n\ntemplate<typename\
+    \ T>\nvector<vector<T>> warshall_floyd(vector<vector<T>> G) {\n    ll N = G.size();\n\
+    \    rep(i, N) G[i][i] = 0;\n    rep(k, N) {\n        rep(i, N) {\n          \
+    \  rep(j, N) {\n                chmin(G[i][j], G[i][k] + G[k][j]);\n         \
+    \   }\n        }\n    }\n    rep(i, N) {\n        if (G[i][i] < 0) {\n       \
+    \     return {};\n        }\n    }\n    return G;\n}\n\n// \u7121\u5411\u8FBA\u306A\
+    \u3089\u3053\u308C\u3067\u3082\u5927\u4E08\u592B\u305D\u3046\u3002\n// template<typename\
+    \ T>\n// vector<vector<T>> warshall_floyd(vector<vector<T>> G) {\n//     ll N\
+    \ = G.size();\n//     rep(i, N) G[i][i] = 0;\n//     rep(k, N) {\n//         rep(i,\
+    \ N) {\n//             rep(j, i + 1, N) {\n//                 chmin(G[i][j], G[i][k]\
+    \ + G[k][j]);\n//                 chmin(G[j][i], G[j][k] + G[k][i]);\n//     \
+    \        }\n//         }\n//     }\n//     rep(i, N) {\n//         if (G[i][i]\
+    \ < 0) {\n//             return {};\n//         }\n//     }\n//     return G;\n\
+    // }\n"
   code: "#include \"../macros.hpp\"\n#include \"../common/chmin.hpp\"\n\ntemplate<typename\
     \ T>\nvector<vector<T>> warshall_floyd(vector<vector<T>> G) {\n    ll N = G.size();\n\
     \    rep(i, N) G[i][i] = 0;\n    rep(k, N) {\n        rep(i, N) {\n          \
     \  rep(j, N) {\n                chmin(G[i][j], G[i][k] + G[k][j]);\n         \
     \   }\n        }\n    }\n    rep(i, N) {\n        if (G[i][i] < 0) {\n       \
-    \     return {};\n        }\n    }\n    return G;\n}\n"
+    \     return {};\n        }\n    }\n    return G;\n}\n\n// \u7121\u5411\u8FBA\u306A\
+    \u3089\u3053\u308C\u3067\u3082\u5927\u4E08\u592B\u305D\u3046\u3002\n// template<typename\
+    \ T>\n// vector<vector<T>> warshall_floyd(vector<vector<T>> G) {\n//     ll N\
+    \ = G.size();\n//     rep(i, N) G[i][i] = 0;\n//     rep(k, N) {\n//         rep(i,\
+    \ N) {\n//             rep(j, i + 1, N) {\n//                 chmin(G[i][j], G[i][k]\
+    \ + G[k][j]);\n//                 chmin(G[j][i], G[j][k] + G[k][i]);\n//     \
+    \        }\n//         }\n//     }\n//     rep(i, N) {\n//         if (G[i][i]\
+    \ < 0) {\n//             return {};\n//         }\n//     }\n//     return G;\n\
+    // }\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -53,7 +70,7 @@ data:
   isVerificationFile: false
   path: src/graph/warshall_floyd.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/warshall_floyd.hpp

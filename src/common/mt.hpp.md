@@ -8,6 +8,9 @@ data:
   - icon: ':warning:'
     path: src/common/randrange.hpp
     title: src/common/randrange.hpp
+  - icon: ':warning:'
+    path: src/common/sample.hpp
+    title: src/common/sample.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -25,6 +28,7 @@ data:
   path: src/common/mt.hpp
   requiredBy:
   - src/common/randrange.hpp
+  - src/common/sample.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

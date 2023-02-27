@@ -193,6 +193,9 @@ data:
       path: src/common/reversed.hpp
       title: src/common/reversed.hpp
     - icon: ':warning:'
+      path: src/common/sample.hpp
+      title: src/common/sample.hpp
+    - icon: ':warning:'
       path: src/common/sorted.hpp
       title: src/common/sorted.hpp
     - icon: ':warning:'
@@ -370,6 +373,9 @@ data:
     - icon: ':warning:'
       path: src/geometry/get_cross_point.hpp
       title: src/geometry/get_cross_point.hpp
+    - icon: ':warning:'
+      path: src/geometry/get_distance.hpp
+      title: src/geometry/get_distance.hpp
     - icon: ':warning:'
       path: src/geometry/intersect.hpp
       title: src/geometry/intersect.hpp

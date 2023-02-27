@@ -23,64 +23,64 @@ data:
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
     \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...)\
-    \ name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a)\
-    \ for (ll i = 0, _aa = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a,\
-    \ _bb = b; i < _bb; i++)\n#define rep3(i, a, b, c) for (ll i = a, _bb = b; (c\
-    \ > 0 && a <= i && i < _bb) or (c < 0 && a >= i && i > _bb); i += c)\n#define\
-    \ rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n\
-    #define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)),\
-    \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
-    \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
-    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
-    src/graph/HeavyLightDecomposition.hpp\"\n\n// HL\u5206\u89E3\n// \u30FB\u4E3B\u306A\
-    \u4F7F\u7528\u65B9\u6CD5\u306A\u3069\n// \u3000\u30FB\u521D\u671F\u5316\u5F8C\u3001\
-    \u5FD8\u308C\u305A\u306Bbuild\u3092\u547C\u3076\u3053\u3068\u3002\n// \u3000\u30FB\
-    \u30D1\u30B9\u30AF\u30A8\u30EA\u306Fadd,query\u3067\u51E6\u7406\n// \u3000\u30FB\
-    1\u70B9\u53D6\u5F97/\u66F4\u65B0\u306Fhld.in[x]\u3067\u53EF\u80FD\u3002add,query\u306F\
-    \u547C\u3070\u306A\u304F\u3066\u3044\u3044\u3002\n// \u3000\u30FB\u8FBA\u5C5E\u6027\
-    \u306B\u3059\u308B\u3068\u3001\u6DFB\u5B570\u304C\u6B20\u756A\u306B\u306A\u308B\
-    \u3002(\u89AA\u306B\u5411\u304B\u3046\u8FBA\u3068\u5BFE\u5FDC\u3059\u308B\u306F\
-    \u305A\u306A\u306E\u3067\u305D\u308C\u306F\u305D\u3046\u304B)\n// \u3000\u3000\
-    \u306A\u304A\u8FBA\u5C5E\u6027\u306B\u5024\u3092\u5272\u308A\u5F53\u3066\u308B\
-    \u6642\u306F\u3001dep\u3067\u6DF1\u3044\u65B9\u306E\u9802\u70B9\u306B\u3063\u3066\
-    \u3084\u308B\u3068\u3044\u3044\u3002(ABC133f\u3068\u304B\u53C2\u7167)\n// \u3000\
-    \u30FB\u90E8\u5206\u6728\u30AF\u30A8\u30EA\u306F[hld.in[x],hld.out[x])\u3067\u51E6\
-    \u7406\u3002\n// \u3000\u3000\u306A\u304A\u90E8\u5206\u6728\u30AF\u30A8\u30EA\u3082\
-    \u8FBA\u5C5E\u6027\u306E\u6642\u306Fedge=true\u306E\u3088\u3046\u306B\u5DE6\u7AEF\
-    \u3092+1\u3059\u308B\u3002\n// \u3000\u3000\u3042\u3068\u300C\u90E8\u5206\u6728\
-    \u3058\u3083\u306A\u3044\u90E8\u5206\u300D\u3082\u53D6\u308C\u308B\u3002[0,hld.in[x])\u3068\
-    [hld.out[x],N) \u306E2\u533A\u9593\u3067OK\u3002\n// \u3000\u3000\u3053\u308C\u3068\
-    \u6DF1\u3055\u3067\u6BD4\u8F03\u3057\u3066\u5834\u5408\u5206\u3051\u3059\u308C\
-    \u3070\u3001\u3042\u308B\u30D1\u30B9\u306E\u624B\u524D\u3068\u5411\u3053\u3046\
-    \u5074\u304C\u4EFB\u610F\u306B\u53D6\u308C\u308B\u3088\u3046\u306B\u306A\u308B\
-    \u3002\n// \u3000\u30FB\u6839\u4ED8\u304D\u6728\u306F\u9802\u70B90\u304C\u6839\
-    \u3067\u3042\u308B\u524D\u63D0\u3002\u4ED6\u306E\u9802\u70B9\u3092\u6839\u306B\
-    \u3057\u305F\u3044\u5834\u5408\u3001\n// \u3000\u3000HLD\u69CB\u7BC9\u524D\u306B\
-    \u6839\u3068\u9802\u70B90\u306E\u95A2\u4FC2\u3092\u5168\u3066\u30B9\u30EF\u30C3\
-    \u30D7\u3057\u3066\u304A\u304F\u3002\n// \u3000\u3000\u2192\u4EFB\u610F\u306E\u9802\
-    \u70B9\u3092\u6839\u306B\u3067\u304D\u308B\u3088\u3046\u6539\u4FEE\u3057\u3066\
-    \u307F\u305F\u3002\u524D\u3084\u308D\u3046\u3068\u3057\u3066\u5931\u6557\u3057\
-    \u305F\u3093\u3060\u3051\u3069\u3001\n// \u3000\u3000head\u306E\u521D\u671F\u5024\
-    \u3092root\u306B\u3057\u305F\u3089\u3046\u307E\u304F\u3044\u3063\u305F\u3002\n\
-    // \u3000\u30FB\u30D1\u30B9\u30AF\u30A8\u30EA[u,v]\u306B\u3066\u3001u->lca\u3068\
-    lca->v\u3067HLD\u4E0A\u306E\u5217\u306E\u5411\u304D\u304C\u9006\u306B\u306A\u308B\
-    \u306E\u3067\u3001\n// \u3000\u3000\u4E57\u305B\u305F\u30BB\u30B0\u6728\u306E\u6F14\
-    \u7B97\u306B\u30DE\u30FC\u30B8\u65B9\u5411\u304C\u3042\u308B\u5834\u5408\u306A\
-    \u3069\u306F\u6CE8\u610F\u3057\u3066\u51E6\u7406\u3059\u308B\u3002\n\n// HL\u5206\
-    \u89E3\nstruct HeavyLightDecomposition {\npublic:\n    vvi g;\n    vector<int>\
-    \ sz, in, out, head, rev, par, dep;\n\n    // \u9802\u70B9v\u304B\u3089k\u56DE\
-    \u9061\u3063\u305F\u9802\u70B9\u3092\u8FD4\u3059\n    int la(int v, int k) {\n\
-    \        while(1) {\n            int u = head[v];\n            if(in[v] - k >=\
-    \ in[u]) return rev[in[v] - k];\n            k -= in[v] - in[u] + 1;\n       \
-    \     v = par[u];\n        }\n    }\n\n    int lca(int u, int v) const {\n   \
-    \     for(;; v = par[head[v]]) {\n            if(in[u] > in[v]) swap(u, v);\n\
-    \            if(head[u] == head[v]) return u;\n        }\n    }\n\n    int dist(int\
-    \ u, int v) const {\n        return dep[u] + dep[v] - 2 * dep[lca(u, v)];\n  \
-    \  }\n\n    template< typename E, typename Q, typename F, typename S >\n    E\
-    \ query(int u, int v, const E &ti, const Q &q, const F &f, const S &s, bool edge\
-    \ = false) {\n        E l = ti, r = ti;\n        for(;; v = par[head[v]]) {\n\
-    \            if(in[u] > in[v]) swap(u, v), swap(l, r);\n            if(head[u]\
+    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
+    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
+    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
+    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
+    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
+    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
+    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
+    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/graph/HeavyLightDecomposition.hpp\"\
+    \n\n// HL\u5206\u89E3\n// \u30FB\u4E3B\u306A\u4F7F\u7528\u65B9\u6CD5\u306A\u3069\
+    \n// \u3000\u30FB\u521D\u671F\u5316\u5F8C\u3001\u5FD8\u308C\u305A\u306Bbuild\u3092\
+    \u547C\u3076\u3053\u3068\u3002\n// \u3000\u30FB\u30D1\u30B9\u30AF\u30A8\u30EA\u306F\
+    add,query\u3067\u51E6\u7406\n// \u3000\u30FB1\u70B9\u53D6\u5F97/\u66F4\u65B0\u306F\
+    hld.in[x]\u3067\u53EF\u80FD\u3002add,query\u306F\u547C\u3070\u306A\u304F\u3066\
+    \u3044\u3044\u3002\n// \u3000\u30FB\u8FBA\u5C5E\u6027\u306B\u3059\u308B\u3068\u3001\
+    \u6DFB\u5B570\u304C\u6B20\u756A\u306B\u306A\u308B\u3002(\u89AA\u306B\u5411\u304B\
+    \u3046\u8FBA\u3068\u5BFE\u5FDC\u3059\u308B\u306F\u305A\u306A\u306E\u3067\u305D\
+    \u308C\u306F\u305D\u3046\u304B)\n// \u3000\u3000\u306A\u304A\u8FBA\u5C5E\u6027\
+    \u306B\u5024\u3092\u5272\u308A\u5F53\u3066\u308B\u6642\u306F\u3001dep\u3067\u6DF1\
+    \u3044\u65B9\u306E\u9802\u70B9\u306B\u3063\u3066\u3084\u308B\u3068\u3044\u3044\
+    \u3002(ABC133f\u3068\u304B\u53C2\u7167)\n// \u3000\u30FB\u90E8\u5206\u6728\u30AF\
+    \u30A8\u30EA\u306F[hld.in[x],hld.out[x])\u3067\u51E6\u7406\u3002\n// \u3000\u3000\
+    \u306A\u304A\u90E8\u5206\u6728\u30AF\u30A8\u30EA\u3082\u8FBA\u5C5E\u6027\u306E\
+    \u6642\u306Fedge=true\u306E\u3088\u3046\u306B\u5DE6\u7AEF\u3092+1\u3059\u308B\u3002\
+    \n// \u3000\u3000\u3042\u3068\u300C\u90E8\u5206\u6728\u3058\u3083\u306A\u3044\u90E8\
+    \u5206\u300D\u3082\u53D6\u308C\u308B\u3002[0,hld.in[x])\u3068[hld.out[x],N) \u306E\
+    2\u533A\u9593\u3067OK\u3002\n// \u3000\u3000\u3053\u308C\u3068\u6DF1\u3055\u3067\
+    \u6BD4\u8F03\u3057\u3066\u5834\u5408\u5206\u3051\u3059\u308C\u3070\u3001\u3042\
+    \u308B\u30D1\u30B9\u306E\u624B\u524D\u3068\u5411\u3053\u3046\u5074\u304C\u4EFB\
+    \u610F\u306B\u53D6\u308C\u308B\u3088\u3046\u306B\u306A\u308B\u3002\n// \u3000\u30FB\
+    \u6839\u4ED8\u304D\u6728\u306F\u9802\u70B90\u304C\u6839\u3067\u3042\u308B\u524D\
+    \u63D0\u3002\u4ED6\u306E\u9802\u70B9\u3092\u6839\u306B\u3057\u305F\u3044\u5834\
+    \u5408\u3001\n// \u3000\u3000HLD\u69CB\u7BC9\u524D\u306B\u6839\u3068\u9802\u70B9\
+    0\u306E\u95A2\u4FC2\u3092\u5168\u3066\u30B9\u30EF\u30C3\u30D7\u3057\u3066\u304A\
+    \u304F\u3002\n// \u3000\u3000\u2192\u4EFB\u610F\u306E\u9802\u70B9\u3092\u6839\u306B\
+    \u3067\u304D\u308B\u3088\u3046\u6539\u4FEE\u3057\u3066\u307F\u305F\u3002\u524D\
+    \u3084\u308D\u3046\u3068\u3057\u3066\u5931\u6557\u3057\u305F\u3093\u3060\u3051\
+    \u3069\u3001\n// \u3000\u3000head\u306E\u521D\u671F\u5024\u3092root\u306B\u3057\
+    \u305F\u3089\u3046\u307E\u304F\u3044\u3063\u305F\u3002\n// \u3000\u30FB\u30D1\u30B9\
+    \u30AF\u30A8\u30EA[u,v]\u306B\u3066\u3001u->lca\u3068lca->v\u3067HLD\u4E0A\u306E\
+    \u5217\u306E\u5411\u304D\u304C\u9006\u306B\u306A\u308B\u306E\u3067\u3001\n// \u3000\
+    \u3000\u4E57\u305B\u305F\u30BB\u30B0\u6728\u306E\u6F14\u7B97\u306B\u30DE\u30FC\
+    \u30B8\u65B9\u5411\u304C\u3042\u308B\u5834\u5408\u306A\u3069\u306F\u6CE8\u610F\
+    \u3057\u3066\u51E6\u7406\u3059\u308B\u3002\n\n// HL\u5206\u89E3\nstruct HeavyLightDecomposition\
+    \ {\npublic:\n    vvi g;\n    vector<int> sz, in, out, head, rev, par, dep;\n\n\
+    \    // \u9802\u70B9v\u304B\u3089k\u56DE\u9061\u3063\u305F\u9802\u70B9\u3092\u8FD4\
+    \u3059\n    int la(int v, int k) {\n        while(1) {\n            int u = head[v];\n\
+    \            if(in[v] - k >= in[u]) return rev[in[v] - k];\n            k -= in[v]\
+    \ - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u,\
+    \ int v) const {\n        for(;; v = par[head[v]]) {\n            if(in[u] > in[v])\
+    \ swap(u, v);\n            if(head[u] == head[v]) return u;\n        }\n    }\n\
+    \n    int dist(int u, int v) const {\n        return dep[u] + dep[v] - 2 * dep[lca(u,\
+    \ v)];\n    }\n\n    template< typename E, typename Q, typename F, typename S\
+    \ >\n    E query(int u, int v, const E &ti, const Q &q, const F &f, const S &s,\
+    \ bool edge = false) {\n        E l = ti, r = ti;\n        for(;; v = par[head[v]])\
+    \ {\n            if(in[u] > in[v]) swap(u, v), swap(l, r);\n            if(head[u]\
     \ == head[v]) break;\n            l = f(q(in[head[v]], in[v] + 1), l);\n     \
     \   }\n        return s(f(q(in[u] + edge, in[v] + 1), l), r);\n    }\n\n    template<\
     \ typename E, typename Q, typename F >\n    E query(int u, int v, const E &ti,\
@@ -204,7 +204,7 @@ data:
   path: src/graph/HeavyLightDecomposition.hpp
   requiredBy:
   - src/graph/AuxiliaryTree.hpp
-  timestamp: '2022-08-29 14:43:01+09:00'
+  timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/HeavyLightDecomposition.hpp

@@ -23,48 +23,49 @@ data:
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
     \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...)\
-    \ name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a)\
-    \ for (ll i = 0, _aa = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a,\
-    \ _bb = b; i < _bb; i++)\n#define rep3(i, a, b, c) for (ll i = a, _bb = b; (c\
-    \ > 0 && a <= i && i < _bb) or (c < 0 && a >= i && i > _bb); i += c)\n#define\
-    \ rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n\
-    #define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)),\
-    \ A.erase(unique(ALL(A)), A.end())\n#define elif else if\n#define tostr to_string\n\
-    \n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n\
-    \    constexpr ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"\
-    src/common/print.hpp\"\n\ntemplate<typename T1, typename T2>\nostream &operator<<(ostream\
-    \ &os, const pair<T1, T2> &p) {\n    return os << p.first << ' ' << p.second;\n\
-    }\n\ntemplate<typename T1, typename T2, typename T3>\nostream &operator<<(ostream\
-    \ &os, const tuple<T1, T2, T3> &tp) {\n    return os << get<0>(tp) << ' ' << get<1>(tp)\
-    \ << ' ' << get<2>(tp);\n}\n\ntemplate<typename T1, typename T2, typename T3,\
-    \ typename T4>\nostream &operator<<(ostream &os, const tuple<T1, T2, T3, T4> &tp)\
-    \ {\n    return os << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) <<\
-    \ ' ' << get<3>(tp);\n}\n\ntemplate<typename T, size_t SZ>\nostream &operator<<(ostream\
-    \ &os, const array<T, SZ> &arr) {\n    rep(i, arr.size()) {\n        os << arr[i];\n\
-    \        if (i != (ll)arr.size()-1) {\n            os << ' ';\n        }\n   \
-    \ }\n    return os;\n}\n\ntemplate<typename T>\nostream &operator<<(ostream &os,\
-    \ const vector<T> &vec) {\n    rep(i, vec.size()) {\n        os << vec[i];\n \
-    \       if (i != (ll)vec.size()-1) {\n            os << ' ';\n        }\n    }\n\
-    \    return os;\n}\n\nvoid print() {\n    cout << '\\n';\n}\n\ntemplate<typename\
-    \ T>\nvoid print(T out) {\n    cout << out << '\\n';\n}\n\ntemplate<typename T1,\
-    \ typename T2, typename T3>\nvoid print(const tuple<T1, T2, T3> &tp) {\n    cout\
-    \ << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) << '\\n';\n}\n\ntemplate<typename\
-    \ T1, typename T2, typename T3, typename T4>\nvoid print(const tuple<T1, T2, T3,\
-    \ T4> &tp) { \n    cout << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp)\
-    \ << ' ' << get<3>(tp) << '\\n';\n}\n\ntemplate<typename T>\nvoid print(const\
-    \ vector<T> &V, char sep=' ') {\n    rep(i, V.size()) {\n        cout << V[i];\n\
-    \        if (i != (ll)V.size()-1) cout << sep;\n    }\n    cout << '\\n';\n}\n\
-    \ntemplate<typename T, size_t SZ>\nvoid print(const array<T, SZ> &arr, char sep='\
-    \ ') {\n    rep(i, arr.size()) {\n        cout << arr[i];\n        if (i != (ll)arr.size()-1)\
-    \ cout << sep;\n    }\n    cout << '\\n';\n}\n\n// template<typename T, size_t\
-    \ SZ>\n// void print(const vector<array<T, SZ>> &V) {\n//     for (auto& arr :\
-    \ V) print(arr);\n// }\n\ntemplate<typename T>\nvoid print(const deque<T> &que)\
-    \ {\n    vector<T> V(ALL(que));\n    print(V);\n}\n\ntemplate<typename T>\nvoid\
-    \ print(const set<T> &se) {\n    vector<T> V(ALL(se));\n    print(V);\n}\n\n#define\
-    \ debug(x) (cout << #x << \": \", print(x));\n#line 3 \"src/mystl/my_deque.hpp\"\
-    \n\ntemplate<typename _Tp>\nstruct my_deque : deque<_Tp> {\n    using deque<_Tp>::deque;\n\
-    \    _Tp pop_front() {\n        _Tp res = this->front();\n        deque<_Tp>::pop_front();\n\
+    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
+    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
+    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
+    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
+    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
+    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
+    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
+    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/print.hpp\"\
+    \n\ntemplate<typename T1, typename T2>\nostream &operator<<(ostream &os, const\
+    \ pair<T1, T2> &p) {\n    return os << p.first << ' ' << p.second;\n}\n\ntemplate<typename\
+    \ T1, typename T2, typename T3>\nostream &operator<<(ostream &os, const tuple<T1,\
+    \ T2, T3> &tp) {\n    return os << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp);\n\
+    }\n\ntemplate<typename T1, typename T2, typename T3, typename T4>\nostream &operator<<(ostream\
+    \ &os, const tuple<T1, T2, T3, T4> &tp) {\n    return os << get<0>(tp) << ' '\
+    \ << get<1>(tp) << ' ' << get<2>(tp) << ' ' << get<3>(tp);\n}\n\ntemplate<typename\
+    \ T, size_t SZ>\nostream &operator<<(ostream &os, const array<T, SZ> &arr) {\n\
+    \    rep(i, arr.size()) {\n        os << arr[i];\n        if (i != (ll)arr.size()-1)\
+    \ {\n            os << ' ';\n        }\n    }\n    return os;\n}\n\ntemplate<typename\
+    \ T>\nostream &operator<<(ostream &os, const vector<T> &vec) {\n    rep(i, vec.size())\
+    \ {\n        os << vec[i];\n        if (i != (ll)vec.size()-1) {\n           \
+    \ os << ' ';\n        }\n    }\n    return os;\n}\n\nvoid print() {\n    cout\
+    \ << '\\n';\n}\n\ntemplate<typename T>\nvoid print(T out) {\n    cout << out <<\
+    \ '\\n';\n}\n\ntemplate<typename T1, typename T2, typename T3>\nvoid print(const\
+    \ tuple<T1, T2, T3> &tp) {\n    cout << get<0>(tp) << ' ' << get<1>(tp) << ' '\
+    \ << get<2>(tp) << '\\n';\n}\n\ntemplate<typename T1, typename T2, typename T3,\
+    \ typename T4>\nvoid print(const tuple<T1, T2, T3, T4> &tp) { \n    cout << get<0>(tp)\
+    \ << ' ' << get<1>(tp) << ' ' << get<2>(tp) << ' ' << get<3>(tp) << '\\n';\n}\n\
+    \ntemplate<typename T>\nvoid print(const vector<T> &V, char sep=' ') {\n    rep(i,\
+    \ V.size()) {\n        cout << V[i];\n        if (i != (ll)V.size()-1) cout <<\
+    \ sep;\n    }\n    cout << '\\n';\n}\n\ntemplate<typename T, size_t SZ>\nvoid\
+    \ print(const array<T, SZ> &arr, char sep=' ') {\n    rep(i, arr.size()) {\n \
+    \       cout << arr[i];\n        if (i != (ll)arr.size()-1) cout << sep;\n   \
+    \ }\n    cout << '\\n';\n}\n\n// template<typename T, size_t SZ>\n// void print(const\
+    \ vector<array<T, SZ>> &V) {\n//     for (auto& arr : V) print(arr);\n// }\n\n\
+    template<typename T>\nvoid print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n\
+    \    print(V);\n}\n\ntemplate<typename T>\nvoid print(const set<T> &se) {\n  \
+    \  vector<T> V(ALL(se));\n    print(V);\n}\n\n#define debug(x) (cout << #x <<\
+    \ \": \" << x << endl);\n#line 3 \"src/mystl/my_deque.hpp\"\n\ntemplate<typename\
+    \ _Tp>\nstruct my_deque : deque<_Tp> {\n    using deque<_Tp>::deque;\n    _Tp\
+    \ pop_front() {\n        _Tp res = this->front();\n        deque<_Tp>::pop_front();\n\
     \        return res;\n    }\n    _Tp pop_back() {\n        _Tp res = this->back();\n\
     \        deque<_Tp>::pop_back();\n        return res;\n    }\n};\n\ntemplate<typename\
     \ T>\nvoid print(const my_deque<T> &que) {\n    vector<T> V(que.begin(), que.end());\n\
@@ -83,7 +84,7 @@ data:
   isVerificationFile: false
   path: src/mystl/my_deque.hpp
   requiredBy: []
-  timestamp: '2022-10-04 01:47:30+09:00'
+  timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/mystl/my_deque.hpp
