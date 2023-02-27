@@ -92,4 +92,4 @@ void print(const set<T> &se) {
     print(V);
 }
 
-#define debug(x) (cout << #x << ": ", print(x));
+#define debug(x) (cout << #x << ": " << x << endl);

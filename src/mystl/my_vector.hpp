@@ -14,7 +14,7 @@ struct my_vector : vector<_Tp> {
 
     template<typename F>
     auto map(F f) {
-        vector<decltype(f(_Tp()))> res;
+        my_vector<decltype(f(_Tp()))> res;
         for (auto& val : *this) {
             res.eb(f(val));
         }

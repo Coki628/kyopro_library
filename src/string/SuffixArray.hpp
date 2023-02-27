@@ -1,5 +1,5 @@
 #include "../macros.hpp"
-#include "../segment/SegmentTree.hpp"
+#include "../datastructure/SegmentTree.hpp"
 #include "../acl/string.hpp"
 
 auto f = [](int a, int b) { return min(a, b); };

@@ -8,7 +8,7 @@
 template<typename T>
 vector<T> dijkstra(const vector<vector<pair<int, T>>> &nodes, int src, int goal=-1) {
     int N = nodes.size();
-    vector<T> res(N, INF);
+    vector<T> res(N, numeric_limits<T>::max() / 2);
     priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T, int>>> que;
     res[src] = 0;
     que.push({0, src});

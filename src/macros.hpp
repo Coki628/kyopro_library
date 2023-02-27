@@ -13,6 +13,8 @@ using vvi = vector<vector<int>>;
 using vvpll = vector<vector<pll>>;
 using vvpli = vector<vector<pli>>;
 using vvpil = vector<vector<pil>>;
+template<typename T>
+using vv = vector<vector<T>>;
 #define name4(i, a, b, c, d, e, ...) e
 #define rep(...) name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)
 #define rep1(i, a) for (ll i = 0, _aa = a; i < _aa; i++)

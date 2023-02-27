@@ -4,7 +4,8 @@
 // XOR基底(array版：こっちのが速い。メモリは食う。)
 template<typename T, size_t W>
 struct XorBasis {
-    array<T, W> basis;
+    array<T, W> basis = {};
+    vector<T> saved; // 線形独立な値を保持(zone2021_f参照)
     int rank = 0;
 
     XorBasis() {}
@@ -14,11 +15,13 @@ struct XorBasis {
     // 基底にaを追加、基底が更新されたらtrueを返す：O(W)
     bool add(T a) {
         if (a == 0) return false;
+        T tmp = a;
         rep(i, rank) {
             chmin(a, a^basis[i]);
         }
         if (a > 0) {
             basis[rank] = a;
+            saved.eb(tmp);
             rank++;
             return true;
         } else {

@@ -52,3 +52,13 @@ template<typename T>
 bool operator==(const Point<T> &p1, const Point<T> &p2) {
     return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);
 }
+
+template<typename T>
+T norm(Point<T> p) {
+    return p.x * p.x + p.y * p.y;
+}
+
+template<typename T>
+T abs(Point<T> p) {
+    return sqrt(norm(p));
+}
