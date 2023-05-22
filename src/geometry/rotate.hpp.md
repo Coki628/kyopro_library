@@ -24,16 +24,15 @@ data:
     using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
-    \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
-    \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
-    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
-    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
-    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
-    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
-    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
-    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
-    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
+    using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
+    \ = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__,\
+    \ rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa\
+    \ = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n\
+    #define rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb)\
+    \ or (c < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a);\
+    \ i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/geometry/Point.hpp\"\
@@ -67,20 +66,20 @@ data:
     \ p2.y);\n}\n\ntemplate<typename T>\nbool operator==(const Point<T> &p1, const\
     \ Point<T> &p2) {\n    return mkp(p1.x, p1.y) == mkp(p2.x, p2.y);\n}\n\ntemplate<typename\
     \ T>\nT norm(Point<T> p) {\n    return p.x * p.x + p.y * p.y;\n}\n\ntemplate<typename\
-    \ T>\nT abs(Point<T> p) {\n    return sqrt(norm(p));\n}\n#line 2 \"src/geometry/radians.hpp\"\
+    \ T>\nT abs(Point<T> p) {\n    return sqrt(norm(p));\n}\n#line 3 \"src/geometry/radians.hpp\"\
     \n\nld radians(ld degrees) { return degrees * PI / 180.0; }\n#line 4 \"src/geometry/rotate.hpp\"\
     \n\n// \u56DE\u8EE2\u884C\u5217\uFF1A\u5EA7\u6A19c\u3092\u8EF8\u306B\u5EA7\u6A19\
-    p\u304B\u3089\u534A\u6642\u8A08\u56DE\u308A\u306Bdig\u5EA6\u56DE\u8EE2\u3055\u305B\
+    p\u304B\u3089\u534A\u6642\u8A08\u56DE\u308A\u306Bdeg\u5EA6\u56DE\u8EE2\u3055\u305B\
     \u305F\u5EA7\u6A19\u3092\u8FD4\u3059\ntemplate<typename T>\nPoint<T> rotate(Point<T>\
-    \ c, Point<T> p, ld dig) {\n    T x = (p.x-c.x)*cos(radians(dig)) - (p.y-c.y)*sin(radians(dig))\
-    \ + c.x;\n    T y = (p.x-c.x)*sin(radians(dig)) + (p.y-c.y)*cos(radians(dig))\
+    \ c, Point<T> p, ld deg) {\n    T x = (p.x-c.x)*cos(radians(deg)) - (p.y-c.y)*sin(radians(deg))\
+    \ + c.x;\n    T y = (p.x-c.x)*sin(radians(deg)) + (p.y-c.y)*cos(radians(deg))\
     \ + c.y;\n    return {x, y};\n}\n"
   code: "#include \"../macros.hpp\"\n#include \"Point.hpp\"\n#include \"radians.hpp\"\
     \n\n// \u56DE\u8EE2\u884C\u5217\uFF1A\u5EA7\u6A19c\u3092\u8EF8\u306B\u5EA7\u6A19\
-    p\u304B\u3089\u534A\u6642\u8A08\u56DE\u308A\u306Bdig\u5EA6\u56DE\u8EE2\u3055\u305B\
+    p\u304B\u3089\u534A\u6642\u8A08\u56DE\u308A\u306Bdeg\u5EA6\u56DE\u8EE2\u3055\u305B\
     \u305F\u5EA7\u6A19\u3092\u8FD4\u3059\ntemplate<typename T>\nPoint<T> rotate(Point<T>\
-    \ c, Point<T> p, ld dig) {\n    T x = (p.x-c.x)*cos(radians(dig)) - (p.y-c.y)*sin(radians(dig))\
-    \ + c.x;\n    T y = (p.x-c.x)*sin(radians(dig)) + (p.y-c.y)*cos(radians(dig))\
+    \ c, Point<T> p, ld deg) {\n    T x = (p.x-c.x)*cos(radians(deg)) - (p.y-c.y)*sin(radians(deg))\
+    \ + c.x;\n    T y = (p.x-c.x)*sin(radians(deg)) + (p.y-c.y)*cos(radians(deg))\
     \ + c.y;\n    return {x, y};\n}\n"
   dependsOn:
   - src/macros.hpp
@@ -90,7 +89,7 @@ data:
   isVerificationFile: false
   path: src/geometry/rotate.hpp
   requiredBy: []
-  timestamp: '2023-02-28 01:25:34+09:00'
+  timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/rotate.hpp

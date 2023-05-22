@@ -23,15 +23,15 @@ data:
     - https://ei1333.github.io/library/other/offline-dynamic-connectivity.cpp
     - https://ei1333.github.io/luzhiled/snippets/other/offline-dynamic-connectivity.html
     - https://nyaannyaan.github.io/library/graph/offline-dynamic-connectivity.hpp
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
     \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
-    \ File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    \ File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: common/HashMap.hpp:\
     \ line -1: no such header\n"
@@ -52,33 +52,40 @@ data:
     \ p.first);\n        }\n        for (auto &s : pend) {\n            add(s.first.first,\
     \ s.first.second, s.second);\n        }\n    }\n\n    template<typename F>\n \
     \   void _run(const F &f, int k, int l, int r) {\n        if (Q <= l) return;\n\
-    \        int tmp = 0;\n        for (auto &e : seg[k]) {\n            tmp += uf.merge(e.first,\
-    \ e.second);\n        }\n        comp -= tmp;\n        if (l + 1 == r) {\n   \
-    \         f(l);\n        } else {\n            _run(f, 2 * k + 0, l, (l+r) >>\
-    \ 1);\n            _run(f, 2 * k + 1, (l+r) >> 1, r);\n        }\n        for\
-    \ (auto &e : seg[k]) {\n            uf.undo();\n        }\n        comp += tmp;\n\
+    \        int tmp = 0, tmp2 = 0;\n        for (auto &e : seg[k]) {\n          \
+    \  if (uf.size(e.first) == 1) {\n                tmp2++;\n            }\n    \
+    \        if (uf.size(e.second) == 1) {\n                tmp2++;\n            }\n\
+    \            tmp += uf.merge(e.first, e.second);\n        }\n        comp -= tmp;\n\
+    \        single -= tmp2;\n        if (l + 1 == r) {\n            f(l);\n     \
+    \   } else {\n            _run(f, 2 * k + 0, l, (l+r) >> 1);\n            _run(f,\
+    \ 2 * k + 1, (l+r) >> 1, r);\n        }\n        for (auto &e : seg[k]) {\n  \
+    \          uf.undo();\n        }\n        comp += tmp;\n        single += tmp2;\n\
     \    }\n\npublic:\n    UnionFindUndo uf;\n    // \u9023\u7D50\u6210\u5206\u6570\
-    \n    int comp;\n\n    // \u9802\u70B9\u6570V\u3001Q\u500B\u306E\u30AF\u30A8\u30EA\
-    \u3067\u521D\u671F\u5316\n    // (\u3053\u306EQ\u500B\u306B\u306F\u3001\u8FBA\u306E\
-    \u8FFD\u52A0\u30FB\u524A\u9664\u30FB\u56DE\u7B54\u30AF\u30A8\u30EA\u5168\u3066\
-    \u304C\u542B\u307E\u308C\u308B\u3002\u30AF\u30A8\u30EA\u6570\u3068\u8A00\u3046\
-    \u3088\u308A\u7D4C\u904E\u6642\u9593\u306E\u6700\u5927\u3002\n    //  \u306A\u304A\
-    \u3001\u6B21\u306E\u30AF\u30A8\u30EA\u304C\u6765\u308B\u307E\u3067\u306E\u8FBA\
-    \u306E\u8FFD\u52A0\u524A\u9664\u306F\u540C\u6642\u523B\u306B\u307E\u3068\u3081\
-    \u3066OK\u3002)\n    OfflineDynamicConnectivity(int V, int Q) : uf(V), V(V), Q(Q),\
-    \ comp(V) {\n        segsz = 1;\n        while (segsz < Q) segsz <<= 1;\n    \
-    \    seg.resize(2 * segsz);\n    }\n\n    // \u4E00\u5FDC\u4F5C\u3063\u305F\u3093\
-    \u3060\u3051\u3069\u3001\u3053\u308C\u3084\u3063\u3066\u3082\u901F\u304F\u306A\
-    \u3089\u306A\u304B\u3063\u305F\u3002\n    void reserve(int n) {\n        cnt.reserve(n);\n\
-    \        appear.reserve(n);\n    }\n\n    // \u6642\u523Bidx\u306B\u8FBA(s,t)\u3092\
-    \u8FFD\u52A0\n    void insert(int idx, int s, int t) {\n        auto e = minmax(s,\
-    \ t);\n        if (cnt[e]++ == 0) appear[e] = idx;\n    }\n\n    // \u6642\u523B\
-    idx\u306B\u8FBA(s,t)\u3092\u524A\u9664\n    void erase(int idx, int s, int t)\
-    \ {\n        auto e = minmax(s, t);\n        if (--cnt[e] == 0) pend.emplace_back(make_pair(appear[e],\
-    \ idx), e);\n    }\n\n    // build()\u5B9F\u884C\u5F8C\u306B\u52D5\u4F5C\u3001\
-    \u5404i(0<=i<Q)\u306B\u3064\u3044\u3066f(i)\u304C\u547C\u3073\u51FA\u3055\u308C\
-    \u308B\n    template<typename F>\n    void run(const F &f) {\n        build();\n\
-    \        _run(f, 1, 0, segsz);\n    }\n};\n"
+    \n    int comp;\n    // \u8981\u7D20\u65701\u306E\u9023\u7D50\u6210\u5206\u6570\
+    \n    int single;\n\n    // \u9802\u70B9\u6570V\u3001Q\u500B\u306E\u30AF\u30A8\
+    \u30EA\u3067\u521D\u671F\u5316\n    // (\u3053\u306EQ\u500B\u306B\u306F\u3001\u8FBA\
+    \u306E\u8FFD\u52A0\u30FB\u524A\u9664\u30FB\u56DE\u7B54\u30AF\u30A8\u30EA\u5168\
+    \u3066\u304C\u542B\u307E\u308C\u308B\u3002\u30AF\u30A8\u30EA\u6570\u3068\u8A00\
+    \u3046\u3088\u308A\u7D4C\u904E\u6642\u9593\u306E\u6700\u5927\u3002\n    //  \u306A\
+    \u304A\u3001\u6B21\u306E\u56DE\u7B54\u30AF\u30A8\u30EA\u304C\u6765\u308B\u307E\
+    \u3067\u306E\u8FBA\u306E\u8FFD\u52A0\u524A\u9664\u306F\u540C\u6642\u523B\u306B\
+    \u307E\u3068\u3081\u3066OK\u3002)\n    OfflineDynamicConnectivity(int V, int Q)\
+    \ : uf(V), V(V), Q(Q), comp(V), single(V) {\n        segsz = 1;\n        while\
+    \ (segsz < Q) segsz <<= 1;\n        seg.resize(2 * segsz);\n    }\n\n    // \u4E00\
+    \u5FDC\u4F5C\u3063\u305F\u3093\u3060\u3051\u3069\u3001\u3053\u308C\u3084\u3063\
+    \u3066\u3082\u901F\u304F\u306A\u3089\u306A\u304B\u3063\u305F\u3002\n    void reserve(int\
+    \ n) {\n        cnt.reserve(n);\n        appear.reserve(n);\n    }\n\n    // \u6642\
+    \u523Bidx\u306B\u8FBA(s,t)\u3092\u8FFD\u52A0\n    void insert(int idx, int s,\
+    \ int t) {\n        auto e = minmax(s, t);\n        if (cnt[e]++ == 0) appear[e]\
+    \ = idx;\n    }\n\n    // \u6642\u523Bidx\u306B\u8FBA(s,t)\u3092\u524A\u9664\n\
+    \    void erase(int idx, int s, int t) {\n        auto e = minmax(s, t);\n   \
+    \     if (--cnt[e] == 0) pend.emplace_back(make_pair(appear[e], idx), e);\n  \
+    \  }\n\n    // build()\u5B9F\u884C\u5F8C\u306B\u52D5\u4F5C\u3001\u5404i(0<=i<Q)\u306B\
+    \u3064\u3044\u3066f(i)\u304C\u547C\u3073\u51FA\u3055\u308C\u308B\n    // \u6642\
+    \u523Bi\u306E\u64CD\u4F5C\u304C\u7D42\u308F\u3063\u305F\u5F8C\u306E\u72B6\u614B\
+    \u3067f\u304C\u5B9F\u884C\u3055\u308C\u308B\n    template<typename F>\n    void\
+    \ run(const F &f) {\n        build();\n        _run(f, 1, 0, segsz);\n    }\n\
+    };\n"
   dependsOn:
   - src/base.hpp
   - src/graph/UnionFindUndo.hpp
@@ -87,7 +94,7 @@ data:
   isVerificationFile: false
   path: src/graph/OfflineDynamicConnectivity.hpp
   requiredBy: []
-  timestamp: '2022-08-29 14:43:01+09:00'
+  timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/OfflineDynamicConnectivity.hpp

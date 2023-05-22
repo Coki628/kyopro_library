@@ -33,8 +33,8 @@ data:
   isVerificationFile: false
   path: src/common/sorted.hpp
   requiredBy:
-  - src/template.hpp
   - src/numbers/FastPrimeFactorization.hpp
+  - src/template.hpp
   timestamp: '2022-10-18 16:40:19+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

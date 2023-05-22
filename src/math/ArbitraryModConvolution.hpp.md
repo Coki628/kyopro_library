@@ -10,7 +10,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: src/math/FormalPowerSeries.hpp
-    title: Formal Power Series
+    title: src/math/FormalPowerSeries.hpp
   - icon: ':warning:'
     path: src/math/fps/pow.hpp
     title: src/math/fps/pow.hpp
@@ -22,8 +22,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: Arbitrary Mod Convolution
-    links: []
+    links:
+    - https://ei1333.github.io/library/math/fft/arbitrary-mod-convolution.hpp
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
     using namespace std;\n#line 3 \"src/math/FastFourierTransform.hpp\"\n\nnamespace\
     \ FastFourierTransform {\n    using real = double;\n\n    struct C {\n       \
@@ -68,9 +68,9 @@ data:
     \    vector< int64_t > ret(need);\n        for(int i = 0; i < need; i++) {\n \
     \           ret[i] = llround(i & 1 ? fa[i >> 1].y : fa[i >> 1].x);\n        }\n\
     \        return ret;\n    }\n};\n#line 4 \"src/math/ArbitraryModConvolution.hpp\"\
-    \n\n/*\n * @brief Arbitrary Mod Convolution\n */\ntemplate< typename T >\nstruct\
-    \ ArbitraryModConvolution {\n    using real = FastFourierTransform::real;\n  \
-    \  using C = FastFourierTransform::C;\n\n    ArbitraryModConvolution() = default;\n\
+    \n\n// \u4EFB\u610FMOD\u7573\u307F\u8FBC\u307F\n// see: https://ei1333.github.io/library/math/fft/arbitrary-mod-convolution.hpp\n\
+    template< typename T >\nstruct ArbitraryModConvolution {\n    using real = FastFourierTransform::real;\n\
+    \    using C = FastFourierTransform::C;\n\n    ArbitraryModConvolution() = default;\n\
     \n    static vector< T > multiply(const vector< T > &a, const vector< T > &b,\
     \ int need = -1) {\n        if(need == -1) need = a.size() + b.size() - 1;\n \
     \       int nbase = 0;\n        while((1 << nbase) < need) nbase++;\n        FastFourierTransform::ensure_base(nbase);\n\
@@ -97,9 +97,9 @@ data:
     \ cc = T(cc).x;\n            ret[i] = aa + (bb << 15) + (cc << 30);\n        }\n\
     \        return ret;\n    }\n};\n"
   code: "#pragma once\n#include \"../base.hpp\"\n#include \"FastFourierTransform.hpp\"\
-    \n\n/*\n * @brief Arbitrary Mod Convolution\n */\ntemplate< typename T >\nstruct\
-    \ ArbitraryModConvolution {\n    using real = FastFourierTransform::real;\n  \
-    \  using C = FastFourierTransform::C;\n\n    ArbitraryModConvolution() = default;\n\
+    \n\n// \u4EFB\u610FMOD\u7573\u307F\u8FBC\u307F\n// see: https://ei1333.github.io/library/math/fft/arbitrary-mod-convolution.hpp\n\
+    template< typename T >\nstruct ArbitraryModConvolution {\n    using real = FastFourierTransform::real;\n\
+    \    using C = FastFourierTransform::C;\n\n    ArbitraryModConvolution() = default;\n\
     \n    static vector< T > multiply(const vector< T > &a, const vector< T > &b,\
     \ int need = -1) {\n        if(need == -1) need = a.size() + b.size() - 1;\n \
     \       int nbase = 0;\n        while((1 << nbase) < need) nbase++;\n        FastFourierTransform::ensure_base(nbase);\n\
@@ -132,9 +132,9 @@ data:
   path: src/math/ArbitraryModConvolution.hpp
   requiredBy:
   - src/math/FormalPowerSeries.hpp
-  - src/math/fps/pow.hpp
   - src/math/fps/pow_term2.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  - src/math/fps/pow.hpp
+  timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/ArbitraryModConvolution.hpp
@@ -142,5 +142,5 @@ layout: document
 redirect_from:
 - /library/src/math/ArbitraryModConvolution.hpp
 - /library/src/math/ArbitraryModConvolution.hpp.html
-title: Arbitrary Mod Convolution
+title: src/math/ArbitraryModConvolution.hpp
 ---

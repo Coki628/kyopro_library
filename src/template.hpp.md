@@ -80,6 +80,9 @@ data:
     path: src/common/overflow.hpp
     title: src/common/overflow.hpp
   - icon: ':warning:'
+    path: src/common/pair.hpp
+    title: src/common/pair.hpp
+  - icon: ':warning:'
     path: src/common/popcount.hpp
     title: src/common/popcount.hpp
   - icon: ':warning:'
@@ -195,16 +198,15 @@ data:
     using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
-    \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
-    \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
-    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
-    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
-    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
-    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
-    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
-    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
-    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
+    using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
+    \ = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__,\
+    \ rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa\
+    \ = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n\
+    #define rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb)\
+    \ or (c < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a);\
+    \ i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/template.hpp\"\
@@ -266,7 +268,7 @@ data:
     \ toint(char num) {\n    return num - '0';\n}\n#line 1 \"src/common/tochar.hpp\"\
     \nchar tochar(int num) {\n    return '0' + num;\n}\n#line 1 \"src/common/ceil.hpp\"\
     \ntemplate<typename T>\nT ceil(T a, T b) {\n    if (a >= 0) return (a+b-1) / b;\n\
-    \    else return a / b;\n}\n#line 1 \"src/common/modulo.hpp\"\ntemplate<typename\
+    \    else return a / b;\n}\n#line 2 \"src/common/modulo.hpp\"\n\ntemplate<typename\
     \ T>\nT modulo(T a, T b) {\n    return ((a % b) + b) % b;\n}\n#line 3 \"src/common/divmod.hpp\"\
     \n\ntemplate<typename T>\npair<T, T> divmod(T a, T b) {\n    T d = a / b;\n  \
     \  T m = a % b;\n    return {d, m};\n}\n#line 2 \"src/common/chmin.hpp\"\n\ntemplate<typename\
@@ -548,11 +550,22 @@ data:
     template<typename T>\nconstexpr void operator--(vector<T> &vec, int) noexcept\
     \ {\n    rep(i, vec.size()) vec[i]--;\n}\n\ntemplate<typename T>\nconstexpr void\
     \ operator++(vector<T> &vec, int) noexcept {\n    rep(i, vec.size()) vec[i]++;\n\
-    }\n#line 37 \"src/template.hpp\"\n\n// from combinatorics\n#line 3 \"src/combinatorics/ModTools.hpp\"\
-    \n\n// Mod\u6570\u3048\u4E0A\u3052\u6F14\u7B97\u30C4\u30FC\u30EB\ntemplate<typename\
-    \ Mint>\nstruct ModTools {\n\n    int MAX;\n    vector<Mint> _fact, _factinv,\
-    \ inv;\n\n    // nCr\u306A\u3089n\u3001nHr\u306A\u3089n+r\u307E\u3067\u4F5C\u308B\
-    \n    ModTools(int mx) : MAX(++mx) {\n        _fact.resize(MAX);\n        _factinv.resize(MAX);\n\
+    }\n#line 3 \"src/common/pair.hpp\"\n\n// pair\u306E\u56DB\u5247\u8A08\u7B97\n\
+    template<class T, class U> inline pair<T, U>& operator+=(pair<T, U>& a, const\
+    \ pair<T, U>& b) {a.fi += b.fi; a.se += b.se; return a;}\ntemplate<class T, class\
+    \ U> inline pair<T, U>& operator-=(pair<T, U>& a, const pair<T, U>& b) {a.fi -=\
+    \ b.fi; a.se -= b.se; return a;}\ntemplate<class T, class U> inline pair<T, U>&\
+    \ operator*=(pair<T, U>& a, const pair<T, U>& b) {a.fi *= b.fi; a.se *= b.se;\
+    \ return a;}\ntemplate<class T, class U> inline pair<T, U>& operator/=(pair<T,\
+    \ U>& a, const pair<T, U>& b) {a.fi /= b.fi; a.se /= b.se; return a;}\n\ntemplate<class\
+    \ T, class U>\nconstexpr void operator++(pair<T, U>& a, int) noexcept {\n    a.first++;\n\
+    \    a.second++;\n}\n\ntemplate<class T, class U>\nconstexpr void operator--(pair<T,\
+    \ U>& a, int) noexcept {\n    a.first--;\n    a.second--;\n}\n#line 38 \"src/template.hpp\"\
+    \n\n// from combinatorics\n#line 3 \"src/combinatorics/ModTools.hpp\"\n\n// Mod\u6570\
+    \u3048\u4E0A\u3052\u6F14\u7B97\u30C4\u30FC\u30EB\ntemplate<typename Mint>\nstruct\
+    \ ModTools {\n\n    int MAX;\n    vector<Mint> _fact, _factinv, inv;\n\n    //\
+    \ nCr\u306A\u3089n\u3001nHr\u306A\u3089n+r\u307E\u3067\u4F5C\u308B\n    ModTools(int\
+    \ mx) : MAX(++mx) {\n        _fact.resize(MAX);\n        _factinv.resize(MAX);\n\
     \        inv.resize(MAX);\n        _fact[0] = _fact[1] = 1;\n        rep(i, 2,\
     \ MAX) {\n            _fact[i] = _fact[i-1]*(Mint)i;\n        }\n        _factinv[MAX-1]\
     \ = (Mint)1/_fact[MAX-1];\n        rep(i, MAX-2, -1, -1) {\n            _factinv[i]\
@@ -592,7 +605,7 @@ data:
     \n\nll nC2(ll n) {\n    if (n < 2) return 0;\n    return n*(n-1)/2;\n}\n#line\
     \ 1 \"src/combinatorics/factorial.hpp\"\n// \u968E\u4E57\uFF1AO(N)\ntemplate<typename\
     \ T>\nT factorial(int x) {\n    T res = 1;\n    for (int i=1; i<=x; i++) res *=\
-    \ i;\n    return res;\n}\n#line 44 \"src/template.hpp\"\n\n// from graph\n#line\
+    \ i;\n    return res;\n}\n#line 45 \"src/template.hpp\"\n\n// from graph\n#line\
     \ 3 \"src/graph/UnionFind.hpp\"\n\nstruct UnionFind {\n\n    int n, groupcnt;\n\
     \    vector<int> par, rank, sz;\n    vector<bool> tree;\n\n    UnionFind(int n)\
     \ : n(n) {\n        build();\n    }\n\n    UnionFind() {}\n\n    // \u65E2\u5B58\
@@ -631,14 +644,14 @@ data:
     \    }\n\n    // \u5168\u9802\u70B9\u306E\u30B0\u30EB\u30FC\u30D7\u756A\u53F7\u3092\
     \u53D6\u5F97\n    vector<int> get_info() {\n        vector<int> res(n);\n    \
     \    rep(i, n) {\n            res[i] = find(i);\n        }\n        return res;\n\
-    \    }\n};\n#line 47 \"src/template.hpp\"\n\n// from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\
+    \    }\n};\n#line 48 \"src/template.hpp\"\n\n// from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\
     \n\n// 4\u65B9\u5411\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0,\
     \ 1}};\n#line 3 \"src/grid/constants/directions.hpp\"\n\n// \u5F8C\u65B9\u4E92\
     \u63DB\u7528\n#define directions dir4\n#line 2 \"src/grid/gridtoid.hpp\"\n\n//\
     \ \u30B0\u30EA\u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll j, ll\
     \ W) { return i*W+j; }\n#line 3 \"src/grid/idtogrid.hpp\"\n\n// \u5217\u21D2\u30B0\
     \u30EA\u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W) { return divmod(id,\
-    \ W); }\n#line 52 \"src/template.hpp\"\n\n// from mystl\n#line 3 \"src/mystl/defaultdict.hpp\"\
+    \ W); }\n#line 53 \"src/template.hpp\"\n\n// from mystl\n#line 3 \"src/mystl/defaultdict.hpp\"\
     \n\n// HashMap\u3092\u7D99\u627F\u3057\u305Fdefaultdict\ntemplate<typename _Key,\
     \ typename _Tp>\nstruct defaultdict : HashMap<_Key, _Tp> {\n    const _Tp init;\n\
     \n    defaultdict() : init(_Tp()) {};\n\n    defaultdict(_Tp init) : init(init)\
@@ -647,7 +660,7 @@ data:
     \         return HashMap<_Key, _Tp>::operator[](k) = init;\n        }\n    }\n\
     \n    _Tp& operator[](_Key&& k) {\n        if (this->count(k)) {\n           \
     \ return HashMap<_Key, _Tp>::operator[](k);\n        } else {\n            return\
-    \ HashMap<_Key, _Tp>::operator[](k) = init;\n        }\n    }\n};\n#line 55 \"\
+    \ HashMap<_Key, _Tp>::operator[](k) = init;\n        }\n    }\n};\n#line 56 \"\
     src/template.hpp\"\n\n// from numbers\n#line 3 \"src/numbers/gcd.hpp\"\n\n// \u975E\
     \u518D\u5E30\u7248\u4F5C\u3063\u3066\u307F\u305F\u3051\u3069\u3001\u901F\u5EA6\
     \u3042\u3093\u307E\u5909\u308F\u3089\u306A\u305D\u3046\u2026\u3002\ntemplate<typename\
@@ -673,7 +686,7 @@ data:
     \ n, bool ceil=false) {\n    ll ok = 0;\n    ll ng = 3037000500;\n    while (ng\
     \ - ok > 1) {\n        ll m = ok + (ng - ok) / 2;\n        if (m * m <= n) {\n\
     \            ok = m;\n        } else {\n            ng = m;\n        }\n    }\n\
-    \    if (ceil and ok*ok != n) ok++;\n    return ok;\n}\n#line 62 \"src/template.hpp\"\
+    \    if (ceil and ok*ok != n) ok++;\n    return ok;\n}\n#line 63 \"src/template.hpp\"\
     \n\n// from datastructure\n#line 3 \"src/datastructure/Accumulate.hpp\"\n\n//\
     \ \u7D2F\u7A4D\u548C\ntemplate<typename T>\nstruct Accumulate {\n    vector<T>\
     \ dat;\n    int N;\n    bool built = false;\n\n    Accumulate(int N) : N(N) {\n\
@@ -803,7 +816,7 @@ data:
     SegmentTree<Monoid, F> get_segment_tree(const F& f, const Monoid& M1) {\n    return\
     \ {f, M1};\n}\n\ntemplate<typename Monoid, typename F>\nSegmentTree<Monoid, F>\
     \ get_segment_tree(const vector<Monoid>& A, const F& f, const Monoid& M1) {\n\
-    \    return {A, f, M1};\n}\n#line 67 \"src/template.hpp\"\n\n// from string\n\
+    \    return {A, f, M1};\n}\n#line 68 \"src/template.hpp\"\n\n// from string\n\
     #line 2 \"src/string/constants/digits.hpp\"\n\nconst string digits = \"0123456789\"\
     ;\n#line 3 \"src/string/constants/ascii_lowercase.hpp\"\n\nconst string ascii_lowercase\
     \ = \"abcdefghijklmnopqrstuvwxyz\";\n#line 3 \"src/string/constants/ascii_uppercase.hpp\"\
@@ -815,7 +828,7 @@ data:
     \            res += '0';\n        }\n        x >>= 1;\n    }\n    reverse(ALL(res));\n\
     \    if (res == \"\") res += '0';\n    return res;\n}\n#line 2 \"src/string/isdigit.hpp\"\
     \n\nbool isdigit(string S) {\n    for (auto c : S) {\n        if (not isdigit(c))\
-    \ {\n            return false;\n        }\n    }\n    return true;\n}\n#line 75\
+    \ {\n            return false;\n        }\n    }\n    return true;\n}\n#line 76\
     \ \"src/template.hpp\"\n"
   code: '#include "base.hpp"
 
@@ -887,6 +900,8 @@ data:
     #include "common/HashMap.hpp"
 
     #include "common/vector.hpp"
+
+    #include "common/pair.hpp"
 
 
     // from combinatorics
@@ -995,6 +1010,7 @@ data:
   - src/common/concat.hpp
   - src/common/subarray.hpp
   - src/common/vector.hpp
+  - src/common/pair.hpp
   - src/combinatorics/ModTools.hpp
   - src/combinatorics/permutations.hpp
   - src/combinatorics/combinations.hpp
@@ -1023,7 +1039,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2023-02-28 01:25:34+09:00'
+  timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

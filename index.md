@@ -136,6 +136,9 @@ data:
       path: src/common/custom_hash.hpp
       title: src/common/custom_hash.hpp
     - icon: ':warning:'
+      path: src/common/debug_print.hpp
+      title: src/common/debug_print.hpp
+    - icon: ':warning:'
       path: src/common/divmod.hpp
       title: src/common/divmod.hpp
     - icon: ':warning:'
@@ -515,7 +518,7 @@ data:
     pages:
     - icon: ':warning:'
       path: src/math/ArbitraryModConvolution.hpp
-      title: Arbitrary Mod Convolution
+      title: src/math/ArbitraryModConvolution.hpp
     - icon: ':warning:'
       path: src/math/BM.hpp
       title: src/math/BM.hpp
@@ -524,13 +527,13 @@ data:
       title: src/math/FastFourierTransform.hpp
     - icon: ':warning:'
       path: src/math/FormalPowerSeries.hpp
-      title: Formal Power Series
+      title: src/math/FormalPowerSeries.hpp
     - icon: ':warning:'
       path: src/math/berlekamp_massey.hpp
-      title: Berlekamp Massey
+      title: src/math/berlekamp_massey.hpp
     - icon: ':warning:'
       path: src/math/coeff_of_rational_function.hpp
-      title: Coeff of Rational Function
+      title: src/math/coeff_of_rational_function.hpp
     - icon: ':warning:'
       path: src/math/garner.hpp
       title: src/math/garner.hpp
@@ -539,7 +542,7 @@ data:
       title: src/math/kitamasa.hpp
     - icon: ':warning:'
       path: src/math/kth_term_of_linearly_recurrent_sequence.hpp
-      title: Kth Term of Linearly Recurrent Sequence
+      title: src/math/kth_term_of_linearly_recurrent_sequence.hpp
     - icon: ':warning:'
       path: src/math/lagrange_polynomial.hpp
       title: src/math/lagrange_polynomial.hpp

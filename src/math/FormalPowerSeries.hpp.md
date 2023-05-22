@@ -12,7 +12,7 @@ data:
     title: src/macros.hpp
   - icon: ':warning:'
     path: src/math/ArbitraryModConvolution.hpp
-    title: Arbitrary Mod Convolution
+    title: src/math/ArbitraryModConvolution.hpp
   - icon: ':warning:'
     path: src/math/FastFourierTransform.hpp
     title: src/math/FastFourierTransform.hpp
@@ -28,8 +28,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: Formal Power Series
     links:
+    - https://ei1333.github.io/library/math/fps/formal-power-series.hpp
     - https://judge.yosupo.jp/problem/convolution_mod
     - https://judge.yosupo.jp/problem/division_of_polynomials
     - https://judge.yosupo.jp/problem/exp_of_formal_power_series
@@ -43,16 +43,15 @@ data:
     using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
-    \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
-    \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
-    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
-    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
-    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
-    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
-    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
-    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
-    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
+    using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
+    \ = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__,\
+    \ rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa\
+    \ = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n\
+    #define rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb)\
+    \ or (c < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a);\
+    \ i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/print.hpp\"\
@@ -128,9 +127,9 @@ data:
     \    vector< int64_t > ret(need);\n        for(int i = 0; i < need; i++) {\n \
     \           ret[i] = llround(i & 1 ? fa[i >> 1].y : fa[i >> 1].x);\n        }\n\
     \        return ret;\n    }\n};\n#line 4 \"src/math/ArbitraryModConvolution.hpp\"\
-    \n\n/*\n * @brief Arbitrary Mod Convolution\n */\ntemplate< typename T >\nstruct\
-    \ ArbitraryModConvolution {\n    using real = FastFourierTransform::real;\n  \
-    \  using C = FastFourierTransform::C;\n\n    ArbitraryModConvolution() = default;\n\
+    \n\n// \u4EFB\u610FMOD\u7573\u307F\u8FBC\u307F\n// see: https://ei1333.github.io/library/math/fft/arbitrary-mod-convolution.hpp\n\
+    template< typename T >\nstruct ArbitraryModConvolution {\n    using real = FastFourierTransform::real;\n\
+    \    using C = FastFourierTransform::C;\n\n    ArbitraryModConvolution() = default;\n\
     \n    static vector< T > multiply(const vector< T > &a, const vector< T > &b,\
     \ int need = -1) {\n        if(need == -1) need = a.size() + b.size() - 1;\n \
     \       int nbase = 0;\n        while((1 << nbase) < need) nbase++;\n        FastFourierTransform::ensure_base(nbase);\n\
@@ -156,46 +155,46 @@ data:
     \            int64_t cc = llround(fa[i].y);\n            aa = T(aa).x, bb = T(bb).x,\
     \ cc = T(cc).x;\n            ret[i] = aa + (bb << 15) + (cc << 30);\n        }\n\
     \        return ret;\n    }\n};\n#line 5 \"src/math/FormalPowerSeries.hpp\"\n\n\
-    /**\n * @brief Formal Power Series\n */\ntemplate< typename T >\nstruct FormalPowerSeries\
-    \ : vector< T > {\n    using vector< T >::vector;\n    using P = FormalPowerSeries;\n\
-    \    using Conv = ArbitraryModConvolution< T >;\n\n    P pre(int deg) const {\n\
-    \        return P(begin(*this), begin(*this) + min((int) this->size(), deg));\n\
-    \    }\n\n    P rev(int deg = -1) const {\n        P ret(*this);\n        if(deg\
-    \ != -1) ret.resize(deg, T(0));\n        reverse(begin(ret), end(ret));\n    \
-    \    return ret;\n    }\n\n    // \u9AD8\u3044\u6B21\u6570\u304C0\u306A\u90E8\u5206\
-    \u3092\u524A\u308B\n    void shrink() {\n        while(this->size() && this->back()\
-    \ == T(0)) this->pop_back();\n    }\n\n    // \u9AD8\u3044\u6B21\u6570\u304C0\
-    \ or deg\u3088\u308A\u5927\u304D\u3044\u90E8\u5206\u3092\u524A\u308B\n    void\
-    \ shrink(int deg) {\n        while(this->size() && this->back() == T(0) or this->size()\
-    \ > deg) this->pop_back();\n    }\n\n    P operator+(const P &r) const { return\
-    \ P(*this) += r; }\n\n    P operator+(const T &v) const { return P(*this) += v;\
-    \ }\n\n    P operator-(const P &r) const { return P(*this) -= r; }\n\n    P operator-(const\
-    \ T &v) const { return P(*this) -= v; }\n\n    P operator*(const P &r) const {\
-    \ return P(*this) *= r; }\n\n    P operator*(const T &v) const { return P(*this)\
-    \ *= v; }\n\n    P operator/(const P &r) const { return P(*this) /= r; }\n\n \
-    \   P operator%(const P &r) const { return P(*this) %= r; }\n\n    P operator>>(const\
-    \ int r) const { return P(*this) >>= r; }\n\n    P operator<<(const int r) const\
-    \ { return P(*this) <<= r; }\n\n    P &operator+=(const P &r) {\n        if(r.size()\
-    \ > this->size()) this->resize(r.size());\n        for(int i = 0; i < r.size();\
-    \ i++) (*this)[i] += r[i];\n        return *this;\n    }\n\n    P &operator-=(const\
-    \ P &r) {\n        if(r.size() > this->size()) this->resize(r.size());\n     \
-    \   for(int i = 0; i < r.size(); i++) (*this)[i] -= r[i];\n        return *this;\n\
-    \    }\n\n    // https://judge.yosupo.jp/problem/convolution_mod\n    P &operator*=(const\
-    \ P &r) {\n        if(this->empty() || r.empty()) {\n            this->clear();\n\
-    \            return *this;\n        }\n        auto ret = Conv::multiply(*this,\
-    \ r);\n        return *this = {begin(ret), end(ret)};\n    }\n\n    // \u3053\u306E\
-    \u9664\u7B97\u306F\u672C\u5F53\u306E\u300C\u591A\u9805\u5F0F\u306E\u9664\u7B97\
-    \u300D\u3092\u3084\u3063\u3066\u308B\u307D\u3044\u306E\u3067\u3001\u666E\u6BB5\
-    \u306F\u9006\u5143\u306E\u65B9\u3092\u4F7F\u3046\n    P &operator/=(const P &r)\
-    \ {\n        if(this->size() < r.size()) {\n            this->clear();\n     \
-    \       return *this;\n        }\n        int n = this->size() - r.size() + 1;\n\
-    \        return *this = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);\n    }\n\
-    \n    P &operator%=(const P &r) {\n        return *this -= *this / r * r;\n  \
-    \  }\n\n    // https://judge.yosupo.jp/problem/division_of_polynomials\n    pair<\
-    \ P, P > div_mod(const P &r) {\n        P q = *this / r;\n        return make_pair(q,\
-    \ *this - q * r);\n    }\n\n    P operator-() const {\n        P ret(this->size());\n\
-    \        for(int i = 0; i < this->size(); i++) ret[i] = -(*this)[i];\n       \
-    \ return ret;\n    }\n\n    P &operator+=(const T &r) {\n        if(this->empty())\
+    // see: https://ei1333.github.io/library/math/fps/formal-power-series.hpp\ntemplate<\
+    \ typename T >\nstruct FormalPowerSeries : vector< T > {\n    using vector< T\
+    \ >::vector;\n    using P = FormalPowerSeries;\n    using Conv = ArbitraryModConvolution<\
+    \ T >;\n\n    P pre(int deg) const {\n        return P(begin(*this), begin(*this)\
+    \ + min((int) this->size(), deg));\n    }\n\n    P rev(int deg = -1) const {\n\
+    \        P ret(*this);\n        if(deg != -1) ret.resize(deg, T(0));\n       \
+    \ reverse(begin(ret), end(ret));\n        return ret;\n    }\n\n    // \u9AD8\u3044\
+    \u6B21\u6570\u304C0\u306A\u90E8\u5206\u3092\u524A\u308B\n    void shrink() {\n\
+    \        while(this->size() && this->back() == T(0)) this->pop_back();\n    }\n\
+    \n    // \u9AD8\u3044\u6B21\u6570\u304C0 or deg\u3088\u308A\u5927\u304D\u3044\u90E8\
+    \u5206\u3092\u524A\u308B\n    void shrink(int deg) {\n        while(this->size()\
+    \ && this->back() == T(0) or this->size() > deg) this->pop_back();\n    }\n\n\
+    \    P operator+(const P &r) const { return P(*this) += r; }\n\n    P operator+(const\
+    \ T &v) const { return P(*this) += v; }\n\n    P operator-(const P &r) const {\
+    \ return P(*this) -= r; }\n\n    P operator-(const T &v) const { return P(*this)\
+    \ -= v; }\n\n    P operator*(const P &r) const { return P(*this) *= r; }\n\n \
+    \   P operator*(const T &v) const { return P(*this) *= v; }\n\n    P operator/(const\
+    \ P &r) const { return P(*this) /= r; }\n\n    P operator%(const P &r) const {\
+    \ return P(*this) %= r; }\n\n    P operator>>(const int r) const { return P(*this)\
+    \ >>= r; }\n\n    P operator<<(const int r) const { return P(*this) <<= r; }\n\
+    \n    P &operator+=(const P &r) {\n        if(r.size() > this->size()) this->resize(r.size());\n\
+    \        for(int i = 0; i < r.size(); i++) (*this)[i] += r[i];\n        return\
+    \ *this;\n    }\n\n    P &operator-=(const P &r) {\n        if(r.size() > this->size())\
+    \ this->resize(r.size());\n        for(int i = 0; i < r.size(); i++) (*this)[i]\
+    \ -= r[i];\n        return *this;\n    }\n\n    // https://judge.yosupo.jp/problem/convolution_mod\n\
+    \    P &operator*=(const P &r) {\n        if(this->empty() || r.empty()) {\n \
+    \           this->clear();\n            return *this;\n        }\n        auto\
+    \ ret = Conv::multiply(*this, r);\n        return *this = {begin(ret), end(ret)};\n\
+    \    }\n\n    // \u3053\u306E\u9664\u7B97\u306F\u672C\u5F53\u306E\u300C\u591A\u9805\
+    \u5F0F\u306E\u9664\u7B97\u300D\u3092\u3084\u3063\u3066\u308B\u307D\u3044\u306E\
+    \u3067\u3001\u666E\u6BB5\u306F\u9006\u5143\u306E\u65B9\u3092\u4F7F\u3046\n   \
+    \ P &operator/=(const P &r) {\n        if(this->size() < r.size()) {\n       \
+    \     this->clear();\n            return *this;\n        }\n        int n = this->size()\
+    \ - r.size() + 1;\n        return *this = (rev().pre(n) * r.rev().inv(n)).pre(n).rev(n);\n\
+    \    }\n\n    P &operator%=(const P &r) {\n        return *this -= *this / r *\
+    \ r;\n    }\n\n    // https://judge.yosupo.jp/problem/division_of_polynomials\n\
+    \    pair< P, P > div_mod(const P &r) {\n        P q = *this / r;\n        return\
+    \ make_pair(q, *this - q * r);\n    }\n\n    P operator-() const {\n        P\
+    \ ret(this->size());\n        for(int i = 0; i < this->size(); i++) ret[i] = -(*this)[i];\n\
+    \        return ret;\n    }\n\n    P &operator+=(const T &r) {\n        if(this->empty())\
     \ this->resize(1);\n        (*this)[0] += r;\n        return *this;\n    }\n\n\
     \    P &operator-=(const T &r) {\n        if(this->empty()) this->resize(1);\n\
     \        (*this)[0] -= r;\n        return *this;\n    }\n\n    P &operator*=(const\
@@ -298,9 +297,9 @@ data:
     \ T>\nvoid print(const FPS<T> &F) {\n    vector<T> A(F.begin(), F.end());\n  \
     \  print(A);\n}\n"
   code: "#pragma once\n#include \"../base.hpp\"\n#include \"../common/print.hpp\"\n\
-    #include \"ArbitraryModConvolution.hpp\"\n\n/**\n * @brief Formal Power Series\n\
-    \ */\ntemplate< typename T >\nstruct FormalPowerSeries : vector< T > {\n    using\
-    \ vector< T >::vector;\n    using P = FormalPowerSeries;\n    using Conv = ArbitraryModConvolution<\
+    #include \"ArbitraryModConvolution.hpp\"\n\n// see: https://ei1333.github.io/library/math/fps/formal-power-series.hpp\n\
+    template< typename T >\nstruct FormalPowerSeries : vector< T > {\n    using vector<\
+    \ T >::vector;\n    using P = FormalPowerSeries;\n    using Conv = ArbitraryModConvolution<\
     \ T >;\n\n    P pre(int deg) const {\n        return P(begin(*this), begin(*this)\
     \ + min((int) this->size(), deg));\n    }\n\n    P rev(int deg = -1) const {\n\
     \        P ret(*this);\n        if(deg != -1) ret.resize(deg, T(0));\n       \
@@ -448,9 +447,9 @@ data:
   isVerificationFile: false
   path: src/math/FormalPowerSeries.hpp
   requiredBy:
-  - src/math/fps/pow.hpp
   - src/math/fps/pow_term2.hpp
-  timestamp: '2023-02-28 01:25:34+09:00'
+  - src/math/fps/pow.hpp
+  timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/FormalPowerSeries.hpp
@@ -458,5 +457,5 @@ layout: document
 redirect_from:
 - /library/src/math/FormalPowerSeries.hpp
 - /library/src/math/FormalPowerSeries.hpp.html
-title: Formal Power Series
+title: src/math/FormalPowerSeries.hpp
 ---

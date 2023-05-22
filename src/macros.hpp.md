@@ -307,7 +307,7 @@ data:
     title: src/math/BM.hpp
   - icon: ':warning:'
     path: src/math/FormalPowerSeries.hpp
-    title: Formal Power Series
+    title: src/math/FormalPowerSeries.hpp
   - icon: ':warning:'
     path: src/math/fps/pow.hpp
     title: src/math/fps/pow.hpp
@@ -450,188 +450,186 @@ data:
     using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
-    \ ll>;\nusing vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing\
-    \ vvpll = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil\
-    \ = vector<vector<pil>>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
-    #define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4,\
-    \ rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i\
-    \ < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define\
-    \ rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c\
-    \ < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b);\
-    \ i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
-    #define ALL(A) A.begin(), A.end()\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
+    using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
+    \ = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__,\
+    \ rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa\
+    \ = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n\
+    #define rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb)\
+    \ or (c < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a);\
+    \ i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n"
   code: "#pragma once\n#include \"base.hpp\"\n\nusing ll = long long;\nusing ull =\
     \ unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\nusing\
     \ pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int, ll>;\n\
-    using vvl = vector<vector<ll>>;\nusing vvi = vector<vector<int>>;\nusing vvpll\
-    \ = vector<vector<pll>>;\nusing vvpli = vector<vector<pli>>;\nusing vvpil = vector<vector<pil>>;\n\
-    template<typename T>\nusing vv = vector<vector<T>>;\n#define name4(i, a, b, c,\
-    \ d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)\n\
-    #define rep1(i, a) for (ll i = 0, _aa = a; i < _aa; i++)\n#define rep2(i, a, b)\
-    \ for (ll i = a, _bb = b; i < _bb; i++)\n#define rep3(i, a, b, c) for (ll i =\
-    \ a, _bb = b; (c > 0 && a <= i && i < _bb) or (c < 0 && a >= i && i > _bb); i\
-    \ += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define pb push_back\n\
-    #define eb emplace_back\n#define mkp make_pair\n#define ALL(A) A.begin(), A.end()\n\
-    #define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)), A.end())\n#define elif\
-    \ else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n    constexpr ll INF\
-    \ = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr ld EPS = 1e-10;\n\
-    \    constexpr ld PI = M_PI;\n#endif\n"
+    template<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\nusing\
+    \ vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
+    \ = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__,\
+    \ rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa\
+    \ = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n\
+    #define rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb)\
+    \ or (c < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a);\
+    \ i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
+    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n"
   dependsOn:
   - src/base.hpp
   isVerificationFile: false
   path: src/macros.hpp
   requiredBy:
-  - src/math/lagrange_polynomial.hpp
-  - src/math/FormalPowerSeries.hpp
-  - src/math/BM.hpp
-  - src/math/fps/pow.hpp
-  - src/math/fps/pow_term2.hpp
-  - src/mystl/my_multiset.hpp
-  - src/mystl/my_deque.hpp
-  - src/mystl/my_set.hpp
-  - src/mystl/my_vector.hpp
-  - src/graph/bfs.hpp
-  - src/graph/HeavyLightDecomposition.hpp
-  - src/graph/_dijkstra.hpp
-  - src/graph/AuxiliaryTree.hpp
-  - src/graph/bellman_ford.hpp
-  - src/graph/UnionFind.hpp
-  - src/graph/Dijkstra.hpp
-  - src/graph/dijkstra_v2.hpp
-  - src/graph/topological_sort.hpp
-  - src/graph/WeightedUnionFind.hpp
-  - src/graph/bfs01.hpp
-  - src/graph/dfs.hpp
-  - src/graph/warshall_floyd.hpp
-  - src/matrix/MatPow.hpp
-  - src/matrix/gauss_jordan_real.hpp
-  - src/matrix/gauss_jordan_f2.hpp
-  - src/matrix/mat_dot.hpp
-  - src/datastructure/_accumulate.hpp
-  - src/datastructure/LazySegmentTree.hpp
-  - src/datastructure/BIT.hpp
-  - src/datastructure/merge_segment.hpp
-  - src/datastructure/SegmentTreeBeats.hpp
-  - src/datastructure/Imos2D.hpp
-  - src/datastructure/SparseTable.hpp
-  - src/datastructure/DynamicLiChaoTree.hpp
-  - src/datastructure/LazySegmentTreeArithmetric.hpp
-  - src/datastructure/PersistentBIT.hpp
-  - src/datastructure/BIT2.hpp
-  - src/datastructure/slide_min.hpp
-  - src/datastructure/get_inversion.hpp
-  - src/datastructure/Accumulate.hpp
-  - src/datastructure/Accumulate2D.hpp
-  - src/datastructure/Imos.hpp
-  - src/geometry/pick_theorem.hpp
-  - src/geometry/Line.hpp
-  - src/geometry/dot.hpp
-  - src/geometry/dist3d.hpp
-  - src/geometry/project.hpp
-  - src/geometry/intersect.hpp
-  - src/geometry/Segment.hpp
-  - src/geometry/Point.hpp
-  - src/geometry/cross.hpp
-  - src/geometry/get_distance.hpp
-  - src/geometry/angle.hpp
-  - src/geometry/intersectCC.hpp
-  - src/geometry/get_a_and_b.hpp
   - src/geometry/reflect.hpp
-  - src/geometry/ccw.hpp
-  - src/geometry/radians.hpp
-  - src/geometry/monotone_chain.hpp
-  - src/geometry/get_cross_point.hpp
   - src/geometry/Circle.hpp
   - src/geometry/rotate.hpp
+  - src/geometry/angle.hpp
   - src/geometry/cos_formula.hpp
+  - src/geometry/dot.hpp
+  - src/geometry/Point.hpp
+  - src/geometry/intersectCC.hpp
+  - src/geometry/pick_theorem.hpp
+  - src/geometry/Line.hpp
+  - src/geometry/dist3d.hpp
+  - src/geometry/get_cross_point.hpp
+  - src/geometry/get_distance.hpp
+  - src/geometry/cross.hpp
+  - src/geometry/monotone_chain.hpp
+  - src/geometry/ccw.hpp
+  - src/geometry/intersect.hpp
   - src/geometry/degrees.hpp
-  - src/grid/build_grid.hpp
-  - src/grid/bfs.hpp
-  - src/grid/dijkstra.hpp
-  - src/grid/idtogrid.hpp
-  - src/grid/constants/dir_diagonals.hpp
-  - src/grid/constants/dir8.hpp
-  - src/grid/constants/dir4.hpp
-  - src/grid/constants/directions.hpp
-  - src/grid/rot90.hpp
-  - src/grid/gridtoid.hpp
-  - src/grid/scale.hpp
-  - src/grid/bfs_restore.hpp
-  - src/grid/transpose.hpp
-  - src/grid/bfs01.hpp
-  - src/grid/flip.hpp
-  - src/template.hpp
-  - src/string/number_format.hpp
-  - src/string/compare.hpp
-  - src/string/get_next_indices.hpp
-  - src/string/bin.hpp
-  - src/string/zfill.hpp
-  - src/string/is_palindrome.hpp
-  - src/string/SuffixArray.hpp
-  - src/common/Counter.hpp
-  - src/common/vector.hpp
-  - src/common/print.hpp
-  - src/common/int128.hpp
-  - src/common/pow.hpp
+  - src/geometry/project.hpp
+  - src/geometry/Segment.hpp
+  - src/geometry/radians.hpp
+  - src/geometry/get_a_and_b.hpp
+  - src/common/Compress.hpp
   - src/common/split.hpp
+  - src/common/interactive.hpp
+  - src/common/join.hpp
+  - src/common/mapping.hpp
   - src/common/bit_length.hpp
   - src/common/popcount.hpp
-  - src/common/to_string.hpp
-  - src/common/RLE.hpp
-  - src/common/_doubling.hpp
-  - src/common/randrange.hpp
-  - src/common/bisearch_real.hpp
-  - src/common/interactive.hpp
-  - src/common/trisearch.hpp
-  - src/common/LIS.hpp
-  - src/common/trisearch_real.hpp
   - src/common/sample.hpp
-  - src/common/yesno.hpp
-  - src/common/mapping.hpp
-  - src/common/Compress.hpp
-  - src/common/bisearch.hpp
-  - src/common/join.hpp
+  - src/common/bisearch_real.hpp
+  - src/common/LIS.hpp
   - src/common/Doubling.hpp
+  - src/common/vector.hpp
+  - src/common/_doubling.hpp
+  - src/common/print.hpp
+  - src/common/randrange.hpp
+  - src/common/int128.hpp
+  - src/common/pow.hpp
+  - src/common/trisearch.hpp
+  - src/common/RLE.hpp
+  - src/common/to_string.hpp
+  - src/common/trisearch_real.hpp
+  - src/common/bisearch.hpp
   - src/common/input.hpp
-  - src/combinatorics/nCr.hpp
-  - src/combinatorics/ModTools.hpp
-  - src/combinatorics/partition.hpp
-  - src/combinatorics/permutations.hpp
-  - src/combinatorics/nC2.hpp
-  - src/combinatorics/stirling.hpp
-  - src/combinatorics/combinations_with_replacement.hpp
-  - src/combinatorics/combinations.hpp
-  - src/numbers/Eratosthenes.hpp
-  - src/numbers/number_le_n_with_a_b.hpp
-  - src/numbers/ntod.hpp
-  - src/numbers/FastPrimeFactorization.hpp
-  - src/numbers/osa_k.hpp
+  - src/common/yesno.hpp
+  - src/common/Counter.hpp
+  - src/datastructure/BIT.hpp
+  - src/datastructure/Accumulate.hpp
+  - src/datastructure/get_inversion.hpp
+  - src/datastructure/LazySegmentTreeArithmetric.hpp
+  - src/datastructure/SegmentTreeBeats.hpp
+  - src/datastructure/_accumulate.hpp
+  - src/datastructure/Accumulate2D.hpp
+  - src/datastructure/SparseTable.hpp
+  - src/datastructure/slide_min.hpp
+  - src/datastructure/BIT2.hpp
+  - src/datastructure/merge_segment.hpp
+  - src/datastructure/LazySegmentTree.hpp
+  - src/datastructure/DynamicLiChaoTree.hpp
+  - src/datastructure/Imos.hpp
+  - src/datastructure/PersistentBIT.hpp
+  - src/datastructure/Imos2D.hpp
+  - src/mystl/my_multiset.hpp
+  - src/mystl/my_set.hpp
+  - src/mystl/my_vector.hpp
+  - src/mystl/my_deque.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
+  - src/math/BM.hpp
+  - src/math/lagrange_polynomial.hpp
   - src/numbers/Fraction.hpp
-  - src/numbers/isqrt.hpp
-  - src/numbers/is_prime.hpp
-  - src/numbers/digit_sum.hpp
-  - src/numbers/divisors.hpp
-  - src/numbers/bsgs.hpp
-  - src/numbers/segment_sieve.hpp
-  - src/numbers/_xor_basis.hpp
-  - src/numbers/_eratosthenes_sieve.hpp
-  - src/numbers/XorBasis.hpp
-  - src/numbers/dton.hpp
-  - src/numbers/lcm.hpp
-  - src/numbers/pythagorean_triple.hpp
-  - src/numbers/gcd.hpp
   - src/numbers/_factorize.hpp
-  timestamp: '2023-02-28 01:25:34+09:00'
+  - src/numbers/divisors.hpp
+  - src/numbers/FastPrimeFactorization.hpp
+  - src/numbers/ntod.hpp
+  - src/numbers/XorBasis.hpp
+  - src/numbers/_eratosthenes_sieve.hpp
+  - src/numbers/number_le_n_with_a_b.hpp
+  - src/numbers/isqrt.hpp
+  - src/numbers/lcm.hpp
+  - src/numbers/dton.hpp
+  - src/numbers/is_prime.hpp
+  - src/numbers/Eratosthenes.hpp
+  - src/numbers/gcd.hpp
+  - src/numbers/_xor_basis.hpp
+  - src/numbers/pythagorean_triple.hpp
+  - src/numbers/segment_sieve.hpp
+  - src/numbers/osa_k.hpp
+  - src/numbers/digit_sum.hpp
+  - src/numbers/bsgs.hpp
+  - src/combinatorics/combinations_with_replacement.hpp
+  - src/combinatorics/ModTools.hpp
+  - src/combinatorics/combinations.hpp
+  - src/combinatorics/stirling.hpp
+  - src/combinatorics/permutations.hpp
+  - src/combinatorics/partition.hpp
+  - src/combinatorics/nC2.hpp
+  - src/combinatorics/nCr.hpp
+  - src/template.hpp
+  - src/grid/gridtoid.hpp
+  - src/grid/rot90.hpp
+  - src/grid/bfs01.hpp
+  - src/grid/bfs_restore.hpp
+  - src/grid/constants/dir4.hpp
+  - src/grid/constants/dir_diagonals.hpp
+  - src/grid/constants/directions.hpp
+  - src/grid/constants/dir8.hpp
+  - src/grid/transpose.hpp
+  - src/grid/build_grid.hpp
+  - src/grid/bfs.hpp
+  - src/grid/scale.hpp
+  - src/grid/dijkstra.hpp
+  - src/grid/flip.hpp
+  - src/grid/idtogrid.hpp
+  - src/graph/Dijkstra.hpp
+  - src/graph/HeavyLightDecomposition.hpp
+  - src/graph/_dijkstra.hpp
+  - src/graph/bfs01.hpp
+  - src/graph/AuxiliaryTree.hpp
+  - src/graph/topological_sort.hpp
+  - src/graph/UnionFind.hpp
+  - src/graph/bellman_ford.hpp
+  - src/graph/dfs.hpp
+  - src/graph/WeightedUnionFind.hpp
+  - src/graph/bfs.hpp
+  - src/graph/dijkstra_v2.hpp
+  - src/graph/warshall_floyd.hpp
+  - src/string/bin.hpp
+  - src/string/is_palindrome.hpp
+  - src/string/zfill.hpp
+  - src/string/get_next_indices.hpp
+  - src/string/compare.hpp
+  - src/string/number_format.hpp
+  - src/string/SuffixArray.hpp
+  - src/matrix/MatPow.hpp
+  - src/matrix/mat_dot.hpp
+  - src/matrix/gauss_jordan_real.hpp
+  - src/matrix/gauss_jordan_f2.hpp
+  timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/UnionFind.test.cpp
+  - test/common/bisect.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
   - test/graph/bfs.test.cpp
+  - test/graph/UnionFind.test.cpp
   - test/matrix/MatPow.test.cpp
-  - test/common/bisect.test.cpp
 documentation_of: src/macros.hpp
 layout: document
 redirect_from:

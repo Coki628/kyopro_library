@@ -7,10 +7,10 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: src/math/ArbitraryModConvolution.hpp
-    title: Arbitrary Mod Convolution
+    title: src/math/ArbitraryModConvolution.hpp
   - icon: ':warning:'
     path: src/math/FormalPowerSeries.hpp
-    title: Formal Power Series
+    title: src/math/FormalPowerSeries.hpp
   - icon: ':warning:'
     path: src/math/fps/pow.hpp
     title: src/math/fps/pow.hpp
@@ -115,10 +115,10 @@ data:
   isVerificationFile: false
   path: src/math/FastFourierTransform.hpp
   requiredBy:
-  - src/math/ArbitraryModConvolution.hpp
   - src/math/FormalPowerSeries.hpp
-  - src/math/fps/pow.hpp
   - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
+  - src/math/ArbitraryModConvolution.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
