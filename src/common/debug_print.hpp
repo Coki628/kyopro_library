@@ -2,6 +2,8 @@
 
 // see: https://blog.naskya.net/post/0002/
 
+#ifdef __LOCAL
+
 #ifndef DEBUG_PRINT_HPP
 #define DEBUG_PRINT_HPP
 
@@ -30,7 +32,7 @@
 #endif
 
 namespace debug_print {
-std::ostream &os = std::cerr;
+std::ostream &os = std::cout;
 
 template<class Tp>
 auto has_cbegin(int)
@@ -182,14 +184,12 @@ template<class... Ts> void out(const std::tuple<Ts...> &arg) {
 
 #if INCLUDED(STACK)
 template<class... Ts> void out(std::stack<Ts...> arg) {
-    if (arg.empty()) {
-        os << "<empty stack>";
-        return;
-    }
-    os << "[ ";
+    os << "[";
     while (!arg.empty()) {
         out(arg.top());
-        os << ' ';
+        if (arg.size() > 1) {
+            os << ", ";
+        }
         arg.pop();
     }
     os << ']';
@@ -198,27 +198,23 @@ template<class... Ts> void out(std::stack<Ts...> arg) {
 
 #if INCLUDED(QUEUE)
 template<class... Ts> void out(std::queue<Ts...> arg) {
-    if (arg.empty()) {
-        os << "<empty queue>";
-        return;
-    }
-    os << "[ ";
+    os << "[";
     while (!arg.empty()) {
         out(arg.front());
-        os << ' ';
+        if (arg.size() > 1) {
+            os << ", ";
+        }
         arg.pop();
     }
     os << ']';
 }
 template<class... Ts> void out(std::priority_queue<Ts...> arg) {
-    if (arg.empty()) {
-        os << "<empty priority_queue>";
-        return;
-    }
-    os << "[ ";
+    os << "[";
     while (!arg.empty()) {
         out(arg.top());
-        os << ' ';
+        if (arg.size() > 1) {
+            os << ", ";
+        }
         arg.pop();
     }
     os << ']';
@@ -227,16 +223,17 @@ template<class... Ts> void out(std::priority_queue<Ts...> arg) {
 
 template<class Container>
 std::enable_if_t<is_iterable_container_v<Container>> out(const Container &arg) {
-    if (std::distance(std::cbegin(arg), std::cend(arg)) == 0) {
-        os << "<empty container>";
-        return;
-    }
-    os << "[ ";
+    int sz = std::distance(std::cbegin(arg), std::cend(arg));
+    os << "[";
+    int i = 0;
     std::for_each(
         std::cbegin(arg), std::cend(arg),
-        [](const elem_t<Container> &elem) {
+        [sz, &i](const elem_t<Container> &elem) {
             out(elem);
-            os << ' ';
+            if (i < sz - 1) {
+                os << ", ";
+            }
+            i++;
         }
     );
     os << ']';
@@ -247,7 +244,7 @@ std::enable_if_t<!is_multidim_container_v<Tp>>
 print(std::string_view name, const Tp &arg) {
     os << name << ": ";
     out(arg);
-    if constexpr (is_container_v<Tp>) os << '\n';
+    if constexpr (is_container_v<Tp>) os << std::endl;
 }
 
 template<class Tp>
@@ -255,7 +252,7 @@ std::enable_if_t<is_multidim_container_v<Tp>>
 print(std::string_view name, const Tp &arg) {
     os << name << ": ";
     if (std::distance(std::cbegin(arg), std::cend(arg)) == 0) {
-        os << "<empty multidimensional container>\n";
+        os << "[]" << std::endl;
         return;
     }
     std::for_each(
@@ -265,7 +262,7 @@ print(std::string_view name, const Tp &arg) {
             else
                 for (std::size_t i = 0; i < name.length() + 2; i++) os << ' ';
             out(elem);
-            os << '\n';
+            os << std::endl;
         }
     );
 }
@@ -275,12 +272,12 @@ void multi_print(std::string_view names, const Tp &arg, const Ts &...args) {
     if constexpr (sizeof...(Ts) == 0) {
         names.remove_suffix(std::distance(
             names.crbegin(), std::find_if_not(
-                                 names.crbegin(), names.crend(),
-                                 [](const char c) { return std::isspace(c); }
-                             )
+                names.crbegin(), names.crend(),
+                [](const char c) { return std::isspace(c); }
+            )
         ));
         print(names, arg);
-        if constexpr (!is_container_v<Tp>) os << '\n';
+        if constexpr (!is_container_v<Tp>) os << std::endl;
     } else {
         std::size_t comma_pos = 0;
 
@@ -314,8 +311,8 @@ void multi_print(std::string_view names, const Tp &arg, const Ts &...args) {
         print(names.substr(0, first_varname_length), arg);
 
         if constexpr (!is_container_v<Tp>) {
-            if constexpr (is_container_v<first_t<Ts...>>) os << '\n';
-            else os << " | ";
+            if constexpr (is_container_v<first_t<Ts...>>) os << std::endl;
+            else os << ", ";
         }
 
         const std::size_t next_varname_begins_at = std::distance(
@@ -334,3 +331,9 @@ void multi_print(std::string_view names, const Tp &arg, const Ts &...args) {
 #undef INCLUDED
 
 #endif // DEBUG_PRINT_HPP
+
+#define debug(...) debug_print::multi_print(#__VA_ARGS__, __VA_ARGS__)
+#else
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#define debug(...) (static_cast<void>(0))
+#endif

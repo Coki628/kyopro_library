@@ -1,10 +1,7 @@
 #pragma once
 #include "../base.hpp"
 
-/**
- * @brief Coeff of Rational Function
- * @docs docs/coeff-of-rational-function.md
- */
+// see: https://ei1333.github.io/library/math/fps/coeff-of-rational-function.hpp
 template< template< typename > class FPS, typename Mint >
 Mint coeff_of_rational_function(FPS< Mint > P, FPS< Mint > Q, int64_t k) {
     // compute the coefficient [x^k] P/Q of rational power series

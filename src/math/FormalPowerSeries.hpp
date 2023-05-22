@@ -3,9 +3,7 @@
 #include "../common/print.hpp"
 #include "ArbitraryModConvolution.hpp"
 
-/**
- * @brief Formal Power Series
- */
+// see: https://ei1333.github.io/library/math/fps/formal-power-series.hpp
 template< typename T >
 struct FormalPowerSeries : vector< T > {
     using vector< T >::vector;

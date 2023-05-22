@@ -1,6 +1,4 @@
-/**
- * @brief Berlekamp Massey
- */
+// see: https://ei1333.github.io/library/math/fps/berlekamp-massey.hpp
 template< template< typename > class FPS, typename Mint >
 FPS< Mint > berlekamp_massey(const FPS< Mint > &s) {
     const int N = (int) s.size();

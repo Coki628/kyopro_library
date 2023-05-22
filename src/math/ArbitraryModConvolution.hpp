@@ -2,9 +2,8 @@
 #include "../base.hpp"
 #include "FastFourierTransform.hpp"
 
-/*
- * @brief Arbitrary Mod Convolution
- */
+// 任意MOD畳み込み
+// see: https://ei1333.github.io/library/math/fft/arbitrary-mod-convolution.hpp
 template< typename T >
 struct ArbitraryModConvolution {
     using real = FastFourierTransform::real;

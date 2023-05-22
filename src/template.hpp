@@ -34,6 +34,7 @@
 #include "common/subarray.hpp"
 #include "common/HashMap.hpp"
 #include "common/vector.hpp"
+#include "common/pair.hpp"
 
 // from combinatorics
 #include "combinatorics/ModTools.hpp"
