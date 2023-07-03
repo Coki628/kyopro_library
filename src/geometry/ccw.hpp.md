@@ -106,8 +106,8 @@ data:
   isVerificationFile: false
   path: src/geometry/ccw.hpp
   requiredBy:
-  - src/geometry/get_distance.hpp
   - src/geometry/intersect.hpp
+  - src/geometry/get_distance.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

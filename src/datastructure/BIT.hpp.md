@@ -145,8 +145,8 @@ data:
   isVerificationFile: false
   path: src/datastructure/BIT.hpp
   requiredBy:
-  - src/datastructure/PersistentBIT.hpp
   - src/template.hpp
+  - src/datastructure/PersistentBIT.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -68,8 +68,8 @@ data:
   isVerificationFile: false
   path: src/common/RLE.hpp
   requiredBy:
-  - src/numbers/FastPrimeFactorization.hpp
   - src/template.hpp
+  - src/numbers/FastPrimeFactorization.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

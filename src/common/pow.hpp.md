@@ -59,8 +59,8 @@ data:
   path: src/common/pow.hpp
   requiredBy:
   - src/geometry/intersectCC.hpp
-  - src/numbers/bsgs.hpp
   - src/template.hpp
+  - src/numbers/bsgs.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
