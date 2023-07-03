@@ -17,6 +17,7 @@ struct Fraction {
             numerator *= -1;
             denominator *= -1;
         }
+        simplify();
     }
 
     Fraction(const Fraction<T> &a) : numerator(a.numerator), denominator(a.denominator) {
