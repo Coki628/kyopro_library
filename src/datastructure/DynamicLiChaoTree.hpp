@@ -26,7 +26,8 @@ struct DynamicLiChaoTree {
 
     Node *root;
 
-    // x_low,x_highは(多分)半開区間[x_low,x_high)あれば大丈夫
+    // x_low,x_highは(多分)半開区間[x_low,x_high)あれば大丈夫。
+    // 単位元idは常に(max用でも)INFでよさそう。x_highはidより小さくした方がよさそう。
     DynamicLiChaoTree(ll x_low, ll x_high, T id, bool is_min=true) : root{nullptr}, x_low(x_low), x_high(x_high), id(id), is_min(is_min) {}
 
     Node *add_line(Node *t, Line &x, const ll &l, const ll &r, const T &x_l, const T &x_r) {
