@@ -624,33 +624,35 @@ data:
     \ if (par[x] == x) {\n            return x;\n        } else {\n            par[x]\
     \ = find(par[x]);\n            return par[x];\n        }\n    }\n\n    // \u4F75\
     \u5408\uFF1A\u30DE\u30FC\u30B8\u5F8C\u306E\u96C6\u5408\u306E\u6839(\u30DE\u30FC\
-    \u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\n    int merge(int a, int b) {\n\
-    \        int x = find(a);\n        int y = find(b);\n        if (x == y) {\n \
-    \           tree[x] = false;\n            return -1;\n        }\n        if (!tree[x]\
-    \ or !tree[y]) {\n            tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n\
-    \        if (rank[x] < rank[y]) {\n            par[x] = y;\n            sz[y]\
-    \ += sz[x];\n            return y;\n        } else {\n            par[y] = x;\n\
-    \            sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n        \
-    \        rank[x]++;\n            }\n            return x;\n        }\n    }\n\n\
-    \    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\u5B9A\n \
-    \   bool same(int a, int b) {\n        return find(a) == find(b);\n    }\n\n \
-    \   // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\u3059\u308B\u96C6\u5408\u306E\
-    \u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n        return sz[find(x)];\n\
-    \    }\n\n    // \u96C6\u5408\u306E\u6570\n    int size() {\n        return groupcnt;\n\
-    \    }\n\n    // \u6728\u304B\u3069\u3046\u304B\u306E\u5224\u5B9A\n    bool is_tree(int\
-    \ x) {\n        return tree[find(x)];\n    }\n\n    // \u5168\u3066\u306E\u6839\
-    \u3092\u53D6\u5F97\n    set<int> get_roots() {\n        set<int> res;\n      \
-    \  rep(i, n) {\n            res.insert(find(i));\n        }\n        return res;\n\
-    \    }\n\n    // \u5168\u9802\u70B9\u306E\u30B0\u30EB\u30FC\u30D7\u756A\u53F7\u3092\
-    \u53D6\u5F97\n    vector<int> get_info() {\n        vector<int> res(n);\n    \
-    \    rep(i, n) {\n            res[i] = find(i);\n        }\n        return res;\n\
-    \    }\n};\n#line 48 \"src/template.hpp\"\n\n// from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\
-    \n\n// 4\u65B9\u5411\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0,\
-    \ 1}};\n#line 3 \"src/grid/constants/directions.hpp\"\n\n// \u5F8C\u65B9\u4E92\
-    \u63DB\u7528\n#define directions dir4\n#line 2 \"src/grid/gridtoid.hpp\"\n\n//\
-    \ \u30B0\u30EA\u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll j, ll\
-    \ W) { return i*W+j; }\n#line 3 \"src/grid/idtogrid.hpp\"\n\n// \u5217\u21D2\u30B0\
-    \u30EA\u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W) { return divmod(id,\
+    \u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\n    template<typename F>\n    int\
+    \ merge(int a, int b, F f) {\n        int x = find(a);\n        int y = find(b);\n\
+    \        if (x == y) {\n            tree[x] = false;\n            f(-1, y);\n\
+    \            return -1;\n        }\n        if (!tree[x] or !tree[y]) {\n    \
+    \        tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n        if\
+    \ (rank[x] < rank[y]) {\n            par[x] = y;\n            sz[y] += sz[x];\n\
+    \            f(y, x);\n            return y;\n        } else {\n            par[y]\
+    \ = x;\n            sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n \
+    \               rank[x]++;\n            }\n            f(x, y);\n            return\
+    \ x;\n        }\n    }\n\n    int merge(int a, int b) {\n        return merge(a,\
+    \ b, [](int r, int ch) {});\n    }\n\n    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\
+    \u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int b) {\n        return\
+    \ find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\
+    \u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n\
+    \        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\u306E\u6570\n    int\
+    \ size() {\n        return groupcnt;\n    }\n\n    // \u6728\u304B\u3069\u3046\
+    \u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n        return tree[find(x)];\n\
+    \    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\u5F97\n    set<int> get_roots()\
+    \ {\n        set<int> res;\n        rep(i, n) {\n            res.insert(find(i));\n\
+    \        }\n        return res;\n    }\n\n    // \u5168\u9802\u70B9\u306E\u30B0\
+    \u30EB\u30FC\u30D7\u756A\u53F7\u3092\u53D6\u5F97\n    vector<int> get_info() {\n\
+    \        vector<int> res(n);\n        rep(i, n) {\n            res[i] = find(i);\n\
+    \        }\n        return res;\n    }\n};\n#line 48 \"src/template.hpp\"\n\n\
+    // from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\n\n// 4\u65B9\u5411\nconst\
+    \ vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n#line 3 \"src/grid/constants/directions.hpp\"\
+    \n\n// \u5F8C\u65B9\u4E92\u63DB\u7528\n#define directions dir4\n#line 2 \"src/grid/gridtoid.hpp\"\
+    \n\n// \u30B0\u30EA\u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll\
+    \ j, ll W) { return i*W+j; }\n#line 3 \"src/grid/idtogrid.hpp\"\n\n// \u5217\u21D2\
+    \u30B0\u30EA\u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W) { return divmod(id,\
     \ W); }\n#line 53 \"src/template.hpp\"\n\n// from mystl\n#line 3 \"src/mystl/defaultdict.hpp\"\
     \n\n// HashMap\u3092\u7D99\u627F\u3057\u305Fdefaultdict\ntemplate<typename _Key,\
     \ typename _Tp>\nstruct defaultdict : HashMap<_Key, _Tp> {\n    const _Tp init;\n\
@@ -1039,7 +1041,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-07-05 10:59:02+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp
