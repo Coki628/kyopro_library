@@ -92,9 +92,9 @@ struct RollingHash {
     }
 
     // 長さlenの文字列のhashのx文字目(0-indexed)をaからbに変える
-    uint64_t update(uint64_t hash, int len, int x, char a, char b) {
-        if (b >= a) return add(hash, mul(b-a, power[len-x-1]));
-        else return add(hash, mul(mod+(b-a), power[len-x-1]));
+    uint64_t update(uint64_t &hash, int len, int x, char a, char b) {
+        if (b >= a) return hash = add(hash, mul(b-a, power[len-x-1]));
+        else return hash = add(hash, mul(mod+(b-a), power[len-x-1]));
     }
 
     // テーブルaの区間[l,r)の回文判定(aを反転させたテーブルrevも渡す)
