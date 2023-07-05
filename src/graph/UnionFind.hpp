@@ -59,11 +59,13 @@ struct UnionFind {
     }
 
     // 併合：マージ後の集合の根(マージ済なら-1)を返す
-    int merge(int a, int b) {
+    template<typename F>
+    int merge(int a, int b, F f) {
         int x = find(a);
         int y = find(b);
         if (x == y) {
             tree[x] = false;
+            f(-1, y);
             return -1;
         }
         if (!tree[x] or !tree[y]) {
@@ -73,6 +75,7 @@ struct UnionFind {
         if (rank[x] < rank[y]) {
             par[x] = y;
             sz[y] += sz[x];
+            f(y, x);
             return y;
         } else {
             par[y] = x;
@@ -80,8 +83,13 @@ struct UnionFind {
             if (rank[x] == rank[y]) {
                 rank[x]++;
             }
+            f(x, y);
             return x;
         }
+    }
+
+    int merge(int a, int b) {
+        return merge(a, b, [](int r, int ch) {});
     }
 
     // 同じ集合に属するか判定
