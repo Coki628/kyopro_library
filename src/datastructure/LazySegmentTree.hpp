@@ -171,6 +171,11 @@ struct LazySegmentTree {
         }
         return -1;
     }
+
+    // なんかちゃんと動かない
+    // Monoid all() {
+    //     return data[1];
+    // }
 };
 
 template<typename F, typename G, typename H, typename T, typename E>

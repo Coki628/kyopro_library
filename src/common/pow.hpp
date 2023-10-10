@@ -13,9 +13,10 @@ ll pow(ll x, int n) { return pow(x, (ll)n); }
 
 ll pow(int x, int n) { return pow((ll)x, (ll)n); }
 
-ll pow(ll x, ll n, int mod) {
+template<typename T1, typename T2>
+T1 pow(T1 x, T1 n, T2 mod) {
     x %= mod;
-    ll res = 1;
+    T1 res = 1;
     while (n > 0) {
         if (n & 1) {
             res = (res * x) % mod;

@@ -305,6 +305,7 @@ struct FormalPowerSeries : vector< T > {
     }
 
     // sparse (from optさん)
+    // 引数：pair(次数, 係数)で必要な項のみ列挙したvector
     P &operator*=(vector<pair<ll, T>> g) {
         int n = (*this).size();
         auto [d, c] = g.front();

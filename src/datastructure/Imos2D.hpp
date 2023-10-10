@@ -13,7 +13,7 @@ public:
         dat.resize(H+1, vector<T>(W+1, 0));
     }
 
-    // [h1,h2),[w1,w2)の区間加算
+    // [(h1,w1),(h2,w2))の区間加算
     void add(int h1, int w1, int h2, int w2, T x) {
         if (h1 >= h2 or w1 >= w2) return;
         dat[h1][w1] += x;

@@ -57,7 +57,7 @@ public:
         }
     }
 
-    // [h1,h2),[w1,w2)の区間和
+    // [(h1,w1),(h2,w2))の区間和
     T query(int h1, int w1, int h2, int w2) {
         if (h1 >= h2 or w1 >= w2) return (T)0;
         return dat[h1][w1] - dat[h1][w2] - dat[h2][w1] + dat[h2][w2];
