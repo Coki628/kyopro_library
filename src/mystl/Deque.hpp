@@ -2,7 +2,7 @@
 #include "../common/print.hpp"
 
 template<typename _Tp>
-struct my_deque : deque<_Tp> {
+struct Deque : deque<_Tp> {
     using deque<_Tp>::deque;
     _Tp pop_front() {
         _Tp res = this->front();
@@ -17,7 +17,7 @@ struct my_deque : deque<_Tp> {
 };
 
 template<typename T>
-void print(const my_deque<T> &que) {
+void print(const Deque<T> &que) {
     vector<T> V(que.begin(), que.end());
     print(V);
 }

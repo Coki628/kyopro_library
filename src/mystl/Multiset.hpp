@@ -2,7 +2,7 @@
 #include "../common/print.hpp"
 
 template<typename _Key>
-struct my_multiset : multiset<_Key> {
+struct Multiset : multiset<_Key> {
     using multiset<_Key>::multiset;
     _Key front() {
         assert(this->size());
@@ -34,7 +34,7 @@ struct my_multiset : multiset<_Key> {
 };
 
 template<typename T>
-void print(const my_multiset<T> &se) {
+void print(const Multiset<T> &se) {
     vector<T> V(se.begin(), se.end());
     print(V);
 }

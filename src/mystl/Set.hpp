@@ -2,7 +2,7 @@
 #include "../common/print.hpp"
 
 template<typename _Key>
-struct my_set : set<_Key> {
+struct Set : set<_Key> {
     using set<_Key>::set;
     _Key front() {
         assert(this->size());
@@ -25,7 +25,7 @@ struct my_set : set<_Key> {
 };
 
 template<typename T>
-void print(const my_set<T> &se) {
+void print(const Set<T> &se) {
     vector<T> V(se.begin(), se.end());
     print(V);
 }

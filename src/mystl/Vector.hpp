@@ -3,7 +3,7 @@
 #include "../common/print.hpp"
 
 template<typename _Tp>
-struct my_vector : vector<_Tp> {
+struct Vector : vector<_Tp> {
     // コンストラクタの継承
     using vector<_Tp>::vector;
     _Tp pop() {
@@ -14,7 +14,7 @@ struct my_vector : vector<_Tp> {
 
     template<typename F>
     auto map(F f) {
-        my_vector<decltype(f(_Tp()))> res;
+        Vector<decltype(f(_Tp()))> res;
         for (auto& val : *this) {
             res.eb(f(val));
         }
@@ -23,7 +23,7 @@ struct my_vector : vector<_Tp> {
 };
 
 template<typename T>
-void print(const my_vector<T> &A) {
+void print(const Vector<T> &A) {
     vector<T> V(A.begin(), A.end());
     print(V);
 }
