@@ -85,9 +85,6 @@ data:
       path: src/common/Counter.hpp
       title: src/common/Counter.hpp
     - icon: ':warning:'
-      path: src/common/Doubling.hpp
-      title: src/common/Doubling.hpp
-    - icon: ':warning:'
       path: src/common/HashMap.hpp
       title: src/common/HashMap.hpp
     - icon: ':warning:'
@@ -105,9 +102,6 @@ data:
     - icon: ':warning:'
       path: src/common/Timer.hpp
       title: src/common/Timer.hpp
-    - icon: ':warning:'
-      path: src/common/_doubling.hpp
-      title: src/common/_doubling.hpp
     - icon: ':warning:'
       path: src/common/bisearch.hpp
       title: src/common/bisearch.hpp
@@ -258,6 +252,9 @@ data:
       path: src/datastructure/BinaryTrie.hpp
       title: src/datastructure/BinaryTrie.hpp
     - icon: ':warning:'
+      path: src/datastructure/Doubling.hpp
+      title: src/datastructure/Doubling.hpp
+    - icon: ':warning:'
       path: src/datastructure/DynamicLiChaoTree.hpp
       title: src/datastructure/DynamicLiChaoTree.hpp
     - icon: ':warning:'
@@ -323,6 +320,9 @@ data:
     - icon: ':warning:'
       path: src/datastructure/_accumulate.hpp
       title: src/datastructure/_accumulate.hpp
+    - icon: ':warning:'
+      path: src/datastructure/_doubling.hpp
+      title: src/datastructure/_doubling.hpp
     - icon: ':warning:'
       path: src/datastructure/get_inversion.hpp
       title: src/datastructure/get_inversion.hpp
@@ -580,26 +580,26 @@ data:
   - name: src/mystl
     pages:
     - icon: ':warning:'
+      path: src/mystl/Deque.hpp
+      title: src/mystl/Deque.hpp
+    - icon: ':warning:'
+      path: src/mystl/Multiset.hpp
+      title: src/mystl/Multiset.hpp
+    - icon: ':warning:'
+      path: src/mystl/PriorityQueue.hpp
+      title: src/mystl/PriorityQueue.hpp
+    - icon: ':warning:'
+      path: src/mystl/Queue.hpp
+      title: src/mystl/Queue.hpp
+    - icon: ':warning:'
+      path: src/mystl/Set.hpp
+      title: src/mystl/Set.hpp
+    - icon: ':warning:'
+      path: src/mystl/Vector.hpp
+      title: src/mystl/Vector.hpp
+    - icon: ':warning:'
       path: src/mystl/defaultdict.hpp
       title: src/mystl/defaultdict.hpp
-    - icon: ':warning:'
-      path: src/mystl/my_deque.hpp
-      title: src/mystl/my_deque.hpp
-    - icon: ':warning:'
-      path: src/mystl/my_multiset.hpp
-      title: src/mystl/my_multiset.hpp
-    - icon: ':warning:'
-      path: src/mystl/my_priority_queue.hpp
-      title: src/mystl/my_priority_queue.hpp
-    - icon: ':warning:'
-      path: src/mystl/my_queue.hpp
-      title: src/mystl/my_queue.hpp
-    - icon: ':warning:'
-      path: src/mystl/my_set.hpp
-      title: src/mystl/my_set.hpp
-    - icon: ':warning:'
-      path: src/mystl/my_vector.hpp
-      title: src/mystl/my_vector.hpp
   - name: src/numbers
     pages:
     - icon: ':warning:'

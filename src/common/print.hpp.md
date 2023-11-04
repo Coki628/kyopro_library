@@ -12,9 +12,6 @@ data:
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
   - icon: ':warning:'
-    path: src/graph/AuxiliaryTree.hpp
-    title: src/graph/AuxiliaryTree.hpp
-  - icon: ':warning:'
     path: src/math/FormalPowerSeries.hpp
     title: src/math/FormalPowerSeries.hpp
   - icon: ':warning:'
@@ -24,17 +21,17 @@ data:
     path: src/math/fps/pow_term2.hpp
     title: src/math/fps/pow_term2.hpp
   - icon: ':warning:'
-    path: src/mystl/my_deque.hpp
-    title: src/mystl/my_deque.hpp
+    path: src/mystl/Deque.hpp
+    title: src/mystl/Deque.hpp
   - icon: ':warning:'
-    path: src/mystl/my_multiset.hpp
-    title: src/mystl/my_multiset.hpp
+    path: src/mystl/Multiset.hpp
+    title: src/mystl/Multiset.hpp
   - icon: ':warning:'
-    path: src/mystl/my_set.hpp
-    title: src/mystl/my_set.hpp
+    path: src/mystl/Set.hpp
+    title: src/mystl/Set.hpp
   - icon: ':warning:'
-    path: src/mystl/my_vector.hpp
-    title: src/mystl/my_vector.hpp
+    path: src/mystl/Vector.hpp
+    title: src/mystl/Vector.hpp
   - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
@@ -143,23 +140,22 @@ data:
   path: src/common/print.hpp
   requiredBy:
   - src/common/yesno.hpp
-  - src/template.hpp
-  - src/mystl/my_deque.hpp
-  - src/mystl/my_set.hpp
-  - src/mystl/my_vector.hpp
-  - src/mystl/my_multiset.hpp
-  - src/graph/AuxiliaryTree.hpp
-  - src/math/FormalPowerSeries.hpp
-  - src/math/fps/pow_term2.hpp
   - src/math/fps/pow.hpp
+  - src/math/fps/pow_term2.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/mystl/Multiset.hpp
+  - src/mystl/Deque.hpp
+  - src/mystl/Set.hpp
+  - src/mystl/Vector.hpp
+  - src/template.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/graph/WeightedUnionFind.test.cpp
+  - test/graph/UnionFind.test.cpp
+  - test/graph/bfs.test.cpp
   - test/matrix/MatPow.test.cpp
   - test/common/bisect.test.cpp
-  - test/graph/UnionFind.test.cpp
-  - test/graph/WeightedUnionFind.test.cpp
-  - test/graph/bfs.test.cpp
 documentation_of: src/common/print.hpp
 layout: document
 redirect_from:

@@ -15,6 +15,9 @@ data:
     path: src/grid/constants/directions.hpp
     title: src/grid/constants/directions.hpp
   - icon: ':warning:'
+    path: src/grid/dijkstra.hpp
+    title: src/grid/dijkstra.hpp
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith: []
@@ -50,6 +53,7 @@ data:
   path: src/grid/constants/dir4.hpp
   requiredBy:
   - src/template.hpp
+  - src/grid/dijkstra.hpp
   - src/grid/constants/directions.hpp
   - src/grid/bfs.hpp
   timestamp: '2023-05-22 19:11:30+09:00'

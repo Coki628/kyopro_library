@@ -10,10 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/graph/AuxiliaryTree.hpp
-    title: src/graph/AuxiliaryTree.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -65,38 +62,37 @@ data:
     template<typename T>\nvoid print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n\
     \    print(V);\n}\n\ntemplate<typename T>\nvoid print(const set<T> &se) {\n  \
     \  vector<T> V(ALL(se));\n    print(V);\n}\n\n#define debug(x) (cout << #x <<\
-    \ \": \" << x << endl);\n#line 4 \"src/mystl/my_vector.hpp\"\n\ntemplate<typename\
-    \ _Tp>\nstruct my_vector : vector<_Tp> {\n    // \u30B3\u30F3\u30B9\u30C8\u30E9\
-    \u30AF\u30BF\u306E\u7D99\u627F\n    using vector<_Tp>::vector;\n    _Tp pop()\
-    \ {\n        _Tp res = this->back();\n        this->pop_back();\n        return\
-    \ res;\n    }\n\n    template<typename F>\n    auto map(F f) {\n        my_vector<decltype(f(_Tp()))>\
+    \ \": \" << x << endl);\n#line 4 \"src/mystl/Vector.hpp\"\n\ntemplate<typename\
+    \ _Tp>\nstruct Vector : vector<_Tp> {\n    // \u30B3\u30F3\u30B9\u30C8\u30E9\u30AF\
+    \u30BF\u306E\u7D99\u627F\n    using vector<_Tp>::vector;\n    _Tp pop() {\n  \
+    \      _Tp res = this->back();\n        this->pop_back();\n        return res;\n\
+    \    }\n\n    template<typename F>\n    auto map(F f) {\n        Vector<decltype(f(_Tp()))>\
     \ res;\n        for (auto& val : *this) {\n            res.eb(f(val));\n     \
     \   }\n        return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const\
-    \ my_vector<T> &A) {\n    vector<T> V(A.begin(), A.end());\n    print(V);\n}\n"
+    \ Vector<T> &A) {\n    vector<T> V(A.begin(), A.end());\n    print(V);\n}\n"
   code: "#pragma once\n#include \"../base.hpp\"\n#include \"../common/print.hpp\"\n\
-    \ntemplate<typename _Tp>\nstruct my_vector : vector<_Tp> {\n    // \u30B3\u30F3\
-    \u30B9\u30C8\u30E9\u30AF\u30BF\u306E\u7D99\u627F\n    using vector<_Tp>::vector;\n\
-    \    _Tp pop() {\n        _Tp res = this->back();\n        this->pop_back();\n\
+    \ntemplate<typename _Tp>\nstruct Vector : vector<_Tp> {\n    // \u30B3\u30F3\u30B9\
+    \u30C8\u30E9\u30AF\u30BF\u306E\u7D99\u627F\n    using vector<_Tp>::vector;\n \
+    \   _Tp pop() {\n        _Tp res = this->back();\n        this->pop_back();\n\
     \        return res;\n    }\n\n    template<typename F>\n    auto map(F f) {\n\
-    \        my_vector<decltype(f(_Tp()))> res;\n        for (auto& val : *this) {\n\
+    \        Vector<decltype(f(_Tp()))> res;\n        for (auto& val : *this) {\n\
     \            res.eb(f(val));\n        }\n        return res;\n    }\n};\n\ntemplate<typename\
-    \ T>\nvoid print(const my_vector<T> &A) {\n    vector<T> V(A.begin(), A.end());\n\
+    \ T>\nvoid print(const Vector<T> &A) {\n    vector<T> V(A.begin(), A.end());\n\
     \    print(V);\n}\n"
   dependsOn:
   - src/base.hpp
   - src/common/print.hpp
   - src/macros.hpp
   isVerificationFile: false
-  path: src/mystl/my_vector.hpp
-  requiredBy:
-  - src/graph/AuxiliaryTree.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  path: src/mystl/Vector.hpp
+  requiredBy: []
+  timestamp: '2023-10-10 14:57:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/mystl/my_vector.hpp
+documentation_of: src/mystl/Vector.hpp
 layout: document
 redirect_from:
-- /library/src/mystl/my_vector.hpp
-- /library/src/mystl/my_vector.hpp.html
-title: src/mystl/my_vector.hpp
+- /library/src/mystl/Vector.hpp
+- /library/src/mystl/Vector.hpp.html
+title: src/mystl/Vector.hpp
 ---

@@ -10,6 +10,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
+  - icon: ':warning:'
+    path: src/grid/constants/dir4.hpp
+    title: src/grid/constants/dir4.hpp
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
@@ -50,44 +53,44 @@ data:
     \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
     \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 2 \"src/common/chmin.hpp\"\
     \n\ntemplate<typename T>\nbool chmin(T &x, T y) {\n    return (y < x) ? x = y,\
-    \ true : false;\n}\n#line 4 \"src/grid/dijkstra.hpp\"\n\n// \u30B0\u30EA\u30C3\
-    \u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\u30C3\u30C9, \u59CB\
-    \u70B9{h, w}) \nusing P = tuple<ll, int, int>;\nvvl dijkstra(const vvl &grid,\
-    \ pii src, ll invalid=-1) {\n    int H = grid.size();\n    int W = grid[0].size();\n\
-    \    auto res = list2d(H, W, INF);\n    const vector<pii> directions = {{-1, 0},\
-    \ {1, 0}, {0, -1}, {0, 1}};\n    priority_queue<P, vector<P>, greater<P>> que;\n\
-    \    auto [sh, sw] = src;\n    que.push({0, sh, sw});\n    res[sh][sw] = 0;\n\n\
-    \    while (que.size()) {\n        auto [dist, h, w] = que.top(); que.pop();\n\
-    \        if (res[h][w] < dist) continue;\n        for (auto [dh, dw] : directions)\
-    \ {\n            int nh = h + dh;\n            int nw = w + dw;\n            if\
-    \ (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw]\
-    \ == invalid) continue;\n            ll cost = grid[nh][nw];\n            if (chmin(res[nh][nw],\
-    \ dist+cost)) {\n                que.push({dist+cost, nh, nw});\n            }\n\
-    \        }\n    }\n    return res;\n}\n"
+    \ true : false;\n}\n#line 3 \"src/grid/constants/dir4.hpp\"\n\n// 4\u65B9\u5411\
+    \nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n#line 5 \"src/grid/dijkstra.hpp\"\
+    \n\n// \u30B0\u30EA\u30C3\u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\
+    \u30C3\u30C9, \u59CB\u70B9{h, w})\nusing P = tuple<ll, int, int>;\nvvl dijkstra(const\
+    \ vvl &grid, pii src, ll invalid=-1) {\n    int H = grid.size();\n    int W =\
+    \ grid[0].size();\n    auto res = listnd(H, W, INF);\n    priority_queue<P, vector<P>,\
+    \ greater<P>> que;\n    auto [sh, sw] = src;\n    que.push({0, sh, sw});\n   \
+    \ res[sh][sw] = 0;\n\n    while (que.size()) {\n        auto [dist, h, w] = que.top();\
+    \ que.pop();\n        if (res[h][w] < dist) continue;\n        for (auto [dh,\
+    \ dw] : dir4) {\n            int nh = h + dh;\n            int nw = w + dw;\n\
+    \            if (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n         \
+    \   if (grid[nh][nw] == invalid) continue;\n            ll cost = grid[nh][nw];\n\
+    \            if (chmin(res[nh][nw], dist + cost)) {\n                que.push({dist\
+    \ + cost, nh, nw});\n            }\n        }\n    }\n    return res;\n}\n"
   code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n#include \"\
-    ../common/chmin.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\
-    \u30E9(H*W\u30B0\u30EA\u30C3\u30C9, \u59CB\u70B9{h, w}) \nusing P = tuple<ll,\
-    \ int, int>;\nvvl dijkstra(const vvl &grid, pii src, ll invalid=-1) {\n    int\
-    \ H = grid.size();\n    int W = grid[0].size();\n    auto res = list2d(H, W, INF);\n\
-    \    const vector<pii> directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n    priority_queue<P,\
-    \ vector<P>, greater<P>> que;\n    auto [sh, sw] = src;\n    que.push({0, sh,\
-    \ sw});\n    res[sh][sw] = 0;\n\n    while (que.size()) {\n        auto [dist,\
-    \ h, w] = que.top(); que.pop();\n        if (res[h][w] < dist) continue;\n   \
-    \     for (auto [dh, dw] : directions) {\n            int nh = h + dh;\n     \
-    \       int nw = w + dw;\n            if (nh < 0 or nw < 0 or nh >= H or nw >=\
-    \ W) continue;\n            if (grid[nh][nw] == invalid) continue;\n         \
-    \   ll cost = grid[nh][nw];\n            if (chmin(res[nh][nw], dist+cost)) {\n\
-    \                que.push({dist+cost, nh, nw});\n            }\n        }\n  \
-    \  }\n    return res;\n}\n"
+    ../common/chmin.hpp\"\n#include \"constants/dir4.hpp\"\n\n// \u30B0\u30EA\u30C3\
+    \u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\u30C3\u30C9, \u59CB\
+    \u70B9{h, w})\nusing P = tuple<ll, int, int>;\nvvl dijkstra(const vvl &grid, pii\
+    \ src, ll invalid=-1) {\n    int H = grid.size();\n    int W = grid[0].size();\n\
+    \    auto res = listnd(H, W, INF);\n    priority_queue<P, vector<P>, greater<P>>\
+    \ que;\n    auto [sh, sw] = src;\n    que.push({0, sh, sw});\n    res[sh][sw]\
+    \ = 0;\n\n    while (que.size()) {\n        auto [dist, h, w] = que.top(); que.pop();\n\
+    \        if (res[h][w] < dist) continue;\n        for (auto [dh, dw] : dir4) {\n\
+    \            int nh = h + dh;\n            int nw = w + dw;\n            if (nh\
+    \ < 0 or nw < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw]\
+    \ == invalid) continue;\n            ll cost = grid[nh][nw];\n            if (chmin(res[nh][nw],\
+    \ dist + cost)) {\n                que.push({dist + cost, nh, nw});\n        \
+    \    }\n        }\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   - src/common/listnd.hpp
   - src/common/chmin.hpp
+  - src/grid/constants/dir4.hpp
   isVerificationFile: false
   path: src/grid/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-10-10 14:51:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/dijkstra.hpp

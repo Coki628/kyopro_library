@@ -12,11 +12,11 @@ data:
     path: src/combinatorics/partition.hpp
     title: src/combinatorics/partition.hpp
   - icon: ':warning:'
-    path: src/common/Doubling.hpp
-    title: src/common/Doubling.hpp
+    path: src/datastructure/Doubling.hpp
+    title: src/datastructure/Doubling.hpp
   - icon: ':warning:'
-    path: src/common/_doubling.hpp
-    title: src/common/_doubling.hpp
+    path: src/datastructure/_doubling.hpp
+    title: src/datastructure/_doubling.hpp
   - icon: ':warning:'
     path: src/grid/bfs.hpp
     title: src/grid/bfs.hpp
@@ -89,17 +89,17 @@ data:
   requiredBy:
   - src/matrix/MatPow.hpp
   - src/matrix/mat_dot.hpp
-  - src/common/_doubling.hpp
-  - src/common/Doubling.hpp
   - src/template.hpp
-  - src/string/get_next_indices.hpp
-  - src/combinatorics/nCr.hpp
   - src/combinatorics/partition.hpp
+  - src/combinatorics/nCr.hpp
+  - src/string/get_next_indices.hpp
+  - src/datastructure/Doubling.hpp
+  - src/datastructure/_doubling.hpp
+  - src/grid/bfs_restore.hpp
   - src/grid/dijkstra.hpp
   - src/grid/transpose.hpp
   - src/grid/bfs01.hpp
   - src/grid/bfs.hpp
-  - src/grid/bfs_restore.hpp
   timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

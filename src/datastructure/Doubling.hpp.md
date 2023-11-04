@@ -45,7 +45,7 @@ data:
     vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
     template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
     \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
-    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/common/Doubling.hpp\"\
+    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n#line 3 \"src/datastructure/Doubling.hpp\"\
     \n\n// \u30C0\u30D6\u30EA\u30F3\u30B0\ntemplate<typename T, typename F>\nstruct\
     \ Doubling {\n\n    int N;\n    vector<vector<T>> dat;\n    const int MXLOG;\n\
     \    const F f;\n\n    // \u901A\u5E38\u306F\u3053\u3063\u3061\n    Doubling(int\
@@ -75,49 +75,50 @@ data:
     \ {MXLOG, A, init, f};\n}\n\ntemplate<typename T, typename F>\nDoubling<T, F>\
     \ get_doubling(const vector<vector<T>> &A, const F &f) {\n    return {A, f};\n\
     }\n"
-  code: "#include \"../macros.hpp\"\n#include \"listnd.hpp\"\n\n// \u30C0\u30D6\u30EA\
-    \u30F3\u30B0\ntemplate<typename T, typename F>\nstruct Doubling {\n\n    int N;\n\
-    \    vector<vector<T>> dat;\n    const int MXLOG;\n    const F f;\n\n    // \u901A\
-    \u5E38\u306F\u3053\u3063\u3061\n    Doubling(int MXLOG, const vector<T> &A, T\
-    \ init, const F &f) : MXLOG(MXLOG), f(f) {\n        N = A.size();\n        dat\
-    \ = list2d(MXLOG, N, init);\n        rep(i, N) {\n            dat[0][i] = A[i];\n\
-    \        }\n        rep(k, 1, MXLOG) {\n            rep(i, N) {\n            \
-    \    dat[k][i] = f(dat[k-1][i], dat[k-1][dat[k-1][i]]);\n            }\n     \
-    \   }\n    }\n\n    // \u30C0\u30D6\u30EA\u30F3\u30B0\u914D\u5217\u3092\u30E9\u30A4\
-    \u30D6\u30E9\u30EA\u5916\u3067\u4E8B\u524D\u69CB\u7BC9\u3059\u308B\u30B3\u30F3\
-    \u30B9\u30C8\u30E9\u30AF\u30BF\n    Doubling(const vector<vector<T>> &A, const\
-    \ F &f) : MXLOG(A.size()), dat(A), f(f) {}\n\n    // st\u304B\u3089\u59CB\u3081\
-    \u3066K\u500B\u5148\u3092\u8FD4\u3059\n    T get(T st, ll K) {\n        T res\
-    \ = st;\n        rep(k, MXLOG-1, -1, -1) {\n            if (K>>k & 1) {\n    \
-    \            res = f(res, dat[k][res]);\n            }\n        }\n        return\
-    \ res;\n    }\n\n    vector<T> get(const vector<T> &st, ll K) {\n        vector<T>\
-    \ res = st;\n        rep(k, MXLOG-1, -1, -1) {\n            if (K>>k & 1) {\n\
-    \                res = f(res, dat[k], k);\n            }\n        }\n        return\
-    \ res;\n    }\n\n    // st\u304B\u3089\u59CB\u3081\u30661\u500B\u5148\u3092\u8FD4\
-    \u3059\n    T next(T st) {\n        return f(st, dat[0][st]);\n    }\n\n    //\
-    \ st\u304B\u3089\u59CB\u3081\u3066g\u306B\u5230\u9054\u3059\u308B\u307E\u3067\u306E\
-    \u56DE\u6570\u3092\u8FD4\u3059\n    ll times(T st, ll g) {\n        T cur = st;\n\
-    \        ll res = 0;\n        rep(k, MXLOG-1, -1, -1) {\n            if (dat[k][cur]\
-    \ < g) {\n                res += 1LL<<k;\n                cur = dat[k][cur];\n\
-    \            }\n        }\n        res++;\n        return res;\n    }\n};\n\n\
-    template<typename T, typename F>\nDoubling<T, F> get_doubling(int MXLOG, const\
-    \ vector<T> &A, T init, const F &f) {\n    return {MXLOG, A, init, f};\n}\n\n\
-    template<typename T, typename F>\nDoubling<T, F> get_doubling(const vector<vector<T>>\
-    \ &A, const F &f) {\n    return {A, f};\n}\n"
+  code: "#include \"../macros.hpp\"\n#include \"../common/listnd.hpp\"\n\n// \u30C0\
+    \u30D6\u30EA\u30F3\u30B0\ntemplate<typename T, typename F>\nstruct Doubling {\n\
+    \n    int N;\n    vector<vector<T>> dat;\n    const int MXLOG;\n    const F f;\n\
+    \n    // \u901A\u5E38\u306F\u3053\u3063\u3061\n    Doubling(int MXLOG, const vector<T>\
+    \ &A, T init, const F &f) : MXLOG(MXLOG), f(f) {\n        N = A.size();\n    \
+    \    dat = list2d(MXLOG, N, init);\n        rep(i, N) {\n            dat[0][i]\
+    \ = A[i];\n        }\n        rep(k, 1, MXLOG) {\n            rep(i, N) {\n  \
+    \              dat[k][i] = f(dat[k-1][i], dat[k-1][dat[k-1][i]]);\n          \
+    \  }\n        }\n    }\n\n    // \u30C0\u30D6\u30EA\u30F3\u30B0\u914D\u5217\u3092\
+    \u30E9\u30A4\u30D6\u30E9\u30EA\u5916\u3067\u4E8B\u524D\u69CB\u7BC9\u3059\u308B\
+    \u30B3\u30F3\u30B9\u30C8\u30E9\u30AF\u30BF\n    Doubling(const vector<vector<T>>\
+    \ &A, const F &f) : MXLOG(A.size()), dat(A), f(f) {}\n\n    // st\u304B\u3089\u59CB\
+    \u3081\u3066K\u500B\u5148\u3092\u8FD4\u3059\n    T get(T st, ll K) {\n       \
+    \ T res = st;\n        rep(k, MXLOG-1, -1, -1) {\n            if (K>>k & 1) {\n\
+    \                res = f(res, dat[k][res]);\n            }\n        }\n      \
+    \  return res;\n    }\n\n    vector<T> get(const vector<T> &st, ll K) {\n    \
+    \    vector<T> res = st;\n        rep(k, MXLOG-1, -1, -1) {\n            if (K>>k\
+    \ & 1) {\n                res = f(res, dat[k], k);\n            }\n        }\n\
+    \        return res;\n    }\n\n    // st\u304B\u3089\u59CB\u3081\u30661\u500B\u5148\
+    \u3092\u8FD4\u3059\n    T next(T st) {\n        return f(st, dat[0][st]);\n  \
+    \  }\n\n    // st\u304B\u3089\u59CB\u3081\u3066g\u306B\u5230\u9054\u3059\u308B\
+    \u307E\u3067\u306E\u56DE\u6570\u3092\u8FD4\u3059\n    ll times(T st, ll g) {\n\
+    \        T cur = st;\n        ll res = 0;\n        rep(k, MXLOG-1, -1, -1) {\n\
+    \            if (dat[k][cur] < g) {\n                res += 1LL<<k;\n        \
+    \        cur = dat[k][cur];\n            }\n        }\n        res++;\n      \
+    \  return res;\n    }\n};\n\ntemplate<typename T, typename F>\nDoubling<T, F>\
+    \ get_doubling(int MXLOG, const vector<T> &A, T init, const F &f) {\n    return\
+    \ {MXLOG, A, init, f};\n}\n\ntemplate<typename T, typename F>\nDoubling<T, F>\
+    \ get_doubling(const vector<vector<T>> &A, const F &f) {\n    return {A, f};\n\
+    }\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   - src/common/listnd.hpp
   isVerificationFile: false
-  path: src/common/Doubling.hpp
+  path: src/datastructure/Doubling.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-11-04 17:57:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/common/Doubling.hpp
+documentation_of: src/datastructure/Doubling.hpp
 layout: document
 redirect_from:
-- /library/src/common/Doubling.hpp
-- /library/src/common/Doubling.hpp.html
-title: src/common/Doubling.hpp
+- /library/src/datastructure/Doubling.hpp
+- /library/src/datastructure/Doubling.hpp.html
+title: src/datastructure/Doubling.hpp
 ---

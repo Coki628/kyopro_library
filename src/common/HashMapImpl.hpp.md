@@ -18,9 +18,6 @@ data:
     path: src/datastructure/SparseBIT2D.hpp
     title: src/datastructure/SparseBIT2D.hpp
   - icon: ':warning:'
-    path: src/graph/AuxiliaryTree.hpp
-    title: src/graph/AuxiliaryTree.hpp
-  - icon: ':warning:'
     path: src/graph/OfflineDynamicConnectivity.hpp
     title: src/graph/OfflineDynamicConnectivity.hpp
   - icon: ':warning:'
@@ -268,14 +265,13 @@ data:
   isVerificationFile: false
   path: src/common/HashMapImpl.hpp
   requiredBy:
-  - src/common/HashMap.hpp
-  - src/common/Counter.hpp
-  - src/common/HashSet.hpp
-  - src/template.hpp
-  - src/mystl/defaultdict.hpp
-  - src/graph/AuxiliaryTree.hpp
   - src/graph/OfflineDynamicConnectivity.hpp
+  - src/common/HashMap.hpp
+  - src/common/HashSet.hpp
+  - src/common/Counter.hpp
   - src/numbers/bsgs.hpp
+  - src/mystl/defaultdict.hpp
+  - src/template.hpp
   - src/datastructure/SparseBIT2D.hpp
   timestamp: '2022-05-24 16:45:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS

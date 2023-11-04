@@ -288,27 +288,28 @@ data:
     \ v);\n    return res;\n}\n#line 3 \"src/common/pow.hpp\"\n\nll pow(ll x, ll n)\
     \ {\n    ll res = 1;\n    rep(_, n) res *= x;\n    return res;\n}\n\nll pow(int\
     \ x, ll n) { return pow((ll)x, n); }\n\nll pow(ll x, int n) { return pow(x, (ll)n);\
-    \ }\n\nll pow(int x, int n) { return pow((ll)x, (ll)n); }\n\nll pow(ll x, ll n,\
-    \ int mod) {\n    x %= mod;\n    ll res = 1;\n    while (n > 0) {\n        if\
-    \ (n & 1) {\n            res = (res * x) % mod;\n        }\n        x = (x * x)\
-    \ % mod;\n        n >>= 1;\n    }\n    return res;\n}\n#line 2 \"src/common/popcount.hpp\"\
-    \n\nint popcount(ll S) { return __builtin_popcountll(S); }\n#line 2 \"src/common/bit_length.hpp\"\
-    \n\nint bit_length(ll x) {\n    int res = 0;\n    while (x) {\n        res++;\n\
-    \        x /= 2;\n    }\n    return res;\n}\n#line 3 \"src/common/bisect.hpp\"\
-    \n\ntemplate<typename T>\nint bisect_left(const vector<T> &A, T val, int lo=0)\
-    \ {\n    return lower_bound(A.begin()+lo, A.end(), val) - A.begin();\n}\n\ntemplate<typename\
-    \ T>\nint bisect_right(const vector<T> &A, T val, int lo=0) {\n    return upper_bound(A.begin()+lo,\
-    \ A.end(), val) - A.begin();\n}\n#line 3 \"src/common/HashMapImpl.hpp\"\n\n//\
-    \ \u53C2\u8003\uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashmap-base.hpp\n\
-    namespace HashMapImpl {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\ntemplate\
-    \ <typename Key, typename Data>\nstruct HashMapBase;\n\ntemplate <typename Key,\
-    \ typename Data>\nstruct itrB : iterator<bidirectional_iterator_tag, Data, ptrdiff_t,\
-    \ Data*, Data&> {\n    using base = iterator<bidirectional_iterator_tag, Data,\
-    \ ptrdiff_t, Data*, Data&>;\n    using ptr = typename base::pointer;\n    using\
-    \ ref = typename base::reference;\n\n    u32 i;\n    HashMapBase<Key, Data>* p;\n\
-    \n    explicit constexpr itrB() : i(0), p(nullptr) {}\n    explicit constexpr\
-    \ itrB(u32 _i, HashMapBase<Key, Data>* _p) : i(_i), p(_p) {}\n    explicit constexpr\
-    \ itrB(u32 _i, const HashMapBase<Key, Data>* _p)\n            : i(_i), p(const_cast<HashMapBase<Key,\
+    \ }\n\nll pow(int x, int n) { return pow((ll)x, (ll)n); }\n\ntemplate<typename\
+    \ T1, typename T2>\nT1 pow(T1 x, T1 n, T2 mod) {\n    x %= mod;\n    T1 res =\
+    \ 1;\n    while (n > 0) {\n        if (n & 1) {\n            res = (res * x) %\
+    \ mod;\n        }\n        x = (x * x) % mod;\n        n >>= 1;\n    }\n    return\
+    \ res;\n}\n#line 2 \"src/common/popcount.hpp\"\n\nint popcount(ll S) { return\
+    \ __builtin_popcountll(S); }\n#line 2 \"src/common/bit_length.hpp\"\n\nint bit_length(ll\
+    \ x) {\n    int res = 0;\n    while (x) {\n        res++;\n        x /= 2;\n \
+    \   }\n    return res;\n}\n#line 3 \"src/common/bisect.hpp\"\n\ntemplate<typename\
+    \ T>\nint bisect_left(const vector<T> &A, T val, int lo=0) {\n    return lower_bound(A.begin()+lo,\
+    \ A.end(), val) - A.begin();\n}\n\ntemplate<typename T>\nint bisect_right(const\
+    \ vector<T> &A, T val, int lo=0) {\n    return upper_bound(A.begin()+lo, A.end(),\
+    \ val) - A.begin();\n}\n#line 3 \"src/common/HashMapImpl.hpp\"\n\n// \u53C2\u8003\
+    \uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashmap-base.hpp\nnamespace\
+    \ HashMapImpl {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\ntemplate <typename\
+    \ Key, typename Data>\nstruct HashMapBase;\n\ntemplate <typename Key, typename\
+    \ Data>\nstruct itrB : iterator<bidirectional_iterator_tag, Data, ptrdiff_t, Data*,\
+    \ Data&> {\n    using base = iterator<bidirectional_iterator_tag, Data, ptrdiff_t,\
+    \ Data*, Data&>;\n    using ptr = typename base::pointer;\n    using ref = typename\
+    \ base::reference;\n\n    u32 i;\n    HashMapBase<Key, Data>* p;\n\n    explicit\
+    \ constexpr itrB() : i(0), p(nullptr) {}\n    explicit constexpr itrB(u32 _i,\
+    \ HashMapBase<Key, Data>* _p) : i(_i), p(_p) {}\n    explicit constexpr itrB(u32\
+    \ _i, const HashMapBase<Key, Data>* _p)\n            : i(_i), p(const_cast<HashMapBase<Key,\
     \ Data>*>(_p)) {}\n    friend void swap(itrB& l, itrB& r) { swap(l.i, r.i), swap(l.p,\
     \ r.p); }\n    friend bool operator==(const itrB& l, const itrB& r) { return l.i\
     \ == r.i; }\n    friend bool operator!=(const itrB& l, const itrB& r) { return\
@@ -736,24 +737,34 @@ data:
     \ i+1);\n    }\n\n    void print(int n=-1) {\n        if (n == -1) n = this->n;\n\
     \        rep(i, n) {\n            cout << query(i, i+1);\n            if (i ==\
     \ n-1) cout << endl;\n            else cout << ' ';\n        }\n    }\n\n    //\
-    \ \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\u5411\u304B\u3063\u3066\
-    x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_fore(int\
-    \ l, int r, ll x) {\n        if (l > r) return -1;\n        ll l_sm = sum(l);\n\
-    \        int ok = r + 1;\n        int ng = l - 1;\n        while (ng+1 < ok) {\n\
-    \            int mid = (ok+ng) / 2;\n            if (sum(mid+1) - l_sm >= x) {\n\
-    \                ok = mid;\n            } else {\n                ng = mid;\n\
-    \            }\n        }\n        if (ok != r+1) {\n            return ok;\n\
-    \        } else {\n            return -1;\n        }\n    }\n\n    // \u533A\u9593\
-    [l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\
-    \u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_back(int l, int r,\
-    \ ll x) {\n        if (l > r) return -1;\n        ll r_sm = sum(r+1);\n      \
-    \  int ok = l - 1;\n        int ng = r + 1;\n        while (ok+1 < ng) {\n   \
-    \         int mid = (ok+ng) / 2;\n            if (r_sm - sum(mid) >= x) {\n  \
-    \              ok = mid;\n            } else {\n                ng = mid;\n  \
-    \          }\n        }\n        if (ok != l-1) {\n            return ok;\n  \
-    \      } else {\n            return -1;\n        }\n    }\n\n    // \u53C2\u8003\
-    \uFF1Ahttps://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n\
-    \    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u4EE5\u4E0A\u3068\u306A\u308B\
+    \ ll bisearch_fore(int l, int r, ll x) {\n    //     if (l > r) return -1;\n \
+    \   //     ll l_sm = sum(l);\n    //     int ok = r + 1;\n    //     int ng =\
+    \ l - 1;\n    //     while (ng+1 < ok) {\n    //         int mid = (ok+ng) / 2;\n\
+    \    //         if (sum(mid+1) - l_sm >= x) {\n    //             ok = mid;\n\
+    \    //         } else {\n    //             ng = mid;\n    //         }\n   \
+    \ //     }\n    //     if (ok != r+1) {\n    //         return ok;\n    //   \
+    \  } else {\n    //         return -1;\n    //     }\n    // }\n\n    // ll bisearch_back(int\
+    \ l, int r, ll x) {\n    //     if (l > r) return -1;\n    //     ll r_sm = sum(r+1);\n\
+    \    //     int ok = l - 1;\n    //     int ng = r + 1;\n    //     while (ok+1\
+    \ < ng) {\n    //         int mid = (ok+ng) / 2;\n    //         if (r_sm - sum(mid)\
+    \ >= x) {\n    //             ok = mid;\n    //         } else {\n    //     \
+    \        ng = mid;\n    //         }\n    //     }\n    //     if (ok != l-1)\
+    \ {\n    //         return ok;\n    //     } else {\n    //         return -1;\n\
+    \    //     }\n    // }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\
+    \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
+    \u7F6E\n    int bisearch_fore(int l, int r, T x) {\n        if (l > r) return\
+    \ -1;\n        assert(l >= 0 and r < n);\n        x += query(0, l);\n        T\
+    \ k = lower_bound(x);\n        assert(l <= k);\n        if (k >= n) {\n      \
+    \      return -1;\n        } else {\n            return k;\n        }\n    }\n\
+    \n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\
+    \u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    int bisearch_back(int\
+    \ l, int r, T x) {\n        if (l > r) return -1;\n        assert(l >= 0 and r\
+    \ < n);\n        T total = query(0, r + 1);\n        if (total - x < 0) {\n  \
+    \          return -1;\n        }\n        T k = upper_bound(total - x);\n    \
+    \    assert(k <= r);\n        if (k < l) {\n            return -1;\n        }\
+    \ else {\n            return k;\n        }\n    }\n\n    // \u53C2\u8003\uFF1A\
+    https://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n  \
+    \  // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u4EE5\u4E0A\u3068\u306A\u308B\
     \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
     \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
     \ // (log\u304C1\u3064\u306A\u306E\u3067\u3001TL\u53B3\u3057\u3044\u6642\u306F\
@@ -1041,7 +1052,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2023-07-05 10:59:02+09:00'
+  timestamp: '2023-11-04 17:57:37+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

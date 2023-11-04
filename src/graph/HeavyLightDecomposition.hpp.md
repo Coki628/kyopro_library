@@ -7,10 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/graph/AuxiliaryTree.hpp
-    title: src/graph/AuxiliaryTree.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -201,8 +198,7 @@ data:
   - src/base.hpp
   isVerificationFile: false
   path: src/graph/HeavyLightDecomposition.hpp
-  requiredBy:
-  - src/graph/AuxiliaryTree.hpp
+  requiredBy: []
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -58,9 +58,9 @@ data:
     \ T>\n    uint64_t get_hash(const vector<T> &s, int l, int r) {\n        auto\
     \ table = build(s);\n        return query(table, l, r);\n    }\n\n    // \u9577\
     \u3055len\u306E\u6587\u5B57\u5217\u306Ehash\u306Ex\u6587\u5B57\u76EE(0-indexed)\u3092\
-    a\u304B\u3089b\u306B\u5909\u3048\u308B\n    uint64_t update(uint64_t hash, int\
-    \ len, int x, char a, char b) {\n        if (b >= a) return add(hash, mul(b-a,\
-    \ power[len-x-1]));\n        else return add(hash, mul(mod+(b-a), power[len-x-1]));\n\
+    a\u304B\u3089b\u306B\u5909\u3048\u308B\n    uint64_t update(uint64_t &hash, int\
+    \ len, int x, char a, char b) {\n        if (b >= a) return hash = add(hash, mul(b-a,\
+    \ power[len-x-1]));\n        else return hash = add(hash, mul(mod+(b-a), power[len-x-1]));\n\
     \    }\n\n    // \u30C6\u30FC\u30D6\u30EBa\u306E\u533A\u9593[l,r)\u306E\u56DE\u6587\
     \u5224\u5B9A(a\u3092\u53CD\u8EE2\u3055\u305B\u305F\u30C6\u30FC\u30D6\u30EBrev\u3082\
     \u6E21\u3059)\n    bool is_palindrome(\n        const vector<uint64_t> &a,\n \
@@ -115,15 +115,15 @@ data:
     \ &s, int l, int r) {\n        auto table = build(s);\n        return query(table,\
     \ l, r);\n    }\n\n    // \u9577\u3055len\u306E\u6587\u5B57\u5217\u306Ehash\u306E\
     x\u6587\u5B57\u76EE(0-indexed)\u3092a\u304B\u3089b\u306B\u5909\u3048\u308B\n \
-    \   uint64_t update(uint64_t hash, int len, int x, char a, char b) {\n       \
-    \ if (b >= a) return add(hash, mul(b-a, power[len-x-1]));\n        else return\
-    \ add(hash, mul(mod+(b-a), power[len-x-1]));\n    }\n\n    // \u30C6\u30FC\u30D6\
-    \u30EBa\u306E\u533A\u9593[l,r)\u306E\u56DE\u6587\u5224\u5B9A(a\u3092\u53CD\u8EE2\
-    \u3055\u305B\u305F\u30C6\u30FC\u30D6\u30EBrev\u3082\u6E21\u3059)\n    bool is_palindrome(\n\
-    \        const vector<uint64_t> &a,\n        const vector<uint64_t> &rev,\n  \
-    \      int l,\n        int r\n    ) {\n        int n = (int)a.size() - 1;\n  \
-    \      assert(r <= n);\n        int len = r - l;\n        int sl = len%2 == 0\
-    \ ? l+len/2 : l+len/2+1;\n        int sr = r;\n        int tl = n - (l+len/2);\n\
+    \   uint64_t update(uint64_t &hash, int len, int x, char a, char b) {\n      \
+    \  if (b >= a) return hash = add(hash, mul(b-a, power[len-x-1]));\n        else\
+    \ return hash = add(hash, mul(mod+(b-a), power[len-x-1]));\n    }\n\n    // \u30C6\
+    \u30FC\u30D6\u30EBa\u306E\u533A\u9593[l,r)\u306E\u56DE\u6587\u5224\u5B9A(a\u3092\
+    \u53CD\u8EE2\u3055\u305B\u305F\u30C6\u30FC\u30D6\u30EBrev\u3082\u6E21\u3059)\n\
+    \    bool is_palindrome(\n        const vector<uint64_t> &a,\n        const vector<uint64_t>\
+    \ &rev,\n        int l,\n        int r\n    ) {\n        int n = (int)a.size()\
+    \ - 1;\n        assert(r <= n);\n        int len = r - l;\n        int sl = len%2\
+    \ == 0 ? l+len/2 : l+len/2+1;\n        int sr = r;\n        int tl = n - (l+len/2);\n\
     \        int tr = n - l;\n        return query(a, sl, sr) == query(rev, tl, tr);\n\
     \    }\n};\n"
   dependsOn:
@@ -131,7 +131,7 @@ data:
   isVerificationFile: false
   path: src/string/RollingHash.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-07-05 11:07:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/RollingHash.hpp

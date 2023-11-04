@@ -94,9 +94,9 @@ data:
   isVerificationFile: false
   path: src/combinatorics/ModTools.hpp
   requiredBy:
-  - src/template.hpp
-  - src/math/lagrange_polynomial.hpp
   - src/math/fps/pow_term2.hpp
+  - src/math/lagrange_polynomial.hpp
+  - src/template.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

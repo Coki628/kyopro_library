@@ -62,38 +62,34 @@ data:
     template<typename T>\nvoid print(const deque<T> &que) {\n    vector<T> V(ALL(que));\n\
     \    print(V);\n}\n\ntemplate<typename T>\nvoid print(const set<T> &se) {\n  \
     \  vector<T> V(ALL(se));\n    print(V);\n}\n\n#define debug(x) (cout << #x <<\
-    \ \": \" << x << endl);\n#line 3 \"src/mystl/my_set.hpp\"\n\ntemplate<typename\
-    \ _Key>\nstruct my_set : set<_Key> {\n    using set<_Key>::set;\n    _Key front()\
-    \ {\n        assert(this->size());\n        return *this->begin();\n    }\n  \
-    \  _Key pop_front() {\n        _Key res = this->front();\n        this->erase(this->begin());\n\
-    \        return res;\n    }\n    _Key back() {\n        assert(this->size());\n\
-    \        return *this->rbegin();\n    }\n    _Key pop_back() {\n        _Key res\
-    \ = this->back();\n        this->erase(prev(this->end()));\n        return res;\n\
-    \    }\n};\n\ntemplate<typename T>\nvoid print(const my_set<T> &se) {\n    vector<T>\
-    \ V(se.begin(), se.end());\n    print(V);\n}\n"
+    \ \": \" << x << endl);\n#line 3 \"src/mystl/Deque.hpp\"\n\ntemplate<typename\
+    \ _Tp>\nstruct Deque : deque<_Tp> {\n    using deque<_Tp>::deque;\n    _Tp pop_front()\
+    \ {\n        _Tp res = this->front();\n        deque<_Tp>::pop_front();\n    \
+    \    return res;\n    }\n    _Tp pop_back() {\n        _Tp res = this->back();\n\
+    \        deque<_Tp>::pop_back();\n        return res;\n    }\n};\n\ntemplate<typename\
+    \ T>\nvoid print(const Deque<T> &que) {\n    vector<T> V(que.begin(), que.end());\n\
+    \    print(V);\n}\n"
   code: "#include \"../base.hpp\"\n#include \"../common/print.hpp\"\n\ntemplate<typename\
-    \ _Key>\nstruct my_set : set<_Key> {\n    using set<_Key>::set;\n    _Key front()\
-    \ {\n        assert(this->size());\n        return *this->begin();\n    }\n  \
-    \  _Key pop_front() {\n        _Key res = this->front();\n        this->erase(this->begin());\n\
-    \        return res;\n    }\n    _Key back() {\n        assert(this->size());\n\
-    \        return *this->rbegin();\n    }\n    _Key pop_back() {\n        _Key res\
-    \ = this->back();\n        this->erase(prev(this->end()));\n        return res;\n\
-    \    }\n};\n\ntemplate<typename T>\nvoid print(const my_set<T> &se) {\n    vector<T>\
-    \ V(se.begin(), se.end());\n    print(V);\n}\n"
+    \ _Tp>\nstruct Deque : deque<_Tp> {\n    using deque<_Tp>::deque;\n    _Tp pop_front()\
+    \ {\n        _Tp res = this->front();\n        deque<_Tp>::pop_front();\n    \
+    \    return res;\n    }\n    _Tp pop_back() {\n        _Tp res = this->back();\n\
+    \        deque<_Tp>::pop_back();\n        return res;\n    }\n};\n\ntemplate<typename\
+    \ T>\nvoid print(const Deque<T> &que) {\n    vector<T> V(que.begin(), que.end());\n\
+    \    print(V);\n}\n"
   dependsOn:
   - src/base.hpp
   - src/common/print.hpp
   - src/macros.hpp
   isVerificationFile: false
-  path: src/mystl/my_set.hpp
+  path: src/mystl/Deque.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-10-10 14:57:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/mystl/my_set.hpp
+documentation_of: src/mystl/Deque.hpp
 layout: document
 redirect_from:
-- /library/src/mystl/my_set.hpp
-- /library/src/mystl/my_set.hpp.html
-title: src/mystl/my_set.hpp
+- /library/src/mystl/Deque.hpp
+- /library/src/mystl/Deque.hpp.html
+title: src/mystl/Deque.hpp
 ---

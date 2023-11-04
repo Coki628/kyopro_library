@@ -22,8 +22,8 @@ data:
   isVerificationFile: false
   path: src/common/modulo.hpp
   requiredBy:
-  - src/template.hpp
   - src/numbers/dton.hpp
+  - src/template.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

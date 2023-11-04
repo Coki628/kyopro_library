@@ -131,13 +131,13 @@ data:
   isVerificationFile: false
   path: src/graph/UnionFind.hpp
   requiredBy:
-  - src/template.hpp
   - src/graph/WeightedUnionFind.hpp
+  - src/template.hpp
   timestamp: '2023-07-05 10:59:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/UnionFind.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
+  - test/graph/UnionFind.test.cpp
 documentation_of: src/graph/UnionFind.hpp
 layout: document
 redirect_from:

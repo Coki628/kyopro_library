@@ -53,24 +53,34 @@ data:
     \ i+1);\n    }\n\n    void print(int n=-1) {\n        if (n == -1) n = this->n;\n\
     \        rep(i, n) {\n            cout << query(i, i+1);\n            if (i ==\
     \ n-1) cout << endl;\n            else cout << ' ';\n        }\n    }\n\n    //\
-    \ \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\u5411\u304B\u3063\u3066\
-    x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_fore(int\
-    \ l, int r, ll x) {\n        if (l > r) return -1;\n        ll l_sm = sum(l);\n\
-    \        int ok = r + 1;\n        int ng = l - 1;\n        while (ng+1 < ok) {\n\
-    \            int mid = (ok+ng) / 2;\n            if (sum(mid+1) - l_sm >= x) {\n\
-    \                ok = mid;\n            } else {\n                ng = mid;\n\
-    \            }\n        }\n        if (ok != r+1) {\n            return ok;\n\
-    \        } else {\n            return -1;\n        }\n    }\n\n    // \u533A\u9593\
-    [l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\
-    \u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_back(int l, int r,\
-    \ ll x) {\n        if (l > r) return -1;\n        ll r_sm = sum(r+1);\n      \
-    \  int ok = l - 1;\n        int ng = r + 1;\n        while (ok+1 < ng) {\n   \
-    \         int mid = (ok+ng) / 2;\n            if (r_sm - sum(mid) >= x) {\n  \
-    \              ok = mid;\n            } else {\n                ng = mid;\n  \
-    \          }\n        }\n        if (ok != l-1) {\n            return ok;\n  \
-    \      } else {\n            return -1;\n        }\n    }\n\n    // \u53C2\u8003\
-    \uFF1Ahttps://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n\
-    \    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u4EE5\u4E0A\u3068\u306A\u308B\
+    \ ll bisearch_fore(int l, int r, ll x) {\n    //     if (l > r) return -1;\n \
+    \   //     ll l_sm = sum(l);\n    //     int ok = r + 1;\n    //     int ng =\
+    \ l - 1;\n    //     while (ng+1 < ok) {\n    //         int mid = (ok+ng) / 2;\n\
+    \    //         if (sum(mid+1) - l_sm >= x) {\n    //             ok = mid;\n\
+    \    //         } else {\n    //             ng = mid;\n    //         }\n   \
+    \ //     }\n    //     if (ok != r+1) {\n    //         return ok;\n    //   \
+    \  } else {\n    //         return -1;\n    //     }\n    // }\n\n    // ll bisearch_back(int\
+    \ l, int r, ll x) {\n    //     if (l > r) return -1;\n    //     ll r_sm = sum(r+1);\n\
+    \    //     int ok = l - 1;\n    //     int ng = r + 1;\n    //     while (ok+1\
+    \ < ng) {\n    //         int mid = (ok+ng) / 2;\n    //         if (r_sm - sum(mid)\
+    \ >= x) {\n    //             ok = mid;\n    //         } else {\n    //     \
+    \        ng = mid;\n    //         }\n    //     }\n    //     if (ok != l-1)\
+    \ {\n    //         return ok;\n    //     } else {\n    //         return -1;\n\
+    \    //     }\n    // }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\
+    \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
+    \u7F6E\n    int bisearch_fore(int l, int r, T x) {\n        if (l > r) return\
+    \ -1;\n        assert(l >= 0 and r < n);\n        x += query(0, l);\n        T\
+    \ k = lower_bound(x);\n        assert(l <= k);\n        if (k >= n) {\n      \
+    \      return -1;\n        } else {\n            return k;\n        }\n    }\n\
+    \n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\
+    \u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    int bisearch_back(int\
+    \ l, int r, T x) {\n        if (l > r) return -1;\n        assert(l >= 0 and r\
+    \ < n);\n        T total = query(0, r + 1);\n        if (total - x < 0) {\n  \
+    \          return -1;\n        }\n        T k = upper_bound(total - x);\n    \
+    \    assert(k <= r);\n        if (k < l) {\n            return -1;\n        }\
+    \ else {\n            return k;\n        }\n    }\n\n    // \u53C2\u8003\uFF1A\
+    https://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n  \
+    \  // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u4EE5\u4E0A\u3068\u306A\u308B\
     \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
     \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
     \ // (log\u304C1\u3064\u306A\u306E\u3067\u3001TL\u53B3\u3057\u3044\u6642\u306F\
@@ -180,7 +190,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/PersistentBIT.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-11-04 17:57:37+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/PersistentBIT.hpp

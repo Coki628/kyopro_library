@@ -23,6 +23,9 @@ data:
   - icon: ':warning:'
     path: src/geometry/intersect.hpp
     title: src/geometry/intersect.hpp
+  - icon: ':warning:'
+    path: src/geometry/monotone_chain.hpp
+    title: src/geometry/monotone_chain.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -106,8 +109,9 @@ data:
   isVerificationFile: false
   path: src/geometry/ccw.hpp
   requiredBy:
-  - src/geometry/intersect.hpp
+  - src/geometry/monotone_chain.hpp
   - src/geometry/get_distance.hpp
+  - src/geometry/intersect.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

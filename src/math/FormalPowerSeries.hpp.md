@@ -279,14 +279,15 @@ data:
     \ i = 1; i < n; i++) bs[i] = bs[i - 1] * c * rfact[i] * fact[i - 1];\n       \
     \ p = (p * bs).pre(n);\n        p = p.rev();\n        for(int i = 0; i < n; i++)\
     \ p[i] *= rfact[i];\n        return p;\n    }\n\n    // sparse (from opt\u3055\
-    \u3093)\n    P &operator*=(vector<pair<ll, T>> g) {\n        int n = (*this).size();\n\
-    \        auto [d, c] = g.front();\n        if (d == 0) g.erase(g.begin());\n \
-    \       else c = 0;\n        rep(i, n-1, -1, -1) {\n            (*this)[i] *=\
-    \ c;\n            for (auto &[j, b] : g) {\n                if (j > i) break;\n\
-    \                (*this)[i] += (*this)[i-j] * b;\n            }\n        }\n \
-    \       return *this;\n    }\n    P &operator/=(vector<pair<ll, T>> g) {\n   \
-    \     int n = (*this).size();\n        auto [d, c] = g.front();\n        assert(d\
-    \ == 0 && c != T(0));\n        T ic = c.inv();\n        g.erase(g.begin());\n\
+    \u3093)\n    // \u5F15\u6570\uFF1Apair(\u6B21\u6570, \u4FC2\u6570)\u3067\u5FC5\
+    \u8981\u306A\u9805\u306E\u307F\u5217\u6319\u3057\u305Fvector\n    P &operator*=(vector<pair<ll,\
+    \ T>> g) {\n        int n = (*this).size();\n        auto [d, c] = g.front();\n\
+    \        if (d == 0) g.erase(g.begin());\n        else c = 0;\n        rep(i,\
+    \ n-1, -1, -1) {\n            (*this)[i] *= c;\n            for (auto &[j, b]\
+    \ : g) {\n                if (j > i) break;\n                (*this)[i] += (*this)[i-j]\
+    \ * b;\n            }\n        }\n        return *this;\n    }\n    P &operator/=(vector<pair<ll,\
+    \ T>> g) {\n        int n = (*this).size();\n        auto [d, c] = g.front();\n\
+    \        assert(d == 0 && c != T(0));\n        T ic = c.inv();\n        g.erase(g.begin());\n\
     \        rep(i, n) {\n            for (auto &[j, b] : g) {\n                if\
     \ (j > i) break;\n                (*this)[i] -= (*this)[i-j] * b;\n          \
     \  }\n            (*this)[i] *= ic;\n        }\n        return *this;\n    }\n\
@@ -421,14 +422,15 @@ data:
     \ i = 1; i < n; i++) bs[i] = bs[i - 1] * c * rfact[i] * fact[i - 1];\n       \
     \ p = (p * bs).pre(n);\n        p = p.rev();\n        for(int i = 0; i < n; i++)\
     \ p[i] *= rfact[i];\n        return p;\n    }\n\n    // sparse (from opt\u3055\
-    \u3093)\n    P &operator*=(vector<pair<ll, T>> g) {\n        int n = (*this).size();\n\
-    \        auto [d, c] = g.front();\n        if (d == 0) g.erase(g.begin());\n \
-    \       else c = 0;\n        rep(i, n-1, -1, -1) {\n            (*this)[i] *=\
-    \ c;\n            for (auto &[j, b] : g) {\n                if (j > i) break;\n\
-    \                (*this)[i] += (*this)[i-j] * b;\n            }\n        }\n \
-    \       return *this;\n    }\n    P &operator/=(vector<pair<ll, T>> g) {\n   \
-    \     int n = (*this).size();\n        auto [d, c] = g.front();\n        assert(d\
-    \ == 0 && c != T(0));\n        T ic = c.inv();\n        g.erase(g.begin());\n\
+    \u3093)\n    // \u5F15\u6570\uFF1Apair(\u6B21\u6570, \u4FC2\u6570)\u3067\u5FC5\
+    \u8981\u306A\u9805\u306E\u307F\u5217\u6319\u3057\u305Fvector\n    P &operator*=(vector<pair<ll,\
+    \ T>> g) {\n        int n = (*this).size();\n        auto [d, c] = g.front();\n\
+    \        if (d == 0) g.erase(g.begin());\n        else c = 0;\n        rep(i,\
+    \ n-1, -1, -1) {\n            (*this)[i] *= c;\n            for (auto &[j, b]\
+    \ : g) {\n                if (j > i) break;\n                (*this)[i] += (*this)[i-j]\
+    \ * b;\n            }\n        }\n        return *this;\n    }\n    P &operator/=(vector<pair<ll,\
+    \ T>> g) {\n        int n = (*this).size();\n        auto [d, c] = g.front();\n\
+    \        assert(d == 0 && c != T(0));\n        T ic = c.inv();\n        g.erase(g.begin());\n\
     \        rep(i, n) {\n            for (auto &[j, b] : g) {\n                if\
     \ (j > i) break;\n                (*this)[i] -= (*this)[i-j] * b;\n          \
     \  }\n            (*this)[i] *= ic;\n        }\n        return *this;\n    }\n\
@@ -447,9 +449,9 @@ data:
   isVerificationFile: false
   path: src/math/FormalPowerSeries.hpp
   requiredBy:
-  - src/math/fps/pow_term2.hpp
   - src/math/fps/pow.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  - src/math/fps/pow_term2.hpp
+  timestamp: '2023-10-10 14:51:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/FormalPowerSeries.hpp

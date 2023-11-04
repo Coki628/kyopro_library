@@ -101,16 +101,17 @@ data:
     \ a < b; a >>= 1, b >>= 1) {\n            if(b & 1) {\n                Monoid\
     \ nxt = f(apply(--b), R);\n                if(check(nxt)) return find_subtree(b,\
     \ check, R, true);\n                R = nxt;\n            }\n        }\n     \
-    \   return -1;\n    }\n};\n\ntemplate<typename F, typename G, typename H, typename\
-    \ T, typename E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const F&\
-    \ f, const G& g, const H& h, const T& ti, const E& ei) {\n    return {f, g, h,\
-    \ ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
-    \ E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(int N, const F& f,\
-    \ const G& g, const H& h, const T& ti, const E& ei) {\n    return {N, f, g, h,\
-    \ ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
-    \ E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const vector<T> &A,\
-    \ const F& f, const G& g, const H& h, const T& ti, const E& ei) {\n    return\
-    \ {A, f, g, h, ti, ei};\n}\n"
+    \   return -1;\n    }\n\n    // \u306A\u3093\u304B\u3061\u3083\u3093\u3068\u52D5\
+    \u304B\u306A\u3044\n    // Monoid all() {\n    //     return data[1];\n    //\
+    \ }\n};\n\ntemplate<typename F, typename G, typename H, typename T, typename E>\n\
+    LazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const F& f, const G& g, const\
+    \ H& h, const T& ti, const E& ei) {\n    return {f, g, h, ti, ei};\n}\n\ntemplate<typename\
+    \ F, typename G, typename H, typename T, typename E>\nLazySegmentTree<F, G, H,\
+    \ T, E> get_lazy_segment_tree(int N, const F& f, const G& g, const H& h, const\
+    \ T& ti, const E& ei) {\n    return {N, f, g, h, ti, ei};\n}\n\ntemplate<typename\
+    \ F, typename G, typename H, typename T, typename E>\nLazySegmentTree<F, G, H,\
+    \ T, E> get_lazy_segment_tree(const vector<T> &A, const F& f, const G& g, const\
+    \ H& h, const T& ti, const E& ei) {\n    return {A, f, g, h, ti, ei};\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/segment-tree/lazy-segment-tree.cpp\n\
     // \u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\ntemplate<typename\
     \ F, typename G, typename H, typename Monoid, typename OperatorMonoid>\nstruct\
@@ -178,16 +179,17 @@ data:
     \ a < b; a >>= 1, b >>= 1) {\n            if(b & 1) {\n                Monoid\
     \ nxt = f(apply(--b), R);\n                if(check(nxt)) return find_subtree(b,\
     \ check, R, true);\n                R = nxt;\n            }\n        }\n     \
-    \   return -1;\n    }\n};\n\ntemplate<typename F, typename G, typename H, typename\
-    \ T, typename E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const F&\
-    \ f, const G& g, const H& h, const T& ti, const E& ei) {\n    return {f, g, h,\
-    \ ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
-    \ E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(int N, const F& f,\
-    \ const G& g, const H& h, const T& ti, const E& ei) {\n    return {N, f, g, h,\
-    \ ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
-    \ E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const vector<T> &A,\
-    \ const F& f, const G& g, const H& h, const T& ti, const E& ei) {\n    return\
-    \ {A, f, g, h, ti, ei};\n}\n"
+    \   return -1;\n    }\n\n    // \u306A\u3093\u304B\u3061\u3083\u3093\u3068\u52D5\
+    \u304B\u306A\u3044\n    // Monoid all() {\n    //     return data[1];\n    //\
+    \ }\n};\n\ntemplate<typename F, typename G, typename H, typename T, typename E>\n\
+    LazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(const F& f, const G& g, const\
+    \ H& h, const T& ti, const E& ei) {\n    return {f, g, h, ti, ei};\n}\n\ntemplate<typename\
+    \ F, typename G, typename H, typename T, typename E>\nLazySegmentTree<F, G, H,\
+    \ T, E> get_lazy_segment_tree(int N, const F& f, const G& g, const H& h, const\
+    \ T& ti, const E& ei) {\n    return {N, f, g, h, ti, ei};\n}\n\ntemplate<typename\
+    \ F, typename G, typename H, typename T, typename E>\nLazySegmentTree<F, G, H,\
+    \ T, E> get_lazy_segment_tree(const vector<T> &A, const F& f, const G& g, const\
+    \ H& h, const T& ti, const E& ei) {\n    return {A, f, g, h, ti, ei};\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -195,7 +197,7 @@ data:
   path: src/datastructure/LazySegmentTree.hpp
   requiredBy:
   - src/datastructure/LazySegmentTreeArithmetric.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-10-10 14:51:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/LazySegmentTree.hpp

@@ -42,26 +42,28 @@ data:
     \n\nll pow(ll x, ll n) {\n    ll res = 1;\n    rep(_, n) res *= x;\n    return\
     \ res;\n}\n\nll pow(int x, ll n) { return pow((ll)x, n); }\n\nll pow(ll x, int\
     \ n) { return pow(x, (ll)n); }\n\nll pow(int x, int n) { return pow((ll)x, (ll)n);\
-    \ }\n\nll pow(ll x, ll n, int mod) {\n    x %= mod;\n    ll res = 1;\n    while\
-    \ (n > 0) {\n        if (n & 1) {\n            res = (res * x) % mod;\n      \
-    \  }\n        x = (x * x) % mod;\n        n >>= 1;\n    }\n    return res;\n}\n"
+    \ }\n\ntemplate<typename T1, typename T2>\nT1 pow(T1 x, T1 n, T2 mod) {\n    x\
+    \ %= mod;\n    T1 res = 1;\n    while (n > 0) {\n        if (n & 1) {\n      \
+    \      res = (res * x) % mod;\n        }\n        x = (x * x) % mod;\n       \
+    \ n >>= 1;\n    }\n    return res;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\nll pow(ll x, ll n) {\n    ll\
     \ res = 1;\n    rep(_, n) res *= x;\n    return res;\n}\n\nll pow(int x, ll n)\
     \ { return pow((ll)x, n); }\n\nll pow(ll x, int n) { return pow(x, (ll)n); }\n\
-    \nll pow(int x, int n) { return pow((ll)x, (ll)n); }\n\nll pow(ll x, ll n, int\
-    \ mod) {\n    x %= mod;\n    ll res = 1;\n    while (n > 0) {\n        if (n &\
-    \ 1) {\n            res = (res * x) % mod;\n        }\n        x = (x * x) % mod;\n\
-    \        n >>= 1;\n    }\n    return res;\n}\n"
+    \nll pow(int x, int n) { return pow((ll)x, (ll)n); }\n\ntemplate<typename T1,\
+    \ typename T2>\nT1 pow(T1 x, T1 n, T2 mod) {\n    x %= mod;\n    T1 res = 1;\n\
+    \    while (n > 0) {\n        if (n & 1) {\n            res = (res * x) % mod;\n\
+    \        }\n        x = (x * x) % mod;\n        n >>= 1;\n    }\n    return res;\n\
+    }\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/pow.hpp
   requiredBy:
-  - src/geometry/intersectCC.hpp
-  - src/template.hpp
   - src/numbers/bsgs.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  - src/template.hpp
+  - src/geometry/intersectCC.hpp
+  timestamp: '2023-10-10 14:51:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/pow.hpp

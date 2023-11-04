@@ -46,8 +46,8 @@ data:
     \ H+1) {\n            rep(j, W) {\n                dat[i][j+1] += dat[i][j];\n\
     \            }\n        }\n        rep(j, W+1) {\n            rep(i, H) {\n  \
     \              dat[i+1][j] += dat[i][j];\n            }\n        }\n    }\n\n\
-    \    // [h1,h2),[w1,w2)\u306E\u533A\u9593\u548C\n    T query(int h1, int w1, int\
-    \ h2, int w2) {\n        if (h1 >= h2 or w1 >= w2) return (T)0;\n        return\
+    \    // [(h1,w1),(h2,w2))\u306E\u533A\u9593\u548C\n    T query(int h1, int w1,\
+    \ int h2, int w2) {\n        if (h1 >= h2 or w1 >= w2) return (T)0;\n        return\
     \ dat[h1][w1] - dat[h1][w2] - dat[h2][w1] + dat[h2][w2];\n    }\n};\n"
   code: "#include \"../macros.hpp\"\n\n// 2\u6B21\u5143\u7D2F\u7A4D\u548C\ntemplate<typename\
     \ T>\nclass Accumulate2D {\n    int H;\n    int W;\n    vector<vector<T>> dat;\n\
@@ -65,7 +65,7 @@ data:
     \ {\n        rep(i, H+1) {\n            rep(j, W) {\n                dat[i][j+1]\
     \ += dat[i][j];\n            }\n        }\n        rep(j, W+1) {\n           \
     \ rep(i, H) {\n                dat[i+1][j] += dat[i][j];\n            }\n    \
-    \    }\n    }\n\n    // [h1,h2),[w1,w2)\u306E\u533A\u9593\u548C\n    T query(int\
+    \    }\n    }\n\n    // [(h1,w1),(h2,w2))\u306E\u533A\u9593\u548C\n    T query(int\
     \ h1, int w1, int h2, int w2) {\n        if (h1 >= h2 or w1 >= w2) return (T)0;\n\
     \        return dat[h1][w1] - dat[h1][w2] - dat[h2][w1] + dat[h2][w2];\n    }\n\
     };\n"
@@ -75,7 +75,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/Accumulate2D.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-10-10 14:51:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/Accumulate2D.hpp
