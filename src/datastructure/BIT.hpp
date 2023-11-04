@@ -72,45 +72,74 @@ public:
         }
     }
 
+    // ll bisearch_fore(int l, int r, ll x) {
+    //     if (l > r) return -1;
+    //     ll l_sm = sum(l);
+    //     int ok = r + 1;
+    //     int ng = l - 1;
+    //     while (ng+1 < ok) {
+    //         int mid = (ok+ng) / 2;
+    //         if (sum(mid+1) - l_sm >= x) {
+    //             ok = mid;
+    //         } else {
+    //             ng = mid;
+    //         }
+    //     }
+    //     if (ok != r+1) {
+    //         return ok;
+    //     } else {
+    //         return -1;
+    //     }
+    // }
+
+    // ll bisearch_back(int l, int r, ll x) {
+    //     if (l > r) return -1;
+    //     ll r_sm = sum(r+1);
+    //     int ok = l - 1;
+    //     int ng = r + 1;
+    //     while (ok+1 < ng) {
+    //         int mid = (ok+ng) / 2;
+    //         if (r_sm - sum(mid) >= x) {
+    //             ok = mid;
+    //         } else {
+    //             ng = mid;
+    //         }
+    //     }
+    //     if (ok != l-1) {
+    //         return ok;
+    //     } else {
+    //         return -1;
+    //     }
+    // }
+
     // 区間[l, r]を左から右に向かってx番目の値がある位置
-    ll bisearch_fore(int l, int r, ll x) {
+    int bisearch_fore(int l, int r, T x) {
         if (l > r) return -1;
-        ll l_sm = sum(l);
-        int ok = r + 1;
-        int ng = l - 1;
-        while (ng+1 < ok) {
-            int mid = (ok+ng) / 2;
-            if (sum(mid+1) - l_sm >= x) {
-                ok = mid;
-            } else {
-                ng = mid;
-            }
-        }
-        if (ok != r+1) {
-            return ok;
-        } else {
+        assert(l >= 0 and r < n);
+        x += query(0, l);
+        T k = lower_bound(x);
+        assert(l <= k);
+        if (k >= n) {
             return -1;
+        } else {
+            return k;
         }
     }
 
     // 区間[l, r]を右から左に向かってx番目の値がある位置
-    ll bisearch_back(int l, int r, ll x) {
+    int bisearch_back(int l, int r, T x) {
         if (l > r) return -1;
-        ll r_sm = sum(r+1);
-        int ok = l - 1;
-        int ng = r + 1;
-        while (ok+1 < ng) {
-            int mid = (ok+ng) / 2;
-            if (r_sm - sum(mid) >= x) {
-                ok = mid;
-            } else {
-                ng = mid;
-            }
-        }
-        if (ok != l-1) {
-            return ok;
-        } else {
+        assert(l >= 0 and r < n);
+        T total = query(0, r + 1);
+        if (total - x < 0) {
             return -1;
+        }
+        T k = upper_bound(total - x);
+        assert(k <= r);
+        if (k < l) {
+            return -1;
+        } else {
+            return k;
         }
     }
 
