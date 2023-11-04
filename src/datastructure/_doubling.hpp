@@ -1,5 +1,5 @@
 #include "../macros.hpp"
-#include "listnd.hpp"
+#include "../common/listnd.hpp"
 
 // ダブリング(旧)
 vvl doubling(int MXLOG, const vector<ll> &A) {

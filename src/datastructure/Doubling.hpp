@@ -1,5 +1,5 @@
 #include "../macros.hpp"
-#include "listnd.hpp"
+#include "../common/listnd.hpp"
 
 // ダブリング
 template<typename T, typename F>
