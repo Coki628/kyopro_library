@@ -140,22 +140,22 @@ data:
   path: src/common/print.hpp
   requiredBy:
   - src/common/yesno.hpp
-  - src/math/fps/pow.hpp
-  - src/math/fps/pow_term2.hpp
-  - src/math/FormalPowerSeries.hpp
   - src/mystl/Multiset.hpp
-  - src/mystl/Deque.hpp
   - src/mystl/Set.hpp
+  - src/mystl/Deque.hpp
   - src/mystl/Vector.hpp
   - src/template.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/math/fps/pow.hpp
+  - src/math/fps/pow_term2.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/common/bisect.test.cpp
+  - test/matrix/MatPow.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
   - test/graph/UnionFind.test.cpp
   - test/graph/bfs.test.cpp
-  - test/matrix/MatPow.test.cpp
-  - test/common/bisect.test.cpp
 documentation_of: src/common/print.hpp
 layout: document
 redirect_from:

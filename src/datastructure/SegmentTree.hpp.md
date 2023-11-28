@@ -126,8 +126,8 @@ data:
   isVerificationFile: false
   path: src/datastructure/SegmentTree.hpp
   requiredBy:
-  - src/template.hpp
   - src/string/SuffixArray.hpp
+  - src/template.hpp
   timestamp: '2022-10-18 16:39:53+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

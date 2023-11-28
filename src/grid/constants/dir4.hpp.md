@@ -53,9 +53,9 @@ data:
   path: src/grid/constants/dir4.hpp
   requiredBy:
   - src/template.hpp
-  - src/grid/dijkstra.hpp
-  - src/grid/constants/directions.hpp
   - src/grid/bfs.hpp
+  - src/grid/constants/directions.hpp
+  - src/grid/dijkstra.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

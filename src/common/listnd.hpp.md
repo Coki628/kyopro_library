@@ -87,19 +87,19 @@ data:
   isVerificationFile: false
   path: src/common/listnd.hpp
   requiredBy:
-  - src/matrix/MatPow.hpp
-  - src/matrix/mat_dot.hpp
-  - src/template.hpp
+  - src/datastructure/Doubling.hpp
+  - src/datastructure/_doubling.hpp
   - src/combinatorics/partition.hpp
   - src/combinatorics/nCr.hpp
   - src/string/get_next_indices.hpp
-  - src/datastructure/Doubling.hpp
-  - src/datastructure/_doubling.hpp
+  - src/matrix/mat_dot.hpp
+  - src/matrix/MatPow.hpp
+  - src/template.hpp
+  - src/grid/bfs.hpp
+  - src/grid/transpose.hpp
   - src/grid/bfs_restore.hpp
   - src/grid/dijkstra.hpp
-  - src/grid/transpose.hpp
   - src/grid/bfs01.hpp
-  - src/grid/bfs.hpp
   timestamp: '2023-02-28 01:25:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
