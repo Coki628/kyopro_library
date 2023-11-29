@@ -2,12 +2,12 @@
 #include "to_string.hpp"
 
 template<typename T>
-string join(const vector<T> &A, char separator=0) {
+string join(const vector<T> &A, string separator="") {
     int N = A.size();
     string res;
     rep(i, N) {
         res += tostr(A[i]);
-        if (separator != 0 and i != N-1) res += separator;
+        if (i != N - 1) res += separator;
     }
     return res;
 }

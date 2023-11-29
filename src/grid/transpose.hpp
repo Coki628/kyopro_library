@@ -6,7 +6,7 @@ template<typename T>
 vector<vector<T>> transpose(const vector<vector<T>> &grid) {
     int H = grid.size();
     int W = grid[0].size();
-    auto res = list2d(W, H, (T)0);
+    auto res = listnd(W, H, (T)0);
     rep(i, H) {
         rep(j, W) {
             res[j][i] = grid[i][j];

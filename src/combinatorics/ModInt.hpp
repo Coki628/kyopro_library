@@ -69,6 +69,9 @@ struct ModInt {
 
     bool operator!=(const ModInt &p) const { return x != p.x; }
 
+    // ※ModIntの大小比較に意味はないけど、これ作っとくとmapのキーに使えるようになる
+    bool operator<(const ModInt &p) const { return x < p.x; }
+
     ModInt inv() const {
         int a = x, b = mod, u = 1, v = 0, t;
         while(b > 0) {

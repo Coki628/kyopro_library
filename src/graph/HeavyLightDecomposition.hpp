@@ -18,6 +18,7 @@
 // 　　headの初期値をrootにしたらうまくいった。
 // 　・パスクエリ[u,v]にて、u->lcaとlca->vでHLD上の列の向きが逆になるので、
 // 　　乗せたセグ木の演算にマージ方向がある場合などは注意して処理する。
+// 　・左右の区別があるモノイドを乗せたい時はクエリで関数Sを使うとうまくいった。(cf1843F2参照)
 
 // HL分解
 struct HeavyLightDecomposition {
@@ -93,6 +94,11 @@ public:
 
     explicit HeavyLightDecomposition(const vvi &g, int root=0) : g(g) {
         build(root);
+    }
+
+    int operator[](int u) const {
+        assert(0 <= u && u < (int)g.size());
+        return in[u];
     }
 
 private:

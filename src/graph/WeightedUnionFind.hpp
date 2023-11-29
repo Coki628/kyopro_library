@@ -25,6 +25,12 @@ struct WeightedUnionFind : UnionFind {
         }
     }
 
+    // 正当性チェック
+    bool validate(int a, int b, T w) {
+        assert(same(a, b));
+        return diff(a, b) == w;
+    }
+
     // 併合
     int merge(int a, int b, T w) {
         int x = find(a);

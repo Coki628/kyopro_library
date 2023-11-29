@@ -1,6 +1,8 @@
 #include "../base.hpp"
 
-// see: https://blog.naskya.net/post/0002/
+// see: https://blog.naskya.net/post/meu0vkh5cpl1/
+// ・なんでも読める強力なデバッグ出力。
+// 　コード長がとても長いので普段使いはしていないが、参考になる部分も多いため取っておく。
 
 #ifdef __LOCAL
 
@@ -32,7 +34,7 @@
 #endif
 
 namespace debug_print {
-std::ostream &os = std::cout;
+std::ostream &os = std::cerr;
 
 template<class Tp>
 auto has_cbegin(int)

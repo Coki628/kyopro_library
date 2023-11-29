@@ -3,18 +3,18 @@
 #include "constants/dir4.hpp"
 
 // グリッドBFS
-vvl bfs(const vector<string> &grid, const vector<pii> &src, char invalid='#') {
-
+auto bfs = [](const vector<string> &grid, const vector<pii> &src, char invalid='#') {
     int H = grid.size();
     int W = grid[0].size();
     auto res = list2d(H, W, INF);
     queue<pii> que;
     for (auto [h, w] : src) {
-        que.push({h, w});
         res[h][w] = 0;
+        que.push({h, w});
     }
     while (!que.empty()) {
-        auto [h, w] = que.front(); que.pop();
+        auto [h, w] = que.front();
+        que.pop();
         for (auto [dh, dw] : dir4) {
             int nh = h + dh;
             int nw = w + dw;
@@ -27,4 +27,4 @@ vvl bfs(const vector<string> &grid, const vector<pii> &src, char invalid='#') {
         }
     }
     return res;
-}
+};

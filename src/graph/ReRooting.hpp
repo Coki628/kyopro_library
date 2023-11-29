@@ -7,6 +7,7 @@
 // 　　f1が dp[u]+dp[v] で、f2が dp[v]+1 に相当する感じ。
 
 // 全方位木DP
+// see: https://ei1333.github.io/library/graph/tree/rerooting.hpp
 template<typename sum_t, typename key_t, typename F1, typename F2>
 struct ReRooting {
     struct Edge {

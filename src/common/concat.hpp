@@ -1,8 +1,13 @@
 #include "../base.hpp"
 
-template<typename T>
-vector<T> concat(const vector<T>& A, const vector<T>& B) {
+// 配列の連結
+template<typename T, typename... Ts>
+vector<T> concat(const vector<T>& A, const vector<T>& B, Ts... args) {
     vector<T> res = A;
     res.insert(res.end(), B.begin(), B.end());
-    return res;
+    if constexpr (sizeof...(Ts) == 0) {
+        return res;
+    } else {
+        return concat(res, args...);
+    }
 }

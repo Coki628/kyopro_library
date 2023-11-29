@@ -35,13 +35,13 @@
 #include "common/HashMap.hpp"
 #include "common/vector.hpp"
 #include "common/pair.hpp"
+#include "common/fill.hpp"
 
 // from combinatorics
 #include "combinatorics/ModTools.hpp"
 #include "combinatorics/permutations.hpp"
 #include "combinatorics/combinations.hpp"
 #include "combinatorics/nC2.hpp"
-#include "combinatorics/factorial.hpp"
 
 // from graph
 #include "graph/UnionFind.hpp"
@@ -53,13 +53,17 @@
 
 // from mystl
 #include "mystl/defaultdict.hpp"
+#include "mystl/Vector.hpp"
+#include "mystl/Set.hpp"
+#include "mystl/Multiset.hpp"
+#include "mystl/Deque.hpp"
+#include "mystl/PriorityQueue.hpp"
 
 // from numbers
 #include "numbers/gcd.hpp"
 #include "numbers/lcm.hpp"
 #include "numbers/factorize.hpp"
 #include "numbers/divisors.hpp"
-#include "numbers/isqrt.hpp"
 
 // from datastructure
 #include "datastructure/Accumulate.hpp"
@@ -67,9 +71,5 @@
 #include "datastructure/SegmentTree.hpp"
 
 // from string
-#include "string/constants/digits.hpp"
-#include "string/constants/ascii_lowercase.hpp"
-#include "string/constants/ascii_uppercase.hpp"
 #include "string/zfill.hpp"
 #include "string/bin.hpp"
-#include "string/isdigit.hpp"

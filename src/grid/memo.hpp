@@ -1,9 +1,19 @@
 // グリッド斜めのループ(いつもぱっと出ないでもたつくので。。)
-// rep(k, -N, N) {
-//     rep(i, N) {
-//         if (0 <= i+k and i+k < N) {
+// 左上 → 右下
+// rep(base, -W, W) {
+//     rep(i, H) {
+//         if (0 <= base + i and base + i < W) {
 //             // do something below
-//             // grid[i][i+k];
+//             // grid[i][base + i];
+//         }
+//     }
+// }
+// 右上 → 左下 (未verify)
+// rep(base, -W, W) {
+//     rep(i, H) {
+//         if (0 <= base + W - i - 1 and base + W - i - 1 < W) {
+//             // do something below
+//             // grid[i][base + W - i - 1];
 //         }
 //     }
 // }
