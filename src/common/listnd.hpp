@@ -3,14 +3,14 @@
 
 // 任意次元vector
 // 参考：https://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp
-template<typename T>
-vector<T> listnd(size_t a, T b) {
-    return vector<T>(a, b);
-}
-
 template<typename... Ts>
-auto listnd(size_t a, Ts... ts) {
-    return vector<decltype(listnd(ts...))>(a, listnd(ts...));
+auto listnd(size_t N, Ts... ts) {
+    if constexpr (sizeof...(ts) == 1) {
+        return vector<Ts...>(N, ts...);
+    } else {
+        auto res = listnd(ts...);
+        return vector<decltype(res)>(N, res);
+    }
 }
 
 // 後方互換
