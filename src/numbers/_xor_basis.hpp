@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/chmin.hpp"
+#include "../macros.hpp"
 
 // XOR基底(クラス版作ったけど、何回か使うまで一応こっちも取っておく)
 template<typename T>

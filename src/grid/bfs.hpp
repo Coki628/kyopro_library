@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 #include "constants/dir4.hpp"
 
 // グリッドBFS

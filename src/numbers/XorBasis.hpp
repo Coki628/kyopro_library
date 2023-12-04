@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/chmin.hpp"
+#include "../macros.hpp"
 
 // XOR基底(array版：こっちのが速い。メモリは食う。)
 template<typename T, size_t W>

@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 
 // ダブリング
 template<typename T, typename F>
@@ -27,11 +27,7 @@ struct Doubling {
     }
 
     // ダブリング配列をライブラリ外で事前構築するコンストラクタ
-    Doubling(const vv<T> &A, const F &f)
-        : MXLOG(A.size()),
-          dat(A),
-          f(f) {
-    }
+    Doubling(const vv<T> &A, const F &f) : MXLOG(A.size()), dat(A), f(f) {}
 
     // stから始めてK個先を返す
     T get(T st, ll K) {

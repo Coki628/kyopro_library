@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/Compress.hpp"
+#include "../macros.hpp"
 
 // 転倒数取得
 ll get_inversion(vector<ll> A, bool comp = true) {

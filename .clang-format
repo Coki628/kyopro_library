@@ -10,8 +10,8 @@ BreakBeforeBraces: Attach
 
 IndentWidth: 4
 
-# #includeの順序ソートなし
-SortIncludes: Never
+# #includeの順序ソートなし(※ライブラリ内はソートしてもらうか)
+# SortIncludes: Never
 
 # 短い関数を1行に整形なし(repマクロもここに入る)
 AllowShortFunctionsOnASingleLine: None

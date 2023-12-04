@@ -13,7 +13,7 @@ HashMap<T, ll> Counter(const vector<T> &A) {
 
 template<typename T>
 vector<ll> Counter(const vector<T> &A, int mx) {
-    vector<ll> res(mx+1);
+    vector<ll> res(mx + 1);
     for (T a : A) {
         res[a]++;
     }
@@ -29,7 +29,7 @@ HashMap<char, ll> Counter(const string &S) {
 }
 
 template<typename T>
-vector<pair<ll, T>> most_common(const HashMap<T, ll>& C) {
+vector<pair<ll, T>> most_common(const HashMap<T, ll> &C) {
     vector<pair<ll, T>> res;
     for (auto [k, v] : C) {
         res.eb(v, k);

@@ -1,6 +1,6 @@
 #pragma once
 #include "../base.hpp"
-#include "common/HashMap.hpp"
+#include "../common/HashMap.hpp"
 
 // 疎な2次元BIT
 template<typename T>

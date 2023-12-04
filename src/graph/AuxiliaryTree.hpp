@@ -1,8 +1,8 @@
 #pragma once
-#include "../macros.hpp"
-#include "HeavyLightDecomposition.hpp"
 #include "../common/HashMap.hpp"
+#include "../macros.hpp"
 #include "../mystl/Vector.hpp"
+#include "HeavyLightDecomposition.hpp"
 
 // Auxiliary Tree
 // 説明
@@ -17,9 +17,9 @@ struct AuxiliaryTree {
     int N;
     HeavyLightDecomposition hld;
 
-    AuxiliaryTree(const vvi& nodes) : hld(nodes), N(nodes.size()) {}
+    AuxiliaryTree(const vvi &nodes) : hld(nodes), N(nodes.size()) {}
 
-    HashMap<int, vector<pil>> build(const vector<int>& A) {
+    HashMap<int, vector<pil>> build(const vector<int> &A) {
         int K = A.size();
         vector<pii> tmp;
         rep(i, K) {

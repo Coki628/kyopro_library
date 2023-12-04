@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 
 // グリッドBFS(経路復元)
 string bfs(

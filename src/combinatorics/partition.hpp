@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 
 // 分割数(玉区別なし、箱区別なし、制限なし) ※未Verify
 ll partition(int N, int K) {

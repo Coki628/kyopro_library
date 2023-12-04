@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 
 // グリッド転置
 template<typename T>

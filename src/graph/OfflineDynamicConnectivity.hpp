@@ -7,6 +7,10 @@
 // 参考：https://ei1333.github.io/library/other/offline-dynamic-connectivity.cpp
 // 　　　https://ei1333.github.io/luzhiled/snippets/other/offline-dynamic-connectivity.html
 // 　　　https://nyaannyaan.github.io/library/graph/offline-dynamic-connectivity.hpp
+// 使い方
+// ・初期化
+// ・一連の辺の付け外しをinsert,eraseで記録
+// ・各時点で行いたい操作の関数を渡しつつrunを実行
 struct OfflineDynamicConnectivity {
     using edge = pair<int, int>;
 

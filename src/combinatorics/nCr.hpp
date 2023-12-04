@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 
 // nCr列挙 (計算量：O(n*r))
 // template<typename T>

@@ -1,7 +1,7 @@
 #pragma once
 #include "../macros.hpp"
 
-// なもりグラフの閉路検出
+// なもりグラフの閉路検出：O(N)
 // cycle[u] := 頂点uがなもりの閉路に含まれるかどうか
 vector<int> cycle_detection_for_namori(vvi nodes) {
     int N = nodes.size();

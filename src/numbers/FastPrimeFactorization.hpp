@@ -1,7 +1,7 @@
 #pragma once
-#include "../macros.hpp"
-#include "../common/sorted.hpp"
 #include "../common/RLE.hpp"
+#include "../common/sorted.hpp"
+#include "../macros.hpp"
 
 // 参考：https://ei1333.github.io/library/math/number-theory/fast-prime-factorization.hpp
 // 高速素因数分解

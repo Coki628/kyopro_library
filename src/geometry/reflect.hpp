@@ -1,6 +1,6 @@
 #pragma once
-#include "Segment.hpp"
 #include "Point.hpp"
+#include "Segment.hpp"
 #include "project.hpp"
 
 // 線分segを対称軸とした点pの線対称の点

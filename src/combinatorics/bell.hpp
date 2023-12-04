@@ -1,7 +1,7 @@
 #pragma once
 #include "../macros.hpp"
-#include "stirling.hpp"
 #include "ModTools.hpp"
+#include "stirling.hpp"
 
 // ベル数(玉区別あり、箱区別なし、制限なし) ※未Verify
 ll bell(int N, int K) {

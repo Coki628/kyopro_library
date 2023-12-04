@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/modulo.hpp"
+#include "../macros.hpp"
 
 // 10進法をN進法文字列に(負数n対応版)
 string dton(ll num, ll n, char base = '0') {

@@ -1,7 +1,7 @@
 #pragma once
-#include "../macros.hpp"
-#include "../datastructure/SegmentTree.hpp"
 #include "../acl/string.hpp"
+#include "../datastructure/SegmentTree.hpp"
+#include "../macros.hpp"
 
 auto f = [](int a, int b) { return min(a, b); };
 

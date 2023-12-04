@@ -16,8 +16,8 @@ vector<ll> eratosthenes_sieve(ll n) {
 }
 
 // 高速素因数分解(osa_k法)(vectorベース)
-vector<pair<ll, int>> factorize(const vector<ll> &minfactor, ll x) {
-    vector<pair<ll, int>> res;
+vector<pli> factorize(const vector<ll> &minfactor, ll x) {
+    vector<pli> res;
     while (x > 1) {
         int p = minfactor[x];
         int cnt = 0;

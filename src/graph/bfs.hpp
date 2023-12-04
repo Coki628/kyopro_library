@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/chmin.hpp"
+#include "../macros.hpp"
 
 // BFS
 // ・メインの処理内にベタ貼りして中身ちょっといじるがすぐできるようにラムダにした。

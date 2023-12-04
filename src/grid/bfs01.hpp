@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 
 // グリッド01BFS
 vvl bfs01(const vvl &grid, const vector<pii> &src, ll invalid = -1) {

@@ -1,6 +1,6 @@
 #pragma once
-#include "Segment.hpp"
 #include "Point.hpp"
+#include "Segment.hpp"
 #include "dot.hpp"
 
 // 線分segに対する点pの射影

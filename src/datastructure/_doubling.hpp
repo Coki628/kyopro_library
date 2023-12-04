@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 
 // ダブリング(旧)
 vvl doubling(int MXLOG, const vector<ll> &A) {

@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/chmin.hpp"
+#include "../macros.hpp"
 
 // ベルマンフォード(頂点数, 辺集合(0-indexed), 始点)
 vector<ll> bellman_ford(int N, vector<array<ll, 3>> edges, int src) {

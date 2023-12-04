@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/toint.hpp"
+#include "../macros.hpp"
 
 // 桁和：O(logN)
 ll digit_sum(ll n) {

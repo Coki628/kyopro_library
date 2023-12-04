@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/listnd.hpp"
+#include "../macros.hpp"
 
 // スターリング数(玉区別あり、箱区別なし、1個以上)
 template<typename T>

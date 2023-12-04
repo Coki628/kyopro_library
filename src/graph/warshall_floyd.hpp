@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/chmin.hpp"
+#include "../macros.hpp"
 
 template<typename T>
 vv<T> warshall_floyd(vv<T> G) {

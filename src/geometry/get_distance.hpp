@@ -1,9 +1,9 @@
 #pragma once
-#include "Point.hpp"
 #include "Line.hpp"
+#include "Point.hpp"
 #include "Segment.hpp"
-#include "dot.hpp"
 #include "cross.hpp"
+#include "dot.hpp"
 #include "intersect.hpp"
 
 template<typename T>

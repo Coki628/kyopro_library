@@ -1,6 +1,6 @@
 #pragma once
-#include "../macros.hpp"
 #include "../common/chmin.hpp"
+#include "../macros.hpp"
 
 // 01BFS(コストが0or1なら使える)
 vector<ll> bfs01(const vvpil &nodes, const vector<int> &src) {
