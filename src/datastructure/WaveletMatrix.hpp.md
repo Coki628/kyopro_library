@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy: []
@@ -15,32 +15,32 @@ data:
     - https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp
     - https://twitter.com/US_kyopro/status/1601792850886242304
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 2 \"src/datastructure/WaveletMatrix.hpp\"\n#include\
-    \ <immintrin.h>\n\n// \u53C2\u8003\uFF1Ahttps://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp\n\
-    // Wavelet Matrix\n// \u4F7F\u7528\u4E0A\u306E\u6CE8\u610F\u70B9\n// \u30FB\u8CA0\
-    \u6570\u304C\u3042\u308B\u6642\u306F\u5EA7\u5727\u304B\u4E0B\u99C4\u5C65\u304B\
-    \u3059\u304B\u3059\u308B\u3002\n// \u4EE5\u524D\u306E\u304B\u3089\u306E\u5909\u66F4\
-    \u70B9\n// \u30FB\u6700\u5927\u30D3\u30C3\u30C8\u6307\u5B9A\u3057\u306A\u304F\u3066\
-    \u3088\u304F\u306A\u3063\u305F\u3002\n// \u30FB\u521D\u671F\u5316\u306F\u914D\u5217\
-    \u6E21\u3059\u4EE5\u5916\u306B\u3001\u30B5\u30A4\u30BA\u6307\u5B9A\u3057\u3066\
-    \u5F8C\u304B\u3089set\u3057\u3066build\u306E\u65B9\u3082\u3067\u304D\u308B\u3088\
-    \u3046\u306B\u306A\u3063\u305F\u3002\n// \u30FB\u3053\u3063\u3061\u306E\u304C\u3061\
-    \u3087\u3063\u3068\u901F\u3044\u3002(\u591A\u5206)\n\nstruct bit_vector {\n  \
-    \  using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
-    \n    static constexpr u32 w = 64;\n    vector<u64> block;\n    vector<u32> count;\n\
-    \    u32 n, zeros;\n\n    inline u32 get(u32 i) const { return u32(block[i / w]\
-    \ >> (i % w)) & 1u; }\n    inline void set(u32 i) { block[i / w] |= 1LL << (i\
-    \ % w); }\n\n    bit_vector() {}\n    bit_vector(int _n) { init(_n); }\n    __attribute__((optimize(\"\
-    O3\", \"unroll-loops\"))) void init(int _n) {\n        n = zeros = _n;\n     \
-    \   block.resize(n / w + 1, 0);\n        count.resize(block.size(), 0);\n    }\n\
-    \n    __attribute__((target(\"popcnt\"))) void build() {\n        for (u32 i =\
-    \ 1; i < block.size(); ++i)\n            count[i] = count[i - 1] + _mm_popcnt_u64(block[i\
-    \ - 1]);\n        zeros = rank0(n);\n    }\n\n    inline u32 rank0(u32 i) const\
-    \ { return i - rank1(i); }\n    __attribute__((target(\"bmi2,popcnt\"))) inline\
-    \ u32 rank1(u32 i) const {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i\
-    \ / w], i % w));\n    }\n};\n\ntemplate <typename T>\nstruct WaveletMatrix {\n\
-    \    using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
-    \n    int n, lg;\n    vector<T> a;\n    vector<bit_vector> bv;\n    vector<vector<T>>\
+    using namespace std;\n#line 3 \"src/datastructure/WaveletMatrix.hpp\"\n#include\
+    \ <immintrin.h>\n\n// Wavelet Matrix\n// \u53C2\u8003\uFF1Ahttps://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp\n\
+    // \u4F7F\u7528\u4E0A\u306E\u6CE8\u610F\u70B9\n// \u30FB\u8CA0\u6570\u304C\u3042\
+    \u308B\u6642\u306F\u5EA7\u5727\u304B\u4E0B\u99C4\u5C65\u304B\u3059\u304B\u3059\
+    \u308B\u3002\n// \u4EE5\u524D\u306E\u304B\u3089\u306E\u5909\u66F4\u70B9\n// \u30FB\
+    \u6700\u5927\u30D3\u30C3\u30C8\u6307\u5B9A\u3057\u306A\u304F\u3066\u3088\u304F\
+    \u306A\u3063\u305F\u3002\n// \u30FB\u521D\u671F\u5316\u306F\u914D\u5217\u6E21\u3059\
+    \u4EE5\u5916\u306B\u3001\u30B5\u30A4\u30BA\u6307\u5B9A\u3057\u3066\u5F8C\u304B\
+    \u3089set\u3057\u3066build\u306E\u65B9\u3082\u3067\u304D\u308B\u3088\u3046\u306B\
+    \u306A\u3063\u305F\u3002\n// \u30FB\u3053\u3063\u3061\u306E\u304C\u3061\u3087\u3063\
+    \u3068\u901F\u3044\u3002(\u591A\u5206)\nstruct bit_vector {\n    using u32 = uint32_t;\n\
+    \    using i64 = int64_t;\n    using u64 = uint64_t;\n\n    static constexpr u32\
+    \ w = 64;\n    vector<u64> block;\n    vector<u32> count;\n    u32 n, zeros;\n\
+    \n    inline u32 get(u32 i) const { return u32(block[i / w] >> (i % w)) & 1u;\
+    \ }\n    inline void set(u32 i) { block[i / w] |= 1LL << (i % w); }\n\n    bit_vector()\
+    \ {}\n    bit_vector(int _n) { init(_n); }\n    __attribute__((optimize(\"O3\"\
+    , \"unroll-loops\"))) void init(int _n) {\n        n = zeros = _n;\n        block.resize(n\
+    \ / w + 1, 0);\n        count.resize(block.size(), 0);\n    }\n\n    __attribute__((target(\"\
+    popcnt\"))) void build() {\n        for (u32 i = 1; i < block.size(); ++i)\n \
+    \           count[i] = count[i - 1] + _mm_popcnt_u64(block[i - 1]);\n        zeros\
+    \ = rank0(n);\n    }\n\n    inline u32 rank0(u32 i) const { return i - rank1(i);\
+    \ }\n    __attribute__((target(\"bmi2,popcnt\"))) inline u32 rank1(u32 i) const\
+    \ {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i / w], i %\
+    \ w));\n    }\n};\n\ntemplate <typename T>\nstruct WaveletMatrix {\n    using\
+    \ u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\n   \
+    \ int n, lg;\n    vector<T> a;\n    vector<bit_vector> bv;\n    vector<vector<T>>\
     \ sum;\n\n    WaveletMatrix(u32 _n) : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const\
     \ vector<T>& _a) : n(_a.size()), a(_a) { build(); }\n\n    __attribute__((optimize(\"\
     O3\"))) void build() {\n        lg = __lg(max<T>(*max_element(begin(a), end(a)),\
@@ -101,32 +101,32 @@ data:
     \ i < r) && (lower <= v[i])\n    T next_value(int l, int r, T lower) {\n     \
     \   int cnt = range_freq(l, r, lower);\n        return cnt == r - l ? T(-1) :\
     \ kth_smallest(l, r, cnt);\n    }\n};\n"
-  code: "#include \"../base.hpp\"\n#include <immintrin.h>\n\n// \u53C2\u8003\uFF1A\
-    https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp\n//\
-    \ Wavelet Matrix\n// \u4F7F\u7528\u4E0A\u306E\u6CE8\u610F\u70B9\n// \u30FB\u8CA0\
-    \u6570\u304C\u3042\u308B\u6642\u306F\u5EA7\u5727\u304B\u4E0B\u99C4\u5C65\u304B\
-    \u3059\u304B\u3059\u308B\u3002\n// \u4EE5\u524D\u306E\u304B\u3089\u306E\u5909\u66F4\
-    \u70B9\n// \u30FB\u6700\u5927\u30D3\u30C3\u30C8\u6307\u5B9A\u3057\u306A\u304F\u3066\
-    \u3088\u304F\u306A\u3063\u305F\u3002\n// \u30FB\u521D\u671F\u5316\u306F\u914D\u5217\
-    \u6E21\u3059\u4EE5\u5916\u306B\u3001\u30B5\u30A4\u30BA\u6307\u5B9A\u3057\u3066\
-    \u5F8C\u304B\u3089set\u3057\u3066build\u306E\u65B9\u3082\u3067\u304D\u308B\u3088\
-    \u3046\u306B\u306A\u3063\u305F\u3002\n// \u30FB\u3053\u3063\u3061\u306E\u304C\u3061\
-    \u3087\u3063\u3068\u901F\u3044\u3002(\u591A\u5206)\n\nstruct bit_vector {\n  \
-    \  using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
-    \n    static constexpr u32 w = 64;\n    vector<u64> block;\n    vector<u32> count;\n\
-    \    u32 n, zeros;\n\n    inline u32 get(u32 i) const { return u32(block[i / w]\
-    \ >> (i % w)) & 1u; }\n    inline void set(u32 i) { block[i / w] |= 1LL << (i\
-    \ % w); }\n\n    bit_vector() {}\n    bit_vector(int _n) { init(_n); }\n    __attribute__((optimize(\"\
-    O3\", \"unroll-loops\"))) void init(int _n) {\n        n = zeros = _n;\n     \
-    \   block.resize(n / w + 1, 0);\n        count.resize(block.size(), 0);\n    }\n\
-    \n    __attribute__((target(\"popcnt\"))) void build() {\n        for (u32 i =\
-    \ 1; i < block.size(); ++i)\n            count[i] = count[i - 1] + _mm_popcnt_u64(block[i\
-    \ - 1]);\n        zeros = rank0(n);\n    }\n\n    inline u32 rank0(u32 i) const\
-    \ { return i - rank1(i); }\n    __attribute__((target(\"bmi2,popcnt\"))) inline\
-    \ u32 rank1(u32 i) const {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i\
-    \ / w], i % w));\n    }\n};\n\ntemplate <typename T>\nstruct WaveletMatrix {\n\
-    \    using u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
-    \n    int n, lg;\n    vector<T> a;\n    vector<bit_vector> bv;\n    vector<vector<T>>\
+  code: "#pragma once\n#include \"../base.hpp\"\n#include <immintrin.h>\n\n// Wavelet\
+    \ Matrix\n// \u53C2\u8003\uFF1Ahttps://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp\n\
+    // \u4F7F\u7528\u4E0A\u306E\u6CE8\u610F\u70B9\n// \u30FB\u8CA0\u6570\u304C\u3042\
+    \u308B\u6642\u306F\u5EA7\u5727\u304B\u4E0B\u99C4\u5C65\u304B\u3059\u304B\u3059\
+    \u308B\u3002\n// \u4EE5\u524D\u306E\u304B\u3089\u306E\u5909\u66F4\u70B9\n// \u30FB\
+    \u6700\u5927\u30D3\u30C3\u30C8\u6307\u5B9A\u3057\u306A\u304F\u3066\u3088\u304F\
+    \u306A\u3063\u305F\u3002\n// \u30FB\u521D\u671F\u5316\u306F\u914D\u5217\u6E21\u3059\
+    \u4EE5\u5916\u306B\u3001\u30B5\u30A4\u30BA\u6307\u5B9A\u3057\u3066\u5F8C\u304B\
+    \u3089set\u3057\u3066build\u306E\u65B9\u3082\u3067\u304D\u308B\u3088\u3046\u306B\
+    \u306A\u3063\u305F\u3002\n// \u30FB\u3053\u3063\u3061\u306E\u304C\u3061\u3087\u3063\
+    \u3068\u901F\u3044\u3002(\u591A\u5206)\nstruct bit_vector {\n    using u32 = uint32_t;\n\
+    \    using i64 = int64_t;\n    using u64 = uint64_t;\n\n    static constexpr u32\
+    \ w = 64;\n    vector<u64> block;\n    vector<u32> count;\n    u32 n, zeros;\n\
+    \n    inline u32 get(u32 i) const { return u32(block[i / w] >> (i % w)) & 1u;\
+    \ }\n    inline void set(u32 i) { block[i / w] |= 1LL << (i % w); }\n\n    bit_vector()\
+    \ {}\n    bit_vector(int _n) { init(_n); }\n    __attribute__((optimize(\"O3\"\
+    , \"unroll-loops\"))) void init(int _n) {\n        n = zeros = _n;\n        block.resize(n\
+    \ / w + 1, 0);\n        count.resize(block.size(), 0);\n    }\n\n    __attribute__((target(\"\
+    popcnt\"))) void build() {\n        for (u32 i = 1; i < block.size(); ++i)\n \
+    \           count[i] = count[i - 1] + _mm_popcnt_u64(block[i - 1]);\n        zeros\
+    \ = rank0(n);\n    }\n\n    inline u32 rank0(u32 i) const { return i - rank1(i);\
+    \ }\n    __attribute__((target(\"bmi2,popcnt\"))) inline u32 rank1(u32 i) const\
+    \ {\n        return count[i / w] + _mm_popcnt_u64(_bzhi_u64(block[i / w], i %\
+    \ w));\n    }\n};\n\ntemplate <typename T>\nstruct WaveletMatrix {\n    using\
+    \ u32 = uint32_t;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\n   \
+    \ int n, lg;\n    vector<T> a;\n    vector<bit_vector> bv;\n    vector<vector<T>>\
     \ sum;\n\n    WaveletMatrix(u32 _n) : n(max<u32>(_n, 1)), a(n) {}\n    WaveletMatrix(const\
     \ vector<T>& _a) : n(_a.size()), a(_a) { build(); }\n\n    __attribute__((optimize(\"\
     O3\"))) void build() {\n        lg = __lg(max<T>(*max_element(begin(a), end(a)),\
@@ -192,7 +192,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/WaveletMatrix.hpp
   requiredBy: []
-  timestamp: '2023-01-03 02:49:03+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/WaveletMatrix.hpp

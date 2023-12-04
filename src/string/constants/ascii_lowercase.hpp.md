@@ -1,16 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: src/string/constants/ascii_letters.hpp
     title: src/string/constants/ascii_letters.hpp
-  - icon: ':warning:'
-    path: src/template.hpp
-    title: src/template.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -45,7 +42,6 @@ data:
   path: src/string/constants/ascii_lowercase.hpp
   requiredBy:
   - src/string/constants/ascii_letters.hpp
-  - src/template.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

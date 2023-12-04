@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
     path: src/common/to_string.hpp
     title: src/common/to_string.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -36,15 +36,15 @@ data:
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/to_string.hpp\"\
-    \n\nstring to_string(const string &S) { return S; }\n\nstring to_string(char c)\
-    \ { return {c}; }\n#line 3 \"src/common/join.hpp\"\n\ntemplate<typename T>\nstring\
-    \ join(const vector<T> &A, char separator=0) {\n    int N = A.size();\n    string\
-    \ res;\n    rep(i, N) {\n        res += tostr(A[i]);\n        if (separator !=\
-    \ 0 and i != N-1) res += separator;\n    }\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n#include \"to_string.hpp\"\n\ntemplate<typename\
-    \ T>\nstring join(const vector<T> &A, char separator=0) {\n    int N = A.size();\n\
-    \    string res;\n    rep(i, N) {\n        res += tostr(A[i]);\n        if (separator\
-    \ != 0 and i != N-1) res += separator;\n    }\n    return res;\n}\n"
+    \n\nstring to_string(const string &S) {\n    return S;\n}\n\nstring to_string(char\
+    \ c) {\n    return {c};\n}\n#line 4 \"src/common/join.hpp\"\n\ntemplate<typename\
+    \ T>\nstring join(const vector<T> &A, string separator = \"\") {\n    int N =\
+    \ A.size();\n    string res;\n    rep(i, N) {\n        res += tostr(A[i]);\n \
+    \       if (i != N - 1) res += separator;\n    }\n    return res;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n#include \"to_string.hpp\"\n\n\
+    template<typename T>\nstring join(const vector<T> &A, string separator = \"\"\
+    ) {\n    int N = A.size();\n    string res;\n    rep(i, N) {\n        res += tostr(A[i]);\n\
+    \        if (i != N - 1) res += separator;\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -53,7 +53,7 @@ data:
   path: src/common/join.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/join.hpp

@@ -21,13 +21,13 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/convolution:\
     \ line -1: no such header\n"
-  code: "// FFT\n// \u4F7F\u7528\u65B9\u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/convolution.html\n\
+  code: "#pragma once\n\n// FFT\n// \u4F7F\u7528\u65B9\u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/convolution.html\n\
     #include \"atcoder/convolution\"\n"
   dependsOn: []
   isVerificationFile: false
   path: src/acl/convolution.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/acl/convolution.hpp

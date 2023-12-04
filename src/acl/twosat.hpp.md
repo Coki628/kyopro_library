@@ -21,13 +21,22 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/twosat:\
     \ line -1: no such header\n"
-  code: "// 2-SAT\n// \u4F7F\u7528\u65B9\u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/twosat.html\n\
-    #include \"atcoder/twosat\"\n"
+  code: "#pragma once\n\n// 2-SAT\n// \u4F7F\u7528\u65B9\u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/twosat.html\n\
+    // \u30FB\u5143\u3005\u306F\u300CA|B and A|B and...\u300D\u306A\u3093\u3060\u3051\
+    \u3069\uFF44\u3001\u5909\u5F62\u3055\u305B\u308B\u3068\u8272\u3005\u306A\u6761\
+    \u4EF6\u306B\u5BFE\u5FDC\u3067\u304D\u308B\u3002\n// \u3000\u30FBA or B (cf1903f)\n\
+    // \u3000\u3000A|B (\u3053\u308C\u306F\u305D\u306E\u307E\u307E)\n// \u3000\u30FB\
+    A xor B (abc327_d,cf1438c)\n// \u3000\u3000A&!B or !A&B -> A|B and !A|!B\n// \u3000\
+    \u30FBnot (A and B) (aclpc_h,yukico274)\n// \u3000\u3000!(A&B) -> !A|!B\n// \u3000\
+    \u30FBnot (!A and B) (aclpc_h)\n// \u3000\u3000!(A&!B) -> !A|B\n// \u3000\u30FB\
+    not (A and !B) (aclpc_h)\n// \u3000\u3000!(!A&B) -> A|!B\n// \u3000\u30FBnot (!A\
+    \ and !B) (aclpc_h)\n// \u3000\u3000!(!A&!B) -> A|B\n// \u3000\u30FBA and B (cf1494b)\n\
+    // \u3000\u3000A&B -> A|A and B|B\n#include \"atcoder/twosat\"\n"
   dependsOn: []
   isVerificationFile: false
   path: src/acl/twosat.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/acl/twosat.hpp

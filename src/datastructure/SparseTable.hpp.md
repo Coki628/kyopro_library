@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,79 +29,81 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/datastructure/SparseTable.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/datastructure/SparseTable.hpp\"\
     \n\n// \u30B9\u30D1\u30FC\u30B9\u30C6\u30FC\u30D6\u30EB\uFF1A\u69CB\u7BC9\u306B\
-    O(NlogN)\u3001\u533A\u9593\u6700\u5C0F(\u6700\u5927)\u3092O(1)\u3067\u53D6\u5F97\
-    \ntemplate<typename T, typename F, typename E>\nstruct SparseTable {\n\n    const\
-    \ F f;\n    const E e;\n    vector<vector<T>> dat;\n    vector<int> height;\n\n\
-    \    SparseTable(const F f) : f(f) {}\n\n    SparseTable(const vector<T> &A, const\
-    \ F f, const E e) : f(f), e(e) {\n        build(A);\n    }\n\n    void build(const\
-    \ vector<T> &A) {\n        int N = A.size();\n\n        int h = 0;\n        while\
-    \ ((1<<h) <= N) {\n            h++;\n        }\n        dat.resize(h);\n     \
-    \   rep(i, h) dat[i].resize(1<<h);\n        height.resize(N+1);\n\n        rep(i,\
-    \ 2, N+1) {\n            height[i] = height[i>>1] + 1;\n        }\n        rep(i,\
-    \ N) {\n            dat[0][i] = A[i];\n        }\n        rep(i, 1, h) {\n   \
-    \         for (int j=0; j<N; j++) {\n                dat[i][j] = f(dat[i-1][j],\
-    \ dat[i-1][min(j+(1<<(i-1)), N-1)]);\n            }\n        }\n    }\n\n    //\
-    \ \u533A\u9593[l,r)\u3067\u306Emin,max\u3092\u53D6\u5F97\n    T query(int l, int\
-    \ r) {\n        if (l >= r) return e;\n        int a = height[r-l];\n        return\
-    \ f(dat[a][l], dat[a][r-(1<<a)]);\n    }\n\n    // \u533A\u9593[l,r]\u3067\u5DE6\
-    \u304B\u3089\u6700\u521D\u306Bx\u306B\u5BFE\u3057\u3066\u6BD4\u8F03\u306E\u6761\
-    \u4EF6\u3092\u6E80\u305F\u3059\u3088\u3046\u306A\u5024\u304C\u51FA\u73FE\u3059\
-    \u308B\u4F4D\u7F6E\n    template<typename G> int bisearch_fore(int l, int r, T\
-    \ x, const G &compare) {\n        int ok = r + 1;\n        int ng = l - 1;\n \
-    \       while (ng+1 < ok) {\n            int mid = (ok+ng) / 2;\n            if\
-    \ (compare(query(l, mid+1), x)) {\n                ok = mid;\n            } else\
-    \ {\n                ng = mid;\n            }\n        }\n        if (ok != r\
-    \ + 1) {\n            return ok;\n        } else {\n            return -1;\n \
-    \       }\n    }\n\n    // \u533A\u9593[l,r]\u3067\u53F3\u304B\u3089\u6700\u521D\
-    \u306Bx\u306B\u5BFE\u3057\u3066\u6BD4\u8F03\u306E\u6761\u4EF6\u3092\u6E80\u305F\
-    \u3059\u3088\u3046\u306A\u5024\u304C\u51FA\u73FE\u3059\u308B\u4F4D\u7F6E\n   \
-    \ template<typename G> int bisearch_back(int l, int r, T x, const G &compare)\
-    \ {\n        int ok = l - 1;\n        int ng = r + 1;\n        while (ok+1 < ng)\
-    \ {\n            int mid = (ok+ng) / 2;\n            if (compare(query(mid, r+1),\
-    \ x)) {\n                ok = mid;\n            } else {\n                ng =\
-    \ mid;\n            }\n        }\n        if (ok != l - 1) {\n            return\
-    \ ok;\n        } else {\n            return -1;\n        }\n    }\n    // \u4F7F\
-    \u7528\u4F8B\n    // stmx.bisearch_back(l, r, x, greater<ll>());\n};\n\ntemplate<typename\
-    \ T, typename F, typename E>\nSparseTable<T, F, E> get_sparse_table(vector<T>\
-    \ &A, const F& f, const E& e) {\n    return {A, f, e};\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u30B9\u30D1\u30FC\u30B9\u30C6\u30FC\u30D6\
-    \u30EB\uFF1A\u69CB\u7BC9\u306BO(NlogN)\u3001\u533A\u9593\u6700\u5C0F(\u6700\u5927\
-    )\u3092O(1)\u3067\u53D6\u5F97\ntemplate<typename T, typename F, typename E>\n\
-    struct SparseTable {\n\n    const F f;\n    const E e;\n    vector<vector<T>>\
+    O(NlogN)\u3001\u533A\u9593\u53D6\u5F97\u306BO(1)\ntemplate<typename T, typename\
+    \ F, typename E>\nstruct SparseTable {\n    const F f;\n    const E e;\n    vv<T>\
     \ dat;\n    vector<int> height;\n\n    SparseTable(const F f) : f(f) {}\n\n  \
     \  SparseTable(const vector<T> &A, const F f, const E e) : f(f), e(e) {\n    \
     \    build(A);\n    }\n\n    void build(const vector<T> &A) {\n        int N =\
-    \ A.size();\n\n        int h = 0;\n        while ((1<<h) <= N) {\n           \
-    \ h++;\n        }\n        dat.resize(h);\n        rep(i, h) dat[i].resize(1<<h);\n\
-    \        height.resize(N+1);\n\n        rep(i, 2, N+1) {\n            height[i]\
-    \ = height[i>>1] + 1;\n        }\n        rep(i, N) {\n            dat[0][i] =\
-    \ A[i];\n        }\n        rep(i, 1, h) {\n            for (int j=0; j<N; j++)\
-    \ {\n                dat[i][j] = f(dat[i-1][j], dat[i-1][min(j+(1<<(i-1)), N-1)]);\n\
-    \            }\n        }\n    }\n\n    // \u533A\u9593[l,r)\u3067\u306Emin,max\u3092\
-    \u53D6\u5F97\n    T query(int l, int r) {\n        if (l >= r) return e;\n   \
-    \     int a = height[r-l];\n        return f(dat[a][l], dat[a][r-(1<<a)]);\n \
-    \   }\n\n    // \u533A\u9593[l,r]\u3067\u5DE6\u304B\u3089\u6700\u521D\u306Bx\u306B\
+    \ A.size();\n\n        int h = 0;\n        while ((1 << h) <= N) {\n         \
+    \   h++;\n        }\n        dat.resize(h);\n        rep(i, h) dat[i].resize(1\
+    \ << h);\n        height.resize(N + 1);\n\n        rep(i, 2, N + 1) {\n      \
+    \      height[i] = height[i >> 1] + 1;\n        }\n        rep(i, N) {\n     \
+    \       dat[0][i] = A[i];\n        }\n        rep(i, 1, h) {\n            for\
+    \ (int j = 0; j < N; j++) {\n                dat[i][j] =\n                   \
+    \ f(dat[i - 1][j],\n                      dat[i - 1][min(j + (1 << (i - 1)), N\
+    \ - 1)]);\n            }\n        }\n    }\n\n    // \u533A\u9593[l,r)\u3067\u306E\
+    min,max\u3092\u53D6\u5F97\n    T query(int l, int r) {\n        if (l >= r) return\
+    \ e;\n        int a = height[r - l];\n        return f(dat[a][l], dat[a][r - (1\
+    \ << a)]);\n    }\n\n    // \u533A\u9593[l,r]\u3067\u5DE6\u304B\u3089\u6700\u521D\
+    \u306Bx\u306B\u5BFE\u3057\u3066\u6BD4\u8F03\u306E\u6761\u4EF6\u3092\u6E80\u305F\
+    \u3059\u3088\u3046\u306A\u5024\u304C\u51FA\u73FE\u3059\u308B\u4F4D\u7F6E\n   \
+    \ template<typename G>\n    int bisearch_fore(int l, int r, T x, const G &compare)\
+    \ {\n        int ok = r + 1;\n        int ng = l - 1;\n        while (ng + 1 <\
+    \ ok) {\n            int mid = (ok + ng) / 2;\n            if (compare(query(l,\
+    \ mid + 1), x)) {\n                ok = mid;\n            } else {\n         \
+    \       ng = mid;\n            }\n        }\n        if (ok != r + 1) {\n    \
+    \        return ok;\n        } else {\n            return -1;\n        }\n   \
+    \ }\n\n    // \u533A\u9593[l,r]\u3067\u53F3\u304B\u3089\u6700\u521D\u306Bx\u306B\
     \u5BFE\u3057\u3066\u6BD4\u8F03\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3088\
     \u3046\u306A\u5024\u304C\u51FA\u73FE\u3059\u308B\u4F4D\u7F6E\n    template<typename\
-    \ G> int bisearch_fore(int l, int r, T x, const G &compare) {\n        int ok\
-    \ = r + 1;\n        int ng = l - 1;\n        while (ng+1 < ok) {\n           \
-    \ int mid = (ok+ng) / 2;\n            if (compare(query(l, mid+1), x)) {\n   \
-    \             ok = mid;\n            } else {\n                ng = mid;\n   \
-    \         }\n        }\n        if (ok != r + 1) {\n            return ok;\n \
-    \       } else {\n            return -1;\n        }\n    }\n\n    // \u533A\u9593\
-    [l,r]\u3067\u53F3\u304B\u3089\u6700\u521D\u306Bx\u306B\u5BFE\u3057\u3066\u6BD4\
-    \u8F03\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3088\u3046\u306A\u5024\u304C\
-    \u51FA\u73FE\u3059\u308B\u4F4D\u7F6E\n    template<typename G> int bisearch_back(int\
-    \ l, int r, T x, const G &compare) {\n        int ok = l - 1;\n        int ng\
-    \ = r + 1;\n        while (ok+1 < ng) {\n            int mid = (ok+ng) / 2;\n\
-    \            if (compare(query(mid, r+1), x)) {\n                ok = mid;\n \
-    \           } else {\n                ng = mid;\n            }\n        }\n  \
-    \      if (ok != l - 1) {\n            return ok;\n        } else {\n        \
-    \    return -1;\n        }\n    }\n    // \u4F7F\u7528\u4F8B\n    // stmx.bisearch_back(l,\
+    \ G>\n    int bisearch_back(int l, int r, T x, const G &compare) {\n        int\
+    \ ok = l - 1;\n        int ng = r + 1;\n        while (ok + 1 < ng) {\n      \
+    \      int mid = (ok + ng) / 2;\n            if (compare(query(mid, r + 1), x))\
+    \ {\n                ok = mid;\n            } else {\n                ng = mid;\n\
+    \            }\n        }\n        if (ok != l - 1) {\n            return ok;\n\
+    \        } else {\n            return -1;\n        }\n    }\n    // \u4F7F\u7528\
+    \u4F8B\n    // stmx.bisearch_back(l, r, x, greater<ll>());\n};\n\ntemplate<typename\
+    \ T, typename F, typename E>\nSparseTable<T, F, E> get_sparse_table(vector<T>\
+    \ &A, const F &f, const E &e) {\n    return {A, f, e};\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u30B9\u30D1\u30FC\u30B9\u30C6\
+    \u30FC\u30D6\u30EB\uFF1A\u69CB\u7BC9\u306BO(NlogN)\u3001\u533A\u9593\u53D6\u5F97\
+    \u306BO(1)\ntemplate<typename T, typename F, typename E>\nstruct SparseTable {\n\
+    \    const F f;\n    const E e;\n    vv<T> dat;\n    vector<int> height;\n\n \
+    \   SparseTable(const F f) : f(f) {}\n\n    SparseTable(const vector<T> &A, const\
+    \ F f, const E e) : f(f), e(e) {\n        build(A);\n    }\n\n    void build(const\
+    \ vector<T> &A) {\n        int N = A.size();\n\n        int h = 0;\n        while\
+    \ ((1 << h) <= N) {\n            h++;\n        }\n        dat.resize(h);\n   \
+    \     rep(i, h) dat[i].resize(1 << h);\n        height.resize(N + 1);\n\n    \
+    \    rep(i, 2, N + 1) {\n            height[i] = height[i >> 1] + 1;\n       \
+    \ }\n        rep(i, N) {\n            dat[0][i] = A[i];\n        }\n        rep(i,\
+    \ 1, h) {\n            for (int j = 0; j < N; j++) {\n                dat[i][j]\
+    \ =\n                    f(dat[i - 1][j],\n                      dat[i - 1][min(j\
+    \ + (1 << (i - 1)), N - 1)]);\n            }\n        }\n    }\n\n    // \u533A\
+    \u9593[l,r)\u3067\u306Emin,max\u3092\u53D6\u5F97\n    T query(int l, int r) {\n\
+    \        if (l >= r) return e;\n        int a = height[r - l];\n        return\
+    \ f(dat[a][l], dat[a][r - (1 << a)]);\n    }\n\n    // \u533A\u9593[l,r]\u3067\
+    \u5DE6\u304B\u3089\u6700\u521D\u306Bx\u306B\u5BFE\u3057\u3066\u6BD4\u8F03\u306E\
+    \u6761\u4EF6\u3092\u6E80\u305F\u3059\u3088\u3046\u306A\u5024\u304C\u51FA\u73FE\
+    \u3059\u308B\u4F4D\u7F6E\n    template<typename G>\n    int bisearch_fore(int\
+    \ l, int r, T x, const G &compare) {\n        int ok = r + 1;\n        int ng\
+    \ = l - 1;\n        while (ng + 1 < ok) {\n            int mid = (ok + ng) / 2;\n\
+    \            if (compare(query(l, mid + 1), x)) {\n                ok = mid;\n\
+    \            } else {\n                ng = mid;\n            }\n        }\n \
+    \       if (ok != r + 1) {\n            return ok;\n        } else {\n       \
+    \     return -1;\n        }\n    }\n\n    // \u533A\u9593[l,r]\u3067\u53F3\u304B\
+    \u3089\u6700\u521D\u306Bx\u306B\u5BFE\u3057\u3066\u6BD4\u8F03\u306E\u6761\u4EF6\
+    \u3092\u6E80\u305F\u3059\u3088\u3046\u306A\u5024\u304C\u51FA\u73FE\u3059\u308B\
+    \u4F4D\u7F6E\n    template<typename G>\n    int bisearch_back(int l, int r, T\
+    \ x, const G &compare) {\n        int ok = l - 1;\n        int ng = r + 1;\n \
+    \       while (ok + 1 < ng) {\n            int mid = (ok + ng) / 2;\n        \
+    \    if (compare(query(mid, r + 1), x)) {\n                ok = mid;\n       \
+    \     } else {\n                ng = mid;\n            }\n        }\n        if\
+    \ (ok != l - 1) {\n            return ok;\n        } else {\n            return\
+    \ -1;\n        }\n    }\n    // \u4F7F\u7528\u4F8B\n    // stmx.bisearch_back(l,\
     \ r, x, greater<ll>());\n};\n\ntemplate<typename T, typename F, typename E>\n\
-    SparseTable<T, F, E> get_sparse_table(vector<T> &A, const F& f, const E& e) {\n\
+    SparseTable<T, F, E> get_sparse_table(vector<T> &A, const F &f, const E &e) {\n\
     \    return {A, f, e};\n}\n"
   dependsOn:
   - src/macros.hpp
@@ -109,7 +111,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/SparseTable.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/SparseTable.hpp

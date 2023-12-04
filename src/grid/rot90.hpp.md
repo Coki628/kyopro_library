@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,24 +29,23 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/grid/rot90.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/grid/rot90.hpp\"\
     \n\n// \u30B0\u30EA\u30C3\u30C9\u3092\u6642\u8A08\u56DE\u308A\u306B90\u5EA6\u56DE\
     \u8EE2\nvector<string> rot90(const vector<string> &grid) {\n    int H = grid.size();\n\
     \    int W = grid[0].size();\n    vector<string> res(W, string(H, '*'));\n   \
-    \ rep(i, H) {\n        rep(j, W) {\n            res[j][H-i-1] = grid[i][j];\n\
-    \        }\n    }\n    return res;\n}\n\ntemplate<typename T>\nvector<vector<T>>\
-    \ rot90(const vector<vector<T>> &grid) {\n    int H = grid.size();\n    int W\
-    \ = grid[0].size();\n    vector<vector<T>> res(W, vector<T>(H));\n    rep(i, H)\
-    \ {\n        rep(j, W) {\n            res[j][H-i-1] = grid[i][j];\n        }\n\
-    \    }\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u3092\u6642\u8A08\
-    \u56DE\u308A\u306B90\u5EA6\u56DE\u8EE2\nvector<string> rot90(const vector<string>\
-    \ &grid) {\n    int H = grid.size();\n    int W = grid[0].size();\n    vector<string>\
-    \ res(W, string(H, '*'));\n    rep(i, H) {\n        rep(j, W) {\n            res[j][H-i-1]\
-    \ = grid[i][j];\n        }\n    }\n    return res;\n}\n\ntemplate<typename T>\n\
-    vector<vector<T>> rot90(const vector<vector<T>> &grid) {\n    int H = grid.size();\n\
-    \    int W = grid[0].size();\n    vector<vector<T>> res(W, vector<T>(H));\n  \
-    \  rep(i, H) {\n        rep(j, W) {\n            res[j][H-i-1] = grid[i][j];\n\
+    \ rep(i, H) {\n        rep(j, W) {\n            res[j][H - i - 1] = grid[i][j];\n\
+    \        }\n    }\n    return res;\n}\n\ntemplate<typename T>\nvv<T> rot90(const\
+    \ vv<T> &grid) {\n    int H = grid.size();\n    int W = grid[0].size();\n    vv<T>\
+    \ res(W, vector<T>(H));\n    rep(i, H) {\n        rep(j, W) {\n            res[j][H\
+    \ - i - 1] = grid[i][j];\n        }\n    }\n    return res;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u3092\
+    \u6642\u8A08\u56DE\u308A\u306B90\u5EA6\u56DE\u8EE2\nvector<string> rot90(const\
+    \ vector<string> &grid) {\n    int H = grid.size();\n    int W = grid[0].size();\n\
+    \    vector<string> res(W, string(H, '*'));\n    rep(i, H) {\n        rep(j, W)\
+    \ {\n            res[j][H - i - 1] = grid[i][j];\n        }\n    }\n    return\
+    \ res;\n}\n\ntemplate<typename T>\nvv<T> rot90(const vv<T> &grid) {\n    int H\
+    \ = grid.size();\n    int W = grid[0].size();\n    vv<T> res(W, vector<T>(H));\n\
+    \    rep(i, H) {\n        rep(j, W) {\n            res[j][H - i - 1] = grid[i][j];\n\
     \        }\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
@@ -54,7 +53,7 @@ data:
   isVerificationFile: false
   path: src/grid/rot90.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:50:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/rot90.hpp

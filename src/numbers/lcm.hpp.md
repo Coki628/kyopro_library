@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -47,14 +47,14 @@ data:
     \ vector<T> &A) {\n    T res = 0;\n    for (auto a : A) res = gcd(res, a);\n \
     \   return res;\n}\n#line 4 \"src/numbers/lcm.hpp\"\n\n// \u9664\u7B97\u3092\u524D\
     \u306B\u51FA\u3057\u3066\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3092\u9632\
-    \u3050\ntemplate<typename T>\nT lcm(T x, T y) { return x/gcd(x, y)*y; }\n\ntemplate<typename\
-    \ T>\nT lcm(const vector<T> &A) {\n    T res = 1;\n    for (auto a : A) res =\
-    \ lcm(res, a);\n    return res;\n}\n"
+    \u3050\ntemplate<typename T>\nT lcm(T x, T y) {\n    return x / gcd(x, y) * y;\n\
+    }\n\ntemplate<typename T>\nT lcm(const vector<T> &A) {\n    T res = 1;\n    for\
+    \ (auto a : A) res = lcm(res, a);\n    return res;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n#include \"gcd.hpp\"\n\n// \u9664\
     \u7B97\u3092\u524D\u306B\u51FA\u3057\u3066\u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\
-    \u30FC\u3092\u9632\u3050\ntemplate<typename T>\nT lcm(T x, T y) { return x/gcd(x,\
-    \ y)*y; }\n\ntemplate<typename T>\nT lcm(const vector<T> &A) {\n    T res = 1;\n\
-    \    for (auto a : A) res = lcm(res, a);\n    return res;\n}\n"
+    \u30FC\u3092\u9632\u3050\ntemplate<typename T>\nT lcm(T x, T y) {\n    return\
+    \ x / gcd(x, y) * y;\n}\n\ntemplate<typename T>\nT lcm(const vector<T> &A) {\n\
+    \    T res = 1;\n    for (auto a : A) res = lcm(res, a);\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -64,7 +64,7 @@ data:
   requiredBy:
   - src/numbers/Fraction.hpp
   - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/lcm.hpp

@@ -1,13 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: src/combinatorics/ModTools.hpp
     title: src/combinatorics/ModTools.hpp
+  - icon: ':warning:'
+    path: src/combinatorics/bell.hpp
+    title: src/combinatorics/bell.hpp
   - icon: ':warning:'
     path: src/combinatorics/combinations.hpp
     title: src/combinatorics/combinations.hpp
@@ -50,7 +53,10 @@ data:
   - icon: ':warning:'
     path: src/common/bit_length.hpp
     title: src/common/bit_length.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
+    path: src/common/fill.hpp
+    title: src/common/fill.hpp
+  - icon: ':x:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
@@ -62,6 +68,9 @@ data:
   - icon: ':warning:'
     path: src/common/join.hpp
     title: src/common/join.hpp
+  - icon: ':x:'
+    path: src/common/listnd.hpp
+    title: src/common/listnd.hpp
   - icon: ':warning:'
     path: src/common/mapping.hpp
     title: src/common/mapping.hpp
@@ -71,7 +80,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -138,9 +147,6 @@ data:
     path: src/datastructure/SparseTable.hpp
     title: src/datastructure/SparseTable.hpp
   - icon: ':warning:'
-    path: src/datastructure/_accumulate.hpp
-    title: src/datastructure/_accumulate.hpp
-  - icon: ':warning:'
     path: src/datastructure/_doubling.hpp
     title: src/datastructure/_doubling.hpp
   - icon: ':warning:'
@@ -179,6 +185,9 @@ data:
   - icon: ':warning:'
     path: src/geometry/degrees.hpp
     title: src/geometry/degrees.hpp
+  - icon: ':warning:'
+    path: src/geometry/dim2formula.hpp
+    title: src/geometry/dim2formula.hpp
   - icon: ':warning:'
     path: src/geometry/dist3d.hpp
     title: src/geometry/dist3d.hpp
@@ -219,6 +228,9 @@ data:
     path: src/geometry/rotate.hpp
     title: src/geometry/rotate.hpp
   - icon: ':warning:'
+    path: src/graph/AuxiliaryTree.hpp
+    title: src/graph/AuxiliaryTree.hpp
+  - icon: ':warning:'
     path: src/graph/Dijkstra.hpp
     title: src/graph/Dijkstra.hpp
   - icon: ':warning:'
@@ -243,11 +255,26 @@ data:
     path: src/graph/bfs01.hpp
     title: src/graph/bfs01.hpp
   - icon: ':warning:'
+    path: src/graph/cycle_detection_for_namori.hpp
+    title: src/graph/cycle_detection_for_namori.hpp
+  - icon: ':warning:'
     path: src/graph/dfs.hpp
     title: src/graph/dfs.hpp
   - icon: ':warning:'
+    path: src/graph/dijkstra.hpp
+    title: src/graph/dijkstra.hpp
+  - icon: ':warning:'
     path: src/graph/dijkstra_v2.hpp
     title: src/graph/dijkstra_v2.hpp
+  - icon: ':warning:'
+    path: src/graph/get_diameter.hpp
+    title: src/graph/get_diameter.hpp
+  - icon: ':warning:'
+    path: src/graph/get_route.hpp
+    title: src/graph/get_route.hpp
+  - icon: ':warning:'
+    path: src/graph/is_bipartite.hpp
+    title: src/graph/is_bipartite.hpp
   - icon: ':warning:'
     path: src/graph/topological_sort.hpp
     title: src/graph/topological_sort.hpp
@@ -314,7 +341,7 @@ data:
   - icon: ':warning:'
     path: src/math/lagrange_polynomial.hpp
     title: src/math/lagrange_polynomial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
   - icon: ':warning:'
@@ -323,7 +350,7 @@ data:
   - icon: ':warning:'
     path: src/matrix/gauss_jordan_real.hpp
     title: src/matrix/gauss_jordan_real.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
   - icon: ':warning:'
@@ -399,6 +426,9 @@ data:
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
   - icon: ':warning:'
+    path: src/string/RollingHash2D.hpp
+    title: src/string/RollingHash2D.hpp
+  - icon: ':warning:'
     path: src/string/SuffixArray.hpp
     title: src/string/SuffixArray.hpp
   - icon: ':warning:'
@@ -423,7 +453,7 @@ data:
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
   - icon: ':heavy_check_mark:'
@@ -435,12 +465,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/bfs.test.cpp
     title: test/graph/bfs.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -513,10 +543,12 @@ data:
   - src/common/join.hpp
   - src/common/split.hpp
   - src/common/trisearch.hpp
+  - src/common/listnd.hpp
   - src/common/trisearch_real.hpp
   - src/common/Compress.hpp
   - src/common/bisearch_real.hpp
   - src/common/Counter.hpp
+  - src/common/fill.hpp
   - src/common/mapping.hpp
   - src/common/input.hpp
   - src/common/bit_length.hpp
@@ -536,7 +568,6 @@ data:
   - src/datastructure/SparseTable.hpp
   - src/datastructure/BIT.hpp
   - src/datastructure/Accumulate2D.hpp
-  - src/datastructure/_accumulate.hpp
   - src/datastructure/LazySegmentTreeArithmetric.hpp
   - src/datastructure/SegmentTreeBeats.hpp
   - src/datastructure/Accumulate.hpp
@@ -545,6 +576,7 @@ data:
   - src/datastructure/DynamicLiChaoTree.hpp
   - src/datastructure/_doubling.hpp
   - src/combinatorics/partition.hpp
+  - src/combinatorics/bell.hpp
   - src/combinatorics/nCr.hpp
   - src/combinatorics/stirling.hpp
   - src/combinatorics/combinations_with_replacement.hpp
@@ -559,22 +591,30 @@ data:
   - src/string/number_format.hpp
   - src/string/bin.hpp
   - src/string/compare.hpp
+  - src/string/RollingHash2D.hpp
   - src/matrix/gauss_jordan_f2.hpp
   - src/matrix/mat_dot.hpp
   - src/matrix/MatPow.hpp
   - src/matrix/gauss_jordan_real.hpp
+  - src/graph/get_route.hpp
   - src/graph/dijkstra_v2.hpp
   - src/graph/bfs.hpp
   - src/graph/topological_sort.hpp
+  - src/graph/is_bipartite.hpp
   - src/graph/dfs.hpp
   - src/graph/Dijkstra.hpp
+  - src/graph/AuxiliaryTree.hpp
   - src/graph/WeightedUnionFind.hpp
+  - src/graph/dijkstra.hpp
   - src/graph/_dijkstra.hpp
+  - src/graph/cycle_detection_for_namori.hpp
   - src/graph/warshall_floyd.hpp
   - src/graph/UnionFind.hpp
   - src/graph/HeavyLightDecomposition.hpp
   - src/graph/bellman_ford.hpp
   - src/graph/bfs01.hpp
+  - src/graph/get_diameter.hpp
+  - src/geometry/dim2formula.hpp
   - src/geometry/ccw.hpp
   - src/geometry/pick_theorem.hpp
   - src/geometry/get_distance.hpp
@@ -619,7 +659,7 @@ data:
   - src/math/fps/pow.hpp
   - src/math/fps/pow_term2.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/common/bisect.test.cpp
   - test/matrix/MatPow.test.cpp

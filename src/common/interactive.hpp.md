@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,27 +29,33 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/common/interactive.hpp\"\
-    \n\n// \u30A4\u30F3\u30BF\u30E9\u30AF\u30C6\u30A3\u30D6\u7528\nll ask(ll i) {\n\
-    \    ll res;\n    cout << \"? \" << i+1 << endl;\n    cin >> res;\n    res--;\n\
-    \    return res;\n}\n\nvoid answer(ll i) {\n    cout << \"! \" << i+1 << endl;\n\
-    }\n\nvoid answer(const vector<ll>& A) {\n    int N = A.size();\n    rep(i, N)\
-    \ {\n        cout << A[i];\n        if (i == N-1) {\n            cout << endl;\n\
-    \        } else {\n            cout << ' ';\n        }\n    }\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u30A4\u30F3\u30BF\u30E9\u30AF\u30C6\u30A3\
-    \u30D6\u7528\nll ask(ll i) {\n    ll res;\n    cout << \"? \" << i+1 << endl;\n\
-    \    cin >> res;\n    res--;\n    return res;\n}\n\nvoid answer(ll i) {\n    cout\
-    \ << \"! \" << i+1 << endl;\n}\n\nvoid answer(const vector<ll>& A) {\n    int\
-    \ N = A.size();\n    rep(i, N) {\n        cout << A[i];\n        if (i == N-1)\
-    \ {\n            cout << endl;\n        } else {\n            cout << ' ';\n \
-    \       }\n    }\n}\n"
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/interactive.hpp\"\
+    \n\n// \u30A4\u30F3\u30BF\u30E9\u30AF\u30C6\u30A3\u30D6\u7528\n// (\u3053\u308C\
+    \u3089\u3092\u305D\u306E\u307E\u307E\u3068\u8A00\u3046\u3088\u308A\u3001\u53D6\
+    \u3063\u3066\u304D\u3066\u4E2D\u8EAB\u3061\u3087\u3063\u3068\u3044\u3058\u3063\
+    \u3066\u4F7F\u3046\u3002)\n\nll ask(ll i) {\n    ll res;\n    cout << \"? \" <<\
+    \ i + 1 << endl;\n    cin >> res;\n    res--;\n    return res;\n}\n\nvoid answer(ll\
+    \ i) {\n    cout << \"! \" << i + 1 << endl;\n}\n\nvoid answer(const vector<ll>\
+    \ &A) {\n    int N = A.size();\n    rep(i, N) {\n        cout << A[i];\n     \
+    \   if (i == N - 1) {\n            cout << endl;\n        } else {\n         \
+    \   cout << ' ';\n        }\n    }\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u30A4\u30F3\u30BF\u30E9\u30AF\
+    \u30C6\u30A3\u30D6\u7528\n// (\u3053\u308C\u3089\u3092\u305D\u306E\u307E\u307E\
+    \u3068\u8A00\u3046\u3088\u308A\u3001\u53D6\u3063\u3066\u304D\u3066\u4E2D\u8EAB\
+    \u3061\u3087\u3063\u3068\u3044\u3058\u3063\u3066\u4F7F\u3046\u3002)\n\nll ask(ll\
+    \ i) {\n    ll res;\n    cout << \"? \" << i + 1 << endl;\n    cin >> res;\n \
+    \   res--;\n    return res;\n}\n\nvoid answer(ll i) {\n    cout << \"! \" << i\
+    \ + 1 << endl;\n}\n\nvoid answer(const vector<ll> &A) {\n    int N = A.size();\n\
+    \    rep(i, N) {\n        cout << A[i];\n        if (i == N - 1) {\n         \
+    \   cout << endl;\n        } else {\n            cout << ' ';\n        }\n   \
+    \ }\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/interactive.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/interactive.hpp

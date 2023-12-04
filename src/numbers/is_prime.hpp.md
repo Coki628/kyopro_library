@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,33 +29,33 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/numbers/is_prime.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/numbers/is_prime.hpp\"\
     \n\n// \u7D20\u6570\u5224\u5B9A\uFF1AO(\u221Anum)\nbool is_prime(ll num) {\n \
     \   if (num < 2) {\n        return false;\n    }\n    if (num == 2 or num == 3\
-    \ or num == 5) {\n        return true;\n    }\n    if (num%2 == 0 or num%3 ==\
-    \ 0 or num%5 == 0) {\n        return false;\n    }\n    // \u7591\u4F3C\u7D20\u6570\
-    (2\u3067\u30823\u3067\u3082\u5272\u308A\u5207\u308C\u306A\u3044\u6570\u5B57)\u3067\
-    \u6B21\u3005\u306B\u5272\u3063\u3066\u3044\u304F\n    int p = 7;\n    int step\
-    \ = 4;\n    int num_sqrt = sqrt(num);\n    while (p <= num_sqrt) {\n        if\
-    \ (num%p == 0) {\n            return false;\n        }\n        p += step;\n \
-    \       step = 6-step;\n    }\n    return true;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u7D20\u6570\u5224\u5B9A\uFF1AO(\u221Anum)\n\
-    bool is_prime(ll num) {\n    if (num < 2) {\n        return false;\n    }\n  \
-    \  if (num == 2 or num == 3 or num == 5) {\n        return true;\n    }\n    if\
-    \ (num%2 == 0 or num%3 == 0 or num%5 == 0) {\n        return false;\n    }\n \
-    \   // \u7591\u4F3C\u7D20\u6570(2\u3067\u30823\u3067\u3082\u5272\u308A\u5207\u308C\
-    \u306A\u3044\u6570\u5B57)\u3067\u6B21\u3005\u306B\u5272\u3063\u3066\u3044\u304F\
-    \n    int p = 7;\n    int step = 4;\n    int num_sqrt = sqrt(num);\n    while\
-    \ (p <= num_sqrt) {\n        if (num%p == 0) {\n            return false;\n  \
-    \      }\n        p += step;\n        step = 6-step;\n    }\n    return true;\n\
-    }\n"
+    \ or num == 5) {\n        return true;\n    }\n    if (num % 2 == 0 or num % 3\
+    \ == 0 or num % 5 == 0) {\n        return false;\n    }\n    // \u7591\u4F3C\u7D20\
+    \u6570(2\u3067\u30823\u3067\u3082\u5272\u308A\u5207\u308C\u306A\u3044\u6570\u5B57\
+    )\u3067\u6B21\u3005\u306B\u5272\u3063\u3066\u3044\u304F\n    int p = 7;\n    int\
+    \ step = 4;\n    int num_sqrt = sqrt(num);\n    while (p <= num_sqrt) {\n    \
+    \    if (num % p == 0) {\n            return false;\n        }\n        p += step;\n\
+    \        step = 6 - step;\n    }\n    return true;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u7D20\u6570\u5224\u5B9A\uFF1A\
+    O(\u221Anum)\nbool is_prime(ll num) {\n    if (num < 2) {\n        return false;\n\
+    \    }\n    if (num == 2 or num == 3 or num == 5) {\n        return true;\n  \
+    \  }\n    if (num % 2 == 0 or num % 3 == 0 or num % 5 == 0) {\n        return\
+    \ false;\n    }\n    // \u7591\u4F3C\u7D20\u6570(2\u3067\u30823\u3067\u3082\u5272\
+    \u308A\u5207\u308C\u306A\u3044\u6570\u5B57)\u3067\u6B21\u3005\u306B\u5272\u3063\
+    \u3066\u3044\u304F\n    int p = 7;\n    int step = 4;\n    int num_sqrt = sqrt(num);\n\
+    \    while (p <= num_sqrt) {\n        if (num % p == 0) {\n            return\
+    \ false;\n        }\n        p += step;\n        step = 6 - step;\n    }\n   \
+    \ return true;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/numbers/is_prime.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/is_prime.hpp

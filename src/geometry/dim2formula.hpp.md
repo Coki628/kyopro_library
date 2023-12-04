@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,27 +29,29 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/datastructure/_accumulate.hpp\"\
-    \n\ntemplate<typename T>\nvector<T> accumulate(vector<T> &A, bool indexed=0) {\n\
-    \    int n = A.size();\n    auto res = A;\n    rep(i, n-1) res[i+1] += res[i];\n\
-    \    if (indexed) res.insert(res.begin(), 0);\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\ntemplate<typename T>\nvector<T> accumulate(vector<T>\
-    \ &A, bool indexed=0) {\n    int n = A.size();\n    auto res = A;\n    rep(i,\
-    \ n-1) res[i+1] += res[i];\n    if (indexed) res.insert(res.begin(), 0);\n   \
-    \ return res;\n}\n"
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/geometry/dim2formula.hpp\"\
+    \n\n//  2\u6B21\u65B9\u7A0B\u5F0F\u306E\u89E3\u306E\u516C\u5F0F\npair<ld, ld>\
+    \ dim2formula(ld a, ld b, ld c) {\n    ld d = sqrt(pow(b, 2) - 4 * a * c);\n \
+    \   // \u89E3\u306A\u3057\n    if (isnan(d)) {\n        return {nan(\"\"), nan(\"\
+    \")};\n    }\n    return {(-b + d) / (2 * a), (-b - d) / (2 * a)};\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n//  2\u6B21\u65B9\u7A0B\u5F0F\
+    \u306E\u89E3\u306E\u516C\u5F0F\npair<ld, ld> dim2formula(ld a, ld b, ld c) {\n\
+    \    ld d = sqrt(pow(b, 2) - 4 * a * c);\n    // \u89E3\u306A\u3057\n    if (isnan(d))\
+    \ {\n        return {nan(\"\"), nan(\"\")};\n    }\n    return {(-b + d) / (2\
+    \ * a), (-b - d) / (2 * a)};\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
-  path: src/datastructure/_accumulate.hpp
+  path: src/geometry/dim2formula.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/datastructure/_accumulate.hpp
+documentation_of: src/geometry/dim2formula.hpp
 layout: document
 redirect_from:
-- /library/src/datastructure/_accumulate.hpp
-- /library/src/datastructure/_accumulate.hpp.html
-title: src/datastructure/_accumulate.hpp
+- /library/src/geometry/dim2formula.hpp
+- /library/src/geometry/dim2formula.hpp.html
+title: src/geometry/dim2formula.hpp
 ---

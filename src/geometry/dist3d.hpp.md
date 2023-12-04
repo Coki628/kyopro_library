@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,23 +29,25 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/geometry/dist3d.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/geometry/dist3d.hpp\"\
     \n\n// 3\u6B21\u5143\u3067\u306E2\u70B9\u9593\u8DDD\u96E2\u221A((x1-x2)^2+(y1-y2)^2+(z1-z2)^2)\n\
     ld dist3d(tuple<ld, ld, ld> a, tuple<ld, ld, ld> b) {\n    return sqrt(\n    \
-    \    (get<0>(a)-get<0>(b))*(get<0>(a)-get<0>(b)) +\n        (get<1>(a)-get<1>(b))*(get<1>(a)-get<1>(b))\
-    \ +\n        (get<2>(a)-get<2>(b))*(get<2>(a)-get<2>(b))\n    );\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// 3\u6B21\u5143\u3067\u306E2\u70B9\u9593\u8DDD\
-    \u96E2\u221A((x1-x2)^2+(y1-y2)^2+(z1-z2)^2)\nld dist3d(tuple<ld, ld, ld> a, tuple<ld,\
-    \ ld, ld> b) {\n    return sqrt(\n        (get<0>(a)-get<0>(b))*(get<0>(a)-get<0>(b))\
-    \ +\n        (get<1>(a)-get<1>(b))*(get<1>(a)-get<1>(b)) +\n        (get<2>(a)-get<2>(b))*(get<2>(a)-get<2>(b))\n\
-    \    );\n}\n"
+    \    (get<0>(a) - get<0>(b)) * (get<0>(a) - get<0>(b)) +\n        (get<1>(a) -\
+    \ get<1>(b)) * (get<1>(a) - get<1>(b)) +\n        (get<2>(a) - get<2>(b)) * (get<2>(a)\
+    \ - get<2>(b))\n    );\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// 3\u6B21\u5143\u3067\u306E\
+    2\u70B9\u9593\u8DDD\u96E2\u221A((x1-x2)^2+(y1-y2)^2+(z1-z2)^2)\nld dist3d(tuple<ld,\
+    \ ld, ld> a, tuple<ld, ld, ld> b) {\n    return sqrt(\n        (get<0>(a) - get<0>(b))\
+    \ * (get<0>(a) - get<0>(b)) +\n        (get<1>(a) - get<1>(b)) * (get<1>(a) -\
+    \ get<1>(b)) +\n        (get<2>(a) - get<2>(b)) * (get<2>(a) - get<2>(b))\n  \
+    \  );\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/geometry/dist3d.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/dist3d.hpp

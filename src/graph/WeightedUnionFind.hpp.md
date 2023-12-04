@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
     path: src/graph/UnionFind.hpp
     title: src/graph/UnionFind.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -36,16 +36,16 @@ data:
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/graph/UnionFind.hpp\"\
-    \n\nstruct UnionFind {\n\n    int n, groupcnt;\n    vector<int> par, rank, sz;\n\
+    \n\nstruct UnionFind {\n    int n, groupcnt;\n    vector<int> par, rank, sz;\n\
     \    vector<bool> tree;\n\n    UnionFind(int n) : n(n) {\n        build();\n \
     \   }\n\n    UnionFind() {}\n\n    // \u65E2\u5B58\u306E\u9023\u7D50\u60C5\u5831\
-    \u304B\u3089UF\u3092\u751F\u6210\n    UnionFind(const vector<int>& info) : n(info.size())\
+    \u304B\u3089UF\u3092\u751F\u6210\n    UnionFind(const vector<int> &info) : n(info.size())\
     \ {\n        build();\n        vvi adj(n);\n        rep(i, n) {\n            adj[info[i]].eb(i);\n\
     \        }\n        rep(i, n) {\n            if (adj[i].size()) {\n          \
-    \      rep(j, adj[i].size()-1) {\n                    merge(adj[i][j], adj[i][j+1]);\n\
-    \                }\n            }\n        }\n    }\n\n    void build() {\n  \
-    \      par.assign(n, 0);\n        rank.assign(n, 0);\n        sz.assign(n, 1);\n\
-    \        tree.assign(n, true);\n        rep(i, n) par[i] = i;\n        groupcnt\
+    \      rep(j, adj[i].size() - 1) {\n                    merge(adj[i][j], adj[i][j\
+    \ + 1]);\n                }\n            }\n        }\n    }\n\n    void build()\
+    \ {\n        par.assign(n, 0);\n        rank.assign(n, 0);\n        sz.assign(n,\
+    \ 1);\n        tree.assign(n, true);\n        rep(i, n) par[i] = i;\n        groupcnt\
     \ = n;\n    }\n\n    void resize(int _n) {\n        n = _n;\n        par.assign(n,\
     \ 0);\n        rank.assign(n, 0);\n        sz.assign(n, 1);\n        tree.assign(n,\
     \ true);\n        rep(i, n) par[i] = i;\n        groupcnt = n;\n    }\n\n    //\
@@ -76,40 +76,44 @@ data:
     \    }\n\n    // \u5168\u9802\u70B9\u306E\u30B0\u30EB\u30FC\u30D7\u756A\u53F7\u3092\
     \u53D6\u5F97\n    vector<int> get_info() {\n        vector<int> res(n);\n    \
     \    rep(i, n) {\n            res[i] = find(i);\n        }\n        return res;\n\
-    \    }\n};\n#line 3 \"src/graph/WeightedUnionFind.hpp\"\n\n// \u91CD\u307F\u4ED8\
-    \u304DUF\ntemplate<typename T>\nstruct WeightedUnionFind : UnionFind {\n\n   \
-    \ vector<T> weight;\n\n    WeightedUnionFind(int n) : UnionFind(n) {\n       \
-    \ // \u6839\u3078\u306E\u8DDD\u96E2\u3092\u7BA1\u7406\n        weight.resize(n);\n\
+    \    }\n};\n#line 4 \"src/graph/WeightedUnionFind.hpp\"\n\n// \u91CD\u307F\u4ED8\
+    \u304DUF\ntemplate<typename T>\nstruct WeightedUnionFind : UnionFind {\n    vector<T>\
+    \ weight;\n\n    WeightedUnionFind(int n) : UnionFind(n) {\n        // \u6839\u3078\
+    \u306E\u8DDD\u96E2\u3092\u7BA1\u7406\n        weight.resize(n);\n    }\n\n   \
+    \ // \u691C\u7D22\n    int find(int x) override {\n        if (par[x] == x) {\n\
+    \            return x;\n        } else {\n            int y = find(par[x]);\n\
+    \            // \u89AA\u3078\u306E\u91CD\u307F\u3092\u8FFD\u52A0\u3057\u306A\u304C\
+    \u3089\u6839\u307E\u3067\u8D70\u67FB\n            weight[x] += weight[par[x]];\n\
+    \            par[x] = y;\n            return y;\n        }\n    }\n\n    // \u6B63\
+    \u5F53\u6027\u30C1\u30A7\u30C3\u30AF\n    bool validate(int a, int b, T w) {\n\
+    \        assert(same(a, b));\n        return diff(a, b) == w;\n    }\n\n    //\
+    \ \u4F75\u5408\n    int merge(int a, int b, T w) {\n        int x = find(a);\n\
+    \        int y = find(b);\n        int r = UnionFind::merge(x, y);\n        if\
+    \ (r == y) {\n            weight[x] = w - weight[a] + weight[b];\n           \
+    \ return y;\n        } else if (r == x) {\n            weight[y] = -w - weight[b]\
+    \ + weight[a];\n            return x;\n        } else {\n            return -1;\n\
+    \        }\n    }\n\n    // x\u304B\u3089y\u3078\u306E\u30B3\u30B9\u30C8\n   \
+    \ T diff(int x, int y) {\n        assert(same(x, y));\n        return weight[x]\
+    \ - weight[y];\n    }\n};\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n#include \"UnionFind.hpp\"\n\n\
+    // \u91CD\u307F\u4ED8\u304DUF\ntemplate<typename T>\nstruct WeightedUnionFind\
+    \ : UnionFind {\n    vector<T> weight;\n\n    WeightedUnionFind(int n) : UnionFind(n)\
+    \ {\n        // \u6839\u3078\u306E\u8DDD\u96E2\u3092\u7BA1\u7406\n        weight.resize(n);\n\
     \    }\n\n    // \u691C\u7D22\n    int find(int x) override {\n        if (par[x]\
     \ == x) {\n            return x;\n        } else {\n            int y = find(par[x]);\n\
     \            // \u89AA\u3078\u306E\u91CD\u307F\u3092\u8FFD\u52A0\u3057\u306A\u304C\
     \u3089\u6839\u307E\u3067\u8D70\u67FB\n            weight[x] += weight[par[x]];\n\
-    \            par[x] = y;\n            return y;\n        }\n    }\n\n    // \u4F75\
-    \u5408\n    int merge(int a, int b, T w) {\n        int x = find(a);\n       \
-    \ int y = find(b);\n        int r = UnionFind::merge(x, y);\n        if (r ==\
-    \ y) {\n            weight[x] = w - weight[a] + weight[b];\n            return\
-    \ y;\n        } elif (r == x) {\n            weight[y] = - w - weight[b] + weight[a];\n\
-    \            return x;\n        } else {\n            return -1;\n        }\n\
-    \    }\n\n    // x\u304B\u3089y\u3078\u306E\u30B3\u30B9\u30C8\n    T diff(int\
-    \ x, int y) {\n        assert(same(x, y));\n        return weight[x] - weight[y];\n\
-    \    }\n};\n"
-  code: "#include \"../macros.hpp\"\n#include \"UnionFind.hpp\"\n\n// \u91CD\u307F\
-    \u4ED8\u304DUF\ntemplate<typename T>\nstruct WeightedUnionFind : UnionFind {\n\
-    \n    vector<T> weight;\n\n    WeightedUnionFind(int n) : UnionFind(n) {\n   \
-    \     // \u6839\u3078\u306E\u8DDD\u96E2\u3092\u7BA1\u7406\n        weight.resize(n);\n\
-    \    }\n\n    // \u691C\u7D22\n    int find(int x) override {\n        if (par[x]\
-    \ == x) {\n            return x;\n        } else {\n            int y = find(par[x]);\n\
-    \            // \u89AA\u3078\u306E\u91CD\u307F\u3092\u8FFD\u52A0\u3057\u306A\u304C\
-    \u3089\u6839\u307E\u3067\u8D70\u67FB\n            weight[x] += weight[par[x]];\n\
-    \            par[x] = y;\n            return y;\n        }\n    }\n\n    // \u4F75\
-    \u5408\n    int merge(int a, int b, T w) {\n        int x = find(a);\n       \
-    \ int y = find(b);\n        int r = UnionFind::merge(x, y);\n        if (r ==\
-    \ y) {\n            weight[x] = w - weight[a] + weight[b];\n            return\
-    \ y;\n        } elif (r == x) {\n            weight[y] = - w - weight[b] + weight[a];\n\
-    \            return x;\n        } else {\n            return -1;\n        }\n\
-    \    }\n\n    // x\u304B\u3089y\u3078\u306E\u30B3\u30B9\u30C8\n    T diff(int\
-    \ x, int y) {\n        assert(same(x, y));\n        return weight[x] - weight[y];\n\
-    \    }\n};\n"
+    \            par[x] = y;\n            return y;\n        }\n    }\n\n    // \u6B63\
+    \u5F53\u6027\u30C1\u30A7\u30C3\u30AF\n    bool validate(int a, int b, T w) {\n\
+    \        assert(same(a, b));\n        return diff(a, b) == w;\n    }\n\n    //\
+    \ \u4F75\u5408\n    int merge(int a, int b, T w) {\n        int x = find(a);\n\
+    \        int y = find(b);\n        int r = UnionFind::merge(x, y);\n        if\
+    \ (r == y) {\n            weight[x] = w - weight[a] + weight[b];\n           \
+    \ return y;\n        } else if (r == x) {\n            weight[y] = -w - weight[b]\
+    \ + weight[a];\n            return x;\n        } else {\n            return -1;\n\
+    \        }\n    }\n\n    // x\u304B\u3089y\u3078\u306E\u30B3\u30B9\u30C8\n   \
+    \ T diff(int x, int y) {\n        assert(same(x, y));\n        return weight[x]\
+    \ - weight[y];\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -117,7 +121,7 @@ data:
   isVerificationFile: false
   path: src/graph/WeightedUnionFind.hpp
   requiredBy: []
-  timestamp: '2023-07-05 10:59:02+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/WeightedUnionFind.test.cpp

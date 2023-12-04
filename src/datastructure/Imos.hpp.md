@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
     path: src/datastructure/Accumulate.hpp
     title: src/datastructure/Accumulate.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -38,49 +38,50 @@ data:
     \        dat.resize(N);\n    }\n\n    Accumulate(const vector<T> &A) : N(A.size()),\
     \ dat(A) {\n        build();\n    }\n\n    void set(int i, T a) {\n        dat[i]\
     \ = a;\n    }\n\n    void add(int i, T a) {\n        dat[i] += a;\n    }\n\n \
-    \   void build() {\n        rep(i, N-1) {\n            dat[i+1] += dat[i];\n \
-    \       }\n        dat.insert(dat.begin(), 0);\n        built = true;\n    }\n\
+    \   void build() {\n        rep(i, N - 1) {\n            dat[i + 1] += dat[i];\n\
+    \        }\n        dat.insert(dat.begin(), 0);\n        built = true;\n    }\n\
     \n    virtual T query(int l, int r) {\n        assert(built);\n        assert(0\
     \ <= l and l <= N and 0 <= r and r <= N);\n        return dat[r] - dat[l];\n \
-    \   }\n\n    T get(int i) {\n        return query(i, i+1);\n    }\n\n    T operator[](int\
-    \ i) {\n        return query(i, i+1);\n    }\n\n    // \u533A\u9593[l, r]\u3092\
+    \   }\n\n    T get(int i) {\n        return query(i, i + 1);\n    }\n\n    T operator[](int\
+    \ i) {\n        return query(i, i + 1);\n    }\n\n    // \u533A\u9593[l, r]\u3092\
     \u5DE6\u304B\u3089\u53F3\u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\
     \u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_fore(int l, int r, ll x) {\n \
     \       if (l > r) return -1;\n        ll l_sm = query(0, l);\n        int ok\
-    \ = r + 1;\n        int ng = l - 1;\n        while (ng+1 < ok) {\n           \
-    \ int mid = (ok+ng) / 2;\n            if (query(0, mid+1) - l_sm >= x) {\n   \
-    \             ok = mid;\n            } else {\n                ng = mid;\n   \
-    \         }\n        }\n        if (ok != r+1) {\n            return ok;\n   \
-    \     } else {\n            return -1;\n        }\n    }\n\n    // \u533A\u9593\
+    \ = r + 1;\n        int ng = l - 1;\n        while (ng + 1 < ok) {\n         \
+    \   int mid = (ok + ng) / 2;\n            if (query(0, mid + 1) - l_sm >= x) {\n\
+    \                ok = mid;\n            } else {\n                ng = mid;\n\
+    \            }\n        }\n        if (ok != r + 1) {\n            return ok;\n\
+    \        } else {\n            return -1;\n        }\n    }\n\n    // \u533A\u9593\
     [l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\
     \u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    ll bisearch_back(int l, int r,\
-    \ ll x) {\n        if (l > r) return -1;\n        ll r_sm = query(0, r+1);\n \
-    \       int ok = l - 1;\n        int ng = r + 1;\n        while (ok+1 < ng) {\n\
-    \            int mid = (ok+ng) / 2;\n            if (r_sm - query(0, mid) >= x)\
-    \ {\n                ok = mid;\n            } else {\n                ng = mid;\n\
-    \            }\n        }\n        if (ok != l-1) {\n            return ok;\n\
-    \        } else {\n            return -1;\n        }\n    }\n};\n#line 3 \"src/datastructure/Imos.hpp\"\
-    \n\ntemplate<typename T>\nstruct Imos : Accumulate<T> {\n    using Accumulate<T>::Accumulate;\n\
-    \n    void build() {\n        rep(i, this->N-1) {\n            this->dat[i+1]\
-    \ += this->dat[i];\n        }\n    }\n\n    // 1\u70B9\u52A0\u7B97\n    void add(int\
-    \ i, T a) {\n        this->dat[i] += a;\n        this->dat[i+1] -= a;\n    }\n\
-    \n    // \u533A\u9593\u52A0\u7B97[l,r)\n    void add(int l, int r, T a) {\n  \
-    \      this->dat[l] += a;\n        this->dat[r] -= a;\n    }\n\n    // \u533A\u9593\
-    \u53D6\u5F97\u30AF\u30A8\u30EA\u306F\u4E0D\u53EF\n    T query(int l, int r) {\n\
-    \        assert(0);\n    }\n\n    // 1\u70B9\u53D6\u5F97\n    T get(int i) {\n\
-    \        return this->dat[i];\n    }\n\n    // 1\u70B9\u53D6\u5F97\n    T operator[](int\
-    \ i) {\n        return this->dat[i];\n    }\n};\n"
-  code: "#include \"../macros.hpp\"\n#include \"Accumulate.hpp\"\n\ntemplate<typename\
-    \ T>\nstruct Imos : Accumulate<T> {\n    using Accumulate<T>::Accumulate;\n\n\
-    \    void build() {\n        rep(i, this->N-1) {\n            this->dat[i+1] +=\
-    \ this->dat[i];\n        }\n    }\n\n    // 1\u70B9\u52A0\u7B97\n    void add(int\
-    \ i, T a) {\n        this->dat[i] += a;\n        this->dat[i+1] -= a;\n    }\n\
-    \n    // \u533A\u9593\u52A0\u7B97[l,r)\n    void add(int l, int r, T a) {\n  \
-    \      this->dat[l] += a;\n        this->dat[r] -= a;\n    }\n\n    // \u533A\u9593\
-    \u53D6\u5F97\u30AF\u30A8\u30EA\u306F\u4E0D\u53EF\n    T query(int l, int r) {\n\
-    \        assert(0);\n    }\n\n    // 1\u70B9\u53D6\u5F97\n    T get(int i) {\n\
-    \        return this->dat[i];\n    }\n\n    // 1\u70B9\u53D6\u5F97\n    T operator[](int\
-    \ i) {\n        return this->dat[i];\n    }\n};\n"
+    \ ll x) {\n        if (l > r) return -1;\n        ll r_sm = query(0, r + 1);\n\
+    \        int ok = l - 1;\n        int ng = r + 1;\n        while (ok + 1 < ng)\
+    \ {\n            int mid = (ok + ng) / 2;\n            if (r_sm - query(0, mid)\
+    \ >= x) {\n                ok = mid;\n            } else {\n                ng\
+    \ = mid;\n            }\n        }\n        if (ok != l - 1) {\n            return\
+    \ ok;\n        } else {\n            return -1;\n        }\n    }\n};\n#line 4\
+    \ \"src/datastructure/Imos.hpp\"\n\ntemplate<typename T>\nstruct Imos : Accumulate<T>\
+    \ {\n    using Accumulate<T>::Accumulate;\n\n    void build() {\n        rep(i,\
+    \ this->N - 1) {\n            this->dat[i + 1] += this->dat[i];\n        }\n \
+    \   }\n\n    // 1\u70B9\u52A0\u7B97\n    void add(int i, T a) {\n        this->dat[i]\
+    \ += a;\n        this->dat[i + 1] -= a;\n    }\n\n    // \u533A\u9593\u52A0\u7B97\
+    [l,r)\n    void add(int l, int r, T a) {\n        this->dat[l] += a;\n       \
+    \ this->dat[r] -= a;\n    }\n\n    // \u533A\u9593\u53D6\u5F97\u30AF\u30A8\u30EA\
+    \u306F\u4E0D\u53EF\n    T query(int l, int r) {\n        assert(0);\n    }\n\n\
+    \    // 1\u70B9\u53D6\u5F97\n    T get(int i) {\n        return this->dat[i];\n\
+    \    }\n\n    // 1\u70B9\u53D6\u5F97\n    T operator[](int i) {\n        return\
+    \ this->dat[i];\n    }\n};\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n#include \"Accumulate.hpp\"\n\n\
+    template<typename T>\nstruct Imos : Accumulate<T> {\n    using Accumulate<T>::Accumulate;\n\
+    \n    void build() {\n        rep(i, this->N - 1) {\n            this->dat[i +\
+    \ 1] += this->dat[i];\n        }\n    }\n\n    // 1\u70B9\u52A0\u7B97\n    void\
+    \ add(int i, T a) {\n        this->dat[i] += a;\n        this->dat[i + 1] -= a;\n\
+    \    }\n\n    // \u533A\u9593\u52A0\u7B97[l,r)\n    void add(int l, int r, T a)\
+    \ {\n        this->dat[l] += a;\n        this->dat[r] -= a;\n    }\n\n    // \u533A\
+    \u9593\u53D6\u5F97\u30AF\u30A8\u30EA\u306F\u4E0D\u53EF\n    T query(int l, int\
+    \ r) {\n        assert(0);\n    }\n\n    // 1\u70B9\u53D6\u5F97\n    T get(int\
+    \ i) {\n        return this->dat[i];\n    }\n\n    // 1\u70B9\u53D6\u5F97\n  \
+    \  T operator[](int i) {\n        return this->dat[i];\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -88,7 +89,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/Imos.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/Imos.hpp

@@ -21,13 +21,14 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/mincostflow:\
     \ line -1: no such header\n"
-  code: "// \u6700\u5C0F\u8CBB\u7528\u6D41\n// \u4F7F\u7528\u65B9\u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/mincostflow.html\n\
-    // edges() -> {from, to, cap, flow, cost}[]\n#include \"atcoder/mincostflow\"\n"
+  code: "#pragma once\n\n// \u6700\u5C0F\u8CBB\u7528\u6D41\n// \u4F7F\u7528\u65B9\u6CD5\
+    \uFF1Ahttps://atcoder.github.io/ac-library/document_ja/mincostflow.html\n// edges()\
+    \ -> {from, to, cap, flow, cost}[]\n#include \"atcoder/mincostflow\"\n"
   dependsOn: []
   isVerificationFile: false
   path: src/acl/mincostflow.hpp
   requiredBy: []
-  timestamp: '2023-02-28 01:25:34+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/acl/mincostflow.hpp

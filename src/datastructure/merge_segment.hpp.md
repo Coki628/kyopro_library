@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,31 +29,32 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/datastructure/merge_segment.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/datastructure/merge_segment.hpp\"\
     \n\n// 2\u3064\u306E\u9589\u533A\u9593seg1[l,r],seg2[l,r]\u304B\u3089\u3001\u91CD\
     \u8907\u3092\u9664\u3044\u305F\u9577\u3055\u3092\u8FD4\u3059\nll merge_segment(pll\
-    \ seg1, pll seg2) {\n    auto& [l1, r1] = seg1;\n    auto& [l2, r2] = seg2;\n\
+    \ seg1, pll seg2) {\n    auto &[l1, r1] = seg1;\n    auto &[l2, r2] = seg2;\n\
     \    if (l1 > l2) {\n        swap(l1, l2);\n        swap(r1, r2);\n    }\n   \
-    \ ll ln1 = r1-l1+1;\n    ll ln2 = r2-l2+1;\n    if (ln1 <= 0 and ln2 <= 0) {\n\
-    \        return 0;\n    } elif (ln2 <= 0 or l2 <= r1 and r2 <= r1) {\n       \
-    \ return ln1;\n    } elif (l2 <= r1 and r2 > r1) {\n        return ln1 + ln2 -\
-    \ (r1-l2+1);\n    } else {\n        return ln1 + ln2;\n    }\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// 2\u3064\u306E\u9589\u533A\u9593seg1[l,r],seg2[l,r]\u304B\
-    \u3089\u3001\u91CD\u8907\u3092\u9664\u3044\u305F\u9577\u3055\u3092\u8FD4\u3059\
-    \nll merge_segment(pll seg1, pll seg2) {\n    auto& [l1, r1] = seg1;\n    auto&\
-    \ [l2, r2] = seg2;\n    if (l1 > l2) {\n        swap(l1, l2);\n        swap(r1,\
-    \ r2);\n    }\n    ll ln1 = r1-l1+1;\n    ll ln2 = r2-l2+1;\n    if (ln1 <= 0\
-    \ and ln2 <= 0) {\n        return 0;\n    } elif (ln2 <= 0 or l2 <= r1 and r2\
-    \ <= r1) {\n        return ln1;\n    } elif (l2 <= r1 and r2 > r1) {\n       \
-    \ return ln1 + ln2 - (r1-l2+1);\n    } else {\n        return ln1 + ln2;\n   \
-    \ }\n}\n"
+    \ ll ln1 = r1 - l1 + 1;\n    ll ln2 = r2 - l2 + 1;\n    if (ln1 <= 0 and ln2 <=\
+    \ 0) {\n        return 0;\n    }\n    elif (ln2 <= 0 or l2 <= r1 and r2 <= r1)\
+    \ {\n        return ln1;\n    }\n    elif (l2 <= r1 and r2 > r1) {\n        return\
+    \ ln1 + ln2 - (r1 - l2 + 1);\n    }\n    else {\n        return ln1 + ln2;\n \
+    \   }\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// 2\u3064\u306E\u9589\u533A\u9593\
+    seg1[l,r],seg2[l,r]\u304B\u3089\u3001\u91CD\u8907\u3092\u9664\u3044\u305F\u9577\
+    \u3055\u3092\u8FD4\u3059\nll merge_segment(pll seg1, pll seg2) {\n    auto &[l1,\
+    \ r1] = seg1;\n    auto &[l2, r2] = seg2;\n    if (l1 > l2) {\n        swap(l1,\
+    \ l2);\n        swap(r1, r2);\n    }\n    ll ln1 = r1 - l1 + 1;\n    ll ln2 =\
+    \ r2 - l2 + 1;\n    if (ln1 <= 0 and ln2 <= 0) {\n        return 0;\n    }\n \
+    \   elif (ln2 <= 0 or l2 <= r1 and r2 <= r1) {\n        return ln1;\n    }\n \
+    \   elif (l2 <= r1 and r2 > r1) {\n        return ln1 + ln2 - (r1 - l2 + 1);\n\
+    \    }\n    else {\n        return ln1 + ln2;\n    }\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/datastructure/merge_segment.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/merge_segment.hpp

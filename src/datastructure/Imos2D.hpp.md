@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,39 +29,40 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/datastructure/Imos2D.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/datastructure/Imos2D.hpp\"\
     \n\n// 2\u6B21\u5143\u3044\u3082\u3059\ntemplate<typename T>\nclass Imos2D {\n\
-    \    int H;\n    int W;\n    vector<vector<T>> dat;\n    bool built = false;\n\
-    \npublic:\n    Imos2D(int H, int W) : H(H), W(W) {\n        dat.resize(H+1, vector<T>(W+1,\
-    \ 0));\n    }\n\n    // [(h1,w1),(h2,w2))\u306E\u533A\u9593\u52A0\u7B97\n    void\
-    \ add(int h1, int w1, int h2, int w2, T x) {\n        if (h1 >= h2 or w1 >= w2)\
-    \ return;\n        dat[h1][w1] += x;\n        dat[h1][w2] -= x;\n        dat[h2][w1]\
-    \ -= x;\n        dat[h2][w2] += x;\n    }\n\n    void build() {\n        built\
-    \ = true;\n        rep(i, H+1) {\n            rep(j, W) {\n                dat[i][j+1]\
-    \ += dat[i][j];\n            }\n        }\n        rep(j, W+1) {\n           \
-    \ rep(i, H) {\n                dat[i+1][j] += dat[i][j];\n            }\n    \
-    \    }\n    }\n\n    // (h,w)\u306E1\u70B9\u53D6\u5F97\n    T get(int h, int w)\
-    \ {\n        assert(built);\n        return dat[h][w];\n    }\n};\n"
-  code: "#include \"../macros.hpp\"\n\n// 2\u6B21\u5143\u3044\u3082\u3059\ntemplate<typename\
-    \ T>\nclass Imos2D {\n    int H;\n    int W;\n    vector<vector<T>> dat;\n   \
-    \ bool built = false;\n\npublic:\n    Imos2D(int H, int W) : H(H), W(W) {\n  \
-    \      dat.resize(H+1, vector<T>(W+1, 0));\n    }\n\n    // [(h1,w1),(h2,w2))\u306E\
+    \    int H;\n    int W;\n    vv<T> dat;\n    bool built = false;\n\npublic:\n\
+    \    Imos2D(int H, int W) : H(H), W(W) {\n        dat.resize(H + 1, vector<T>(W\
+    \ + 1, 0));\n    }\n\n    // [(h1,w1),(h2,w2))\u306E\u533A\u9593\u52A0\u7B97\n\
+    \    void add(int h1, int w1, int h2, int w2, T x) {\n        if (h1 >= h2 or\
+    \ w1 >= w2) return;\n        dat[h1][w1] += x;\n        dat[h1][w2] -= x;\n  \
+    \      dat[h2][w1] -= x;\n        dat[h2][w2] += x;\n    }\n\n    void build()\
+    \ {\n        built = true;\n        rep(i, H + 1) {\n            rep(j, W) {\n\
+    \                dat[i][j + 1] += dat[i][j];\n            }\n        }\n     \
+    \   rep(j, W + 1) {\n            rep(i, H) {\n                dat[i + 1][j] +=\
+    \ dat[i][j];\n            }\n        }\n    }\n\n    // (h,w)\u306E1\u70B9\u53D6\
+    \u5F97\n    T get(int h, int w) {\n        assert(built);\n        return dat[h][w];\n\
+    \    }\n};\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// 2\u6B21\u5143\u3044\u3082\u3059\
+    \ntemplate<typename T>\nclass Imos2D {\n    int H;\n    int W;\n    vv<T> dat;\n\
+    \    bool built = false;\n\npublic:\n    Imos2D(int H, int W) : H(H), W(W) {\n\
+    \        dat.resize(H + 1, vector<T>(W + 1, 0));\n    }\n\n    // [(h1,w1),(h2,w2))\u306E\
     \u533A\u9593\u52A0\u7B97\n    void add(int h1, int w1, int h2, int w2, T x) {\n\
     \        if (h1 >= h2 or w1 >= w2) return;\n        dat[h1][w1] += x;\n      \
     \  dat[h1][w2] -= x;\n        dat[h2][w1] -= x;\n        dat[h2][w2] += x;\n \
-    \   }\n\n    void build() {\n        built = true;\n        rep(i, H+1) {\n  \
-    \          rep(j, W) {\n                dat[i][j+1] += dat[i][j];\n          \
-    \  }\n        }\n        rep(j, W+1) {\n            rep(i, H) {\n            \
-    \    dat[i+1][j] += dat[i][j];\n            }\n        }\n    }\n\n    // (h,w)\u306E\
-    1\u70B9\u53D6\u5F97\n    T get(int h, int w) {\n        assert(built);\n     \
-    \   return dat[h][w];\n    }\n};\n"
+    \   }\n\n    void build() {\n        built = true;\n        rep(i, H + 1) {\n\
+    \            rep(j, W) {\n                dat[i][j + 1] += dat[i][j];\n      \
+    \      }\n        }\n        rep(j, W + 1) {\n            rep(i, H) {\n      \
+    \          dat[i + 1][j] += dat[i][j];\n            }\n        }\n    }\n\n  \
+    \  // (h,w)\u306E1\u70B9\u53D6\u5F97\n    T get(int h, int w) {\n        assert(built);\n\
+    \        return dat[h][w];\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/datastructure/Imos2D.hpp
   requiredBy: []
-  timestamp: '2023-10-10 14:51:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/Imos2D.hpp

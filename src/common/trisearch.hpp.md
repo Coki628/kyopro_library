@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,51 +29,52 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/common/trisearch.hpp\"\
-    \n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570) [lo,hi)\ntemplate<typename T=ll,\
-    \ typename F>\npair<ll, T> trisearch_min(ll lo, ll hi, const F &func, ll offset=1)\
-    \ {\n    ll m1 = lo, l = lo;\n    ll m2 = hi, r = hi;\n    while (lo+2 < hi) {\n\
-    \        m1 = (lo*2+hi) / 3;\n        m2 = (lo+hi*2) / 3;\n        T res1 = func(m1);\n\
-    \        T res2 = func(m2);\n        if (res1 <= res2) {\n            hi = m2;\n\
-    \        } else {\n            lo = m1;\n        }\n    }\n    T mn = numeric_limits<T>::max();\n\
-    \    pair<ll, T> res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n  \
-    \      T val = func(i);\n        if (val < mn) {\n            mn = val;\n    \
-    \        res = {i, val};\n        }\n    }\n    return res;\n}\n\n// \u4E09\u5206\
-    \u63A2\u7D22(\u6574\u6570) [lo,hi)\ntemplate<typename T=ll, typename F>\npair<ll,\
-    \ T> trisearch_max(ll lo, ll hi, const F &func, ll offset=1) {\n    ll m1 = lo,\
-    \ l = lo;\n    ll m2 = hi, r = hi;\n    while (lo+2 < hi) {\n        m1 = (lo*2+hi)\
-    \ / 3;\n        m2 = (lo+hi*2) / 3;\n        ll res1 = func(m1);\n        ll res2\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/trisearch.hpp\"\
+    \n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570) [lo,hi)\ntemplate<typename T = ll,\
+    \ typename F>\npair<ll, T> trisearch_min(ll lo, ll hi, const F &func, ll offset\
+    \ = 1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi, r = hi;\n    while (lo + 2\
+    \ < hi) {\n        m1 = (lo * 2 + hi) / 3;\n        m2 = (lo + hi * 2) / 3;\n\
+    \        T res1 = func(m1);\n        T res2 = func(m2);\n        if (res1 <= res2)\
+    \ {\n            hi = m2;\n        } else {\n            lo = m1;\n        }\n\
+    \    }\n    T mn = numeric_limits<T>::max();\n    pair<ll, T> res;\n    rep(i,\
+    \ max(m1 - offset, l), min(m2 + offset, r)) {\n        T val = func(i);\n    \
+    \    if (val < mn) {\n            mn = val;\n            res = {i, val};\n   \
+    \     }\n    }\n    return res;\n}\n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570\
+    ) [lo,hi)\ntemplate<typename T = ll, typename F>\npair<ll, T> trisearch_max(ll\
+    \ lo, ll hi, const F &func, ll offset = 1) {\n    ll m1 = lo, l = lo;\n    ll\
+    \ m2 = hi, r = hi;\n    while (lo + 2 < hi) {\n        m1 = (lo * 2 + hi) / 3;\n\
+    \        m2 = (lo + hi * 2) / 3;\n        ll res1 = func(m1);\n        ll res2\
     \ = func(m2);\n        if (res1 >= res2) {\n            hi = m2;\n        } else\
     \ {\n            lo = m1;\n        }\n    }\n    T mx = numeric_limits<T>::min();\n\
-    \    pair<ll, T> res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n  \
-    \      T val = func(i);\n        if (val > mx) {\n            mx = val;\n    \
-    \        res = {i, val};\n        }\n    }\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570) [lo,hi)\n\
-    template<typename T=ll, typename F>\npair<ll, T> trisearch_min(ll lo, ll hi, const\
-    \ F &func, ll offset=1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi, r = hi;\n\
-    \    while (lo+2 < hi) {\n        m1 = (lo*2+hi) / 3;\n        m2 = (lo+hi*2)\
-    \ / 3;\n        T res1 = func(m1);\n        T res2 = func(m2);\n        if (res1\
-    \ <= res2) {\n            hi = m2;\n        } else {\n            lo = m1;\n \
-    \       }\n    }\n    T mn = numeric_limits<T>::max();\n    pair<ll, T> res;\n\
-    \    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        T val = func(i);\n\
-    \        if (val < mn) {\n            mn = val;\n            res = {i, val};\n\
-    \        }\n    }\n    return res;\n}\n\n// \u4E09\u5206\u63A2\u7D22(\u6574\u6570\
-    ) [lo,hi)\ntemplate<typename T=ll, typename F>\npair<ll, T> trisearch_max(ll lo,\
-    \ ll hi, const F &func, ll offset=1) {\n    ll m1 = lo, l = lo;\n    ll m2 = hi,\
-    \ r = hi;\n    while (lo+2 < hi) {\n        m1 = (lo*2+hi) / 3;\n        m2 =\
-    \ (lo+hi*2) / 3;\n        ll res1 = func(m1);\n        ll res2 = func(m2);\n \
-    \       if (res1 >= res2) {\n            hi = m2;\n        } else {\n        \
-    \    lo = m1;\n        }\n    }\n    T mx = numeric_limits<T>::min();\n    pair<ll,\
-    \ T> res;\n    rep(i, max(m1-offset, l), min(m2+offset, r)) {\n        T val =\
-    \ func(i);\n        if (val > mx) {\n            mx = val;\n            res =\
-    \ {i, val};\n        }\n    }\n    return res;\n}\n"
+    \    pair<ll, T> res;\n    rep(i, max(m1 - offset, l), min(m2 + offset, r)) {\n\
+    \        T val = func(i);\n        if (val > mx) {\n            mx = val;\n  \
+    \          res = {i, val};\n        }\n    }\n    return res;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u4E09\u5206\u63A2\u7D22(\u6574\
+    \u6570) [lo,hi)\ntemplate<typename T = ll, typename F>\npair<ll, T> trisearch_min(ll\
+    \ lo, ll hi, const F &func, ll offset = 1) {\n    ll m1 = lo, l = lo;\n    ll\
+    \ m2 = hi, r = hi;\n    while (lo + 2 < hi) {\n        m1 = (lo * 2 + hi) / 3;\n\
+    \        m2 = (lo + hi * 2) / 3;\n        T res1 = func(m1);\n        T res2 =\
+    \ func(m2);\n        if (res1 <= res2) {\n            hi = m2;\n        } else\
+    \ {\n            lo = m1;\n        }\n    }\n    T mn = numeric_limits<T>::max();\n\
+    \    pair<ll, T> res;\n    rep(i, max(m1 - offset, l), min(m2 + offset, r)) {\n\
+    \        T val = func(i);\n        if (val < mn) {\n            mn = val;\n  \
+    \          res = {i, val};\n        }\n    }\n    return res;\n}\n\n// \u4E09\u5206\
+    \u63A2\u7D22(\u6574\u6570) [lo,hi)\ntemplate<typename T = ll, typename F>\npair<ll,\
+    \ T> trisearch_max(ll lo, ll hi, const F &func, ll offset = 1) {\n    ll m1 =\
+    \ lo, l = lo;\n    ll m2 = hi, r = hi;\n    while (lo + 2 < hi) {\n        m1\
+    \ = (lo * 2 + hi) / 3;\n        m2 = (lo + hi * 2) / 3;\n        ll res1 = func(m1);\n\
+    \        ll res2 = func(m2);\n        if (res1 >= res2) {\n            hi = m2;\n\
+    \        } else {\n            lo = m1;\n        }\n    }\n    T mx = numeric_limits<T>::min();\n\
+    \    pair<ll, T> res;\n    rep(i, max(m1 - offset, l), min(m2 + offset, r)) {\n\
+    \        T val = func(i);\n        if (val > mx) {\n            mx = val;\n  \
+    \          res = {i, val};\n        }\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/trisearch.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/trisearch.hpp

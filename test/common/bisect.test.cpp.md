@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/common/input.hpp
     title: src/common/input.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/common/print.hpp
     title: src/common/print.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/4/ALDS1_4_B
@@ -62,8 +62,8 @@ data:
   isVerificationFile: true
   path: test/common/bisect.test.cpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-12-04 15:39:12+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/common/bisect.test.cpp
 layout: document

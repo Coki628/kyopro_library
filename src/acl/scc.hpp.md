@@ -21,14 +21,14 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/scc: line\
     \ -1: no such header\n"
-  code: "// SCC(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)\n// \u4F7F\u7528\u65B9\
-    \u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/scc.html\n#include\
-    \ \"atcoder/scc\"\n"
+  code: "#pragma once\n\n// SCC(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)\n// \u4F7F\
+    \u7528\u65B9\u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/scc.html\n\
+    #include \"atcoder/scc\"\n"
   dependsOn: []
   isVerificationFile: false
   path: src/acl/scc.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/acl/scc.hpp

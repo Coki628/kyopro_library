@@ -1,13 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/template.hpp
-    title: src/template.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -22,13 +19,15 @@ data:
 
     using namespace std;
 
-    #line 2 "src/string/constants/digits.hpp"
+    #line 3 "src/string/constants/digits.hpp"
 
 
     const string digits = "0123456789";
 
     '
-  code: '#include "../../base.hpp"
+  code: '#pragma once
+
+    #include "../../base.hpp"
 
 
     const string digits = "0123456789";
@@ -38,9 +37,8 @@ data:
   - src/base.hpp
   isVerificationFile: false
   path: src/string/constants/digits.hpp
-  requiredBy:
-  - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  requiredBy: []
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/constants/digits.hpp

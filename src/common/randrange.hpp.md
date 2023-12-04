@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
     path: src/common/mt.hpp
     title: src/common/mt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -34,12 +34,12 @@ data:
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/mt.hpp\"\
     \n\n// \u30B7\u30FC\u30C9\u751F\u6210\nmt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
-    #line 3 \"src/common/randrange.hpp\"\n\n// [l,r)\u306E\u7BC4\u56F2\u3067\u4E71\
+    #line 4 \"src/common/randrange.hpp\"\n\n// [l,r)\u306E\u7BC4\u56F2\u3067\u4E71\
     \u6570\u751F\u6210\nll randrange(ll l, ll r) {\n    uniform_int_distribution<ll>\
-    \ rand(l, r-1);\n    return rand(mt);\n}\n"
-  code: "#include \"../macros.hpp\"\n#include \"mt.hpp\"\n\n// [l,r)\u306E\u7BC4\u56F2\
-    \u3067\u4E71\u6570\u751F\u6210\nll randrange(ll l, ll r) {\n    uniform_int_distribution<ll>\
-    \ rand(l, r-1);\n    return rand(mt);\n}\n"
+    \ rand(l, r - 1);\n    return rand(mt);\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n#include \"mt.hpp\"\n\n// [l,r)\u306E\
+    \u7BC4\u56F2\u3067\u4E71\u6570\u751F\u6210\nll randrange(ll l, ll r) {\n    uniform_int_distribution<ll>\
+    \ rand(l, r - 1);\n    return rand(mt);\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -47,7 +47,7 @@ data:
   isVerificationFile: false
   path: src/common/randrange.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/randrange.hpp

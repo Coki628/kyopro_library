@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -34,16 +34,16 @@ data:
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/string/zfill.hpp\"\
     \n\nstring zfill(string str, int len) {\n    string zeros;\n    int n = str.size();\n\
-    \    rep(i, len-n) zeros += '0';\n    return zeros+str;\n}\n#line 3 \"src/string/compare.hpp\"\
+    \    rep(i, len - n) zeros += '0';\n    return zeros + str;\n}\n#line 4 \"src/string/compare.hpp\"\
     \n\n// \u6587\u5B57\u5217\u3092\u6570\u5024\u3068\u3057\u3066\u5927\u5C0F\u6BD4\
     \u8F03\u3059\u308B\nbool compare(const string &a, const string &b) {\n    if (a\
     \ == \"*\") return true;\n    int n = max(a.size(), b.size());\n    return zfill(a,\
     \ n) < zfill(b, n);\n}\n"
-  code: "#include \"../macros.hpp\"\n#include \"zfill.hpp\"\n\n// \u6587\u5B57\u5217\
-    \u3092\u6570\u5024\u3068\u3057\u3066\u5927\u5C0F\u6BD4\u8F03\u3059\u308B\nbool\
-    \ compare(const string &a, const string &b) {\n    if (a == \"*\") return true;\n\
-    \    int n = max(a.size(), b.size());\n    return zfill(a, n) < zfill(b, n);\n\
-    }\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n#include \"zfill.hpp\"\n\n// \u6587\
+    \u5B57\u5217\u3092\u6570\u5024\u3068\u3057\u3066\u5927\u5C0F\u6BD4\u8F03\u3059\
+    \u308B\nbool compare(const string &a, const string &b) {\n    if (a == \"*\")\
+    \ return true;\n    int n = max(a.size(), b.size());\n    return zfill(a, n) <\
+    \ zfill(b, n);\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -51,7 +51,7 @@ data:
   isVerificationFile: false
   path: src/string/compare.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/compare.hpp

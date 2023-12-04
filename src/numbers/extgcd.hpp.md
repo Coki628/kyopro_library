@@ -19,14 +19,15 @@ data:
     links: []
   bundledCode: "#line 2 \"src/numbers/extgcd.hpp\"\n\n// \u62E1\u5F35\u30E6\u30FC\u30AF\
     \u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5(ax+by=gcd(a, b)\u306E\u89E3\u3092\u6C42\
-    \u3081\u308B)\ntemplate<typename T>\nT extgcd(T a, T b, T& x, T& y) {\n    T d\
-    \ = a;\n    if (b != 0) {\n        d = extgcd(b, a%b, y, x);\n        y -= (a/b)\
-    \ * x;\n    } else {\n        x = 1; y = 0;\n    }\n    return d;\n}\n"
+    \u3081\u308B)\ntemplate<typename T>\nT extgcd(T a, T b, T &x, T &y) {\n    T d\
+    \ = a;\n    if (b != 0) {\n        d = extgcd(b, a % b, y, x);\n        y -= (a\
+    \ / b) * x;\n    } else {\n        x = 1;\n        y = 0;\n    }\n    return d;\n\
+    }\n"
   code: "#pragma once\n\n// \u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\
     \u4E92\u9664\u6CD5(ax+by=gcd(a, b)\u306E\u89E3\u3092\u6C42\u3081\u308B)\ntemplate<typename\
-    \ T>\nT extgcd(T a, T b, T& x, T& y) {\n    T d = a;\n    if (b != 0) {\n    \
-    \    d = extgcd(b, a%b, y, x);\n        y -= (a/b) * x;\n    } else {\n      \
-    \  x = 1; y = 0;\n    }\n    return d;\n}\n"
+    \ T>\nT extgcd(T a, T b, T &x, T &y) {\n    T d = a;\n    if (b != 0) {\n    \
+    \    d = extgcd(b, a % b, y, x);\n        y -= (a / b) * x;\n    } else {\n  \
+    \      x = 1;\n        y = 0;\n    }\n    return d;\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: src/numbers/extgcd.hpp
@@ -34,7 +35,7 @@ data:
   - src/numbers/bsgs.hpp
   - src/numbers/inv_mod.hpp
   - src/combinatorics/AnyModTools.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/extgcd.hpp

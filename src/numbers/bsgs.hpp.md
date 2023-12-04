@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -13,7 +13,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -42,22 +42,23 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: common/HashMap.hpp:\
     \ line -1: no such header\n"
-  code: "#include \"../macros.hpp\"\n#include \"common/HashMap.hpp\"\n#include \"\
-    common/pow.hpp\"\n#include \"inv_mod.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://tjkendev.github.io/procon-library/python/math/baby-step-giant-step.html\n\
-    // BSGS(Baby-step Giant-step)\n// \u30FBx^k \u2261 y (mod m) \u3068\u306A\u308B\
-    \u3088\u3046\u306A\u6700\u5C0F\u306E k \u3092\u6C42\u3081\u308B\u3002\n// \u30FB\
-    x\u3068mod\u304C\u4E92\u3044\u306B\u7D20\u3067\u3042\u308B\u3053\u3068\u304C\u6761\
-    \u4EF6\u3002\n// \u3000(\u7D20\u6570\u3067\u306F\u306A\u304F\u3066\u3082\u3044\
-    \u3044\u3088\u3046\u306B\u3001\u9006\u5143\u306F\u30D5\u30A7\u30EB\u30DE\u30FC\
-    \u3058\u3083\u306A\u304F\u3066\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\
-    \u306E\u65B9\u306B\u3057\u3066\u3042\u308B\u3002)\n\nll bsgs(ll x, ll y, ll m,\
-    \ ll z=1) {\n    assert((gcd(x, m) == 1));\n\n    z %= m;\n    HashMap<ll, ll>\
-    \ C;\n    C[z] = 0;\n    ll sq = sqrt(m) + 1;\n\n    // Baby-step\n    rep(i,\
-    \ sq) {\n        z = z * x % m;\n        if (not C.count(z)) {\n            C[z]\
-    \ = i + 1;\n        }\n    }\n    if (C.count(y)) {\n        return C[y];\n  \
-    \  }\n\n    // Giant-step\n    ll r = inv_mod(pow(x, sq, m), m); // r = x^(-sq);\n\
-    \    rep(i, 1, sq+1) {\n        y = y * r % m;\n        if (C.count(y)) {\n  \
-    \          return C[y] + i*sq;\n        }\n    }\n    return -1;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n#include \"common/HashMap.hpp\"\
+    \n#include \"common/pow.hpp\"\n#include \"inv_mod.hpp\"\n\n// BSGS(Baby-step Giant-step)\n\
+    // \u53C2\u8003\uFF1Ahttps://tjkendev.github.io/procon-library/python/math/baby-step-giant-step.html\n\
+    // \u30FBx^k \u2261 y (mod m) \u3068\u306A\u308B\u3088\u3046\u306A\u6700\u5C0F\
+    \u306E k \u3092\u6C42\u3081\u308B\u3002\n// \u30FBx\u3068mod\u304C\u4E92\u3044\
+    \u306B\u7D20\u3067\u3042\u308B\u3053\u3068\u304C\u6761\u4EF6\u3002\n// \u3000\
+    (\u7D20\u6570\u3067\u306F\u306A\u304F\u3066\u3082\u3044\u3044\u3088\u3046\u306B\
+    \u3001\u9006\u5143\u306F\u30D5\u30A7\u30EB\u30DE\u30FC\u3058\u3083\u306A\u304F\
+    \u3066\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u65B9\u306B\u3057\
+    \u3066\u3042\u308B\u3002)\nll bsgs(ll x, ll y, ll m, ll z = 1) {\n    assert((gcd(x,\
+    \ m) == 1));\n\n    z %= m;\n    HashMap<ll, ll> C;\n    C[z] = 0;\n    ll sq\
+    \ = sqrt(m) + 1;\n\n    // Baby-step\n    rep(i, sq) {\n        z = z * x % m;\n\
+    \        if (not C.count(z)) {\n            C[z] = i + 1;\n        }\n    }\n\
+    \    if (C.count(y)) {\n        return C[y];\n    }\n\n    // Giant-step\n   \
+    \ ll r = inv_mod(pow(x, sq, m), m); // r = x^(-sq);\n    rep(i, 1, sq + 1) {\n\
+    \        y = y * r % m;\n        if (C.count(y)) {\n            return C[y] +\
+    \ i * sq;\n        }\n    }\n    return -1;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -69,7 +70,7 @@ data:
   isVerificationFile: false
   path: src/numbers/bsgs.hpp
   requiredBy: []
-  timestamp: '2023-10-10 14:51:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/bsgs.hpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -38,45 +38,48 @@ data:
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/datastructure/BIT.hpp\"\
     \n\n// Binary Indexed Tree\ntemplate<typename T>\nclass BIT {\nprivate:\n    int\
-    \ n;\n    vector<T> dat;\n\npublic:\n    BIT() =  default;\n\n    explicit BIT(int\
-    \ n) : n(n) {\n        dat.assign(n+1, 0);\n    }\n\n    explicit BIT(const vector<T>\
-    \ &v) : BIT((int)v.size()) {\n        build(v);\n    }\n\n    virtual void build(const\
-    \ vector<T> &v) {\n        assert(n == (int)v.size());\n        for (int i = 1;\
-    \ i <= n; i++) {\n            dat[i] = v[i - 1];\n        }\n        for (int\
-    \ i = 1; i <= n; i++) {\n            int j = i + (i & -i);\n            if (j\
-    \ <= n) dat[j] += dat[i];\n        }\n    }\n\n    // [0, r)\u3092\u5408\u8A08\
-    \u3059\u308B\n    virtual T sum(int r) {\n        T s = T();\n        for (; r\
-    \ > 0; r -= r & -r) {\n            s += dat[r];\n        }\n        return s;\n\
-    \    }\n\n    virtual void add(int k, const T &x) {\n        for (++k; k <= n;\
-    \ k += k & -k) {\n            dat[k] += x;\n        }\n    }\n\n    // \u533A\u9593\
-    \u548C\u306E\u53D6\u5F97 [l, r)\n    T query(int l, int r) {\n        if (l >=\
-    \ r) return 0;\n        return sum(r) - sum(l);\n    }\n\n    T get(int i) {\n\
-    \        return query(i, i+1);\n    }\n\n    void update(int i, T x) {\n     \
-    \   add(i, x-get(i));\n    }\n\n    T operator[](int i) {\n        return query(i,\
-    \ i+1);\n    }\n\n    void print(int n=-1) {\n        if (n == -1) n = this->n;\n\
-    \        rep(i, n) {\n            cout << query(i, i+1);\n            if (i ==\
-    \ n-1) cout << endl;\n            else cout << ' ';\n        }\n    }\n\n    //\
-    \ ll bisearch_fore(int l, int r, ll x) {\n    //     if (l > r) return -1;\n \
-    \   //     ll l_sm = sum(l);\n    //     int ok = r + 1;\n    //     int ng =\
-    \ l - 1;\n    //     while (ng+1 < ok) {\n    //         int mid = (ok+ng) / 2;\n\
-    \    //         if (sum(mid+1) - l_sm >= x) {\n    //             ok = mid;\n\
-    \    //         } else {\n    //             ng = mid;\n    //         }\n   \
-    \ //     }\n    //     if (ok != r+1) {\n    //         return ok;\n    //   \
-    \  } else {\n    //         return -1;\n    //     }\n    // }\n\n    // ll bisearch_back(int\
-    \ l, int r, ll x) {\n    //     if (l > r) return -1;\n    //     ll r_sm = sum(r+1);\n\
-    \    //     int ok = l - 1;\n    //     int ng = r + 1;\n    //     while (ok+1\
-    \ < ng) {\n    //         int mid = (ok+ng) / 2;\n    //         if (r_sm - sum(mid)\
-    \ >= x) {\n    //             ok = mid;\n    //         } else {\n    //     \
-    \        ng = mid;\n    //         }\n    //     }\n    //     if (ok != l-1)\
-    \ {\n    //         return ok;\n    //     } else {\n    //         return -1;\n\
-    \    //     }\n    // }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\
-    \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
-    \u7F6E\n    int bisearch_fore(int l, int r, T x) {\n        if (l > r) return\
-    \ -1;\n        assert(l >= 0 and r < n);\n        x += query(0, l);\n        T\
-    \ k = lower_bound(x);\n        assert(l <= k);\n        if (k >= n) {\n      \
-    \      return -1;\n        } else {\n            return k;\n        }\n    }\n\
-    \n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\
-    \u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    int bisearch_back(int\
+    \ n;\n    vector<T> dat;\n\npublic:\n    BIT() = default;\n\n    explicit BIT(int\
+    \ n) : n(n) {\n        dat.assign(n + 1, 0);\n    }\n\n    explicit BIT(const\
+    \ vector<T> &v) : BIT((int)v.size()) {\n        build(v);\n    }\n\n    virtual\
+    \ void build(const vector<T> &v) {\n        assert(n == (int)v.size());\n    \
+    \    for (int i = 1; i <= n; i++) {\n            dat[i] = v[i - 1];\n        }\n\
+    \        for (int i = 1; i <= n; i++) {\n            int j = i + (i & -i);\n \
+    \           if (j <= n) dat[j] += dat[i];\n        }\n    }\n\n    // [0, r)\u3092\
+    \u5408\u8A08\u3059\u308B\n    virtual T sum(int r) {\n        T s = T();\n   \
+    \     for (; r > 0; r -= r & -r) {\n            s += dat[r];\n        }\n    \
+    \    return s;\n    }\n\n    virtual void add(int k, const T &x) {\n        for\
+    \ (++k; k <= n; k += k & -k) {\n            dat[k] += x;\n        }\n    }\n\n\
+    \    // \u533A\u9593\u548C\u306E\u53D6\u5F97 [l, r)\n    T query(int l, int r)\
+    \ {\n        if (l >= r) return 0;\n        return sum(r) - sum(l);\n    }\n\n\
+    \    T get(int i) {\n        return query(i, i + 1);\n    }\n\n    void update(int\
+    \ i, T x) {\n        add(i, x - get(i));\n    }\n\n    T operator[](int i) {\n\
+    \        return query(i, i + 1);\n    }\n\n    void print(int n = -1) {\n    \
+    \    if (n == -1) n = this->n;\n        rep(i, n) {\n            cout << query(i,\
+    \ i + 1);\n            if (i == n - 1) cout << endl;\n            else cout <<\
+    \ ' ';\n        }\n    }\n\n    // log2\u3064\u306E\u65E7\u4ED5\u69D8\u3002\u65B0\
+    \u4ED5\u69D8\u3067\u3042\u308B\u7A0B\u5EA6\u78BA\u8A8D\u304C\u53D6\u308C\u305F\
+    \u3089\u524A\u9664\u3002\n    // ll bisearch_fore(int l, int r, ll x) {\n    //\
+    \     if (l > r) return -1;\n    //     ll l_sm = sum(l);\n    //     int ok =\
+    \ r + 1;\n    //     int ng = l - 1;\n    //     while (ng+1 < ok) {\n    // \
+    \        int mid = (ok+ng) / 2;\n    //         if (sum(mid+1) - l_sm >= x) {\n\
+    \    //             ok = mid;\n    //         } else {\n    //             ng\
+    \ = mid;\n    //         }\n    //     }\n    //     if (ok != r+1) {\n    //\
+    \         return ok;\n    //     } else {\n    //         return -1;\n    // \
+    \    }\n    // }\n    // ll bisearch_back(int l, int r, ll x) {\n    //     if\
+    \ (l > r) return -1;\n    //     ll r_sm = sum(r+1);\n    //     int ok = l -\
+    \ 1;\n    //     int ng = r + 1;\n    //     while (ok+1 < ng) {\n    //     \
+    \    int mid = (ok+ng) / 2;\n    //         if (r_sm - sum(mid) >= x) {\n    //\
+    \             ok = mid;\n    //         } else {\n    //             ng = mid;\n\
+    \    //         }\n    //     }\n    //     if (ok != l-1) {\n    //         return\
+    \ ok;\n    //     } else {\n    //         return -1;\n    //     }\n    // }\n\
+    \n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\u5411\u304B\u3063\
+    \u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E(log1\u3064\u7248\
+    )\n    int bisearch_fore(int l, int r, T x) {\n        if (l > r) return -1;\n\
+    \        assert(l >= 0 and r < n);\n        x += query(0, l);\n        T k = lower_bound(x);\n\
+    \        assert(l <= k);\n        if (k >= n) {\n            return -1;\n    \
+    \    } else {\n            return k;\n        }\n    }\n\n    // \u533A\u9593\
+    [l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\
+    \u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E(log1\u3064\u7248)\n    int bisearch_back(int\
     \ l, int r, T x) {\n        if (l > r) return -1;\n        assert(l >= 0 and r\
     \ < n);\n        T total = query(0, r + 1);\n        if (total - x < 0) {\n  \
     \          return -1;\n        }\n        T k = upper_bound(total - x);\n    \
@@ -89,18 +92,18 @@ data:
     \ // (log\u304C1\u3064\u306A\u306E\u3067\u3001TL\u53B3\u3057\u3044\u6642\u306F\
     \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    int lower_bound(T x) const {\n\
     \        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1)\
-    \ {\n            if (i + k <= n && dat[i+k] < x) {\n                x -= dat[i+k];\n\
-    \                i += k;\n            }\n        }\n        return i;\n    }\n\
-    \n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\u308B\u6700\
-    \u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\u52A0\
-    \u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002(\u672Averify)\n\
-    \    int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1\
-    \ << (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i+k]\
-    \ <= x) {\n                x -= dat[i+k];\n                i += k;\n         \
-    \   }\n        }\n        return i;\n    }\n};\n"
+    \ {\n            if (i + k <= n && dat[i + k] < x) {\n                x -= dat[i\
+    \ + k];\n                i += k;\n            }\n        }\n        return i;\n\
+    \    }\n\n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\u308B\
+    \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
+    \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
+    \ int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1 <<\
+    \ (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i + k] <=\
+    \ x) {\n                x -= dat[i + k];\n                i += k;\n          \
+    \  }\n        }\n        return i;\n    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// Binary Indexed Tree\ntemplate<typename\
     \ T>\nclass BIT {\nprivate:\n    int n;\n    vector<T> dat;\n\npublic:\n    BIT()\
-    \ =  default;\n\n    explicit BIT(int n) : n(n) {\n        dat.assign(n+1, 0);\n\
+    \ = default;\n\n    explicit BIT(int n) : n(n) {\n        dat.assign(n + 1, 0);\n\
     \    }\n\n    explicit BIT(const vector<T> &v) : BIT((int)v.size()) {\n      \
     \  build(v);\n    }\n\n    virtual void build(const vector<T> &v) {\n        assert(n\
     \ == (int)v.size());\n        for (int i = 1; i <= n; i++) {\n            dat[i]\
@@ -112,53 +115,56 @@ data:
     \ const T &x) {\n        for (++k; k <= n; k += k & -k) {\n            dat[k]\
     \ += x;\n        }\n    }\n\n    // \u533A\u9593\u548C\u306E\u53D6\u5F97 [l, r)\n\
     \    T query(int l, int r) {\n        if (l >= r) return 0;\n        return sum(r)\
-    \ - sum(l);\n    }\n\n    T get(int i) {\n        return query(i, i+1);\n    }\n\
-    \n    void update(int i, T x) {\n        add(i, x-get(i));\n    }\n\n    T operator[](int\
-    \ i) {\n        return query(i, i+1);\n    }\n\n    void print(int n=-1) {\n \
-    \       if (n == -1) n = this->n;\n        rep(i, n) {\n            cout << query(i,\
-    \ i+1);\n            if (i == n-1) cout << endl;\n            else cout << ' ';\n\
-    \        }\n    }\n\n    // ll bisearch_fore(int l, int r, ll x) {\n    //   \
-    \  if (l > r) return -1;\n    //     ll l_sm = sum(l);\n    //     int ok = r\
-    \ + 1;\n    //     int ng = l - 1;\n    //     while (ng+1 < ok) {\n    //   \
-    \      int mid = (ok+ng) / 2;\n    //         if (sum(mid+1) - l_sm >= x) {\n\
-    \    //             ok = mid;\n    //         } else {\n    //             ng\
-    \ = mid;\n    //         }\n    //     }\n    //     if (ok != r+1) {\n    //\
-    \         return ok;\n    //     } else {\n    //         return -1;\n    // \
-    \    }\n    // }\n\n    // ll bisearch_back(int l, int r, ll x) {\n    //    \
-    \ if (l > r) return -1;\n    //     ll r_sm = sum(r+1);\n    //     int ok = l\
-    \ - 1;\n    //     int ng = r + 1;\n    //     while (ok+1 < ng) {\n    //   \
-    \      int mid = (ok+ng) / 2;\n    //         if (r_sm - sum(mid) >= x) {\n  \
-    \  //             ok = mid;\n    //         } else {\n    //             ng =\
-    \ mid;\n    //         }\n    //     }\n    //     if (ok != l-1) {\n    //  \
-    \       return ok;\n    //     } else {\n    //         return -1;\n    //   \
-    \  }\n    // }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\u306B\
+    \ - sum(l);\n    }\n\n    T get(int i) {\n        return query(i, i + 1);\n  \
+    \  }\n\n    void update(int i, T x) {\n        add(i, x - get(i));\n    }\n\n\
+    \    T operator[](int i) {\n        return query(i, i + 1);\n    }\n\n    void\
+    \ print(int n = -1) {\n        if (n == -1) n = this->n;\n        rep(i, n) {\n\
+    \            cout << query(i, i + 1);\n            if (i == n - 1) cout << endl;\n\
+    \            else cout << ' ';\n        }\n    }\n\n    // log2\u3064\u306E\u65E7\
+    \u4ED5\u69D8\u3002\u65B0\u4ED5\u69D8\u3067\u3042\u308B\u7A0B\u5EA6\u78BA\u8A8D\
+    \u304C\u53D6\u308C\u305F\u3089\u524A\u9664\u3002\n    // ll bisearch_fore(int\
+    \ l, int r, ll x) {\n    //     if (l > r) return -1;\n    //     ll l_sm = sum(l);\n\
+    \    //     int ok = r + 1;\n    //     int ng = l - 1;\n    //     while (ng+1\
+    \ < ok) {\n    //         int mid = (ok+ng) / 2;\n    //         if (sum(mid+1)\
+    \ - l_sm >= x) {\n    //             ok = mid;\n    //         } else {\n    //\
+    \             ng = mid;\n    //         }\n    //     }\n    //     if (ok !=\
+    \ r+1) {\n    //         return ok;\n    //     } else {\n    //         return\
+    \ -1;\n    //     }\n    // }\n    // ll bisearch_back(int l, int r, ll x) {\n\
+    \    //     if (l > r) return -1;\n    //     ll r_sm = sum(r+1);\n    //    \
+    \ int ok = l - 1;\n    //     int ng = r + 1;\n    //     while (ok+1 < ng) {\n\
+    \    //         int mid = (ok+ng) / 2;\n    //         if (r_sm - sum(mid) >=\
+    \ x) {\n    //             ok = mid;\n    //         } else {\n    //        \
+    \     ng = mid;\n    //         }\n    //     }\n    //     if (ok != l-1) {\n\
+    \    //         return ok;\n    //     } else {\n    //         return -1;\n \
+    \   //     }\n    // }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\
+    \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
+    \u7F6E(log1\u3064\u7248)\n    int bisearch_fore(int l, int r, T x) {\n       \
+    \ if (l > r) return -1;\n        assert(l >= 0 and r < n);\n        x += query(0,\
+    \ l);\n        T k = lower_bound(x);\n        assert(l <= k);\n        if (k >=\
+    \ n) {\n            return -1;\n        } else {\n            return k;\n    \
+    \    }\n    }\n\n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\
     \u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\
-    \n    int bisearch_fore(int l, int r, T x) {\n        if (l > r) return -1;\n\
-    \        assert(l >= 0 and r < n);\n        x += query(0, l);\n        T k = lower_bound(x);\n\
-    \        assert(l <= k);\n        if (k >= n) {\n            return -1;\n    \
-    \    } else {\n            return k;\n        }\n    }\n\n    // \u533A\u9593\
-    [l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\
-    \u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\n    int bisearch_back(int l, int r,\
-    \ T x) {\n        if (l > r) return -1;\n        assert(l >= 0 and r < n);\n \
-    \       T total = query(0, r + 1);\n        if (total - x < 0) {\n           \
-    \ return -1;\n        }\n        T k = upper_bound(total - x);\n        assert(k\
-    \ <= r);\n        if (k < l) {\n            return -1;\n        } else {\n   \
-    \         return k;\n        }\n    }\n\n    // \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n\
+    (log1\u3064\u7248)\n    int bisearch_back(int l, int r, T x) {\n        if (l\
+    \ > r) return -1;\n        assert(l >= 0 and r < n);\n        T total = query(0,\
+    \ r + 1);\n        if (total - x < 0) {\n            return -1;\n        }\n \
+    \       T k = upper_bound(total - x);\n        assert(k <= r);\n        if (k\
+    \ < l) {\n            return -1;\n        } else {\n            return k;\n  \
+    \      }\n    }\n\n    // \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n\
     \    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u4EE5\u4E0A\u3068\u306A\u308B\
     \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
     \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
     \ // (log\u304C1\u3064\u306A\u306E\u3067\u3001TL\u53B3\u3057\u3044\u6642\u306F\
     \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    int lower_bound(T x) const {\n\
     \        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1)\
-    \ {\n            if (i + k <= n && dat[i+k] < x) {\n                x -= dat[i+k];\n\
-    \                i += k;\n            }\n        }\n        return i;\n    }\n\
-    \n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\u308B\u6700\
-    \u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\u52A0\
-    \u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002(\u672Averify)\n\
-    \    int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1\
-    \ << (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i+k]\
-    \ <= x) {\n                x -= dat[i+k];\n                i += k;\n         \
-    \   }\n        }\n        return i;\n    }\n};\n"
+    \ {\n            if (i + k <= n && dat[i + k] < x) {\n                x -= dat[i\
+    \ + k];\n                i += k;\n            }\n        }\n        return i;\n\
+    \    }\n\n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\u308B\
+    \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
+    \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
+    \ int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1 <<\
+    \ (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i + k] <=\
+    \ x) {\n                x -= dat[i + k];\n                i += k;\n          \
+    \  }\n        }\n        return i;\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -167,7 +173,7 @@ data:
   requiredBy:
   - src/datastructure/PersistentBIT.hpp
   - src/template.hpp
-  timestamp: '2023-11-04 17:57:37+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/BIT.hpp

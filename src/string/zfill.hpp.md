@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -37,10 +37,10 @@ data:
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/string/zfill.hpp\"\
     \n\nstring zfill(string str, int len) {\n    string zeros;\n    int n = str.size();\n\
-    \    rep(i, len-n) zeros += '0';\n    return zeros+str;\n}\n"
+    \    rep(i, len - n) zeros += '0';\n    return zeros + str;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\nstring zfill(string str, int\
-    \ len) {\n    string zeros;\n    int n = str.size();\n    rep(i, len-n) zeros\
-    \ += '0';\n    return zeros+str;\n}\n"
+    \ len) {\n    string zeros;\n    int n = str.size();\n    rep(i, len - n) zeros\
+    \ += '0';\n    return zeros + str;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -49,7 +49,7 @@ data:
   requiredBy:
   - src/string/compare.hpp
   - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/zfill.hpp

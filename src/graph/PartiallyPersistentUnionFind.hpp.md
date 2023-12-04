@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy: []
@@ -12,7 +12,7 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 2 \"src/graph/PartiallyPersistentUnionFind.hpp\"\n\
+    using namespace std;\n#line 3 \"src/graph/PartiallyPersistentUnionFind.hpp\"\n\
     \n// \u90E8\u5206\u6C38\u7D9AUF\n// \u4F7F\u3044\u65B9\n// \u30FB\u521D\u671F\u72B6\
     \u614B\u304C0\u3068\u306A\u308B\u306E\u3067\u30011\u56DE\u76EE\u306E\u9023\u7D50\
     \u6642\u523B\u306F0\u3067\u306F\u306A\u304F1\u304B\u3089\u59CB\u3081\u308B\u3002\
@@ -41,20 +41,20 @@ data:
     \u5B9A\n    bool same(int t, int a, int b) {\n        return find(t, a) == find(t,\
     \ b);\n    }\n\n    // \u6642\u523Bt\u306B\u9802\u70B9x\u3092\u542B\u3080\u9023\
     \u7D50\u6210\u5206\u306E\u30B5\u30A4\u30BA\n    int size(int t, int x) {\n   \
-    \     x = find(t, x);\n        return -prev(lower_bound(history[x].begin(), history[x].end(),\
-    \ make_pair(t, 0)))->second;\n    }\n};\n"
-  code: "#include \"../base.hpp\"\n\n// \u90E8\u5206\u6C38\u7D9AUF\n// \u4F7F\u3044\
-    \u65B9\n// \u30FB\u521D\u671F\u72B6\u614B\u304C0\u3068\u306A\u308B\u306E\u3067\
-    \u30011\u56DE\u76EE\u306E\u9023\u7D50\u6642\u523B\u306F0\u3067\u306F\u306A\u304F\
-    1\u304B\u3089\u59CB\u3081\u308B\u3002\nstruct PartiallyPersistentUnionFind {\n\
-    \n    int n;\n    vector<int> par, last;\n    vector<vector<pair<int, int>>> history;\n\
-    \n    PartiallyPersistentUnionFind(int n) : n(n) {\n        // x\u304C\u6839\u306E\
-    \u3068\u304D\u306Fx\u3092\u542B\u3080\u30B0\u30EB\u30FC\u30D7\u306E\u30B5\u30A4\
-    \u30BA(\u306E-1\u500D)\u3001\u305D\u3046\u3067\u306A\u3044\u3068\u304D\u306F\u89AA\
-    \u30CE\u30FC\u30C9\n        par.resize(n, -1);\n        // \u6700\u5F8C\u306B\u300C\
-    \u6839\u300D\u3067\u306F\u306A\u304F\u306A\u3063\u305F\u77AC\u9593\u306E\u6642\
-    \u523B\n        last.resize(n, -1);\n        history.resize(n);\n        for (auto\
-    \ &vec : history) vec.emplace_back(-1, -1);\n    }\n\n    PartiallyPersistentUnionFind()\
+    \     x = find(t, x);\n        return -prev(\n            lower_bound(history[x].begin(),\
+    \ history[x].end(), make_pair(t, 0))\n        )->second;\n    }\n};\n"
+  code: "#pragma once\n#include \"../base.hpp\"\n\n// \u90E8\u5206\u6C38\u7D9AUF\n\
+    // \u4F7F\u3044\u65B9\n// \u30FB\u521D\u671F\u72B6\u614B\u304C0\u3068\u306A\u308B\
+    \u306E\u3067\u30011\u56DE\u76EE\u306E\u9023\u7D50\u6642\u523B\u306F0\u3067\u306F\
+    \u306A\u304F1\u304B\u3089\u59CB\u3081\u308B\u3002\nstruct PartiallyPersistentUnionFind\
+    \ {\n\n    int n;\n    vector<int> par, last;\n    vector<vector<pair<int, int>>>\
+    \ history;\n\n    PartiallyPersistentUnionFind(int n) : n(n) {\n        // x\u304C\
+    \u6839\u306E\u3068\u304D\u306Fx\u3092\u542B\u3080\u30B0\u30EB\u30FC\u30D7\u306E\
+    \u30B5\u30A4\u30BA(\u306E-1\u500D)\u3001\u305D\u3046\u3067\u306A\u3044\u3068\u304D\
+    \u306F\u89AA\u30CE\u30FC\u30C9\n        par.resize(n, -1);\n        // \u6700\u5F8C\
+    \u306B\u300C\u6839\u300D\u3067\u306F\u306A\u304F\u306A\u3063\u305F\u77AC\u9593\
+    \u306E\u6642\u523B\n        last.resize(n, -1);\n        history.resize(n);\n\
+    \        for (auto &vec : history) vec.emplace_back(-1, -1);\n    }\n\n    PartiallyPersistentUnionFind()\
     \ {}\n\n    // \u6839\u306E\u691C\u7D22(\u30B0\u30EB\u30FC\u30D7\u756A\u53F7)\n\
     \    int find(int t, int x) {\n        // \u6839\u306A\u3089\u305D\u306E\u756A\
     \u53F7\u3092\u8FD4\u3059\n        if (last[x] == -1 || t < last[x]) {\n      \
@@ -71,14 +71,14 @@ data:
     \u3059\u308B\u304B\u5224\u5B9A\n    bool same(int t, int a, int b) {\n       \
     \ return find(t, a) == find(t, b);\n    }\n\n    // \u6642\u523Bt\u306B\u9802\u70B9\
     x\u3092\u542B\u3080\u9023\u7D50\u6210\u5206\u306E\u30B5\u30A4\u30BA\n    int size(int\
-    \ t, int x) {\n        x = find(t, x);\n        return -prev(lower_bound(history[x].begin(),\
-    \ history[x].end(), make_pair(t, 0)))->second;\n    }\n};\n"
+    \ t, int x) {\n        x = find(t, x);\n        return -prev(\n            lower_bound(history[x].begin(),\
+    \ history[x].end(), make_pair(t, 0))\n        )->second;\n    }\n};\n"
   dependsOn:
   - src/base.hpp
   isVerificationFile: false
   path: src/graph/PartiallyPersistentUnionFind.hpp
   requiredBy: []
-  timestamp: '2022-08-29 14:43:01+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/PartiallyPersistentUnionFind.hpp

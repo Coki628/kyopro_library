@@ -1,10 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
+    path: src/geometry/radians.hpp
+    title: src/geometry/radians.hpp
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,21 +32,25 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/geometry/cos_formula.hpp\"\
-    \n\n// \u4F59\u5F26\u5B9A\u7406(\u8FBAa,b\u3068\u9593\u306E\u89D2\u5EA6deg\u304B\
-    \u3089\u3001\u53CD\u5BFE\u5074\u306E\u8FBAc\u3092\u6C42\u3081\u308B)\nld cos_formula(ld\
-    \ a, ld b, ld deg) {\n    return sqrt(a*a+b*b-2*a*b*cos(radians(deg)));\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u4F59\u5F26\u5B9A\u7406(\u8FBAa,b\u3068\
-    \u9593\u306E\u89D2\u5EA6deg\u304B\u3089\u3001\u53CD\u5BFE\u5074\u306E\u8FBAc\u3092\
-    \u6C42\u3081\u308B)\nld cos_formula(ld a, ld b, ld deg) {\n    return sqrt(a*a+b*b-2*a*b*cos(radians(deg)));\n\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/geometry/radians.hpp\"\
+    \n\nld radians(ld degrees) {\n    return degrees * PI / 180.0;\n}\n#line 4 \"\
+    src/geometry/cos_formula.hpp\"\n\n// \u4F59\u5F26\u5B9A\u7406(\u8FBAa,b\u3068\u9593\
+    \u306E\u89D2\u5EA6deg\u304B\u3089\u3001\u53CD\u5BFE\u5074\u306E\u8FBAc\u3092\u6C42\
+    \u3081\u308B)\nld cos_formula(ld a, ld b, ld deg) {\n    return sqrt(a * a + b\
+    \ * b - 2 * a * b * cos(radians(deg)));\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n#include \"radians.hpp\"\n\n//\
+    \ \u4F59\u5F26\u5B9A\u7406(\u8FBAa,b\u3068\u9593\u306E\u89D2\u5EA6deg\u304B\u3089\
+    \u3001\u53CD\u5BFE\u5074\u306E\u8FBAc\u3092\u6C42\u3081\u308B)\nld cos_formula(ld\
+    \ a, ld b, ld deg) {\n    return sqrt(a * a + b * b - 2 * a * b * cos(radians(deg)));\n\
     }\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
+  - src/geometry/radians.hpp
   isVerificationFile: false
   path: src/geometry/cos_formula.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/cos_formula.hpp

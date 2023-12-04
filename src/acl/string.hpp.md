@@ -24,14 +24,15 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/string:\
     \ line -1: no such header\n"
-  code: "// suffix array, Z\u30A2\u30EB\u30B4\n// \u4F7F\u7528\u65B9\u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/string.html\n\
-    #include \"atcoder/string\"\n"
+  code: "#pragma once\n\n// suffix array, Z\u30A2\u30EB\u30B4\n// \u4F7F\u7528\u65B9\
+    \u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/string.html\n#include\
+    \ \"atcoder/string\"\n"
   dependsOn: []
   isVerificationFile: false
   path: src/acl/string.hpp
   requiredBy:
   - src/string/SuffixArray.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/acl/string.hpp

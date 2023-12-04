@@ -1,13 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/datastructure/get_inversion.hpp
+    title: src/datastructure/get_inversion.hpp
   - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
@@ -32,11 +35,11 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/common/Compress.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/Compress.hpp\"\
     \n\n// \u5EA7\u6A19\u5727\u7E2E(\u4E8C\u5206\u63A2\u7D22\u30D9\u30FC\u30B9)\n\
-    template<typename T>\nstruct Compress {\n\n    int N;\n    vector<T> dat;\n  \
-    \  bool built = false;\n\n    Compress() {}\n\n    Compress(const vector<T> &A)\
-    \ : dat(A) {\n        build();\n    }\n\n    void build() {\n        sort(dat.begin(),\
+    template<typename T>\nstruct Compress {\n    int N;\n    vector<T> dat;\n    bool\
+    \ built = false;\n\n    Compress() {}\n\n    Compress(const vector<T> &A) : dat(A)\
+    \ {\n        build();\n    }\n\n    void build() {\n        sort(dat.begin(),\
     \ dat.end());\n        dat.erase(unique(dat.begin(), dat.end()), dat.end());\n\
     \        N = dat.size();\n        built = true;\n    }\n\n    void add(T x) {\n\
     \        assert(not built);\n        dat.eb(x);\n    }\n\n    int zip(T x) {\n\
@@ -52,11 +55,11 @@ data:
     \ unzipped.end()), unzipped.end());\n//     rep(i, unzipped.size()) {\n//    \
     \     zipped[unzipped[i]] = i;\n//     }\n//     return {zipped, unzipped};\n\
     // }\n"
-  code: "#include \"../macros.hpp\"\n\n// \u5EA7\u6A19\u5727\u7E2E(\u4E8C\u5206\u63A2\
-    \u7D22\u30D9\u30FC\u30B9)\ntemplate<typename T>\nstruct Compress {\n\n    int\
-    \ N;\n    vector<T> dat;\n    bool built = false;\n\n    Compress() {}\n\n   \
-    \ Compress(const vector<T> &A) : dat(A) {\n        build();\n    }\n\n    void\
-    \ build() {\n        sort(dat.begin(), dat.end());\n        dat.erase(unique(dat.begin(),\
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u5EA7\u6A19\u5727\u7E2E(\u4E8C\
+    \u5206\u63A2\u7D22\u30D9\u30FC\u30B9)\ntemplate<typename T>\nstruct Compress {\n\
+    \    int N;\n    vector<T> dat;\n    bool built = false;\n\n    Compress() {}\n\
+    \n    Compress(const vector<T> &A) : dat(A) {\n        build();\n    }\n\n   \
+    \ void build() {\n        sort(dat.begin(), dat.end());\n        dat.erase(unique(dat.begin(),\
     \ dat.end()), dat.end());\n        N = dat.size();\n        built = true;\n  \
     \  }\n\n    void add(T x) {\n        assert(not built);\n        dat.eb(x);\n\
     \    }\n\n    int zip(T x) {\n        assert(built);\n        return bisect_left(dat,\
@@ -77,8 +80,9 @@ data:
   isVerificationFile: false
   path: src/common/Compress.hpp
   requiredBy:
+  - src/datastructure/get_inversion.hpp
   - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/Compress.hpp

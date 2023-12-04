@@ -4,13 +4,13 @@ data:
   - icon: ':warning:'
     path: src/acl/string.hpp
     title: src/acl/string.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
     path: src/datastructure/SegmentTree.hpp
     title: src/datastructure/SegmentTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -34,26 +34,27 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/string:\
     \ line -1: no such header\n"
-  code: "#include \"../macros.hpp\"\n#include \"../datastructure/SegmentTree.hpp\"\
-    \n#include \"../acl/string.hpp\"\n\nauto f = [](int a, int b) { return min(a,\
-    \ b); };\n\nstruct SuffixArray {\n    int N;\n    string S;\n    bool use_seg;\n\
-    \    vector<int> sa, rsa, lcp;\n    SegmentTree<int, decltype(f)> seg = get_segment_tree(f,\
-    \ MOD);\n\n    SuffixArray(string S, bool use_seg=true) : S(S), N(S.size()), use_seg(use_seg)\
-    \ {\n        sa = atcoder::suffix_array(S);\n        rsa.assign(N, 0);\n     \
-    \   rep(i, N) {\n            rsa[sa[i]] = i;\n        }\n        lcp = atcoder::lcp_array(S,\
-    \ sa);\n        if (use_seg) {\n            seg.build(lcp);\n        }\n    }\n\
-    \n    // S[i]\u3068S[j]\u306ELCP\u3092\u53D6\u5F97\n    int get_lcp(int i, int\
-    \ j) {\n        assert(use_seg);\n        int l = rsa[i], r = rsa[j];\n      \
-    \  if (l > r) swap(l, r);\n        return seg.query(l, r);\n    }\n};\n"
+  code: "#pragma once\n#include \"../acl/string.hpp\"\n#include \"../datastructure/SegmentTree.hpp\"\
+    \n#include \"../macros.hpp\"\n\nauto f = [](int a, int b) { return min(a, b);\
+    \ };\n\nstruct SuffixArray {\n    int N;\n    string S;\n    bool use_seg;\n \
+    \   vector<int> sa, rsa, lcp;\n    SegmentTree<int, decltype(f)> seg = get_segment_tree(f,\
+    \ MOD);\n\n    SuffixArray(string S, bool use_seg = true)\n        : S(S),\n \
+    \         N(S.size()),\n          use_seg(use_seg) {\n        sa = atcoder::suffix_array(S);\n\
+    \        rsa.assign(N, 0);\n        rep(i, N) {\n            rsa[sa[i]] = i;\n\
+    \        }\n        lcp = atcoder::lcp_array(S, sa);\n        if (use_seg) {\n\
+    \            seg.build(lcp);\n        }\n    }\n\n    // S[i]\u3068S[j]\u306E\
+    LCP\u3092\u53D6\u5F97\n    int get_lcp(int i, int j) {\n        assert(use_seg);\n\
+    \        int l = rsa[i], r = rsa[j];\n        if (l > r) swap(l, r);\n       \
+    \ return seg.query(l, r);\n    }\n};\n"
   dependsOn:
-  - src/macros.hpp
-  - src/base.hpp
-  - src/datastructure/SegmentTree.hpp
   - src/acl/string.hpp
+  - src/datastructure/SegmentTree.hpp
+  - src/base.hpp
+  - src/macros.hpp
   isVerificationFile: false
   path: src/string/SuffixArray.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 17:57:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/SuffixArray.hpp

@@ -21,14 +21,14 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/math:\
     \ line -1: no such header\n"
-  code: "// CRT(\u4E2D\u56FD\u5270\u4F59\u5B9A\u7406), floor sum\n// \u4F7F\u7528\u65B9\
-    \u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/math.html\n#include\
-    \ \"atcoder/math\"\n"
+  code: "#pragma once\n\n// CRT(\u4E2D\u56FD\u5270\u4F59\u5B9A\u7406), floor sum\n\
+    // \u4F7F\u7528\u65B9\u6CD5\uFF1Ahttps://atcoder.github.io/ac-library/document_ja/math.html\n\
+    #include \"atcoder/math\"\n"
   dependsOn: []
   isVerificationFile: false
   path: src/acl/math.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/acl/math.hpp

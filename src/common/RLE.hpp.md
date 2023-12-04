@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -39,29 +39,29 @@ data:
     \n\n// \u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E\ntemplate<typename T>\n\
     vector<pair<T, int>> RLE(const vector<T> &A) {\n    if (A.empty()) return {};\n\
     \    int N = A.size();\n    vector<pair<T, int>> res;\n    T cur = A[0];\n   \
-    \ int cnt = 1;\n    rep(i, 1, N) {\n        if (A[i] == A[i-1]) {\n          \
-    \  cnt++;\n        } else {\n            res.pb({cur, cnt});\n            cnt\
+    \ int cnt = 1;\n    rep(i, 1, N) {\n        if (A[i] == A[i - 1]) {\n        \
+    \    cnt++;\n        } else {\n            res.pb({cur, cnt});\n            cnt\
     \ = 1;\n            cur = A[i];\n        }\n    }\n    res.pb({cur, cnt});\n \
     \   return res;\n}\n\n// \u30E9\u30F3\u30EC\u30F3\u30B0\u30B9\u5727\u7E2E(\u6587\
     \u5B57\u5217)\nvector<pair<char, int>> RLE(const string &S) {\n    if (S.empty())\
     \ return {};\n    int N = S.size();\n    vector<pair<char, int>> res;\n    char\
-    \ cur = S[0];\n    int cnt = 1;\n    rep(i, 1, N) {\n        if (S[i] == S[i-1])\
-    \ {\n            cnt++;\n        } else {\n            res.pb({cur, cnt});\n \
-    \           cnt = 1;\n            cur = S[i];\n        }\n    }\n    res.pb({cur,\
+    \ cur = S[0];\n    int cnt = 1;\n    rep(i, 1, N) {\n        if (S[i] == S[i -\
+    \ 1]) {\n            cnt++;\n        } else {\n            res.pb({cur, cnt});\n\
+    \            cnt = 1;\n            cur = S[i];\n        }\n    }\n    res.pb({cur,\
     \ cnt});\n    return res;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u30E9\u30F3\u30EC\u30F3\u30B0\
     \u30B9\u5727\u7E2E\ntemplate<typename T>\nvector<pair<T, int>> RLE(const vector<T>\
     \ &A) {\n    if (A.empty()) return {};\n    int N = A.size();\n    vector<pair<T,\
     \ int>> res;\n    T cur = A[0];\n    int cnt = 1;\n    rep(i, 1, N) {\n      \
-    \  if (A[i] == A[i-1]) {\n            cnt++;\n        } else {\n            res.pb({cur,\
-    \ cnt});\n            cnt = 1;\n            cur = A[i];\n        }\n    }\n  \
-    \  res.pb({cur, cnt});\n    return res;\n}\n\n// \u30E9\u30F3\u30EC\u30F3\u30B0\
-    \u30B9\u5727\u7E2E(\u6587\u5B57\u5217)\nvector<pair<char, int>> RLE(const string\
-    \ &S) {\n    if (S.empty()) return {};\n    int N = S.size();\n    vector<pair<char,\
+    \  if (A[i] == A[i - 1]) {\n            cnt++;\n        } else {\n           \
+    \ res.pb({cur, cnt});\n            cnt = 1;\n            cur = A[i];\n       \
+    \ }\n    }\n    res.pb({cur, cnt});\n    return res;\n}\n\n// \u30E9\u30F3\u30EC\
+    \u30F3\u30B0\u30B9\u5727\u7E2E(\u6587\u5B57\u5217)\nvector<pair<char, int>> RLE(const\
+    \ string &S) {\n    if (S.empty()) return {};\n    int N = S.size();\n    vector<pair<char,\
     \ int>> res;\n    char cur = S[0];\n    int cnt = 1;\n    rep(i, 1, N) {\n   \
-    \     if (S[i] == S[i-1]) {\n            cnt++;\n        } else {\n          \
-    \  res.pb({cur, cnt});\n            cnt = 1;\n            cur = S[i];\n      \
-    \  }\n    }\n    res.pb({cur, cnt});\n    return res;\n}\n"
+    \     if (S[i] == S[i - 1]) {\n            cnt++;\n        } else {\n        \
+    \    res.pb({cur, cnt});\n            cnt = 1;\n            cur = S[i];\n    \
+    \    }\n    }\n    res.pb({cur, cnt});\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -70,7 +70,7 @@ data:
   requiredBy:
   - src/numbers/FastPrimeFactorization.hpp
   - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/RLE.hpp

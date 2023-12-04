@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,25 +29,25 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/string/number_format.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/string/number_format.hpp\"\
     \n\n// \u6570\u5024\u30923\u6841\u30B3\u30F3\u30DE\u533A\u5207\u308A\nstring number_format(ll\
     \ num) {\n    string s = tostr(num);\n    reverse(ALL(s));\n    string res;\n\
-    \    rep(i, s.size()) {\n        res += s[i];\n        if (i%3 == 2) {\n     \
-    \       res += ',';\n        }\n    }\n    if (res.back() == ',') {\n        res.pop_back();\n\
-    \    }\n    reverse(ALL(res));\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u6570\u5024\u30923\u6841\u30B3\u30F3\u30DE\
-    \u533A\u5207\u308A\nstring number_format(ll num) {\n    string s = tostr(num);\n\
-    \    reverse(ALL(s));\n    string res;\n    rep(i, s.size()) {\n        res +=\
-    \ s[i];\n        if (i%3 == 2) {\n            res += ',';\n        }\n    }\n\
-    \    if (res.back() == ',') {\n        res.pop_back();\n    }\n    reverse(ALL(res));\n\
-    \    return res;\n}\n"
+    \    rep(i, s.size()) {\n        res += s[i];\n        if (i % 3 == 2) {\n   \
+    \         res += ',';\n        }\n    }\n    if (res.back() == ',') {\n      \
+    \  res.pop_back();\n    }\n    reverse(ALL(res));\n    return res;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u6570\u5024\u30923\u6841\u30B3\
+    \u30F3\u30DE\u533A\u5207\u308A\nstring number_format(ll num) {\n    string s =\
+    \ tostr(num);\n    reverse(ALL(s));\n    string res;\n    rep(i, s.size()) {\n\
+    \        res += s[i];\n        if (i % 3 == 2) {\n            res += ',';\n  \
+    \      }\n    }\n    if (res.back() == ',') {\n        res.pop_back();\n    }\n\
+    \    reverse(ALL(res));\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/string/number_format.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/number_format.hpp

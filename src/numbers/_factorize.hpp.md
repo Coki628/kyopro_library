@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,24 +29,24 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/numbers/_factorize.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/numbers/_factorize.hpp\"\
     \n\n// \u7D20\u56E0\u6570\u5206\u89E3(map\u30D9\u30FC\u30B9)(\u65E7)\nmap<ll,\
-    \ ll> factorize(ll x) {\n    map<ll, ll> res;\n    for (ll i=2; i*i<=x; i++) {\n\
-    \        while (x%i == 0) {\n            x /= i;\n            res[i]++;\n    \
-    \    }\n        if (x == 1) break;\n    }\n    if (x != 1) res[x]++;\n    return\
-    \ res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u7D20\u56E0\u6570\u5206\u89E3(map\u30D9\
-    \u30FC\u30B9)(\u65E7)\nmap<ll, ll> factorize(ll x) {\n    map<ll, ll> res;\n \
-    \   for (ll i=2; i*i<=x; i++) {\n        while (x%i == 0) {\n            x /=\
-    \ i;\n            res[i]++;\n        }\n        if (x == 1) break;\n    }\n  \
-    \  if (x != 1) res[x]++;\n    return res;\n}\n"
+    \ ll> factorize(ll x) {\n    map<ll, ll> res;\n    for (ll i = 2; i * i <= x;\
+    \ i++) {\n        while (x % i == 0) {\n            x /= i;\n            res[i]++;\n\
+    \        }\n        if (x == 1) break;\n    }\n    if (x != 1) res[x]++;\n   \
+    \ return res;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u7D20\u56E0\u6570\u5206\u89E3\
+    (map\u30D9\u30FC\u30B9)(\u65E7)\nmap<ll, ll> factorize(ll x) {\n    map<ll, ll>\
+    \ res;\n    for (ll i = 2; i * i <= x; i++) {\n        while (x % i == 0) {\n\
+    \            x /= i;\n            res[i]++;\n        }\n        if (x == 1) break;\n\
+    \    }\n    if (x != 1) res[x]++;\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/numbers/_factorize.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/_factorize.hpp

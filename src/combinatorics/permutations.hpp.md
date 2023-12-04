@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -32,23 +32,22 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/combinatorics/permutations.hpp\"\
-    \n\n// \u9806\u5217\u5168\u5217\u6319\ntemplate<typename T>\nvector<vector<T>>\
-    \ permutations(const vector<T> &A, int N=-1) {\n    if (N == -1) N = A.size();\n\
-    \    int M = A.size();\n    assert(N <= M);\n    vector<vector<T>> comb;\n   \
-    \ rep(bit, 1<<M) {\n        if (popcount(bit) != N) continue;\n        vector<T>\
-    \ res;\n        rep(i, M) {\n            if (bit>>i & 1) {\n                res.pb(A[i]);\n\
-    \            }\n        }\n        comb.pb(res);\n    }\n\n    vector<vector<T>>\
-    \ res;\n    for (auto &perm : comb) {\n        sort(ALL(perm));\n        do {\n\
-    \            res.pb(perm);\n        } while (next_permutation(ALL(perm)));\n \
-    \   }\n    return res;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u9806\u5217\u5168\u5217\u6319\ntemplate<typename\
-    \ T>\nvector<vector<T>> permutations(const vector<T> &A, int N=-1) {\n    if (N\
-    \ == -1) N = A.size();\n    int M = A.size();\n    assert(N <= M);\n    vector<vector<T>>\
-    \ comb;\n    rep(bit, 1<<M) {\n        if (popcount(bit) != N) continue;\n   \
-    \     vector<T> res;\n        rep(i, M) {\n            if (bit>>i & 1) {\n   \
-    \             res.pb(A[i]);\n            }\n        }\n        comb.pb(res);\n\
-    \    }\n\n    vector<vector<T>> res;\n    for (auto &perm : comb) {\n        sort(ALL(perm));\n\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/combinatorics/permutations.hpp\"\
+    \n\n// \u9806\u5217\u5168\u5217\u6319\ntemplate<typename T>\nvv<T> permutations(const\
+    \ vector<T> &A, int N = -1) {\n    if (N == -1) N = A.size();\n    int M = A.size();\n\
+    \    assert(N <= M);\n    vv<T> comb;\n    rep(bit, 1 << M) {\n        if (popcount(bit)\
+    \ != N) continue;\n        vector<T> res;\n        rep(i, M) {\n            if\
+    \ (bit >> i & 1) {\n                res.pb(A[i]);\n            }\n        }\n\
+    \        comb.pb(res);\n    }\n\n    vv<T> res;\n    for (auto &perm : comb) {\n\
+    \        sort(ALL(perm));\n        do {\n            res.pb(perm);\n        }\
+    \ while (next_permutation(ALL(perm)));\n    }\n    return res;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u9806\u5217\u5168\u5217\u6319\
+    \ntemplate<typename T>\nvv<T> permutations(const vector<T> &A, int N = -1) {\n\
+    \    if (N == -1) N = A.size();\n    int M = A.size();\n    assert(N <= M);\n\
+    \    vv<T> comb;\n    rep(bit, 1 << M) {\n        if (popcount(bit) != N) continue;\n\
+    \        vector<T> res;\n        rep(i, M) {\n            if (bit >> i & 1) {\n\
+    \                res.pb(A[i]);\n            }\n        }\n        comb.pb(res);\n\
+    \    }\n\n    vv<T> res;\n    for (auto &perm : comb) {\n        sort(ALL(perm));\n\
     \        do {\n            res.pb(perm);\n        } while (next_permutation(ALL(perm)));\n\
     \    }\n    return res;\n}\n"
   dependsOn:
@@ -58,7 +57,7 @@ data:
   path: src/combinatorics/permutations.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/combinatorics/permutations.hpp

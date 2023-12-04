@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -35,13 +35,15 @@ data:
 
     const string ascii_uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    #line 4 "src/string/constants/ascii_letters.hpp"
+    #line 5 "src/string/constants/ascii_letters.hpp"
 
 
     const string ascii_letters = ascii_lowercase + ascii_uppercase;
 
     '
-  code: '#include "../../base.hpp"
+  code: '#pragma once
+
+    #include "../../base.hpp"
 
     #include "ascii_lowercase.hpp"
 
@@ -58,7 +60,7 @@ data:
   isVerificationFile: false
   path: src/string/constants/ascii_letters.hpp
   requiredBy: []
-  timestamp: '2022-03-24 10:49:13+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/constants/ascii_letters.hpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -32,37 +32,37 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/common/bisearch.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/bisearch.hpp\"\
     \n\n// (mn,mx]\u306E\u7BC4\u56F2\u3067\u6761\u4EF6\u3092\u6E80\u305F\u3059\u6700\
     \u5C0F\u5024\u3092\u898B\u3064\u3051\u308B\u4E8C\u5206\u63A2\u7D22\ntemplate<typename\
     \ F>\nll bisearch_min(ll mn, ll mx, const F &func) {\n    ll ok = mx;\n    ll\
-    \ ng = mn;\n    while (ng+1 < ok) {\n        ll mid = (ok+ng) / 2;\n        if\
-    \ (func(mid)) {\n            // \u4E0B\u3092\u63A2\u3057\u306B\u884C\u304F\n \
-    \           ok = mid;\n        } else {\n            // \u4E0A\u3092\u63A2\u3057\
+    \ ng = mn;\n    while (ng + 1 < ok) {\n        ll mid = (ok + ng) / 2;\n     \
+    \   if (func(mid)) {\n            // \u4E0B\u3092\u63A2\u3057\u306B\u884C\u304F\
+    \n            ok = mid;\n        } else {\n            // \u4E0A\u3092\u63A2\u3057\
     \u306B\u884C\u304F\n            ng = mid;\n        }\n    }\n    return ok;\n\
     }\n\n// [mn,mx)\u306E\u7BC4\u56F2\u3067\u6761\u4EF6\u3092\u6E80\u305F\u3059\u6700\
     \u5927\u5024\u3092\u898B\u3064\u3051\u308B\u4E8C\u5206\u63A2\u7D22\ntemplate<typename\
     \ F>\nll bisearch_max(ll mn, ll mx, const F &func) {\n    ll ok = mn;\n    ll\
-    \ ng = mx;\n    while (ok+1 < ng) {\n        ll mid = (ok+ng) / 2;\n        if\
-    \ (func(mid)) {\n            // \u4E0A\u3092\u63A2\u3057\u306B\u884C\u304F\n \
-    \           ok = mid;\n        } else {\n            // \u4E0B\u3092\u63A2\u3057\
+    \ ng = mx;\n    while (ok + 1 < ng) {\n        ll mid = (ok + ng) / 2;\n     \
+    \   if (func(mid)) {\n            // \u4E0A\u3092\u63A2\u3057\u306B\u884C\u304F\
+    \n            ok = mid;\n        } else {\n            // \u4E0B\u3092\u63A2\u3057\
     \u306B\u884C\u304F\n            ng = mid;\n        }\n    }\n    return ok;\n\
     }\n"
-  code: "#include \"../macros.hpp\"\n\n// (mn,mx]\u306E\u7BC4\u56F2\u3067\u6761\u4EF6\
-    \u3092\u6E80\u305F\u3059\u6700\u5C0F\u5024\u3092\u898B\u3064\u3051\u308B\u4E8C\
-    \u5206\u63A2\u7D22\ntemplate<typename F>\nll bisearch_min(ll mn, ll mx, const\
-    \ F &func) {\n    ll ok = mx;\n    ll ng = mn;\n    while (ng+1 < ok) {\n    \
-    \    ll mid = (ok+ng) / 2;\n        if (func(mid)) {\n            // \u4E0B\u3092\
-    \u63A2\u3057\u306B\u884C\u304F\n            ok = mid;\n        } else {\n    \
-    \        // \u4E0A\u3092\u63A2\u3057\u306B\u884C\u304F\n            ng = mid;\n\
-    \        }\n    }\n    return ok;\n}\n\n// [mn,mx)\u306E\u7BC4\u56F2\u3067\u6761\
-    \u4EF6\u3092\u6E80\u305F\u3059\u6700\u5927\u5024\u3092\u898B\u3064\u3051\u308B\
-    \u4E8C\u5206\u63A2\u7D22\ntemplate<typename F>\nll bisearch_max(ll mn, ll mx,\
-    \ const F &func) {\n    ll ok = mn;\n    ll ng = mx;\n    while (ok+1 < ng) {\n\
-    \        ll mid = (ok+ng) / 2;\n        if (func(mid)) {\n            // \u4E0A\
-    \u3092\u63A2\u3057\u306B\u884C\u304F\n            ok = mid;\n        } else {\n\
-    \            // \u4E0B\u3092\u63A2\u3057\u306B\u884C\u304F\n            ng = mid;\n\
-    \        }\n    }\n    return ok;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// (mn,mx]\u306E\u7BC4\u56F2\u3067\
+    \u6761\u4EF6\u3092\u6E80\u305F\u3059\u6700\u5C0F\u5024\u3092\u898B\u3064\u3051\
+    \u308B\u4E8C\u5206\u63A2\u7D22\ntemplate<typename F>\nll bisearch_min(ll mn, ll\
+    \ mx, const F &func) {\n    ll ok = mx;\n    ll ng = mn;\n    while (ng + 1 <\
+    \ ok) {\n        ll mid = (ok + ng) / 2;\n        if (func(mid)) {\n         \
+    \   // \u4E0B\u3092\u63A2\u3057\u306B\u884C\u304F\n            ok = mid;\n   \
+    \     } else {\n            // \u4E0A\u3092\u63A2\u3057\u306B\u884C\u304F\n  \
+    \          ng = mid;\n        }\n    }\n    return ok;\n}\n\n// [mn,mx)\u306E\u7BC4\
+    \u56F2\u3067\u6761\u4EF6\u3092\u6E80\u305F\u3059\u6700\u5927\u5024\u3092\u898B\
+    \u3064\u3051\u308B\u4E8C\u5206\u63A2\u7D22\ntemplate<typename F>\nll bisearch_max(ll\
+    \ mn, ll mx, const F &func) {\n    ll ok = mn;\n    ll ng = mx;\n    while (ok\
+    \ + 1 < ng) {\n        ll mid = (ok + ng) / 2;\n        if (func(mid)) {\n   \
+    \         // \u4E0A\u3092\u63A2\u3057\u306B\u884C\u304F\n            ok = mid;\n\
+    \        } else {\n            // \u4E0B\u3092\u63A2\u3057\u306B\u884C\u304F\n\
+    \            ng = mid;\n        }\n    }\n    return ok;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -70,7 +70,7 @@ data:
   path: src/common/bisearch.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/bisearch.hpp

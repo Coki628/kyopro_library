@@ -1,16 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
+  - icon: ':question:'
+    path: src/macros.hpp
+    title: src/macros.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/combinatorics/bell.hpp
+    title: src/combinatorics/bell.hpp
   - icon: ':warning:'
     path: src/combinatorics/nCr.hpp
     title: src/combinatorics/nCr.hpp
   - icon: ':warning:'
     path: src/combinatorics/partition.hpp
     title: src/combinatorics/partition.hpp
+  - icon: ':warning:'
+    path: src/combinatorics/stirling.hpp
+    title: src/combinatorics/stirling.hpp
   - icon: ':warning:'
     path: src/datastructure/Doubling.hpp
     title: src/datastructure/Doubling.hpp
@@ -32,12 +41,15 @@ data:
   - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
+  - icon: ':warning:'
+    path: src/string/RollingHash2D.hpp
+    title: src/string/RollingHash2D.hpp
   - icon: ':warning:'
     path: src/string/get_next_indices.hpp
     title: src/string/get_next_indices.hpp
@@ -45,44 +57,56 @@ data:
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/common/listnd.hpp\"\n\ntemplate<typename T>\n\
-    [[deprecated(\"list2d will be merged with listnd\")]]\nvector<vector<T>> list2d(int\
-    \ N, int M, T init) {\n    return vector<vector<T>>(N, vector<T>(M, init));\n\
-    }\n\ntemplate<typename T>\n[[deprecated(\"list3d will be merged with listnd\"\
-    )]]\nvector<vector<vector<T>>> list3d(int N, int M, int L, T init) {\n    return\
-    \ vector<vector<vector<T>>>(N, vector<vector<T>>(M, vector<T>(L, init)));\n}\n\
-    \ntemplate<typename T>\n[[deprecated(\"list4d will be merged with listnd\")]]\n\
-    vector<vector<vector<vector<T>>>> list4d(int N, int M, int L, int O, T init) {\n\
-    \    return vector<vector<vector<vector<T>>>>(N, vector<vector<vector<T>>>(M,\
-    \ vector<vector<T>>(L, vector<T>(O, init))));\n}\n\n// \u4EFB\u610F\u6B21\u5143\
-    vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
-    template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
-    \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
-    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n"
-  code: "#pragma once\n#include \"../base.hpp\"\n\ntemplate<typename T>\n[[deprecated(\"\
-    list2d will be merged with listnd\")]]\nvector<vector<T>> list2d(int N, int M,\
-    \ T init) {\n    return vector<vector<T>>(N, vector<T>(M, init));\n}\n\ntemplate<typename\
-    \ T>\n[[deprecated(\"list3d will be merged with listnd\")]]\nvector<vector<vector<T>>>\
-    \ list3d(int N, int M, int L, T init) {\n    return vector<vector<vector<T>>>(N,\
-    \ vector<vector<T>>(M, vector<T>(L, init)));\n}\n\ntemplate<typename T>\n[[deprecated(\"\
-    list4d will be merged with listnd\")]]\nvector<vector<vector<vector<T>>>> list4d(int\
-    \ N, int M, int L, int O, T init) {\n    return vector<vector<vector<vector<T>>>>(N,\
-    \ vector<vector<vector<T>>>(M, vector<vector<T>>(L, vector<T>(O, init))));\n}\n\
-    \n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
-    template<typename T>\nvector<T> listnd(size_t a, T b) {\n    return vector<T>(a,\
-    \ b);\n}\n\ntemplate<typename... Ts>\nauto listnd(size_t a, Ts... ts) {\n    return\
-    \ vector<decltype(listnd(ts...))>(a, listnd(ts...));\n}\n"
+    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
+    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+    using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
+    \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
+    using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
+    \ = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__,\
+    \ rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa\
+    \ = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n\
+    #define rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb)\
+    \ or (c < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a);\
+    \ i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
+    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/listnd.hpp\"\
+    \n\n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    template<typename... Ts>\nauto listnd(size_t N, Ts... ts) {\n    if constexpr\
+    \ (sizeof...(ts) == 1) {\n        return vector<Ts...>(N, ts...);\n    } else\
+    \ {\n        auto res = listnd(ts...);\n        return vector<decltype(res)>(N,\
+    \ res);\n    }\n}\n\n// \u5F8C\u65B9\u4E92\u63DB\ntemplate<typename T>[[deprecated(\"\
+    list2d will be merged with listnd\")]] vv<T> list2d(int N, int M, T init) { return\
+    \ listnd(N, M, init); }\ntemplate<typename T>[[deprecated(\"list3d will be merged\
+    \ with listnd\")]] vv<vector<T>> list3d(int N, int M, int L, T init) { return\
+    \ listnd(N, M, L, init); }\ntemplate<typename T>[[deprecated(\"list4d will be\
+    \ merged with listnd\")]] vv<vv<T>> list4d(int N, int M, int L, int O, T init)\
+    \ { return listnd(N, M, L, O, init); }\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u4EFB\u610F\u6B21\u5143vector\n\
+    // \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    template<typename... Ts>\nauto listnd(size_t N, Ts... ts) {\n    if constexpr\
+    \ (sizeof...(ts) == 1) {\n        return vector<Ts...>(N, ts...);\n    } else\
+    \ {\n        auto res = listnd(ts...);\n        return vector<decltype(res)>(N,\
+    \ res);\n    }\n}\n\n// \u5F8C\u65B9\u4E92\u63DB\ntemplate<typename T>[[deprecated(\"\
+    list2d will be merged with listnd\")]] vv<T> list2d(int N, int M, T init) { return\
+    \ listnd(N, M, init); }\ntemplate<typename T>[[deprecated(\"list3d will be merged\
+    \ with listnd\")]] vv<vector<T>> list3d(int N, int M, int L, T init) { return\
+    \ listnd(N, M, L, init); }\ntemplate<typename T>[[deprecated(\"list4d will be\
+    \ merged with listnd\")]] vv<vv<T>> list4d(int N, int M, int L, int O, T init)\
+    \ { return listnd(N, M, L, O, init); }\n"
   dependsOn:
+  - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/listnd.hpp
@@ -90,8 +114,11 @@ data:
   - src/datastructure/Doubling.hpp
   - src/datastructure/_doubling.hpp
   - src/combinatorics/partition.hpp
+  - src/combinatorics/bell.hpp
   - src/combinatorics/nCr.hpp
+  - src/combinatorics/stirling.hpp
   - src/string/get_next_indices.hpp
+  - src/string/RollingHash2D.hpp
   - src/matrix/mat_dot.hpp
   - src/matrix/MatPow.hpp
   - src/template.hpp
@@ -100,8 +127,8 @@ data:
   - src/grid/bfs_restore.hpp
   - src/grid/dijkstra.hpp
   - src/grid/bfs01.hpp
-  timestamp: '2023-02-28 01:25:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-12-04 15:50:45+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/matrix/MatPow.test.cpp
 documentation_of: src/common/listnd.hpp

@@ -1,16 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/template.hpp
-    title: src/template.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -32,25 +29,29 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/numbers/isqrt.hpp\"\
-    \n\n// \u6574\u6570\u3067\u6B63\u78BA\u306Bsqrt\u3092\u8FD4\u3059\nll isqrt(ll\
-    \ n, bool ceil=false) {\n    ll ok = 0;\n    ll ng = 3037000500;\n    while (ng\
-    \ - ok > 1) {\n        ll m = ok + (ng - ok) / 2;\n        if (m * m <= n) {\n\
-    \            ok = m;\n        } else {\n            ng = m;\n        }\n    }\n\
-    \    if (ceil and ok*ok != n) ok++;\n    return ok;\n}\n"
-  code: "#include \"../macros.hpp\"\n\n// \u6574\u6570\u3067\u6B63\u78BA\u306Bsqrt\u3092\
-    \u8FD4\u3059\nll isqrt(ll n, bool ceil=false) {\n    ll ok = 0;\n    ll ng = 3037000500;\n\
-    \    while (ng - ok > 1) {\n        ll m = ok + (ng - ok) / 2;\n        if (m\
-    \ * m <= n) {\n            ok = m;\n        } else {\n            ng = m;\n  \
-    \      }\n    }\n    if (ceil and ok*ok != n) ok++;\n    return ok;\n}\n"
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/numbers/isqrt.hpp\"\
+    \n\n// \u6574\u6570\u3067\u6B63\u78BA\u306Bsqrt\u3092\u8FD4\u3059\n// \u203Blog\u304C\
+    \u7D50\u69CB\u91CD\u3044\u3002\u901F\u5EA6\u91CD\u8996\u306A\u3089\u5B9F\u6570\
+    \u306E\u6A19\u6E96sqrt\u4F7F\u3046\u65B9\u304C\u3044\u3044\u3002\nll isqrt(ll\
+    \ n, bool ceil = false) {\n    ll ok = 0;\n    ll ng = 3037000500;\n    while\
+    \ (ng - ok > 1) {\n        ll m = ok + (ng - ok) / 2;\n        if (m * m <= n)\
+    \ {\n            ok = m;\n        } else {\n            ng = m;\n        }\n \
+    \   }\n    if (ceil and ok * ok != n) ok++;\n    return ok;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u6574\u6570\u3067\u6B63\u78BA\
+    \u306Bsqrt\u3092\u8FD4\u3059\n// \u203Blog\u304C\u7D50\u69CB\u91CD\u3044\u3002\
+    \u901F\u5EA6\u91CD\u8996\u306A\u3089\u5B9F\u6570\u306E\u6A19\u6E96sqrt\u4F7F\u3046\
+    \u65B9\u304C\u3044\u3044\u3002\nll isqrt(ll n, bool ceil = false) {\n    ll ok\
+    \ = 0;\n    ll ng = 3037000500;\n    while (ng - ok > 1) {\n        ll m = ok\
+    \ + (ng - ok) / 2;\n        if (m * m <= n) {\n            ok = m;\n        }\
+    \ else {\n            ng = m;\n        }\n    }\n    if (ceil and ok * ok != n)\
+    \ ok++;\n    return ok;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/numbers/isqrt.hpp
-  requiredBy:
-  - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  requiredBy: []
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/isqrt.hpp

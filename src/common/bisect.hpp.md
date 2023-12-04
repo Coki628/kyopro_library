@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -12,25 +12,25 @@ data:
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
     using namespace std;\n#line 3 \"src/common/bisect.hpp\"\n\ntemplate<typename T>\n\
-    int bisect_left(const vector<T> &A, T val, int lo=0) {\n    return lower_bound(A.begin()+lo,\
-    \ A.end(), val) - A.begin();\n}\n\ntemplate<typename T>\nint bisect_right(const\
-    \ vector<T> &A, T val, int lo=0) {\n    return upper_bound(A.begin()+lo, A.end(),\
+    int bisect_left(const vector<T> &A, T val, int lo = 0) {\n    return lower_bound(A.begin()\
+    \ + lo, A.end(), val) - A.begin();\n}\n\ntemplate<typename T>\nint bisect_right(const\
+    \ vector<T> &A, T val, int lo = 0) {\n    return upper_bound(A.begin() + lo, A.end(),\
     \ val) - A.begin();\n}\n"
   code: "#pragma once\n#include \"../base.hpp\"\n\ntemplate<typename T>\nint bisect_left(const\
-    \ vector<T> &A, T val, int lo=0) {\n    return lower_bound(A.begin()+lo, A.end(),\
+    \ vector<T> &A, T val, int lo = 0) {\n    return lower_bound(A.begin() + lo, A.end(),\
     \ val) - A.begin();\n}\n\ntemplate<typename T>\nint bisect_right(const vector<T>\
-    \ &A, T val, int lo=0) {\n    return upper_bound(A.begin()+lo, A.end(), val) -\
-    \ A.begin();\n}\n"
+    \ &A, T val, int lo = 0) {\n    return upper_bound(A.begin() + lo, A.end(), val)\
+    \ - A.begin();\n}\n"
   dependsOn:
   - src/base.hpp
   isVerificationFile: false
@@ -38,8 +38,8 @@ data:
   requiredBy:
   - src/common/LIS.hpp
   - src/template.hpp
-  timestamp: '2022-03-24 10:49:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-12-04 15:39:12+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/common/bisect.test.cpp
 documentation_of: src/common/bisect.hpp

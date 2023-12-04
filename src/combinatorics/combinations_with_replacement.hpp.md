@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,30 +29,29 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/combinatorics/combinations_with_replacement.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/combinatorics/combinations_with_replacement.hpp\"\
     \n\n// \u91CD\u8907\u7D44\u307F\u5408\u308F\u305B\u5168\u5217\u6319\ntemplate<typename\
-    \ T>\nvector<vector<T>> combinations_with_replacement(const vector<T> &A, int\
-    \ N) {\n    int M = A.size();\n    vector<vector<T>> res;\n    auto rec = [&](auto&&\
-    \ f, vector<T> &cur, ll x, ll n) -> void {\n        if (n == N) {\n          \
-    \  res.pb(cur);\n            return;\n        }\n        rep(i, x, M) {\n    \
-    \        cur.pb(A[i]);\n            f(f, cur, i, n+1);\n            cur.pop_back();\n\
-    \        }\n    };\n    vector<T> cur;\n    rec(rec, cur, 0, 0);\n    return res;\n\
-    }\n"
-  code: "#include \"../macros.hpp\"\n\n// \u91CD\u8907\u7D44\u307F\u5408\u308F\u305B\
-    \u5168\u5217\u6319\ntemplate<typename T>\nvector<vector<T>> combinations_with_replacement(const\
-    \ vector<T> &A, int N) {\n    int M = A.size();\n    vector<vector<T>> res;\n\
-    \    auto rec = [&](auto&& f, vector<T> &cur, ll x, ll n) -> void {\n        if\
-    \ (n == N) {\n            res.pb(cur);\n            return;\n        }\n     \
-    \   rep(i, x, M) {\n            cur.pb(A[i]);\n            f(f, cur, i, n+1);\n\
-    \            cur.pop_back();\n        }\n    };\n    vector<T> cur;\n    rec(rec,\
-    \ cur, 0, 0);\n    return res;\n}\n"
+    \ T>\nvv<T> combinations_with_replacement(const vector<T> &A, int N) {\n    int\
+    \ M = A.size();\n    vv<T> res;\n    auto rec = [&](auto &&f, vector<T> &cur,\
+    \ ll x, ll n) -> void {\n        if (n == N) {\n            res.pb(cur);\n   \
+    \         return;\n        }\n        rep(i, x, M) {\n            cur.pb(A[i]);\n\
+    \            f(f, cur, i, n + 1);\n            cur.pop_back();\n        }\n  \
+    \  };\n    vector<T> cur;\n    rec(rec, cur, 0, 0);\n    return res;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u91CD\u8907\u7D44\u307F\u5408\
+    \u308F\u305B\u5168\u5217\u6319\ntemplate<typename T>\nvv<T> combinations_with_replacement(const\
+    \ vector<T> &A, int N) {\n    int M = A.size();\n    vv<T> res;\n    auto rec\
+    \ = [&](auto &&f, vector<T> &cur, ll x, ll n) -> void {\n        if (n == N) {\n\
+    \            res.pb(cur);\n            return;\n        }\n        rep(i, x, M)\
+    \ {\n            cur.pb(A[i]);\n            f(f, cur, i, n + 1);\n           \
+    \ cur.pop_back();\n        }\n    };\n    vector<T> cur;\n    rec(rec, cur, 0,\
+    \ 0);\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/combinatorics/combinations_with_replacement.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/combinatorics/combinations_with_replacement.hpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -29,43 +29,43 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/numbers/osa_k.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/numbers/osa_k.hpp\"\
     \n\n// \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(osa_k\u6CD5)\u3001\u524D\u8A08\
-    \u7B97\nvector<ll> eratosthenes_sieve(ll n) {\n    vector<ll> table(n+1);\n  \
-    \  table[1] = 1;\n    rep(i, 2, n+1) {\n        if (table[i] == 0) {\n       \
-    \     for (ll j=i; j<=n; j+=i) {\n                table[j] = i;\n            }\n\
-    \        }\n    }\n    return table;\n}\n\n// \u9AD8\u901F\u7D20\u56E0\u6570\u5206\
-    \u89E3(osa_k\u6CD5)(vector\u30D9\u30FC\u30B9)\nvector<pair<ll, int>> factorize(const\
-    \ vector<ll> &minfactor, ll x) {\n    vector<pair<ll, int>> res;\n    while (x\
-    \ > 1) {\n        int p = minfactor[x];\n        int cnt = 0;\n        while (minfactor[x]\
+    \u7B97\nvector<ll> eratosthenes_sieve(ll n) {\n    vector<ll> table(n + 1);\n\
+    \    table[1] = 1;\n    rep(i, 2, n + 1) {\n        if (table[i] == 0) {\n   \
+    \         for (ll j = i; j <= n; j += i) {\n                table[j] = i;\n  \
+    \          }\n        }\n    }\n    return table;\n}\n\n// \u9AD8\u901F\u7D20\u56E0\
+    \u6570\u5206\u89E3(osa_k\u6CD5)(vector\u30D9\u30FC\u30B9)\nvector<pli> factorize(const\
+    \ vector<ll> &minfactor, ll x) {\n    vector<pli> res;\n    while (x > 1) {\n\
+    \        int p = minfactor[x];\n        int cnt = 0;\n        while (minfactor[x]\
     \ == p) {\n            x /= p;\n            cnt++;\n        }\n        res.pb({p,\
     \ cnt});\n    }\n    return res;\n}\n\n// \u9AD8\u901F\u7D20\u56E0\u6570\u5206\
     \u89E3(osa_k\u6CD5)(map\u30D9\u30FC\u30B9)\n// map<ll, ll> factorize(const vector<ll>\
     \ &table, ll x) {\n//     map<ll, ll> res;\n//     while (x != table[x]) {\n//\
     \         res[table[x]]++;\n//         x /= table[x];\n//     }\n//     if (x\
     \ != 1) {\n//         res[x]++;\n//     }\n//     return res;\n// }\n"
-  code: "#include \"../macros.hpp\"\n\n// \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3\
-    (osa_k\u6CD5)\u3001\u524D\u8A08\u7B97\nvector<ll> eratosthenes_sieve(ll n) {\n\
-    \    vector<ll> table(n+1);\n    table[1] = 1;\n    rep(i, 2, n+1) {\n       \
-    \ if (table[i] == 0) {\n            for (ll j=i; j<=n; j+=i) {\n             \
-    \   table[j] = i;\n            }\n        }\n    }\n    return table;\n}\n\n//\
-    \ \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(osa_k\u6CD5)(vector\u30D9\u30FC\u30B9\
-    )\nvector<pair<ll, int>> factorize(const vector<ll> &minfactor, ll x) {\n    vector<pair<ll,\
-    \ int>> res;\n    while (x > 1) {\n        int p = minfactor[x];\n        int\
-    \ cnt = 0;\n        while (minfactor[x] == p) {\n            x /= p;\n       \
-    \     cnt++;\n        }\n        res.pb({p, cnt});\n    }\n    return res;\n}\n\
-    \n// \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(osa_k\u6CD5)(map\u30D9\u30FC\u30B9\
-    )\n// map<ll, ll> factorize(const vector<ll> &table, ll x) {\n//     map<ll, ll>\
-    \ res;\n//     while (x != table[x]) {\n//         res[table[x]]++;\n//      \
-    \   x /= table[x];\n//     }\n//     if (x != 1) {\n//         res[x]++;\n// \
-    \    }\n//     return res;\n// }\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u9AD8\u901F\u7D20\u56E0\u6570\
+    \u5206\u89E3(osa_k\u6CD5)\u3001\u524D\u8A08\u7B97\nvector<ll> eratosthenes_sieve(ll\
+    \ n) {\n    vector<ll> table(n + 1);\n    table[1] = 1;\n    rep(i, 2, n + 1)\
+    \ {\n        if (table[i] == 0) {\n            for (ll j = i; j <= n; j += i)\
+    \ {\n                table[j] = i;\n            }\n        }\n    }\n    return\
+    \ table;\n}\n\n// \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(osa_k\u6CD5)(vector\u30D9\
+    \u30FC\u30B9)\nvector<pli> factorize(const vector<ll> &minfactor, ll x) {\n  \
+    \  vector<pli> res;\n    while (x > 1) {\n        int p = minfactor[x];\n    \
+    \    int cnt = 0;\n        while (minfactor[x] == p) {\n            x /= p;\n\
+    \            cnt++;\n        }\n        res.pb({p, cnt});\n    }\n    return res;\n\
+    }\n\n// \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(osa_k\u6CD5)(map\u30D9\u30FC\
+    \u30B9)\n// map<ll, ll> factorize(const vector<ll> &table, ll x) {\n//     map<ll,\
+    \ ll> res;\n//     while (x != table[x]) {\n//         res[table[x]]++;\n//  \
+    \       x /= table[x];\n//     }\n//     if (x != 1) {\n//         res[x]++;\n\
+    //     }\n//     return res;\n// }\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/numbers/osa_k.hpp
   requiredBy: []
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 17:57:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/osa_k.hpp

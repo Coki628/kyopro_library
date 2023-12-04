@@ -1,13 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/geometry/cos_formula.hpp
+    title: src/geometry/cos_formula.hpp
   - icon: ':warning:'
     path: src/geometry/rotate.hpp
     title: src/geometry/rotate.hpp
@@ -33,15 +36,9 @@ data:
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/geometry/radians.hpp\"\
-    \n\nld radians(ld degrees) { return degrees * PI / 180.0; }\n"
-  code: '#pragma once
-
-    #include "../macros.hpp"
-
-
-    ld radians(ld degrees) { return degrees * PI / 180.0; }
-
-    '
+    \n\nld radians(ld degrees) {\n    return degrees * PI / 180.0;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\nld radians(ld degrees) {\n  \
+    \  return degrees * PI / 180.0;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -49,7 +46,8 @@ data:
   path: src/geometry/radians.hpp
   requiredBy:
   - src/geometry/rotate.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  - src/geometry/cos_formula.hpp
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/radians.hpp

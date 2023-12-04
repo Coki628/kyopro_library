@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -32,10 +32,10 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 2 \"src/combinatorics/nC2.hpp\"\
-    \n\nll nC2(ll n) {\n    if (n < 2) return 0;\n    return n*(n-1)/2;\n}\n"
-  code: "#include \"../macros.hpp\"\n\nll nC2(ll n) {\n    if (n < 2) return 0;\n\
-    \    return n*(n-1)/2;\n}\n"
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/combinatorics/nC2.hpp\"\
+    \n\nll nC2(ll n) {\n    if (n < 2) return 0;\n    return n * (n - 1) / 2;\n}\n"
+  code: "#pragma once\n#include \"../macros.hpp\"\n\nll nC2(ll n) {\n    if (n < 2)\
+    \ return 0;\n    return n * (n - 1) / 2;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -43,7 +43,7 @@ data:
   path: src/combinatorics/nC2.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/combinatorics/nC2.hpp
