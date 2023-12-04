@@ -7,11 +7,11 @@ template<typename T, typename E, typename F>
 struct Dijkstra {
     int N;
     const T inf;
-    vector<vector<pair<int, E>>> nodes;
+    vv<pair<int, E>> nodes;
     const F f;
     vector<int> prv;
 
-    Dijkstra(const vector<vector<pair<int, E>>> &nodes, T inf, F f)
+    Dijkstra(const vv<pair<int, E>> &nodes, T inf, F f)
         : nodes(nodes),
           inf(inf),
           f(f),
@@ -70,7 +70,7 @@ struct Dijkstra {
 
 template<typename T = ll, typename E = ll, typename F = function<T(T, E)>>
 Dijkstra<T, E, F> get_dijkstra(
-    vector<vector<pair<int, E>>> &nodes, T inf = INF,
+    vv<pair<int, E>> &nodes, T inf = INF,
     const F f = [](T a, E b) -> T { return a + b; }
 ) {
     return {nodes, inf, f};

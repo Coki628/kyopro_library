@@ -3,7 +3,7 @@
 #include "../common/chmin.hpp"
 
 template<typename T>
-vector<vector<T>> warshall_floyd(vector<vector<T>> G) {
+vv<T> warshall_floyd(vv<T> G) {
     ll N = G.size();
     rep(i, N) G[i][i] = 0;
     rep(k, N) {
@@ -23,7 +23,7 @@ vector<vector<T>> warshall_floyd(vector<vector<T>> G) {
 
 // 無向辺ならこれでも大丈夫そう。
 // template<typename T>
-// vector<vector<T>> warshall_floyd(vector<vector<T>> G) {
+// vv<T> warshall_floyd(vv<T>> G) {
 //     ll N = G.size();
 //     rep(i, N) G[i][i] = 0;
 //     rep(k, N) {

@@ -3,7 +3,7 @@
 
 // ダイクストラ(O(V^2)版) ※未verify
 template<typename T>
-vector<T> dijkstra(const vector<vector<T>> &G, int src) {
+vector<T> dijkstra(const vv<T> &G, int src) {
     int N = G.size();
     vector<T> dist(N, INF);
     vector<bool> used(N);

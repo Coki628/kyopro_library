@@ -4,7 +4,7 @@
 
 // グリッド転置
 template<typename T>
-vector<vector<T>> transpose(const vector<vector<T>> &grid) {
+vv<T> transpose(const vv<T> &grid) {
     int H = grid.size();
     int W = grid[0].size();
     auto res = listnd(W, H, (T)0);

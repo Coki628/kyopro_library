@@ -5,7 +5,7 @@
 // ・型は選べるようにしてあるけど、整数型入れると除算とかバグる。実数での仕様が前提。
 // ・基本的に全部有理数のはずなので、Fractionクラス作ればよさそうだが面倒でやってない。
 template<typename T>
-vector<T> gauss_jordan(const vector<vector<T>> &A, const vector<T> &b) {
+vector<T> gauss_jordan(const vv<T> &A, const vector<T> &b) {
     int N = A.size();
     auto B = list2d<T>(N, N + 1, 0);
     rep(i, N) {

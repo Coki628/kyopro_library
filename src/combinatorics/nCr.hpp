@@ -4,7 +4,7 @@
 
 // nCr列挙 (計算量：O(n*r))
 // template<typename T>
-// vector<vector<T>> nCr(int n, int r) {
+// vv<T> nCr(int n, int r) {
 //     auto dp = list2d(n+1, r+1, (T)0);
 //     dp[0][0] = 1;
 //     rep(i, 1, n+1) {

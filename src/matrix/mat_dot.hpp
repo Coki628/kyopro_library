@@ -4,7 +4,7 @@
 
 // 行列の積
 template<typename T>
-vector<vector<T>> mat_dot(const vector<vector<T>> &A, const vector<vector<T>> &B) {
+vv<T> mat_dot(const vv<T> &A, const vv<T> &B) {
     int n1 = A.size();
     int n2 = A[0].size();
     int m2 = B[0].size();

@@ -5,9 +5,8 @@
 // ダブリング
 template<typename T, typename F>
 struct Doubling {
-
     int N;
-    vector<vector<T>> dat;
+    vv<T> dat;
     const int MXLOG;
     const F f;
 

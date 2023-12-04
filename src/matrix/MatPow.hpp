@@ -8,7 +8,7 @@ template<typename T>
 struct MatPow {
     MatPow() {}
 
-    vector<vector<T>> mat_pow(vector<vector<T>> mat, ll k) {
+    vv<T> mat_pow(vv<T> mat, ll k) {
         int n = mat.size();
         auto res = list2d(n, n, (T)0);
         rep(i, n) {
@@ -41,7 +41,7 @@ struct MatPow {
         return res;
     }
 
-    vector<T> solve(vector<vector<T>> mat, const vector<T> &init, ll K) {
+    vector<T> solve(vv<T> mat, const vector<T> &init, ll K) {
         int n = mat.size();
         auto base = list2d(n, 1, (T)0);
         rep(i, n) base[i][0] = init[i];
