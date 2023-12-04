@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/chmin.hpp"
 

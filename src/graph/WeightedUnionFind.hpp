@@ -1,10 +1,10 @@
+#pragma once
 #include "../macros.hpp"
 #include "UnionFind.hpp"
 
 // 重み付きUF
 template<typename T>
 struct WeightedUnionFind : UnionFind {
-
     vector<T> weight;
 
     WeightedUnionFind(int n) : UnionFind(n) {
@@ -39,8 +39,8 @@ struct WeightedUnionFind : UnionFind {
         if (r == y) {
             weight[x] = w - weight[a] + weight[b];
             return y;
-        } elif (r == x) {
-            weight[y] = - w - weight[b] + weight[a];
+        } else if (r == x) {
+            weight[y] = -w - weight[b] + weight[a];
             return x;
         } else {
             return -1;

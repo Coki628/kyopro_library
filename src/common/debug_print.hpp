@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 // see: https://blog.naskya.net/post/meu0vkh5cpl1/
@@ -39,11 +40,13 @@ std::ostream &os = std::cerr;
 template<class Tp>
 auto has_cbegin(int)
     -> decltype(std::cbegin(std::declval<Tp>()), std::true_type{});
-template<class Tp> auto has_cbegin(...) -> std::false_type;
+template<class Tp>
+auto has_cbegin(...) -> std::false_type;
 template<class Tp>
 auto has_value_type(int)
     -> decltype(std::declval<typename Tp::value_type>(), std::true_type{});
-template<class Tp> auto has_value_type(...) -> std::false_type;
+template<class Tp>
+auto has_value_type(...) -> std::false_type;
 
 template<class Tp>
 [[maybe_unused]] constexpr bool is_iterable_container_v =
@@ -60,13 +63,16 @@ template<>
 #if INCLUDED(STRING)
 template<>
 [[maybe_unused]] constexpr bool is_iterable_container_v<std::string> = false;
-template<> [[maybe_unused]] constexpr bool is_container_v<std::string> = false;
+template<>
+[[maybe_unused]] constexpr bool is_container_v<std::string> = false;
 #endif
 
-template<class Tp, class... Ts> struct first_element {
+template<class Tp, class... Ts>
+struct first_element {
     using type = Tp;
 };
-template<class... Ts> using first_t = typename first_element<Ts...>::type;
+template<class... Ts>
+using first_t = typename first_element<Ts...>::type;
 
 template<
     class Tp,
@@ -78,15 +84,18 @@ template<
     std::enable_if_t<
         decltype(has_value_type<Tp>(int{}))::value, std::nullptr_t> = nullptr>
 auto check_elem(int) -> typename Tp::value_type;
-template<class Tp> auto check_elem(...) -> void;
+template<class Tp>
+auto check_elem(...) -> void;
 
-template<class Tp> using elem_t = decltype(check_elem<Tp>(int{}));
+template<class Tp>
+using elem_t = decltype(check_elem<Tp>(int{}));
 
 template<class Tp>
 [[maybe_unused]] constexpr bool is_multidim_container_v =
     is_container_v<Tp> && is_container_v<elem_t<Tp>>;
 
-template<class Tp> std::enable_if_t<!is_container_v<Tp>> out(const Tp &);
+template<class Tp>
+std::enable_if_t<!is_container_v<Tp>> out(const Tp &);
 void out(const char &);
 void out(const char *);
 void out(const std::string_view &);
@@ -100,24 +109,31 @@ void out(const __int128 &);
 void out(const unsigned __int128 &);
 #endif
 
-template<class Tp1, class Tp2> void out(const std::pair<Tp1, Tp2> &);
+template<class Tp1, class Tp2>
+void out(const std::pair<Tp1, Tp2> &);
 
 #if INCLUDED(TUPLE)
-template<class... Ts> void out(const std::tuple<Ts...> &);
+template<class... Ts>
+void out(const std::tuple<Ts...> &);
 #endif
 
 #if INCLUDED(STACK)
-template<class... Ts> void out(std::stack<Ts...>);
+template<class... Ts>
+void out(std::stack<Ts...>);
 #endif
 
 #if INCLUDED(QUEUE)
-template<class... Ts> void out(std::queue<Ts...>);
-template<class... Ts> void out(std::priority_queue<Ts...>);
+template<class... Ts>
+void out(std::queue<Ts...>);
+template<class... Ts>
+void out(std::priority_queue<Ts...>);
 #endif
 
-template<class C> std::enable_if_t<is_iterable_container_v<C>> out(const C &);
+template<class C>
+std::enable_if_t<is_iterable_container_v<C>> out(const C &);
 
-template<class Tp> std::enable_if_t<!is_container_v<Tp>> out(const Tp &arg) {
+template<class Tp>
+std::enable_if_t<!is_container_v<Tp>> out(const Tp &arg) {
     os << arg;
 }
 
@@ -161,7 +177,8 @@ void out(const unsigned __int128 &arg) {
 }
 #endif
 
-template<class Tp1, class Tp2> void out(const std::pair<Tp1, Tp2> &arg) {
+template<class Tp1, class Tp2>
+void out(const std::pair<Tp1, Tp2> &arg) {
     os << '(';
     out(arg.first);
     os << ", ";
@@ -177,7 +194,8 @@ void print_tuple(const T &arg, std::index_sequence<Is...>) {
     );
 }
 
-template<class... Ts> void out(const std::tuple<Ts...> &arg) {
+template<class... Ts>
+void out(const std::tuple<Ts...> &arg) {
     os << '(';
     print_tuple(arg, std::make_index_sequence<sizeof...(Ts)>());
     os << ')';
@@ -185,7 +203,8 @@ template<class... Ts> void out(const std::tuple<Ts...> &arg) {
 #endif
 
 #if INCLUDED(STACK)
-template<class... Ts> void out(std::stack<Ts...> arg) {
+template<class... Ts>
+void out(std::stack<Ts...> arg) {
     os << "[";
     while (!arg.empty()) {
         out(arg.top());
@@ -199,7 +218,8 @@ template<class... Ts> void out(std::stack<Ts...> arg) {
 #endif
 
 #if INCLUDED(QUEUE)
-template<class... Ts> void out(std::queue<Ts...> arg) {
+template<class... Ts>
+void out(std::queue<Ts...> arg) {
     os << "[";
     while (!arg.empty()) {
         out(arg.front());
@@ -210,7 +230,8 @@ template<class... Ts> void out(std::queue<Ts...> arg) {
     }
     os << ']';
 }
-template<class... Ts> void out(std::priority_queue<Ts...> arg) {
+template<class... Ts>
+void out(std::priority_queue<Ts...> arg) {
     os << "[";
     while (!arg.empty()) {
         out(arg.top());
@@ -274,9 +295,9 @@ void multi_print(std::string_view names, const Tp &arg, const Ts &...args) {
     if constexpr (sizeof...(Ts) == 0) {
         names.remove_suffix(std::distance(
             names.crbegin(), std::find_if_not(
-                names.crbegin(), names.crend(),
-                [](const char c) { return std::isspace(c); }
-            )
+                                 names.crbegin(), names.crend(),
+                                 [](const char c) { return std::isspace(c); }
+                             )
         ));
         print(names, arg);
         if constexpr (!is_container_v<Tp>) os << std::endl;

@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 // 添字GCD畳み込み(計算量：O(NloglogN))
@@ -11,7 +12,8 @@ vector<T> gcd_convolution(vector<T> F, vector<T> G) {
         vector<bool> sieve(n, false);
         for (int p = 2; p < n; ++p) {
             if (sieve[p]) continue;
-            for (int k=(n-1)/p; k>=0; k--) sieve[k*p]=true, a[k]+=a[k*p];
+            for (int k = (n - 1) / p; k >= 0; k--)
+                sieve[k * p] = true, a[k] += a[k * p];
         }
     };
     // 高速メビウス変換
@@ -21,7 +23,8 @@ vector<T> gcd_convolution(vector<T> F, vector<T> G) {
         for (int p = 2; p < n; ++p) {
             if (sieve[p]) continue;
             else {
-                for (int k=0; k*p<n; k++) sieve[k*p]=true, a[k]-=a[k*p];
+                for (int k = 0; k * p < n; k++)
+                    sieve[k * p] = true, a[k] -= a[k * p];
             }
         }
     };
@@ -31,7 +34,7 @@ vector<T> gcd_convolution(vector<T> F, vector<T> G) {
 
     vector<T> H(N);
     rep(i, min(F.size(), G.size())) {
-        H[i] = F[i]*G[i];
+        H[i] = F[i] * G[i];
     }
 
     fast_mobius(H);

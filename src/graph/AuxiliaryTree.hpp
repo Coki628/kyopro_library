@@ -1,7 +1,8 @@
+#pragma once
 #include "../macros.hpp"
 #include "HeavyLightDecomposition.hpp"
 #include "../common/HashMap.hpp"
-#include "../mystl/my_vector.hpp"
+#include "../mystl/Vector.hpp"
 
 // Auxiliary Tree
 // 説明
@@ -25,7 +26,7 @@ struct AuxiliaryTree {
             tmp.eb(hld.in[A[i]], A[i]);
         }
         sort(ALL(tmp));
-        my_vector<int> st = {tmp[0].second};
+        Vector<int> st = {tmp[0].second};
         HashMap<int, vector<pil>> res;
         rep(i, 1, K) {
             ll u = st.pop();

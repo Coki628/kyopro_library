@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // ダイクストラ(O(V^2)版) ※未verify

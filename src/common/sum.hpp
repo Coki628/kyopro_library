@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 template<typename T>
@@ -8,6 +9,6 @@ T sum(const vector<T> &A) {
 template<typename key, typename val>
 val sum(const map<key, val> &mp) {
     val res = 0;
-    for (auto& [k, v] : mp) res += v;
+    for (auto &[k, v] : mp) res += v;
     return res;
 }

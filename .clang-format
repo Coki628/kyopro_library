@@ -39,3 +39,5 @@ SpaceAfterTemplateKeyword: false
 
 # コンストラクタ初期化時のコロン以降の挙動
 PackConstructorInitializers: CurrentLine
+
+AlwaysBreakTemplateDeclarations: Yes

@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/listnd.hpp"
 
@@ -11,8 +12,8 @@ vvl doubling(int MXLOG, const vector<ll> &A) {
     }
     rep(k, 1, MXLOG) {
         rep(i, N) {
-            if (nxt[k-1][i] != -1) {
-                nxt[k][i] = nxt[k-1][nxt[k-1][i]];
+            if (nxt[k - 1][i] != -1) {
+                nxt[k][i] = nxt[k - 1][nxt[k - 1][i]];
             }
         }
     }

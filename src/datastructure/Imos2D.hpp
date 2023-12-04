@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // 2次元いもす
@@ -5,12 +6,12 @@ template<typename T>
 class Imos2D {
     int H;
     int W;
-    vector<vector<T>> dat;
+    vv<T> dat;
     bool built = false;
 
 public:
     Imos2D(int H, int W) : H(H), W(W) {
-        dat.resize(H+1, vector<T>(W+1, 0));
+        dat.resize(H + 1, vector<T>(W + 1, 0));
     }
 
     // [(h1,w1),(h2,w2))の区間加算
@@ -24,14 +25,14 @@ public:
 
     void build() {
         built = true;
-        rep(i, H+1) {
+        rep(i, H + 1) {
             rep(j, W) {
-                dat[i][j+1] += dat[i][j];
+                dat[i][j + 1] += dat[i][j];
             }
         }
-        rep(j, W+1) {
+        rep(j, W + 1) {
             rep(i, H) {
-                dat[i+1][j] += dat[i][j];
+                dat[i + 1][j] += dat[i][j];
             }
         }
     }

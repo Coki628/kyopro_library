@@ -1,9 +1,9 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/listnd.hpp"
 
 // グリッド01BFS
-vvl bfs01(const vvl &grid, const vector<pii> &src, ll invalid=-1) {
-
+vvl bfs01(const vvl &grid, const vector<pii> &src, ll invalid = -1) {
     int H = grid.size();
     int W = grid[0].size();
     auto res = list2d(H, W, INF);
@@ -14,7 +14,8 @@ vvl bfs01(const vvl &grid, const vector<pii> &src, ll invalid=-1) {
         res[h][w] = 0;
     }
     while (!que.empty()) {
-        auto [h, w] = que.front(); que.pop_front();
+        auto [h, w] = que.front();
+        que.pop_front();
         for (auto [dh, dw] : directions) {
             int nh = h + dh;
             int nw = w + dw;

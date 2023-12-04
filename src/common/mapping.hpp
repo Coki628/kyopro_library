@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 template<typename T, typename F>

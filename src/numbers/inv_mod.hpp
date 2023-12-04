@@ -6,5 +6,5 @@ template<typename T>
 T inv_mod(T a, T mod) {
     T x, y;
     extgcd(a, mod, x, y);
-    return (mod + x%mod) % mod;
+    return (mod + x % mod) % mod;
 }

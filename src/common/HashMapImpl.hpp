@@ -6,32 +6,48 @@ namespace HashMapImpl {
 using u32 = uint32_t;
 using u64 = uint64_t;
 
-template <typename Key, typename Data>
+template<typename Key, typename Data>
 struct HashMapBase;
 
-template <typename Key, typename Data>
-struct itrB : iterator<bidirectional_iterator_tag, Data, ptrdiff_t, Data*, Data&> {
-    using base = iterator<bidirectional_iterator_tag, Data, ptrdiff_t, Data*, Data&>;
+template<typename Key, typename Data>
+struct itrB
+    : iterator<bidirectional_iterator_tag, Data, ptrdiff_t, Data *, Data &> {
+    using base =
+        iterator<bidirectional_iterator_tag, Data, ptrdiff_t, Data *, Data &>;
     using ptr = typename base::pointer;
     using ref = typename base::reference;
 
     u32 i;
-    HashMapBase<Key, Data>* p;
+    HashMapBase<Key, Data> *p;
 
-    explicit constexpr itrB() : i(0), p(nullptr) {}
-    explicit constexpr itrB(u32 _i, HashMapBase<Key, Data>* _p) : i(_i), p(_p) {}
-    explicit constexpr itrB(u32 _i, const HashMapBase<Key, Data>* _p)
-            : i(_i), p(const_cast<HashMapBase<Key, Data>*>(_p)) {}
-    friend void swap(itrB& l, itrB& r) { swap(l.i, r.i), swap(l.p, r.p); }
-    friend bool operator==(const itrB& l, const itrB& r) { return l.i == r.i; }
-    friend bool operator!=(const itrB& l, const itrB& r) { return l.i != r.i; }
-    const ref operator*() const {
-        return const_cast<const HashMapBase<Key, Data>*>(p)->data[i];
+    explicit constexpr itrB() : i(0), p(nullptr) {
     }
-    ref operator*() { return p->data[i]; }
-    ptr operator->() const { return &(p->data[i]); }
+    explicit constexpr itrB(u32 _i, HashMapBase<Key, Data> *_p) : i(_i), p(_p) {
+    }
+    explicit constexpr itrB(u32 _i, const HashMapBase<Key, Data> *_p)
+        : i(_i),
+          p(const_cast<HashMapBase<Key, Data> *>(_p)) {
+    }
+    friend void swap(itrB &l, itrB &r) {
+        swap(l.i, r.i), swap(l.p, r.p);
+    }
+    friend bool operator==(const itrB &l, const itrB &r) {
+        return l.i == r.i;
+    }
+    friend bool operator!=(const itrB &l, const itrB &r) {
+        return l.i != r.i;
+    }
+    const ref operator*() const {
+        return const_cast<const HashMapBase<Key, Data> *>(p)->data[i];
+    }
+    ref operator*() {
+        return p->data[i];
+    }
+    ptr operator->() const {
+        return &(p->data[i]);
+    }
 
-    itrB& operator++() {
+    itrB &operator++() {
         assert(i != p->cap && "itr::operator++()");
         do {
             i++;
@@ -45,7 +61,7 @@ struct itrB : iterator<bidirectional_iterator_tag, Data, ptrdiff_t, Data*, Data&
         ++(*this);
         return it;
     }
-    itrB& operator--() {
+    itrB &operator--() {
         do {
             i--;
             if (p->flag[i] == true && p->dflag[i] == false) break;
@@ -60,7 +76,7 @@ struct itrB : iterator<bidirectional_iterator_tag, Data, ptrdiff_t, Data*, Data&
     }
 };
 
-template <typename Key, typename Data>
+template<typename Key, typename Data>
 struct HashMapBase {
     using u32 = uint32_t;
     using u64 = uint64_t;
@@ -68,36 +84,38 @@ struct HashMapBase {
     using itr = iterator;
 
 protected:
-    template <typename K>
-    inline u64 randomized(const K& key) const {
+    template<typename K>
+    inline u64 randomized(const K &key) const {
         return u64(key) ^ r;
     }
 
-    template <typename K,
-                        enable_if_t<is_same<K, Key>::value, nullptr_t> = nullptr,
-                        enable_if_t<is_integral<K>::value, nullptr_t> = nullptr>
-    inline u32 inner_hash(const K& key) const {
+    template<
+        typename K, enable_if_t<is_same<K, Key>::value, nullptr_t> = nullptr,
+        enable_if_t<is_integral<K>::value, nullptr_t> = nullptr>
+    inline u32 inner_hash(const K &key) const {
         return (randomized(key) * 11995408973635179863ULL) >> shift;
     }
-    template <
-            typename K, enable_if_t<is_same<K, Key>::value, nullptr_t> = nullptr,
-            enable_if_t<is_integral<decltype(K::first)>::value, nullptr_t> = nullptr,
-            enable_if_t<is_integral<decltype(K::second)>::value, nullptr_t> = nullptr>
-    inline u32 inner_hash(const K& key) const {
+    template<
+        typename K, enable_if_t<is_same<K, Key>::value, nullptr_t> = nullptr,
+        enable_if_t<is_integral<decltype(K::first)>::value, nullptr_t> =
+            nullptr,
+        enable_if_t<is_integral<decltype(K::second)>::value, nullptr_t> =
+            nullptr>
+    inline u32 inner_hash(const K &key) const {
         u64 a = randomized(key.first), b = randomized(key.second);
         a *= 11995408973635179863ULL;
         b *= 10150724397891781847ULL;
         return (a + b) >> shift;
     }
-    template <typename K,
-                        enable_if_t<is_same<K, Key>::value, nullptr_t> = nullptr,
-                        enable_if_t<is_integral<typename K::value_type>::value, nullptr_t> =
-                                nullptr>
-    inline u32 inner_hash(const K& key) const {
+    template<
+        typename K, enable_if_t<is_same<K, Key>::value, nullptr_t> = nullptr,
+        enable_if_t<is_integral<typename K::value_type>::value, nullptr_t> =
+            nullptr>
+    inline u32 inner_hash(const K &key) const {
         static constexpr u64 mod = (1LL << 61) - 1;
         static constexpr u64 base = 950699498548472943ULL;
         u64 res = 0;
-        for (auto& elem : key) {
+        for (auto &elem : key) {
             __uint128_t x = __uint128_t(res) * base + (randomized(elem) & mod);
             res = (x & mod) + (x >> 61);
         }
@@ -107,27 +125,31 @@ protected:
         return res >> (shift - 3);
     }
 
-    template <typename D = Data,
-                        enable_if_t<is_same<D, Key>::value, nullptr_t> = nullptr>
-    inline u32 hash(const D& dat) const {
+    template<
+        typename D = Data,
+        enable_if_t<is_same<D, Key>::value, nullptr_t> = nullptr>
+    inline u32 hash(const D &dat) const {
         return inner_hash(dat);
     }
-    template <
-            typename D = Data,
-            enable_if_t<is_same<decltype(D::first), Key>::value, nullptr_t> = nullptr>
-    inline u32 hash(const D& dat) const {
+    template<
+        typename D = Data,
+        enable_if_t<is_same<decltype(D::first), Key>::value, nullptr_t> =
+            nullptr>
+    inline u32 hash(const D &dat) const {
         return inner_hash(dat.first);
     }
 
-    template <typename D = Data,
-                        enable_if_t<is_same<D, Key>::value, nullptr_t> = nullptr>
-    inline Key dtok(const D& dat) const {
+    template<
+        typename D = Data,
+        enable_if_t<is_same<D, Key>::value, nullptr_t> = nullptr>
+    inline Key dtok(const D &dat) const {
         return dat;
     }
-    template <
-            typename D = Data,
-            enable_if_t<is_same<decltype(D::first), Key>::value, nullptr_t> = nullptr>
-    inline Key dtok(const D& dat) const {
+    template<
+        typename D = Data,
+        enable_if_t<is_same<decltype(D::first), Key>::value, nullptr_t> =
+            nullptr>
+    inline Key dtok(const D &dat) const {
         return dat.first;
     }
 
@@ -150,15 +172,21 @@ protected:
         fill(std::begin(dflag), std::end(dflag), false);
     }
 
-    inline bool extend_rate(u32 x) const { return x * 2 >= cap; }
+    inline bool extend_rate(u32 x) const {
+        return x * 2 >= cap;
+    }
 
     inline bool shrink_rate(u32 x) const {
         return HASHMAP_DEFAULT_SIZE < cap && x * 10 <= cap;
     }
 
-    inline void extend() { reallocate(cap << 1); }
+    inline void extend() {
+        reallocate(cap << 1);
+    }
 
-    inline void shrink() { reallocate(cap >> 1); }
+    inline void shrink() {
+        reallocate(cap >> 1);
+    }
 
 public:
     u32 cap, s;
@@ -169,12 +197,13 @@ public:
     static constexpr uint32_t HASHMAP_DEFAULT_SIZE = 4;
 
     explicit HashMapBase()
-            : cap(HASHMAP_DEFAULT_SIZE),
-                s(0),
-                data(cap),
-                flag(cap),
-                dflag(cap),
-                shift(64 - __lg(cap)) {}
+        : cap(HASHMAP_DEFAULT_SIZE),
+          s(0),
+          data(cap),
+          flag(cap),
+          dflag(cap),
+          shift(64 - __lg(cap)) {
+    }
 
     itr begin() const {
         u32 h = 0;
@@ -184,12 +213,18 @@ public:
         }
         return itr(h, this);
     }
-    itr end() const { return itr(this->cap, this); }
+    itr end() const {
+        return itr(this->cap, this);
+    }
 
-    friend itr begin(const HashMapBase& h) { return h.begin(); }
-    friend itr end(const HashMapBase& h) { return h.end(); }
+    friend itr begin(const HashMapBase &h) {
+        return h.begin();
+    }
+    friend itr end(const HashMapBase &h) {
+        return h.end();
+    }
 
-    itr find(const Key& key) const {
+    itr find(const Key &key) const {
         u32 h = inner_hash(key);
         while (true) {
             if (flag[h] == false) return this->end();
@@ -201,9 +236,11 @@ public:
         }
     }
 
-    bool contain(const Key& key) const { return find(key) != this->end(); }
+    bool contain(const Key &key) const {
+        return find(key) != this->end();
+    }
 
-    itr insert(const Data& d) {
+    itr insert(const Data &d) {
         u32 h = hash(d);
         while (true) {
             if (flag[h] == false) {
@@ -249,11 +286,17 @@ public:
         return it;
     }
 
-    itr erase(const Key& key) { return erase(find(key)); }
+    itr erase(const Key &key) {
+        return erase(find(key));
+    }
 
-    bool empty() const { return s == 0; }
+    bool empty() const {
+        return s == 0;
+    }
 
-    int size() const { return s; }
+    int size() const {
+        return s;
+    }
 
     void clear() {
         fill(std::begin(flag), std::end(flag), false);
@@ -268,10 +311,10 @@ public:
     }
 };
 
-template <typename Key, typename Data>
+template<typename Key, typename Data>
 uint64_t HashMapBase<Key, Data>::r =
     chrono::duration_cast<chrono::nanoseconds>(
-        chrono::high_resolution_clock::now().time_since_epoch())
-        .count();
+        chrono::high_resolution_clock::now().time_since_epoch()
+    ).count();
 
-}  // namespace HashMapImpl
+} // namespace HashMapImpl

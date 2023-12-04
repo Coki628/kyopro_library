@@ -1,15 +1,16 @@
+#pragma once
 #include "../base.hpp"
 #include "../datastructure/PersistentArray.hpp"
 
-// 参考：https://ei1333.github.io/library/structure/union-find/persistent-union-find.cpp
 // 永続UF
+// 参考：https://ei1333.github.io/library/structure/union-find/persistent-union-find.cpp
 struct PersistentUnionFind {
-    PersistentArray< int, 3 > data;
+    PersistentArray<int, 3> data;
 
     PersistentUnionFind() {}
 
     PersistentUnionFind(int sz) {
-        data.build(vector< int >(sz, -1));
+        data.build(vector<int>(sz, -1));
     }
 
     int find(int k) {
@@ -29,10 +30,10 @@ struct PersistentUnionFind {
         auto v = data.get(y);
 
         if (u < v) {
-            data.update(x, u+v);
+            data.update(x, u + v);
             data.update(y, x);
         } else {
-            data.update(y, u+v);
+            data.update(y, u + v);
             data.update(x, y);
         }
         return true;
@@ -42,11 +43,11 @@ struct PersistentUnionFind {
         return find(x) == find(y);
     }
 
-    decltype(data)::Node* get_root_node() {
+    decltype(data)::Node *get_root_node() {
         return data.root;
     }
 
-    void set_root_node(decltype(data)::Node* np) {
+    void set_root_node(decltype(data)::Node *np) {
         data.root = np;
     }
 };

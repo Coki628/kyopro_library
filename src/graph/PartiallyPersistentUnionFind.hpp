@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 // 部分永続UF
@@ -58,6 +59,8 @@ struct PartiallyPersistentUnionFind {
     // 時刻tに頂点xを含む連結成分のサイズ
     int size(int t, int x) {
         x = find(t, x);
-        return -prev(lower_bound(history[x].begin(), history[x].end(), make_pair(t, 0)))->second;
+        return -prev(
+            lower_bound(history[x].begin(), history[x].end(), make_pair(t, 0))
+        )->second;
     }
 };

@@ -1,28 +1,28 @@
+#pragma once
 #include "../macros.hpp"
 
 // エラトステネスの篩
 struct Eratosthenes {
-
     int n;
     bool loglog;
     vector<bool> prime;
     vector<int> minfactor, cntfactor, cntdivisor, sumdivisor;
     vector<int> mobius;
 
-    Eratosthenes(int n, bool loglog=true) : n(n), loglog(loglog) {
-        prime.assign(n+1, true);
-        minfactor.assign(n+1, 0);
-        cntfactor.assign(n+1, 0);
-        mobius.assign(n+1, 1);
+    Eratosthenes(int n, bool loglog = true) : n(n), loglog(loglog) {
+        prime.assign(n + 1, true);
+        minfactor.assign(n + 1, 0);
+        cntfactor.assign(n + 1, 0);
+        mobius.assign(n + 1, 1);
         if (not loglog) {
-            cntdivisor.assign(n+1, 1);
-            sumdivisor.assign(n+1, 1);
+            cntdivisor.assign(n + 1, 1);
+            sumdivisor.assign(n + 1, 1);
         }
         prime[0] = prime[1] = false;
         minfactor[1] = 1;
-        rep(i, 2, n+1) {
+        rep(i, 2, n + 1) {
             if (not loglog) {
-                for (int j=i; j<=n; j+=i) {
+                for (int j = i; j <= n; j += i) {
                     cntdivisor[j]++;
                     sumdivisor[j] += i;
                 }
@@ -31,12 +31,12 @@ struct Eratosthenes {
             minfactor[i] = i;
             cntfactor[i]++;
             mobius[i] = -1;
-            for (int j=i+i; j<=n; j+=i) {
+            for (int j = i + i; j <= n; j += i) {
                 prime[j] = false;
                 minfactor[j] = i;
                 cntfactor[i]++;
                 // iで2回以上割り切れるものを0に
-                if (j/i%i == 0) {
+                if (j / i % i == 0) {
                     mobius[j] = 0;
                 } else {
                     mobius[j] = -mobius[j];

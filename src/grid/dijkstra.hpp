@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/listnd.hpp"
 #include "../common/chmin.hpp"
@@ -5,7 +6,7 @@
 
 // グリッドダイクストラ(H*Wグリッド, 始点{h, w})
 using P = tuple<ll, int, int>;
-vvl dijkstra(const vvl &grid, pii src, ll invalid=-1) {
+vvl dijkstra(const vvl &grid, pii src, ll invalid = -1) {
     int H = grid.size();
     int W = grid[0].size();
     auto res = listnd(H, W, INF);
@@ -15,7 +16,8 @@ vvl dijkstra(const vvl &grid, pii src, ll invalid=-1) {
     res[sh][sw] = 0;
 
     while (que.size()) {
-        auto [dist, h, w] = que.top(); que.pop();
+        auto [dist, h, w] = que.top();
+        que.pop();
         if (res[h][w] < dist) continue;
         for (auto [dh, dw] : dir4) {
             int nh = h + dh;

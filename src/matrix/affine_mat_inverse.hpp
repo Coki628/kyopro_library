@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 // 参考：http://sssiii.seesaa.net/upload/detail/image/affine_004.PNG.html
@@ -9,4 +10,3 @@ vector<vector<T>> affine_mat_inverse(const vector<vector<T>> &a) {
     res[1][1] *= -1;
     return res;
 }
-

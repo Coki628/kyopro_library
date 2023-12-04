@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 #include "../datastructure/SegmentTree.hpp"
 #include "../acl/string.hpp"
@@ -11,7 +12,10 @@ struct SuffixArray {
     vector<int> sa, rsa, lcp;
     SegmentTree<int, decltype(f)> seg = get_segment_tree(f, MOD);
 
-    SuffixArray(string S, bool use_seg=true) : S(S), N(S.size()), use_seg(use_seg) {
+    SuffixArray(string S, bool use_seg = true)
+        : S(S),
+          N(S.size()),
+          use_seg(use_seg) {
         sa = atcoder::suffix_array(S);
         rsa.assign(N, 0);
         rep(i, N) {

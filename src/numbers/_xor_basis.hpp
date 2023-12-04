@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/chmin.hpp"
 
@@ -7,7 +8,7 @@ vector<T> get_xor_basis(const vector<T> &A) {
     vector<T> basis;
     for (auto a : A) {
         for (auto b : basis) {
-            chmin(a, a^b);
+            chmin(a, a ^ b);
         }
         if (a > 0) basis.eb(a);
     }

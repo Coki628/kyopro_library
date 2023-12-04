@@ -1,9 +1,10 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/listnd.hpp"
 #include "constants/dir4.hpp"
 
 // グリッドBFS
-auto bfs = [](const vector<string> &grid, const vector<pii> &src, char invalid='#') {
+auto bfs = [](const vector<string> &grid, const vector<pii> &src, char invalid = '#') {
     int H = grid.size();
     int W = grid[0].size();
     auto res = list2d(H, W, INF);

@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 // see: https://blog.naskya.net/post/meu0vkh5cpl1/

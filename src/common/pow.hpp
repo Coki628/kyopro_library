@@ -7,11 +7,17 @@ ll pow(ll x, ll n) {
     return res;
 }
 
-ll pow(int x, ll n) { return pow((ll)x, n); }
+ll pow(int x, ll n) {
+    return pow((ll)x, n);
+}
 
-ll pow(ll x, int n) { return pow(x, (ll)n); }
+ll pow(ll x, int n) {
+    return pow(x, (ll)n);
+}
 
-ll pow(int x, int n) { return pow((ll)x, (ll)n); }
+ll pow(int x, int n) {
+    return pow((ll)x, (ll)n);
+}
 
 template<typename T1, typename T2>
 T1 pow(T1 x, T1 n, T2 mod) {

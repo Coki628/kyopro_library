@@ -5,11 +5,13 @@
 struct SuccinctIndexableDictionary {
     size_t length;
     size_t blocks;
-    vector< unsigned > bit, sum;
+    vector<unsigned> bit, sum;
 
     SuccinctIndexableDictionary() = default;
 
-    SuccinctIndexableDictionary(size_t length) : length(length), blocks((length + 31) >> 5) {
+    SuccinctIndexableDictionary(size_t length)
+        : length(length),
+          blocks((length + 31) >> 5) {
         bit.assign(blocks, 0U);
         sum.assign(blocks, 0U);
     }
@@ -20,8 +22,8 @@ struct SuccinctIndexableDictionary {
 
     void build() {
         sum[0] = 0U;
-        for(int i = 1; i < blocks; i++) {
-        sum[i] = sum[i - 1] + __builtin_popcount(bit[i - 1]);
+        for (int i = 1; i < blocks; i++) {
+            sum[i] = sum[i - 1] + __builtin_popcount(bit[i - 1]);
         }
     }
 
@@ -30,7 +32,10 @@ struct SuccinctIndexableDictionary {
     }
 
     int rank(int k) {
-        return (sum[k >> 5] + __builtin_popcount(bit[k >> 5] & ((1U << (k & 31)) - 1)));
+        return (
+            sum[k >> 5] +
+            __builtin_popcount(bit[k >> 5] & ((1U << (k & 31)) - 1))
+        );
     }
 
     int rank(bool val, int k) {

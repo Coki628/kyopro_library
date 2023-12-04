@@ -9,10 +9,10 @@ private:
     vector<T> dat;
 
 public:
-    BIT() =  default;
+    BIT() = default;
 
     explicit BIT(int n) : n(n) {
-        dat.assign(n+1, 0);
+        dat.assign(n + 1, 0);
     }
 
     explicit BIT(const vector<T> &v) : BIT((int)v.size()) {
@@ -52,26 +52,27 @@ public:
     }
 
     T get(int i) {
-        return query(i, i+1);
+        return query(i, i + 1);
     }
 
     void update(int i, T x) {
-        add(i, x-get(i));
+        add(i, x - get(i));
     }
 
     T operator[](int i) {
-        return query(i, i+1);
+        return query(i, i + 1);
     }
 
-    void print(int n=-1) {
+    void print(int n = -1) {
         if (n == -1) n = this->n;
         rep(i, n) {
-            cout << query(i, i+1);
-            if (i == n-1) cout << endl;
+            cout << query(i, i + 1);
+            if (i == n - 1) cout << endl;
             else cout << ' ';
         }
     }
 
+    // log2つの旧仕様。新仕様である程度確認が取れたら削除。
     // ll bisearch_fore(int l, int r, ll x) {
     //     if (l > r) return -1;
     //     ll l_sm = sum(l);
@@ -91,7 +92,6 @@ public:
     //         return -1;
     //     }
     // }
-
     // ll bisearch_back(int l, int r, ll x) {
     //     if (l > r) return -1;
     //     ll r_sm = sum(r+1);
@@ -112,7 +112,7 @@ public:
     //     }
     // }
 
-    // 区間[l, r]を左から右に向かってx番目の値がある位置
+    // 区間[l, r]を左から右に向かってx番目の値がある位置(log1つ版)
     int bisearch_fore(int l, int r, T x) {
         if (l > r) return -1;
         assert(l >= 0 and r < n);
@@ -126,7 +126,7 @@ public:
         }
     }
 
-    // 区間[l, r]を右から左に向かってx番目の値がある位置
+    // 区間[l, r]を右から左に向かってx番目の値がある位置(log1つ版)
     int bisearch_back(int l, int r, T x) {
         if (l > r) return -1;
         assert(l >= 0 and r < n);
@@ -149,20 +149,20 @@ public:
     int lower_bound(T x) const {
         int i = 0;
         for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {
-            if (i + k <= n && dat[i+k] < x) {
-                x -= dat[i+k];
+            if (i + k <= n && dat[i + k] < x) {
+                x -= dat[i + k];
                 i += k;
             }
         }
         return i;
     }
 
-    // 区間[0,k]の総和がxを上回る最小のkを返す。数列が単調増加であることを要求する。(未verify)
+    // 区間[0,k]の総和がxを上回る最小のkを返す。数列が単調増加であることを要求する。
     int upper_bound(T x) const {
         int i = 0;
         for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1) {
-            if (i + k <= n && dat[i+k] <= x) {
-                x -= dat[i+k];
+            if (i + k <= n && dat[i + k] <= x) {
+                x -= dat[i + k];
                 i += k;
             }
         }

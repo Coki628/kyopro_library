@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 #include "../common/HashMap.hpp"
 
@@ -10,7 +11,7 @@ struct defaultdict : HashMap<_Key, _Tp> {
 
     defaultdict(_Tp init) : init(init) {}
 
-    _Tp& operator[](const _Key& k) {
+    _Tp &operator[](const _Key &k) {
         if (this->count(k)) {
             return HashMap<_Key, _Tp>::operator[](k);
         } else {
@@ -18,7 +19,7 @@ struct defaultdict : HashMap<_Key, _Tp> {
         }
     }
 
-    _Tp& operator[](_Key&& k) {
+    _Tp &operator[](_Key &&k) {
         if (this->count(k)) {
             return HashMap<_Key, _Tp>::operator[](k);
         } else {

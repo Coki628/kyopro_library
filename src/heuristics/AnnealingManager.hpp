@@ -1,10 +1,11 @@
+#pragma once
 #include "../base.hpp"
 
+// 焼きなまし管理
 // 参考資料：https://gasin.hatenadiary.jp/entry/2019/09/03/162613
 // 　　　　　https://shindannin.hatenadiary.com/entry/20121224/1356364040
 // ・温度と悪化量が同じくらいだと1/3くらいの確率で遷移、
 // 　悪化量が10倍くらいあるとほぼ0になる。
-
 struct AnnealingManager {
     const int TL;
     // 開始温度：一回の遷移で動きうるスコア幅の最大値程度
@@ -20,12 +21,14 @@ struct AnnealingManager {
 
     // T0 = 0, T1 = 0 にすれば山登り
     AnnealingManager(
-        int TL,
-        double T0,
-        double T1,
-        bool is_min = false,
-        int temp_type = 1
-    ) : TL(TL), T0(T0), T1(T1), is_min(is_min), temp_type(temp_type) {}
+        int TL, double T0, double T1, bool is_min = false, int temp_type = 1
+    )
+        : TL(TL),
+          T0(T0),
+          T1(T1),
+          is_min(is_min),
+          temp_type(temp_type) {
+    }
 
     // 0~1の一様ランダムな実数を返す
     double rand_double() {

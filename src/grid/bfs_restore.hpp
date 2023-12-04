@@ -1,9 +1,14 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/listnd.hpp"
 
 // グリッドBFS(経路復元)
-string bfs(const vector<string> &grid, const pii &src, const pii &goal, char invalid='#') {
-
+string bfs(
+    const vector<string> &grid,
+    const pii &src,
+    const pii &goal,
+    char invalid = '#'
+) {
     int H = grid.size();
     int W = grid[0].size();
     auto dist = list2d(H, W, INF);
@@ -14,7 +19,8 @@ string bfs(const vector<string> &grid, const pii &src, const pii &goal, char inv
     que.push({sh, sw});
     dist[sh][sw] = 0;
     while (!que.empty()) {
-        auto [h, w] = que.front(); que.pop();
+        auto [h, w] = que.front();
+        que.pop();
         rep(d, 4) {
             auto [dh, dw] = directions[d];
             int nh = h + dh;
@@ -23,7 +29,7 @@ string bfs(const vector<string> &grid, const pii &src, const pii &goal, char inv
             if (grid[nh][nw] == invalid) continue;
             if (dist[nh][nw] == INF) {
                 dist[nh][nw] = dist[h][w] + 1;
-                prv[nh][nw] = d%2 == 0 ? d+1 : d-1;
+                prv[nh][nw] = d % 2 == 0 ? d + 1 : d - 1;
                 que.push({nh, nw});
             }
         }
@@ -38,7 +44,7 @@ string bfs(const vector<string> &grid, const pii &src, const pii &goal, char inv
         auto [dh, dw] = directions[d];
         ch += dh;
         cw += dw;
-        res += itoc[d%2 == 0 ? d+1 : d-1];
+        res += itoc[d % 2 == 0 ? d + 1 : d - 1];
     }
     reverse(ALL(res));
     return res;

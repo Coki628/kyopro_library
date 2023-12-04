@@ -1,3 +1,4 @@
+#pragma once
 #include "Point.hpp"
 #include "Line.hpp"
 #include "Segment.hpp"
@@ -15,7 +16,9 @@ T get_distance_PP(Point<T> p1, Point<T> p2) {
 template<typename T>
 T get_distance_LP(Line<T> line, Point<T> p) {
 
-    return std::abs(cross(line.p2 - line.p1, p - line.p1) / abs(line.p2 - line.p1));
+    return std::abs(
+        cross(line.p2 - line.p1, p - line.p1) / abs(line.p2 - line.p1)
+    );
 }
 
 // 線分segと点pの距離
@@ -31,7 +34,7 @@ T get_distance_SP(Segment<T> seg, Point<T> p) {
     return get_distance_LP(seg, p);
 }
 
- // 線分seg1と線分seg2の距離
+// 線分seg1と線分seg2の距離
 template<typename T>
 T get_distance_SS(Segment<T> seg1, Segment<T> seg2) {
 
@@ -39,7 +42,9 @@ T get_distance_SS(Segment<T> seg1, Segment<T> seg2) {
         return 0;
     }
     return min({
-        get_distance_SP(seg1, seg2.p1), get_distance_SP(seg1, seg2.p2),
-        get_distance_SP(seg2, seg1.p1), get_distance_SP(seg2, seg1.p2),
+        get_distance_SP(seg1, seg2.p1),
+        get_distance_SP(seg1, seg2.p2),
+        get_distance_SP(seg2, seg1.p1),
+        get_distance_SP(seg2, seg1.p2),
     });
 }

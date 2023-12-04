@@ -1,13 +1,11 @@
+#pragma once
 #include "../macros.hpp"
 #include "mat_dot.hpp"
 
-// メモ
-// ・DP遷移との対応はABC129fあたりが見やすそう。
-
 // 行列累乗
+// ・DP遷移との対応はABC129fあたりが見やすそう。
 template<typename T>
 struct MatPow {
-
     MatPow() {}
 
     vector<vector<T>> mat_pow(vector<vector<T>> mat, ll k) {

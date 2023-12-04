@@ -10,7 +10,7 @@ vector<pair<T, int>> RLE(const vector<T> &A) {
     T cur = A[0];
     int cnt = 1;
     rep(i, 1, N) {
-        if (A[i] == A[i-1]) {
+        if (A[i] == A[i - 1]) {
             cnt++;
         } else {
             res.pb({cur, cnt});
@@ -30,7 +30,7 @@ vector<pair<char, int>> RLE(const string &S) {
     char cur = S[0];
     int cnt = 1;
     rep(i, 1, N) {
-        if (S[i] == S[i-1]) {
+        if (S[i] == S[i - 1]) {
             cnt++;
         } else {
             res.pb({cur, cnt});

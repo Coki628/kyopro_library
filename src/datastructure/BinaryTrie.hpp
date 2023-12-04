@@ -1,30 +1,33 @@
+#pragma once
 #include "../base.hpp"
 
-// 参考：https://ei1333.github.io/library/structure/trie/binary-trie.hpp
 // Binary Trie
+// 参考：https://ei1333.github.io/library/structure/trie/binary-trie.hpp
 // 特徴
 // ・中央値の取得が座圧なしでさくっといける。(abc218_gを参照)
 // ・kth_elementは0-indexed
 // ・indexをacceptに格納しておけるけど、eraseで消す訳じゃないぽいので、
 // 　削除がある時はここ当てにせず別配列持った方がいいぽい。
 // ・count_less使えば「k番目の値」じゃなくて「値xは何番目か」も取れる。(past202203_mを参照)
-
-template< typename T, int MAX_LOG, typename D = int >
+template<typename T, int MAX_LOG, typename D = int>
 struct BinaryTrie {
 public:
     struct Node {
         Node *nxt[2];
         D exist;
-        vector< int > accept;
+        vector<int> accept;
 
-        Node() : nxt{nullptr, nullptr}, exist(0) {}
+        Node() : nxt{nullptr, nullptr}, exist(0) {
+        }
     };
 
     Node *root;
 
-    explicit BinaryTrie() : root(new Node()) {}
+    explicit BinaryTrie() : root(new Node()) {
+    }
 
-    explicit BinaryTrie(Node *root) : root(root) {}
+    explicit BinaryTrie(Node *root) : root(root) {
+    }
 
     void add(const T &bit, int idx = -1, D delta = 1, T xor_val = 0) {
         root = add(root, bit, idx, MAX_LOG, delta, xor_val);
@@ -43,17 +46,17 @@ public:
         return node ? node->exist : 0;
     }
 
-    pair< T, Node * > min_element(T xor_val = 0) {
+    pair<T, Node *> min_element(T xor_val = 0) {
         assert(root->exist > 0);
         return kth_element(0, xor_val);
     }
 
-    pair< T, Node * > max_element(T xor_val = 0) {
+    pair<T, Node *> max_element(T xor_val = 0) {
         assert(root->exist > 0);
         return kth_element(root->exist - 1, xor_val);
     }
 
-    pair< T, Node * > kth_element(D k, T xor_val = 0) { // 0-indexed
+    pair<T, Node *> kth_element(D k, T xor_val = 0) { // 0-indexed
         assert(0 <= k && k < root->exist);
         return kth_element(root, k, MAX_LOG, xor_val);
     }
@@ -63,18 +66,20 @@ public:
     }
 
 private:
+    virtual Node *clone(Node *t) {
+        return t;
+    }
 
-    virtual Node *clone(Node *t) { return t; }
-
-    Node *add(Node *t, T bit, int idx, int depth, D x, T xor_val, bool need = true) {
-        if(need) t = clone(t);
-        if(depth == -1) {
+    Node *
+    add(Node *t, T bit, int idx, int depth, D x, T xor_val, bool need = true) {
+        if (need) t = clone(t);
+        if (depth == -1) {
             t->exist += x;
-            if(idx >= 0) t->accept.emplace_back(idx);
+            if (idx >= 0) t->accept.emplace_back(idx);
         } else {
             bool f = (xor_val >> depth) & 1;
             auto &to = t->nxt[f ^ ((bit >> depth) & 1)];
-            if(!to) to = new Node(), need = false;
+            if (!to) to = new Node(), need = false;
             to = add(to, bit, idx, depth - 1, x, xor_val, need);
             t->exist += x;
         }
@@ -82,7 +87,7 @@ private:
     }
 
     Node *find(Node *t, T bit, int depth, T xor_val) {
-        if(depth == -1) {
+        if (depth == -1) {
             return t;
         } else {
             bool f = (xor_val >> depth) & 1;
@@ -91,13 +96,17 @@ private:
         }
     }
 
-    pair< T, Node * > kth_element(Node *t, D k, int bit_index, T xor_val) { // 0-indexed
-        if(bit_index == -1) {
+    pair<T, Node *>
+    kth_element(Node *t, D k, int bit_index, T xor_val) { // 0-indexed
+        if (bit_index == -1) {
             return {0, t};
         } else {
             bool f = (xor_val >> bit_index) & 1;
-            if((t->nxt[f] ? t->nxt[f]->exist : 0) <= k) {
-                auto ret = kth_element(t->nxt[f ^ 1], k - (t->nxt[f] ? t->nxt[f]->exist : 0), bit_index - 1, xor_val);
+            if ((t->nxt[f] ? t->nxt[f]->exist : 0) <= k) {
+                auto ret = kth_element(
+                    t->nxt[f ^ 1], k - (t->nxt[f] ? t->nxt[f]->exist : 0),
+                    bit_index - 1, xor_val
+                );
                 ret.first |= T(1) << bit_index;
                 return ret;
             } else {
@@ -107,11 +116,14 @@ private:
     }
 
     D count_less(Node *t, const T &bit, int bit_index, T xor_val) {
-        if(bit_index == -1) return 0;
+        if (bit_index == -1) return 0;
         D ret = 0;
         bool f = (xor_val >> bit_index) & 1;
-        if((bit >> bit_index & 1) and t->nxt[f]) ret += t->nxt[f]->exist;
-        if(t->nxt[f ^ (bit >> bit_index & 1)]) ret += count_less(t->nxt[f ^ (bit >> bit_index & 1)], bit, bit_index - 1, xor_val);
+        if ((bit >> bit_index & 1) and t->nxt[f]) ret += t->nxt[f]->exist;
+        if (t->nxt[f ^ (bit >> bit_index & 1)])
+            ret += count_less(
+                t->nxt[f ^ (bit >> bit_index & 1)], bit, bit_index - 1, xor_val
+            );
         return ret;
     }
 };

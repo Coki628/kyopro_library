@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 int bit_length(ll x) {

@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 #include "../grid/transpose.hpp"
 #include "RollingHash.hpp"

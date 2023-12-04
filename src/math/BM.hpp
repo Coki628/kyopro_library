@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 #include "berlekamp_massey.hpp"
 #include "kth_term_of_linearly_recurrent_sequence.hpp"

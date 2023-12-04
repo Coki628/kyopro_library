@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 // 参考：https://imagingsolution.net/math/rotate-around-point/
@@ -5,8 +6,8 @@
 template<typename T>
 vector<vector<T>> rot90(T x, T y) {
     const vector<vector<T>> res = {
-        {0, 1, x-y},
-        {-1, 0, y+x},
+        {0, 1, x - y},
+        {-1, 0, y + x},
         {0, 0, 1},
     };
     return res;
@@ -15,8 +16,8 @@ vector<vector<T>> rot90(T x, T y) {
 template<typename T>
 vector<vector<T>> rot270(T x, T y) {
     const vector<vector<T>> res = {
-        {0, -1, x+y},
-        {1, 0, y-x},
+        {0, -1, x + y},
+        {1, 0, y - x},
         {0, 0, 1},
     };
     return res;

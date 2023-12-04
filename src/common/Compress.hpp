@@ -1,9 +1,9 @@
+#pragma once
 #include "../macros.hpp"
 
 // 座標圧縮(二分探索ベース)
 template<typename T>
 struct Compress {
-
     int N;
     vector<T> dat;
     bool built = false;

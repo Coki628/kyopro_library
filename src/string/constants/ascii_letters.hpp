@@ -1,3 +1,4 @@
+#pragma once
 #include "../../base.hpp"
 #include "ascii_lowercase.hpp"
 #include "ascii_uppercase.hpp"

@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 //  2次方程式の解の公式

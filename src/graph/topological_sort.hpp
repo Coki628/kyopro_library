@@ -1,8 +1,8 @@
+#pragma once
 #include "../macros.hpp"
 
-// トポロジカルソート(頂点数、辺集合(0-indexed)) 
+// トポロジカルソート(頂点数、辺集合(0-indexed))
 vector<int> topological_sort(int N, vector<pll> edges) {
-
     // ここからトポロジカルソート準備
     vector<int> incnts(N);
     vvi outnodes(N);
@@ -25,7 +25,8 @@ vector<int> topological_sort(int N, vector<pll> edges) {
     // 暫定セットが空になるまでループ
     while (S.size()) {
         // 暫定セットから結果リストへ1つ入れる
-        L.pb(S.back()); S.pop_back();
+        L.pb(S.back());
+        S.pop_back();
         // 確定させたノードから流出するノードでループ
         for (auto node : outnodes[L.back()]) {
             // 流入ノード数を1減らす

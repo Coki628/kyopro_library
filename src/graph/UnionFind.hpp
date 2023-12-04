@@ -2,7 +2,6 @@
 #include "../macros.hpp"
 
 struct UnionFind {
-
     int n, groupcnt;
     vector<int> par, rank, sz;
     vector<bool> tree;
@@ -14,7 +13,7 @@ struct UnionFind {
     UnionFind() {}
 
     // 既存の連結情報からUFを生成
-    UnionFind(const vector<int>& info) : n(info.size()) {
+    UnionFind(const vector<int> &info) : n(info.size()) {
         build();
         vvi adj(n);
         rep(i, n) {
@@ -22,8 +21,8 @@ struct UnionFind {
         }
         rep(i, n) {
             if (adj[i].size()) {
-                rep(j, adj[i].size()-1) {
-                    merge(adj[i][j], adj[i][j+1]);
+                rep(j, adj[i].size() - 1) {
+                    merge(adj[i][j], adj[i][j + 1]);
                 }
             }
         }

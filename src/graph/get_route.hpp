@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // 経路復元

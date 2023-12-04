@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 #include "Accumulate.hpp"
 
@@ -6,15 +7,15 @@ struct Imos : Accumulate<T> {
     using Accumulate<T>::Accumulate;
 
     void build() {
-        rep(i, this->N-1) {
-            this->dat[i+1] += this->dat[i];
+        rep(i, this->N - 1) {
+            this->dat[i + 1] += this->dat[i];
         }
     }
 
     // 1点加算
     void add(int i, T a) {
         this->dat[i] += a;
-        this->dat[i+1] -= a;
+        this->dat[i + 1] -= a;
     }
 
     // 区間加算[l,r)

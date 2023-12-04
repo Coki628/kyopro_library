@@ -1,15 +1,15 @@
+#pragma once
 #include "../base.hpp"
 #include <immintrin.h>
 
-// 参考：https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp
 // Wavelet Matrix
+// 参考：https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp
 // 使用上の注意点
 // ・負数がある時は座圧か下駄履かすかする。
 // 以前のからの変更点
 // ・最大ビット指定しなくてよくなった。
 // ・初期化は配列渡す以外に、サイズ指定して後からsetしてbuildの方もできるようになった。
 // ・こっちのがちょっと速い。(多分)
-
 struct bit_vector {
     using u32 = uint32_t;
     using i64 = int64_t;

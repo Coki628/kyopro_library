@@ -1,11 +1,11 @@
 #pragma once
 #include "../base.hpp"
 
-// 参考：https://ei1333.github.io/library/structure/union-find/union-find-undo.cpp
 // undo可能UF
+// 参考：https://ei1333.github.io/library/structure/union-find/union-find-undo.cpp
 struct UnionFindUndo {
-    vector< int > data;
-    stack< pair< int, int > > history;
+    vector<int> data;
+    stack<pair<int, int>> history;
 
     UnionFindUndo(int sz) {
         data.assign(sz, -1);

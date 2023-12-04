@@ -25,8 +25,8 @@ struct Accumulate {
     }
 
     void build() {
-        rep(i, N-1) {
-            dat[i+1] += dat[i];
+        rep(i, N - 1) {
+            dat[i + 1] += dat[i];
         }
         dat.insert(dat.begin(), 0);
         built = true;
@@ -39,11 +39,11 @@ struct Accumulate {
     }
 
     T get(int i) {
-        return query(i, i+1);
+        return query(i, i + 1);
     }
 
     T operator[](int i) {
-        return query(i, i+1);
+        return query(i, i + 1);
     }
 
     // 区間[l, r]を左から右に向かってx番目の値がある位置
@@ -52,15 +52,15 @@ struct Accumulate {
         ll l_sm = query(0, l);
         int ok = r + 1;
         int ng = l - 1;
-        while (ng+1 < ok) {
-            int mid = (ok+ng) / 2;
-            if (query(0, mid+1) - l_sm >= x) {
+        while (ng + 1 < ok) {
+            int mid = (ok + ng) / 2;
+            if (query(0, mid + 1) - l_sm >= x) {
                 ok = mid;
             } else {
                 ng = mid;
             }
         }
-        if (ok != r+1) {
+        if (ok != r + 1) {
             return ok;
         } else {
             return -1;
@@ -70,18 +70,18 @@ struct Accumulate {
     // 区間[l, r]を右から左に向かってx番目の値がある位置
     ll bisearch_back(int l, int r, ll x) {
         if (l > r) return -1;
-        ll r_sm = query(0, r+1);
+        ll r_sm = query(0, r + 1);
         int ok = l - 1;
         int ng = r + 1;
-        while (ok+1 < ng) {
-            int mid = (ok+ng) / 2;
+        while (ok + 1 < ng) {
+            int mid = (ok + ng) / 2;
             if (r_sm - query(0, mid) >= x) {
                 ok = mid;
             } else {
                 ng = mid;
             }
         }
-        if (ok != l-1) {
+        if (ok != l - 1) {
             return ok;
         } else {
             return -1;

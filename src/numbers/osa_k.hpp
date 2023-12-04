@@ -1,12 +1,13 @@
+#pragma once
 #include "../macros.hpp"
 
 // 高速素因数分解(osa_k法)、前計算
 vector<ll> eratosthenes_sieve(ll n) {
-    vector<ll> table(n+1);
+    vector<ll> table(n + 1);
     table[1] = 1;
-    rep(i, 2, n+1) {
+    rep(i, 2, n + 1) {
         if (table[i] == 0) {
-            for (ll j=i; j<=n; j+=i) {
+            for (ll j = i; j <= n; j += i) {
                 table[j] = i;
             }
         }

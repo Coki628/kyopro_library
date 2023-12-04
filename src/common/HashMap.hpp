@@ -13,13 +13,13 @@
 // 　なんかintだと大丈夫っぽいので、mintみたいにオブジェクトだとダメなんかな多分。
 // ・DPの2次元目に使ったら、メモリを食うと結構重くなるようだったので、
 // 　配列節約テクは使った方が良さげ。
-template <typename Key, typename Val>
+template<typename Key, typename Val>
 struct HashMap : HashMapImpl::HashMapBase<Key, pair<Key, Val>> {
     using base = typename HashMapImpl::HashMapBase<Key, pair<Key, Val>>;
     using HashMapImpl::HashMapBase<Key, pair<Key, Val>>::HashMapBase;
     using Data = pair<Key, Val>;
 
-    Val& operator[](const Key& k) {
+    Val &operator[](const Key &k) {
         typename base::u32 h = base::inner_hash(k);
         while (true) {
             if (base::flag[h] == false) {
@@ -42,11 +42,11 @@ struct HashMap : HashMapImpl::HashMapBase<Key, pair<Key, Val>> {
         }
     }
 
-    typename base::itr emplace(const Key& key, const Val& val) {
+    typename base::itr emplace(const Key &key, const Val &val) {
         return base::insert(Data(key, val));
     }
 
-    bool count(const Key& k) {
+    bool count(const Key &k) {
         return this->contain(k);
     }
 };

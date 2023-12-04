@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 using int128 = __int128_t;

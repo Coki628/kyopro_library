@@ -1,8 +1,9 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/modulo.hpp"
 
 // 10進法をN進法文字列に(負数n対応版)
-string dton(ll num, ll n, char base='0') {
+string dton(ll num, ll n, char base = '0') {
     string res;
     while (abs(num) > 0) {
         ll m = modulo(num, abs(n));

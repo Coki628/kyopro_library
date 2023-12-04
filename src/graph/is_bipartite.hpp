@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // 二部グラフ判定

@@ -2,8 +2,9 @@
 #include "../macros.hpp"
 
 // HL分解
+// see: https://ei1333.github.io/library/graph/tree/heavy-light-decomposition.hpp
 // ・主な使用方法など
-// 　・初期化後、忘れずにbuildを呼ぶこと。
+// 　・初期化後、忘れずにbuildを呼ぶこと。→buildは初期化に含めた。
 // 　・パスクエリはadd,queryで処理
 // 　・1点取得/更新はhld.in[x]で可能。add,queryは呼ばなくていい。
 // 　・辺属性にすると、添字0が欠番になる。(親に向かう辺と対応するはずなのでそれはそうか)
@@ -28,18 +29,18 @@ public:
 
     // 頂点vからk回遡った頂点を返す
     int la(int v, int k) {
-        while(1) {
+        while (1) {
             int u = head[v];
-            if(in[v] - k >= in[u]) return rev[in[v] - k];
+            if (in[v] - k >= in[u]) return rev[in[v] - k];
             k -= in[v] - in[u] + 1;
             v = par[u];
         }
     }
 
     int lca(int u, int v) const {
-        for(;; v = par[head[v]]) {
-            if(in[u] > in[v]) swap(u, v);
-            if(head[u] == head[v]) return u;
+        for (;; v = par[head[v]]) {
+            if (in[u] > in[v]) swap(u, v);
+            if (head[u] == head[v]) return u;
         }
     }
 
@@ -47,52 +48,58 @@ public:
         return dep[u] + dep[v] - 2 * dep[lca(u, v)];
     }
 
-    template< typename E, typename Q, typename F, typename S >
-    E query(int u, int v, const E &ti, const Q &q, const F &f, const S &s, bool edge = false) {
+    template<typename E, typename Q, typename F, typename S>
+    E query(
+        int u, int v, const E &ti, const Q &q, const F &f, const S &s,
+        bool edge = false
+    ) {
         E l = ti, r = ti;
-        for(;; v = par[head[v]]) {
-            if(in[u] > in[v]) swap(u, v), swap(l, r);
-            if(head[u] == head[v]) break;
+        for (;; v = par[head[v]]) {
+            if (in[u] > in[v]) swap(u, v), swap(l, r);
+            if (head[u] == head[v]) break;
             l = f(q(in[head[v]], in[v] + 1), l);
         }
         return s(f(q(in[u] + edge, in[v] + 1), l), r);
     }
 
-    template< typename E, typename Q, typename F >
-    E query(int u, int v, const E &ti, const Q &q, const F &f, bool edge = false) {
+    template<typename E, typename Q, typename F>
+    E query(
+        int u, int v, const E &ti, const Q &q, const F &f, bool edge = false
+    ) {
         return query(u, v, ti, q, f, f, edge);
     }
 
-    template< typename Q >
+    template<typename Q>
     void update(int u, int v, const Q &q, bool edge = false) {
-        for(;; v = par[head[v]]) {
-            if(in[u] > in[v]) swap(u, v);
-            if(head[u] == head[v]) break;
+        for (;; v = par[head[v]]) {
+            if (in[u] > in[v]) swap(u, v);
+            if (head[u] == head[v]) break;
             q(in[head[v]], in[v] + 1);
         }
         q(in[u] + edge, in[v] + 1);
     }
 
     /* {parent, child} */
-    vector< pair< int, int > > compress(vector< int > &remark) {
+    vector<pair<int, int>> compress(vector<int> &remark) {
         auto cmp = [&](int a, int b) { return in[a] < in[b]; };
         sort(begin(remark), end(remark), cmp);
         remark.erase(unique(begin(remark), end(remark)), end(remark));
-        int K = (int) remark.size();
-        for(int k = 1; k < K; k++) remark.emplace_back(lca(remark[k - 1], remark[k]));
+        int K = (int)remark.size();
+        for (int k = 1; k < K; k++)
+            remark.emplace_back(lca(remark[k - 1], remark[k]));
         sort(begin(remark), end(remark), cmp);
         remark.erase(unique(begin(remark), end(remark)), end(remark));
-        vector< pair< int, int > > es;
-        stack< int > st;
-        for(auto &k : remark) {
-            while(!st.empty() && out[st.top()] <= in[k]) st.pop();
-            if(!st.empty()) es.emplace_back(st.top(), k);
+        vector<pair<int, int>> es;
+        stack<int> st;
+        for (auto &k : remark) {
+            while (!st.empty() && out[st.top()] <= in[k]) st.pop();
+            if (!st.empty()) es.emplace_back(st.top(), k);
             st.emplace(k);
         }
         return es;
     }
 
-    explicit HeavyLightDecomposition(const vvi &g, int root=0) : g(g) {
+    explicit HeavyLightDecomposition(const vvi &g, int root = 0) : g(g) {
         build(root);
     }
 
@@ -102,7 +109,7 @@ public:
     }
 
 private:
-    void build(int root=0) {
+    void build(int root = 0) {
         sz.assign(g.size(), 0);
         in.assign(g.size(), 0);
         out.assign(g.size(), 0);
@@ -119,20 +126,20 @@ private:
         dep[idx] = d;
         par[idx] = p;
         sz[idx] = 1;
-        if(g[idx].size() && g[idx][0] == p) swap(g[idx][0], g[idx].back());
-        for(auto &to : g[idx]) {
-            if(to == p) continue;
+        if (g[idx].size() && g[idx][0] == p) swap(g[idx][0], g[idx].back());
+        for (auto &to : g[idx]) {
+            if (to == p) continue;
             dfs_sz(to, idx, d + 1);
             sz[idx] += sz[to];
-            if(sz[g[idx][0]] < sz[to]) swap(g[idx][0], to);
+            if (sz[g[idx][0]] < sz[to]) swap(g[idx][0], to);
         }
     }
 
     void dfs_hld(int idx, int p, int &times) {
         in[idx] = times++;
         rev[in[idx]] = idx;
-        for(auto &to : g[idx]) {
-            if(to == p) continue;
+        for (auto &to : g[idx]) {
+            if (to == p) continue;
             head[to] = (g[idx][0] == to ? head[idx] : to);
             dfs_hld(to, idx, times);
         }

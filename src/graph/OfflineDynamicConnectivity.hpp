@@ -1,19 +1,20 @@
+#pragma once
 #include "../base.hpp"
 #include "UnionFindUndo.hpp"
 #include "common/HashMap.hpp"
 
+// オフラインダイコネ
 // 参考：https://ei1333.github.io/library/other/offline-dynamic-connectivity.cpp
 // 　　　https://ei1333.github.io/luzhiled/snippets/other/offline-dynamic-connectivity.html
 // 　　　https://nyaannyaan.github.io/library/graph/offline-dynamic-connectivity.hpp
-// オフラインダイコネ
 struct OfflineDynamicConnectivity {
-    using edge = pair< int, int >;
+    using edge = pair<int, int>;
 
 private:
     int V, Q, segsz;
-    vector< vector< edge > > seg;
-    vector< pair< pair< int, int >, edge > > pend;
-    HashMap< edge, int > cnt, appear;
+    vector<vector<edge>> seg;
+    vector<pair<pair<int, int>, edge>> pend;
+    HashMap<edge, int> cnt, appear;
 
     void add(int l, int r, const edge &e) {
         int L = l + segsz;
@@ -28,7 +29,8 @@ private:
     // クエリを全て与えた後に呼び出す
     void build() {
         for (auto &p : cnt) {
-            if (p.second > 0) pend.emplace_back(make_pair(appear[p.first], Q), p.first);
+            if (p.second > 0)
+                pend.emplace_back(make_pair(appear[p.first], Q), p.first);
         }
         for (auto &s : pend) {
             add(s.first.first, s.first.second, s.second);
@@ -53,8 +55,8 @@ private:
         if (l + 1 == r) {
             f(l);
         } else {
-            _run(f, 2 * k + 0, l, (l+r) >> 1);
-            _run(f, 2 * k + 1, (l+r) >> 1, r);
+            _run(f, 2 * k + 0, l, (l + r) >> 1);
+            _run(f, 2 * k + 1, (l + r) >> 1, r);
         }
         for (auto &e : seg[k]) {
             uf.undo();
@@ -73,7 +75,12 @@ public:
     // 頂点数V、Q個のクエリで初期化
     // (このQ個には、辺の追加・削除・回答クエリ全てが含まれる。クエリ数と言うより経過時間の最大。
     //  なお、次の回答クエリが来るまでの辺の追加削除は同時刻にまとめてOK。)
-    OfflineDynamicConnectivity(int V, int Q) : uf(V), V(V), Q(Q), comp(V), single(V) {
+    OfflineDynamicConnectivity(int V, int Q)
+        : uf(V),
+          V(V),
+          Q(Q),
+          comp(V),
+          single(V) {
         segsz = 1;
         while (segsz < Q) segsz <<= 1;
         seg.resize(2 * segsz);

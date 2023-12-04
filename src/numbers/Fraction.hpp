@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 #include "gcd.hpp"
 #include "lcm.hpp"
@@ -20,12 +21,14 @@ struct Fraction {
         simplify();
     }
 
-    Fraction(const Fraction<T> &a) : numerator(a.numerator), denominator(a.denominator) {
+    Fraction(const Fraction<T> &a)
+        : numerator(a.numerator),
+          denominator(a.denominator) {
         assert(a.denominator != (T)0);
     }
 
     // 通分
-    void reduce(Fraction<T>& a) {
+    void reduce(Fraction<T> &a) {
         T l = lcm(denominator, a.denominator);
         numerator = l / denominator * numerator;
         a.numerator = l / a.denominator * a.numerator;
@@ -45,7 +48,7 @@ struct Fraction {
     Fraction<T> &operator+=(Fraction<T> a) {
         // reduce(a);
         // numerator += a.numerator;
-        numerator = numerator*a.denominator + a.numerator*denominator;
+        numerator = numerator * a.denominator + a.numerator * denominator;
         denominator *= a.denominator;
         simplify();
         return *this;
@@ -54,20 +57,20 @@ struct Fraction {
     Fraction<T> &operator-=(Fraction<T> a) {
         // reduce(a);
         // numerator -= a.numerator;
-        numerator = numerator*a.denominator - a.numerator*denominator;
+        numerator = numerator * a.denominator - a.numerator * denominator;
         denominator *= a.denominator;
         simplify();
         return *this;
     }
 
-    Fraction<T> &operator*=(const Fraction<T>& a) {
+    Fraction<T> &operator*=(const Fraction<T> &a) {
         numerator *= a.numerator;
         denominator *= a.denominator;
         simplify();
         return *this;
     }
 
-    Fraction<T> &operator/=(const Fraction<T>& a) {
+    Fraction<T> &operator/=(const Fraction<T> &a) {
         assert(a.numerator != (T)0);
         numerator *= a.denominator;
         denominator *= a.numerator;
@@ -102,47 +105,57 @@ struct Fraction {
         return result;
     }
 
-    Fraction<T> operator-() const { return {-numerator, denominator}; }
+    Fraction<T> operator-() const {
+        return {-numerator, denominator};
+    }
 
-    Fraction<T> operator+(const Fraction<T>& a) const { return Fraction<T>(*this) += a; }
+    Fraction<T> operator+(const Fraction<T> &a) const {
+        return Fraction<T>(*this) += a;
+    }
 
-    Fraction<T> operator-(const Fraction<T>& a) const { return Fraction<T>(*this) -= a; }
+    Fraction<T> operator-(const Fraction<T> &a) const {
+        return Fraction<T>(*this) -= a;
+    }
 
-    Fraction<T> operator*(const Fraction<T>& a) const { return Fraction<T>(*this) *= a; }
+    Fraction<T> operator*(const Fraction<T> &a) const {
+        return Fraction<T>(*this) *= a;
+    }
 
-    Fraction<T> operator/(const Fraction<T>& a) const { return Fraction<T>(*this) /= a; }
+    Fraction<T> operator/(const Fraction<T> &a) const {
+        return Fraction<T>(*this) /= a;
+    }
 
-    bool operator==(const Fraction<T>& a) const {
+    bool operator==(const Fraction<T> &a) const {
         return numerator == a.numerator and denominator == a.denominator;
     }
 
-    bool operator!=(const Fraction<T>& a) const {
+    bool operator!=(const Fraction<T> &a) const {
         return numerator != a.numerator or denominator != a.denominator;
     }
 
-    bool operator<(const Fraction<T>& a) const {
-        return numerator*a.denominator < a.numerator*denominator;
+    bool operator<(const Fraction<T> &a) const {
+        return numerator * a.denominator < a.numerator * denominator;
     }
 
-    bool operator<=(const Fraction<T>& a) const {
-        return numerator*a.denominator <= a.numerator*denominator;
+    bool operator<=(const Fraction<T> &a) const {
+        return numerator * a.denominator <= a.numerator * denominator;
     }
 
-    bool operator>(const Fraction<T>& a) const {
-        return numerator*a.denominator > a.numerator*denominator;
+    bool operator>(const Fraction<T> &a) const {
+        return numerator * a.denominator > a.numerator * denominator;
     }
 
-    bool operator>=(const Fraction<T>& a) const {
-        return numerator*a.denominator >= a.numerator*denominator;
+    bool operator>=(const Fraction<T> &a) const {
+        return numerator * a.denominator >= a.numerator * denominator;
     }
 
-    friend istream &operator>>(istream& is, Fraction<T>& a) {
+    friend istream &operator>>(istream &is, Fraction<T> &a) {
         is >> a.numerator;
         a.denominator = 1;
         return (is);
     }
 
-    friend ostream& operator<<(ostream& os, const Fraction<T>& a) {
+    friend ostream &operator<<(ostream &os, const Fraction<T> &a) {
         return os << a.numerator << "/" << a.denominator;
     }
 };

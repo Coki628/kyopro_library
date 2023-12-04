@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 #include "../common/toint.hpp"
 
@@ -6,7 +7,7 @@ ll ntod(string S, ll n) {
     ll res = 0, k = 1;
     reverse(ALL(S));
     for (char &c : S) {
-        res += k*toint(c);
+        res += k * toint(c);
         k *= n;
     }
     return res;

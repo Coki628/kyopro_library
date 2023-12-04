@@ -1,3 +1,4 @@
+#pragma once
 #include "../base.hpp"
 
 // 参考：https://nyaannyaan.github.io/library/segment-tree/segment-tree-beats-abstract.hpp
@@ -6,7 +7,7 @@ struct AbstructBeats {
     int n, log;
     vector<Node> v;
 
-    AbstructBeats(const vector<T>& vc) {
+    AbstructBeats(const vector<T> &vc) {
         n = 1, log = 0;
         while (n < (int)vc.size()) n <<= 1, log++;
         v.resize(2 * n);
@@ -15,7 +16,7 @@ struct AbstructBeats {
     }
 
     // FはNodeのapplyの引数のデータ型
-    void apply(int l, int r, const F& x) {
+    void apply(int l, int r, const F &x) {
         if (l == r) return;
         l += n, r += n;
         for (int i = log; i >= 1; i--) {
@@ -40,7 +41,7 @@ struct AbstructBeats {
     }
 
     template<typename Q>
-    void query(int l, int r, const Q& q) {
+    void query(int l, int r, const Q &q) {
         if (l == r) return;
         l += n, r += n;
         for (int i = log; i >= 1; i--) {
@@ -56,9 +57,13 @@ struct AbstructBeats {
     }
 
 private:
-    void _push(int i) { v[i].push(v[2 * i + 0], v[2 * i + 1]); }
-    void _update(int i) { v[i].update(v[2 * i + 0], v[2 * i + 1]); }
-    void _apply(int i, const F& x) {
+    void _push(int i) {
+        v[i].push(v[2 * i + 0], v[2 * i + 1]);
+    }
+    void _update(int i) {
+        v[i].update(v[2 * i + 0], v[2 * i + 1]);
+    }
+    void _apply(int i, const F &x) {
         bool res = v[i].apply(x);
         if (i < n && res == false) {
             _push(i);

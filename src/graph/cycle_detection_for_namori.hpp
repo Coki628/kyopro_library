@@ -1,3 +1,4 @@
+#pragma once
 #include "../macros.hpp"
 
 // なもりグラフの閉路検出
@@ -6,7 +7,7 @@ vector<int> cycle_detection_for_namori(vvi nodes) {
     int N = nodes.size();
     vector<int> visited(N), cycle(N);
     bool end = false;
-    auto dfs = [&](auto&& f, int u, int prv) -> bool {
+    auto dfs = [&](auto &&f, int u, int prv) -> bool {
         if (visited[u]) {
             cycle[u] = true;
             return true;

@@ -1,9 +1,9 @@
 #pragma once
 #include "../base.hpp"
 
+// 永続配列
 // 参考：https://ei1333.github.io/library/structure/others/persistent-array.cpp
 // 　　　https://qiita.com/hotman78/items/9c643feae1de087e6fc5#%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E9%85%8D%E5%88%97%E3%81%A8%E3%81%AF
-// 永続配列
 // 特徴
 // ・元の要素数がNある配列でもコピーにlog(N)くらいしかかからず済む。
 // ・基本的にgetとupdateを使って、普通の配列と同じように操作する。
@@ -15,7 +15,7 @@
 // ・特定の時点での状態の記録/復元にはポインタを用いる。
 // 　なるべく直感的に操作できるようにメソッドを生やしておいた。
 
-template< typename T, int LOG >
+template<typename T, int LOG>
 struct PersistentArray {
 public:
     struct Node {
@@ -45,7 +45,7 @@ private:
         return get(t->child[k & ((1 << LOG) - 1)], k >> LOG);
     }
 
-    pair< Node *, T * > mutable_get(Node *t, int k) {
+    pair<Node *, T *> mutable_get(Node *t, int k) {
         t = t ? new Node(*t) : new Node();
         if (k == 0) return {t, &t->data};
         auto p = mutable_get(t->child[k & ((1 << LOG) - 1)], k >> LOG);
@@ -64,7 +64,7 @@ public:
 
     Node *root;
 
-    void build(const vector< T > &v) {
+    void build(const vector<T> &v) {
         root = nullptr;
         for (int i = 0; i < v.size(); i++) {
             root = build(root, v[i], i);
