@@ -20,13 +20,25 @@ oj-verify run test/xxx/xxx.test.cpp
 ```
 
 ## 自分用メモ
+
 - cloneしてくる時はsubmoduleにしているACLを含めたいので、  
 `git clone --recursive https://github.com/Coki628/kyopro_library.git`  
 のようにオプション付きでやる。
 
 ## プリコンパイル
+
 ちょっと速くなってる、かもしれない。
 ```bash
 cd src
 sudo g++ template.hpp -std=c++17
 ```
+
+## ACLの更新
+
+```bash
+git submodule update --remote
+```
+
+上記コマンドでACLは最新版に更新される。  
+更新の記録が変更差分に表示されるので、それをaddしてcommitする。  
+差分に「...-dirty」のように記載されている場合は、ACL内に更新が発生しているはずなので、状態を戻してからcommitする。
