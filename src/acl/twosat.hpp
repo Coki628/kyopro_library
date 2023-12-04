@@ -9,9 +9,9 @@
 // 　　A&!B or !A&B -> A|B and !A|!B
 // 　・not (A and B) (aclpc_h,yukico274)
 // 　　!(A&B) -> !A|!B
-// 　・not (!A and B) (aclpc_h)
-// 　　!(A&!B) -> !A|B
 // 　・not (A and !B) (aclpc_h)
+// 　　!(A&!B) -> !A|B
+// 　・not (!A and B) (aclpc_h)
 // 　　!(!A&B) -> A|!B
 // 　・not (!A and !B) (aclpc_h)
 // 　　!(!A&!B) -> A|B
