@@ -9,6 +9,7 @@
 // ・上記関数の名前が競合するので、using name spaceは使わない。
 
 namespace FastPrimeFactorization {
+
 template<typename word, typename dword, typename sword>
 struct UnsafeMod {
     UnsafeMod() : x(0) {}
@@ -205,4 +206,5 @@ vector<uint64_t> divisors(uint64_t n) {
     }
     return res;
 }
+
 }; // namespace FastPrimeFactorization
