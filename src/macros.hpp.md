@@ -108,6 +108,9 @@ data:
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
   - icon: ':warning:'
+    path: src/datastructure/AbstractBIT.hpp
+    title: src/datastructure/AbstractBIT.hpp
+  - icon: ':warning:'
     path: src/datastructure/Accumulate.hpp
     title: src/datastructure/Accumulate.hpp
   - icon: ':warning:'
@@ -429,6 +432,9 @@ data:
     path: src/string/RollingHash2D.hpp
     title: src/string/RollingHash2D.hpp
   - icon: ':warning:'
+    path: src/string/RollingHashUpdatable.hpp
+    title: src/string/RollingHashUpdatable.hpp
+  - icon: ':warning:'
     path: src/string/SuffixArray.hpp
     title: src/string/SuffixArray.hpp
   - icon: ':warning:'
@@ -575,6 +581,7 @@ data:
   - src/datastructure/LazySegmentTree.hpp
   - src/datastructure/DynamicLiChaoTree.hpp
   - src/datastructure/_doubling.hpp
+  - src/datastructure/AbstractBIT.hpp
   - src/combinatorics/partition.hpp
   - src/combinatorics/bell.hpp
   - src/combinatorics/nCr.hpp
@@ -587,6 +594,7 @@ data:
   - src/string/SuffixArray.hpp
   - src/string/zfill.hpp
   - src/string/get_next_indices.hpp
+  - src/string/RollingHashUpdatable.hpp
   - src/string/is_palindrome.hpp
   - src/string/number_format.hpp
   - src/string/bin.hpp

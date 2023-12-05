@@ -61,7 +61,7 @@ data:
     \u3001\u81EA\u5206\u7528\u306E\u95A2\u6570\u3092\u8FFD\u52A0\u3057\u305F\u3082\
     \u306E\u3002\n// \u30FB\u4E0A\u8A18\u95A2\u6570\u306E\u540D\u524D\u304C\u7AF6\u5408\
     \u3059\u308B\u306E\u3067\u3001using name space\u306F\u4F7F\u308F\u306A\u3044\u3002\
-    \n\nnamespace FastPrimeFactorization {\ntemplate<typename word, typename dword,\
+    \n\nnamespace FastPrimeFactorization {\n\ntemplate<typename word, typename dword,\
     \ typename sword>\nstruct UnsafeMod {\n    UnsafeMod() : x(0) {}\n\n    UnsafeMod(word\
     \ _x) : x(init(_x)) {}\n\n    bool operator==(const UnsafeMod &rhs) const {\n\
     \        return x == rhs.x;\n    }\n\n    bool operator!=(const UnsafeMod &rhs)\
@@ -123,7 +123,7 @@ data:
     \ : factorize(n)) {\n        int sz = res.size();\n        rep(i, sz) {\n    \
     \        uint64_t d = res[i];\n            rep(_, c) {\n                d *= p;\n\
     \                res.eb(d);\n            }\n        }\n    }\n    return res;\n\
-    }\n}; // namespace FastPrimeFactorization\n"
+    }\n\n}; // namespace FastPrimeFactorization\n"
   code: "#pragma once\n#include \"../common/RLE.hpp\"\n#include \"../common/sorted.hpp\"\
     \n#include \"../macros.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/math/number-theory/fast-prime-factorization.hpp\n\
     // \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3\n// \u30FB\u3046\u3057\u3055\u3093\
@@ -131,7 +131,7 @@ data:
     \u3001\u81EA\u5206\u7528\u306E\u95A2\u6570\u3092\u8FFD\u52A0\u3057\u305F\u3082\
     \u306E\u3002\n// \u30FB\u4E0A\u8A18\u95A2\u6570\u306E\u540D\u524D\u304C\u7AF6\u5408\
     \u3059\u308B\u306E\u3067\u3001using name space\u306F\u4F7F\u308F\u306A\u3044\u3002\
-    \n\nnamespace FastPrimeFactorization {\ntemplate<typename word, typename dword,\
+    \n\nnamespace FastPrimeFactorization {\n\ntemplate<typename word, typename dword,\
     \ typename sword>\nstruct UnsafeMod {\n    UnsafeMod() : x(0) {}\n\n    UnsafeMod(word\
     \ _x) : x(init(_x)) {}\n\n    bool operator==(const UnsafeMod &rhs) const {\n\
     \        return x == rhs.x;\n    }\n\n    bool operator!=(const UnsafeMod &rhs)\
@@ -193,7 +193,7 @@ data:
     \ : factorize(n)) {\n        int sz = res.size();\n        rep(i, sz) {\n    \
     \        uint64_t d = res[i];\n            rep(_, c) {\n                d *= p;\n\
     \                res.eb(d);\n            }\n        }\n    }\n    return res;\n\
-    }\n}; // namespace FastPrimeFactorization\n"
+    }\n\n}; // namespace FastPrimeFactorization\n"
   dependsOn:
   - src/common/RLE.hpp
   - src/macros.hpp
@@ -202,7 +202,7 @@ data:
   isVerificationFile: false
   path: src/numbers/FastPrimeFactorization.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2023-12-04 18:26:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/FastPrimeFactorization.hpp

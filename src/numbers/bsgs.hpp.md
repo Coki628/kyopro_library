@@ -70,7 +70,7 @@ data:
   isVerificationFile: false
   path: src/numbers/bsgs.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2023-12-06 04:35:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/bsgs.hpp

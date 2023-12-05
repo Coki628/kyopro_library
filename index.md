@@ -237,6 +237,9 @@ data:
   - name: src/datastructure
     pages:
     - icon: ':warning:'
+      path: src/datastructure/AbstractBIT.hpp
+      title: src/datastructure/AbstractBIT.hpp
+    - icon: ':warning:'
       path: src/datastructure/AbstructBeats.hpp
       title: src/datastructure/AbstructBeats.hpp
     - icon: ':warning:'
@@ -433,8 +436,14 @@ data:
       path: src/graph/RangeEdgeGraph.hpp
       title: src/graph/RangeEdgeGraph.hpp
     - icon: ':warning:'
+      path: src/graph/RangeEdgedTwoSAT.hpp
+      title: src/graph/RangeEdgedTwoSAT.hpp
+    - icon: ':warning:'
       path: src/graph/ReRooting.hpp
       title: src/graph/ReRooting.hpp
+    - icon: ':warning:'
+      path: src/graph/TwoSAT.hpp
+      title: src/graph/TwoSAT.hpp
     - icon: ':heavy_check_mark:'
       path: src/graph/UnionFind.hpp
       title: src/graph/UnionFind.hpp
@@ -714,6 +723,9 @@ data:
     - icon: ':warning:'
       path: src/string/RollingHash2D.hpp
       title: src/string/RollingHash2D.hpp
+    - icon: ':warning:'
+      path: src/string/RollingHashUpdatable.hpp
+      title: src/string/RollingHashUpdatable.hpp
     - icon: ':warning:'
       path: src/string/SuffixArray.hpp
       title: src/string/SuffixArray.hpp

@@ -490,13 +490,14 @@ data:
     \n\nll pow(ll x, ll n) {\n    ll res = 1;\n    rep(_, n) res *= x;\n    return\
     \ res;\n}\n\nll pow(int x, ll n) {\n    return pow((ll)x, n);\n}\n\nll pow(ll\
     \ x, int n) {\n    return pow(x, (ll)n);\n}\n\nll pow(int x, int n) {\n    return\
-    \ pow((ll)x, (ll)n);\n}\n\ntemplate<typename T1, typename T2>\nT1 pow(T1 x, T1\
-    \ n, T2 mod) {\n    x %= mod;\n    T1 res = 1;\n    while (n > 0) {\n        if\
-    \ (n & 1) {\n            res = (res * x) % mod;\n        }\n        x = (x * x)\
-    \ % mod;\n        n >>= 1;\n    }\n    return res;\n}\n#line 3 \"src/common/print.hpp\"\
-    \n\n// pair\ntemplate<typename T1, typename T2>\nostream &operator<<(ostream &os,\
-    \ const pair<T1, T2> &p) {\n    return os << p.first << ' ' << p.second;\n}\n\n\
-    // tuple\n// see: https://gist.github.com/naskya/1e5e5cd269cfe16a76988378a60e2ca3#file-debug_print-hpp-L150\n\
+    \ pow((ll)x, (ll)n);\n}\n\ntemplate<typename T1, typename T2, typename M>\nT1\
+    \ pow(T1 x, T2 n, M mod) {\n    x %= mod;\n    T1 res = 1;\n    while (n > 0)\
+    \ {\n        if (n & 1) {\n            assert(not mul_overflow(res, x));\n   \
+    \         res = (res * x) % mod;\n        }\n        assert(not mul_overflow(x,\
+    \ x));\n        x = (x * x) % mod;\n        n >>= 1;\n    }\n    return res;\n\
+    }\n#line 3 \"src/common/print.hpp\"\n\n// pair\ntemplate<typename T1, typename\
+    \ T2>\nostream &operator<<(ostream &os, const pair<T1, T2> &p) {\n    return os\
+    \ << p.first << ' ' << p.second;\n}\n\n// tuple\n// see: https://gist.github.com/naskya/1e5e5cd269cfe16a76988378a60e2ca3#file-debug_print-hpp-L150\n\
     template<class T, size_t... Is>\nvoid print_tuple(ostream &os, const T &arg, index_sequence<Is...>)\
     \ {\n    static_cast<void>(((os << (Is == 0 ? \"\" : \" \"), os << get<Is>(arg)),\
     \ ...));\n}\ntemplate<class... Ts>\nostream &operator<<(ostream &os, const tuple<Ts...>\
@@ -837,28 +838,31 @@ data:
     \    ng = mid;\n            }\n        }\n        if (ok != l - 1) {\n       \
     \     return ok;\n        } else {\n            return -1;\n        }\n    }\n\
     };\n#line 3 \"src/datastructure/BIT.hpp\"\n\n// Binary Indexed Tree\ntemplate<typename\
-    \ T>\nclass BIT {\nprivate:\n    int n;\n    vector<T> dat;\n\npublic:\n    BIT()\
-    \ = default;\n\n    explicit BIT(int n) : n(n) {\n        dat.assign(n + 1, 0);\n\
-    \    }\n\n    explicit BIT(const vector<T> &v) : BIT((int)v.size()) {\n      \
-    \  build(v);\n    }\n\n    virtual void build(const vector<T> &v) {\n        assert(n\
-    \ == (int)v.size());\n        for (int i = 1; i <= n; i++) {\n            dat[i]\
-    \ = v[i - 1];\n        }\n        for (int i = 1; i <= n; i++) {\n           \
-    \ int j = i + (i & -i);\n            if (j <= n) dat[j] += dat[i];\n        }\n\
-    \    }\n\n    // [0, r)\u3092\u5408\u8A08\u3059\u308B\n    virtual T sum(int r)\
-    \ {\n        T s = T();\n        for (; r > 0; r -= r & -r) {\n            s +=\
-    \ dat[r];\n        }\n        return s;\n    }\n\n    virtual void add(int k,\
-    \ const T &x) {\n        for (++k; k <= n; k += k & -k) {\n            dat[k]\
-    \ += x;\n        }\n    }\n\n    // \u533A\u9593\u548C\u306E\u53D6\u5F97 [l, r)\n\
-    \    T query(int l, int r) {\n        if (l >= r) return 0;\n        return sum(r)\
-    \ - sum(l);\n    }\n\n    T get(int i) {\n        return query(i, i + 1);\n  \
-    \  }\n\n    void update(int i, T x) {\n        add(i, x - get(i));\n    }\n\n\
-    \    T operator[](int i) {\n        return query(i, i + 1);\n    }\n\n    void\
-    \ print(int n = -1) {\n        if (n == -1) n = this->n;\n        rep(i, n) {\n\
-    \            cout << query(i, i + 1);\n            if (i == n - 1) cout << endl;\n\
-    \            else cout << ' ';\n        }\n    }\n\n    // log2\u3064\u306E\u65E7\
-    \u4ED5\u69D8\u3002\u65B0\u4ED5\u69D8\u3067\u3042\u308B\u7A0B\u5EA6\u78BA\u8A8D\
-    \u304C\u53D6\u308C\u305F\u3089\u524A\u9664\u3002\n    // ll bisearch_fore(int\
-    \ l, int r, ll x) {\n    //     if (l > r) return -1;\n    //     ll l_sm = sum(l);\n\
+    \ T>\nclass BIT {\nprotected:\n    int n;\n    vector<T> dat;\n\npublic:\n   \
+    \ BIT() = default;\n\n    explicit BIT(int n) : n(n) {\n        dat.assign(n +\
+    \ 1, T());\n    }\n\n    explicit BIT(const vector<T> &v) : BIT((int)v.size())\
+    \ {\n        build(v);\n    }\n\n    virtual void build(const vector<T> &v) {\n\
+    \        assert(n == (int)v.size());\n        for (int i = 1; i <= n; i++) {\n\
+    \            dat[i] = v[i - 1];\n        }\n        for (int i = 1; i <= n; i++)\
+    \ {\n            int j = i + (i & -i);\n            if (j <= n) dat[j] += dat[i];\n\
+    \        }\n    }\n\n    // [0, r)\u3092\u5408\u8A08\u3059\u308B\n    virtual\
+    \ T sum(int r) {\n        T s = T();\n        for (; r > 0; r -= r & -r) {\n \
+    \           s += dat[r];\n        }\n        return s;\n    }\n\n    virtual void\
+    \ add(int k, const T &x) {\n        for (++k; k <= n; k += k & -k) {\n       \
+    \     dat[k] += x;\n        }\n    }\n\n    // \u533A\u9593\u548C\u306E\u53D6\u5F97\
+    \ [l, r)\n    T query(int l, int r) {\n        if (l >= r) return T();\n     \
+    \   return sum(r) - sum(l);\n    }\n\n    virtual T get(int i) {\n        // return\
+    \ query(i, i + 1);\n        // BIT\u306E\u9AD8\u901F\u306A1\u70B9\u53D6\u5F97\n\
+    \        // see: https://twitter.com/KakurenboUni/status/1643832177690550273\n\
+    \        T s = this->dat[i + 1];\n        if (i & 1) {\n            int j = i;\n\
+    \            i++;\n            i -= i & -i;\n            for (; j > i; j -= j\
+    \ & -j) {\n                s -= this->dat[j];\n            }\n        }\n    \
+    \    return s;\n    }\n\n    void update(int i, T x) {\n        add(i, x - this->get(i));\n\
+    \    }\n\n    T operator[](int i) {\n        return this->get(i);\n    }\n\n \
+    \   int size() {\n        return n;\n    }\n\n    // log2\u3064\u306E\u65E7\u4ED5\
+    \u69D8\u3002\u65B0\u4ED5\u69D8\u3067\u3042\u308B\u7A0B\u5EA6\u78BA\u8A8D\u304C\
+    \u53D6\u308C\u305F\u3089\u524A\u9664\u3002\n    // ll bisearch_fore(int l, int\
+    \ r, ll x) {\n    //     if (l > r) return -1;\n    //     ll l_sm = sum(l);\n\
     \    //     int ok = r + 1;\n    //     int ng = l - 1;\n    //     while (ng+1\
     \ < ok) {\n    //         int mid = (ok+ng) / 2;\n    //         if (sum(mid+1)\
     \ - l_sm >= x) {\n    //             ok = mid;\n    //         } else {\n    //\
@@ -899,7 +903,10 @@ data:
     \ int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1 <<\
     \ (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i + k] <=\
     \ x) {\n                x -= dat[i + k];\n                i += k;\n          \
-    \  }\n        }\n        return i;\n    }\n};\n#line 3 \"src/datastructure/SegmentTree.hpp\"\
+    \  }\n        }\n        return i;\n    }\n};\n\ntemplate<typename T>\nostream\
+    \ &operator<<(ostream &os, BIT<T> &bit) {\n    rep(i, bit.size()) {\n        os\
+    \ << bit[i];\n        if (i != bit.size() - 1) {\n            os << ' ';\n   \
+    \     }\n    }\n    return os;\n}\n#line 3 \"src/datastructure/SegmentTree.hpp\"\
     \n\ntemplate<typename Monoid, typename F>\nstruct SegmentTree {\n\n    int sz;\n\
     \    vector<Monoid> seg;\n\n    const F f;\n    const Monoid M1;\n\n    SegmentTree(int\
     \ n, const F f, const Monoid &M1) : f(f), M1(M1) {\n        sz = 1;\n        while\
@@ -1167,7 +1174,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2023-12-06 04:35:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

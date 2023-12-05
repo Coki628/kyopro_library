@@ -43,40 +43,42 @@ data:
     \n\nll pow(ll x, ll n) {\n    ll res = 1;\n    rep(_, n) res *= x;\n    return\
     \ res;\n}\n\nll pow(int x, ll n) {\n    return pow((ll)x, n);\n}\n\nll pow(ll\
     \ x, int n) {\n    return pow(x, (ll)n);\n}\n\nll pow(int x, int n) {\n    return\
-    \ pow((ll)x, (ll)n);\n}\n\ntemplate<typename T1, typename T2>\nT1 pow(T1 x, T1\
-    \ n, T2 mod) {\n    x %= mod;\n    T1 res = 1;\n    while (n > 0) {\n        if\
-    \ (n & 1) {\n            res = (res * x) % mod;\n        }\n        x = (x * x)\
-    \ % mod;\n        n >>= 1;\n    }\n    return res;\n}\n#line 3 \"src/geometry/Point.hpp\"\
-    \n\ntemplate<typename T>\nstruct Point {\n    T x, y;\n    Point() : x(0), y(0)\
-    \ {\n    }\n    Point(T x, T y) : x(x), y(y) {\n    }\n    Point operator+(const\
-    \ Point &p) {\n        return {x + p.x, y + p.y};\n    }\n    Point operator-(const\
-    \ Point &p) {\n        return {x - p.x, y - p.y};\n    }\n    Point operator*(const\
-    \ Point &p) {\n        return {x * p.x, y * p.y};\n    }\n    Point operator/(const\
-    \ Point &p) {\n        return {x / p.x, y / p.y};\n    }\n    Point &operator+=(const\
-    \ Point &p) {\n        x += p.x, y += p.y;\n        return *this;\n    }\n   \
-    \ Point &operator-=(const Point &p) {\n        x -= p.x, y -= p.y;\n        return\
-    \ *this;\n    }\n    Point &operator*=(const Point &p) {\n        x *= p.x, y\
-    \ *= p.y;\n        return *this;\n    }\n    Point &operator/=(const Point &p)\
-    \ {\n        x /= p.x, y /= p.y;\n        return *this;\n    }\n    bool operator<(const\
-    \ Point &p) {\n        return mkp(x, y) < mkp(p.x, p.y);\n    }\n    // \u5B9F\
-    \u6570\u306E\u540C\u5024\u5224\u5B9A\n    // bool operator==(const Point &p) {\n\
-    \    //     return std::abs(x - p.x) < EPS and std::abs(y - p.y) < EPS;\n    //\
-    \ }\n    // bool operator!=(const Point &p) {\n    //     return std::abs(x -\
-    \ p.x) >= EPS or std::abs(y - p.y) >= EPS;\n    // }\n    // \u6574\u6570\u306E\
-    \u540C\u5024\u5224\u5B9A\n    bool operator==(const Point &p) {\n        return\
-    \ x == p.x and y == p.y;\n    }\n    bool operator!=(const Point &p) {\n     \
-    \   return x != p.x or y != p.y;\n    }\n    Point operator*(T k) {\n        return\
-    \ {x * k, y * k};\n    }\n    Point operator/(T k) {\n        return {x / k, y\
-    \ / k};\n    }\n    T norm() {\n        return x * x + y * y;\n    }\n    T abs()\
-    \ {\n        return sqrt(norm());\n    }\n    T abs(const Point &p) {\n      \
-    \  return hypot(x - p.x, y - p.y);\n    }\n    // \u6574\u6570\u306E\u307E\u307E\
-    \u8DDD\u96E2\u306E\u5927\u5C0F\u3092\u898B\u305F\u3044\u6642\u306F\u3053\u3063\
-    \u3061\n    T abs2(const Point &p) {\n        return pow(x - p.x, 2) + pow(y -\
-    \ p.y, 2);\n    }\n    T manhattan(const Point &p) {\n        return std::abs(x\
-    \ - p.x) + std::abs(y - p.y);\n    }\n    void print() {\n        cout << x <<\
-    \ ' ' << y << '\\n';\n    }\n    operator pair<T, T>() const {\n        return\
-    \ {x, y};\n    }\n};\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout\
-    \ << p.x << ' ' << p.y << '\\n';\n}\n\ntemplate<typename T>\nostream &operator<<(ostream\
+    \ pow((ll)x, (ll)n);\n}\n\ntemplate<typename T1, typename T2, typename M>\nT1\
+    \ pow(T1 x, T2 n, M mod) {\n    x %= mod;\n    T1 res = 1;\n    while (n > 0)\
+    \ {\n        if (n & 1) {\n            assert(not mul_overflow(res, x));\n   \
+    \         res = (res * x) % mod;\n        }\n        assert(not mul_overflow(x,\
+    \ x));\n        x = (x * x) % mod;\n        n >>= 1;\n    }\n    return res;\n\
+    }\n#line 3 \"src/geometry/Point.hpp\"\n\ntemplate<typename T>\nstruct Point {\n\
+    \    T x, y;\n    Point() : x(0), y(0) {\n    }\n    Point(T x, T y) : x(x), y(y)\
+    \ {\n    }\n    Point operator+(const Point &p) {\n        return {x + p.x, y\
+    \ + p.y};\n    }\n    Point operator-(const Point &p) {\n        return {x - p.x,\
+    \ y - p.y};\n    }\n    Point operator*(const Point &p) {\n        return {x *\
+    \ p.x, y * p.y};\n    }\n    Point operator/(const Point &p) {\n        return\
+    \ {x / p.x, y / p.y};\n    }\n    Point &operator+=(const Point &p) {\n      \
+    \  x += p.x, y += p.y;\n        return *this;\n    }\n    Point &operator-=(const\
+    \ Point &p) {\n        x -= p.x, y -= p.y;\n        return *this;\n    }\n   \
+    \ Point &operator*=(const Point &p) {\n        x *= p.x, y *= p.y;\n        return\
+    \ *this;\n    }\n    Point &operator/=(const Point &p) {\n        x /= p.x, y\
+    \ /= p.y;\n        return *this;\n    }\n    bool operator<(const Point &p) {\n\
+    \        return mkp(x, y) < mkp(p.x, p.y);\n    }\n    // \u5B9F\u6570\u306E\u540C\
+    \u5024\u5224\u5B9A\n    // bool operator==(const Point &p) {\n    //     return\
+    \ std::abs(x - p.x) < EPS and std::abs(y - p.y) < EPS;\n    // }\n    // bool\
+    \ operator!=(const Point &p) {\n    //     return std::abs(x - p.x) >= EPS or\
+    \ std::abs(y - p.y) >= EPS;\n    // }\n    // \u6574\u6570\u306E\u540C\u5024\u5224\
+    \u5B9A\n    bool operator==(const Point &p) {\n        return x == p.x and y ==\
+    \ p.y;\n    }\n    bool operator!=(const Point &p) {\n        return x != p.x\
+    \ or y != p.y;\n    }\n    Point operator*(T k) {\n        return {x * k, y *\
+    \ k};\n    }\n    Point operator/(T k) {\n        return {x / k, y / k};\n   \
+    \ }\n    T norm() {\n        return x * x + y * y;\n    }\n    T abs() {\n   \
+    \     return sqrt(norm());\n    }\n    T abs(const Point &p) {\n        return\
+    \ hypot(x - p.x, y - p.y);\n    }\n    // \u6574\u6570\u306E\u307E\u307E\u8DDD\
+    \u96E2\u306E\u5927\u5C0F\u3092\u898B\u305F\u3044\u6642\u306F\u3053\u3063\u3061\
+    \n    T abs2(const Point &p) {\n        return pow(x - p.x, 2) + pow(y - p.y,\
+    \ 2);\n    }\n    T manhattan(const Point &p) {\n        return std::abs(x - p.x)\
+    \ + std::abs(y - p.y);\n    }\n    void print() {\n        cout << x << ' ' <<\
+    \ y << '\\n';\n    }\n    operator pair<T, T>() const {\n        return {x, y};\n\
+    \    }\n};\n\ntemplate<typename T>\nvoid print(Point<T> p) {\n    cout << p.x\
+    \ << ' ' << p.y << '\\n';\n}\n\ntemplate<typename T>\nostream &operator<<(ostream\
     \ &os, const Point<T> &p) {\n    return os << p.x << ' ' << p.y;\n}\n\ntemplate<typename\
     \ T>\nbool operator<(const Point<T> &p1, const Point<T> &p2) {\n    return mkp(p1.x,\
     \ p1.y) < mkp(p2.x, p2.y);\n}\n\ntemplate<typename T>\nbool operator==(const Point<T>\
@@ -121,7 +123,7 @@ data:
   isVerificationFile: false
   path: src/geometry/intersectCC.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2023-12-06 04:35:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/geometry/intersectCC.hpp

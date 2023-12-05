@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/graph/RangeEdgedTwoSAT.hpp
+    title: src/graph/RangeEdgedTwoSAT.hpp
+  - icon: ':warning:'
+    path: src/graph/TwoSAT.hpp
+    title: src/graph/TwoSAT.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -28,15 +34,17 @@ data:
     // \u3000\u3000A|B (\u3053\u308C\u306F\u305D\u306E\u307E\u307E)\n// \u3000\u30FB\
     A xor B (abc327_d,cf1438c)\n// \u3000\u3000A&!B or !A&B -> A|B and !A|!B\n// \u3000\
     \u30FBnot (A and B) (aclpc_h,yukico274)\n// \u3000\u3000!(A&B) -> !A|!B\n// \u3000\
-    \u30FBnot (!A and B) (aclpc_h)\n// \u3000\u3000!(A&!B) -> !A|B\n// \u3000\u30FB\
-    not (A and !B) (aclpc_h)\n// \u3000\u3000!(!A&B) -> A|!B\n// \u3000\u30FBnot (!A\
+    \u30FBnot (A and !B) (aclpc_h)\n// \u3000\u3000!(A&!B) -> !A|B\n// \u3000\u30FB\
+    not (!A and B) (aclpc_h)\n// \u3000\u3000!(!A&B) -> A|!B\n// \u3000\u30FBnot (!A\
     \ and !B) (aclpc_h)\n// \u3000\u3000!(!A&!B) -> A|B\n// \u3000\u30FBA and B (cf1494b)\n\
     // \u3000\u3000A&B -> A|A and B|B\n#include \"atcoder/twosat\"\n"
   dependsOn: []
   isVerificationFile: false
   path: src/acl/twosat.hpp
-  requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  requiredBy:
+  - src/graph/TwoSAT.hpp
+  - src/graph/RangeEdgedTwoSAT.hpp
+  timestamp: '2023-12-05 02:34:33+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/acl/twosat.hpp

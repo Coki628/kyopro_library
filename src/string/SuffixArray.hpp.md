@@ -10,6 +10,9 @@ data:
   - icon: ':warning:'
     path: src/datastructure/SegmentTree.hpp
     title: src/datastructure/SegmentTree.hpp
+  - icon: ':warning:'
+    path: src/datastructure/SparseTable.hpp
+    title: src/datastructure/SparseTable.hpp
   - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
@@ -19,7 +22,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    links: []
+    links:
+    - https://stackoverflow.com/questions/52520276/is-decltype-of-a-non-static-member-function-ill-formed
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.0/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -35,26 +39,30 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/string:\
     \ line -1: no such header\n"
   code: "#pragma once\n#include \"../acl/string.hpp\"\n#include \"../datastructure/SegmentTree.hpp\"\
-    \n#include \"../macros.hpp\"\n\nauto f = [](int a, int b) { return min(a, b);\
-    \ };\n\nstruct SuffixArray {\n    int N;\n    string S;\n    bool use_seg;\n \
-    \   vector<int> sa, rsa, lcp;\n    SegmentTree<int, decltype(f)> seg = get_segment_tree(f,\
-    \ MOD);\n\n    SuffixArray(string S, bool use_seg = true)\n        : S(S),\n \
-    \         N(S.size()),\n          use_seg(use_seg) {\n        sa = atcoder::suffix_array(S);\n\
-    \        rsa.assign(N, 0);\n        rep(i, N) {\n            rsa[sa[i]] = i;\n\
-    \        }\n        lcp = atcoder::lcp_array(S, sa);\n        if (use_seg) {\n\
-    \            seg.build(lcp);\n        }\n    }\n\n    // S[i]\u3068S[j]\u306E\
-    LCP\u3092\u53D6\u5F97\n    int get_lcp(int i, int j) {\n        assert(use_seg);\n\
-    \        int l = rsa[i], r = rsa[j];\n        if (l > r) swap(l, r);\n       \
-    \ return seg.query(l, r);\n    }\n};\n"
+    \n#include \"../datastructure/SparseTable.hpp\"\n#include \"../macros.hpp\"\n\n\
+    struct SuffixArray {\n    int N;\n    string S;\n    bool use_seg;\n    vector<int>\
+    \ sa, rsa, lcp;\n    static int f(int a, int b) {\n        return min(a, b);\n\
+    \    }\n    // \u30AF\u30E9\u30B9\u5185\u95A2\u6570\u3078\u306Edecltype\n    //\
+    \ see: https://stackoverflow.com/questions/52520276/is-decltype-of-a-non-static-member-function-ill-formed\n\
+    \    SegmentTree<int, decltype(&f)> seg = get_segment_tree(&f, MOD);\n\n    SuffixArray(string\
+    \ S, bool use_seg = true)\n        : S(S),\n          N(S.size()),\n         \
+    \ use_seg(use_seg) {\n        sa = atcoder::suffix_array(S);\n        rsa.assign(N,\
+    \ 0);\n        rep(i, N) {\n            rsa[sa[i]] = i;\n        }\n        lcp\
+    \ = atcoder::lcp_array(S, sa);\n        if (use_seg) {\n            seg.build(lcp);\n\
+    \        }\n    }\n\n    // S[i]\u3068S[j]\u306ELCP\u3092\u53D6\u5F97\n    int\
+    \ get_lcp(int i, int j) {\n        assert(use_seg);\n        int l = rsa[i], r\
+    \ = rsa[j];\n        if (l > r) swap(l, r);\n        return seg.query(l, r);\n\
+    \    }\n};\n"
   dependsOn:
   - src/acl/string.hpp
   - src/datastructure/SegmentTree.hpp
   - src/base.hpp
+  - src/datastructure/SparseTable.hpp
   - src/macros.hpp
   isVerificationFile: false
   path: src/string/SuffixArray.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2023-12-06 04:35:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/SuffixArray.hpp

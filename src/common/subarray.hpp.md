@@ -6,6 +6,9 @@ data:
     title: src/base.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/graph/RangeEdgedTwoSAT.hpp
+    title: src/graph/RangeEdgedTwoSAT.hpp
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith: []
@@ -32,6 +35,7 @@ data:
   isVerificationFile: false
   path: src/common/subarray.hpp
   requiredBy:
+  - src/graph/RangeEdgedTwoSAT.hpp
   - src/template.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS

@@ -15,6 +15,9 @@ data:
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
   - icon: ':warning:'
+    path: src/string/RollingHashUpdatable.hpp
+    title: src/string/RollingHashUpdatable.hpp
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith: []
@@ -42,18 +45,21 @@ data:
     \n\nll pow(ll x, ll n) {\n    ll res = 1;\n    rep(_, n) res *= x;\n    return\
     \ res;\n}\n\nll pow(int x, ll n) {\n    return pow((ll)x, n);\n}\n\nll pow(ll\
     \ x, int n) {\n    return pow(x, (ll)n);\n}\n\nll pow(int x, int n) {\n    return\
-    \ pow((ll)x, (ll)n);\n}\n\ntemplate<typename T1, typename T2>\nT1 pow(T1 x, T1\
-    \ n, T2 mod) {\n    x %= mod;\n    T1 res = 1;\n    while (n > 0) {\n        if\
-    \ (n & 1) {\n            res = (res * x) % mod;\n        }\n        x = (x * x)\
-    \ % mod;\n        n >>= 1;\n    }\n    return res;\n}\n"
+    \ pow((ll)x, (ll)n);\n}\n\ntemplate<typename T1, typename T2, typename M>\nT1\
+    \ pow(T1 x, T2 n, M mod) {\n    x %= mod;\n    T1 res = 1;\n    while (n > 0)\
+    \ {\n        if (n & 1) {\n            assert(not mul_overflow(res, x));\n   \
+    \         res = (res * x) % mod;\n        }\n        assert(not mul_overflow(x,\
+    \ x));\n        x = (x * x) % mod;\n        n >>= 1;\n    }\n    return res;\n\
+    }\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\nll pow(ll x, ll n) {\n    ll\
     \ res = 1;\n    rep(_, n) res *= x;\n    return res;\n}\n\nll pow(int x, ll n)\
     \ {\n    return pow((ll)x, n);\n}\n\nll pow(ll x, int n) {\n    return pow(x,\
     \ (ll)n);\n}\n\nll pow(int x, int n) {\n    return pow((ll)x, (ll)n);\n}\n\ntemplate<typename\
-    \ T1, typename T2>\nT1 pow(T1 x, T1 n, T2 mod) {\n    x %= mod;\n    T1 res =\
-    \ 1;\n    while (n > 0) {\n        if (n & 1) {\n            res = (res * x) %\
-    \ mod;\n        }\n        x = (x * x) % mod;\n        n >>= 1;\n    }\n    return\
-    \ res;\n}\n"
+    \ T1, typename T2, typename M>\nT1 pow(T1 x, T2 n, M mod) {\n    x %= mod;\n \
+    \   T1 res = 1;\n    while (n > 0) {\n        if (n & 1) {\n            assert(not\
+    \ mul_overflow(res, x));\n            res = (res * x) % mod;\n        }\n    \
+    \    assert(not mul_overflow(x, x));\n        x = (x * x) % mod;\n        n >>=\
+    \ 1;\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -61,9 +67,10 @@ data:
   path: src/common/pow.hpp
   requiredBy:
   - src/numbers/bsgs.hpp
+  - src/string/RollingHashUpdatable.hpp
   - src/geometry/intersectCC.hpp
   - src/template.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2023-12-06 04:35:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/pow.hpp
