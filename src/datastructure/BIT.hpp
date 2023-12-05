@@ -4,7 +4,7 @@
 // Binary Indexed Tree
 template<typename T>
 class BIT {
-private:
+protected:
     int n;
     vector<T> dat;
 
@@ -12,7 +12,7 @@ public:
     BIT() = default;
 
     explicit BIT(int n) : n(n) {
-        dat.assign(n + 1, 0);
+        dat.assign(n + 1, T());
     }
 
     explicit BIT(const vector<T> &v) : BIT((int)v.size()) {
@@ -47,29 +47,36 @@ public:
 
     // 区間和の取得 [l, r)
     T query(int l, int r) {
-        if (l >= r) return 0;
+        if (l >= r) return T();
         return sum(r) - sum(l);
     }
 
-    T get(int i) {
-        return query(i, i + 1);
+    virtual T get(int i) {
+        // return query(i, i + 1);
+        // BITの高速な1点取得
+        // see: https://twitter.com/KakurenboUni/status/1643832177690550273
+        T s = this->dat[i + 1];
+        if (i & 1) {
+            int j = i;
+            i++;
+            i -= i & -i;
+            for (; j > i; j -= j & -j) {
+                s -= this->dat[j];
+            }
+        }
+        return s;
     }
 
     void update(int i, T x) {
-        add(i, x - get(i));
+        add(i, x - this->get(i));
     }
 
     T operator[](int i) {
-        return query(i, i + 1);
+        return this->get(i);
     }
 
-    void print(int n = -1) {
-        if (n == -1) n = this->n;
-        rep(i, n) {
-            cout << query(i, i + 1);
-            if (i == n - 1) cout << endl;
-            else cout << ' ';
-        }
+    int size() {
+        return n;
     }
 
     // log2つの旧仕様。新仕様である程度確認が取れたら削除。
@@ -169,3 +176,14 @@ public:
         return i;
     }
 };
+
+template<typename T>
+ostream &operator<<(ostream &os, BIT<T> &bit) {
+    rep(i, bit.size()) {
+        os << bit[i];
+        if (i != bit.size() - 1) {
+            os << ' ';
+        }
+    }
+    return os;
+}

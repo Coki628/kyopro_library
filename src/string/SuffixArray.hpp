@@ -1,16 +1,20 @@
 #pragma once
 #include "../acl/string.hpp"
 #include "../datastructure/SegmentTree.hpp"
+#include "../datastructure/SparseTable.hpp"
 #include "../macros.hpp"
-
-auto f = [](int a, int b) { return min(a, b); };
 
 struct SuffixArray {
     int N;
     string S;
     bool use_seg;
     vector<int> sa, rsa, lcp;
-    SegmentTree<int, decltype(f)> seg = get_segment_tree(f, MOD);
+    static int f(int a, int b) {
+        return min(a, b);
+    }
+    // クラス内関数へのdecltype
+    // see: https://stackoverflow.com/questions/52520276/is-decltype-of-a-non-static-member-function-ill-formed
+    SegmentTree<int, decltype(&f)> seg = get_segment_tree(&f, MOD);
 
     SuffixArray(string S, bool use_seg = true)
         : S(S),

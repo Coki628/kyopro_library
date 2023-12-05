@@ -21,7 +21,7 @@ struct RangeEdgedTwoSAT : public TwoSAT {
         }
     }
 
-    void add_clause(int i, bool f, int j, bool g) {
+    void add_clause(int i, bool f, int j, bool g) override {
         base_type::add_clause(i + n, f, j + n, g);
     }
 

@@ -66,7 +66,7 @@ public:
         }
     }
 
-    T sum(int r) {
+    T sum(int r) override {
         T s = T();
         int p = sz;
         Node *cur = root;
@@ -102,6 +102,10 @@ public:
             }
             p >>= 1;
         }
+    }
+
+    T get(int i) override {
+        return BIT<T>::query(i, i + 1);
     }
 
     Node *save() {

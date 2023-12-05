@@ -1,27 +1,32 @@
 #pragma once
 #include "../base.hpp"
 
+// ロリハ
 // see: https://ei1333.github.io/library/string/rolling-hash.hpp
 struct RollingHash {
-    static const uint64_t mod = (1ull << 61ull) - 1;
+    static const ull mod = (1ull << 61ull) - 1;
     using uint128_t = __uint128_t;
-    vector<uint64_t> power;
-    const uint64_t base;
+    vector<ull> power;
+    const ull base;
 
-    static inline uint64_t add(uint64_t a, uint64_t b) {
+    static inline ull add(ull a, ull b) {
         if ((a += b) >= mod) a -= mod;
         return a;
     }
 
-    static inline uint64_t mul(uint64_t a, uint64_t b) {
+    static inline ull sub(ull a, ull b) {
+        return add(a, mod - b);
+    }
+
+    static inline ull mul(ull a, ull b) {
         uint128_t c = (uint128_t)a * b;
         return add(c >> 61, c & mod);
     }
 
     // 2^61-1以下の乱数を返す。これをbaseとするとHackされにくい
-    static inline uint64_t generate_base() {
+    static inline ull generate_base() {
         mt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());
-        uniform_int_distribution<uint64_t> rand(1, RollingHash::mod - 1);
+        uniform_int_distribution<ull> rand(1, RollingHash::mod - 1);
         return rand(mt);
     }
 
@@ -36,46 +41,45 @@ struct RollingHash {
     }
 
     // 基数baseのローリングハッシュを構築する
-    explicit RollingHash(uint64_t base = generate_base())
-        : base(base),
-          power{1} {
-    }
+    explicit RollingHash(ull base = generate_base()) : base(base), power{1} {}
 
     // 文字列sのハッシュテーブルを返す：O(n)
-    vector<uint64_t> build(const string &s) const {
+    vector<ull> build(const string &s) const {
         int sz = s.size();
-        vector<uint64_t> hashed(sz + 1);
+        vector<ull> table(sz + 1);
         for (int i = 0; i < sz; i++) {
-            hashed[i + 1] = add(mul(hashed[i], base), s[i]);
+            table[i + 1] = add(mul(table[i], base), s[i]);
         }
-        return hashed;
+        return table;
     }
 
     template<typename T>
-    vector<uint64_t> build(const vector<T> &s) const {
+    vector<ull> build(const vector<T> &s) const {
         int sz = s.size();
-        vector<uint64_t> hashed(sz + 1);
+        vector<ull> table(sz + 1);
         for (int i = 0; i < sz; i++) {
-            hashed[i + 1] = add(mul(hashed[i], base), s[i]);
+            table[i + 1] = add(mul(table[i], base), s[i]);
         }
-        return hashed;
+        return table;
     }
 
-    // sの区間[l,r)のハッシュ値を返す：O(1)
-    uint64_t query(const vector<uint64_t> &s, int l, int r) {
+    // tableの区間[l,r)のハッシュ値を返す：O(1)
+    ull query(const vector<ull> &table, int l, int r) {
         expand(r - l);
-        return add(s[r], mod - mul(s[l], power[r - l]));
+        return sub(table[r], mul(table[l], power[r - l]));
     }
 
     // ハッシュ値h1と長さh2lenのハッシュ値h2を結合する
-    uint64_t combine(uint64_t h1, uint64_t h2, size_t h2len) {
+    ull combine(ull h1, ull h2, size_t h2len) {
         expand(h2len);
         return add(mul(h1, power[h2len]), h2);
     }
 
     // ハッシュテーブルaの区間[l1,r1)と、ハッシュテーブルbの区間[l2,r2)の文字列の最長共通接頭辞の長さを返す：O(logn)
-    int lcp(const vector<uint64_t> &a, int l1, int r1, const vector<uint64_t> &b,
-        int l2, int r2) {
+    int lcp(
+        const vector<ull> &a, int l1, int r1,
+        const vector<ull> &b, int l2, int r2
+    ) {
         int len = min(r1 - l1, r2 - l2);
         int low = 0, high = len + 1;
         while (high - low > 1) {
@@ -86,26 +90,37 @@ struct RollingHash {
         return low;
     }
 
-    uint64_t get_hash(const string &s, int l, int r) {
+    ull get_hash(const string &s, int l, int r) {
         auto table = build(s);
         return query(table, l, r);
     }
 
     template<typename T>
-    uint64_t get_hash(const vector<T> &s, int l, int r) {
+    ull get_hash(const vector<T> &s, int l, int r) {
         auto table = build(s);
         return query(table, l, r);
     }
 
+    ull get_hash(const string &s) {
+        auto table = build(s);
+        return query(table, 0, s.size());
+    }
+
+    template<typename T>
+    ull get_hash(const vector<T> &s) {
+        auto table = build(s);
+        return query(table, 0, s.size());
+    }
+
     // 長さlenの文字列のhashのx文字目(0-indexed)をaからbに変える
-    uint64_t update(uint64_t &hash, int len, int x, char a, char b) {
-        if (b >= a) return hash = add(hash, mul(b - a, power[len - x - 1]));
-        else return hash = add(hash, mul(mod + (b - a), power[len - x - 1]));
+    template<typename T>
+    ull update(ull &hash, int len, int x, T a, T b) {
+        return hash = add(hash, mul(sub(b, a), power[len - x - 1]));
     }
 
     // テーブルaの区間[l,r)の回文判定(aを反転させたテーブルrevも渡す)
     bool is_palindrome(
-        const vector<uint64_t> &a, const vector<uint64_t> &rev, int l, int r
+        const vector<ull> &a, const vector<ull> &rev, int l, int r
     ) {
         int n = (int)a.size() - 1;
         assert(r <= n);

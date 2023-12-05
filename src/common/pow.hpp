@@ -19,14 +19,16 @@ ll pow(int x, int n) {
     return pow((ll)x, (ll)n);
 }
 
-template<typename T1, typename T2>
-T1 pow(T1 x, T1 n, T2 mod) {
+template<typename T1, typename T2, typename M>
+T1 pow(T1 x, T2 n, M mod) {
     x %= mod;
     T1 res = 1;
     while (n > 0) {
         if (n & 1) {
+            assert(not mul_overflow(res, x));
             res = (res * x) % mod;
         }
+        assert(not mul_overflow(x, x));
         x = (x * x) % mod;
         n >>= 1;
     }

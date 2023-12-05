@@ -2,16 +2,16 @@
 #include "../macros.hpp"
 
 // スパーステーブル：構築にO(NlogN)、区間取得にO(1)
-template<typename T, typename F, typename E>
+template<typename T, typename F>
 struct SparseTable {
     const F f;
-    const E e;
+    const T e;
     vv<T> dat;
     vector<int> height;
 
-    SparseTable(const F f) : f(f) {}
+    SparseTable(const F f, const T e) : f(f), e(e) {}
 
-    SparseTable(const vector<T> &A, const F f, const E e) : f(f), e(e) {
+    SparseTable(const vector<T> &A, const F f, const T e) : f(f), e(e) {
         build(A);
     }
 
@@ -91,7 +91,12 @@ struct SparseTable {
     // stmx.bisearch_back(l, r, x, greater<ll>());
 };
 
-template<typename T, typename F, typename E>
-SparseTable<T, F, E> get_sparse_table(vector<T> &A, const F &f, const E &e) {
+template<typename T, typename F>
+SparseTable<T, F> get_sparse_table(vector<T> &A, const F &f, const T &e) {
     return {A, f, e};
+}
+
+template<typename T, typename F>
+SparseTable<T, F> get_sparse_table(const F &f, const T &e) {
+    return {f, e};
 }
