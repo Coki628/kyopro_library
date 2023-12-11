@@ -44,6 +44,13 @@ public:
         }
     }
 
+    // 頂点uからvに向かって1つ進んだ頂点を返す
+    int next(int u, int v) {
+        // assert(lca(u, v) == u);
+        int d = dist(u, v);
+        return la(v, d - 1);
+    }
+
     int dist(int u, int v) const {
         return dep[u] + dep[v] - 2 * dep[lca(u, v)];
     }

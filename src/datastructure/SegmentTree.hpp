@@ -4,13 +4,13 @@
 template<typename Monoid, typename F>
 struct SegmentTree {
 
-    int sz;
+    int sz, n;
     vector<Monoid> seg;
 
     const F f;
     const Monoid M1;
 
-    SegmentTree(int n, const F f, const Monoid &M1) : f(f), M1(M1) {
+    SegmentTree(int n, const F f, const Monoid &M1) : n(n), f(f), M1(M1) {
         sz = 1;
         while (sz < n) sz <<= 1;
         seg.assign(2 * sz, M1);
@@ -26,6 +26,7 @@ struct SegmentTree {
     }
 
     void resize(int n) {
+        this->n = n;
         sz = 1;
         while (sz < n) sz <<= 1;
         seg.resize(2 * sz, M1);
@@ -46,7 +47,7 @@ struct SegmentTree {
     }
 
     void build(const vector<Monoid> &A) {
-        int n = A.size();
+        n = A.size();
         resize(n);
         rep(i, n) set(i, A[i]);
         build();
@@ -77,12 +78,8 @@ struct SegmentTree {
         return seg[1];
     }
 
-    void print(int n) {
-        for (int i = 0; i < n; i++) {
-            cout << query(i, i + 1);
-            if (i == n - 1) cout << endl;
-            else cout << ' ';
-        }
+    int size() {
+        return n;
     }
 
     template<typename C>
@@ -147,7 +144,21 @@ SegmentTree<Monoid, F> get_segment_tree(const F &f, const Monoid &M1) {
 }
 
 template<typename Monoid, typename F>
-SegmentTree<Monoid, F>
-get_segment_tree(const vector<Monoid> &A, const F &f, const Monoid &M1) {
+SegmentTree<Monoid, F> get_segment_tree(
+    const vector<Monoid> &A,
+    const F &f,
+    const Monoid &M1
+) {
     return {A, f, M1};
+}
+
+template<typename Monoid, typename F>
+ostream &operator<<(ostream &os, SegmentTree<Monoid, F> &seg) {
+    rep(i, seg.size()) {
+        os << seg[i];
+        if (i != seg.size() - 1) {
+            os << ' ';
+        }
+    }
+    return os;
 }

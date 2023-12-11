@@ -38,7 +38,10 @@ struct AnnealingManager {
     // 焼きなましに使う温度の計算
     double calc_temp(int elapsed) {
         double t = elapsed / (double)TL;
-        assert(t < 1);
+        if (t > 1) {
+            // 時間切れは温度0にしとくか(採用0)
+            return 0;
+        }
         if (temp_type == 1) {
             // 線形っぽく減る
             return T0 + (T1 - T0) * t;

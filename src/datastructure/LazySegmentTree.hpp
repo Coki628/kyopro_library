@@ -5,7 +5,7 @@
 // 参考：https://ei1333.github.io/library/structure/segment-tree/lazy-segment-tree.cpp
 template<typename F, typename G, typename H, typename Monoid, typename OperatorMonoid>
 struct LazySegmentTree {
-    int sz, height;
+    int sz, height, n;
     vector<Monoid> data;
     vector<OperatorMonoid> lazy;
     const F f;
@@ -18,7 +18,8 @@ struct LazySegmentTree {
         int n, const F f, const G g, const H h, const Monoid &M1,
         const OperatorMonoid OM0
     )
-        : f(f),
+        : n(n),
+          f(f),
           g(g),
           h(h),
           M1(M1),
@@ -64,7 +65,7 @@ struct LazySegmentTree {
     }
 
     void build(const vector<Monoid> &A) {
-        int n = A.size();
+        n = A.size();
         sz = 1;
         height = 0;
         while (sz < n) sz <<= 1, height++;
@@ -119,24 +120,26 @@ struct LazySegmentTree {
     }
 
     Monoid operator[](const int &k) {
-        return query(k, k + 1);
+        return this->get(k);
     }
 
-    Monoid get(const int &k) {
-        return query(k, k + 1);
+    Monoid get(int k) {
+        assert(0 <= k and k < n);
+        thrust(k += sz);
+        return apply(k);
+        // return query(k, k + 1);
+    }
+
+    Monoid all() {
+        return apply(1);
+    }
+
+    int size() {
+        return n;
     }
 
     void update(int i, const OperatorMonoid &x) {
         update(i, i + 1, x);
-    }
-
-    template<typename P = ll>
-    void print(int n) {
-        for (int i = 0; i < n; i++) {
-            cout << (P)query(i, i + 1);
-            if (i == n - 1) cout << endl;
-            else cout << ' ';
-        }
     }
 
     template<typename C>
@@ -191,11 +194,6 @@ struct LazySegmentTree {
         }
         return -1;
     }
-
-    // なんかちゃんと動かない。そのうち内部実装ちゃんと見る。
-    // Monoid all() {
-    //     return data[1];
-    // }
 };
 
 template<typename F, typename G, typename H, typename T, typename E>
@@ -218,4 +216,15 @@ LazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(
     const E &ei
 ) {
     return {A, f, g, h, ti, ei};
+}
+
+template<typename F, typename G, typename H, typename T, typename E>
+ostream &operator<<(ostream &os, LazySegmentTree<F, G, H, T, E> &seg) {
+    rep(i, seg.size()) {
+        os << seg[i];
+        if (i != seg.size() - 1) {
+            os << ' ';
+        }
+    }
+    return os;
 }

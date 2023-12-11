@@ -2,14 +2,14 @@
 #include "../macros.hpp"
 
 // なもりグラフの閉路検出：O(N)
-// cycle[u] := 頂点uがなもりの閉路に含まれるかどうか
+// cycle := なもりの閉路の頂点集合(経路順に並ぶので、この持ち方だと辺も分かる)
 vector<int> cycle_detection_for_namori(vvi nodes) {
     int N = nodes.size();
-    vector<int> visited(N), cycle(N);
+    vector<int> visited(N), cycle;
     bool end = false;
     auto dfs = [&](auto &&f, int u, int prv) -> bool {
         if (visited[u]) {
-            cycle[u] = true;
+            cycle.eb(u);
             return true;
         }
         visited[u] = true;
@@ -18,8 +18,8 @@ vector<int> cycle_detection_for_namori(vvi nodes) {
             if (f(f, v, u)) {
                 if (not end) {
                     // 終端の頂点に戻ってくるまでの頂点を追加する
-                    if (not cycle[u]) {
-                        cycle[u] = true;
+                    if (u != cycle[0]) {
+                        cycle.eb(u);
                     } else {
                         end = true;
                     }
