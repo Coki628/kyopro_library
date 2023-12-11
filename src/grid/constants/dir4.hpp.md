@@ -42,10 +42,10 @@ data:
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/grid/constants/dir4.hpp\"\
-    \n\n// 4\u65B9\u5411\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0,\
-    \ 1}};\n"
-  code: "#pragma once\n#include \"../../macros.hpp\"\n\n// 4\u65B9\u5411\nconst vector<pii>\
-    \ dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n"
+    \n\n// 4\u65B9\u5411(\u4E0A\u4E0B\u5DE6\u53F3)\nconst vector<pii> dir4 = {{-1,\
+    \ 0}, {1, 0}, {0, -1}, {0, 1}};\n"
+  code: "#pragma once\n#include \"../../macros.hpp\"\n\n// 4\u65B9\u5411(\u4E0A\u4E0B\
+    \u5DE6\u53F3)\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -53,10 +53,10 @@ data:
   path: src/grid/constants/dir4.hpp
   requiredBy:
   - src/template.hpp
-  - src/grid/bfs.hpp
-  - src/grid/constants/directions.hpp
   - src/grid/dijkstra.hpp
-  timestamp: '2023-05-22 19:11:30+09:00'
+  - src/grid/constants/directions.hpp
+  - src/grid/bfs.hpp
+  timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/constants/dir4.hpp

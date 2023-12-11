@@ -207,11 +207,15 @@ data:
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 4 \"src/template.hpp\"\
-    \n\n// from common\n#line 3 \"src/common/Compress.hpp\"\n\n// \u5EA7\u6A19\u5727\
-    \u7E2E(\u4E8C\u5206\u63A2\u7D22\u30D9\u30FC\u30B9)\ntemplate<typename T>\nstruct\
-    \ Compress {\n    int N;\n    vector<T> dat;\n    bool built = false;\n\n    Compress()\
-    \ {}\n\n    Compress(const vector<T> &A) : dat(A) {\n        build();\n    }\n\
-    \n    void build() {\n        sort(dat.begin(), dat.end());\n        dat.erase(unique(dat.begin(),\
+    \n\n// from common\n#line 3 \"src/common/bisect.hpp\"\n\ntemplate<typename T>\n\
+    int bisect_left(const vector<T> &A, T val, int lo = 0) {\n    return lower_bound(A.begin()\
+    \ + lo, A.end(), val) - A.begin();\n}\n\ntemplate<typename T>\nint bisect_right(const\
+    \ vector<T> &A, T val, int lo = 0) {\n    return upper_bound(A.begin() + lo, A.end(),\
+    \ val) - A.begin();\n}\n#line 4 \"src/common/Compress.hpp\"\n\n// \u5EA7\u6A19\
+    \u5727\u7E2E(\u4E8C\u5206\u63A2\u7D22\u30D9\u30FC\u30B9)\ntemplate<typename T>\n\
+    struct Compress {\n    int N;\n    vector<T> dat;\n    bool built = false;\n\n\
+    \    Compress() {}\n\n    Compress(const vector<T> &A) : dat(A) {\n        build();\n\
+    \    }\n\n    void build() {\n        sort(dat.begin(), dat.end());\n        dat.erase(unique(dat.begin(),\
     \ dat.end()), dat.end());\n        N = dat.size();\n        built = true;\n  \
     \  }\n\n    void add(T x) {\n        assert(not built);\n        dat.eb(x);\n\
     \    }\n\n    int zip(T x) {\n        assert(built);\n        return bisect_left(dat,\
@@ -413,32 +417,28 @@ data:
     \   if (func(mid)) {\n            // \u4E0A\u3092\u63A2\u3057\u306B\u884C\u304F\
     \n            ok = mid;\n        } else {\n            // \u4E0B\u3092\u63A2\u3057\
     \u306B\u884C\u304F\n            ng = mid;\n        }\n    }\n    return ok;\n\
-    }\n#line 3 \"src/common/bisect.hpp\"\n\ntemplate<typename T>\nint bisect_left(const\
-    \ vector<T> &A, T val, int lo = 0) {\n    return lower_bound(A.begin() + lo, A.end(),\
-    \ val) - A.begin();\n}\n\ntemplate<typename T>\nint bisect_right(const vector<T>\
-    \ &A, T val, int lo = 0) {\n    return upper_bound(A.begin() + lo, A.end(), val)\
-    \ - A.begin();\n}\n#line 3 \"src/common/bit_length.hpp\"\n\nint bit_length(ll\
-    \ x) {\n    int res = 0;\n    while (x) {\n        res++;\n        x /= 2;\n \
-    \   }\n    return res;\n}\n#line 2 \"src/common/ceil.hpp\"\n\ntemplate<typename\
-    \ T>\nT ceil(T a, T b) {\n    if (a >= 0) return (a + b - 1) / b;\n    else return\
-    \ a / b;\n}\n#line 2 \"src/common/chmax.hpp\"\n\ntemplate<typename T>\nbool chmax(T\
-    \ &x, T y) {\n    return (y > x) ? x = y, true : false;\n}\n#line 2 \"src/common/chmin.hpp\"\
-    \n\ntemplate<typename T>\nbool chmin(T &x, T y) {\n    return (y < x) ? x = y,\
-    \ true : false;\n}\n#line 3 \"src/common/concat.hpp\"\n\n// \u914D\u5217\u306E\
-    \u9023\u7D50\ntemplate<typename T, typename... Ts>\nvector<T> concat(const vector<T>\
-    \ &A, const vector<T> &B, Ts... args) {\n    vector<T> res = A;\n    res.insert(res.end(),\
-    \ B.begin(), B.end());\n    if constexpr (sizeof...(Ts) == 0) {\n        return\
-    \ res;\n    } else {\n        return concat(res, args...);\n    }\n}\n#line 3\
-    \ \"src/common/divmod.hpp\"\n\ntemplate<typename T>\npair<T, T> divmod(T a, T\
-    \ b) {\n    T d = a / b;\n    T m = a % b;\n    return {d, m};\n}\n#line 3 \"\
-    src/common/input.hpp\"\n\n// pair\u5165\u529B\u4E00\u62EC\u53D7\u3051\u53D6\u308A\
-    \ntemplate<typename T1, typename T2>\nistream &operator>>(istream &is, pair<T1,\
-    \ T2> &p) {\n    is >> p.first >> p.second;\n    return is;\n}\n\n// vector\u5165\
-    \u529B\u4E00\u62EC\u53D7\u3051\u53D6\u308A\ntemplate<typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v) {\n    for (T &in : v) is >> in;\n    return is;\n}\n\n//\
-    \ \u203B\u6700\u8FD1\u306F\u3082\u3046\u305A\u3063\u3068vector\u306E\u53D7\u3051\
-    \u53D6\u308A\u306Foperator>>\u306A\u306E\u3067\u3001\u3053\u308C\u306F\u3082\u3046\
-    \u8981\u3089\u306A\u3044\u304B\u3082\u3002\n// template<typename T = ll>\n// vector<T>\
+    }\n#line 3 \"src/common/bit_length.hpp\"\n\nint bit_length(ll x) {\n    int res\
+    \ = 0;\n    while (x) {\n        res++;\n        x /= 2;\n    }\n    return res;\n\
+    }\n#line 2 \"src/common/ceil.hpp\"\n\ntemplate<typename T>\nT ceil(T a, T b) {\n\
+    \    if (a >= 0) return (a + b - 1) / b;\n    else return a / b;\n}\n#line 2 \"\
+    src/common/chmax.hpp\"\n\ntemplate<typename T>\nbool chmax(T &x, T y) {\n    return\
+    \ (y > x) ? x = y, true : false;\n}\n#line 2 \"src/common/chmin.hpp\"\n\ntemplate<typename\
+    \ T>\nbool chmin(T &x, T y) {\n    return (y < x) ? x = y, true : false;\n}\n\
+    #line 3 \"src/common/concat.hpp\"\n\n// \u914D\u5217\u306E\u9023\u7D50\ntemplate<typename\
+    \ T, typename... Ts>\nvector<T> concat(const vector<T> &A, const vector<T> &B,\
+    \ Ts... args) {\n    vector<T> res = A;\n    res.insert(res.end(), B.begin(),\
+    \ B.end());\n    if constexpr (sizeof...(Ts) == 0) {\n        return res;\n  \
+    \  } else {\n        return concat(res, args...);\n    }\n}\n#line 3 \"src/common/divmod.hpp\"\
+    \n\ntemplate<typename T>\npair<T, T> divmod(T a, T b) {\n    T d = a / b;\n  \
+    \  T m = a % b;\n    return {d, m};\n}\n#line 3 \"src/common/input.hpp\"\n\n//\
+    \ pair\u5165\u529B\u4E00\u62EC\u53D7\u3051\u53D6\u308A\ntemplate<typename T1,\
+    \ typename T2>\nistream &operator>>(istream &is, pair<T1, T2> &p) {\n    is >>\
+    \ p.first >> p.second;\n    return is;\n}\n\n// vector\u5165\u529B\u4E00\u62EC\
+    \u53D7\u3051\u53D6\u308A\ntemplate<typename T>\nistream &operator>>(istream &is,\
+    \ vector<T> &v) {\n    for (T &in : v) is >> in;\n    return is;\n}\n\n// \u203B\
+    \u6700\u8FD1\u306F\u3082\u3046\u305A\u3063\u3068vector\u306E\u53D7\u3051\u53D6\
+    \u308A\u306Foperator>>\u306A\u306E\u3067\u3001\u3053\u308C\u306F\u3082\u3046\u8981\
+    \u3089\u306A\u3044\u304B\u3082\u3002\n// template<typename T = ll>\n// vector<T>\
     \ LIST(ll N) {\n//     vector<T> A(N);\n//     rep(i, N) {\n//         cin >>\
     \ A[i];\n//     }\n//     return A;\n// }\n#line 3 \"src/common/to_string.hpp\"\
     \n\nstring to_string(const string &S) {\n    return S;\n}\n\nstring to_string(char\
@@ -731,32 +731,32 @@ data:
     \u30EB\u30FC\u30D7\u756A\u53F7\u3092\u53D6\u5F97\n    vector<int> get_info() {\n\
     \        vector<int> res(n);\n        rep(i, n) {\n            res[i] = find(i);\n\
     \        }\n        return res;\n    }\n};\n#line 48 \"src/template.hpp\"\n\n\
-    // from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\n\n// 4\u65B9\u5411\nconst\
-    \ vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n#line 3 \"src/grid/constants/directions.hpp\"\
-    \n\n// \u5F8C\u65B9\u4E92\u63DB\u7528\n#define directions dir4\n#line 3 \"src/grid/gridtoid.hpp\"\
-    \n\n// \u30B0\u30EA\u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll\
-    \ j, ll W) {\n    return i * W + j;\n}\n#line 4 \"src/grid/idtogrid.hpp\"\n\n\
-    // \u5217\u21D2\u30B0\u30EA\u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W)\
-    \ {\n    return divmod(id, W);\n}\n#line 53 \"src/template.hpp\"\n\n// from mystl\n\
-    #line 4 \"src/mystl/Deque.hpp\"\n\ntemplate<typename _Tp>\nstruct Deque : deque<_Tp>\
-    \ {\n    using deque<_Tp>::deque;\n    _Tp pop_front() {\n        _Tp res = this->front();\n\
-    \        deque<_Tp>::pop_front();\n        return res;\n    }\n    _Tp pop_back()\
-    \ {\n        _Tp res = this->back();\n        deque<_Tp>::pop_back();\n      \
-    \  return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const Deque<T> &que)\
-    \ {\n    vector<T> V(que.begin(), que.end());\n    print(V);\n}\n#line 4 \"src/mystl/Multiset.hpp\"\
-    \n\ntemplate<typename _Key>\nstruct Multiset : multiset<_Key> {\n    using multiset<_Key>::multiset;\n\
-    \    _Key front() {\n        assert(this->size());\n        return *this->begin();\n\
-    \    }\n    _Key pop_front() {\n        _Key res = this->front();\n        //\
-    \ \u7A7A\u306E\u6642\u306B\u3053\u306E\u64CD\u4F5C\u3092\u3084\u308B\u3068\u63D0\
-    \u51FA\u30D3\u30EB\u30C9\u3060\u3068RE\u3058\u3083\u306A\u304F\u3066TLE\u306B\u306A\
-    \u308B\u2026\u3002\n        multiset<_Key>::erase(this->begin());\n        return\
-    \ res;\n    }\n    _Key back() {\n        assert(this->size());\n        return\
-    \ *this->rbegin();\n    }\n    _Key pop_back() {\n        _Key res = this->back();\n\
-    \        multiset<_Key>::erase(prev(this->end()));\n        return res;\n    }\n\
-    \    // count\u304CO(\u500B\u6570)\u3068\u306E\u8A71\u304C\u3042\u308B\u305F\u3081\
-    \u5FF5\u306E\u305F\u3081\u4F5C\u3063\u3066\u304A\u304F\n    bool exist(_Key x)\
-    \ {\n        return this->find(x) != this->end();\n    }\n    // 1\u500B\u524A\
-    \u9664\n    auto erase(_Key x) {\n        return multiset<_Key>::erase(this->find(x));\n\
+    // from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\n\n// 4\u65B9\u5411(\u4E0A\
+    \u4E0B\u5DE6\u53F3)\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n\
+    #line 3 \"src/grid/constants/directions.hpp\"\n\n// \u5F8C\u65B9\u4E92\u63DB\u7528\
+    \n#define directions dir4\n#line 3 \"src/grid/gridtoid.hpp\"\n\n// \u30B0\u30EA\
+    \u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll j, ll W) {\n    return\
+    \ i * W + j;\n}\n#line 4 \"src/grid/idtogrid.hpp\"\n\n// \u5217\u21D2\u30B0\u30EA\
+    \u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W) {\n    return divmod(id, W);\n\
+    }\n#line 53 \"src/template.hpp\"\n\n// from mystl\n#line 4 \"src/mystl/Deque.hpp\"\
+    \n\ntemplate<typename _Tp>\nstruct Deque : deque<_Tp> {\n    using deque<_Tp>::deque;\n\
+    \    _Tp pop_front() {\n        _Tp res = this->front();\n        deque<_Tp>::pop_front();\n\
+    \        return res;\n    }\n    _Tp pop_back() {\n        _Tp res = this->back();\n\
+    \        deque<_Tp>::pop_back();\n        return res;\n    }\n};\n\ntemplate<typename\
+    \ T>\nvoid print(const Deque<T> &que) {\n    vector<T> V(que.begin(), que.end());\n\
+    \    print(V);\n}\n#line 4 \"src/mystl/Multiset.hpp\"\n\ntemplate<typename _Key>\n\
+    struct Multiset : multiset<_Key> {\n    using multiset<_Key>::multiset;\n    _Key\
+    \ front() {\n        assert(this->size());\n        return *this->begin();\n \
+    \   }\n    _Key pop_front() {\n        _Key res = this->front();\n        // \u7A7A\
+    \u306E\u6642\u306B\u3053\u306E\u64CD\u4F5C\u3092\u3084\u308B\u3068\u63D0\u51FA\
+    \u30D3\u30EB\u30C9\u3060\u3068RE\u3058\u3083\u306A\u304F\u3066TLE\u306B\u306A\u308B\
+    \u2026\u3002\n        multiset<_Key>::erase(this->begin());\n        return res;\n\
+    \    }\n    _Key back() {\n        assert(this->size());\n        return *this->rbegin();\n\
+    \    }\n    _Key pop_back() {\n        _Key res = this->back();\n        multiset<_Key>::erase(prev(this->end()));\n\
+    \        return res;\n    }\n    // count\u304CO(\u500B\u6570)\u3068\u306E\u8A71\
+    \u304C\u3042\u308B\u305F\u3081\u5FF5\u306E\u305F\u3081\u4F5C\u3063\u3066\u304A\
+    \u304F\n    bool exist(_Key x) {\n        return this->find(x) != this->end();\n\
+    \    }\n    // 1\u500B\u524A\u9664\n    auto erase(_Key x) {\n        return multiset<_Key>::erase(this->find(x));\n\
     \    }\n};\n\ntemplate<typename T>\nvoid print(const Multiset<T> &se) {\n    vector<T>\
     \ V(se.begin(), se.end());\n    print(V);\n}\n#line 3 \"src/mystl/PriorityQueue.hpp\"\
     \n\ntemplate<typename _Tp, typename _Sequence = vector<_Tp>, typename _Compare\
@@ -907,65 +907,67 @@ data:
     \ &operator<<(ostream &os, BIT<T> &bit) {\n    rep(i, bit.size()) {\n        os\
     \ << bit[i];\n        if (i != bit.size() - 1) {\n            os << ' ';\n   \
     \     }\n    }\n    return os;\n}\n#line 3 \"src/datastructure/SegmentTree.hpp\"\
-    \n\ntemplate<typename Monoid, typename F>\nstruct SegmentTree {\n\n    int sz;\n\
-    \    vector<Monoid> seg;\n\n    const F f;\n    const Monoid M1;\n\n    SegmentTree(int\
-    \ n, const F f, const Monoid &M1) : f(f), M1(M1) {\n        sz = 1;\n        while\
-    \ (sz < n) sz <<= 1;\n        seg.assign(2 * sz, M1);\n    }\n\n    SegmentTree(const\
-    \ F f, const Monoid &M1) : f(f), M1(M1) {\n    }\n\n    SegmentTree(const vector<Monoid>\
-    \ &A, const F f, const Monoid &M1)\n        : f(f),\n          M1(M1) {\n    \
-    \    build(A);\n    }\n\n    void resize(int n) {\n        sz = 1;\n        while\
-    \ (sz < n) sz <<= 1;\n        seg.resize(2 * sz, M1);\n    }\n\n    void clear()\
-    \ {\n        seg.clear();\n    }\n\n    void set(int k, const Monoid &x) {\n \
-    \       seg[k + sz] = x;\n    }\n\n    void build() {\n        for (int k = sz\
-    \ - 1; k > 0; k--) {\n            seg[k] = f(seg[2 * k], seg[2 * k + 1]);\n  \
-    \      }\n    }\n\n    void build(const vector<Monoid> &A) {\n        int n =\
-    \ A.size();\n        resize(n);\n        rep(i, n) set(i, A[i]);\n        build();\n\
-    \    }\n\n    void update(int k, const Monoid &x) {\n        k += sz;\n      \
-    \  seg[k] = x;\n        while (k >>= 1) {\n            seg[k] = f(seg[2 * k],\
-    \ seg[2 * k + 1]);\n        }\n    }\n\n    Monoid query(int a, int b) {\n   \
-    \     Monoid L = M1, R = M1;\n        for (a += sz, b += sz; a < b; a >>= 1, b\
-    \ >>= 1) {\n            if (a & 1) L = f(L, seg[a++]);\n            if (b & 1)\
-    \ R = f(seg[--b], R);\n        }\n        return f(L, R);\n    }\n\n    Monoid\
-    \ operator[](const int &k) const {\n        return seg[k + sz];\n    }\n\n   \
-    \ Monoid all() {\n        return seg[1];\n    }\n\n    void print(int n) {\n \
-    \       for (int i = 0; i < n; i++) {\n            cout << query(i, i + 1);\n\
-    \            if (i == n - 1) cout << endl;\n            else cout << ' ';\n  \
-    \      }\n    }\n\n    template<typename C>\n    int find_subtree(int a, const\
-    \ C &check, Monoid &M, bool type) {\n        while (a < sz) {\n            Monoid\
-    \ nxt =\n                type ? f(seg[2 * a + type], M) : f(M, seg[2 * a + type]);\n\
-    \            if (check(nxt)) a = 2 * a + type;\n            else M = nxt, a =\
-    \ 2 * a + 1 - type;\n        }\n        return a - sz;\n    }\n\n    // \u7BC4\
-    \u56F2[a,N)\u3067check\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3088\u3046\u306A\
-    \u6700\u5C0F\u4F4D\u7F6E\u3092\u8FD4\u3059(\u306A\u3051\u308C\u3070-1)\n    template<typename\
-    \ C>\n    int find_first(int a, const C &check) {\n        Monoid L = M1;\n  \
-    \      if (a <= 0) {\n            if (check(f(L, seg[1]))) return find_subtree(1,\
-    \ check, L, false);\n            return -1;\n        }\n        int b = sz;\n\
-    \        for (a += sz, b += sz; a < b; a >>= 1, b >>= 1) {\n            if (a\
-    \ & 1) {\n                Monoid nxt = f(L, seg[a]);\n                if (check(nxt))\
-    \ return find_subtree(a, check, L, false);\n                L = nxt;\n       \
-    \         ++a;\n            }\n        }\n        return -1;\n    }\n\n    //\
-    \ \u7BC4\u56F2[0,b)\u3067check\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3088\
-    \u3046\u306A\u6700\u5927\u4F4D\u7F6E\u3092\u8FD4\u3059(\u306A\u3051\u308C\u3070\
-    -1)\n    template<typename C>\n    int find_last(int b, const C &check) {\n  \
-    \      Monoid R = M1;\n        if (b >= sz) {\n            if (check(f(seg[1],\
-    \ R))) return find_subtree(1, check, R, true);\n            return -1;\n     \
-    \   }\n        int a = sz;\n        for (b += sz; a < b; a >>= 1, b >>= 1) {\n\
-    \            if (b & 1) {\n                Monoid nxt = f(seg[--b], R);\n    \
-    \            if (check(nxt)) return find_subtree(b, check, R, true);\n       \
-    \         R = nxt;\n            }\n        }\n        return -1;\n    }\n};\n\n\
-    template<typename Monoid, typename F>\nSegmentTree<Monoid, F> get_segment_tree(int\
-    \ N, const F &f, const Monoid &M1) {\n    return {N, f, M1};\n}\n\ntemplate<typename\
-    \ Monoid, typename F>\nSegmentTree<Monoid, F> get_segment_tree(const F &f, const\
-    \ Monoid &M1) {\n    return {f, M1};\n}\n\ntemplate<typename Monoid, typename\
-    \ F>\nSegmentTree<Monoid, F>\nget_segment_tree(const vector<Monoid> &A, const\
-    \ F &f, const Monoid &M1) {\n    return {A, f, M1};\n}\n#line 72 \"src/template.hpp\"\
-    \n\n// from string\n#line 3 \"src/string/bin.hpp\"\n\nstring bin(ll x) {\n   \
-    \ string res;\n    while (x) {\n        if (x & 1) {\n            res += '1';\n\
-    \        } else {\n            res += '0';\n        }\n        x >>= 1;\n    }\n\
-    \    reverse(ALL(res));\n    if (res == \"\") res += '0';\n    return res;\n}\n\
-    #line 3 \"src/string/zfill.hpp\"\n\nstring zfill(string str, int len) {\n    string\
-    \ zeros;\n    int n = str.size();\n    rep(i, len - n) zeros += '0';\n    return\
-    \ zeros + str;\n}\n#line 76 \"src/template.hpp\"\n"
+    \n\ntemplate<typename Monoid, typename F>\nstruct SegmentTree {\n\n    int sz,\
+    \ n;\n    vector<Monoid> seg;\n\n    const F f;\n    const Monoid M1;\n\n    SegmentTree(int\
+    \ n, const F f, const Monoid &M1) : n(n), f(f), M1(M1) {\n        sz = 1;\n  \
+    \      while (sz < n) sz <<= 1;\n        seg.assign(2 * sz, M1);\n    }\n\n  \
+    \  SegmentTree(const F f, const Monoid &M1) : f(f), M1(M1) {\n    }\n\n    SegmentTree(const\
+    \ vector<Monoid> &A, const F f, const Monoid &M1)\n        : f(f),\n         \
+    \ M1(M1) {\n        build(A);\n    }\n\n    void resize(int n) {\n        this->n\
+    \ = n;\n        sz = 1;\n        while (sz < n) sz <<= 1;\n        seg.resize(2\
+    \ * sz, M1);\n    }\n\n    void clear() {\n        seg.clear();\n    }\n\n   \
+    \ void set(int k, const Monoid &x) {\n        seg[k + sz] = x;\n    }\n\n    void\
+    \ build() {\n        for (int k = sz - 1; k > 0; k--) {\n            seg[k] =\
+    \ f(seg[2 * k], seg[2 * k + 1]);\n        }\n    }\n\n    void build(const vector<Monoid>\
+    \ &A) {\n        n = A.size();\n        resize(n);\n        rep(i, n) set(i, A[i]);\n\
+    \        build();\n    }\n\n    void update(int k, const Monoid &x) {\n      \
+    \  k += sz;\n        seg[k] = x;\n        while (k >>= 1) {\n            seg[k]\
+    \ = f(seg[2 * k], seg[2 * k + 1]);\n        }\n    }\n\n    Monoid query(int a,\
+    \ int b) {\n        Monoid L = M1, R = M1;\n        for (a += sz, b += sz; a <\
+    \ b; a >>= 1, b >>= 1) {\n            if (a & 1) L = f(L, seg[a++]);\n       \
+    \     if (b & 1) R = f(seg[--b], R);\n        }\n        return f(L, R);\n   \
+    \ }\n\n    Monoid operator[](const int &k) const {\n        return seg[k + sz];\n\
+    \    }\n\n    Monoid all() {\n        return seg[1];\n    }\n\n    int size()\
+    \ {\n        return n;\n    }\n\n    template<typename C>\n    int find_subtree(int\
+    \ a, const C &check, Monoid &M, bool type) {\n        while (a < sz) {\n     \
+    \       Monoid nxt =\n                type ? f(seg[2 * a + type], M) : f(M, seg[2\
+    \ * a + type]);\n            if (check(nxt)) a = 2 * a + type;\n            else\
+    \ M = nxt, a = 2 * a + 1 - type;\n        }\n        return a - sz;\n    }\n\n\
+    \    // \u7BC4\u56F2[a,N)\u3067check\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\
+    \u3088\u3046\u306A\u6700\u5C0F\u4F4D\u7F6E\u3092\u8FD4\u3059(\u306A\u3051\u308C\
+    \u3070-1)\n    template<typename C>\n    int find_first(int a, const C &check)\
+    \ {\n        Monoid L = M1;\n        if (a <= 0) {\n            if (check(f(L,\
+    \ seg[1]))) return find_subtree(1, check, L, false);\n            return -1;\n\
+    \        }\n        int b = sz;\n        for (a += sz, b += sz; a < b; a >>= 1,\
+    \ b >>= 1) {\n            if (a & 1) {\n                Monoid nxt = f(L, seg[a]);\n\
+    \                if (check(nxt)) return find_subtree(a, check, L, false);\n  \
+    \              L = nxt;\n                ++a;\n            }\n        }\n    \
+    \    return -1;\n    }\n\n    // \u7BC4\u56F2[0,b)\u3067check\u306E\u6761\u4EF6\
+    \u3092\u6E80\u305F\u3059\u3088\u3046\u306A\u6700\u5927\u4F4D\u7F6E\u3092\u8FD4\
+    \u3059(\u306A\u3051\u308C\u3070-1)\n    template<typename C>\n    int find_last(int\
+    \ b, const C &check) {\n        Monoid R = M1;\n        if (b >= sz) {\n     \
+    \       if (check(f(seg[1], R))) return find_subtree(1, check, R, true);\n   \
+    \         return -1;\n        }\n        int a = sz;\n        for (b += sz; a\
+    \ < b; a >>= 1, b >>= 1) {\n            if (b & 1) {\n                Monoid nxt\
+    \ = f(seg[--b], R);\n                if (check(nxt)) return find_subtree(b, check,\
+    \ R, true);\n                R = nxt;\n            }\n        }\n        return\
+    \ -1;\n    }\n};\n\ntemplate<typename Monoid, typename F>\nSegmentTree<Monoid,\
+    \ F> get_segment_tree(int N, const F &f, const Monoid &M1) {\n    return {N, f,\
+    \ M1};\n}\n\ntemplate<typename Monoid, typename F>\nSegmentTree<Monoid, F> get_segment_tree(const\
+    \ F &f, const Monoid &M1) {\n    return {f, M1};\n}\n\ntemplate<typename Monoid,\
+    \ typename F>\nSegmentTree<Monoid, F> get_segment_tree(\n    const vector<Monoid>\
+    \ &A,\n    const F &f,\n    const Monoid &M1\n) {\n    return {A, f, M1};\n}\n\
+    \ntemplate<typename Monoid, typename F>\nostream &operator<<(ostream &os, SegmentTree<Monoid,\
+    \ F> &seg) {\n    rep(i, seg.size()) {\n        os << seg[i];\n        if (i !=\
+    \ seg.size() - 1) {\n            os << ' ';\n        }\n    }\n    return os;\n\
+    }\n#line 72 \"src/template.hpp\"\n\n// from string\n#line 3 \"src/string/bin.hpp\"\
+    \n\nstring bin(ll x) {\n    string res;\n    while (x) {\n        if (x & 1) {\n\
+    \            res += '1';\n        } else {\n            res += '0';\n        }\n\
+    \        x >>= 1;\n    }\n    reverse(ALL(res));\n    if (res == \"\") res +=\
+    \ '0';\n    return res;\n}\n#line 3 \"src/string/zfill.hpp\"\n\nstring zfill(string\
+    \ str, int len) {\n    string zeros;\n    int n = str.size();\n    rep(i, len\
+    \ - n) zeros += '0';\n    return zeros + str;\n}\n#line 76 \"src/template.hpp\"\
+    \n"
   code: '#pragma once
 
     #include "base.hpp"
@@ -1113,12 +1115,12 @@ data:
   - src/base.hpp
   - src/macros.hpp
   - src/common/Compress.hpp
+  - src/common/bisect.hpp
   - src/common/Counter.hpp
   - src/common/HashMap.hpp
   - src/common/HashMapImpl.hpp
   - src/common/RLE.hpp
   - src/common/bisearch.hpp
-  - src/common/bisect.hpp
   - src/common/bit_length.hpp
   - src/common/ceil.hpp
   - src/common/chmax.hpp
@@ -1174,7 +1176,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2023-12-06 04:35:49+09:00'
+  timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

@@ -62,7 +62,7 @@ data:
   isVerificationFile: false
   path: src/string/SuffixArray.hpp
   requiredBy: []
-  timestamp: '2023-12-06 04:35:49+09:00'
+  timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/SuffixArray.hpp

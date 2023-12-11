@@ -31,43 +31,44 @@ data:
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/graph/cycle_detection_for_namori.hpp\"\
     \n\n// \u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u9589\u8DEF\u691C\u51FA\uFF1A\
-    O(N)\n// cycle[u] := \u9802\u70B9u\u304C\u306A\u3082\u308A\u306E\u9589\u8DEF\u306B\
-    \u542B\u307E\u308C\u308B\u304B\u3069\u3046\u304B\nvector<int> cycle_detection_for_namori(vvi\
-    \ nodes) {\n    int N = nodes.size();\n    vector<int> visited(N), cycle(N);\n\
-    \    bool end = false;\n    auto dfs = [&](auto &&f, int u, int prv) -> bool {\n\
-    \        if (visited[u]) {\n            cycle[u] = true;\n            return true;\n\
+    O(N)\n// cycle := \u306A\u3082\u308A\u306E\u9589\u8DEF\u306E\u9802\u70B9\u96C6\
+    \u5408(\u7D4C\u8DEF\u9806\u306B\u4E26\u3076\u306E\u3067\u3001\u3053\u306E\u6301\
+    \u3061\u65B9\u3060\u3068\u8FBA\u3082\u5206\u304B\u308B)\nvector<int> cycle_detection_for_namori(vvi\
+    \ nodes) {\n    int N = nodes.size();\n    vector<int> visited(N), cycle;\n  \
+    \  bool end = false;\n    auto dfs = [&](auto &&f, int u, int prv) -> bool {\n\
+    \        if (visited[u]) {\n            cycle.eb(u);\n            return true;\n\
     \        }\n        visited[u] = true;\n        for (auto v : nodes[u]) {\n  \
     \          if (v == prv) continue;\n            if (f(f, v, u)) {\n          \
     \      if (not end) {\n                    // \u7D42\u7AEF\u306E\u9802\u70B9\u306B\
     \u623B\u3063\u3066\u304F\u308B\u307E\u3067\u306E\u9802\u70B9\u3092\u8FFD\u52A0\
-    \u3059\u308B\n                    if (not cycle[u]) {\n                      \
-    \  cycle[u] = true;\n                    } else {\n                        end\
-    \ = true;\n                    }\n                }\n                return true;\n\
+    \u3059\u308B\n                    if (u != cycle[0]) {\n                     \
+    \   cycle.eb(u);\n                    } else {\n                        end =\
+    \ true;\n                    }\n                }\n                return true;\n\
     \            }\n        }\n        return false;\n    };\n    dfs(dfs, 0, -1);\n\
     \    return cycle;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u306A\u3082\u308A\u30B0\u30E9\
-    \u30D5\u306E\u9589\u8DEF\u691C\u51FA\uFF1AO(N)\n// cycle[u] := \u9802\u70B9u\u304C\
-    \u306A\u3082\u308A\u306E\u9589\u8DEF\u306B\u542B\u307E\u308C\u308B\u304B\u3069\
-    \u3046\u304B\nvector<int> cycle_detection_for_namori(vvi nodes) {\n    int N =\
-    \ nodes.size();\n    vector<int> visited(N), cycle(N);\n    bool end = false;\n\
+    \u30D5\u306E\u9589\u8DEF\u691C\u51FA\uFF1AO(N)\n// cycle := \u306A\u3082\u308A\
+    \u306E\u9589\u8DEF\u306E\u9802\u70B9\u96C6\u5408(\u7D4C\u8DEF\u9806\u306B\u4E26\
+    \u3076\u306E\u3067\u3001\u3053\u306E\u6301\u3061\u65B9\u3060\u3068\u8FBA\u3082\
+    \u5206\u304B\u308B)\nvector<int> cycle_detection_for_namori(vvi nodes) {\n   \
+    \ int N = nodes.size();\n    vector<int> visited(N), cycle;\n    bool end = false;\n\
     \    auto dfs = [&](auto &&f, int u, int prv) -> bool {\n        if (visited[u])\
-    \ {\n            cycle[u] = true;\n            return true;\n        }\n     \
-    \   visited[u] = true;\n        for (auto v : nodes[u]) {\n            if (v ==\
-    \ prv) continue;\n            if (f(f, v, u)) {\n                if (not end)\
-    \ {\n                    // \u7D42\u7AEF\u306E\u9802\u70B9\u306B\u623B\u3063\u3066\
-    \u304F\u308B\u307E\u3067\u306E\u9802\u70B9\u3092\u8FFD\u52A0\u3059\u308B\n   \
-    \                 if (not cycle[u]) {\n                        cycle[u] = true;\n\
-    \                    } else {\n                        end = true;\n         \
-    \           }\n                }\n                return true;\n            }\n\
-    \        }\n        return false;\n    };\n    dfs(dfs, 0, -1);\n    return cycle;\n\
-    }\n"
+    \ {\n            cycle.eb(u);\n            return true;\n        }\n        visited[u]\
+    \ = true;\n        for (auto v : nodes[u]) {\n            if (v == prv) continue;\n\
+    \            if (f(f, v, u)) {\n                if (not end) {\n             \
+    \       // \u7D42\u7AEF\u306E\u9802\u70B9\u306B\u623B\u3063\u3066\u304F\u308B\u307E\
+    \u3067\u306E\u9802\u70B9\u3092\u8FFD\u52A0\u3059\u308B\n                    if\
+    \ (u != cycle[0]) {\n                        cycle.eb(u);\n                  \
+    \  } else {\n                        end = true;\n                    }\n    \
+    \            }\n                return true;\n            }\n        }\n     \
+    \   return false;\n    };\n    dfs(dfs, 0, -1);\n    return cycle;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/graph/cycle_detection_for_namori.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/cycle_detection_for_namori.hpp

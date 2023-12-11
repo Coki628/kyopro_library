@@ -165,8 +165,8 @@ data:
   isVerificationFile: false
   path: src/mystl/Vector.hpp
   requiredBy:
-  - src/graph/AuxiliaryTree.hpp
   - src/template.hpp
+  - src/graph/AuxiliaryTree.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

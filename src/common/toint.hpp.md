@@ -39,8 +39,8 @@ data:
   requiredBy:
   - src/numbers/ntod.hpp
   - src/numbers/digit_sum.hpp
-  - src/common/split.hpp
   - src/template.hpp
+  - src/common/split.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

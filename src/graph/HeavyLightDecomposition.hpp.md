@@ -81,13 +81,16 @@ data:
     \ - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u,\
     \ int v) const {\n        for (;; v = par[head[v]]) {\n            if (in[u] >\
     \ in[v]) swap(u, v);\n            if (head[u] == head[v]) return u;\n        }\n\
-    \    }\n\n    int dist(int u, int v) const {\n        return dep[u] + dep[v] -\
-    \ 2 * dep[lca(u, v)];\n    }\n\n    template<typename E, typename Q, typename\
-    \ F, typename S>\n    E query(\n        int u, int v, const E &ti, const Q &q,\
-    \ const F &f, const S &s,\n        bool edge = false\n    ) {\n        E l = ti,\
-    \ r = ti;\n        for (;; v = par[head[v]]) {\n            if (in[u] > in[v])\
-    \ swap(u, v), swap(l, r);\n            if (head[u] == head[v]) break;\n      \
-    \      l = f(q(in[head[v]], in[v] + 1), l);\n        }\n        return s(f(q(in[u]\
+    \    }\n\n    // \u9802\u70B9u\u304B\u3089v\u306B\u5411\u304B\u3063\u30661\u3064\
+    \u9032\u3093\u3060\u9802\u70B9\u3092\u8FD4\u3059\n    int next(int u, int v) {\n\
+    \        // assert(lca(u, v) == u);\n        int d = dist(u, v);\n        return\
+    \ la(v, d - 1);\n    }\n\n    int dist(int u, int v) const {\n        return dep[u]\
+    \ + dep[v] - 2 * dep[lca(u, v)];\n    }\n\n    template<typename E, typename Q,\
+    \ typename F, typename S>\n    E query(\n        int u, int v, const E &ti, const\
+    \ Q &q, const F &f, const S &s,\n        bool edge = false\n    ) {\n        E\
+    \ l = ti, r = ti;\n        for (;; v = par[head[v]]) {\n            if (in[u]\
+    \ > in[v]) swap(u, v), swap(l, r);\n            if (head[u] == head[v]) break;\n\
+    \            l = f(q(in[head[v]], in[v] + 1), l);\n        }\n        return s(f(q(in[u]\
     \ + edge, in[v] + 1), l), r);\n    }\n\n    template<typename E, typename Q, typename\
     \ F>\n    E query(\n        int u, int v, const E &ti, const Q &q, const F &f,\
     \ bool edge = false\n    ) {\n        return query(u, v, ti, q, f, f, edge);\n\
@@ -169,13 +172,16 @@ data:
     \ - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u,\
     \ int v) const {\n        for (;; v = par[head[v]]) {\n            if (in[u] >\
     \ in[v]) swap(u, v);\n            if (head[u] == head[v]) return u;\n        }\n\
-    \    }\n\n    int dist(int u, int v) const {\n        return dep[u] + dep[v] -\
-    \ 2 * dep[lca(u, v)];\n    }\n\n    template<typename E, typename Q, typename\
-    \ F, typename S>\n    E query(\n        int u, int v, const E &ti, const Q &q,\
-    \ const F &f, const S &s,\n        bool edge = false\n    ) {\n        E l = ti,\
-    \ r = ti;\n        for (;; v = par[head[v]]) {\n            if (in[u] > in[v])\
-    \ swap(u, v), swap(l, r);\n            if (head[u] == head[v]) break;\n      \
-    \      l = f(q(in[head[v]], in[v] + 1), l);\n        }\n        return s(f(q(in[u]\
+    \    }\n\n    // \u9802\u70B9u\u304B\u3089v\u306B\u5411\u304B\u3063\u30661\u3064\
+    \u9032\u3093\u3060\u9802\u70B9\u3092\u8FD4\u3059\n    int next(int u, int v) {\n\
+    \        // assert(lca(u, v) == u);\n        int d = dist(u, v);\n        return\
+    \ la(v, d - 1);\n    }\n\n    int dist(int u, int v) const {\n        return dep[u]\
+    \ + dep[v] - 2 * dep[lca(u, v)];\n    }\n\n    template<typename E, typename Q,\
+    \ typename F, typename S>\n    E query(\n        int u, int v, const E &ti, const\
+    \ Q &q, const F &f, const S &s,\n        bool edge = false\n    ) {\n        E\
+    \ l = ti, r = ti;\n        for (;; v = par[head[v]]) {\n            if (in[u]\
+    \ > in[v]) swap(u, v), swap(l, r);\n            if (head[u] == head[v]) break;\n\
+    \            l = f(q(in[head[v]], in[v] + 1), l);\n        }\n        return s(f(q(in[u]\
     \ + edge, in[v] + 1), l), r);\n    }\n\n    template<typename E, typename Q, typename\
     \ F>\n    E query(\n        int u, int v, const E &ti, const Q &q, const F &f,\
     \ bool edge = false\n    ) {\n        return query(u, v, ti, q, f, f, edge);\n\
@@ -217,7 +223,7 @@ data:
   path: src/graph/HeavyLightDecomposition.hpp
   requiredBy:
   - src/graph/AuxiliaryTree.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/HeavyLightDecomposition.hpp

@@ -4,6 +4,9 @@ data:
   - icon: ':question:'
     path: src/base.hpp
     title: src/base.hpp
+  - icon: ':x:'
+    path: src/common/bisect.hpp
+    title: src/common/bisect.hpp
   - icon: ':question:'
     path: src/macros.hpp
     title: src/macros.hpp
@@ -21,9 +24,13 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
-    using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
+    using namespace std;\n#line 3 \"src/common/bisect.hpp\"\n\ntemplate<typename T>\n\
+    int bisect_left(const vector<T> &A, T val, int lo = 0) {\n    return lower_bound(A.begin()\
+    \ + lo, A.end(), val) - A.begin();\n}\n\ntemplate<typename T>\nint bisect_right(const\
+    \ vector<T> &A, T val, int lo = 0) {\n    return upper_bound(A.begin() + lo, A.end(),\
+    \ val) - A.begin();\n}\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\n\
+    using ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll,\
+    \ ll>;\nusing pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
     \ = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__,\
@@ -35,7 +42,7 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/Compress.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 4 \"src/common/Compress.hpp\"\
     \n\n// \u5EA7\u6A19\u5727\u7E2E(\u4E8C\u5206\u63A2\u7D22\u30D9\u30FC\u30B9)\n\
     template<typename T>\nstruct Compress {\n    int N;\n    vector<T> dat;\n    bool\
     \ built = false;\n\n    Compress() {}\n\n    Compress(const vector<T> &A) : dat(A)\
@@ -55,34 +62,36 @@ data:
     \ unzipped.end()), unzipped.end());\n//     rep(i, unzipped.size()) {\n//    \
     \     zipped[unzipped[i]] = i;\n//     }\n//     return {zipped, unzipped};\n\
     // }\n"
-  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u5EA7\u6A19\u5727\u7E2E(\u4E8C\
-    \u5206\u63A2\u7D22\u30D9\u30FC\u30B9)\ntemplate<typename T>\nstruct Compress {\n\
-    \    int N;\n    vector<T> dat;\n    bool built = false;\n\n    Compress() {}\n\
-    \n    Compress(const vector<T> &A) : dat(A) {\n        build();\n    }\n\n   \
-    \ void build() {\n        sort(dat.begin(), dat.end());\n        dat.erase(unique(dat.begin(),\
-    \ dat.end()), dat.end());\n        N = dat.size();\n        built = true;\n  \
-    \  }\n\n    void add(T x) {\n        assert(not built);\n        dat.eb(x);\n\
-    \    }\n\n    int zip(T x) {\n        assert(built);\n        return bisect_left(dat,\
-    \ x);\n    }\n\n    T unzip(int x) {\n        assert(built);\n        return dat[x];\n\
-    \    }\n\n    int operator[](T x) {\n        return zip(x);\n    }\n\n    int\
-    \ size() {\n        assert(built);\n        return dat.size();\n    }\n\n    vector<ll>\
-    \ zip(const vector<T> &A) {\n        int M = A.size();\n        vector<ll> res(M);\n\
-    \        rep(i, M) res[i] = zip(A[i]);\n        return res;\n    }\n};\n\n// \u5EA7\
-    \u6A19\u5727\u7E2E(map\u30D9\u30FC\u30B9)(\u65E7)\n// template<typename T>\n//\
-    \ pair<map<T, int>, vector<T>> compress(vector<T> unzipped) {\n//     map<T, int>\
-    \ zipped;\n//     sort(unzipped.begin(), unzipped.end());\n//     unzipped.erase(unique(unzipped.begin(),\
+  code: "#pragma once\n#include \"../common/bisect.hpp\"\n#include \"../macros.hpp\"\
+    \n\n// \u5EA7\u6A19\u5727\u7E2E(\u4E8C\u5206\u63A2\u7D22\u30D9\u30FC\u30B9)\n\
+    template<typename T>\nstruct Compress {\n    int N;\n    vector<T> dat;\n    bool\
+    \ built = false;\n\n    Compress() {}\n\n    Compress(const vector<T> &A) : dat(A)\
+    \ {\n        build();\n    }\n\n    void build() {\n        sort(dat.begin(),\
+    \ dat.end());\n        dat.erase(unique(dat.begin(), dat.end()), dat.end());\n\
+    \        N = dat.size();\n        built = true;\n    }\n\n    void add(T x) {\n\
+    \        assert(not built);\n        dat.eb(x);\n    }\n\n    int zip(T x) {\n\
+    \        assert(built);\n        return bisect_left(dat, x);\n    }\n\n    T unzip(int\
+    \ x) {\n        assert(built);\n        return dat[x];\n    }\n\n    int operator[](T\
+    \ x) {\n        return zip(x);\n    }\n\n    int size() {\n        assert(built);\n\
+    \        return dat.size();\n    }\n\n    vector<ll> zip(const vector<T> &A) {\n\
+    \        int M = A.size();\n        vector<ll> res(M);\n        rep(i, M) res[i]\
+    \ = zip(A[i]);\n        return res;\n    }\n};\n\n// \u5EA7\u6A19\u5727\u7E2E\
+    (map\u30D9\u30FC\u30B9)(\u65E7)\n// template<typename T>\n// pair<map<T, int>,\
+    \ vector<T>> compress(vector<T> unzipped) {\n//     map<T, int> zipped;\n//  \
+    \   sort(unzipped.begin(), unzipped.end());\n//     unzipped.erase(unique(unzipped.begin(),\
     \ unzipped.end()), unzipped.end());\n//     rep(i, unzipped.size()) {\n//    \
     \     zipped[unzipped[i]] = i;\n//     }\n//     return {zipped, unzipped};\n\
     // }\n"
   dependsOn:
-  - src/macros.hpp
+  - src/common/bisect.hpp
   - src/base.hpp
+  - src/macros.hpp
   isVerificationFile: false
   path: src/common/Compress.hpp
   requiredBy:
   - src/datastructure/get_inversion.hpp
   - src/template.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2023-12-11 16:13:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/Compress.hpp

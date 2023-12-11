@@ -6,8 +6,14 @@ data:
     title: src/base.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/common/Compress.hpp
+    title: src/common/Compress.hpp
+  - icon: ':warning:'
     path: src/common/LIS.hpp
     title: src/common/LIS.hpp
+  - icon: ':warning:'
+    path: src/datastructure/get_inversion.hpp
+    title: src/datastructure/get_inversion.hpp
   - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
@@ -36,8 +42,10 @@ data:
   isVerificationFile: false
   path: src/common/bisect.hpp
   requiredBy:
-  - src/common/LIS.hpp
+  - src/datastructure/get_inversion.hpp
   - src/template.hpp
+  - src/common/LIS.hpp
+  - src/common/Compress.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:

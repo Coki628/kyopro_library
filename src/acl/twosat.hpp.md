@@ -42,8 +42,8 @@ data:
   isVerificationFile: false
   path: src/acl/twosat.hpp
   requiredBy:
-  - src/graph/TwoSAT.hpp
   - src/graph/RangeEdgedTwoSAT.hpp
+  - src/graph/TwoSAT.hpp
   timestamp: '2023-12-05 02:34:33+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

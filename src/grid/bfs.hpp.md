@@ -47,18 +47,19 @@ data:
     \ listnd(N, M, L, init); }\ntemplate<typename T>[[deprecated(\"list4d will be\
     \ merged with listnd\")]] vv<vv<T>> list4d(int N, int M, int L, int O, T init)\
     \ { return listnd(N, M, L, O, init); }\n#line 3 \"src/grid/constants/dir4.hpp\"\
-    \n\n// 4\u65B9\u5411\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0,\
-    \ 1}};\n#line 5 \"src/grid/bfs.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9BFS\nauto bfs\
-    \ = [](const vector<string> &grid, const vector<pii> &src, char invalid = '#')\
-    \ {\n    int H = grid.size();\n    int W = grid[0].size();\n    auto res = list2d(H,\
-    \ W, INF);\n    queue<pii> que;\n    for (auto [h, w] : src) {\n        res[h][w]\
-    \ = 0;\n        que.push({h, w});\n    }\n    while (!que.empty()) {\n       \
-    \ auto [h, w] = que.front();\n        que.pop();\n        for (auto [dh, dw] :\
-    \ dir4) {\n            int nh = h + dh;\n            int nw = w + dw;\n      \
-    \      if (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw]\
-    \ == invalid) continue;\n            if (res[nh][nw] == INF) {\n             \
-    \   res[nh][nw] = res[h][w] + 1;\n                que.push({nh, nw});\n      \
-    \      }\n        }\n    }\n    return res;\n};\n"
+    \n\n// 4\u65B9\u5411(\u4E0A\u4E0B\u5DE6\u53F3)\nconst vector<pii> dir4 = {{-1,\
+    \ 0}, {1, 0}, {0, -1}, {0, 1}};\n#line 5 \"src/grid/bfs.hpp\"\n\n// \u30B0\u30EA\
+    \u30C3\u30C9BFS\nauto bfs = [](const vector<string> &grid, const vector<pii> &src,\
+    \ char invalid = '#') {\n    int H = grid.size();\n    int W = grid[0].size();\n\
+    \    auto res = list2d(H, W, INF);\n    queue<pii> que;\n    for (auto [h, w]\
+    \ : src) {\n        res[h][w] = 0;\n        que.push({h, w});\n    }\n    while\
+    \ (!que.empty()) {\n        auto [h, w] = que.front();\n        que.pop();\n \
+    \       for (auto [dh, dw] : dir4) {\n            int nh = h + dh;\n         \
+    \   int nw = w + dw;\n            if (nh < 0 or nw < 0 or nh >= H or nw >= W)\
+    \ continue;\n            if (grid[nh][nw] == invalid) continue;\n            if\
+    \ (res[nh][nw] == INF) {\n                res[nh][nw] = res[h][w] + 1;\n     \
+    \           que.push({nh, nw});\n            }\n        }\n    }\n    return res;\n\
+    };\n"
   code: "#pragma once\n#include \"../common/listnd.hpp\"\n#include \"../macros.hpp\"\
     \n#include \"constants/dir4.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9BFS\nauto bfs\
     \ = [](const vector<string> &grid, const vector<pii> &src, char invalid = '#')\
@@ -79,7 +80,7 @@ data:
   isVerificationFile: false
   path: src/grid/bfs.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/bfs.hpp

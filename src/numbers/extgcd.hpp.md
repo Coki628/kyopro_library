@@ -32,8 +32,8 @@ data:
   isVerificationFile: false
   path: src/numbers/extgcd.hpp
   requiredBy:
-  - src/numbers/bsgs.hpp
   - src/numbers/inv_mod.hpp
+  - src/numbers/bsgs.hpp
   - src/combinatorics/AnyModTools.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS

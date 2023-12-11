@@ -52,20 +52,20 @@ data:
     \ listnd(N, M, L, init); }\ntemplate<typename T>[[deprecated(\"list4d will be\
     \ merged with listnd\")]] vv<vv<T>> list4d(int N, int M, int L, int O, T init)\
     \ { return listnd(N, M, L, O, init); }\n#line 3 \"src/grid/constants/dir4.hpp\"\
-    \n\n// 4\u65B9\u5411\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0,\
-    \ 1}};\n#line 6 \"src/grid/dijkstra.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9\u30C0\
-    \u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\u30C3\u30C9, \u59CB\u70B9{h, w})\n\
-    using P = tuple<ll, int, int>;\nvvl dijkstra(const vvl &grid, pii src, ll invalid\
-    \ = -1) {\n    int H = grid.size();\n    int W = grid[0].size();\n    auto res\
-    \ = listnd(H, W, INF);\n    priority_queue<P, vector<P>, greater<P>> que;\n  \
-    \  auto [sh, sw] = src;\n    que.push({0, sh, sw});\n    res[sh][sw] = 0;\n\n\
-    \    while (que.size()) {\n        auto [dist, h, w] = que.top();\n        que.pop();\n\
-    \        if (res[h][w] < dist) continue;\n        for (auto [dh, dw] : dir4) {\n\
-    \            int nh = h + dh;\n            int nw = w + dw;\n            if (nh\
-    \ < 0 or nw < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw]\
-    \ == invalid) continue;\n            ll cost = grid[nh][nw];\n            if (chmin(res[nh][nw],\
-    \ dist + cost)) {\n                que.push({dist + cost, nh, nw});\n        \
-    \    }\n        }\n    }\n    return res;\n}\n"
+    \n\n// 4\u65B9\u5411(\u4E0A\u4E0B\u5DE6\u53F3)\nconst vector<pii> dir4 = {{-1,\
+    \ 0}, {1, 0}, {0, -1}, {0, 1}};\n#line 6 \"src/grid/dijkstra.hpp\"\n\n// \u30B0\
+    \u30EA\u30C3\u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\u30C3\u30C9\
+    , \u59CB\u70B9{h, w})\nusing P = tuple<ll, int, int>;\nvvl dijkstra(const vvl\
+    \ &grid, pii src, ll invalid = -1) {\n    int H = grid.size();\n    int W = grid[0].size();\n\
+    \    auto res = listnd(H, W, INF);\n    priority_queue<P, vector<P>, greater<P>>\
+    \ que;\n    auto [sh, sw] = src;\n    que.push({0, sh, sw});\n    res[sh][sw]\
+    \ = 0;\n\n    while (que.size()) {\n        auto [dist, h, w] = que.top();\n \
+    \       que.pop();\n        if (res[h][w] < dist) continue;\n        for (auto\
+    \ [dh, dw] : dir4) {\n            int nh = h + dh;\n            int nw = w + dw;\n\
+    \            if (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n         \
+    \   if (grid[nh][nw] == invalid) continue;\n            ll cost = grid[nh][nw];\n\
+    \            if (chmin(res[nh][nw], dist + cost)) {\n                que.push({dist\
+    \ + cost, nh, nw});\n            }\n        }\n    }\n    return res;\n}\n"
   code: "#pragma once\n#include \"../common/chmin.hpp\"\n#include \"../common/listnd.hpp\"\
     \n#include \"../macros.hpp\"\n#include \"constants/dir4.hpp\"\n\n// \u30B0\u30EA\
     \u30C3\u30C9\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(H*W\u30B0\u30EA\u30C3\u30C9,\
@@ -89,7 +89,7 @@ data:
   isVerificationFile: false
   path: src/grid/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/dijkstra.hpp
