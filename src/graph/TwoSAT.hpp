@@ -1,5 +1,5 @@
 #pragma once
-#include "acl/twosat.hpp"
+#include "../acl/twosat.hpp"
 
 // 2-SAT
 // 参考：https://suisen-cp.github.io/cp-library-cpp/library/algorithm/two_sat.hpp
@@ -51,6 +51,11 @@ struct TwoSAT : public atcoder::two_sat {
     // not (!A and !B)
     void not_na_and_nb(int a, int b) {
         add_clause(a, true, b, true);
+    }
+
+    // AならばB
+    void a_then_b(int a, int b) {
+        not_a_and_nb(a, b);
     }
 
     // a=fが必須

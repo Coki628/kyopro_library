@@ -2,6 +2,8 @@
 #include "../macros.hpp"
 #include "_dijkstra.hpp"
 
+// ※クラス版。スーパー使いづらいのでお蔵入り。
+
 // ダイクストラ(クラス版、復元付き、コスト演算設定可)
 template<typename T, typename E, typename F>
 struct Dijkstra {

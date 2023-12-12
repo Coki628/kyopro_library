@@ -15,12 +15,12 @@ istream &operator>>(istream &is, vector<T> &v) {
     return is;
 }
 
-// ※最近はもうずっとvectorの受け取りはoperator>>なので、これはもう要らないかも。
-// template<typename T = ll>
-// vector<T> LIST(ll N) {
-//     vector<T> A(N);
-//     rep(i, N) {
-//         cin >> A[i];
-//     }
-//     return A;
-// }
+// 後方互換。最近使ってないけど使用箇所があまりに多いので残しておく。
+template<typename T = ll>
+vector<T> LIST(int N) {
+    vector<T> A(N);
+    rep(i, N) {
+        cin >> A[i];
+    }
+    return A;
+}
