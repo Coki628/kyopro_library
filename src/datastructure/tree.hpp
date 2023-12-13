@@ -9,5 +9,7 @@ using namespace __gnu_pbds;
 
 // k番目(0-indexed)の要素を取得
 // ll val = *tr.find_by_order(k);
+// 逆引きもできる
+// int k = order_of_key(val);
 
 // それ意外はほぼsetと同じ感じで使える。
