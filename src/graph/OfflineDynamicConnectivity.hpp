@@ -1,118 +1,101 @@
 #pragma once
 #include "../base.hpp"
 #include "UnionFindUndo.hpp"
-#include "common/HashMap.hpp"
 
 // オフラインダイコネ
-// 参考：https://ei1333.github.io/library/other/offline-dynamic-connectivity.cpp
-// 　　　https://ei1333.github.io/luzhiled/snippets/other/offline-dynamic-connectivity.html
-// 　　　https://nyaannyaan.github.io/library/graph/offline-dynamic-connectivity.hpp
-// 使い方
-// ・初期化
-// ・一連の辺の付け外しをinsert,eraseで記録
-// ・各時点で行いたい操作の関数を渡しつつrunを実行
-struct OfflineDynamicConnectivity {
-    using edge = pair<int, int>;
-
+// see: https://atcoder.jp/contests/abc334/submissions/48778004
+// 使い方及び旧ライブラリとの相違点
+// ・初期化時にクエリ数は渡さなくていい。
+// ・一連の辺の付け外しをadd_edge,remove_edgeで記録する。
+// ・あとで状態確認したいタイミングでqueryを実行しておく。
+// 　この時、経過時間を返すので、必要なら取っておく。
+// ・全ての操作が終わったらsolveを実行。
+// 　前もってqueryを実行したタイミングで、この時渡した関数fを実行してくれる。
+// 　この関数fの引数には経過時間が渡されるので、必要に応じて適宜クエリ番号などと紐付ける。
+// ・なお、経過時間はadd_edge,remove_edge,queryを使う度に1ずつ増える。
+// ・solveに、pre_add,post_removeという関数をオプションで渡せるようにして、
+// 　マージ前とundo後に何か見たい時に対応できるようにした。
+// 　これらの関数の引数にはマージとundoに関わった2つの代表点が渡される。
+class OfflineDynamicConnectivity {
 private:
-    int V, Q, segsz;
-    vector<vector<edge>> seg;
-    vector<pair<pair<int, int>, edge>> pend;
-    HashMap<edge, int> cnt, appear;
+    struct Query {
+        int type, v, w, otherTime;
+    };
 
-    void add(int l, int r, const edge &e) {
-        int L = l + segsz;
-        int R = r + segsz;
-        while (L < R) {
-            if (L & 1) seg[L++].push_back(e);
-            if (R & 1) seg[--R].push_back(e);
-            L >>= 1, R >>= 1;
-        }
-    }
-
-    // クエリを全て与えた後に呼び出す
-    void build() {
-        for (auto &p : cnt) {
-            if (p.second > 0)
-                pend.emplace_back(make_pair(appear[p.first], Q), p.first);
-        }
-        for (auto &s : pend) {
-            add(s.first.first, s.first.second, s.second);
-        }
-    }
+    int V, curTime;
+    vector<Query> queries;
+    vector<map<int, int>> presentEdges;
 
     template<typename F>
-    void _run(const F &f, int k, int l, int r) {
-        if (Q <= l) return;
-        int tmp = 0, tmp2 = 0;
-        for (auto &e : seg[k]) {
-            if (uf.size(e.first) == 1) {
-                tmp2++;
+    void solve(F f, int l, int r, const auto &pre_add, const auto &post_remove) {
+        if (l >= r) {
+            if (l == r && queries[r].type == 0) {
+                f(r);
             }
-            if (uf.size(e.second) == 1) {
-                tmp2++;
+            return;
+        }
+        int m = l + (r - l) / 2;
+        int curSize = uf.history.size();
+        for (int i = m + 1; i <= r; i++) {
+            if (queries[i].otherTime < l) {
+                pre_add(queries[i].v, queries[i].w);
+                uf.merge(queries[i].v, queries[i].w);
             }
-            tmp += uf.merge(e.first, e.second);
         }
-        comp -= tmp;
-        single -= tmp2;
-        if (l + 1 == r) {
-            f(l);
-        } else {
-            _run(f, 2 * k + 0, l, (l + r) >> 1);
-            _run(f, 2 * k + 1, (l + r) >> 1, r);
+        solve(f, l, m, pre_add, post_remove);
+        while ((int)uf.history.size() > curSize) {
+            auto [v, w] = uf.undo();
+            post_remove(v, w);
         }
-        for (auto &e : seg[k]) {
-            uf.undo();
+        for (int i = l; i <= m; i++) {
+            if (queries[i].otherTime > r) {
+                pre_add(queries[i].v, queries[i].w);
+                uf.merge(queries[i].v, queries[i].w);
+            }
         }
-        comp += tmp;
-        single += tmp2;
+        solve(f, m + 1, r, pre_add, post_remove);
+        while ((int)uf.history.size() > curSize) {
+            auto [v, w] = uf.undo();
+            post_remove(v, w);
+        }
     }
 
 public:
     UnionFindUndo uf;
-    // 連結成分数
-    int comp;
-    // 要素数1の連結成分数
-    int single;
 
-    // 頂点数V、Q個のクエリで初期化
-    // (このQ個には、辺の追加・削除・回答クエリ全てが含まれる。クエリ数と言うより経過時間の最大。
-    //  なお、次の回答クエリが来るまでの辺の追加削除は同時刻にまとめてOK。)
-    OfflineDynamicConnectivity(int V, int Q)
-        : uf(V),
-          V(V),
-          Q(Q),
-          comp(V),
-          single(V) {
-        segsz = 1;
-        while (segsz < Q) segsz <<= 1;
-        seg.resize(2 * segsz);
+    OfflineDynamicConnectivity(int V)
+        : V(V),
+          curTime(0),
+          uf(V),
+          presentEdges(V) {
     }
 
-    // 一応作ったんだけど、これやっても速くならなかった。
-    void reserve(int n) {
-        cnt.reserve(n);
-        appear.reserve(n);
+    void add_edge(int v, int w) {
+        if (v > w) swap(v, w);
+        presentEdges[v][w] = curTime++;
+        queries.push_back({1, v, w, INT_MAX});
     }
 
-    // 時刻idxに辺(s,t)を追加
-    void insert(int idx, int s, int t) {
-        auto e = minmax(s, t);
-        if (cnt[e]++ == 0) appear[e] = idx;
+    void remove_edge(int v, int w) {
+        if (v > w) swap(v, w);
+        int insTime = presentEdges[v][w];
+        queries.push_back({-1, v, w, insTime});
+        queries[insTime].otherTime = curTime++;
+        presentEdges[v].erase(w);
     }
 
-    // 時刻idxに辺(s,t)を削除
-    void erase(int idx, int s, int t) {
-        auto e = minmax(s, t);
-        if (--cnt[e] == 0) pend.emplace_back(make_pair(appear[e], idx), e);
+    int query() {
+        queries.push_back({0, -1, -1, curTime++});
+        return curTime - 1;
     }
 
-    // build()実行後に動作、各i(0<=i<Q)についてf(i)が呼び出される
-    // 時刻iの操作が終わった後の状態でfが実行される
     template<typename F>
-    void run(const F &f) {
-        build();
-        _run(f, 1, 0, segsz);
+    void solve(F f) {
+        solve(f, 0, curTime - 1, [](int v, int w) {}, [](int v, int w) {});
+    }
+
+    template<typename F>
+    void solve(F f, const auto &pre_add, const auto &post_remove) {
+        solve(f, 0, curTime - 1, pre_add, post_remove);
     }
 };

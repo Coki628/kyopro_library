@@ -63,8 +63,8 @@ struct UnionFind {
         int x = find(a);
         int y = find(b);
         if (x == y) {
-            tree[x] = false;
             f(-1, y);
+            tree[x] = false;
             return -1;
         }
         if (!tree[x] or !tree[y]) {
@@ -72,17 +72,17 @@ struct UnionFind {
         }
         groupcnt--;
         if (rank[x] < rank[y]) {
+            f(y, x);
             par[x] = y;
             sz[y] += sz[x];
-            f(y, x);
             return y;
         } else {
+            f(x, y);
             par[y] = x;
             sz[x] += sz[y];
             if (rank[x] == rank[y]) {
                 rank[x]++;
             }
-            f(x, y);
             return x;
         }
     }
