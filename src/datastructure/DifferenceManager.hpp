@@ -14,8 +14,6 @@ struct DifferenceManager {
     // se2: 現在の差分列の要素を表す集合
     multiset<T> se1, se2;
 
-    // 基本はこれを渡す
-    // [](T a, T b) { return a - b; };
     const F f;
 
     DifferenceManager(const vector<T> &A, const F &f) : se1(ALL(A)), f(f) {
@@ -86,4 +84,11 @@ struct DifferenceManager {
 template<typename T, typename F>
 DifferenceManager<T, F> get_difference_manager(const vector<T> &A, const F &f) {
     return {A, f};
+}
+
+template<typename T>
+auto get_difference_manager(const vector<T> &A) {
+    // 基本はこれを渡す
+    const auto f = [](T a, T b) { return a - b; };
+    return DifferenceManager<T, decltype(f)>(A, f);
 }

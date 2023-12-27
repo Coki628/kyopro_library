@@ -14,8 +14,6 @@ struct DifferenceManagerTree {
     Tree se1, se2;
     int id = 0;
 
-    // 基本はこれを渡す
-    // [](T a, T b) { return a - b; };
     const F f;
 
     DifferenceManagerTree(const vector<T> &A, const F &f) : f(f) {
@@ -108,4 +106,11 @@ struct DifferenceManagerTree {
 template<typename T, typename F>
 DifferenceManagerTree<T, F> get_difference_manager_tree(const vector<T> &A, const F &f) {
     return {A, f};
+}
+
+template<typename T>
+auto get_difference_manager_tree(const vector<T> &A) {
+    // 基本はこれを渡す
+    const auto f = [](T a, T b) { return a - b; };
+    return DifferenceManagerTree<T, decltype(f)>(A, f);
 }
