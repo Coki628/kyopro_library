@@ -124,9 +124,9 @@ public:
         if (l > r) return -1;
         assert(l >= 0 and r < n);
         x += query(0, l);
-        T k = lower_bound(x);
+        int k = lower_bound(x);
         assert(l <= k);
-        if (k >= n) {
+        if (k > r) {
             return -1;
         } else {
             return k;
@@ -141,7 +141,7 @@ public:
         if (total - x < 0) {
             return -1;
         }
-        T k = upper_bound(total - x);
+        int k = upper_bound(total - x);
         assert(k <= r);
         if (k < l) {
             return -1;
