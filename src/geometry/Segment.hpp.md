@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
     path: src/geometry/Point.hpp
     title: src/geometry/Point.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -98,12 +98,12 @@ data:
   isVerificationFile: false
   path: src/geometry/Segment.hpp
   requiredBy:
-  - src/geometry/project.hpp
-  - src/geometry/reflect.hpp
-  - src/geometry/get_distance.hpp
-  - src/geometry/Line.hpp
-  - src/geometry/get_cross_point.hpp
   - src/geometry/intersect.hpp
+  - src/geometry/reflect.hpp
+  - src/geometry/Line.hpp
+  - src/geometry/get_distance.hpp
+  - src/geometry/project.hpp
+  - src/geometry/get_cross_point.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

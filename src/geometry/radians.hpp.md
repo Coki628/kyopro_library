@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -45,8 +45,8 @@ data:
   isVerificationFile: false
   path: src/geometry/radians.hpp
   requiredBy:
-  - src/geometry/cos_formula.hpp
   - src/geometry/rotate.hpp
+  - src/geometry/cos_formula.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
@@ -10,13 +10,13 @@ data:
   - icon: ':warning:'
     path: src/graph/dijkstra.hpp
     title: src/graph/dijkstra.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: src/graph/Dijkstra.hpp
-    title: src/graph/Dijkstra.hpp
+    path: src/graph/_Dijkstra.hpp
+    title: src/graph/_Dijkstra.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -68,7 +68,7 @@ data:
   isVerificationFile: false
   path: src/graph/_dijkstra.hpp
   requiredBy:
-  - src/graph/Dijkstra.hpp
+  - src/graph/_Dijkstra.hpp
   timestamp: '2023-12-04 17:57:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

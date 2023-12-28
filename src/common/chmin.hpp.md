@@ -6,8 +6,8 @@ data:
     path: src/common/min.hpp
     title: src/common/min.hpp
   - icon: ':warning:'
-    path: src/graph/Dijkstra.hpp
-    title: src/graph/Dijkstra.hpp
+    path: src/graph/_Dijkstra.hpp
+    title: src/graph/_Dijkstra.hpp
   - icon: ':warning:'
     path: src/graph/_dijkstra.hpp
     title: src/graph/_dijkstra.hpp
@@ -58,19 +58,19 @@ data:
   isVerificationFile: false
   path: src/common/chmin.hpp
   requiredBy:
-  - src/numbers/XorBasis.hpp
-  - src/numbers/_xor_basis.hpp
-  - src/template.hpp
-  - src/common/min.hpp
   - src/grid/dijkstra.hpp
-  - src/graph/dijkstra.hpp
-  - src/graph/warshall_floyd.hpp
-  - src/graph/bfs01.hpp
+  - src/template.hpp
+  - src/numbers/_xor_basis.hpp
+  - src/numbers/XorBasis.hpp
+  - src/common/min.hpp
   - src/graph/bellman_ford.hpp
-  - src/graph/_dijkstra.hpp
+  - src/graph/warshall_floyd.hpp
   - src/graph/get_diameter.hpp
-  - src/graph/Dijkstra.hpp
+  - src/graph/_dijkstra.hpp
+  - src/graph/bfs01.hpp
   - src/graph/bfs.hpp
+  - src/graph/dijkstra.hpp
+  - src/graph/_Dijkstra.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

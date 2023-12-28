@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -66,10 +66,10 @@ data:
   isVerificationFile: false
   path: src/common/pow.hpp
   requiredBy:
+  - src/template.hpp
+  - src/numbers/bsgs.hpp
   - src/geometry/intersectCC.hpp
   - src/string/RollingHashUpdatable.hpp
-  - src/numbers/bsgs.hpp
-  - src/template.hpp
   timestamp: '2023-12-06 04:35:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -10,13 +10,13 @@ data:
   - icon: ':warning:'
     path: src/common/HashMapImpl.hpp
     title: src/common/HashMapImpl.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
     path: src/graph/HeavyLightDecomposition.hpp
     title: src/graph/HeavyLightDecomposition.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'

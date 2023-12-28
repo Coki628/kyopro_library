@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -12,15 +12,15 @@ data:
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
@@ -43,22 +43,22 @@ data:
     \ T1, typename T2>\nistream &operator>>(istream &is, pair<T1, T2> &p) {\n    is\
     \ >> p.first >> p.second;\n    return is;\n}\n\n// vector\u5165\u529B\u4E00\u62EC\
     \u53D7\u3051\u53D6\u308A\ntemplate<typename T>\nistream &operator>>(istream &is,\
-    \ vector<T> &v) {\n    for (T &in : v) is >> in;\n    return is;\n}\n\n// \u203B\
-    \u6700\u8FD1\u306F\u3082\u3046\u305A\u3063\u3068vector\u306E\u53D7\u3051\u53D6\
-    \u308A\u306Foperator>>\u306A\u306E\u3067\u3001\u3053\u308C\u306F\u3082\u3046\u8981\
-    \u3089\u306A\u3044\u304B\u3082\u3002\n// template<typename T = ll>\n// vector<T>\
-    \ LIST(ll N) {\n//     vector<T> A(N);\n//     rep(i, N) {\n//         cin >>\
-    \ A[i];\n//     }\n//     return A;\n// }\n"
+    \ vector<T> &v) {\n    for (T &in : v) is >> in;\n    return is;\n}\n\n// \u5F8C\
+    \u65B9\u4E92\u63DB\u3002\u6700\u8FD1\u4F7F\u3063\u3066\u306A\u3044\u3051\u3069\
+    \u4F7F\u7528\u7B87\u6240\u304C\u3042\u307E\u308A\u306B\u591A\u3044\u306E\u3067\
+    \u6B8B\u3057\u3066\u304A\u304F\u3002\ntemplate<typename T = ll>\nvector<T> LIST(int\
+    \ N) {\n    vector<T> A(N);\n    rep(i, N) {\n        cin >> A[i];\n    }\n  \
+    \  return A;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// pair\u5165\u529B\u4E00\u62EC\
     \u53D7\u3051\u53D6\u308A\ntemplate<typename T1, typename T2>\nistream &operator>>(istream\
     \ &is, pair<T1, T2> &p) {\n    is >> p.first >> p.second;\n    return is;\n}\n\
     \n// vector\u5165\u529B\u4E00\u62EC\u53D7\u3051\u53D6\u308A\ntemplate<typename\
     \ T>\nistream &operator>>(istream &is, vector<T> &v) {\n    for (T &in : v) is\
-    \ >> in;\n    return is;\n}\n\n// \u203B\u6700\u8FD1\u306F\u3082\u3046\u305A\u3063\
-    \u3068vector\u306E\u53D7\u3051\u53D6\u308A\u306Foperator>>\u306A\u306E\u3067\u3001\
-    \u3053\u308C\u306F\u3082\u3046\u8981\u3089\u306A\u3044\u304B\u3082\u3002\n// template<typename\
-    \ T = ll>\n// vector<T> LIST(ll N) {\n//     vector<T> A(N);\n//     rep(i, N)\
-    \ {\n//         cin >> A[i];\n//     }\n//     return A;\n// }\n"
+    \ >> in;\n    return is;\n}\n\n// \u5F8C\u65B9\u4E92\u63DB\u3002\u6700\u8FD1\u4F7F\
+    \u3063\u3066\u306A\u3044\u3051\u3069\u4F7F\u7528\u7B87\u6240\u304C\u3042\u307E\
+    \u308A\u306B\u591A\u3044\u306E\u3067\u6B8B\u3057\u3066\u304A\u304F\u3002\ntemplate<typename\
+    \ T = ll>\nvector<T> LIST(int N) {\n    vector<T> A(N);\n    rep(i, N) {\n   \
+    \     cin >> A[i];\n    }\n    return A;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -66,11 +66,11 @@ data:
   path: src/common/input.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-12-12 16:05:06+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/common/bisect.test.cpp
   - test/matrix/MatPow.test.cpp
+  - test/common/bisect.test.cpp
 documentation_of: src/common/input.hpp
 layout: document
 redirect_from:

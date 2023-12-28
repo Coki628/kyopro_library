@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
@@ -34,7 +34,7 @@ data:
   - icon: ':warning:'
     path: src/common/bisearch.hpp
     title: src/common/bisearch.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
   - icon: ':warning:'
@@ -55,13 +55,13 @@ data:
   - icon: ':warning:'
     path: src/common/divmod.hpp
     title: src/common/divmod.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':warning:'
     path: src/common/join.hpp
     title: src/common/join.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/listnd.hpp
     title: src/common/listnd.hpp
   - icon: ':warning:'
@@ -85,7 +85,7 @@ data:
   - icon: ':warning:'
     path: src/common/pow.hpp
     title: src/common/pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':warning:'
@@ -100,7 +100,7 @@ data:
   - icon: ':warning:'
     path: src/common/subarray.hpp
     title: src/common/subarray.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/sum.hpp
     title: src/common/sum.hpp
   - icon: ':warning:'
@@ -145,7 +145,7 @@ data:
   - icon: ':warning:'
     path: src/grid/idtogrid.hpp
     title: src/grid/idtogrid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   - icon: ':warning:'
@@ -435,19 +435,18 @@ data:
     \ typename T2>\nistream &operator>>(istream &is, pair<T1, T2> &p) {\n    is >>\
     \ p.first >> p.second;\n    return is;\n}\n\n// vector\u5165\u529B\u4E00\u62EC\
     \u53D7\u3051\u53D6\u308A\ntemplate<typename T>\nistream &operator>>(istream &is,\
-    \ vector<T> &v) {\n    for (T &in : v) is >> in;\n    return is;\n}\n\n// \u203B\
-    \u6700\u8FD1\u306F\u3082\u3046\u305A\u3063\u3068vector\u306E\u53D7\u3051\u53D6\
-    \u308A\u306Foperator>>\u306A\u306E\u3067\u3001\u3053\u308C\u306F\u3082\u3046\u8981\
-    \u3089\u306A\u3044\u304B\u3082\u3002\n// template<typename T = ll>\n// vector<T>\
-    \ LIST(ll N) {\n//     vector<T> A(N);\n//     rep(i, N) {\n//         cin >>\
-    \ A[i];\n//     }\n//     return A;\n// }\n#line 3 \"src/common/to_string.hpp\"\
-    \n\nstring to_string(const string &S) {\n    return S;\n}\n\nstring to_string(char\
-    \ c) {\n    return {c};\n}\n#line 4 \"src/common/join.hpp\"\n\ntemplate<typename\
-    \ T>\nstring join(const vector<T> &A, string separator = \"\") {\n    int N =\
-    \ A.size();\n    string res;\n    rep(i, N) {\n        res += tostr(A[i]);\n \
-    \       if (i != N - 1) res += separator;\n    }\n    return res;\n}\n#line 3\
-    \ \"src/common/listnd.hpp\"\n\n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\
-    \uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    \ vector<T> &v) {\n    for (T &in : v) is >> in;\n    return is;\n}\n\n// \u5F8C\
+    \u65B9\u4E92\u63DB\u3002\u6700\u8FD1\u4F7F\u3063\u3066\u306A\u3044\u3051\u3069\
+    \u4F7F\u7528\u7B87\u6240\u304C\u3042\u307E\u308A\u306B\u591A\u3044\u306E\u3067\
+    \u6B8B\u3057\u3066\u304A\u304F\u3002\ntemplate<typename T = ll>\nvector<T> LIST(int\
+    \ N) {\n    vector<T> A(N);\n    rep(i, N) {\n        cin >> A[i];\n    }\n  \
+    \  return A;\n}\n#line 3 \"src/common/to_string.hpp\"\n\nstring to_string(const\
+    \ string &S) {\n    return S;\n}\n\nstring to_string(char c) {\n    return {c};\n\
+    }\n#line 4 \"src/common/join.hpp\"\n\ntemplate<typename T>\nstring join(const\
+    \ vector<T> &A, string separator = \"\") {\n    int N = A.size();\n    string\
+    \ res;\n    rep(i, N) {\n        res += tostr(A[i]);\n        if (i != N - 1)\
+    \ res += separator;\n    }\n    return res;\n}\n#line 3 \"src/common/listnd.hpp\"\
+    \n\n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
     template<typename... Ts>\nauto listnd(size_t N, Ts... ts) {\n    if constexpr\
     \ (sizeof...(ts) == 1) {\n        return vector<Ts...>(N, ts...);\n    } else\
     \ {\n        auto res = listnd(ts...);\n        return vector<decltype(res)>(N,\
@@ -710,53 +709,54 @@ data:
     \u5408\uFF1A\u30DE\u30FC\u30B8\u5F8C\u306E\u96C6\u5408\u306E\u6839(\u30DE\u30FC\
     \u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\n    template<typename F>\n    int\
     \ merge(int a, int b, F f) {\n        int x = find(a);\n        int y = find(b);\n\
-    \        if (x == y) {\n            tree[x] = false;\n            f(-1, y);\n\
+    \        if (x == y) {\n            f(-1, y);\n            tree[x] = false;\n\
     \            return -1;\n        }\n        if (!tree[x] or !tree[y]) {\n    \
     \        tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n        if\
-    \ (rank[x] < rank[y]) {\n            par[x] = y;\n            sz[y] += sz[x];\n\
-    \            f(y, x);\n            return y;\n        } else {\n            par[y]\
-    \ = x;\n            sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n \
-    \               rank[x]++;\n            }\n            f(x, y);\n            return\
-    \ x;\n        }\n    }\n\n    int merge(int a, int b) {\n        return merge(a,\
-    \ b, [](int r, int ch) {});\n    }\n\n    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\
-    \u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int b) {\n        return\
-    \ find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\
-    \u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n\
-    \        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\u306E\u6570\n    int\
-    \ size() {\n        return groupcnt;\n    }\n\n    // \u6728\u304B\u3069\u3046\
-    \u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n        return tree[find(x)];\n\
-    \    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\u5F97\n    set<int> get_roots()\
-    \ {\n        set<int> res;\n        rep(i, n) {\n            res.insert(find(i));\n\
-    \        }\n        return res;\n    }\n\n    // \u5168\u9802\u70B9\u306E\u30B0\
-    \u30EB\u30FC\u30D7\u756A\u53F7\u3092\u53D6\u5F97\n    vector<int> get_info() {\n\
-    \        vector<int> res(n);\n        rep(i, n) {\n            res[i] = find(i);\n\
-    \        }\n        return res;\n    }\n};\n#line 48 \"src/template.hpp\"\n\n\
-    // from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\n\n// 4\u65B9\u5411(\u4E0A\
-    \u4E0B\u5DE6\u53F3)\nconst vector<pii> dir4 = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};\n\
-    #line 3 \"src/grid/constants/directions.hpp\"\n\n// \u5F8C\u65B9\u4E92\u63DB\u7528\
-    \n#define directions dir4\n#line 3 \"src/grid/gridtoid.hpp\"\n\n// \u30B0\u30EA\
-    \u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll j, ll W) {\n    return\
-    \ i * W + j;\n}\n#line 4 \"src/grid/idtogrid.hpp\"\n\n// \u5217\u21D2\u30B0\u30EA\
-    \u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W) {\n    return divmod(id, W);\n\
-    }\n#line 53 \"src/template.hpp\"\n\n// from mystl\n#line 4 \"src/mystl/Deque.hpp\"\
-    \n\ntemplate<typename _Tp>\nstruct Deque : deque<_Tp> {\n    using deque<_Tp>::deque;\n\
-    \    _Tp pop_front() {\n        _Tp res = this->front();\n        deque<_Tp>::pop_front();\n\
-    \        return res;\n    }\n    _Tp pop_back() {\n        _Tp res = this->back();\n\
-    \        deque<_Tp>::pop_back();\n        return res;\n    }\n};\n\ntemplate<typename\
-    \ T>\nvoid print(const Deque<T> &que) {\n    vector<T> V(que.begin(), que.end());\n\
-    \    print(V);\n}\n#line 4 \"src/mystl/Multiset.hpp\"\n\ntemplate<typename _Key>\n\
-    struct Multiset : multiset<_Key> {\n    using multiset<_Key>::multiset;\n    _Key\
-    \ front() {\n        assert(this->size());\n        return *this->begin();\n \
-    \   }\n    _Key pop_front() {\n        _Key res = this->front();\n        // \u7A7A\
-    \u306E\u6642\u306B\u3053\u306E\u64CD\u4F5C\u3092\u3084\u308B\u3068\u63D0\u51FA\
-    \u30D3\u30EB\u30C9\u3060\u3068RE\u3058\u3083\u306A\u304F\u3066TLE\u306B\u306A\u308B\
-    \u2026\u3002\n        multiset<_Key>::erase(this->begin());\n        return res;\n\
-    \    }\n    _Key back() {\n        assert(this->size());\n        return *this->rbegin();\n\
-    \    }\n    _Key pop_back() {\n        _Key res = this->back();\n        multiset<_Key>::erase(prev(this->end()));\n\
-    \        return res;\n    }\n    // count\u304CO(\u500B\u6570)\u3068\u306E\u8A71\
-    \u304C\u3042\u308B\u305F\u3081\u5FF5\u306E\u305F\u3081\u4F5C\u3063\u3066\u304A\
-    \u304F\n    bool exist(_Key x) {\n        return this->find(x) != this->end();\n\
-    \    }\n    // 1\u500B\u524A\u9664\n    auto erase(_Key x) {\n        return multiset<_Key>::erase(this->find(x));\n\
+    \ (rank[x] < rank[y]) {\n            f(y, x);\n            par[x] = y;\n     \
+    \       sz[y] += sz[x];\n            return y;\n        } else {\n           \
+    \ f(x, y);\n            par[y] = x;\n            sz[x] += sz[y];\n           \
+    \ if (rank[x] == rank[y]) {\n                rank[x]++;\n            }\n     \
+    \       return x;\n        }\n    }\n\n    int merge(int a, int b) {\n       \
+    \ return merge(a, b, [](int r, int ch) {});\n    }\n\n    // \u540C\u3058\u96C6\
+    \u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int b)\
+    \ {\n        return find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\u30FC\
+    \u30C9\u306E\u5C5E\u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\n   \
+    \ ll size(int x) {\n        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\u306E\
+    \u6570\n    int size() {\n        return groupcnt;\n    }\n\n    // \u6728\u304B\
+    \u3069\u3046\u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n        return\
+    \ tree[find(x)];\n    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\u5F97\n\
+    \    set<int> get_roots() {\n        set<int> res;\n        rep(i, n) {\n    \
+    \        res.insert(find(i));\n        }\n        return res;\n    }\n\n    //\
+    \ \u5168\u9802\u70B9\u306E\u30B0\u30EB\u30FC\u30D7\u756A\u53F7\u3092\u53D6\u5F97\
+    \n    vector<int> get_info() {\n        vector<int> res(n);\n        rep(i, n)\
+    \ {\n            res[i] = find(i);\n        }\n        return res;\n    }\n};\n\
+    #line 48 \"src/template.hpp\"\n\n// from grid\n#line 3 \"src/grid/constants/dir4.hpp\"\
+    \n\n// 4\u65B9\u5411(\u4E0A\u4E0B\u5DE6\u53F3)\nconst vector<pii> dir4 = {{-1,\
+    \ 0}, {1, 0}, {0, -1}, {0, 1}};\n#line 3 \"src/grid/constants/directions.hpp\"\
+    \n\n// \u5F8C\u65B9\u4E92\u63DB\u7528\n#define directions dir4\n#line 3 \"src/grid/gridtoid.hpp\"\
+    \n\n// \u30B0\u30EA\u30C3\u30C9\u21D2\u5217\u5909\u63DB\nll gridtoid(ll i, ll\
+    \ j, ll W) {\n    return i * W + j;\n}\n#line 4 \"src/grid/idtogrid.hpp\"\n\n\
+    // \u5217\u21D2\u30B0\u30EA\u30C3\u30C9\u5909\u63DB\npll idtogrid(ll id, ll W)\
+    \ {\n    return divmod(id, W);\n}\n#line 53 \"src/template.hpp\"\n\n// from mystl\n\
+    #line 4 \"src/mystl/Deque.hpp\"\n\ntemplate<typename _Tp>\nstruct Deque : deque<_Tp>\
+    \ {\n    using deque<_Tp>::deque;\n    _Tp pop_front() {\n        _Tp res = this->front();\n\
+    \        deque<_Tp>::pop_front();\n        return res;\n    }\n    _Tp pop_back()\
+    \ {\n        _Tp res = this->back();\n        deque<_Tp>::pop_back();\n      \
+    \  return res;\n    }\n};\n\ntemplate<typename T>\nvoid print(const Deque<T> &que)\
+    \ {\n    vector<T> V(que.begin(), que.end());\n    print(V);\n}\n#line 4 \"src/mystl/Multiset.hpp\"\
+    \n\ntemplate<typename _Key>\nstruct Multiset : multiset<_Key> {\n    using multiset<_Key>::multiset;\n\
+    \    _Key front() {\n        assert(this->size());\n        return *this->begin();\n\
+    \    }\n    _Key pop_front() {\n        _Key res = this->front();\n        //\
+    \ \u7A7A\u306E\u6642\u306B\u3053\u306E\u64CD\u4F5C\u3092\u3084\u308B\u3068\u63D0\
+    \u51FA\u30D3\u30EB\u30C9\u3060\u3068RE\u3058\u3083\u306A\u304F\u3066TLE\u306B\u306A\
+    \u308B\u2026\u3002\n        multiset<_Key>::erase(this->begin());\n        return\
+    \ res;\n    }\n    _Key back() {\n        assert(this->size());\n        return\
+    \ *this->rbegin();\n    }\n    _Key pop_back() {\n        _Key res = this->back();\n\
+    \        multiset<_Key>::erase(prev(this->end()));\n        return res;\n    }\n\
+    \    // count\u304CO(\u500B\u6570)\u3068\u306E\u8A71\u304C\u3042\u308B\u305F\u3081\
+    \u5FF5\u306E\u305F\u3081\u4F5C\u3063\u3066\u304A\u304F\n    bool exist(_Key x)\
+    \ {\n        return this->find(x) != this->end();\n    }\n    // 1\u500B\u524A\
+    \u9664\n    auto erase(_Key x) {\n        return multiset<_Key>::erase(this->find(x));\n\
     \    }\n};\n\ntemplate<typename T>\nvoid print(const Multiset<T> &se) {\n    vector<T>\
     \ V(se.begin(), se.end());\n    print(V);\n}\n#line 3 \"src/mystl/PriorityQueue.hpp\"\
     \n\ntemplate<typename _Tp, typename _Sequence = vector<_Tp>, typename _Compare\
@@ -879,14 +879,14 @@ data:
     \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
     \u7F6E(log1\u3064\u7248)\n    int bisearch_fore(int l, int r, T x) {\n       \
     \ if (l > r) return -1;\n        assert(l >= 0 and r < n);\n        x += query(0,\
-    \ l);\n        T k = lower_bound(x);\n        assert(l <= k);\n        if (k >=\
-    \ n) {\n            return -1;\n        } else {\n            return k;\n    \
-    \    }\n    }\n\n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\
+    \ l);\n        int k = lower_bound(x);\n        assert(l <= k);\n        if (k\
+    \ > r) {\n            return -1;\n        } else {\n            return k;\n  \
+    \      }\n    }\n\n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\
     \u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\
     (log1\u3064\u7248)\n    int bisearch_back(int l, int r, T x) {\n        if (l\
     \ > r) return -1;\n        assert(l >= 0 and r < n);\n        T total = query(0,\
     \ r + 1);\n        if (total - x < 0) {\n            return -1;\n        }\n \
-    \       T k = upper_bound(total - x);\n        assert(k <= r);\n        if (k\
+    \       int k = upper_bound(total - x);\n        assert(k <= r);\n        if (k\
     \ < l) {\n            return -1;\n        } else {\n            return k;\n  \
     \      }\n    }\n\n    // \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n\
     \    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u4EE5\u4E0A\u3068\u306A\u308B\
@@ -1176,7 +1176,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2023-12-11 16:15:31+09:00'
+  timestamp: '2023-12-28 12:04:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

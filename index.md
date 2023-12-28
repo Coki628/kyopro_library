@@ -26,10 +26,10 @@ data:
       title: src/acl/twosat.hpp
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/base.hpp
       title: src/base.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/macros.hpp
       title: src/macros.hpp
     - icon: ':warning:'
@@ -43,7 +43,7 @@ data:
     - icon: ':warning:'
       path: src/combinatorics/ArbitraryModInt.hpp
       title: src/combinatorics/ArbitraryModInt.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/combinatorics/ModInt.hpp
       title: src/combinatorics/ModInt.hpp
     - icon: ':warning:'
@@ -111,7 +111,7 @@ data:
     - icon: ':warning:'
       path: src/common/bisearch_real.hpp
       title: src/common/bisearch_real.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/common/bisect.hpp
       title: src/common/bisect.hpp
     - icon: ':warning:'
@@ -144,7 +144,7 @@ data:
     - icon: ':warning:'
       path: src/common/floor.hpp
       title: src/common/floor.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/common/input.hpp
       title: src/common/input.hpp
     - icon: ':warning:'
@@ -156,7 +156,7 @@ data:
     - icon: ':warning:'
       path: src/common/join.hpp
       title: src/common/join.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/common/listnd.hpp
       title: src/common/listnd.hpp
     - icon: ':warning:'
@@ -186,9 +186,12 @@ data:
     - icon: ':warning:'
       path: src/common/pow.hpp
       title: src/common/pow.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/common/print.hpp
       title: src/common/print.hpp
+    - icon: ':warning:'
+      path: src/common/randint.hpp
+      title: src/common/randint.hpp
     - icon: ':warning:'
       path: src/common/randrange.hpp
       title: src/common/randrange.hpp
@@ -207,7 +210,7 @@ data:
     - icon: ':warning:'
       path: src/common/subarray.hpp
       title: src/common/subarray.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/common/sum.hpp
       title: src/common/sum.hpp
     - icon: ':warning:'
@@ -260,6 +263,12 @@ data:
     - icon: ':warning:'
       path: src/datastructure/BinaryTrie.hpp
       title: src/datastructure/BinaryTrie.hpp
+    - icon: ':warning:'
+      path: src/datastructure/DifferenceManager.hpp
+      title: src/datastructure/DifferenceManager.hpp
+    - icon: ':warning:'
+      path: src/datastructure/DifferenceManagerTree.hpp
+      title: src/datastructure/DifferenceManagerTree.hpp
     - icon: ':warning:'
       path: src/datastructure/Doubling.hpp
       title: src/datastructure/Doubling.hpp
@@ -418,14 +427,14 @@ data:
       path: src/graph/AuxiliaryTree.hpp
       title: src/graph/AuxiliaryTree.hpp
     - icon: ':warning:'
-      path: src/graph/Dijkstra.hpp
-      title: src/graph/Dijkstra.hpp
-    - icon: ':warning:'
       path: src/graph/HeavyLightDecomposition.hpp
       title: src/graph/HeavyLightDecomposition.hpp
     - icon: ':warning:'
       path: src/graph/OfflineDynamicConnectivity.hpp
       title: src/graph/OfflineDynamicConnectivity.hpp
+    - icon: ':warning:'
+      path: src/graph/PSP.hpp
+      title: src/graph/PSP.hpp
     - icon: ':warning:'
       path: src/graph/PartiallyPersistentUnionFind.hpp
       title: src/graph/PartiallyPersistentUnionFind.hpp
@@ -453,6 +462,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/WeightedUnionFind.hpp
       title: src/graph/WeightedUnionFind.hpp
+    - icon: ':warning:'
+      path: src/graph/_Dijkstra.hpp
+      title: src/graph/_Dijkstra.hpp
+    - icon: ':warning:'
+      path: src/graph/_OfflineDynamicConnectivity.hpp
+      title: src/graph/_OfflineDynamicConnectivity.hpp
     - icon: ':warning:'
       path: src/graph/_dijkstra.hpp
       title: src/graph/_dijkstra.hpp
@@ -591,7 +606,7 @@ data:
       title: src/math/fps/pow_term2.hpp
   - name: src/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/matrix/MatPow.hpp
       title: src/matrix/MatPow.hpp
     - icon: ':warning:'
@@ -606,7 +621,7 @@ data:
     - icon: ':warning:'
       path: src/matrix/gauss_jordan_real.hpp
       title: src/matrix/gauss_jordan_real.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/matrix/mat_dot.hpp
       title: src/matrix/mat_dot.hpp
     - icon: ':warning:'
@@ -773,7 +788,7 @@ data:
   verificationCategories:
   - name: test/common
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/common/bisect.test.cpp
       title: test/common/bisect.test.cpp
   - name: test/graph
@@ -789,7 +804,7 @@ data:
       title: test/graph/bfs.test.cpp
   - name: test/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/matrix/MatPow.test.cpp
       title: test/matrix/MatPow.test.cpp
 layout: toppage

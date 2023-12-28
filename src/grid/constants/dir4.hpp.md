@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -52,10 +52,10 @@ data:
   isVerificationFile: false
   path: src/grid/constants/dir4.hpp
   requiredBy:
-  - src/template.hpp
-  - src/grid/dijkstra.hpp
   - src/grid/constants/directions.hpp
   - src/grid/bfs.hpp
+  - src/grid/dijkstra.hpp
+  - src/template.hpp
   timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

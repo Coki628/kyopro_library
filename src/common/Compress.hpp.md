@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -89,8 +89,8 @@ data:
   isVerificationFile: false
   path: src/common/Compress.hpp
   requiredBy:
-  - src/datastructure/get_inversion.hpp
   - src/template.hpp
+  - src/datastructure/get_inversion.hpp
   timestamp: '2023-12-11 16:13:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

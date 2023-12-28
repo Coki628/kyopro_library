@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
@@ -21,8 +21,8 @@ data:
     path: src/graph/AuxiliaryTree.hpp
     title: src/graph/AuxiliaryTree.hpp
   - icon: ':warning:'
-    path: src/graph/OfflineDynamicConnectivity.hpp
-    title: src/graph/OfflineDynamicConnectivity.hpp
+    path: src/graph/_OfflineDynamicConnectivity.hpp
+    title: src/graph/_OfflineDynamicConnectivity.hpp
   - icon: ':warning:'
     path: src/mystl/defaultdict.hpp
     title: src/mystl/defaultdict.hpp
@@ -272,15 +272,15 @@ data:
   isVerificationFile: false
   path: src/common/HashMapImpl.hpp
   requiredBy:
-  - src/datastructure/SparseBIT2D.hpp
-  - src/numbers/bsgs.hpp
   - src/template.hpp
   - src/mystl/defaultdict.hpp
-  - src/common/Counter.hpp
-  - src/common/HashMap.hpp
+  - src/datastructure/SparseBIT2D.hpp
+  - src/numbers/bsgs.hpp
   - src/common/HashSet.hpp
+  - src/common/HashMap.hpp
+  - src/common/Counter.hpp
   - src/graph/AuxiliaryTree.hpp
-  - src/graph/OfflineDynamicConnectivity.hpp
+  - src/graph/_OfflineDynamicConnectivity.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

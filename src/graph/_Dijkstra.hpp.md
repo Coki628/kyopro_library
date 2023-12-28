@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   - icon: ':warning:'
     path: src/graph/dijkstra.hpp
     title: src/graph/dijkstra.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -54,21 +54,23 @@ data:
     \      if (u == goal) return res;\n        if (res[u] < dist) continue;\n    \
     \    for (auto [v, cost] : nodes[u]) {\n            if (chmin(res[v], dist + cost))\
     \ {\n                que.push({dist + cost, v});\n            }\n        }\n \
-    \   }\n    return res;\n};\n#line 4 \"src/graph/Dijkstra.hpp\"\n\n// \u30C0\u30A4\
-    \u30AF\u30B9\u30C8\u30E9(\u30AF\u30E9\u30B9\u7248\u3001\u5FA9\u5143\u4ED8\u304D\
-    \u3001\u30B3\u30B9\u30C8\u6F14\u7B97\u8A2D\u5B9A\u53EF)\ntemplate<typename T,\
-    \ typename E, typename F>\nstruct Dijkstra {\n    int N;\n    const T inf;\n \
-    \   vv<pair<int, E>> nodes;\n    const F f;\n    vector<int> prv;\n\n    Dijkstra(const\
-    \ vv<pair<int, E>> &nodes, T inf, F f)\n        : nodes(nodes),\n          inf(inf),\n\
-    \          f(f),\n          N(nodes.size()) {\n    }\n\n    vector<T> solve(\n\
-    \        const vector<int> &src, int goal = -1, T init = T(),\n        bool restore\
-    \ = false\n    ) {\n        vector<T> res(N, inf);\n        if (restore) prv.assign(N,\
-    \ -1);\n        priority_queue<\n            pair<T, int>, vector<pair<T, int>>,\
-    \ greater<pair<T, int>>>\n            que;\n        for (int s : src) {\n    \
-    \        res[s] = init;\n            que.push({init, s});\n        }\n       \
-    \ while (que.size()) {\n            auto [dist, u] = que.top();\n            que.pop();\n\
-    \            if (u == goal) return res;\n            if (res[u] < dist) continue;\n\
-    \            for (auto [v, cost] : nodes[u]) {\n                T nxtdist = f(dist,\
+    \   }\n    return res;\n};\n#line 4 \"src/graph/_Dijkstra.hpp\"\n\n// \u203B\u30AF\
+    \u30E9\u30B9\u7248\u3002\u30B9\u30FC\u30D1\u30FC\u4F7F\u3044\u3065\u3089\u3044\
+    \u306E\u3067\u304A\u8535\u5165\u308A\u3002\n\n// \u30C0\u30A4\u30AF\u30B9\u30C8\
+    \u30E9(\u30AF\u30E9\u30B9\u7248\u3001\u5FA9\u5143\u4ED8\u304D\u3001\u30B3\u30B9\
+    \u30C8\u6F14\u7B97\u8A2D\u5B9A\u53EF)\ntemplate<typename T, typename E, typename\
+    \ F>\nstruct Dijkstra {\n    int N;\n    const T inf;\n    vv<pair<int, E>> nodes;\n\
+    \    const F f;\n    vector<int> prv;\n\n    Dijkstra(const vv<pair<int, E>> &nodes,\
+    \ T inf, F f)\n        : nodes(nodes),\n          inf(inf),\n          f(f),\n\
+    \          N(nodes.size()) {\n    }\n\n    vector<T> solve(\n        const vector<int>\
+    \ &src, int goal = -1, T init = T(),\n        bool restore = false\n    ) {\n\
+    \        vector<T> res(N, inf);\n        if (restore) prv.assign(N, -1);\n   \
+    \     priority_queue<\n            pair<T, int>, vector<pair<T, int>>, greater<pair<T,\
+    \ int>>>\n            que;\n        for (int s : src) {\n            res[s] =\
+    \ init;\n            que.push({init, s});\n        }\n        while (que.size())\
+    \ {\n            auto [dist, u] = que.top();\n            que.pop();\n       \
+    \     if (u == goal) return res;\n            if (res[u] < dist) continue;\n \
+    \           for (auto [v, cost] : nodes[u]) {\n                T nxtdist = f(dist,\
     \ cost);\n                if (nxtdist < res[v]) {\n                    res[v]\
     \ = nxtdist;\n                    if (restore) prv[v] = u;\n                 \
     \   que.push({nxtdist, v});\n                }\n            }\n        }\n   \
@@ -84,13 +86,15 @@ data:
     \ E>> &nodes, T inf = INF,\n    const F f = [](T a, E b) -> T { return a + b;\
     \ }\n) {\n    return {nodes, inf, f};\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n#include \"_dijkstra.hpp\"\n\n\
-    // \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9(\u30AF\u30E9\u30B9\u7248\u3001\u5FA9\u5143\
-    \u4ED8\u304D\u3001\u30B3\u30B9\u30C8\u6F14\u7B97\u8A2D\u5B9A\u53EF)\ntemplate<typename\
-    \ T, typename E, typename F>\nstruct Dijkstra {\n    int N;\n    const T inf;\n\
-    \    vv<pair<int, E>> nodes;\n    const F f;\n    vector<int> prv;\n\n    Dijkstra(const\
-    \ vv<pair<int, E>> &nodes, T inf, F f)\n        : nodes(nodes),\n          inf(inf),\n\
-    \          f(f),\n          N(nodes.size()) {\n    }\n\n    vector<T> solve(\n\
-    \        const vector<int> &src, int goal = -1, T init = T(),\n        bool restore\
+    // \u203B\u30AF\u30E9\u30B9\u7248\u3002\u30B9\u30FC\u30D1\u30FC\u4F7F\u3044\u3065\
+    \u3089\u3044\u306E\u3067\u304A\u8535\u5165\u308A\u3002\n\n// \u30C0\u30A4\u30AF\
+    \u30B9\u30C8\u30E9(\u30AF\u30E9\u30B9\u7248\u3001\u5FA9\u5143\u4ED8\u304D\u3001\
+    \u30B3\u30B9\u30C8\u6F14\u7B97\u8A2D\u5B9A\u53EF)\ntemplate<typename T, typename\
+    \ E, typename F>\nstruct Dijkstra {\n    int N;\n    const T inf;\n    vv<pair<int,\
+    \ E>> nodes;\n    const F f;\n    vector<int> prv;\n\n    Dijkstra(const vv<pair<int,\
+    \ E>> &nodes, T inf, F f)\n        : nodes(nodes),\n          inf(inf),\n    \
+    \      f(f),\n          N(nodes.size()) {\n    }\n\n    vector<T> solve(\n   \
+    \     const vector<int> &src, int goal = -1, T init = T(),\n        bool restore\
     \ = false\n    ) {\n        vector<T> res(N, inf);\n        if (restore) prv.assign(N,\
     \ -1);\n        priority_queue<\n            pair<T, int>, vector<pair<T, int>>,\
     \ greater<pair<T, int>>>\n            que;\n        for (int s : src) {\n    \
@@ -119,15 +123,15 @@ data:
   - src/graph/dijkstra.hpp
   - src/common/chmin.hpp
   isVerificationFile: false
-  path: src/graph/Dijkstra.hpp
+  path: src/graph/_Dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2023-12-12 16:05:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/graph/Dijkstra.hpp
+documentation_of: src/graph/_Dijkstra.hpp
 layout: document
 redirect_from:
-- /library/src/graph/Dijkstra.hpp
-- /library/src/graph/Dijkstra.hpp.html
-title: src/graph/Dijkstra.hpp
+- /library/src/graph/_Dijkstra.hpp
+- /library/src/graph/_Dijkstra.hpp.html
+title: src/graph/_Dijkstra.hpp
 ---

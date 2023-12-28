@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':warning:'
     path: src/datastructure/BIT.hpp
     title: src/datastructure/BIT.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy: []
@@ -75,14 +75,14 @@ data:
     \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
     \u7F6E(log1\u3064\u7248)\n    int bisearch_fore(int l, int r, T x) {\n       \
     \ if (l > r) return -1;\n        assert(l >= 0 and r < n);\n        x += query(0,\
-    \ l);\n        T k = lower_bound(x);\n        assert(l <= k);\n        if (k >=\
-    \ n) {\n            return -1;\n        } else {\n            return k;\n    \
-    \    }\n    }\n\n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\
+    \ l);\n        int k = lower_bound(x);\n        assert(l <= k);\n        if (k\
+    \ > r) {\n            return -1;\n        } else {\n            return k;\n  \
+    \      }\n    }\n\n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\
     \u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\
     (log1\u3064\u7248)\n    int bisearch_back(int l, int r, T x) {\n        if (l\
     \ > r) return -1;\n        assert(l >= 0 and r < n);\n        T total = query(0,\
     \ r + 1);\n        if (total - x < 0) {\n            return -1;\n        }\n \
-    \       T k = upper_bound(total - x);\n        assert(k <= r);\n        if (k\
+    \       int k = upper_bound(total - x);\n        assert(k <= r);\n        if (k\
     \ < l) {\n            return -1;\n        } else {\n            return k;\n  \
     \      }\n    }\n\n    // \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n\
     \    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u4EE5\u4E0A\u3068\u306A\u308B\
@@ -203,7 +203,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/PersistentBIT.hpp
   requiredBy: []
-  timestamp: '2023-12-06 04:35:49+09:00'
+  timestamp: '2023-12-28 12:04:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/PersistentBIT.hpp

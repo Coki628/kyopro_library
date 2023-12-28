@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -61,14 +61,14 @@ data:
     \        }\n    }\n\n    // \u4F75\u5408\uFF1A\u30DE\u30FC\u30B8\u5F8C\u306E\u96C6\
     \u5408\u306E\u6839(\u30DE\u30FC\u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\n\
     \    template<typename F>\n    int merge(int a, int b, F f) {\n        int x =\
-    \ find(a);\n        int y = find(b);\n        if (x == y) {\n            tree[x]\
-    \ = false;\n            f(-1, y);\n            return -1;\n        }\n       \
-    \ if (!tree[x] or !tree[y]) {\n            tree[x] = tree[y] = false;\n      \
-    \  }\n        groupcnt--;\n        if (rank[x] < rank[y]) {\n            par[x]\
-    \ = y;\n            sz[y] += sz[x];\n            f(y, x);\n            return\
-    \ y;\n        } else {\n            par[y] = x;\n            sz[x] += sz[y];\n\
-    \            if (rank[x] == rank[y]) {\n                rank[x]++;\n         \
-    \   }\n            f(x, y);\n            return x;\n        }\n    }\n\n    int\
+    \ find(a);\n        int y = find(b);\n        if (x == y) {\n            f(-1,\
+    \ y);\n            tree[x] = false;\n            return -1;\n        }\n     \
+    \   if (!tree[x] or !tree[y]) {\n            tree[x] = tree[y] = false;\n    \
+    \    }\n        groupcnt--;\n        if (rank[x] < rank[y]) {\n            f(y,\
+    \ x);\n            par[x] = y;\n            sz[y] += sz[x];\n            return\
+    \ y;\n        } else {\n            f(x, y);\n            par[y] = x;\n      \
+    \      sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n              \
+    \  rank[x]++;\n            }\n            return x;\n        }\n    }\n\n    int\
     \ merge(int a, int b) {\n        return merge(a, b, [](int r, int ch) {});\n \
     \   }\n\n    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\u5B9A\
     \n    bool same(int a, int b) {\n        return find(a) == find(b);\n    }\n\n\
@@ -103,27 +103,27 @@ data:
     \u5408\uFF1A\u30DE\u30FC\u30B8\u5F8C\u306E\u96C6\u5408\u306E\u6839(\u30DE\u30FC\
     \u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\n    template<typename F>\n    int\
     \ merge(int a, int b, F f) {\n        int x = find(a);\n        int y = find(b);\n\
-    \        if (x == y) {\n            tree[x] = false;\n            f(-1, y);\n\
+    \        if (x == y) {\n            f(-1, y);\n            tree[x] = false;\n\
     \            return -1;\n        }\n        if (!tree[x] or !tree[y]) {\n    \
     \        tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n        if\
-    \ (rank[x] < rank[y]) {\n            par[x] = y;\n            sz[y] += sz[x];\n\
-    \            f(y, x);\n            return y;\n        } else {\n            par[y]\
-    \ = x;\n            sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n \
-    \               rank[x]++;\n            }\n            f(x, y);\n            return\
-    \ x;\n        }\n    }\n\n    int merge(int a, int b) {\n        return merge(a,\
-    \ b, [](int r, int ch) {});\n    }\n\n    // \u540C\u3058\u96C6\u5408\u306B\u5C5E\
-    \u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int b) {\n        return\
-    \ find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\u30FC\u30C9\u306E\u5C5E\
-    \u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\n    ll size(int x) {\n\
-    \        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\u306E\u6570\n    int\
-    \ size() {\n        return groupcnt;\n    }\n\n    // \u6728\u304B\u3069\u3046\
-    \u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n        return tree[find(x)];\n\
-    \    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\u5F97\n    set<int> get_roots()\
-    \ {\n        set<int> res;\n        rep(i, n) {\n            res.insert(find(i));\n\
-    \        }\n        return res;\n    }\n\n    // \u5168\u9802\u70B9\u306E\u30B0\
-    \u30EB\u30FC\u30D7\u756A\u53F7\u3092\u53D6\u5F97\n    vector<int> get_info() {\n\
-    \        vector<int> res(n);\n        rep(i, n) {\n            res[i] = find(i);\n\
-    \        }\n        return res;\n    }\n};\n"
+    \ (rank[x] < rank[y]) {\n            f(y, x);\n            par[x] = y;\n     \
+    \       sz[y] += sz[x];\n            return y;\n        } else {\n           \
+    \ f(x, y);\n            par[y] = x;\n            sz[x] += sz[y];\n           \
+    \ if (rank[x] == rank[y]) {\n                rank[x]++;\n            }\n     \
+    \       return x;\n        }\n    }\n\n    int merge(int a, int b) {\n       \
+    \ return merge(a, b, [](int r, int ch) {});\n    }\n\n    // \u540C\u3058\u96C6\
+    \u5408\u306B\u5C5E\u3059\u308B\u304B\u5224\u5B9A\n    bool same(int a, int b)\
+    \ {\n        return find(a) == find(b);\n    }\n\n    // \u3042\u308B\u30CE\u30FC\
+    \u30C9\u306E\u5C5E\u3059\u308B\u96C6\u5408\u306E\u30CE\u30FC\u30C9\u6570\n   \
+    \ ll size(int x) {\n        return sz[find(x)];\n    }\n\n    // \u96C6\u5408\u306E\
+    \u6570\n    int size() {\n        return groupcnt;\n    }\n\n    // \u6728\u304B\
+    \u3069\u3046\u304B\u306E\u5224\u5B9A\n    bool is_tree(int x) {\n        return\
+    \ tree[find(x)];\n    }\n\n    // \u5168\u3066\u306E\u6839\u3092\u53D6\u5F97\n\
+    \    set<int> get_roots() {\n        set<int> res;\n        rep(i, n) {\n    \
+    \        res.insert(find(i));\n        }\n        return res;\n    }\n\n    //\
+    \ \u5168\u9802\u70B9\u306E\u30B0\u30EB\u30FC\u30D7\u756A\u53F7\u3092\u53D6\u5F97\
+    \n    vector<int> get_info() {\n        vector<int> res(n);\n        rep(i, n)\
+    \ {\n            res[i] = find(i);\n        }\n        return res;\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -132,11 +132,11 @@ data:
   requiredBy:
   - src/template.hpp
   - src/graph/WeightedUnionFind.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2023-12-27 10:46:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/UnionFind.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
+  - test/graph/UnionFind.test.cpp
 documentation_of: src/graph/UnionFind.hpp
 layout: document
 redirect_from:

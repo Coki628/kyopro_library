@@ -1,10 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/common/randint.hpp
+    title: src/common/randint.hpp
   - icon: ':warning:'
     path: src/common/randrange.hpp
     title: src/common/randrange.hpp
@@ -27,6 +30,7 @@ data:
   isVerificationFile: false
   path: src/common/mt.hpp
   requiredBy:
+  - src/common/randint.hpp
   - src/common/randrange.hpp
   - src/common/sample.hpp
   timestamp: '2022-03-24 10:49:13+09:00'

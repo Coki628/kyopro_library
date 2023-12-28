@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -39,7 +39,7 @@ data:
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/common/bisect.test.cpp
     title: test/common/bisect.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,12 +51,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/bfs.test.cpp
     title: test/graph/bfs.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://blog.naskya.net/post/meu0vkh5cpl1/
@@ -287,24 +287,24 @@ data:
   isVerificationFile: false
   path: src/common/print.hpp
   requiredBy:
-  - src/math/fps/pow.hpp
   - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
   - src/math/FormalPowerSeries.hpp
   - src/template.hpp
   - src/mystl/Deque.hpp
+  - src/mystl/Multiset.hpp
   - src/mystl/Set.hpp
   - src/mystl/Vector.hpp
-  - src/mystl/Multiset.hpp
   - src/common/yesno.hpp
   - src/graph/AuxiliaryTree.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/matrix/MatPow.test.cpp
   - test/common/bisect.test.cpp
-  - test/graph/UnionFind.test.cpp
   - test/graph/bfs.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
-  - test/matrix/MatPow.test.cpp
+  - test/graph/UnionFind.test.cpp
 documentation_of: src/common/print.hpp
 layout: document
 redirect_from:

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -41,10 +41,10 @@ data:
   - icon: ':warning:'
     path: src/grid/transpose.hpp
     title: src/grid/transpose.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/MatPow.hpp
     title: src/matrix/MatPow.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/matrix/mat_dot.hpp
     title: src/matrix/mat_dot.hpp
   - icon: ':warning:'
@@ -57,12 +57,12 @@ data:
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/MatPow.test.cpp
     title: test/matrix/MatPow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp
@@ -111,24 +111,24 @@ data:
   isVerificationFile: false
   path: src/common/listnd.hpp
   requiredBy:
-  - src/string/RollingHash2D.hpp
-  - src/string/get_next_indices.hpp
-  - src/datastructure/_doubling.hpp
-  - src/datastructure/Doubling.hpp
-  - src/template.hpp
-  - src/grid/dijkstra.hpp
-  - src/grid/bfs01.hpp
-  - src/grid/bfs_restore.hpp
-  - src/grid/transpose.hpp
-  - src/grid/bfs.hpp
   - src/matrix/MatPow.hpp
   - src/matrix/mat_dot.hpp
-  - src/combinatorics/nCr.hpp
-  - src/combinatorics/partition.hpp
+  - src/grid/transpose.hpp
+  - src/grid/bfs01.hpp
+  - src/grid/bfs.hpp
+  - src/grid/bfs_restore.hpp
+  - src/grid/dijkstra.hpp
+  - src/template.hpp
   - src/combinatorics/stirling.hpp
+  - src/combinatorics/partition.hpp
   - src/combinatorics/bell.hpp
+  - src/combinatorics/nCr.hpp
+  - src/datastructure/_doubling.hpp
+  - src/datastructure/Doubling.hpp
+  - src/string/get_next_indices.hpp
+  - src/string/RollingHash2D.hpp
   timestamp: '2023-12-04 15:50:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp
 documentation_of: src/common/listnd.hpp

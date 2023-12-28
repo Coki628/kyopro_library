@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
     path: src/common/chmin.hpp
     title: src/common/chmin.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: src/graph/Dijkstra.hpp
-    title: src/graph/Dijkstra.hpp
+    path: src/graph/_Dijkstra.hpp
+    title: src/graph/_Dijkstra.hpp
   - icon: ':warning:'
     path: src/graph/_dijkstra.hpp
     title: src/graph/_dijkstra.hpp
@@ -78,7 +78,7 @@ data:
   path: src/graph/dijkstra.hpp
   requiredBy:
   - src/graph/_dijkstra.hpp
-  - src/graph/Dijkstra.hpp
+  - src/graph/_Dijkstra.hpp
   timestamp: '2023-12-04 17:57:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

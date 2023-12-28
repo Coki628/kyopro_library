@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
   _extendedRequiredBy:
@@ -59,9 +59,9 @@ data:
   isVerificationFile: false
   path: src/numbers/gcd.hpp
   requiredBy:
-  - src/numbers/Fraction.hpp
-  - src/numbers/lcm.hpp
   - src/template.hpp
+  - src/numbers/lcm.hpp
+  - src/numbers/Fraction.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
