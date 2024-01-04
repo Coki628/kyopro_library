@@ -14,10 +14,10 @@ struct RangeEdgedTwoSAT : public TwoSAT {
 
     int n;
     RangeEdgedTwoSAT(int n) : n(n), base_type(2 * n) {
-        for (int i = 1; i < n; ++i) {
-            int cl = i << 1 | 0, cr = i << 1 | 1;
-            base_type::add_clause(cl, false, i, true);
-            base_type::add_clause(cr, false, i, true);
+        for (int i = 1; i < n; i++) {
+            int cl = i * 2, cr = i * 2 + 1;
+            base_type::add_clause(i, true, cl, false);
+            base_type::add_clause(i, true, cr, false);
         }
     }
 
@@ -29,14 +29,8 @@ struct RangeEdgedTwoSAT : public TwoSAT {
     void add_clause(int u, bool f, int l, int r, bool g) {
         u += n;
         for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
-            if (l & 1) {
-                base_type::add_clause(u, f, l, g);
-                l++;
-            }
-            if (r & 1) {
-                --r;
-                base_type::add_clause(u, f, r, g);
-            }
+            if (l & 1) base_type::add_clause(u, f, l++, g);
+            if (r & 1) base_type::add_clause(u, f, --r, g);
         }
     }
 

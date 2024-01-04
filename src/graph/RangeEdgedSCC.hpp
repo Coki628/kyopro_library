@@ -12,12 +12,15 @@ struct RangeEdgedSCC {
     bool constructed = false;
 
     RangeEdgedSCC(int N) : N(N) {
-        n = 1;
-        while (n < N) n <<= 1;
+        // 2冪サイズにしなくてもちゃんと動くみたい
+        // n = 1;
+        // while (n < N) n <<= 1;
+        n = N;
         N2 = 2 * n;
         for (int i = 1; i < n; i++) {
-            _add_edge(i, 2 * i + 0);
-            _add_edge(i, 2 * i + 1);
+            int cl = i * 2, cr = i * 2 + 1;
+            _add_edge(i, cl);
+            _add_edge(i, cr);
         }
         N2toN.assign(N2, -1);
         rep(i, N) {
@@ -36,11 +39,10 @@ struct RangeEdgedSCC {
 
     // 区間辺 u -> [l,r) の追加
     void add_edges(int u, int l, int r) {
-        l += n, r += n, u += n;
-        while (l < r) {
+        u += n;
+        for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
             if (l & 1) _add_edge(u, l++);
             if (r & 1) _add_edge(u, --r);
-            l >>= 1, r >>= 1;
         }
     }
 
