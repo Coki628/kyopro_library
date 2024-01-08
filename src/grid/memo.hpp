@@ -23,3 +23,22 @@
 // revd = (d + 2) % 4;
 // 0<->1, 2<->3
 // revd = d & 1 ? d - 1 : d + 1;
+
+// ダイヤ型に走査(マンハッタン距離の等しい所を通るやつ)
+// TODO(いつかのAHCで使ったから持ってくる)
+
+// 渦巻き状に走査
+// →, ↓, ←, ↑
+// vector<pll> ds = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+// ll ch = 0, cw = 0, d = 0;
+// // do something to (ch,cw) here
+// while (cur < H * W) {
+//     auto [dh, dw] = ds[d];
+//     ll nh = ch + dh, nw = cw + dw;
+//     if (nh < 0 or nw < 0 or nh >= H or nw >= W or (grid[nh][nw] is done)) {
+//         d = (d + 1) % 4;
+//     } else {
+//         // do something to (nh,nw) here
+//         ch = nh, cw = nw;
+//     }
+// }
