@@ -1,5 +1,8 @@
 #pragma once
 #include "../macros.hpp"
+#include "chmax.hpp"
+
+// ※内側で呼ばれそうなものほど上に書いておく。
 
 // pair
 template<typename T1, typename T2>
@@ -37,26 +40,6 @@ ostream &operator<<(ostream &os, const tuple<Ts...> &arg) {
 //     cout << get<0>(tp) << ' ' << get<1>(tp) << ' ' << get<2>(tp) << ' ' << get<3>(tp) << '\n';
 // }
 
-// vector
-template<typename T>
-ostream &operator<<(ostream &os, const vector<T> &vec) {
-    rep(i, vec.size()) {
-        os << vec[i];
-        if (i != (int)vec.size() - 1) {
-            os << ' ';
-        }
-    }
-    return os;
-}
-template<typename T>
-void print(const vector<T> &vec, string sep = " ") {
-    rep(i, vec.size()) {
-        cout << vec[i];
-        if (i != (int)vec.size() - 1) cout << sep;
-    }
-    cout << '\n';
-}
-
 // array
 template<typename T, size_t N>
 ostream &operator<<(ostream &os, const array<T, N> &arr) {
@@ -73,6 +56,26 @@ void print(const array<T, N> &arr, string sep = " ") {
     rep(i, N) {
         cout << arr[i];
         if (i != (int)N - 1) cout << sep;
+    }
+    cout << '\n';
+}
+
+// vector
+template<typename T>
+ostream &operator<<(ostream &os, const vector<T> &vec) {
+    rep(i, vec.size()) {
+        os << vec[i];
+        if (i != (int)vec.size() - 1) {
+            os << ' ';
+        }
+    }
+    return os;
+}
+template<typename T>
+void print(const vector<T> &vec, string sep = " ") {
+    rep(i, vec.size()) {
+        cout << vec[i];
+        if (i != (int)vec.size() - 1) cout << sep;
     }
     cout << '\n';
 }
@@ -134,6 +137,33 @@ void print(T out) {
 // 可変長引数対応版
 // see: https://blog.naskya.net/post/meu0vkh5cpl1/
 #define debug(...) multi_debug(#__VA_ARGS__, __VA_ARGS__)
+
+// グリッドだけ見やすくなるようにちょっと個別対応
+template<typename T>
+void multi_debug(string name, const vv<T> &grid) {
+    cerr << name << ":" << endl;
+    int H = grid.size();
+    int W = grid[0].size();
+    // 列毎に最大幅を取っておく
+    vector<int> mxlen(W);
+    rep(h, H) {
+        rep(w, W) {
+            chmax(mxlen[w], (int)tostr(grid[h][w]).size());
+        }
+    }
+    rep(h, H) {
+        rep(w, W) {
+            int pad = mxlen[w] - (int)tostr(grid[h][w]).size();
+            cerr << string(pad, ' ') << grid[h][w];
+            if (w == W - 1) {
+                cerr << endl;
+            } else {
+                cerr << ' ';
+            }
+        }
+    }
+}
+
 template<class Tp, class... Ts>
 void multi_debug(string names, Tp arg, Ts... args) {
     // args...のパラメータが0個のとき、単にargだけを出力して終了
