@@ -1,6 +1,7 @@
 #pragma once
-#include "../macros.hpp"
+#include "../combinatorics/ModInt64.hpp"
 #include "../common/chmax.hpp"
+#include "../macros.hpp"
 
 // 根付き木のハッシュ
 // 参考：https://nyaannyaan.github.io/library/tree/tree-hash.hpp
@@ -9,19 +10,9 @@
 // ・ハッシュの実装は既存のロリハからベースとなる部分は流用した。
 struct TreeHash {
     static const ull mod = (1ull << 61ull) - 1;
-    using uint128_t = __uint128_t;
+    using mint64 = ModInt64<mod>;
     int n;
-    vector<ull> base;
-
-    static inline ull add(ull a, ull b) {
-        if ((a += b) >= mod) a -= mod;
-        return a;
-    }
-
-    static inline ull mul(ull a, ull b) {
-        uint128_t c = (uint128_t)a * b;
-        return add(c >> 61, c & mod);
-    }
+    vector<mint64> base;
 
     TreeHash(int n) : n(n) {
         // 2^61-1以下の乱数を返す
@@ -35,11 +26,11 @@ struct TreeHash {
     }
 
     // 頂点rootを根とした木nodesのハッシュを返す
-    vector<ull> get_hash(const vvi &nodes, int root = 0) {
+    vector<mint64> get_hash(const vvi &nodes, int root = 0) {
         assert(nodes.size() <= this->n);
         int N = nodes.size();
         // 頂点uを根とした部分木を表すハッシュ
-        vector<ull> hash(N);
+        vector<mint64> hash(N);
         // 葉から見た深さ
         vector<int> depth(N);
         auto dfs = [&](auto &&f, int u, int prv) -> void {
@@ -52,7 +43,7 @@ struct TreeHash {
             hash[u] = 1;
             for (auto v : nodes[u]) {
                 if (v == prv) continue;
-                hash[u] = mul(hash[u], add(base[depth[u]], hash[v]));
+                hash[u] *= base[depth[u]] + hash[v];
             }
         };
         dfs(dfs, root, -1);

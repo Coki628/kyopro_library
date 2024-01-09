@@ -123,11 +123,10 @@ struct ModInt {
         return mod;
     }
 
-#ifdef CAST_MINT_TO_LL
-    // mintから戻したい場面があったらコメント外す
-    // operator int() const { return x; }
-    operator ll() const {
+    explicit operator int() const {
         return x;
     }
-#endif
+    explicit operator ll() const {
+        return x;
+    }
 };
