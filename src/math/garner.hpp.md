@@ -51,22 +51,21 @@ data:
     \ ModInt &p) {\n        return os << p.x;\n    }\n\n    friend istream &operator>>(istream\
     \ &is, ModInt &a) {\n        int64_t t;\n        is >> t;\n        a = ModInt<mod>(t);\n\
     \        return (is);\n    }\n\n    static int get_mod() {\n        return mod;\n\
-    \    }\n\n#ifdef CAST_MINT_TO_LL\n    // mint\u304B\u3089\u623B\u3057\u305F\u3044\
-    \u5834\u9762\u304C\u3042\u3063\u305F\u3089\u30B3\u30E1\u30F3\u30C8\u5916\u3059\
-    \n    // operator int() const { return x; }\n    operator ll() const {\n     \
-    \   return x;\n    }\n#endif\n};\n#line 3 \"src/math/garner.hpp\"\n\nconstexpr\
-    \ int m1 = 998244353;\nconstexpr int m2 = 1004535809;\nconstexpr int inv_m1_mod_m2\
-    \ = 669690699;\nusing mint1 = ModInt<m1>;\nusing mint2 = ModInt<m2>;\n\n// MOD\u5FA9\
-    \u5143\n// \u30FBint\u8D85ll\u4EE5\u5185\u307F\u305F\u3044\u306A\u6570\u3048\u4E0A\
-    \u3052\u3092FPS\u3084BM\u3067\u6BB4\u308B\u6642\u306B\u4F7F\u3046\u3002\n// \u30FB\
-    \u591A\u5206\u305D\u308C\u306F\u305D\u3046\u306A\u3093\u3060\u3051\u3069\u3001\
-    \u8CA0\u6570\u306B\u306F\u4F7F\u3048\u306A\u3044\u3063\u307D\u3044\u3002\n// \u30FB\
-    FPS\u914D\u5217\u30922\u3064\u7528\u610F\u3057\u3066\u305D\u308C\u305E\u308C\u306E\
-    mod\u3067\u7B54\u3048\u3092\u51FA\u3057\u3066\u3001garner\u306B\u7A81\u3063\u8FBC\
-    \u3080\u3002\n// \u30FBmint -> ll \u306E\u578B\u5909\u63DB\u3092\u4E00\u6642\u7684\
-    \u306B\u6709\u52B9\u306B\u3057\u3066\u4F7F\u3046\u3002\nlong long garner(long\
-    \ long r1, long long r2) {\n    long long t = (r2 - r1) * inv_m1_mod_m2;\n   \
-    \ while (t < 0) t += m2;\n    t %= m2;\n    r1 += t * m1;\n    return r1;\n}\n"
+    \    }\n\n    explicit operator int() const {\n        return x;\n    }\n    explicit\
+    \ operator ll() const {\n        return x;\n    }\n};\n#line 3 \"src/math/garner.hpp\"\
+    \n\nconstexpr int m1 = 998244353;\nconstexpr int m2 = 1004535809;\nconstexpr int\
+    \ inv_m1_mod_m2 = 669690699;\nusing mint1 = ModInt<m1>;\nusing mint2 = ModInt<m2>;\n\
+    \n// MOD\u5FA9\u5143\n// \u30FBint\u8D85ll\u4EE5\u5185\u307F\u305F\u3044\u306A\
+    \u6570\u3048\u4E0A\u3052\u3092FPS\u3084BM\u3067\u6BB4\u308B\u6642\u306B\u4F7F\u3046\
+    \u3002\n// \u30FB\u591A\u5206\u305D\u308C\u306F\u305D\u3046\u306A\u3093\u3060\u3051\
+    \u3069\u3001\u8CA0\u6570\u306B\u306F\u4F7F\u3048\u306A\u3044\u3063\u307D\u3044\
+    \u3002\n// \u30FBFPS\u914D\u5217\u30922\u3064\u7528\u610F\u3057\u3066\u305D\u308C\
+    \u305E\u308C\u306Emod\u3067\u7B54\u3048\u3092\u51FA\u3057\u3066\u3001garner\u306B\
+    \u7A81\u3063\u8FBC\u3080\u3002\n// \u30FBmint -> ll \u306E\u578B\u5909\u63DB\u3092\
+    \u4E00\u6642\u7684\u306B\u6709\u52B9\u306B\u3057\u3066\u4F7F\u3046\u3002\nlong\
+    \ long garner(long long r1, long long r2) {\n    long long t = (r2 - r1) * inv_m1_mod_m2;\n\
+    \    while (t < 0) t += m2;\n    t %= m2;\n    r1 += t * m1;\n    return r1;\n\
+    }\n"
   code: "#pragma once\n#include \"../combinatorics/ModInt.hpp\"\n\nconstexpr int m1\
     \ = 998244353;\nconstexpr int m2 = 1004535809;\nconstexpr int inv_m1_mod_m2 =\
     \ 669690699;\nusing mint1 = ModInt<m1>;\nusing mint2 = ModInt<m2>;\n\n// MOD\u5FA9\
@@ -86,7 +85,7 @@ data:
   isVerificationFile: false
   path: src/math/garner.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-01-09 22:15:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/garner.hpp

@@ -58,10 +58,8 @@ data:
     \ ModInt &p) {\n        return os << p.x;\n    }\n\n    friend istream &operator>>(istream\
     \ &is, ModInt &a) {\n        int64_t t;\n        is >> t;\n        a = ModInt<mod>(t);\n\
     \        return (is);\n    }\n\n    static int get_mod() {\n        return mod;\n\
-    \    }\n\n#ifdef CAST_MINT_TO_LL\n    // mint\u304B\u3089\u623B\u3057\u305F\u3044\
-    \u5834\u9762\u304C\u3042\u3063\u305F\u3089\u30B3\u30E1\u30F3\u30C8\u5916\u3059\
-    \n    // operator int() const { return x; }\n    operator ll() const {\n     \
-    \   return x;\n    }\n#endif\n};\n"
+    \    }\n\n    explicit operator int() const {\n        return x;\n    }\n    explicit\
+    \ operator ll() const {\n        return x;\n    }\n};\n"
   code: "#pragma once\n#include \"../base.hpp\"\n\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/math/combinatorics/mod-int.cpp\n\
     // ModInt\ntemplate<int mod>\nstruct ModInt {\n    int x = 0;\n\n    ModInt()\
     \ : x(0) {}\n\n    ModInt(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod)\
@@ -97,10 +95,9 @@ data:
     \ &os, const ModInt &p) {\n        return os << p.x;\n    }\n\n    friend istream\
     \ &operator>>(istream &is, ModInt &a) {\n        int64_t t;\n        is >> t;\n\
     \        a = ModInt<mod>(t);\n        return (is);\n    }\n\n    static int get_mod()\
-    \ {\n        return mod;\n    }\n\n#ifdef CAST_MINT_TO_LL\n    // mint\u304B\u3089\
-    \u623B\u3057\u305F\u3044\u5834\u9762\u304C\u3042\u3063\u305F\u3089\u30B3\u30E1\
-    \u30F3\u30C8\u5916\u3059\n    // operator int() const { return x; }\n    operator\
-    \ ll() const {\n        return x;\n    }\n#endif\n};\n"
+    \ {\n        return mod;\n    }\n\n    explicit operator int() const {\n     \
+    \   return x;\n    }\n    explicit operator ll() const {\n        return x;\n\
+    \    }\n};\n"
   dependsOn:
   - src/base.hpp
   isVerificationFile: false
@@ -108,7 +105,7 @@ data:
   requiredBy:
   - src/math/garner.hpp
   - src/math/fps/pow_term2.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-01-09 22:15:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp

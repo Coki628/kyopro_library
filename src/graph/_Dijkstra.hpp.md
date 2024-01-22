@@ -46,31 +46,30 @@ data:
     \n// \u30FB\u30E1\u30A4\u30F3\u306E\u51E6\u7406\u5185\u306B\u30D9\u30BF\u8CBC\u308A\
     \u3057\u3066\u4E2D\u8EAB\u3061\u3087\u3063\u3068\u3044\u3058\u308B\u304C\u3059\
     \u3050\u3067\u304D\u308B\u3088\u3046\u306B\u30E9\u30E0\u30C0\u306B\u3057\u305F\
-    \u3002\nauto dijkstra = [](const vvpil &nodes, const vector<int> &src, int goal\
-    \ = -1) {\n    int N = nodes.size();\n    vector<ll> res(N, numeric_limits<ll>::max()\
-    \ / 2);\n    priority_queue<pli, vector<pli>, greater<pli>> que;\n    for (auto\
-    \ s : src) {\n        res[s] = 0;\n        que.push({0, s});\n    }\n    while\
-    \ (que.size()) {\n        auto [dist, u] = que.top();\n        que.pop();\n  \
-    \      if (u == goal) return res;\n        if (res[u] < dist) continue;\n    \
-    \    for (auto [v, cost] : nodes[u]) {\n            if (chmin(res[v], dist + cost))\
-    \ {\n                que.push({dist + cost, v});\n            }\n        }\n \
-    \   }\n    return res;\n};\n#line 4 \"src/graph/_Dijkstra.hpp\"\n\n// \u203B\u30AF\
-    \u30E9\u30B9\u7248\u3002\u30B9\u30FC\u30D1\u30FC\u4F7F\u3044\u3065\u3089\u3044\
-    \u306E\u3067\u304A\u8535\u5165\u308A\u3002\n\n// \u30C0\u30A4\u30AF\u30B9\u30C8\
-    \u30E9(\u30AF\u30E9\u30B9\u7248\u3001\u5FA9\u5143\u4ED8\u304D\u3001\u30B3\u30B9\
-    \u30C8\u6F14\u7B97\u8A2D\u5B9A\u53EF)\ntemplate<typename T, typename E, typename\
-    \ F>\nstruct Dijkstra {\n    int N;\n    const T inf;\n    vv<pair<int, E>> nodes;\n\
-    \    const F f;\n    vector<int> prv;\n\n    Dijkstra(const vv<pair<int, E>> &nodes,\
-    \ T inf, F f)\n        : nodes(nodes),\n          inf(inf),\n          f(f),\n\
-    \          N(nodes.size()) {\n    }\n\n    vector<T> solve(\n        const vector<int>\
-    \ &src, int goal = -1, T init = T(),\n        bool restore = false\n    ) {\n\
-    \        vector<T> res(N, inf);\n        if (restore) prv.assign(N, -1);\n   \
-    \     priority_queue<\n            pair<T, int>, vector<pair<T, int>>, greater<pair<T,\
-    \ int>>>\n            que;\n        for (int s : src) {\n            res[s] =\
-    \ init;\n            que.push({init, s});\n        }\n        while (que.size())\
-    \ {\n            auto [dist, u] = que.top();\n            que.pop();\n       \
-    \     if (u == goal) return res;\n            if (res[u] < dist) continue;\n \
-    \           for (auto [v, cost] : nodes[u]) {\n                T nxtdist = f(dist,\
+    \u3002\nauto dijkstra = [](const vvpil &nodes, const vector<int> &src) {\n   \
+    \ int N = nodes.size();\n    vector<ll> res(N, INF);\n    priority_queue<pli,\
+    \ vector<pli>, greater<pli>> que;\n    for (auto s : src) {\n        res[s] =\
+    \ 0;\n        que.push({0, s});\n    }\n    while (que.size()) {\n        auto\
+    \ [dist, u] = que.top();\n        que.pop();\n        if (res[u] < dist) continue;\n\
+    \        for (auto [v, cost] : nodes[u]) {\n            if (chmin(res[v], dist\
+    \ + cost)) {\n                que.push({dist + cost, v});\n            }\n   \
+    \     }\n    }\n    return res;\n};\n#line 4 \"src/graph/_Dijkstra.hpp\"\n\n//\
+    \ \u203B\u30AF\u30E9\u30B9\u7248\u3002\u30B9\u30FC\u30D1\u30FC\u4F7F\u3044\u3065\
+    \u3089\u3044\u306E\u3067\u304A\u8535\u5165\u308A\u3002\n\n// \u30C0\u30A4\u30AF\
+    \u30B9\u30C8\u30E9(\u30AF\u30E9\u30B9\u7248\u3001\u5FA9\u5143\u4ED8\u304D\u3001\
+    \u30B3\u30B9\u30C8\u6F14\u7B97\u8A2D\u5B9A\u53EF)\ntemplate<typename T, typename\
+    \ E, typename F>\nstruct Dijkstra {\n    int N;\n    const T inf;\n    vv<pair<int,\
+    \ E>> nodes;\n    const F f;\n    vector<int> prv;\n\n    Dijkstra(const vv<pair<int,\
+    \ E>> &nodes, T inf, F f)\n        : nodes(nodes),\n          inf(inf),\n    \
+    \      f(f),\n          N(nodes.size()) {\n    }\n\n    vector<T> solve(\n   \
+    \     const vector<int> &src, int goal = -1, T init = T(),\n        bool restore\
+    \ = false\n    ) {\n        vector<T> res(N, inf);\n        if (restore) prv.assign(N,\
+    \ -1);\n        priority_queue<\n            pair<T, int>, vector<pair<T, int>>,\
+    \ greater<pair<T, int>>>\n            que;\n        for (int s : src) {\n    \
+    \        res[s] = init;\n            que.push({init, s});\n        }\n       \
+    \ while (que.size()) {\n            auto [dist, u] = que.top();\n            que.pop();\n\
+    \            if (u == goal) return res;\n            if (res[u] < dist) continue;\n\
+    \            for (auto [v, cost] : nodes[u]) {\n                T nxtdist = f(dist,\
     \ cost);\n                if (nxtdist < res[v]) {\n                    res[v]\
     \ = nxtdist;\n                    if (restore) prv[v] = u;\n                 \
     \   que.push({nxtdist, v});\n                }\n            }\n        }\n   \
@@ -125,7 +124,7 @@ data:
   isVerificationFile: false
   path: src/graph/_Dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-12-12 16:05:06+09:00'
+  timestamp: '2024-01-22 18:54:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/_Dijkstra.hpp

@@ -8,6 +8,9 @@ data:
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
   - icon: ':heavy_check_mark:'
+    path: src/common/chmax.hpp
+    title: src/common/chmax.hpp
+  - icon: ':heavy_check_mark:'
     path: src/common/input.hpp
     title: src/common/input.hpp
   - icon: ':heavy_check_mark:'
@@ -58,11 +61,12 @@ data:
   - src/macros.hpp
   - src/common/input.hpp
   - src/common/print.hpp
+  - src/common/chmax.hpp
   - src/common/bisect.hpp
   isVerificationFile: true
   path: test/common/bisect.test.cpp
   requiredBy: []
-  timestamp: '2023-12-12 16:05:06+09:00'
+  timestamp: '2024-01-08 14:31:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/common/bisect.test.cpp

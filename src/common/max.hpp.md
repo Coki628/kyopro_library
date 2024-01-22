@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/common/chmax.hpp
     title: src/common/chmax.hpp
   _extendedRequiredBy:

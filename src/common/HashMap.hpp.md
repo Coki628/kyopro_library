@@ -9,9 +9,6 @@ data:
     title: src/common/HashMapImpl.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: src/common/Counter.hpp
-    title: src/common/Counter.hpp
-  - icon: ':warning:'
     path: src/datastructure/SparseBIT2D.hpp
     title: src/datastructure/SparseBIT2D.hpp
   - icon: ':warning:'
@@ -21,14 +18,8 @@ data:
     path: src/graph/_OfflineDynamicConnectivity.hpp
     title: src/graph/_OfflineDynamicConnectivity.hpp
   - icon: ':warning:'
-    path: src/mystl/defaultdict.hpp
-    title: src/mystl/defaultdict.hpp
-  - icon: ':warning:'
     path: src/numbers/bsgs.hpp
     title: src/numbers/bsgs.hpp
-  - icon: ':warning:'
-    path: src/template.hpp
-    title: src/template.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -236,11 +227,8 @@ data:
   isVerificationFile: false
   path: src/common/HashMap.hpp
   requiredBy:
-  - src/template.hpp
-  - src/mystl/defaultdict.hpp
   - src/datastructure/SparseBIT2D.hpp
   - src/numbers/bsgs.hpp
-  - src/common/Counter.hpp
   - src/graph/AuxiliaryTree.hpp
   - src/graph/_OfflineDynamicConnectivity.hpp
   timestamp: '2023-12-04 15:39:12+09:00'

@@ -49,18 +49,16 @@ data:
     \u3088\u3046\u306B\u3057\u305F\u3002\nstruct RangeEdgedTwoSAT : public TwoSAT\
     \ {\n    using base_type = TwoSAT;\n    using base_type::base_type;\n\n    int\
     \ n;\n    RangeEdgedTwoSAT(int n) : n(n), base_type(2 * n) {\n        for (int\
-    \ i = 1; i < n; ++i) {\n            int cl = i << 1 | 0, cr = i << 1 | 1;\n  \
-    \          base_type::add_clause(cl, false, i, true);\n            base_type::add_clause(cr,\
-    \ false, i, true);\n        }\n    }\n\n    void add_clause(int i, bool f, int\
+    \ i = 1; i < n; i++) {\n            int cl = i * 2, cr = i * 2 + 1;\n        \
+    \    base_type::add_clause(i, true, cl, false);\n            base_type::add_clause(i,\
+    \ true, cr, false);\n        }\n    }\n\n    void add_clause(int i, bool f, int\
     \ j, bool g) override {\n        base_type::add_clause(i + n, f, j + n, g);\n\
     \    }\n\n    // u = f, [l,r) = g \u306E\u533A\u9593\u8FBA\u3092\u5F35\u308B\n\
     \    void add_clause(int u, bool f, int l, int r, bool g) {\n        u += n;\n\
     \        for (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n            if (l &\
-    \ 1) {\n                base_type::add_clause(u, f, l, g);\n                l++;\n\
-    \            }\n            if (r & 1) {\n                --r;\n             \
-    \   base_type::add_clause(u, f, r, g);\n            }\n        }\n    }\n\n  \
-    \  vector<bool> answer() {\n        auto res = base_type::answer();\n        return\
-    \ subarray(res, n, 2 * n);\n    }\n};\n"
+    \ 1) base_type::add_clause(u, f, l++, g);\n            if (r & 1) base_type::add_clause(u,\
+    \ f, --r, g);\n        }\n    }\n\n    vector<bool> answer() {\n        auto res\
+    \ = base_type::answer();\n        return subarray(res, n, 2 * n);\n    }\n};\n"
   dependsOn:
   - src/base.hpp
   - src/common/subarray.hpp
@@ -69,7 +67,7 @@ data:
   isVerificationFile: false
   path: src/graph/RangeEdgedTwoSAT.hpp
   requiredBy: []
-  timestamp: '2023-12-12 16:05:06+09:00'
+  timestamp: '2024-01-04 14:20:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/RangeEdgedTwoSAT.hpp

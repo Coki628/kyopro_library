@@ -47,14 +47,13 @@ data:
     \u30D9\u30BF\u8CBC\u308A\u3057\u3066\u4E2D\u8EAB\u3061\u3087\u3063\u3068\u3044\
     \u3058\u308B\u304C\u3059\u3050\u3067\u304D\u308B\u3088\u3046\u306B\u30E9\u30E0\
     \u30C0\u306B\u3057\u305F\u3002\nauto dijkstra = [](const vvpil &nodes, const vector<int>\
-    \ &src, int goal = -1) {\n    int N = nodes.size();\n    vector<ll> res(N, numeric_limits<ll>::max()\
-    \ / 2);\n    priority_queue<pli, vector<pli>, greater<pli>> que;\n    for (auto\
-    \ s : src) {\n        res[s] = 0;\n        que.push({0, s});\n    }\n    while\
-    \ (que.size()) {\n        auto [dist, u] = que.top();\n        que.pop();\n  \
-    \      if (u == goal) return res;\n        if (res[u] < dist) continue;\n    \
-    \    for (auto [v, cost] : nodes[u]) {\n            if (chmin(res[v], dist + cost))\
-    \ {\n                que.push({dist + cost, v});\n            }\n        }\n \
-    \   }\n    return res;\n};\n"
+    \ &src) {\n    int N = nodes.size();\n    vector<ll> res(N, INF);\n    priority_queue<pli,\
+    \ vector<pli>, greater<pli>> que;\n    for (auto s : src) {\n        res[s] =\
+    \ 0;\n        que.push({0, s});\n    }\n    while (que.size()) {\n        auto\
+    \ [dist, u] = que.top();\n        que.pop();\n        if (res[u] < dist) continue;\n\
+    \        for (auto [v, cost] : nodes[u]) {\n            if (chmin(res[v], dist\
+    \ + cost)) {\n                que.push({dist + cost, v});\n            }\n   \
+    \     }\n    }\n    return res;\n};\n"
   code: "#pragma once\n#include \"../common/chmin.hpp\"\n#include \"../macros.hpp\"\
     \n\n// \u203B\u7D50\u5C40\u3053\u3063\u3061\u306E\u304C\u4F7F\u3044\u52DD\u624B\
     \u3044\u3044\u304B\u3089\u6B8B\u3057\u3066\u304A\u304F\u3002\n\n// \u30C0\u30A4\
@@ -62,14 +61,13 @@ data:
     \u30D9\u30BF\u8CBC\u308A\u3057\u3066\u4E2D\u8EAB\u3061\u3087\u3063\u3068\u3044\
     \u3058\u308B\u304C\u3059\u3050\u3067\u304D\u308B\u3088\u3046\u306B\u30E9\u30E0\
     \u30C0\u306B\u3057\u305F\u3002\nauto dijkstra = [](const vvpil &nodes, const vector<int>\
-    \ &src, int goal = -1) {\n    int N = nodes.size();\n    vector<ll> res(N, numeric_limits<ll>::max()\
-    \ / 2);\n    priority_queue<pli, vector<pli>, greater<pli>> que;\n    for (auto\
-    \ s : src) {\n        res[s] = 0;\n        que.push({0, s});\n    }\n    while\
-    \ (que.size()) {\n        auto [dist, u] = que.top();\n        que.pop();\n  \
-    \      if (u == goal) return res;\n        if (res[u] < dist) continue;\n    \
-    \    for (auto [v, cost] : nodes[u]) {\n            if (chmin(res[v], dist + cost))\
-    \ {\n                que.push({dist + cost, v});\n            }\n        }\n \
-    \   }\n    return res;\n};\n"
+    \ &src) {\n    int N = nodes.size();\n    vector<ll> res(N, INF);\n    priority_queue<pli,\
+    \ vector<pli>, greater<pli>> que;\n    for (auto s : src) {\n        res[s] =\
+    \ 0;\n        que.push({0, s});\n    }\n    while (que.size()) {\n        auto\
+    \ [dist, u] = que.top();\n        que.pop();\n        if (res[u] < dist) continue;\n\
+    \        for (auto [v, cost] : nodes[u]) {\n            if (chmin(res[v], dist\
+    \ + cost)) {\n                que.push({dist + cost, v});\n            }\n   \
+    \     }\n    }\n    return res;\n};\n"
   dependsOn:
   - src/common/chmin.hpp
   - src/macros.hpp
@@ -79,7 +77,7 @@ data:
   requiredBy:
   - src/graph/_dijkstra.hpp
   - src/graph/_Dijkstra.hpp
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2024-01-22 18:54:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/dijkstra.hpp

@@ -5,6 +5,9 @@ data:
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
+    path: src/common/chmax.hpp
+    title: src/common/chmax.hpp
+  - icon: ':heavy_check_mark:'
     path: src/common/chmin.hpp
     title: src/common/chmin.hpp
   - icon: ':heavy_check_mark:'
@@ -60,12 +63,13 @@ data:
   - src/base.hpp
   - src/macros.hpp
   - src/common/print.hpp
+  - src/common/chmax.hpp
   - src/graph/bfs.hpp
   - src/common/chmin.hpp
   isVerificationFile: true
   path: test/graph/bfs.test.cpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2024-01-08 14:31:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/bfs.test.cpp

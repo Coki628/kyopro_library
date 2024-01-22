@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/graph/RangeEdgedSCC.hpp
+    title: src/graph/RangeEdgedSCC.hpp
+  - icon: ':warning:'
+    path: src/graph/SCC.hpp
+    title: src/graph/SCC.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -27,7 +33,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/acl/scc.hpp
-  requiredBy: []
+  requiredBy:
+  - src/graph/RangeEdgedSCC.hpp
+  - src/graph/SCC.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

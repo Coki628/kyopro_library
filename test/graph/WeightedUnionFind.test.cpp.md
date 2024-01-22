@@ -5,6 +5,9 @@ data:
     path: src/base.hpp
     title: src/base.hpp
   - icon: ':heavy_check_mark:'
+    path: src/common/chmax.hpp
+    title: src/common/chmax.hpp
+  - icon: ':heavy_check_mark:'
     path: src/common/print.hpp
     title: src/common/print.hpp
   - icon: ':heavy_check_mark:'
@@ -60,12 +63,13 @@ data:
   - src/base.hpp
   - src/macros.hpp
   - src/common/print.hpp
+  - src/common/chmax.hpp
   - src/graph/WeightedUnionFind.hpp
   - src/graph/UnionFind.hpp
   isVerificationFile: true
   path: test/graph/WeightedUnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-12-27 10:46:59+09:00'
+  timestamp: '2024-01-08 14:31:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/WeightedUnionFind.test.cpp
