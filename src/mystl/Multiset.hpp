@@ -30,7 +30,9 @@ struct Multiset : multiset<_Key> {
     }
     // 1個削除
     auto erase(_Key x) {
-        return multiset<_Key>::erase(this->find(x));
+        auto itr = this->find(x);
+        assert(itr != this->end());
+        return multiset<_Key>::erase(itr);
     }
 };
 

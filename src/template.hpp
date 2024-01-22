@@ -5,7 +5,6 @@
 // from common
 #include "common/Compress.hpp"
 #include "common/Counter.hpp"
-#include "common/HashMap.hpp"
 #include "common/RLE.hpp"
 #include "common/bisearch.hpp"
 #include "common/bisect.hpp"
@@ -33,6 +32,8 @@
 #include "common/sum.hpp"
 #include "common/tochar.hpp"
 #include "common/toint.hpp"
+#include "common/tolower.hpp"
+#include "common/toupper.hpp"
 #include "common/vector.hpp"
 #include "common/yesno.hpp"
 #include "common/zip.hpp"

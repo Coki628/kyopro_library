@@ -1,10 +1,9 @@
 #pragma once
 #include "../macros.hpp"
-#include "HashMap.hpp"
 
 template<typename T>
-HashMap<T, ll> Counter(const vector<T> &A) {
-    HashMap<T, ll> res;
+map<T, ll> Counter(const vector<T> &A) {
+    map<T, ll> res;
     for (T a : A) {
         res[a]++;
     }
@@ -20,8 +19,8 @@ vector<ll> Counter(const vector<T> &A, int mx) {
     return res;
 }
 
-HashMap<char, ll> Counter(const string &S) {
-    HashMap<char, ll> res;
+map<char, ll> Counter(const string &S) {
+    map<char, ll> res;
     for (char c : S) {
         res[c]++;
     }
@@ -29,7 +28,7 @@ HashMap<char, ll> Counter(const string &S) {
 }
 
 template<typename T>
-vector<pair<ll, T>> most_common(const HashMap<T, ll> &C) {
+vector<pair<ll, T>> most_common(const map<T, ll> &C) {
     vector<pair<ll, T>> res;
     for (auto [k, v] : C) {
         res.eb(v, k);

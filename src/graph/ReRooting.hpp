@@ -30,12 +30,14 @@ struct ReRooting {
           dp(V, ident) {
     }
 
+    // 無向 u<->v両方向への遷移にdを渡す
     void add_edge(int u, int v, const key_t &d) {
         g[u].emplace_back((Edge){v, d, ident, ident});
         g[v].emplace_back((Edge){u, d, ident, ident});
     }
 
-    void add_edge_bi(int u, int v, const key_t &d, const key_t &e) {
+    // 有向 u->vへの遷移にd、v->uへの遷移にe を渡す
+    void add_edge(int u, int v, const key_t &d, const key_t &e) {
         g[u].emplace_back((Edge){v, d, ident, ident});
         g[v].emplace_back((Edge){u, e, ident, ident});
     }

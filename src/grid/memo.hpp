@@ -42,3 +42,19 @@
 //         ch = nh, cw = nw;
 //     }
 // }
+
+// よく出るのと、地味にこれ{}たくさんで速く書くの面倒なので
+// RLUD -> (dx, dy)
+// map<char, pii> mp = {{'R', {1, 0}}, {'L', {-1, 0}}, {'U', {0, 1}}, {'D', {0, -1}}};
+// UDLR -> (dh, dw)
+// map<char, pii> mp = {{'U', {-1, 0}}, {'D', {1, 0}}, {'L', {0, -1}}, {'R', {0, 1}}};
+
+// gridの全体ではなく[sh,sh+szh),[sw,sw+szw)の長方形領域だけ180度回転する
+// auto rot180 = [](const vvi &grid, ll sh, ll sw, ll szh, ll szw) {
+//     auto res = grid;
+//     rep(i, szh * szw / 2) {
+//         auto [h, w] = idtogrid(i, szw);
+//         swap(res[sh + h][sw + w], res[sh + szh - h - 1][sw + szw - w - 1]);
+//     }
+//     return res;
+// };
