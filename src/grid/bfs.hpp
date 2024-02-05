@@ -7,7 +7,7 @@
 auto bfs = [](const vector<string> &grid, const vector<pii> &src, char invalid = '#') {
     int H = grid.size();
     int W = grid[0].size();
-    auto res = list2d(H, W, INF);
+    auto res = listnd(H, W, INF);
     queue<pii> que;
     for (auto [h, w] : src) {
         res[h][w] = 0;

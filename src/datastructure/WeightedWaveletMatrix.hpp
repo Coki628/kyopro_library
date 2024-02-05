@@ -3,60 +3,67 @@
 #include "bit_vector.hpp"
 #include <immintrin.h>
 
-// Wavelet Matrix
-// 参考：https://nyaannyaan.github.io/library/data-structure-2d/wavelet-matrix.hpp
-// 使用上の注意点
-// ・負数がある時は座圧か下駄履かすかする。
-// 以前の(うしさん版)からの変更点
-// ・最大ビット指定しなくてよくなった。
-// ・初期化は配列渡す以外に、サイズ指定して後からsetしてbuildの方もできるようになった。
-// ・こっちのがちょっと速い。(多分)
-template <typename T>
-struct WaveletMatrix {
+// 重み付きWavelet Matrix
+// ・(x,y)への点に重みvalを付けられる。
+template<typename T, typename U>
+struct WeightedWaveletMatrix {
     using u32 = uint32_t;
     using i64 = int64_t;
     using u64 = uint64_t;
 
     int n, lg;
     vector<T> a;
+    vector<U> dat;
     vector<bit_vector> bv;
-    vector<vector<T>> sum;
+    vector<vector<U>> sum;
 
-    WaveletMatrix(u32 _n) : n(max<u32>(_n, 1)), a(n) {}
-    WaveletMatrix(const vector<T>& _a) : n(_a.size()), a(_a) { build(); }
+    WeightedWaveletMatrix(u32 _n) : n(max<u32>(_n, 1)), a(n), dat(n) {}
+
+    WeightedWaveletMatrix(const vector<T> &_a, const vector<U> &_dat)
+        : n(_a.size()),
+          a(_a),
+          dat(_dat) {
+        build();
+    }
 
     __attribute__((optimize("O3"))) void build() {
         lg = __lg(max<T>(*max_element(begin(a), end(a)), 1)) + 1;
         bv.assign(lg, n);
-        sum.assign(lg + 1, vector<T>(n + 1, (T)0));
-        vector<T> l(n), r(n), cur = a;
+        sum.assign(lg + 1, vector<U>(n + 1, (U)0));
+        vector<int> l(n), r(n), ord(n);
+        iota(begin(ord), end(ord), 0);
         for (int h = lg - 1; h >= 0; --h) {
             int left = 0, right = 0;
             for (int i = 0; i < n; ++i) {
-                if ((cur[i] >> h) & 1) {
+                if ((a[ord[i]] >> h) & 1) {
                     bv[h].set(i);
-                    r[right++] = cur[i];
+                    r[right++] = ord[i];
                 } else {
-                    l[left++] = cur[i];
+                    l[left++] = ord[i];
                 }
             }
             bv[h].build();
-            swap(cur, l);
-            copy(r.begin(), r.begin() + right, cur.begin() + left);
+            swap(ord, l);
+            for (int i = 0; i < right; i++) {
+                ord[left + i] = r[i];
+            }
             for (int i = 0; i < n; i++) {
-                sum[h][i + 1] = sum[h][i] + cur[i];
+                sum[h][i + 1] = sum[h][i] + dat[ord[i]];
             }
         }
         // 全体の累積和を持っておく
         for (int i = 0; i < n; i++) {
-            sum[lg][i + 1] = sum[lg][i] + a[i];
+            sum[lg][i + 1] = sum[lg][i] + dat[i];
         }
         return;
     }
 
-    void set(u32 i, const T& x) { 
-        assert(x >= 0);
-        a[i] = x; 
+    // 位置(x,y)に重さvalの点をセットする
+    // (xは重複できないので、idとペアで座圧するなどで対応する)
+    void set(u32 x, const T &y, const U &val) {
+        assert(x >= 0 && y >= 0);
+        a[x] = y;
+        dat[x] = val;
     }
 
     inline pair<u32, u32> succ0(int l, int r, int h) const {
@@ -86,8 +93,7 @@ struct WaveletMatrix {
         T res = 0;
         for (int h = lg - 1; h >= 0; --h) {
             u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);
-            if (k < r0 - l0)
-                l = l0, r = r0;
+            if (k < r0 - l0) l = l0, r = r0;
             else {
                 k -= r0 - l0;
                 res |= (T)1 << h;
@@ -110,7 +116,7 @@ struct WaveletMatrix {
         assert(0 <= l && l <= r && r <= n);
         assert(0 <= k && k <= r - l);
         T res = 0;
-        for(int h = lg - 1; h >= 0; h--) {
+        for (int h = lg - 1; h >= 0; h--) {
             u32 l0 = bv[h].rank0(l), r0 = bv[h].rank0(r);
             if (k < r0 - l0) {
                 l = l0, r = r0;
@@ -129,7 +135,8 @@ struct WaveletMatrix {
     T kth_largest_sum(int l, int r, int k) const {
         assert(0 <= l && l <= r && r <= n);
         assert(0 <= k && k <= r - l);
-        return  kth_smallest_sum(l, r, r - l) - kth_smallest_sum(l, r, r - l - k);
+        return kth_smallest_sum(l, r, r - l) -
+               kth_smallest_sum(l, r, r - l - k);
     }
 
     // count i s.t. (l <= i < r) && (v[i] < upper)

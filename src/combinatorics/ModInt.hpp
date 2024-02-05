@@ -9,7 +9,24 @@ struct ModInt {
 
     ModInt() : x(0) {}
 
-    ModInt(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}
+    ModInt(int64_t y)
+        : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}
+
+    // 大きい数字文字列からのmint変換
+    // see: https://atcoder.jp/contests/abc339/editorial/9206
+    ModInt(string s) {
+        auto res = 0LL;
+        for(auto &c : s){
+            assert(isdigit(c));
+            int d = c - '0';
+            res = (res * 10 + d) % mod;
+        }
+        x = res;
+    }
+
+    static int get_mod() {
+        return mod;
+    }
 
     ModInt &operator++() {
         x++;
@@ -117,10 +134,6 @@ struct ModInt {
         is >> t;
         a = ModInt<mod>(t);
         return (is);
-    }
-
-    static int get_mod() {
-        return mod;
     }
 
     explicit operator int() const {

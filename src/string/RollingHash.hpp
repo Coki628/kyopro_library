@@ -1,5 +1,5 @@
 #pragma once
-#include "../base.hpp"
+#include "../macros.hpp"
 
 // ロリハ
 // see: https://ei1333.github.io/library/string/rolling-hash.hpp

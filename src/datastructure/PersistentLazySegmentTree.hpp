@@ -1,5 +1,6 @@
 #pragma once
 #include "../base.hpp"
+#include "ObjectPool.hpp"
 
 // 永続遅延セグメント木
 // 参考：https://suisen-cp.github.io/cp-library-cpp/library/datastructure/segment_tree/persistent_lazy_segment_tree.hpp

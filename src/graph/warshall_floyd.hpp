@@ -8,7 +8,9 @@ vv<T> warshall_floyd(vv<T> G) {
     rep(i, N) G[i][i] = 0;
     rep(k, N) {
         rep(i, N) {
+            if (G[i][k] >= INF) continue;
             rep(j, N) {
+                if (G[k][j] >= INF) continue;
                 chmin(G[i][j], G[i][k] + G[k][j]);
             }
         }

@@ -20,11 +20,10 @@
 // 　・パスクエリ[u,v]にて、u->lcaとlca->vでHLD上の列の向きが逆になるので、
 // 　　乗せたセグ木の演算にマージ方向がある場合などは注意して処理する。
 // 　・左右の区別があるモノイドを乗せたい時はクエリで関数Sを使うとうまくいった。(cf1843F2参照)
-
-// HL分解
 struct HeavyLightDecomposition {
 public:
-    vvi g;
+    int N;
+    vvi nodes;
     vector<int> sz, in, out, head, rev, par, dep;
 
     // 頂点vからk回遡った頂点を返す
@@ -44,11 +43,12 @@ public:
         }
     }
 
-    // 頂点uからvに向かって1つ進んだ頂点を返す
-    int next(int u, int v) {
+    // 頂点uからvに向かってk個進んだ頂点を返す(uはvの祖先であること)
+    int next(int u, int v, int k) {
         // assert(lca(u, v) == u);
         int d = dist(u, v);
-        return la(v, d - 1);
+        assert(d >= k);
+        return la(v, d - k);
     }
 
     int dist(int u, int v) const {
@@ -106,48 +106,44 @@ public:
         return es;
     }
 
-    explicit HeavyLightDecomposition(const vvi &g, int root = 0) : g(g) {
-        build(root);
-    }
-
-    int operator[](int u) const {
-        assert(0 <= u && u < (int)g.size());
-        return in[u];
-    }
-
-private:
-    void build(int root = 0) {
-        sz.assign(g.size(), 0);
-        in.assign(g.size(), 0);
-        out.assign(g.size(), 0);
-        head.assign(g.size(), root);
-        rev.assign(g.size(), 0);
-        par.assign(g.size(), 0);
-        dep.assign(g.size(), 0);
+    explicit HeavyLightDecomposition(const vvi &nodes, int root = 0) : nodes(nodes), N(nodes.size()) {
+        sz.assign(N, 0);
+        in.assign(N, 0);
+        out.assign(N, 0);
+        head.assign(N, root);
+        rev.assign(N, 0);
+        par.assign(N, 0);
+        dep.assign(N, 0);
         dfs_sz(root, -1, 0);
         int t = 0;
         dfs_hld(root, -1, t);
     }
 
+    int operator[](int u) const {
+        assert(0 <= u && u < N);
+        return in[u];
+    }
+
+private:
     void dfs_sz(int idx, int p, int d) {
         dep[idx] = d;
         par[idx] = p;
         sz[idx] = 1;
-        if (g[idx].size() && g[idx][0] == p) swap(g[idx][0], g[idx].back());
-        for (auto &to : g[idx]) {
+        if (nodes[idx].size() && nodes[idx][0] == p) swap(nodes[idx][0], nodes[idx].back());
+        for (auto &to : nodes[idx]) {
             if (to == p) continue;
             dfs_sz(to, idx, d + 1);
             sz[idx] += sz[to];
-            if (sz[g[idx][0]] < sz[to]) swap(g[idx][0], to);
+            if (sz[nodes[idx][0]] < sz[to]) swap(nodes[idx][0], to);
         }
     }
 
     void dfs_hld(int idx, int p, int &times) {
         in[idx] = times++;
         rev[in[idx]] = idx;
-        for (auto &to : g[idx]) {
+        for (auto &to : nodes[idx]) {
             if (to == p) continue;
-            head[to] = (g[idx][0] == to ? head[idx] : to);
+            head[to] = (nodes[idx][0] == to ? head[idx] : to);
             dfs_hld(to, idx, times);
         }
         out[idx] = times;

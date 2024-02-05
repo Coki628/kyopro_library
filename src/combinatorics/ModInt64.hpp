@@ -10,6 +10,22 @@ struct ModInt64 {
 
     ModInt64(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}
 
+    // 大きい数字文字列からのmint変換
+    // see: https://atcoder.jp/contests/abc339/editorial/9206
+    ModInt64(string s) {
+        uint128_t res = 0;
+        for(auto &c : s){
+            assert(isdigit(c));
+            int d = c - '0';
+            res = (res * 10 + d) % mod;
+        }
+        x = res;
+    }
+
+    static ull get_mod() {
+        return mod;
+    }
+
     ModInt64 &operator++() {
         x++;
         if (x == mod) x = 0;
@@ -116,10 +132,6 @@ struct ModInt64 {
         is >> t;
         a = ModInt64<mod>(t);
         return (is);
-    }
-
-    static ull get_mod() {
-        return mod;
     }
 
     explicit operator ull() const {

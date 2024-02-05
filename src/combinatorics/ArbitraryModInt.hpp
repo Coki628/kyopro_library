@@ -3,16 +3,27 @@
 
 // 任意ModInt
 // 参考：https://ei1333.github.io/library/math/combinatorics/arbitrary-mod-int.cpp
+// ・ArbitraryModInt::set_mod(mod) のようにstaticメソッドでMODをセットして使う。
+// ・idを振って同じコード内で複数MODを作れるようにした。
+template<int id = 1>
 struct ArbitraryModInt {
+    int x = 0;
 
-    int x;
-
-    ArbitraryModInt() : x(0) {
-    }
+    ArbitraryModInt() : x(0) {}
 
     ArbitraryModInt(int64_t y)
-        : x(y >= 0 ? y % get_mod() : (get_mod() - (-y) % get_mod()) % get_mod()
-          ) {
+        : x(y >= 0 ? y % get_mod() : (get_mod() - (-y) % get_mod()) % get_mod()) {}
+
+    // 大きい数字文字列からのmint変換
+    // see: https://atcoder.jp/contests/abc339/editorial/9206
+    ArbitraryModInt(string s) {
+        auto res = 0LL;
+        for(auto &c : s){
+            assert(isdigit(c));
+            int d = c - '0';
+            res = (res * 10 + d) % get_mod();
+        }
+        x = res;
     }
 
     static int &get_mod() {
@@ -47,17 +58,12 @@ struct ArbitraryModInt {
     }
 
     ArbitraryModInt &operator*=(const ArbitraryModInt &p) {
-        unsigned long long a = (unsigned long long)x * p.x;
-        unsigned xh = (unsigned)(a >> 32), xl = (unsigned)a, d, m;
-        asm("divl %4; \n\t"
-            : "=a"(d), "=d"(m)
-            : "d"(xh), "a"(xl), "r"(get_mod()));
-        x = m;
+        x = (int)(1LL * x * p.x % get_mod());
         return *this;
     }
 
     ArbitraryModInt &operator/=(const ArbitraryModInt &p) {
-        *this *= p.inverse();
+        *this *= p.inv();
         return *this;
     }
 
@@ -101,7 +107,12 @@ struct ArbitraryModInt {
         return x != p.x;
     }
 
-    ArbitraryModInt inverse() const {
+    // ※ModIntの大小比較に意味はないけど、これ作っとくとmapのキーに使えるようになる
+    bool operator<(const ArbitraryModInt &p) const {
+        return x < p.x;
+    }
+
+    ArbitraryModInt inv() const {
         int a = x, b = get_mod(), u = 1, v = 0, t;
         while (b > 0) {
             t = a / b;
@@ -128,8 +139,15 @@ struct ArbitraryModInt {
     friend istream &operator>>(istream &is, ArbitraryModInt &a) {
         int64_t t;
         is >> t;
-        a = ArbitraryModInt(t);
+        a = ArbitraryModInt<id>(t);
         return (is);
+    }
+
+    explicit operator int() const {
+        return x;
+    }
+    explicit operator ll() const {
+        return x;
     }
 };
 // using mint = ArbitraryModInt;

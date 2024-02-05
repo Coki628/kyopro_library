@@ -1,7 +1,6 @@
 #pragma once
 #include "../acl/string.hpp"
 #include "../datastructure/SegmentTree.hpp"
-#include "../datastructure/SparseTable.hpp"
 #include "../macros.hpp"
 
 struct SuffixArray {
