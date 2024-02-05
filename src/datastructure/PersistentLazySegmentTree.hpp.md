@@ -4,6 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
+  - icon: ':warning:'
+    path: src/datastructure/ObjectPool.hpp
+    title: src/datastructure/ObjectPool.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -13,7 +16,23 @@ data:
     links:
     - https://suisen-cp.github.io/cp-library-cpp/library/datastructure/segment_tree/persistent_lazy_segment_tree.hpp
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/datastructure/PersistentLazySegmentTree.hpp\"\
+    using namespace std;\n#line 3 \"src/datastructure/ObjectPool.hpp\"\n\n// PersistentLazySegmentTree\u306B\
+    \u4F7F\u3046\n// \u53C2\u8003\uFF1Ahttps://suisen-cp.github.io/cp-library-cpp/library/util/object_pool.hpp\n\
+    template<typename T, bool auto_extend = false>\nstruct ObjectPool {\n    using\
+    \ value_type = T;\n    using value_pointer_type = T *;\n\n    template<typename\
+    \ U>\n    using container_type =\n        std::conditional_t<auto_extend, std::deque<U>,\
+    \ std::vector<U>>;\n\n    container_type<value_type> pool;\n    container_type<value_pointer_type>\
+    \ stock;\n    decltype(stock.begin()) it;\n\n    ObjectPool() : ObjectPool(0)\
+    \ {\n    }\n    ObjectPool(int siz) : pool(siz), stock(siz) {\n        clear();\n\
+    \    }\n\n    int capacity() const {\n        return pool.size();\n    }\n   \
+    \ int size() const {\n        return it - stock.begin();\n    }\n\n    value_pointer_type\
+    \ alloc() {\n        if constexpr (auto_extend) ensure();\n        return *it++;\n\
+    \    }\n\n    void free(value_pointer_type t) {\n        *--it = t;\n    }\n\n\
+    \    void clear() {\n        int siz = pool.size();\n        it = stock.begin();\n\
+    \        for (int i = 0; i < siz; i++) stock[i] = &pool[i];\n    }\n\n    void\
+    \ ensure() {\n        if (it != stock.end()) return;\n        int siz = stock.size();\n\
+    \        for (int i = siz; i <= siz * 2; ++i) {\n            stock.push_back(&pool.emplace_back());\n\
+    \        }\n        it = stock.begin() + siz;\n    }\n};\n#line 4 \"src/datastructure/PersistentLazySegmentTree.hpp\"\
     \n\n// \u6C38\u7D9A\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n// \u53C2\
     \u8003\uFF1Ahttps://suisen-cp.github.io/cp-library-cpp/library/datastructure/segment_tree/persistent_lazy_segment_tree.hpp\n\
     // \u4F7F\u3044\u65B9\n// \u30FB\u57FA\u672C\u7684\u306B\u306F\u666E\u901A\u306E\
@@ -83,8 +102,9 @@ data:
     \ G, typename H, typename T, typename E>\nPersistentLazySegmentTree<F, G, H, T,\
     \ E> get_persistent_lazy_segment_tree(\n    const F &f, const G &g, const H &h,\
     \ const T &ti, const E &ei\n) {\n    return {f, g, h, ti, ei};\n}\n"
-  code: "#pragma once\n#include \"../base.hpp\"\n\n// \u6C38\u7D9A\u9045\u5EF6\u30BB\
-    \u30B0\u30E1\u30F3\u30C8\u6728\n// \u53C2\u8003\uFF1Ahttps://suisen-cp.github.io/cp-library-cpp/library/datastructure/segment_tree/persistent_lazy_segment_tree.hpp\n\
+  code: "#pragma once\n#include \"../base.hpp\"\n#include \"ObjectPool.hpp\"\n\n//\
+    \ \u6C38\u7D9A\u9045\u5EF6\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n// \u53C2\u8003\
+    \uFF1Ahttps://suisen-cp.github.io/cp-library-cpp/library/datastructure/segment_tree/persistent_lazy_segment_tree.hpp\n\
     // \u4F7F\u3044\u65B9\n// \u30FB\u57FA\u672C\u7684\u306B\u306F\u666E\u901A\u306E\
     \u6C38\u7D9A\u30BB\u30B0\u6728\u3068\u4E00\u7DD2\u3002(\u4F7F\u7528\u4F8B\u306F\
     abc253_f\u3092\u53C2\u7167)\n// \u30FB\u30E1\u30E2\u30EA\u3092\u4E88\u3081\u78BA\
@@ -154,10 +174,11 @@ data:
     \ const T &ti, const E &ei\n) {\n    return {f, g, h, ti, ei};\n}\n"
   dependsOn:
   - src/base.hpp
+  - src/datastructure/ObjectPool.hpp
   isVerificationFile: false
   path: src/datastructure/PersistentLazySegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/PersistentLazySegmentTree.hpp

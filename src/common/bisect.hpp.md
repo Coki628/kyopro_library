@@ -42,10 +42,10 @@ data:
   isVerificationFile: false
   path: src/common/bisect.hpp
   requiredBy:
-  - src/template.hpp
-  - src/datastructure/get_inversion.hpp
   - src/common/LIS.hpp
   - src/common/Compress.hpp
+  - src/template.hpp
+  - src/datastructure/get_inversion.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

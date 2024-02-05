@@ -31,29 +31,43 @@ data:
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/grid/flip.hpp\"\
     \n\n// \u7E26\u53CD\u8EE2\nvector<string> flip_h(const vector<string> &grid) {\n\
-    \    int H = grid.size();\n    int W = grid[0].size();\n    vector<string> res(W,\
-    \ string(H, '*'));\n    rep(j, W) {\n        rep(i, H) {\n            res[i][j]\
+    \    int H = grid.size();\n    int W = grid[0].size();\n    vector<string> res(H,\
+    \ string(W, '*'));\n    rep(i, H) {\n        rep(j, W) {\n            res[i][j]\
     \ = grid[H - i - 1][j];\n        }\n    }\n    return res;\n}\n\n// \u6A2A\u53CD\
     \u8EE2\nvector<string> flip_w(const vector<string> &grid) {\n    int H = grid.size();\n\
-    \    int W = grid[0].size();\n    vector<string> res(W, string(H, '*'));\n   \
+    \    int W = grid[0].size();\n    vector<string> res(H, string(W, '*'));\n   \
     \ rep(i, H) {\n        rep(j, W) {\n            res[i][j] = grid[i][W - j - 1];\n\
-    \        }\n    }\n    return res;\n}\n"
+    \        }\n    }\n    return res;\n}\n\n// \u7E26\u53CD\u8EE2\ntemplate<typename\
+    \ T>\nvv<T> flip_h(const vv<T> &grid) {\n    int H = grid.size();\n    int W =\
+    \ grid[0].size();\n    auto res = listnd(H, W, T());\n    rep(i, H) {\n      \
+    \  rep(j, W) {\n            res[i][j] = grid[H - i - 1][j];\n        }\n    }\n\
+    \    return res;\n}\n\n// \u6A2A\u53CD\u8EE2\ntemplate<typename T>\nvv<T> flip_w(const\
+    \ vv<T> &grid) {\n    int H = grid.size();\n    int W = grid[0].size();\n    auto\
+    \ res = listnd(H, W, T());\n    rep(i, H) {\n        rep(j, W) {\n           \
+    \ res[i][j] = grid[i][W - j - 1];\n        }\n    }\n    return res;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u7E26\u53CD\u8EE2\nvector<string>\
     \ flip_h(const vector<string> &grid) {\n    int H = grid.size();\n    int W =\
-    \ grid[0].size();\n    vector<string> res(W, string(H, '*'));\n    rep(j, W) {\n\
-    \        rep(i, H) {\n            res[i][j] = grid[H - i - 1][j];\n        }\n\
+    \ grid[0].size();\n    vector<string> res(H, string(W, '*'));\n    rep(i, H) {\n\
+    \        rep(j, W) {\n            res[i][j] = grid[H - i - 1][j];\n        }\n\
     \    }\n    return res;\n}\n\n// \u6A2A\u53CD\u8EE2\nvector<string> flip_w(const\
     \ vector<string> &grid) {\n    int H = grid.size();\n    int W = grid[0].size();\n\
-    \    vector<string> res(W, string(H, '*'));\n    rep(i, H) {\n        rep(j, W)\
+    \    vector<string> res(H, string(W, '*'));\n    rep(i, H) {\n        rep(j, W)\
     \ {\n            res[i][j] = grid[i][W - j - 1];\n        }\n    }\n    return\
-    \ res;\n}\n"
+    \ res;\n}\n\n// \u7E26\u53CD\u8EE2\ntemplate<typename T>\nvv<T> flip_h(const vv<T>\
+    \ &grid) {\n    int H = grid.size();\n    int W = grid[0].size();\n    auto res\
+    \ = listnd(H, W, T());\n    rep(i, H) {\n        rep(j, W) {\n            res[i][j]\
+    \ = grid[H - i - 1][j];\n        }\n    }\n    return res;\n}\n\n// \u6A2A\u53CD\
+    \u8EE2\ntemplate<typename T>\nvv<T> flip_w(const vv<T> &grid) {\n    int H = grid.size();\n\
+    \    int W = grid[0].size();\n    auto res = listnd(H, W, T());\n    rep(i, H)\
+    \ {\n        rep(j, W) {\n            res[i][j] = grid[i][W - j - 1];\n      \
+    \  }\n    }\n    return res;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/grid/flip.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/flip.hpp

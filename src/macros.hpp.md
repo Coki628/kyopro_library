@@ -6,6 +6,9 @@ data:
     title: src/base.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/combinatorics/ArbitraryModInt64.hpp
+    title: src/combinatorics/ArbitraryModInt64.hpp
+  - icon: ':warning:'
     path: src/combinatorics/ModInt64.hpp
     title: src/combinatorics/ModInt64.hpp
   - icon: ':warning:'
@@ -243,8 +246,14 @@ data:
     path: src/graph/AuxiliaryTree.hpp
     title: src/graph/AuxiliaryTree.hpp
   - icon: ':warning:'
+    path: src/graph/EulerTour.hpp
+    title: src/graph/EulerTour.hpp
+  - icon: ':warning:'
     path: src/graph/HeavyLightDecomposition.hpp
     title: src/graph/HeavyLightDecomposition.hpp
+  - icon: ':warning:'
+    path: src/graph/LowestCommonAncestor.hpp
+    title: src/graph/LowestCommonAncestor.hpp
   - icon: ':warning:'
     path: src/graph/PSP.hpp
     title: src/graph/PSP.hpp
@@ -281,6 +290,9 @@ data:
   - icon: ':warning:'
     path: src/graph/bfs01.hpp
     title: src/graph/bfs01.hpp
+  - icon: ':warning:'
+    path: src/graph/centroid_decomposition.hpp
+    title: src/graph/centroid_decomposition.hpp
   - icon: ':warning:'
     path: src/graph/cycle_detection_for_namori.hpp
     title: src/graph/cycle_detection_for_namori.hpp
@@ -456,6 +468,9 @@ data:
     path: src/numbers/segment_sieve.hpp
     title: src/numbers/segment_sieve.hpp
   - icon: ':warning:'
+    path: src/string/RollingHash.hpp
+    title: src/string/RollingHash.hpp
+  - icon: ':warning:'
     path: src/string/RollingHash2D.hpp
     title: src/string/RollingHash2D.hpp
   - icon: ':warning:'
@@ -542,174 +557,179 @@ data:
   isVerificationFile: false
   path: src/macros.hpp
   requiredBy:
-  - src/matrix/gauss_jordan_f2.hpp
-  - src/matrix/gauss_jordan_real.hpp
-  - src/matrix/MatPow.hpp
-  - src/matrix/mat_dot.hpp
-  - src/math/lagrange_polynomial.hpp
-  - src/math/BM.hpp
-  - src/math/fps/pow_term2.hpp
-  - src/math/fps/pow.hpp
-  - src/math/FormalPowerSeries.hpp
-  - src/grid/transpose.hpp
-  - src/grid/build_grid.hpp
-  - src/grid/flip.hpp
+  - src/common/bisearch.hpp
+  - src/common/Counter.hpp
+  - src/common/input.hpp
+  - src/common/listnd.hpp
+  - src/common/trisearch.hpp
+  - src/common/print.hpp
+  - src/common/LIS.hpp
+  - src/common/mapping.hpp
+  - src/common/sample.hpp
+  - src/common/randrange.hpp
+  - src/common/RLE.hpp
+  - src/common/Compress.hpp
+  - src/common/int128.hpp
+  - src/common/trisearch_real.hpp
+  - src/common/pow.hpp
+  - src/common/bit_length.hpp
+  - src/common/split.hpp
+  - src/common/yesno.hpp
+  - src/common/randint.hpp
+  - src/common/vector.hpp
+  - src/common/join.hpp
+  - src/common/bisearch_real.hpp
+  - src/common/popcount.hpp
+  - src/common/to_string.hpp
+  - src/common/fill.hpp
+  - src/template.hpp
+  - src/graph/LowestCommonAncestor.hpp
+  - src/graph/RangeEdgedGraph.hpp
+  - src/graph/bfs01.hpp
+  - src/graph/dijkstra_v2.hpp
+  - src/graph/HeavyLightDecomposition.hpp
+  - src/graph/dijkstra.hpp
+  - src/graph/is_bipartite.hpp
+  - src/graph/TreeHash.hpp
+  - src/graph/cycle_detection_for_namori.hpp
+  - src/graph/_Dijkstra.hpp
+  - src/graph/get_centroids.hpp
+  - src/graph/RangeEdgedSCC.hpp
+  - src/graph/SCC.hpp
+  - src/graph/UnionFind.hpp
+  - src/graph/_dijkstra.hpp
+  - src/graph/EulerTour.hpp
+  - src/graph/get_diameter.hpp
+  - src/graph/AuxiliaryTree.hpp
+  - src/graph/dfs.hpp
+  - src/graph/WeightedUnionFind.hpp
+  - src/graph/PSP.hpp
+  - src/graph/get_route.hpp
+  - src/graph/centroid_decomposition.hpp
+  - src/graph/bellman_ford.hpp
+  - src/graph/topological_sort.hpp
+  - src/graph/bfs.hpp
+  - src/graph/warshall_floyd.hpp
+  - src/geometry/cos_formula.hpp
+  - src/geometry/get_cross_point.hpp
+  - src/geometry/Segment.hpp
+  - src/geometry/degrees.hpp
+  - src/geometry/ccw.hpp
+  - src/geometry/cross.hpp
+  - src/geometry/radians.hpp
+  - src/geometry/get_a_and_b.hpp
+  - src/geometry/dot.hpp
+  - src/geometry/Point.hpp
+  - src/geometry/project.hpp
+  - src/geometry/dist3d.hpp
+  - src/geometry/rotate.hpp
+  - src/geometry/angle.hpp
+  - src/geometry/pick_theorem.hpp
+  - src/geometry/intersect.hpp
+  - src/geometry/Circle.hpp
+  - src/geometry/reflect.hpp
+  - src/geometry/intersectCC.hpp
+  - src/geometry/monotone_chain.hpp
+  - src/geometry/Line.hpp
+  - src/geometry/get_distance.hpp
+  - src/geometry/dim2formula.hpp
+  - src/grid/bfs01.hpp
+  - src/grid/idtogrid.hpp
+  - src/grid/dijkstra.hpp
+  - src/grid/constants/dir8.hpp
   - src/grid/constants/directions.hpp
   - src/grid/constants/dir_diagonals.hpp
-  - src/grid/constants/dir8.hpp
   - src/grid/constants/dir4.hpp
-  - src/grid/bfs01.hpp
-  - src/grid/scale.hpp
-  - src/grid/bfs.hpp
   - src/grid/gridtoid.hpp
+  - src/grid/scale.hpp
+  - src/grid/build_grid.hpp
   - src/grid/bfs_restore.hpp
-  - src/grid/dijkstra.hpp
-  - src/grid/idtogrid.hpp
+  - src/grid/transpose.hpp
+  - src/grid/flip.hpp
   - src/grid/rot90.hpp
-  - src/template.hpp
-  - src/mystl/Deque.hpp
-  - src/mystl/Multiset.hpp
-  - src/mystl/Set.hpp
-  - src/mystl/Vector.hpp
-  - src/combinatorics/stirling.hpp
+  - src/grid/bfs.hpp
   - src/combinatorics/partition.hpp
-  - src/combinatorics/combinations_with_replacement.hpp
-  - src/combinatorics/bell.hpp
-  - src/combinatorics/nC2.hpp
-  - src/combinatorics/ModTools.hpp
+  - src/combinatorics/stirling.hpp
   - src/combinatorics/ModInt64.hpp
+  - src/combinatorics/ModTools.hpp
+  - src/combinatorics/nC2.hpp
   - src/combinatorics/permutations.hpp
-  - src/combinatorics/nCr.hpp
+  - src/combinatorics/combinations_with_replacement.hpp
   - src/combinatorics/combinations.hpp
-  - src/datastructure/BIT.hpp
-  - src/datastructure/AbstractBIT.hpp
-  - src/datastructure/SparseTable.hpp
-  - src/datastructure/slide_min.hpp
-  - src/datastructure/LazySegmentTree.hpp
-  - src/datastructure/Accumulate2D.hpp
-  - src/datastructure/_doubling.hpp
-  - src/datastructure/get_inversion.hpp
-  - src/datastructure/Doubling.hpp
-  - src/datastructure/DynamicLiChaoTree.hpp
-  - src/datastructure/DifferenceManagerTree.hpp
-  - src/datastructure/LazySegmentTreeArithmetric.hpp
-  - src/datastructure/DifferenceManager.hpp
-  - src/datastructure/Imos2D.hpp
-  - src/datastructure/Imos.hpp
-  - src/datastructure/BIT2.hpp
-  - src/datastructure/merge_segment.hpp
-  - src/datastructure/Accumulate.hpp
-  - src/datastructure/PersistentBIT.hpp
-  - src/datastructure/SegmentTreeBeats.hpp
-  - src/numbers/pythagorean_triple.hpp
-  - src/numbers/ntod.hpp
-  - src/numbers/lcm.hpp
-  - src/numbers/number_le_n_with_a_b.hpp
-  - src/numbers/_xor_basis.hpp
-  - src/numbers/bsgs.hpp
-  - src/numbers/Fraction.hpp
-  - src/numbers/osa_k.hpp
-  - src/numbers/Eratosthenes.hpp
-  - src/numbers/XorBasis.hpp
-  - src/numbers/isqrt.hpp
-  - src/numbers/dton.hpp
-  - src/numbers/FastPrimeFactorization.hpp
-  - src/numbers/gcd.hpp
-  - src/numbers/divisors.hpp
-  - src/numbers/digit_sum.hpp
-  - src/numbers/is_prime.hpp
-  - src/numbers/segment_sieve.hpp
-  - src/numbers/_eratosthenes_sieve.hpp
-  - src/numbers/_factorize.hpp
-  - src/common/randint.hpp
-  - src/common/trisearch_real.hpp
-  - src/common/fill.hpp
-  - src/common/pow.hpp
-  - src/common/print.hpp
-  - src/common/int128.hpp
-  - src/common/yesno.hpp
-  - src/common/split.hpp
-  - src/common/LIS.hpp
-  - src/common/join.hpp
-  - src/common/to_string.hpp
-  - src/common/randrange.hpp
-  - src/common/trisearch.hpp
-  - src/common/Compress.hpp
-  - src/common/vector.hpp
-  - src/common/bisearch.hpp
-  - src/common/RLE.hpp
-  - src/common/Counter.hpp
-  - src/common/bit_length.hpp
-  - src/common/sample.hpp
-  - src/common/listnd.hpp
-  - src/common/popcount.hpp
-  - src/common/bisearch_real.hpp
-  - src/common/input.hpp
-  - src/common/mapping.hpp
-  - src/graph/UnionFind.hpp
-  - src/graph/bellman_ford.hpp
-  - src/graph/is_bipartite.hpp
-  - src/graph/RangeEdgedSCC.hpp
-  - src/graph/RangeEdgedGraph.hpp
-  - src/graph/AuxiliaryTree.hpp
-  - src/graph/HeavyLightDecomposition.hpp
-  - src/graph/dijkstra_v2.hpp
-  - src/graph/warshall_floyd.hpp
-  - src/graph/PSP.hpp
-  - src/graph/get_diameter.hpp
-  - src/graph/dfs.hpp
-  - src/graph/get_centroids.hpp
-  - src/graph/_dijkstra.hpp
-  - src/graph/TreeHash.hpp
-  - src/graph/bfs01.hpp
-  - src/graph/topological_sort.hpp
-  - src/graph/WeightedUnionFind.hpp
-  - src/graph/bfs.hpp
-  - src/graph/dijkstra.hpp
-  - src/graph/SCC.hpp
-  - src/graph/_Dijkstra.hpp
-  - src/graph/get_route.hpp
-  - src/graph/cycle_detection_for_namori.hpp
-  - src/geometry/Segment.hpp
-  - src/geometry/pick_theorem.hpp
-  - src/geometry/dim2formula.hpp
-  - src/geometry/rotate.hpp
-  - src/geometry/get_a_and_b.hpp
-  - src/geometry/cross.hpp
-  - src/geometry/intersect.hpp
-  - src/geometry/radians.hpp
-  - src/geometry/cos_formula.hpp
-  - src/geometry/ccw.hpp
-  - src/geometry/reflect.hpp
-  - src/geometry/monotone_chain.hpp
-  - src/geometry/degrees.hpp
-  - src/geometry/Line.hpp
-  - src/geometry/Point.hpp
-  - src/geometry/get_distance.hpp
-  - src/geometry/dist3d.hpp
-  - src/geometry/angle.hpp
-  - src/geometry/project.hpp
-  - src/geometry/Circle.hpp
-  - src/geometry/intersectCC.hpp
-  - src/geometry/get_cross_point.hpp
-  - src/geometry/dot.hpp
-  - src/string/is_palindrome.hpp
-  - src/string/compare.hpp
+  - src/combinatorics/nCr.hpp
+  - src/combinatorics/ArbitraryModInt64.hpp
+  - src/combinatorics/bell.hpp
   - src/string/zfill.hpp
-  - src/string/number_format.hpp
-  - src/string/bin.hpp
+  - src/string/SuffixArray.hpp
+  - src/string/compare.hpp
+  - src/string/RollingHash2D.hpp
+  - src/string/is_palindrome.hpp
   - src/string/RollingHashUpdatable.hpp
   - src/string/get_next_indices.hpp
-  - src/string/SuffixArray.hpp
-  - src/string/RollingHash2D.hpp
+  - src/string/bin.hpp
+  - src/string/RollingHash.hpp
+  - src/string/number_format.hpp
+  - src/math/BM.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
+  - src/math/lagrange_polynomial.hpp
+  - src/mystl/Vector.hpp
+  - src/mystl/Set.hpp
+  - src/mystl/Multiset.hpp
+  - src/mystl/Deque.hpp
+  - src/numbers/isqrt.hpp
+  - src/numbers/ntod.hpp
+  - src/numbers/gcd.hpp
+  - src/numbers/divisors.hpp
+  - src/numbers/pythagorean_triple.hpp
+  - src/numbers/Eratosthenes.hpp
+  - src/numbers/dton.hpp
+  - src/numbers/osa_k.hpp
+  - src/numbers/XorBasis.hpp
+  - src/numbers/number_le_n_with_a_b.hpp
+  - src/numbers/segment_sieve.hpp
+  - src/numbers/digit_sum.hpp
+  - src/numbers/FastPrimeFactorization.hpp
+  - src/numbers/_factorize.hpp
+  - src/numbers/is_prime.hpp
+  - src/numbers/Fraction.hpp
+  - src/numbers/_xor_basis.hpp
+  - src/numbers/bsgs.hpp
+  - src/numbers/_eratosthenes_sieve.hpp
+  - src/numbers/lcm.hpp
+  - src/matrix/mat_dot.hpp
+  - src/matrix/MatPow.hpp
+  - src/matrix/gauss_jordan_f2.hpp
+  - src/matrix/gauss_jordan_real.hpp
+  - src/datastructure/get_inversion.hpp
+  - src/datastructure/Imos2D.hpp
+  - src/datastructure/Doubling.hpp
+  - src/datastructure/Accumulate2D.hpp
+  - src/datastructure/SparseTable.hpp
+  - src/datastructure/Accumulate.hpp
+  - src/datastructure/SegmentTreeBeats.hpp
+  - src/datastructure/LazySegmentTreeArithmetric.hpp
+  - src/datastructure/PersistentBIT.hpp
+  - src/datastructure/Imos.hpp
+  - src/datastructure/BIT2.hpp
+  - src/datastructure/DynamicLiChaoTree.hpp
+  - src/datastructure/AbstractBIT.hpp
+  - src/datastructure/LazySegmentTree.hpp
+  - src/datastructure/DifferenceManagerTree.hpp
+  - src/datastructure/merge_segment.hpp
+  - src/datastructure/BIT.hpp
+  - src/datastructure/DifferenceManager.hpp
+  - src/datastructure/slide_min.hpp
+  - src/datastructure/_doubling.hpp
   timestamp: '2023-05-22 19:11:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/matrix/MatPow.test.cpp
   - test/common/bisect.test.cpp
-  - test/graph/bfs.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
+  - test/graph/bfs.test.cpp
   - test/graph/UnionFind.test.cpp
+  - test/matrix/MatPow.test.cpp
 documentation_of: src/macros.hpp
 layout: document
 redirect_from:

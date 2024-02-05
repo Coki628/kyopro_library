@@ -40,80 +40,85 @@ data:
     using namespace std;\n#line 3 \"src/combinatorics/ModInt.hpp\"\n\n// \u53C2\u8003\
     \uFF1Ahttps://ei1333.github.io/library/math/combinatorics/mod-int.cpp\n// ModInt\n\
     template<int mod>\nstruct ModInt {\n    int x = 0;\n\n    ModInt() : x(0) {}\n\
-    \n    ModInt(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\n\
-    \    ModInt &operator++() {\n        x++;\n        if (x == mod) x = 0;\n    \
-    \    return *this;\n    }\n\n    ModInt &operator--() {\n        if (x == 0) x\
-    \ = mod;\n        x--;\n        return *this;\n    }\n\n    ModInt &operator+=(const\
-    \ ModInt &p) {\n        if ((x += p.x) >= mod) x -= mod;\n        return *this;\n\
-    \    }\n\n    ModInt &operator-=(const ModInt &p) {\n        if ((x += mod - p.x)\
-    \ >= mod) x -= mod;\n        return *this;\n    }\n\n    ModInt &operator*=(const\
-    \ ModInt &p) {\n        x = (int)(1LL * x * p.x % mod);\n        return *this;\n\
-    \    }\n\n    ModInt &operator/=(const ModInt &p) {\n        *this *= p.inv();\n\
-    \        return *this;\n    }\n\n    ModInt operator++(int) {\n        ModInt\
-    \ result = *this;\n        ++*this;\n        return result;\n    }\n\n    ModInt\
-    \ operator--(int) {\n        ModInt result = *this;\n        --*this;\n      \
-    \  return result;\n    }\n\n    ModInt operator-() const {\n        return ModInt(-x);\n\
-    \    }\n\n    ModInt operator+(const ModInt &p) const {\n        return ModInt(*this)\
-    \ += p;\n    }\n\n    ModInt operator-(const ModInt &p) const {\n        return\
-    \ ModInt(*this) -= p;\n    }\n\n    ModInt operator*(const ModInt &p) const {\n\
-    \        return ModInt(*this) *= p;\n    }\n\n    ModInt operator/(const ModInt\
-    \ &p) const {\n        return ModInt(*this) /= p;\n    }\n\n    bool operator==(const\
-    \ ModInt &p) const {\n        return x == p.x;\n    }\n\n    bool operator!=(const\
-    \ ModInt &p) const {\n        return x != p.x;\n    }\n\n    // \u203BModInt\u306E\
-    \u5927\u5C0F\u6BD4\u8F03\u306B\u610F\u5473\u306F\u306A\u3044\u3051\u3069\u3001\
-    \u3053\u308C\u4F5C\u3063\u3068\u304F\u3068map\u306E\u30AD\u30FC\u306B\u4F7F\u3048\
-    \u308B\u3088\u3046\u306B\u306A\u308B\n    bool operator<(const ModInt &p) const\
-    \ {\n        return x < p.x;\n    }\n\n    ModInt inv() const {\n        int a\
-    \ = x, b = mod, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a /\
-    \ b;\n            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n   \
-    \     }\n        return ModInt(u);\n    }\n\n    ModInt pow(int64_t n) const {\n\
-    \        ModInt ret(1), mul(x);\n        while (n > 0) {\n            if (n &\
-    \ 1) ret *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n \
-    \       return ret;\n    }\n\n    friend ostream &operator<<(ostream &os, const\
-    \ ModInt &p) {\n        return os << p.x;\n    }\n\n    friend istream &operator>>(istream\
-    \ &is, ModInt &a) {\n        int64_t t;\n        is >> t;\n        a = ModInt<mod>(t);\n\
-    \        return (is);\n    }\n\n    static int get_mod() {\n        return mod;\n\
-    \    }\n\n    explicit operator int() const {\n        return x;\n    }\n    explicit\
-    \ operator ll() const {\n        return x;\n    }\n};\n#line 3 \"src/macros.hpp\"\
-    \n\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long double;\n\
-    using pll = pair<ll, ll>;\nusing pii = pair<int, int>;\nusing pli = pair<ll, int>;\n\
-    using pil = pair<int, ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\n\
-    using vvl = vv<ll>;\nusing vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli\
-    \ = vv<pli>;\nusing vvpil = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n\
-    #define rep(...) name4(__VA_ARGS__, rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define\
-    \ rep1(i, a) for (ll i = 0, _aa = a; i < _aa; i++)\n#define rep2(i, a, b) for\
-    \ (ll i = a, _bb = b; i < _bb; i++)\n#define rep3(i, a, b, c) for (ll i = a, _bb\
-    \ = b; (c > 0 && a <= i && i < _bb) or (c < 0 && a >= i && i > _bb); i += c)\n\
-    #define rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define pb push_back\n#define\
-    \ eb emplace_back\n#define mkp make_pair\n#define ALL(A) begin(A), end(A)\n#define\
-    \ UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)), A.end())\n#define elif else\
-    \ if\n#define tostr to_string\n\n#ifndef CONSTANTS\n    constexpr ll INF = 1e18;\n\
-    \    constexpr int MOD = 1000000007;\n    constexpr ld EPS = 1e-10;\n    constexpr\
-    \ ld PI = M_PI;\n#endif\n#line 3 \"src/combinatorics/ModTools.hpp\"\n\n// Mod\u6570\
-    \u3048\u4E0A\u3052\u6F14\u7B97\u30C4\u30FC\u30EB\ntemplate<typename Mint>\nstruct\
-    \ ModTools {\nprivate:\n    int MAX;\n    vector<Mint> _fact, _factinv, inv;\n\
-    \npublic:\n    // nCr\u306A\u3089n\u3001nHr\u306A\u3089n+r\u307E\u3067\u4F5C\u308B\
-    \n    ModTools(int mx) : MAX(++mx) {\n        _fact.resize(MAX);\n        _factinv.resize(MAX);\n\
-    \        inv.resize(MAX);\n        _fact[0] = _fact[1] = 1;\n        rep(i, 2,\
-    \ MAX) {\n            _fact[i] = _fact[i - 1] * (Mint)i;\n        }\n        _factinv[MAX\
-    \ - 1] = (Mint)1 / _fact[MAX - 1];\n        rep(i, MAX - 2, -1, -1) {\n      \
-    \      _factinv[i] = _factinv[i + 1] * (Mint)(i + 1);\n        }\n        rep(i,\
-    \ MAX - 1, 0, -1) {\n            inv[i] = _factinv[i] * _fact[i - 1];\n      \
-    \  }\n    }\n\n    // \u6E96\u5099O(N)\u3001\u64CD\u4F5CO(1)\u3067log\u304C\u4E57\
-    \u3089\u306A\u3044mod\u9664\u7B97\n    Mint div(Mint a, int b) {\n        return\
-    \ a * inv[b];\n    }\n\n    Mint fact(int x) {\n        assert(x < MAX);\n   \
-    \     return _fact[x];\n    }\n\n    Mint factinv(int x) {\n        assert(x <\
-    \ MAX);\n        return _factinv[x];\n    }\n\n    Mint nCr(int n, int r) {\n\
-    \        if (n < r or r < 0) return 0;\n        r = min(r, n - r);\n        Mint\
-    \ num = _fact[n];\n        Mint den = _factinv[r] * _factinv[n - r];\n       \
-    \ return num * den;\n    }\n\n    Mint nHr(int n, int r) {\n        assert(r +\
-    \ n - 1 < MAX);\n        return nCr(r + n - 1, r);\n    }\n\n    Mint nPr(int\
-    \ n, int r) {\n        if (n < r or r < 0) return 0;\n        return _fact[n]\
-    \ * _factinv[n - r];\n    }\n\n    // \u4E8C\u91CD\u968E\u4E57\n    // \u53C2\u8003\
-    \uFF1Ahttps://ja.wikipedia.org/wiki/%E4%BA%8C%E9%87%8D%E9%9A%8E%E4%B9%97\n   \
-    \ Mint double_factorial(int n) {\n        if (n % 2 == 0) {\n            int k\
-    \ = n / 2;\n            return Mint(2).pow(k) * fact(k);\n        } else {\n \
-    \           int k = (n + 1) / 2;\n            return fact(2 * k) / Mint(2).pow(k)\
+    \n    ModInt(int64_t y)\n        : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod)\
+    \ {}\n\n    // \u5927\u304D\u3044\u6570\u5B57\u6587\u5B57\u5217\u304B\u3089\u306E\
+    mint\u5909\u63DB\n    // see: https://atcoder.jp/contests/abc339/editorial/9206\n\
+    \    ModInt(string s) {\n        auto res = 0LL;\n        for(auto &c : s){\n\
+    \            assert(isdigit(c));\n            int d = c - '0';\n            res\
+    \ = (res * 10 + d) % mod;\n        }\n        x = res;\n    }\n\n    static int\
+    \ get_mod() {\n        return mod;\n    }\n\n    ModInt &operator++() {\n    \
+    \    x++;\n        if (x == mod) x = 0;\n        return *this;\n    }\n\n    ModInt\
+    \ &operator--() {\n        if (x == 0) x = mod;\n        x--;\n        return\
+    \ *this;\n    }\n\n    ModInt &operator+=(const ModInt &p) {\n        if ((x +=\
+    \ p.x) >= mod) x -= mod;\n        return *this;\n    }\n\n    ModInt &operator-=(const\
+    \ ModInt &p) {\n        if ((x += mod - p.x) >= mod) x -= mod;\n        return\
+    \ *this;\n    }\n\n    ModInt &operator*=(const ModInt &p) {\n        x = (int)(1LL\
+    \ * x * p.x % mod);\n        return *this;\n    }\n\n    ModInt &operator/=(const\
+    \ ModInt &p) {\n        *this *= p.inv();\n        return *this;\n    }\n\n  \
+    \  ModInt operator++(int) {\n        ModInt result = *this;\n        ++*this;\n\
+    \        return result;\n    }\n\n    ModInt operator--(int) {\n        ModInt\
+    \ result = *this;\n        --*this;\n        return result;\n    }\n\n    ModInt\
+    \ operator-() const {\n        return ModInt(-x);\n    }\n\n    ModInt operator+(const\
+    \ ModInt &p) const {\n        return ModInt(*this) += p;\n    }\n\n    ModInt\
+    \ operator-(const ModInt &p) const {\n        return ModInt(*this) -= p;\n   \
+    \ }\n\n    ModInt operator*(const ModInt &p) const {\n        return ModInt(*this)\
+    \ *= p;\n    }\n\n    ModInt operator/(const ModInt &p) const {\n        return\
+    \ ModInt(*this) /= p;\n    }\n\n    bool operator==(const ModInt &p) const {\n\
+    \        return x == p.x;\n    }\n\n    bool operator!=(const ModInt &p) const\
+    \ {\n        return x != p.x;\n    }\n\n    // \u203BModInt\u306E\u5927\u5C0F\u6BD4\
+    \u8F03\u306B\u610F\u5473\u306F\u306A\u3044\u3051\u3069\u3001\u3053\u308C\u4F5C\
+    \u3063\u3068\u304F\u3068map\u306E\u30AD\u30FC\u306B\u4F7F\u3048\u308B\u3088\u3046\
+    \u306B\u306A\u308B\n    bool operator<(const ModInt &p) const {\n        return\
+    \ x < p.x;\n    }\n\n    ModInt inv() const {\n        int a = x, b = mod, u =\
+    \ 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n            swap(a\
+    \ -= t * b, b);\n            swap(u -= t * v, v);\n        }\n        return ModInt(u);\n\
+    \    }\n\n    ModInt pow(int64_t n) const {\n        ModInt ret(1), mul(x);\n\
+    \        while (n > 0) {\n            if (n & 1) ret *= mul;\n            mul\
+    \ *= mul;\n            n >>= 1;\n        }\n        return ret;\n    }\n\n   \
+    \ friend ostream &operator<<(ostream &os, const ModInt &p) {\n        return os\
+    \ << p.x;\n    }\n\n    friend istream &operator>>(istream &is, ModInt &a) {\n\
+    \        int64_t t;\n        is >> t;\n        a = ModInt<mod>(t);\n        return\
+    \ (is);\n    }\n\n    explicit operator int() const {\n        return x;\n   \
+    \ }\n    explicit operator ll() const {\n        return x;\n    }\n};\n#line 3\
+    \ \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull = unsigned long long;\n\
+    using ld = long double;\nusing pll = pair<ll, ll>;\nusing pii = pair<int, int>;\n\
+    using pli = pair<ll, int>;\nusing pil = pair<int, ll>;\ntemplate<typename T>\n\
+    using vv = vector<vector<T>>;\nusing vvl = vv<ll>;\nusing vvi = vv<int>;\nusing\
+    \ vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil = vv<pil>;\n#define name4(i,\
+    \ a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__, rep4, rep3, rep2,\
+    \ rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa = a; i < _aa; i++)\n\
+    #define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n#define rep3(i, a,\
+    \ b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb) or (c < 0 && a >=\
+    \ i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a); i>(b); i--)\n#define\
+    \ pb push_back\n#define eb emplace_back\n#define mkp make_pair\n#define ALL(A)\
+    \ begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)), A.end())\n\
+    #define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n    constexpr\
+    \ ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr ld EPS =\
+    \ 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/combinatorics/ModTools.hpp\"\
+    \n\n// Mod\u6570\u3048\u4E0A\u3052\u6F14\u7B97\u30C4\u30FC\u30EB\ntemplate<typename\
+    \ Mint>\nstruct ModTools {\nprivate:\n    int MAX;\n    vector<Mint> _fact, _factinv,\
+    \ inv;\n\npublic:\n    // nCr\u306A\u3089n\u3001nHr\u306A\u3089n+r\u307E\u3067\
+    \u4F5C\u308B\n    ModTools(int mx) : MAX(++mx) {\n        _fact.resize(MAX);\n\
+    \        _factinv.resize(MAX);\n        inv.resize(MAX);\n        _fact[0] = _fact[1]\
+    \ = 1;\n        rep(i, 2, MAX) {\n            _fact[i] = _fact[i - 1] * (Mint)i;\n\
+    \        }\n        _factinv[MAX - 1] = (Mint)1 / _fact[MAX - 1];\n        rep(i,\
+    \ MAX - 2, -1, -1) {\n            _factinv[i] = _factinv[i + 1] * (Mint)(i + 1);\n\
+    \        }\n        rep(i, MAX - 1, 0, -1) {\n            inv[i] = _factinv[i]\
+    \ * _fact[i - 1];\n        }\n    }\n\n    // \u6E96\u5099O(N)\u3001\u64CD\u4F5C\
+    O(1)\u3067log\u304C\u4E57\u3089\u306A\u3044mod\u9664\u7B97\n    Mint div(Mint\
+    \ a, int b) {\n        return a * inv[b];\n    }\n\n    Mint fact(int x) {\n \
+    \       assert(x < MAX);\n        return _fact[x];\n    }\n\n    Mint factinv(int\
+    \ x) {\n        assert(x < MAX);\n        return _factinv[x];\n    }\n\n    Mint\
+    \ nCr(int n, int r) {\n        if (n < r or r < 0) return 0;\n        r = min(r,\
+    \ n - r);\n        Mint num = _fact[n];\n        Mint den = _factinv[r] * _factinv[n\
+    \ - r];\n        return num * den;\n    }\n\n    Mint nHr(int n, int r) {\n  \
+    \      assert(r + n - 1 < MAX);\n        return nCr(r + n - 1, r);\n    }\n\n\
+    \    Mint nPr(int n, int r) {\n        if (n < r or r < 0) return 0;\n       \
+    \ return _fact[n] * _factinv[n - r];\n    }\n\n    // \u4E8C\u91CD\u968E\u4E57\
+    \n    // \u53C2\u8003\uFF1Ahttps://ja.wikipedia.org/wiki/%E4%BA%8C%E9%87%8D%E9%9A%8E%E4%B9%97\n\
+    \    Mint double_factorial(int n) {\n        if (n % 2 == 0) {\n            int\
+    \ k = n / 2;\n            return Mint(2).pow(k) * fact(k);\n        } else {\n\
+    \            int k = (n + 1) / 2;\n            return fact(2 * k) / Mint(2).pow(k)\
     \ / fact(k);\n        }\n    }\n};\n#line 2 \"src/common/chmax.hpp\"\n\ntemplate<typename\
     \ T>\nbool chmax(T &x, T y) {\n    return (y > x) ? x = y, true : false;\n}\n\
     #line 4 \"src/common/print.hpp\"\n\n// \u203B\u5185\u5074\u3067\u547C\u3070\u308C\
@@ -498,7 +503,7 @@ data:
   isVerificationFile: false
   path: src/math/fps/pow_term2.hpp
   requiredBy: []
-  timestamp: '2024-01-09 22:15:44+09:00'
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/fps/pow_term2.hpp

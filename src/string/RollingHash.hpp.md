@@ -4,6 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
+  - icon: ':heavy_check_mark:'
+    path: src/macros.hpp
+    title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: src/string/RollingHash2D.hpp
@@ -19,17 +22,31 @@ data:
     links:
     - https://ei1333.github.io/library/string/rolling-hash.hpp
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/string/RollingHash.hpp\"\n\n// \u30ED\u30EA\
-    \u30CF\n// see: https://ei1333.github.io/library/string/rolling-hash.hpp\nstruct\
-    \ RollingHash {\n    static const ull mod = (1ull << 61ull) - 1;\n    using uint128_t\
-    \ = __uint128_t;\n    vector<ull> power;\n    const ull base;\n\n    static inline\
-    \ ull add(ull a, ull b) {\n        if ((a += b) >= mod) a -= mod;\n        return\
-    \ a;\n    }\n\n    static inline ull sub(ull a, ull b) {\n        return add(a,\
-    \ mod - b);\n    }\n\n    static inline ull mul(ull a, ull b) {\n        uint128_t\
-    \ c = (uint128_t)a * b;\n        return add(c >> 61, c & mod);\n    }\n\n    //\
-    \ 2^61-1\u4EE5\u4E0B\u306E\u4E71\u6570\u3092\u8FD4\u3059\u3002\u3053\u308C\u3092\
-    base\u3068\u3059\u308B\u3068Hack\u3055\u308C\u306B\u304F\u3044\n    static inline\
-    \ ull generate_base() {\n        mt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
+    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
+    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+    using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
+    \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
+    using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
+    \ = vv<pil>;\n#define name4(i, a, b, c, d, e, ...) e\n#define rep(...) name4(__VA_ARGS__,\
+    \ rep4, rep3, rep2, rep1)(__VA_ARGS__)\n#define rep1(i, a) for (ll i = 0, _aa\
+    \ = a; i < _aa; i++)\n#define rep2(i, a, b) for (ll i = a, _bb = b; i < _bb; i++)\n\
+    #define rep3(i, a, b, c) for (ll i = a, _bb = b; (c > 0 && a <= i && i < _bb)\
+    \ or (c < 0 && a >= i && i > _bb); i += c)\n#define rrep(i, a, b) for (ll i=(a);\
+    \ i>(b); i--)\n#define pb push_back\n#define eb emplace_back\n#define mkp make_pair\n\
+    #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
+    \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
+    \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/string/RollingHash.hpp\"\
+    \n\n// \u30ED\u30EA\u30CF\n// see: https://ei1333.github.io/library/string/rolling-hash.hpp\n\
+    struct RollingHash {\n    static const ull mod = (1ull << 61ull) - 1;\n    using\
+    \ uint128_t = __uint128_t;\n    vector<ull> power;\n    const ull base;\n\n  \
+    \  static inline ull add(ull a, ull b) {\n        if ((a += b) >= mod) a -= mod;\n\
+    \        return a;\n    }\n\n    static inline ull sub(ull a, ull b) {\n     \
+    \   return add(a, mod - b);\n    }\n\n    static inline ull mul(ull a, ull b)\
+    \ {\n        uint128_t c = (uint128_t)a * b;\n        return add(c >> 61, c &\
+    \ mod);\n    }\n\n    // 2^61-1\u4EE5\u4E0B\u306E\u4E71\u6570\u3092\u8FD4\u3059\
+    \u3002\u3053\u308C\u3092base\u3068\u3059\u308B\u3068Hack\u3055\u308C\u306B\u304F\
+    \u3044\n    static inline ull generate_base() {\n        mt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
     \        uniform_int_distribution<ull> rand(1, RollingHash::mod - 1);\n      \
     \  return rand(mt);\n    }\n\n    inline void expand(size_t sz) {\n        if\
     \ (power.size() < sz + 1) {\n            int pre_sz = (int)power.size();\n   \
@@ -80,7 +97,7 @@ data:
     \ % 2 == 0 ? l + len / 2 : l + len / 2 + 1;\n        int sr = r;\n        int\
     \ tl = n - (l + len / 2);\n        int tr = n - l;\n        return query(a, sl,\
     \ sr) == query(rev, tl, tr);\n    }\n};\n"
-  code: "#pragma once\n#include \"../base.hpp\"\n\n// \u30ED\u30EA\u30CF\n// see:\
+  code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u30ED\u30EA\u30CF\n// see:\
     \ https://ei1333.github.io/library/string/rolling-hash.hpp\nstruct RollingHash\
     \ {\n    static const ull mod = (1ull << 61ull) - 1;\n    using uint128_t = __uint128_t;\n\
     \    vector<ull> power;\n    const ull base;\n\n    static inline ull add(ull\
@@ -142,13 +159,14 @@ data:
     \ tl = n - (l + len / 2);\n        int tr = n - l;\n        return query(a, sl,\
     \ sr) == query(rev, tl, tr);\n    }\n};\n"
   dependsOn:
+  - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/string/RollingHash.hpp
   requiredBy:
-  - src/string/RollingHashUpdatable.hpp
   - src/string/RollingHash2D.hpp
-  timestamp: '2023-12-06 04:35:49+09:00'
+  - src/string/RollingHashUpdatable.hpp
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/RollingHash.hpp

@@ -106,10 +106,10 @@ data:
   isVerificationFile: false
   path: src/math/FastFourierTransform.hpp
   requiredBy:
-  - src/math/fps/pow_term2.hpp
-  - src/math/fps/pow.hpp
   - src/math/ArbitraryModConvolution.hpp
   - src/math/FormalPowerSeries.hpp
+  - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

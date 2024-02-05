@@ -73,18 +73,19 @@ data:
     \n// \u3000\u30FB\u5DE6\u53F3\u306E\u533A\u5225\u304C\u3042\u308B\u30E2\u30CE\u30A4\
     \u30C9\u3092\u4E57\u305B\u305F\u3044\u6642\u306F\u30AF\u30A8\u30EA\u3067\u95A2\
     \u6570S\u3092\u4F7F\u3046\u3068\u3046\u307E\u304F\u3044\u3063\u305F\u3002(cf1843F2\u53C2\
-    \u7167)\n\n// HL\u5206\u89E3\nstruct HeavyLightDecomposition {\npublic:\n    vvi\
-    \ g;\n    vector<int> sz, in, out, head, rev, par, dep;\n\n    // \u9802\u70B9\
-    v\u304B\u3089k\u56DE\u9061\u3063\u305F\u9802\u70B9\u3092\u8FD4\u3059\n    int\
-    \ la(int v, int k) {\n        while (1) {\n            int u = head[v];\n    \
-    \        if (in[v] - k >= in[u]) return rev[in[v] - k];\n            k -= in[v]\
-    \ - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u,\
-    \ int v) const {\n        for (;; v = par[head[v]]) {\n            if (in[u] >\
-    \ in[v]) swap(u, v);\n            if (head[u] == head[v]) return u;\n        }\n\
-    \    }\n\n    // \u9802\u70B9u\u304B\u3089v\u306B\u5411\u304B\u3063\u30661\u3064\
-    \u9032\u3093\u3060\u9802\u70B9\u3092\u8FD4\u3059\n    int next(int u, int v) {\n\
-    \        // assert(lca(u, v) == u);\n        int d = dist(u, v);\n        return\
-    \ la(v, d - 1);\n    }\n\n    int dist(int u, int v) const {\n        return dep[u]\
+    \u7167)\nstruct HeavyLightDecomposition {\npublic:\n    int N;\n    vvi nodes;\n\
+    \    vector<int> sz, in, out, head, rev, par, dep;\n\n    // \u9802\u70B9v\u304B\
+    \u3089k\u56DE\u9061\u3063\u305F\u9802\u70B9\u3092\u8FD4\u3059\n    int la(int\
+    \ v, int k) {\n        while (1) {\n            int u = head[v];\n           \
+    \ if (in[v] - k >= in[u]) return rev[in[v] - k];\n            k -= in[v] - in[u]\
+    \ + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u, int v)\
+    \ const {\n        for (;; v = par[head[v]]) {\n            if (in[u] > in[v])\
+    \ swap(u, v);\n            if (head[u] == head[v]) return u;\n        }\n    }\n\
+    \n    // \u9802\u70B9u\u304B\u3089v\u306B\u5411\u304B\u3063\u3066k\u500B\u9032\
+    \u3093\u3060\u9802\u70B9\u3092\u8FD4\u3059(u\u306Fv\u306E\u7956\u5148\u3067\u3042\
+    \u308B\u3053\u3068)\n    int next(int u, int v, int k) {\n        // assert(lca(u,\
+    \ v) == u);\n        int d = dist(u, v);\n        assert(d >= k);\n        return\
+    \ la(v, d - k);\n    }\n\n    int dist(int u, int v) const {\n        return dep[u]\
     \ + dep[v] - 2 * dep[lca(u, v)];\n    }\n\n    template<typename E, typename Q,\
     \ typename F, typename S>\n    E query(\n        int u, int v, const E &ti, const\
     \ Q &q, const F &f, const S &s,\n        bool edge = false\n    ) {\n        E\
@@ -108,23 +109,22 @@ data:
     \ st;\n        for (auto &k : remark) {\n            while (!st.empty() && out[st.top()]\
     \ <= in[k]) st.pop();\n            if (!st.empty()) es.emplace_back(st.top(),\
     \ k);\n            st.emplace(k);\n        }\n        return es;\n    }\n\n  \
-    \  explicit HeavyLightDecomposition(const vvi &g, int root = 0) : g(g) {\n   \
-    \     build(root);\n    }\n\n    int operator[](int u) const {\n        assert(0\
-    \ <= u && u < (int)g.size());\n        return in[u];\n    }\n\nprivate:\n    void\
-    \ build(int root = 0) {\n        sz.assign(g.size(), 0);\n        in.assign(g.size(),\
-    \ 0);\n        out.assign(g.size(), 0);\n        head.assign(g.size(), root);\n\
-    \        rev.assign(g.size(), 0);\n        par.assign(g.size(), 0);\n        dep.assign(g.size(),\
-    \ 0);\n        dfs_sz(root, -1, 0);\n        int t = 0;\n        dfs_hld(root,\
-    \ -1, t);\n    }\n\n    void dfs_sz(int idx, int p, int d) {\n        dep[idx]\
-    \ = d;\n        par[idx] = p;\n        sz[idx] = 1;\n        if (g[idx].size()\
-    \ && g[idx][0] == p) swap(g[idx][0], g[idx].back());\n        for (auto &to :\
-    \ g[idx]) {\n            if (to == p) continue;\n            dfs_sz(to, idx, d\
-    \ + 1);\n            sz[idx] += sz[to];\n            if (sz[g[idx][0]] < sz[to])\
-    \ swap(g[idx][0], to);\n        }\n    }\n\n    void dfs_hld(int idx, int p, int\
-    \ &times) {\n        in[idx] = times++;\n        rev[in[idx]] = idx;\n       \
-    \ for (auto &to : g[idx]) {\n            if (to == p) continue;\n            head[to]\
-    \ = (g[idx][0] == to ? head[idx] : to);\n            dfs_hld(to, idx, times);\n\
-    \        }\n        out[idx] = times;\n    }\n};\n"
+    \  explicit HeavyLightDecomposition(const vvi &nodes, int root = 0) : nodes(nodes),\
+    \ N(nodes.size()) {\n        sz.assign(N, 0);\n        in.assign(N, 0);\n    \
+    \    out.assign(N, 0);\n        head.assign(N, root);\n        rev.assign(N, 0);\n\
+    \        par.assign(N, 0);\n        dep.assign(N, 0);\n        dfs_sz(root, -1,\
+    \ 0);\n        int t = 0;\n        dfs_hld(root, -1, t);\n    }\n\n    int operator[](int\
+    \ u) const {\n        assert(0 <= u && u < N);\n        return in[u];\n    }\n\
+    \nprivate:\n    void dfs_sz(int idx, int p, int d) {\n        dep[idx] = d;\n\
+    \        par[idx] = p;\n        sz[idx] = 1;\n        if (nodes[idx].size() &&\
+    \ nodes[idx][0] == p) swap(nodes[idx][0], nodes[idx].back());\n        for (auto\
+    \ &to : nodes[idx]) {\n            if (to == p) continue;\n            dfs_sz(to,\
+    \ idx, d + 1);\n            sz[idx] += sz[to];\n            if (sz[nodes[idx][0]]\
+    \ < sz[to]) swap(nodes[idx][0], to);\n        }\n    }\n\n    void dfs_hld(int\
+    \ idx, int p, int &times) {\n        in[idx] = times++;\n        rev[in[idx]]\
+    \ = idx;\n        for (auto &to : nodes[idx]) {\n            if (to == p) continue;\n\
+    \            head[to] = (nodes[idx][0] == to ? head[idx] : to);\n            dfs_hld(to,\
+    \ idx, times);\n        }\n        out[idx] = times;\n    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// HL\u5206\u89E3\n// see: https://ei1333.github.io/library/graph/tree/heavy-light-decomposition.hpp\n\
     // \u30FB\u4E3B\u306A\u4F7F\u7528\u65B9\u6CD5\u306A\u3069\n// \u3000\u30FB\u521D\
     \u671F\u5316\u5F8C\u3001\u5FD8\u308C\u305A\u306Bbuild\u3092\u547C\u3076\u3053\u3068\
@@ -164,18 +164,19 @@ data:
     \n// \u3000\u30FB\u5DE6\u53F3\u306E\u533A\u5225\u304C\u3042\u308B\u30E2\u30CE\u30A4\
     \u30C9\u3092\u4E57\u305B\u305F\u3044\u6642\u306F\u30AF\u30A8\u30EA\u3067\u95A2\
     \u6570S\u3092\u4F7F\u3046\u3068\u3046\u307E\u304F\u3044\u3063\u305F\u3002(cf1843F2\u53C2\
-    \u7167)\n\n// HL\u5206\u89E3\nstruct HeavyLightDecomposition {\npublic:\n    vvi\
-    \ g;\n    vector<int> sz, in, out, head, rev, par, dep;\n\n    // \u9802\u70B9\
-    v\u304B\u3089k\u56DE\u9061\u3063\u305F\u9802\u70B9\u3092\u8FD4\u3059\n    int\
-    \ la(int v, int k) {\n        while (1) {\n            int u = head[v];\n    \
-    \        if (in[v] - k >= in[u]) return rev[in[v] - k];\n            k -= in[v]\
-    \ - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u,\
-    \ int v) const {\n        for (;; v = par[head[v]]) {\n            if (in[u] >\
-    \ in[v]) swap(u, v);\n            if (head[u] == head[v]) return u;\n        }\n\
-    \    }\n\n    // \u9802\u70B9u\u304B\u3089v\u306B\u5411\u304B\u3063\u30661\u3064\
-    \u9032\u3093\u3060\u9802\u70B9\u3092\u8FD4\u3059\n    int next(int u, int v) {\n\
-    \        // assert(lca(u, v) == u);\n        int d = dist(u, v);\n        return\
-    \ la(v, d - 1);\n    }\n\n    int dist(int u, int v) const {\n        return dep[u]\
+    \u7167)\nstruct HeavyLightDecomposition {\npublic:\n    int N;\n    vvi nodes;\n\
+    \    vector<int> sz, in, out, head, rev, par, dep;\n\n    // \u9802\u70B9v\u304B\
+    \u3089k\u56DE\u9061\u3063\u305F\u9802\u70B9\u3092\u8FD4\u3059\n    int la(int\
+    \ v, int k) {\n        while (1) {\n            int u = head[v];\n           \
+    \ if (in[v] - k >= in[u]) return rev[in[v] - k];\n            k -= in[v] - in[u]\
+    \ + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u, int v)\
+    \ const {\n        for (;; v = par[head[v]]) {\n            if (in[u] > in[v])\
+    \ swap(u, v);\n            if (head[u] == head[v]) return u;\n        }\n    }\n\
+    \n    // \u9802\u70B9u\u304B\u3089v\u306B\u5411\u304B\u3063\u3066k\u500B\u9032\
+    \u3093\u3060\u9802\u70B9\u3092\u8FD4\u3059(u\u306Fv\u306E\u7956\u5148\u3067\u3042\
+    \u308B\u3053\u3068)\n    int next(int u, int v, int k) {\n        // assert(lca(u,\
+    \ v) == u);\n        int d = dist(u, v);\n        assert(d >= k);\n        return\
+    \ la(v, d - k);\n    }\n\n    int dist(int u, int v) const {\n        return dep[u]\
     \ + dep[v] - 2 * dep[lca(u, v)];\n    }\n\n    template<typename E, typename Q,\
     \ typename F, typename S>\n    E query(\n        int u, int v, const E &ti, const\
     \ Q &q, const F &f, const S &s,\n        bool edge = false\n    ) {\n        E\
@@ -199,23 +200,22 @@ data:
     \ st;\n        for (auto &k : remark) {\n            while (!st.empty() && out[st.top()]\
     \ <= in[k]) st.pop();\n            if (!st.empty()) es.emplace_back(st.top(),\
     \ k);\n            st.emplace(k);\n        }\n        return es;\n    }\n\n  \
-    \  explicit HeavyLightDecomposition(const vvi &g, int root = 0) : g(g) {\n   \
-    \     build(root);\n    }\n\n    int operator[](int u) const {\n        assert(0\
-    \ <= u && u < (int)g.size());\n        return in[u];\n    }\n\nprivate:\n    void\
-    \ build(int root = 0) {\n        sz.assign(g.size(), 0);\n        in.assign(g.size(),\
-    \ 0);\n        out.assign(g.size(), 0);\n        head.assign(g.size(), root);\n\
-    \        rev.assign(g.size(), 0);\n        par.assign(g.size(), 0);\n        dep.assign(g.size(),\
-    \ 0);\n        dfs_sz(root, -1, 0);\n        int t = 0;\n        dfs_hld(root,\
-    \ -1, t);\n    }\n\n    void dfs_sz(int idx, int p, int d) {\n        dep[idx]\
-    \ = d;\n        par[idx] = p;\n        sz[idx] = 1;\n        if (g[idx].size()\
-    \ && g[idx][0] == p) swap(g[idx][0], g[idx].back());\n        for (auto &to :\
-    \ g[idx]) {\n            if (to == p) continue;\n            dfs_sz(to, idx, d\
-    \ + 1);\n            sz[idx] += sz[to];\n            if (sz[g[idx][0]] < sz[to])\
-    \ swap(g[idx][0], to);\n        }\n    }\n\n    void dfs_hld(int idx, int p, int\
-    \ &times) {\n        in[idx] = times++;\n        rev[in[idx]] = idx;\n       \
-    \ for (auto &to : g[idx]) {\n            if (to == p) continue;\n            head[to]\
-    \ = (g[idx][0] == to ? head[idx] : to);\n            dfs_hld(to, idx, times);\n\
-    \        }\n        out[idx] = times;\n    }\n};"
+    \  explicit HeavyLightDecomposition(const vvi &nodes, int root = 0) : nodes(nodes),\
+    \ N(nodes.size()) {\n        sz.assign(N, 0);\n        in.assign(N, 0);\n    \
+    \    out.assign(N, 0);\n        head.assign(N, root);\n        rev.assign(N, 0);\n\
+    \        par.assign(N, 0);\n        dep.assign(N, 0);\n        dfs_sz(root, -1,\
+    \ 0);\n        int t = 0;\n        dfs_hld(root, -1, t);\n    }\n\n    int operator[](int\
+    \ u) const {\n        assert(0 <= u && u < N);\n        return in[u];\n    }\n\
+    \nprivate:\n    void dfs_sz(int idx, int p, int d) {\n        dep[idx] = d;\n\
+    \        par[idx] = p;\n        sz[idx] = 1;\n        if (nodes[idx].size() &&\
+    \ nodes[idx][0] == p) swap(nodes[idx][0], nodes[idx].back());\n        for (auto\
+    \ &to : nodes[idx]) {\n            if (to == p) continue;\n            dfs_sz(to,\
+    \ idx, d + 1);\n            sz[idx] += sz[to];\n            if (sz[nodes[idx][0]]\
+    \ < sz[to]) swap(nodes[idx][0], to);\n        }\n    }\n\n    void dfs_hld(int\
+    \ idx, int p, int &times) {\n        in[idx] = times++;\n        rev[in[idx]]\
+    \ = idx;\n        for (auto &to : nodes[idx]) {\n            if (to == p) continue;\n\
+    \            head[to] = (nodes[idx][0] == to ? head[idx] : to);\n            dfs_hld(to,\
+    \ idx, times);\n        }\n        out[idx] = times;\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -223,7 +223,7 @@ data:
   path: src/graph/HeavyLightDecomposition.hpp
   requiredBy:
   - src/graph/AuxiliaryTree.hpp
-  timestamp: '2023-12-11 16:15:31+09:00'
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/HeavyLightDecomposition.hpp

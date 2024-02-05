@@ -51,7 +51,7 @@ data:
     \ 0}, {1, 0}, {0, -1}, {0, 1}};\n#line 5 \"src/grid/bfs.hpp\"\n\n// \u30B0\u30EA\
     \u30C3\u30C9BFS\nauto bfs = [](const vector<string> &grid, const vector<pii> &src,\
     \ char invalid = '#') {\n    int H = grid.size();\n    int W = grid[0].size();\n\
-    \    auto res = list2d(H, W, INF);\n    queue<pii> que;\n    for (auto [h, w]\
+    \    auto res = listnd(H, W, INF);\n    queue<pii> que;\n    for (auto [h, w]\
     \ : src) {\n        res[h][w] = 0;\n        que.push({h, w});\n    }\n    while\
     \ (!que.empty()) {\n        auto [h, w] = que.front();\n        que.pop();\n \
     \       for (auto [dh, dw] : dir4) {\n            int nh = h + dh;\n         \
@@ -63,7 +63,7 @@ data:
   code: "#pragma once\n#include \"../common/listnd.hpp\"\n#include \"../macros.hpp\"\
     \n#include \"constants/dir4.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9BFS\nauto bfs\
     \ = [](const vector<string> &grid, const vector<pii> &src, char invalid = '#')\
-    \ {\n    int H = grid.size();\n    int W = grid[0].size();\n    auto res = list2d(H,\
+    \ {\n    int H = grid.size();\n    int W = grid[0].size();\n    auto res = listnd(H,\
     \ W, INF);\n    queue<pii> que;\n    for (auto [h, w] : src) {\n        res[h][w]\
     \ = 0;\n        que.push({h, w});\n    }\n    while (!que.empty()) {\n       \
     \ auto [h, w] = que.front();\n        que.pop();\n        for (auto [dh, dw] :\
@@ -80,7 +80,7 @@ data:
   isVerificationFile: false
   path: src/grid/bfs.hpp
   requiredBy: []
-  timestamp: '2023-12-11 16:15:31+09:00'
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/bfs.hpp

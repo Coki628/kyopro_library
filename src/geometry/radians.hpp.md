@@ -45,8 +45,8 @@ data:
   isVerificationFile: false
   path: src/geometry/radians.hpp
   requiredBy:
-  - src/geometry/rotate.hpp
   - src/geometry/cos_formula.hpp
+  - src/geometry/rotate.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

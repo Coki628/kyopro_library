@@ -43,6 +43,9 @@ data:
     - icon: ':warning:'
       path: src/combinatorics/ArbitraryModInt.hpp
       title: src/combinatorics/ArbitraryModInt.hpp
+    - icon: ':warning:'
+      path: src/combinatorics/ArbitraryModInt64.hpp
+      title: src/combinatorics/ArbitraryModInt64.hpp
     - icon: ':heavy_check_mark:'
       path: src/combinatorics/ModInt.hpp
       title: src/combinatorics/ModInt.hpp
@@ -339,11 +342,17 @@ data:
       path: src/datastructure/WaveletMatrix.hpp
       title: src/datastructure/WaveletMatrix.hpp
     - icon: ':warning:'
+      path: src/datastructure/WeightedWaveletMatrix.hpp
+      title: src/datastructure/WeightedWaveletMatrix.hpp
+    - icon: ':warning:'
       path: src/datastructure/_BinaryTrie.hpp
       title: src/datastructure/_BinaryTrie.hpp
     - icon: ':warning:'
       path: src/datastructure/_doubling.hpp
       title: src/datastructure/_doubling.hpp
+    - icon: ':warning:'
+      path: src/datastructure/bit_vector.hpp
+      title: src/datastructure/bit_vector.hpp
     - icon: ':warning:'
       path: src/datastructure/get_inversion.hpp
       title: src/datastructure/get_inversion.hpp
@@ -433,8 +442,14 @@ data:
       path: src/graph/AuxiliaryTree.hpp
       title: src/graph/AuxiliaryTree.hpp
     - icon: ':warning:'
+      path: src/graph/EulerTour.hpp
+      title: src/graph/EulerTour.hpp
+    - icon: ':warning:'
       path: src/graph/HeavyLightDecomposition.hpp
       title: src/graph/HeavyLightDecomposition.hpp
+    - icon: ':warning:'
+      path: src/graph/LowestCommonAncestor.hpp
+      title: src/graph/LowestCommonAncestor.hpp
     - icon: ':warning:'
       path: src/graph/OfflineDynamicConnectivity.hpp
       title: src/graph/OfflineDynamicConnectivity.hpp
@@ -495,6 +510,9 @@ data:
     - icon: ':warning:'
       path: src/graph/bfs01.hpp
       title: src/graph/bfs01.hpp
+    - icon: ':warning:'
+      path: src/graph/centroid_decomposition.hpp
+      title: src/graph/centroid_decomposition.hpp
     - icon: ':warning:'
       path: src/graph/cycle_detection_for_namori.hpp
       title: src/graph/cycle_detection_for_namori.hpp

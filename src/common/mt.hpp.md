@@ -30,9 +30,9 @@ data:
   isVerificationFile: false
   path: src/common/mt.hpp
   requiredBy:
-  - src/common/randint.hpp
-  - src/common/randrange.hpp
   - src/common/sample.hpp
+  - src/common/randrange.hpp
+  - src/common/randint.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

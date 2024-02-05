@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/datastructure/PersistentLazySegmentTree.hpp
+    title: src/datastructure/PersistentLazySegmentTree.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -51,7 +54,8 @@ data:
   - src/base.hpp
   isVerificationFile: false
   path: src/datastructure/ObjectPool.hpp
-  requiredBy: []
+  requiredBy:
+  - src/datastructure/PersistentLazySegmentTree.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

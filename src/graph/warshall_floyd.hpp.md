@@ -37,29 +37,33 @@ data:
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 4 \"src/graph/warshall_floyd.hpp\"\
     \n\ntemplate<typename T>\nvv<T> warshall_floyd(vv<T> G) {\n    ll N = G.size();\n\
     \    rep(i, N) G[i][i] = 0;\n    rep(k, N) {\n        rep(i, N) {\n          \
-    \  rep(j, N) {\n                chmin(G[i][j], G[i][k] + G[k][j]);\n         \
-    \   }\n        }\n    }\n    rep(i, N) {\n        if (G[i][i] < 0) {\n       \
-    \     return {};\n        }\n    }\n    return G;\n}\n\n// \u7121\u5411\u8FBA\u306A\
-    \u3089\u3053\u308C\u3067\u3082\u5927\u4E08\u592B\u305D\u3046\u3002\n// template<typename\
-    \ T>\n// vv<T> warshall_floyd(vv<T>> G) {\n//     ll N = G.size();\n//     rep(i,\
-    \ N) G[i][i] = 0;\n//     rep(k, N) {\n//         rep(i, N) {\n//            \
-    \ rep(j, i + 1, N) {\n//                 chmin(G[i][j], G[i][k] + G[k][j]);\n\
-    //                 chmin(G[j][i], G[j][k] + G[k][i]);\n//             }\n//  \
-    \       }\n//     }\n//     rep(i, N) {\n//         if (G[i][i] < 0) {\n//   \
-    \          return {};\n//         }\n//     }\n//     return G;\n// }\n"
+    \  if (G[i][k] >= INF) continue;\n            rep(j, N) {\n                if\
+    \ (G[k][j] >= INF) continue;\n                chmin(G[i][j], G[i][k] + G[k][j]);\n\
+    \            }\n        }\n    }\n    rep(i, N) {\n        if (G[i][i] < 0) {\n\
+    \            return {};\n        }\n    }\n    return G;\n}\n\n// \u7121\u5411\
+    \u8FBA\u306A\u3089\u3053\u308C\u3067\u3082\u5927\u4E08\u592B\u305D\u3046\u3002\
+    \n// template<typename T>\n// vv<T> warshall_floyd(vv<T>> G) {\n//     ll N =\
+    \ G.size();\n//     rep(i, N) G[i][i] = 0;\n//     rep(k, N) {\n//         rep(i,\
+    \ N) {\n//             rep(j, i + 1, N) {\n//                 chmin(G[i][j], G[i][k]\
+    \ + G[k][j]);\n//                 chmin(G[j][i], G[j][k] + G[k][i]);\n//     \
+    \        }\n//         }\n//     }\n//     rep(i, N) {\n//         if (G[i][i]\
+    \ < 0) {\n//             return {};\n//         }\n//     }\n//     return G;\n\
+    // }\n"
   code: "#pragma once\n#include \"../common/chmin.hpp\"\n#include \"../macros.hpp\"\
     \n\ntemplate<typename T>\nvv<T> warshall_floyd(vv<T> G) {\n    ll N = G.size();\n\
     \    rep(i, N) G[i][i] = 0;\n    rep(k, N) {\n        rep(i, N) {\n          \
-    \  rep(j, N) {\n                chmin(G[i][j], G[i][k] + G[k][j]);\n         \
-    \   }\n        }\n    }\n    rep(i, N) {\n        if (G[i][i] < 0) {\n       \
-    \     return {};\n        }\n    }\n    return G;\n}\n\n// \u7121\u5411\u8FBA\u306A\
-    \u3089\u3053\u308C\u3067\u3082\u5927\u4E08\u592B\u305D\u3046\u3002\n// template<typename\
-    \ T>\n// vv<T> warshall_floyd(vv<T>> G) {\n//     ll N = G.size();\n//     rep(i,\
-    \ N) G[i][i] = 0;\n//     rep(k, N) {\n//         rep(i, N) {\n//            \
-    \ rep(j, i + 1, N) {\n//                 chmin(G[i][j], G[i][k] + G[k][j]);\n\
-    //                 chmin(G[j][i], G[j][k] + G[k][i]);\n//             }\n//  \
-    \       }\n//     }\n//     rep(i, N) {\n//         if (G[i][i] < 0) {\n//   \
-    \          return {};\n//         }\n//     }\n//     return G;\n// }\n"
+    \  if (G[i][k] >= INF) continue;\n            rep(j, N) {\n                if\
+    \ (G[k][j] >= INF) continue;\n                chmin(G[i][j], G[i][k] + G[k][j]);\n\
+    \            }\n        }\n    }\n    rep(i, N) {\n        if (G[i][i] < 0) {\n\
+    \            return {};\n        }\n    }\n    return G;\n}\n\n// \u7121\u5411\
+    \u8FBA\u306A\u3089\u3053\u308C\u3067\u3082\u5927\u4E08\u592B\u305D\u3046\u3002\
+    \n// template<typename T>\n// vv<T> warshall_floyd(vv<T>> G) {\n//     ll N =\
+    \ G.size();\n//     rep(i, N) G[i][i] = 0;\n//     rep(k, N) {\n//         rep(i,\
+    \ N) {\n//             rep(j, i + 1, N) {\n//                 chmin(G[i][j], G[i][k]\
+    \ + G[k][j]);\n//                 chmin(G[j][i], G[j][k] + G[k][i]);\n//     \
+    \        }\n//         }\n//     }\n//     rep(i, N) {\n//         if (G[i][i]\
+    \ < 0) {\n//             return {};\n//         }\n//     }\n//     return G;\n\
+    // }\n"
   dependsOn:
   - src/common/chmin.hpp
   - src/macros.hpp
@@ -67,7 +71,7 @@ data:
   isVerificationFile: false
   path: src/graph/warshall_floyd.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/warshall_floyd.hpp

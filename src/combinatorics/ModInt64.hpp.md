@@ -16,7 +16,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    links: []
+    links:
+    - https://atcoder.jp/contests/abc339/editorial/9206
   bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
     using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
@@ -35,78 +36,89 @@ data:
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/combinatorics/ModInt64.hpp\"\
     \n\ntemplate<ull mod>\nstruct ModInt64 {\n    ull x = 0;\n    using uint128_t\
     \ = __uint128_t;\n\n    ModInt64() : x(0) {}\n\n    ModInt64(int64_t y) : x(y\
-    \ >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\n    ModInt64 &operator++()\
-    \ {\n        x++;\n        if (x == mod) x = 0;\n        return *this;\n    }\n\
-    \n    ModInt64 &operator--() {\n        if (x == 0) x = mod;\n        x--;\n \
-    \       return *this;\n    }\n\n    ModInt64 &operator+=(const ModInt64 &p) {\n\
-    \        if ((x += p.x) >= mod) x -= mod;\n        return *this;\n    }\n\n  \
-    \  ModInt64 &operator-=(const ModInt64 &p) {\n        if ((x += mod - p.x) >=\
-    \ mod) x -= mod;\n        return *this;\n    }\n\n    ModInt64 &operator*=(const\
-    \ ModInt64 &p) {\n        x = (ull)((uint128_t)1 * x * p.x % mod);\n        return\
-    \ *this;\n    }\n\n    ModInt64 &operator/=(const ModInt64 &p) {\n        *this\
-    \ *= p.inv();\n        return *this;\n    }\n\n    ModInt64 operator++(int) {\n\
-    \        ModInt64 result = *this;\n        ++*this;\n        return result;\n\
-    \    }\n\n    ModInt64 operator--(int) {\n        ModInt64 result = *this;\n \
-    \       --*this;\n        return result;\n    }\n\n    ModInt64 operator-() const\
-    \ {\n        return ModInt64(-x);\n    }\n\n    ModInt64 operator+(const ModInt64\
-    \ &p) const {\n        return ModInt64(*this) += p;\n    }\n\n    ModInt64 operator-(const\
-    \ ModInt64 &p) const {\n        return ModInt64(*this) -= p;\n    }\n\n    ModInt64\
-    \ operator*(const ModInt64 &p) const {\n        return ModInt64(*this) *= p;\n\
-    \    }\n\n    ModInt64 operator/(const ModInt64 &p) const {\n        return ModInt64(*this)\
-    \ /= p;\n    }\n\n    bool operator==(const ModInt64 &p) const {\n        return\
-    \ x == p.x;\n    }\n\n    bool operator!=(const ModInt64 &p) const {\n       \
-    \ return x != p.x;\n    }\n\n    // \u203BModInt\u306E\u5927\u5C0F\u6BD4\u8F03\
-    \u306B\u610F\u5473\u306F\u306A\u3044\u3051\u3069\u3001\u3053\u308C\u4F5C\u3063\
-    \u3068\u304F\u3068map\u306E\u30AD\u30FC\u306B\u4F7F\u3048\u308B\u3088\u3046\u306B\
-    \u306A\u308B\n    bool operator<(const ModInt64 &p) const {\n        return x\
-    \ < p.x;\n    }\n\n    ModInt64 inv() const {\n        ull a = x, b = mod, u =\
-    \ 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n            swap(a\
-    \ -= t * b, b);\n            swap(u -= t * v, v);\n        }\n        return ModInt64(u);\n\
+    \ >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n\n    // \u5927\u304D\u3044\u6570\
+    \u5B57\u6587\u5B57\u5217\u304B\u3089\u306Emint\u5909\u63DB\n    // see: https://atcoder.jp/contests/abc339/editorial/9206\n\
+    \    ModInt64(string s) {\n        uint128_t res = 0;\n        for(auto &c : s){\n\
+    \            assert(isdigit(c));\n            int d = c - '0';\n            res\
+    \ = (res * 10 + d) % mod;\n        }\n        x = res;\n    }\n\n    static ull\
+    \ get_mod() {\n        return mod;\n    }\n\n    ModInt64 &operator++() {\n  \
+    \      x++;\n        if (x == mod) x = 0;\n        return *this;\n    }\n\n  \
+    \  ModInt64 &operator--() {\n        if (x == 0) x = mod;\n        x--;\n    \
+    \    return *this;\n    }\n\n    ModInt64 &operator+=(const ModInt64 &p) {\n \
+    \       if ((x += p.x) >= mod) x -= mod;\n        return *this;\n    }\n\n   \
+    \ ModInt64 &operator-=(const ModInt64 &p) {\n        if ((x += mod - p.x) >= mod)\
+    \ x -= mod;\n        return *this;\n    }\n\n    ModInt64 &operator*=(const ModInt64\
+    \ &p) {\n        x = (ull)((uint128_t)1 * x * p.x % mod);\n        return *this;\n\
+    \    }\n\n    ModInt64 &operator/=(const ModInt64 &p) {\n        *this *= p.inv();\n\
+    \        return *this;\n    }\n\n    ModInt64 operator++(int) {\n        ModInt64\
+    \ result = *this;\n        ++*this;\n        return result;\n    }\n\n    ModInt64\
+    \ operator--(int) {\n        ModInt64 result = *this;\n        --*this;\n    \
+    \    return result;\n    }\n\n    ModInt64 operator-() const {\n        return\
+    \ ModInt64(-x);\n    }\n\n    ModInt64 operator+(const ModInt64 &p) const {\n\
+    \        return ModInt64(*this) += p;\n    }\n\n    ModInt64 operator-(const ModInt64\
+    \ &p) const {\n        return ModInt64(*this) -= p;\n    }\n\n    ModInt64 operator*(const\
+    \ ModInt64 &p) const {\n        return ModInt64(*this) *= p;\n    }\n\n    ModInt64\
+    \ operator/(const ModInt64 &p) const {\n        return ModInt64(*this) /= p;\n\
+    \    }\n\n    bool operator==(const ModInt64 &p) const {\n        return x ==\
+    \ p.x;\n    }\n\n    bool operator!=(const ModInt64 &p) const {\n        return\
+    \ x != p.x;\n    }\n\n    // \u203BModInt\u306E\u5927\u5C0F\u6BD4\u8F03\u306B\u610F\
+    \u5473\u306F\u306A\u3044\u3051\u3069\u3001\u3053\u308C\u4F5C\u3063\u3068\u304F\
+    \u3068map\u306E\u30AD\u30FC\u306B\u4F7F\u3048\u308B\u3088\u3046\u306B\u306A\u308B\
+    \n    bool operator<(const ModInt64 &p) const {\n        return x < p.x;\n   \
+    \ }\n\n    ModInt64 inv() const {\n        ull a = x, b = mod, u = 1, v = 0, t;\n\
+    \        while (b > 0) {\n            t = a / b;\n            swap(a -= t * b,\
+    \ b);\n            swap(u -= t * v, v);\n        }\n        return ModInt64(u);\n\
     \    }\n\n    ModInt64 pow(int64_t n) const {\n        ModInt64 ret(1), mul(x);\n\
     \        while (n > 0) {\n            if (n & 1) ret *= mul;\n            mul\
     \ *= mul;\n            n >>= 1;\n        }\n        return ret;\n    }\n\n   \
     \ friend ostream &operator<<(ostream &os, const ModInt64 &p) {\n        return\
     \ os << p.x;\n    }\n\n    friend istream &operator>>(istream &is, ModInt64 &a)\
     \ {\n        ull t;\n        is >> t;\n        a = ModInt64<mod>(t);\n       \
-    \ return (is);\n    }\n\n    static ull get_mod() {\n        return mod;\n   \
-    \ }\n\n    explicit operator ull() const {\n        return x;\n    }\n};\n"
+    \ return (is);\n    }\n\n    explicit operator ull() const {\n        return x;\n\
+    \    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\ntemplate<ull mod>\nstruct ModInt64\
     \ {\n    ull x = 0;\n    using uint128_t = __uint128_t;\n\n    ModInt64() : x(0)\
     \ {}\n\n    ModInt64(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod)\
-    \ {}\n\n    ModInt64 &operator++() {\n        x++;\n        if (x == mod) x =\
-    \ 0;\n        return *this;\n    }\n\n    ModInt64 &operator--() {\n        if\
-    \ (x == 0) x = mod;\n        x--;\n        return *this;\n    }\n\n    ModInt64\
-    \ &operator+=(const ModInt64 &p) {\n        if ((x += p.x) >= mod) x -= mod;\n\
-    \        return *this;\n    }\n\n    ModInt64 &operator-=(const ModInt64 &p) {\n\
-    \        if ((x += mod - p.x) >= mod) x -= mod;\n        return *this;\n    }\n\
-    \n    ModInt64 &operator*=(const ModInt64 &p) {\n        x = (ull)((uint128_t)1\
-    \ * x * p.x % mod);\n        return *this;\n    }\n\n    ModInt64 &operator/=(const\
-    \ ModInt64 &p) {\n        *this *= p.inv();\n        return *this;\n    }\n\n\
-    \    ModInt64 operator++(int) {\n        ModInt64 result = *this;\n        ++*this;\n\
-    \        return result;\n    }\n\n    ModInt64 operator--(int) {\n        ModInt64\
-    \ result = *this;\n        --*this;\n        return result;\n    }\n\n    ModInt64\
-    \ operator-() const {\n        return ModInt64(-x);\n    }\n\n    ModInt64 operator+(const\
-    \ ModInt64 &p) const {\n        return ModInt64(*this) += p;\n    }\n\n    ModInt64\
-    \ operator-(const ModInt64 &p) const {\n        return ModInt64(*this) -= p;\n\
-    \    }\n\n    ModInt64 operator*(const ModInt64 &p) const {\n        return ModInt64(*this)\
-    \ *= p;\n    }\n\n    ModInt64 operator/(const ModInt64 &p) const {\n        return\
-    \ ModInt64(*this) /= p;\n    }\n\n    bool operator==(const ModInt64 &p) const\
-    \ {\n        return x == p.x;\n    }\n\n    bool operator!=(const ModInt64 &p)\
-    \ const {\n        return x != p.x;\n    }\n\n    // \u203BModInt\u306E\u5927\u5C0F\
-    \u6BD4\u8F03\u306B\u610F\u5473\u306F\u306A\u3044\u3051\u3069\u3001\u3053\u308C\
-    \u4F5C\u3063\u3068\u304F\u3068map\u306E\u30AD\u30FC\u306B\u4F7F\u3048\u308B\u3088\
-    \u3046\u306B\u306A\u308B\n    bool operator<(const ModInt64 &p) const {\n    \
-    \    return x < p.x;\n    }\n\n    ModInt64 inv() const {\n        ull a = x,\
-    \ b = mod, u = 1, v = 0, t;\n        while (b > 0) {\n            t = a / b;\n\
-    \            swap(a -= t * b, b);\n            swap(u -= t * v, v);\n        }\n\
-    \        return ModInt64(u);\n    }\n\n    ModInt64 pow(int64_t n) const {\n \
-    \       ModInt64 ret(1), mul(x);\n        while (n > 0) {\n            if (n &\
-    \ 1) ret *= mul;\n            mul *= mul;\n            n >>= 1;\n        }\n \
-    \       return ret;\n    }\n\n    friend ostream &operator<<(ostream &os, const\
-    \ ModInt64 &p) {\n        return os << p.x;\n    }\n\n    friend istream &operator>>(istream\
-    \ &is, ModInt64 &a) {\n        ull t;\n        is >> t;\n        a = ModInt64<mod>(t);\n\
-    \        return (is);\n    }\n\n    static ull get_mod() {\n        return mod;\n\
-    \    }\n\n    explicit operator ull() const {\n        return x;\n    }\n};\n"
+    \ {}\n\n    // \u5927\u304D\u3044\u6570\u5B57\u6587\u5B57\u5217\u304B\u3089\u306E\
+    mint\u5909\u63DB\n    // see: https://atcoder.jp/contests/abc339/editorial/9206\n\
+    \    ModInt64(string s) {\n        uint128_t res = 0;\n        for(auto &c : s){\n\
+    \            assert(isdigit(c));\n            int d = c - '0';\n            res\
+    \ = (res * 10 + d) % mod;\n        }\n        x = res;\n    }\n\n    static ull\
+    \ get_mod() {\n        return mod;\n    }\n\n    ModInt64 &operator++() {\n  \
+    \      x++;\n        if (x == mod) x = 0;\n        return *this;\n    }\n\n  \
+    \  ModInt64 &operator--() {\n        if (x == 0) x = mod;\n        x--;\n    \
+    \    return *this;\n    }\n\n    ModInt64 &operator+=(const ModInt64 &p) {\n \
+    \       if ((x += p.x) >= mod) x -= mod;\n        return *this;\n    }\n\n   \
+    \ ModInt64 &operator-=(const ModInt64 &p) {\n        if ((x += mod - p.x) >= mod)\
+    \ x -= mod;\n        return *this;\n    }\n\n    ModInt64 &operator*=(const ModInt64\
+    \ &p) {\n        x = (ull)((uint128_t)1 * x * p.x % mod);\n        return *this;\n\
+    \    }\n\n    ModInt64 &operator/=(const ModInt64 &p) {\n        *this *= p.inv();\n\
+    \        return *this;\n    }\n\n    ModInt64 operator++(int) {\n        ModInt64\
+    \ result = *this;\n        ++*this;\n        return result;\n    }\n\n    ModInt64\
+    \ operator--(int) {\n        ModInt64 result = *this;\n        --*this;\n    \
+    \    return result;\n    }\n\n    ModInt64 operator-() const {\n        return\
+    \ ModInt64(-x);\n    }\n\n    ModInt64 operator+(const ModInt64 &p) const {\n\
+    \        return ModInt64(*this) += p;\n    }\n\n    ModInt64 operator-(const ModInt64\
+    \ &p) const {\n        return ModInt64(*this) -= p;\n    }\n\n    ModInt64 operator*(const\
+    \ ModInt64 &p) const {\n        return ModInt64(*this) *= p;\n    }\n\n    ModInt64\
+    \ operator/(const ModInt64 &p) const {\n        return ModInt64(*this) /= p;\n\
+    \    }\n\n    bool operator==(const ModInt64 &p) const {\n        return x ==\
+    \ p.x;\n    }\n\n    bool operator!=(const ModInt64 &p) const {\n        return\
+    \ x != p.x;\n    }\n\n    // \u203BModInt\u306E\u5927\u5C0F\u6BD4\u8F03\u306B\u610F\
+    \u5473\u306F\u306A\u3044\u3051\u3069\u3001\u3053\u308C\u4F5C\u3063\u3068\u304F\
+    \u3068map\u306E\u30AD\u30FC\u306B\u4F7F\u3048\u308B\u3088\u3046\u306B\u306A\u308B\
+    \n    bool operator<(const ModInt64 &p) const {\n        return x < p.x;\n   \
+    \ }\n\n    ModInt64 inv() const {\n        ull a = x, b = mod, u = 1, v = 0, t;\n\
+    \        while (b > 0) {\n            t = a / b;\n            swap(a -= t * b,\
+    \ b);\n            swap(u -= t * v, v);\n        }\n        return ModInt64(u);\n\
+    \    }\n\n    ModInt64 pow(int64_t n) const {\n        ModInt64 ret(1), mul(x);\n\
+    \        while (n > 0) {\n            if (n & 1) ret *= mul;\n            mul\
+    \ *= mul;\n            n >>= 1;\n        }\n        return ret;\n    }\n\n   \
+    \ friend ostream &operator<<(ostream &os, const ModInt64 &p) {\n        return\
+    \ os << p.x;\n    }\n\n    friend istream &operator>>(istream &is, ModInt64 &a)\
+    \ {\n        ull t;\n        is >> t;\n        a = ModInt64<mod>(t);\n       \
+    \ return (is);\n    }\n\n    explicit operator ull() const {\n        return x;\n\
+    \    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -114,7 +126,7 @@ data:
   path: src/combinatorics/ModInt64.hpp
   requiredBy:
   - src/graph/TreeHash.hpp
-  timestamp: '2024-01-09 22:15:44+09:00'
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/combinatorics/ModInt64.hpp

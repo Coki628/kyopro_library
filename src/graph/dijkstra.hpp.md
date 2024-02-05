@@ -75,8 +75,8 @@ data:
   isVerificationFile: false
   path: src/graph/dijkstra.hpp
   requiredBy:
-  - src/graph/_dijkstra.hpp
   - src/graph/_Dijkstra.hpp
+  - src/graph/_dijkstra.hpp
   timestamp: '2024-01-22 18:54:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

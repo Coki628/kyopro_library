@@ -83,7 +83,7 @@ data:
   isVerificationFile: true
   path: test/matrix/MatPow.test.cpp
   requiredBy: []
-  timestamp: '2024-01-09 22:15:44+09:00'
+  timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/matrix/MatPow.test.cpp

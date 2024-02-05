@@ -9,8 +9,8 @@ data:
     title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: src/string/SuffixArray.hpp
-    title: src/string/SuffixArray.hpp
+    path: src/graph/LowestCommonAncestor.hpp
+    title: src/graph/LowestCommonAncestor.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -117,7 +117,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/SparseTable.hpp
   requiredBy:
-  - src/string/SuffixArray.hpp
+  - src/graph/LowestCommonAncestor.hpp
   timestamp: '2023-12-06 04:35:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
