@@ -1,20 +1,20 @@
 #pragma once
 #include "../macros.hpp"
 
-// 任意ModInt64ビット版
+// 動的ModInt64ビット版
 template<int id = 1>
-struct ArbitraryModInt64 {
+struct DynamicModInt64 {
     ull x = 0;
     using uint128_t = __uint128_t;
 
-    ArbitraryModInt64() : x(0) {}
+    DynamicModInt64() : x(0) {}
 
-    ArbitraryModInt64(int64_t y)
+    DynamicModInt64(int64_t y)
         : x(y >= 0 ? y % get_mod() : (get_mod() - (-y) % get_mod()) % get_mod()) {}
 
     // 大きい数字文字列からのmint変換
     // see: https://atcoder.jp/contests/abc339/editorial/9206
-    ArbitraryModInt64(string s) {
+    DynamicModInt64(string s) {
         uint128_t res = 0;
         for(auto &c : s){
             assert(isdigit(c));
@@ -33,95 +33,95 @@ struct ArbitraryModInt64 {
         get_mod() = md;
     }
 
-    ArbitraryModInt64 &operator++() {
+    DynamicModInt64 &operator++() {
         x++;
         if (x == get_mod()) x = 0;
         return *this;
     }
 
-    ArbitraryModInt64 &operator--() {
+    DynamicModInt64 &operator--() {
         if (x == 0) x = get_mod();
         x--;
         return *this;
     }
 
-    ArbitraryModInt64 &operator+=(const ArbitraryModInt64 &p) {
+    DynamicModInt64 &operator+=(const DynamicModInt64 &p) {
         if ((x += p.x) >= get_mod()) x -= get_mod();
         return *this;
     }
 
-    ArbitraryModInt64 &operator-=(const ArbitraryModInt64 &p) {
+    DynamicModInt64 &operator-=(const DynamicModInt64 &p) {
         if ((x += get_mod() - p.x) >= get_mod()) x -= get_mod();
         return *this;
     }
 
-    ArbitraryModInt64 &operator*=(const ArbitraryModInt64 &p) {
+    DynamicModInt64 &operator*=(const DynamicModInt64 &p) {
         x = (ull)((uint128_t)1 * x * p.x % get_mod());
         return *this;
     }
 
-    ArbitraryModInt64 &operator/=(const ArbitraryModInt64 &p) {
+    DynamicModInt64 &operator/=(const DynamicModInt64 &p) {
         *this *= p.inv();
         return *this;
     }
 
-    ArbitraryModInt64 operator++(int) {
-        ArbitraryModInt64 result = *this;
+    DynamicModInt64 operator++(int) {
+        DynamicModInt64 result = *this;
         ++*this;
         return result;
     }
 
-    ArbitraryModInt64 operator--(int) {
-        ArbitraryModInt64 result = *this;
+    DynamicModInt64 operator--(int) {
+        DynamicModInt64 result = *this;
         --*this;
         return result;
     }
 
-    ArbitraryModInt64 operator-() const {
-        return ArbitraryModInt64(-x);
+    DynamicModInt64 operator-() const {
+        return DynamicModInt64(-x);
     }
 
-    ArbitraryModInt64 operator+(const ArbitraryModInt64 &p) const {
-        return ArbitraryModInt64(*this) += p;
+    DynamicModInt64 operator+(const DynamicModInt64 &p) const {
+        return DynamicModInt64(*this) += p;
     }
 
-    ArbitraryModInt64 operator-(const ArbitraryModInt64 &p) const {
-        return ArbitraryModInt64(*this) -= p;
+    DynamicModInt64 operator-(const DynamicModInt64 &p) const {
+        return DynamicModInt64(*this) -= p;
     }
 
-    ArbitraryModInt64 operator*(const ArbitraryModInt64 &p) const {
-        return ArbitraryModInt64(*this) *= p;
+    DynamicModInt64 operator*(const DynamicModInt64 &p) const {
+        return DynamicModInt64(*this) *= p;
     }
 
-    ArbitraryModInt64 operator/(const ArbitraryModInt64 &p) const {
-        return ArbitraryModInt64(*this) /= p;
+    DynamicModInt64 operator/(const DynamicModInt64 &p) const {
+        return DynamicModInt64(*this) /= p;
     }
 
-    bool operator==(const ArbitraryModInt64 &p) const {
+    bool operator==(const DynamicModInt64 &p) const {
         return x == p.x;
     }
 
-    bool operator!=(const ArbitraryModInt64 &p) const {
+    bool operator!=(const DynamicModInt64 &p) const {
         return x != p.x;
     }
 
     // ※ModIntの大小比較に意味はないけど、これ作っとくとmapのキーに使えるようになる
-    bool operator<(const ArbitraryModInt64 &p) const {
+    bool operator<(const DynamicModInt64 &p) const {
         return x < p.x;
     }
 
-    ArbitraryModInt64 inv() const {
+    DynamicModInt64 inv() const {
         ull a = x, b = get_mod(), u = 1, v = 0, t;
         while (b > 0) {
             t = a / b;
             swap(a -= t * b, b);
             swap(u -= t * v, v);
         }
-        return ArbitraryModInt64(u);
+        return DynamicModInt64(u);
     }
 
-    ArbitraryModInt64 pow(int64_t n) const {
-        ArbitraryModInt64 ret(1), mul(x);
+    DynamicModInt64 pow(int64_t n) const {
+        DynamicModInt64 ret(1), mul(x);
         while (n > 0) {
             if (n & 1) ret *= mul;
             mul *= mul;
@@ -130,14 +130,14 @@ struct ArbitraryModInt64 {
         return ret;
     }
 
-    friend ostream &operator<<(ostream &os, const ArbitraryModInt64 &p) {
+    friend ostream &operator<<(ostream &os, const DynamicModInt64 &p) {
         return os << p.x;
     }
 
-    friend istream &operator>>(istream &is, ArbitraryModInt64 &a) {
+    friend istream &operator>>(istream &is, DynamicModInt64 &a) {
         int64_t t;
         is >> t;
-        a = ArbitraryModInt64<id>(t);
+        a = DynamicModInt64<id>(t);
         return (is);
     }
 
