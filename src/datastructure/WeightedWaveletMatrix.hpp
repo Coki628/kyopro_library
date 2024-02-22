@@ -4,6 +4,7 @@
 #include <immintrin.h>
 
 // 重み付きWavelet Matrix
+// see: https://drken1215.hatenablog.com/entry/2023/10/20/020039
 // ・(x,y)への点に重みvalを付けられる。
 template<typename T, typename U>
 struct WeightedWaveletMatrix {

@@ -27,6 +27,21 @@ struct Compress {
         dat.eb(x);
     }
 
+    // 可変長引数、cp.add(l, r); とかできる
+    template<typename... Ts>
+    void add(const T val, Ts... ts) {
+        dat.eb(val);
+        if constexpr (sizeof...(Ts) > 0) {
+            add(ts...);
+        }
+    }
+
+    void add(const vector<T> &A) {
+        for (auto a : A) {
+            add(a);
+        }
+    }
+
     int zip(T x) {
         assert(built);
         return bisect_left(dat, x);

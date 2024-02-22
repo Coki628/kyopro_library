@@ -7,9 +7,11 @@ template<typename T>
 struct RangeSet {
     set<pair<T, T>> st;
     T TINF;
+    T cnt;
 
     RangeSet() {
         TINF = numeric_limits<T>::max() / 2;
+        cnt = 0;
         st.emplace(TINF, TINF);
         st.emplace(-TINF, -TINF);
     }
@@ -53,6 +55,7 @@ struct RangeSet {
             st.erase(ite);
         }
         st.emplace(l, r);
+        cnt += r - l + 1 - sum_erased;;
         return r - l + 1 - sum_erased;
     }
     T insert(T x) {
@@ -67,6 +70,7 @@ struct RangeSet {
             if (ite->first < l) st.emplace(ite->first, l - 1);
             if (r < ite->second) st.emplace(r + 1, ite->second);
             st.erase(ite);
+            cnt += r - l + 1;
             return r - l + 1;
         }
 
@@ -86,6 +90,7 @@ struct RangeSet {
             if (r < ite->second) st.emplace(r + 1, ite->second);
             st.erase(ite);
         }
+        cnt += ret;
         return ret;
     }
     T erase(T x) {
@@ -94,6 +99,9 @@ struct RangeSet {
     // number of range
     int size() {
         return (int)st.size() - 2;
+    }
+    T count() {
+        return cnt;
     }
     // mex [x,~)
     T mex(T x = 0) {

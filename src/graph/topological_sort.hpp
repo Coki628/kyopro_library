@@ -2,7 +2,7 @@
 #include "../macros.hpp"
 
 // トポロジカルソート(頂点数、辺集合(0-indexed))
-vector<int> topological_sort(int N, vector<pll> edges) {
+vector<int> topological_sort(int N, vector<pii> edges) {
     // ここからトポロジカルソート準備
     vector<int> incnts(N);
     vvi outnodes(N);

@@ -1,7 +1,5 @@
 #pragma once
-#include "../common/HashMap.hpp"
 #include "../macros.hpp"
-#include "../mystl/Vector.hpp"
 #include "HeavyLightDecomposition.hpp"
 
 // Auxiliary Tree
@@ -10,47 +8,80 @@
 // 使い方
 // ・全体のグラフが確定した時点で隣接リストnodesを渡して初期化
 // ・各クエリ毎に使う頂点集合の配列Aを渡してbuild
-// ・戻り値は圧縮されたグラフの隣接リスト。重み付きにしてコストを元グラフ上での距離としてある。
-// 　隣接リストのキーはHashMapで構成しているので、頂点番号は元グラフと同じものを使える(ので添字が分かりやすい)。
-// 　(その分多少は速度が犠牲になっているはずだけど、まあNyaanさんのHashMap爆速だから大概大丈夫だと思う。)
+// ・このクラス本体への添字アクセスで隣接リストみたいに使える。
+// ・頂点番号はそのままなので、距離が必要ならdistで取れるようにした。
+// ・get_verticesで直近のbuildで使用した頂点を列挙できるようにした。
+// 　LCA頂点は複数回使われるので、これを状態戻しに使える。
+// see: https://suisen-cp.github.io/cp-library-cpp/library/tree/auxiliary_tree.hpp
 struct AuxiliaryTree {
     int N;
     HeavyLightDecomposition hld;
 
-    AuxiliaryTree(const vvi &nodes) : hld(nodes), N(nodes.size()) {}
+    AuxiliaryTree() = default;
+    AuxiliaryTree(const vvi &nodes) : hld(nodes), N(nodes.size()), _aux(N) {}
 
-    HashMap<int, vector<pil>> build(const vector<int> &A) {
-        int K = A.size();
-        vector<pii> tmp;
-        rep(i, K) {
-            tmp.eb(hld.in[A[i]], A[i]);
-        }
-        sort(ALL(tmp));
-        Vector<int> st = {tmp[0].second};
-        HashMap<int, vector<pil>> res;
-        rep(i, 1, K) {
-            ll u = st.pop();
-            ll v = tmp[i].second;
-            ll lca = hld.lca(u, v);
-            while (st.size() and hld.dep[st.back()] > hld.dep[lca]) {
-                res[st.back()].eb(u, hld.dist(u, st.back()));
-                res[u].eb(st.back(), hld.dist(u, st.back()));
-                u = st.pop();
-            }
-            if (st.empty() or st.back() != lca) {
-                st.eb(lca);
-            }
-            if (u != lca) {
-                res[lca].eb(u, hld.dist(u, lca));
-                res[u].eb(lca, hld.dist(u, lca));
-            }
-            st.eb(v);
-        }
-        while (st.size() >= 2) {
-            ll u = st.pop();
-            res[st.back()].eb(u, hld.dist(u, st.back()));
-            res[u].eb(st.back(), hld.dist(u, st.back()));
-        }
-        return res;
+    const vector<int> &operator[](int u) const {
+        return _aux[u];
     }
+
+    int dist(int u, int v) {
+        return hld.dist(u, v);
+    }
+
+    int build(vector<int> vs) {
+        const int k = vs.size();
+        for (int v : _upd) _aux[v].clear();
+        _upd.clear();
+
+        sort(vs.begin(), vs.end(), [this](int i, int j) {
+            return hld.in[i] < hld.in[j];
+        });
+
+        copy(vs.begin(), vs.end(), back_inserter(_upd));
+
+        vector<int> st{vs[0]};
+        for (int i = 0; i < k - 1; ++i) {
+            const int w = hld.lca(vs[i], vs[i + 1]);
+
+            if (w != vs[i]) {
+                _upd.push_back(w);
+                int last = st.back();
+                st.pop_back();
+                while (st.size() and hld.dep[w] < hld.dep[st.back()]) {
+                    int u = st.back();
+                    _aux[u].push_back(last);
+                    _aux[last].push_back(u);
+                    last = st.back();
+                    st.pop_back();
+                }
+
+                if (st.empty() or st.back() != w) {
+                    st.push_back(w);
+                    vs.push_back(w);
+                    _aux[w].push_back(last);
+                    _aux[last].push_back(w);
+                } else {
+                    _aux[w].push_back(last);
+                    _aux[last].push_back(w);
+                }
+            }
+
+            st.push_back(vs[i + 1]);
+        }
+        const int siz = st.size();
+        for (int i = 0; i < siz - 1; ++i) {
+            _aux[st[i]].push_back(st[i + 1]);
+            _aux[st[i + 1]].push_back(st[i]);
+        }
+        return st[0];
+    }
+
+    // 直近のbuildで使用した頂点を列挙(状態戻しとかに使える)
+    vector<int> get_vertices() {
+        return _upd;
+    }
+
+private:
+    vector<vector<int>> _aux;
+    vector<int> _upd;
 };
