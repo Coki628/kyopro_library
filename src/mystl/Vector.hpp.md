@@ -15,8 +15,8 @@ data:
     title: src/macros.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: src/graph/AuxiliaryTree.hpp
-    title: src/graph/AuxiliaryTree.hpp
+    path: src/graph/_AuxiliaryTree.hpp
+    title: src/graph/_AuxiliaryTree.hpp
   - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
@@ -182,8 +182,8 @@ data:
   isVerificationFile: false
   path: src/mystl/Vector.hpp
   requiredBy:
+  - src/graph/_AuxiliaryTree.hpp
   - src/template.hpp
-  - src/graph/AuxiliaryTree.hpp
   timestamp: '2024-01-08 14:31:11+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

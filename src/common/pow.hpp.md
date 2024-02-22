@@ -66,10 +66,10 @@ data:
   isVerificationFile: false
   path: src/common/pow.hpp
   requiredBy:
-  - src/template.hpp
-  - src/geometry/intersectCC.hpp
-  - src/string/RollingHashUpdatable.hpp
   - src/numbers/bsgs.hpp
+  - src/geometry/intersectCC.hpp
+  - src/template.hpp
+  - src/string/RollingHashUpdatable.hpp
   timestamp: '2023-12-06 04:35:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

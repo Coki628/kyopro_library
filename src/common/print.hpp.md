@@ -15,8 +15,8 @@ data:
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
   - icon: ':warning:'
-    path: src/graph/AuxiliaryTree.hpp
-    title: src/graph/AuxiliaryTree.hpp
+    path: src/graph/_AuxiliaryTree.hpp
+    title: src/graph/_AuxiliaryTree.hpp
   - icon: ':warning:'
     path: src/math/FormalPowerSeries.hpp
     title: src/math/FormalPowerSeries.hpp
@@ -316,24 +316,24 @@ data:
   isVerificationFile: false
   path: src/common/print.hpp
   requiredBy:
-  - src/common/yesno.hpp
-  - src/template.hpp
-  - src/graph/AuxiliaryTree.hpp
-  - src/math/FormalPowerSeries.hpp
+  - src/graph/_AuxiliaryTree.hpp
   - src/math/fps/pow_term2.hpp
   - src/math/fps/pow.hpp
-  - src/mystl/Vector.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/template.hpp
   - src/mystl/Set.hpp
   - src/mystl/Multiset.hpp
+  - src/mystl/Vector.hpp
   - src/mystl/Deque.hpp
+  - src/common/yesno.hpp
   timestamp: '2024-01-08 14:31:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/common/bisect.test.cpp
-  - test/graph/WeightedUnionFind.test.cpp
   - test/graph/bfs.test.cpp
+  - test/graph/WeightedUnionFind.test.cpp
   - test/graph/UnionFind.test.cpp
   - test/matrix/MatPow.test.cpp
+  - test/common/bisect.test.cpp
 documentation_of: src/common/print.hpp
 layout: document
 redirect_from:

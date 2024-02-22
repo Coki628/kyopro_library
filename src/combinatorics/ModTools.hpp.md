@@ -100,10 +100,10 @@ data:
   isVerificationFile: false
   path: src/combinatorics/ModTools.hpp
   requiredBy:
+  - src/math/lagrange_polynomial.hpp
+  - src/math/fps/pow_term2.hpp
   - src/template.hpp
   - src/combinatorics/bell.hpp
-  - src/math/fps/pow_term2.hpp
-  - src/math/lagrange_polynomial.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

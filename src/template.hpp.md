@@ -218,8 +218,13 @@ data:
     \    }\n\n    void build() {\n        sort(dat.begin(), dat.end());\n        dat.erase(unique(dat.begin(),\
     \ dat.end()), dat.end());\n        N = dat.size();\n        built = true;\n  \
     \  }\n\n    void add(T x) {\n        assert(not built);\n        dat.eb(x);\n\
-    \    }\n\n    int zip(T x) {\n        assert(built);\n        return bisect_left(dat,\
-    \ x);\n    }\n\n    T unzip(int x) {\n        assert(built);\n        return dat[x];\n\
+    \    }\n\n    // \u53EF\u5909\u9577\u5F15\u6570\u3001cp.add(l, r); \u3068\u304B\
+    \u3067\u304D\u308B\n    template<typename... Ts>\n    void add(const T val, Ts...\
+    \ ts) {\n        dat.eb(val);\n        if constexpr (sizeof...(Ts) > 0) {\n  \
+    \          add(ts...);\n        }\n    }\n\n    void add(const vector<T> &A) {\n\
+    \        for (auto a : A) {\n            add(a);\n        }\n    }\n\n    int\
+    \ zip(T x) {\n        assert(built);\n        return bisect_left(dat, x);\n  \
+    \  }\n\n    T unzip(int x) {\n        assert(built);\n        return dat[x];\n\
     \    }\n\n    int operator[](T x) {\n        return zip(x);\n    }\n\n    int\
     \ size() {\n        assert(built);\n        return dat.size();\n    }\n\n    vector<ll>\
     \ zip(const vector<T> &A) {\n        int M = A.size();\n        vector<ll> res(M);\n\
@@ -290,11 +295,13 @@ data:
     \ N) {\n    vector<T> A(N);\n    rep(i, N) {\n        cin >> A[i];\n    }\n  \
     \  return A;\n}\n#line 3 \"src/common/to_string.hpp\"\n\nstring to_string(const\
     \ string &S) {\n    return S;\n}\n\nstring to_string(char c) {\n    return {c};\n\
-    }\n#line 4 \"src/common/join.hpp\"\n\ntemplate<typename T>\nstring join(const\
-    \ vector<T> &A, string separator = \"\") {\n    int N = A.size();\n    string\
-    \ res;\n    rep(i, N) {\n        res += tostr(A[i]);\n        if (i != N - 1)\
-    \ res += separator;\n    }\n    return res;\n}\n#line 3 \"src/common/listnd.hpp\"\
-    \n\n// \u4EFB\u610F\u6B21\u5143vector\n// \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
+    }\n\ntemplate<typename T1, typename T2>\nstring to_string(pair<T1, T2> p) {\n\
+    \    return to_string(p.first) + \" \" + to_string(p.second);\n}\n#line 4 \"src/common/join.hpp\"\
+    \n\ntemplate<typename T>\nstring join(const vector<T> &A, string separator = \"\
+    \") {\n    int N = A.size();\n    string res;\n    rep(i, N) {\n        res +=\
+    \ tostr(A[i]);\n        if (i != N - 1) res += separator;\n    }\n    return res;\n\
+    }\n#line 3 \"src/common/listnd.hpp\"\n\n// \u4EFB\u610F\u6B21\u5143vector\n//\
+    \ \u53C2\u8003\uFF1Ahttps://luzhiled1333.github.io/comp-library/src/cpp-template/header/make-vector.hpp\n\
     template<typename... Ts>\nauto listnd(size_t N, Ts... ts) {\n    if constexpr\
     \ (sizeof...(ts) == 1) {\n        return vector<Ts...>(N, ts...);\n    } else\
     \ {\n        auto res = listnd(ts...);\n        return vector<decltype(res)>(N,\
@@ -1041,7 +1048,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2024-01-22 18:54:22+09:00'
+  timestamp: '2024-02-22 17:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

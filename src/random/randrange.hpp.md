@@ -4,13 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/base.hpp
     title: src/base.hpp
-  - icon: ':warning:'
-    path: src/common/mt.hpp
-    title: src/common/mt.hpp
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy: []
+  - icon: ':warning:'
+    path: src/random/mt.hpp
+    title: src/random/mt.hpp
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/random/rand_prime.hpp
+    title: src/random/rand_prime.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -32,9 +35,9 @@ data:
     #define ALL(A) begin(A), end(A)\n#define UNIQUE(A) sort(ALL(A)), A.erase(unique(ALL(A)),\
     \ A.end())\n#define elif else if\n#define tostr to_string\n\n#ifndef CONSTANTS\n\
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
-    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/mt.hpp\"\
+    \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/random/mt.hpp\"\
     \n\n// \u30B7\u30FC\u30C9\u751F\u6210\nmt19937_64 mt(chrono::steady_clock::now().time_since_epoch().count());\n\
-    #line 4 \"src/common/randrange.hpp\"\n\n// [l,r)\u306E\u7BC4\u56F2\u3067\u4E71\
+    #line 4 \"src/random/randrange.hpp\"\n\n// [l,r)\u306E\u7BC4\u56F2\u3067\u4E71\
     \u6570\u751F\u6210\nll randrange(ll l, ll r) {\n    uniform_int_distribution<ll>\
     \ rand(l, r - 1);\n    return rand(mt);\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n#include \"mt.hpp\"\n\n// [l,r)\u306E\
@@ -43,17 +46,18 @@ data:
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
-  - src/common/mt.hpp
+  - src/random/mt.hpp
   isVerificationFile: false
-  path: src/common/randrange.hpp
-  requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  path: src/random/randrange.hpp
+  requiredBy:
+  - src/random/rand_prime.hpp
+  timestamp: '2024-02-06 11:56:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/common/randrange.hpp
+documentation_of: src/random/randrange.hpp
 layout: document
 redirect_from:
-- /library/src/common/randrange.hpp
-- /library/src/common/randrange.hpp.html
-title: src/common/randrange.hpp
+- /library/src/random/randrange.hpp
+- /library/src/random/randrange.hpp.html
+title: src/random/randrange.hpp
 ---

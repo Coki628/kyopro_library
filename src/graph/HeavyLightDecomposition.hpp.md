@@ -11,6 +11,9 @@ data:
   - icon: ':warning:'
     path: src/graph/AuxiliaryTree.hpp
     title: src/graph/AuxiliaryTree.hpp
+  - icon: ':warning:'
+    path: src/graph/_AuxiliaryTree.hpp
+    title: src/graph/_AuxiliaryTree.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -222,6 +225,7 @@ data:
   isVerificationFile: false
   path: src/graph/HeavyLightDecomposition.hpp
   requiredBy:
+  - src/graph/_AuxiliaryTree.hpp
   - src/graph/AuxiliaryTree.hpp
   timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS

@@ -13,7 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/random/rand_prime.hpp
+    title: src/random/rand_prime.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -201,7 +204,8 @@ data:
   - src/common/sorted.hpp
   isVerificationFile: false
   path: src/numbers/FastPrimeFactorization.hpp
-  requiredBy: []
+  requiredBy:
+  - src/random/rand_prime.hpp
   timestamp: '2023-12-04 18:26:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

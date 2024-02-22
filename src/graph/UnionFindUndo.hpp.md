@@ -76,8 +76,8 @@ data:
   isVerificationFile: false
   path: src/graph/UnionFindUndo.hpp
   requiredBy:
-  - src/graph/_OfflineDynamicConnectivity.hpp
   - src/graph/OfflineDynamicConnectivity.hpp
+  - src/graph/_OfflineDynamicConnectivity.hpp
   timestamp: '2023-12-27 10:46:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -9,6 +9,9 @@ data:
     path: src/numbers/FastPrimeFactorization.hpp
     title: src/numbers/FastPrimeFactorization.hpp
   - icon: ':warning:'
+    path: src/random/rand_prime.hpp
+    title: src/random/rand_prime.hpp
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith: []
@@ -33,8 +36,9 @@ data:
   isVerificationFile: false
   path: src/common/sorted.hpp
   requiredBy:
-  - src/template.hpp
   - src/numbers/FastPrimeFactorization.hpp
+  - src/template.hpp
+  - src/random/rand_prime.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

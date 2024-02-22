@@ -37,18 +37,21 @@ data:
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/to_string.hpp\"\
     \n\nstring to_string(const string &S) {\n    return S;\n}\n\nstring to_string(char\
-    \ c) {\n    return {c};\n}\n"
+    \ c) {\n    return {c};\n}\n\ntemplate<typename T1, typename T2>\nstring to_string(pair<T1,\
+    \ T2> p) {\n    return to_string(p.first) + \" \" + to_string(p.second);\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\nstring to_string(const string\
-    \ &S) {\n    return S;\n}\n\nstring to_string(char c) {\n    return {c};\n}\n"
+    \ &S) {\n    return S;\n}\n\nstring to_string(char c) {\n    return {c};\n}\n\n\
+    template<typename T1, typename T2>\nstring to_string(pair<T1, T2> p) {\n    return\
+    \ to_string(p.first) + \" \" + to_string(p.second);\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/common/to_string.hpp
   requiredBy:
-  - src/common/join.hpp
   - src/template.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
+  - src/common/join.hpp
+  timestamp: '2024-02-22 17:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/to_string.hpp

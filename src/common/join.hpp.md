@@ -37,10 +37,12 @@ data:
     \    constexpr ll INF = 1e18;\n    constexpr int MOD = 1000000007;\n    constexpr\
     \ ld EPS = 1e-10;\n    constexpr ld PI = M_PI;\n#endif\n#line 3 \"src/common/to_string.hpp\"\
     \n\nstring to_string(const string &S) {\n    return S;\n}\n\nstring to_string(char\
-    \ c) {\n    return {c};\n}\n#line 4 \"src/common/join.hpp\"\n\ntemplate<typename\
-    \ T>\nstring join(const vector<T> &A, string separator = \"\") {\n    int N =\
-    \ A.size();\n    string res;\n    rep(i, N) {\n        res += tostr(A[i]);\n \
-    \       if (i != N - 1) res += separator;\n    }\n    return res;\n}\n"
+    \ c) {\n    return {c};\n}\n\ntemplate<typename T1, typename T2>\nstring to_string(pair<T1,\
+    \ T2> p) {\n    return to_string(p.first) + \" \" + to_string(p.second);\n}\n\
+    #line 4 \"src/common/join.hpp\"\n\ntemplate<typename T>\nstring join(const vector<T>\
+    \ &A, string separator = \"\") {\n    int N = A.size();\n    string res;\n   \
+    \ rep(i, N) {\n        res += tostr(A[i]);\n        if (i != N - 1) res += separator;\n\
+    \    }\n    return res;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n#include \"to_string.hpp\"\n\n\
     template<typename T>\nstring join(const vector<T> &A, string separator = \"\"\
     ) {\n    int N = A.size();\n    string res;\n    rep(i, N) {\n        res += tostr(A[i]);\n\
@@ -53,7 +55,7 @@ data:
   path: src/common/join.hpp
   requiredBy:
   - src/template.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-02-22 17:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/join.hpp

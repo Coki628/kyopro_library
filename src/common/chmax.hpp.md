@@ -12,11 +12,11 @@ data:
     path: src/common/yesno.hpp
     title: src/common/yesno.hpp
   - icon: ':warning:'
-    path: src/graph/AuxiliaryTree.hpp
-    title: src/graph/AuxiliaryTree.hpp
-  - icon: ':warning:'
     path: src/graph/TreeHash.hpp
     title: src/graph/TreeHash.hpp
+  - icon: ':warning:'
+    path: src/graph/_AuxiliaryTree.hpp
+    title: src/graph/_AuxiliaryTree.hpp
   - icon: ':warning:'
     path: src/math/FormalPowerSeries.hpp
     title: src/math/FormalPowerSeries.hpp
@@ -70,27 +70,27 @@ data:
   isVerificationFile: false
   path: src/common/chmax.hpp
   requiredBy:
+  - src/graph/TreeHash.hpp
+  - src/graph/_AuxiliaryTree.hpp
+  - src/math/fps/pow_term2.hpp
+  - src/math/fps/pow.hpp
+  - src/math/FormalPowerSeries.hpp
+  - src/template.hpp
+  - src/mystl/Set.hpp
+  - src/mystl/Multiset.hpp
+  - src/mystl/Vector.hpp
+  - src/mystl/Deque.hpp
   - src/common/print.hpp
   - src/common/max.hpp
   - src/common/yesno.hpp
-  - src/template.hpp
-  - src/graph/TreeHash.hpp
-  - src/graph/AuxiliaryTree.hpp
-  - src/math/FormalPowerSeries.hpp
-  - src/math/fps/pow_term2.hpp
-  - src/math/fps/pow.hpp
-  - src/mystl/Vector.hpp
-  - src/mystl/Set.hpp
-  - src/mystl/Multiset.hpp
-  - src/mystl/Deque.hpp
   timestamp: '2022-03-24 10:49:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/common/bisect.test.cpp
-  - test/graph/WeightedUnionFind.test.cpp
   - test/graph/bfs.test.cpp
+  - test/graph/WeightedUnionFind.test.cpp
   - test/graph/UnionFind.test.cpp
   - test/matrix/MatPow.test.cpp
+  - test/common/bisect.test.cpp
 documentation_of: src/common/chmax.hpp
 layout: document
 redirect_from:
