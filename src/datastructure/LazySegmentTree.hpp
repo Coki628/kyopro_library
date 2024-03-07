@@ -16,7 +16,7 @@ struct LazySegmentTree {
 
     LazySegmentTree(
         int n, const F f, const G g, const H h, const Monoid &M1,
-        const OperatorMonoid OM0
+        const OperatorMonoid &OM0
     )
         : n(n),
           f(f),
@@ -33,7 +33,7 @@ struct LazySegmentTree {
 
     LazySegmentTree(
         const F f, const G g, const H h, const Monoid &M1,
-        const OperatorMonoid OM0
+        const OperatorMonoid &OM0
     )
         : f(f),
           g(g),
@@ -44,7 +44,7 @@ struct LazySegmentTree {
 
     LazySegmentTree(
         const vector<Monoid> &A, const F f, const G g, const H h,
-        const Monoid &M1, const OperatorMonoid OM0
+        const Monoid &M1, const OperatorMonoid &OM0
     )
         : f(f),
           g(g),
@@ -100,8 +100,14 @@ struct LazySegmentTree {
         thrust(a += sz);
         thrust(b += sz - 1);
         for (int l = a, r = b + 1; l < r; l >>= 1, r >>= 1) {
-            if (l & 1) lazy[l] = h(lazy[l], x), ++l;
-            if (r & 1) --r, lazy[r] = h(lazy[r], x);
+            if (l & 1) {
+                lazy[l] = h(lazy[l], x);
+                ++l;
+            }
+            if (r & 1) {
+                --r;
+                lazy[r] = h(lazy[r], x);
+            }
         }
         recalc(a);
         recalc(b);

@@ -63,7 +63,7 @@ struct UnionFind {
         int x = find(a);
         int y = find(b);
         if (x == y) {
-            f(-1, y);
+            f(x, -1);
             tree[x] = false;
             return -1;
         }
