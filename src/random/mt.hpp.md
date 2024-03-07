@@ -36,11 +36,11 @@ data:
   isVerificationFile: false
   path: src/random/mt.hpp
   requiredBy:
-  - src/random/randint.hpp
   - src/random/rand_double.hpp
   - src/random/sample.hpp
   - src/random/rand_prime.hpp
   - src/random/randrange.hpp
+  - src/random/randint.hpp
   timestamp: '2024-02-06 11:56:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -189,10 +189,10 @@ data:
   isVerificationFile: false
   path: src/datastructure/BIT.hpp
   requiredBy:
-  - src/datastructure/PersistentBIT.hpp
-  - src/datastructure/AbstractBIT.hpp
-  - src/template.hpp
   - src/string/RollingHashUpdatable.hpp
+  - src/template.hpp
+  - src/datastructure/AbstractBIT.hpp
+  - src/datastructure/PersistentBIT.hpp
   timestamp: '2023-12-28 12:04:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

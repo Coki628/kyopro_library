@@ -5,6 +5,9 @@ data:
   - icon: ':warning:'
     path: src/graph/PSP.hpp
     title: src/graph/PSP.hpp
+  - icon: ':warning:'
+    path: src/graph/RangeEdgedMaxFlow.hpp
+    title: src/graph/RangeEdgedMaxFlow.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -36,6 +39,7 @@ data:
   isVerificationFile: false
   path: src/acl/maxflow.hpp
   requiredBy:
+  - src/graph/RangeEdgedMaxFlow.hpp
   - src/graph/PSP.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS

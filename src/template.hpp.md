@@ -579,7 +579,7 @@ data:
     \u5408\uFF1A\u30DE\u30FC\u30B8\u5F8C\u306E\u96C6\u5408\u306E\u6839(\u30DE\u30FC\
     \u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\n    template<typename F>\n    int\
     \ merge(int a, int b, F f) {\n        int x = find(a);\n        int y = find(b);\n\
-    \        if (x == y) {\n            f(-1, y);\n            tree[x] = false;\n\
+    \        if (x == y) {\n            f(x, -1);\n            tree[x] = false;\n\
     \            return -1;\n        }\n        if (!tree[x] or !tree[y]) {\n    \
     \        tree[x] = tree[y] = false;\n        }\n        groupcnt--;\n        if\
     \ (rank[x] < rank[y]) {\n            f(y, x);\n            par[x] = y;\n     \
@@ -1048,7 +1048,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2024-02-22 17:15:31+09:00'
+  timestamp: '2024-03-07 15:03:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/template.hpp

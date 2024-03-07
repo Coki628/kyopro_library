@@ -52,10 +52,10 @@ data:
   isVerificationFile: false
   path: src/grid/constants/dir4.hpp
   requiredBy:
-  - src/grid/bfs.hpp
-  - src/grid/constants/directions.hpp
-  - src/grid/dijkstra.hpp
   - src/template.hpp
+  - src/grid/constants/directions.hpp
+  - src/grid/bfs.hpp
+  - src/grid/dijkstra.hpp
   timestamp: '2023-12-11 16:15:31+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

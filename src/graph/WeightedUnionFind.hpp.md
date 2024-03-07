@@ -55,10 +55,10 @@ data:
     \        }\n    }\n\n    // \u4F75\u5408\uFF1A\u30DE\u30FC\u30B8\u5F8C\u306E\u96C6\
     \u5408\u306E\u6839(\u30DE\u30FC\u30B8\u6E08\u306A\u3089-1)\u3092\u8FD4\u3059\n\
     \    template<typename F>\n    int merge(int a, int b, F f) {\n        int x =\
-    \ find(a);\n        int y = find(b);\n        if (x == y) {\n            f(-1,\
-    \ y);\n            tree[x] = false;\n            return -1;\n        }\n     \
-    \   if (!tree[x] or !tree[y]) {\n            tree[x] = tree[y] = false;\n    \
-    \    }\n        groupcnt--;\n        if (rank[x] < rank[y]) {\n            f(y,\
+    \ find(a);\n        int y = find(b);\n        if (x == y) {\n            f(x,\
+    \ -1);\n            tree[x] = false;\n            return -1;\n        }\n    \
+    \    if (!tree[x] or !tree[y]) {\n            tree[x] = tree[y] = false;\n   \
+    \     }\n        groupcnt--;\n        if (rank[x] < rank[y]) {\n            f(y,\
     \ x);\n            par[x] = y;\n            sz[y] += sz[x];\n            return\
     \ y;\n        } else {\n            f(x, y);\n            par[y] = x;\n      \
     \      sz[x] += sz[y];\n            if (rank[x] == rank[y]) {\n              \
@@ -121,7 +121,7 @@ data:
   isVerificationFile: false
   path: src/graph/WeightedUnionFind.hpp
   requiredBy: []
-  timestamp: '2023-12-27 10:46:59+09:00'
+  timestamp: '2024-03-07 15:03:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/WeightedUnionFind.test.cpp

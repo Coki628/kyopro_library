@@ -53,8 +53,8 @@ data:
   isVerificationFile: false
   path: src/datastructure/bit_vector.hpp
   requiredBy:
-  - src/datastructure/WaveletMatrix.hpp
   - src/datastructure/WeightedWaveletMatrix.hpp
+  - src/datastructure/WaveletMatrix.hpp
   timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

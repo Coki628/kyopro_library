@@ -99,10 +99,10 @@ data:
   path: src/geometry/Segment.hpp
   requiredBy:
   - src/geometry/intersect.hpp
-  - src/geometry/reflect.hpp
   - src/geometry/Line.hpp
-  - src/geometry/get_distance.hpp
   - src/geometry/get_cross_point.hpp
+  - src/geometry/reflect.hpp
+  - src/geometry/get_distance.hpp
   - src/geometry/project.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS

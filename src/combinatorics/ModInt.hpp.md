@@ -113,8 +113,8 @@ data:
   isVerificationFile: false
   path: src/combinatorics/ModInt.hpp
   requiredBy:
-  - src/math/fps/pow_term2.hpp
   - src/math/garner.hpp
+  - src/math/fps/pow_term2.hpp
   timestamp: '2024-02-06 01:26:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

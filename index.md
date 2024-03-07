@@ -270,6 +270,9 @@ data:
       path: src/datastructure/Doubling.hpp
       title: src/datastructure/Doubling.hpp
     - icon: ':warning:'
+      path: src/datastructure/DualSegmentTree.hpp
+      title: src/datastructure/DualSegmentTree.hpp
+    - icon: ':warning:'
       path: src/datastructure/DynamicLiChaoTree.hpp
       title: src/datastructure/DynamicLiChaoTree.hpp
     - icon: ':warning:'
@@ -463,6 +466,9 @@ data:
       path: src/graph/RangeEdgedGraph.hpp
       title: src/graph/RangeEdgedGraph.hpp
     - icon: ':warning:'
+      path: src/graph/RangeEdgedMaxFlow.hpp
+      title: src/graph/RangeEdgedMaxFlow.hpp
+    - icon: ':warning:'
       path: src/graph/RangeEdgedSCC.hpp
       title: src/graph/RangeEdgedSCC.hpp
     - icon: ':warning:'
@@ -513,6 +519,9 @@ data:
     - icon: ':warning:'
       path: src/graph/bfs01.hpp
       title: src/graph/bfs01.hpp
+    - icon: ':warning:'
+      path: src/graph/cartesian_tree.hpp
+      title: src/graph/cartesian_tree.hpp
     - icon: ':warning:'
       path: src/graph/centroid_decomposition.hpp
       title: src/graph/centroid_decomposition.hpp

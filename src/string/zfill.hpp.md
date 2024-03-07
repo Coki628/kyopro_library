@@ -47,8 +47,8 @@ data:
   isVerificationFile: false
   path: src/string/zfill.hpp
   requiredBy:
-  - src/template.hpp
   - src/string/compare.hpp
+  - src/template.hpp
   timestamp: '2023-12-04 15:39:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
