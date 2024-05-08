@@ -13,7 +13,7 @@ auto bfs = [](const vector<string> &grid, const vector<pii> &src, char invalid =
         res[h][w] = 0;
         que.push({h, w});
     }
-    while (!que.empty()) {
+    while (que.size()) {
         auto [h, w] = que.front();
         que.pop();
         for (auto [dh, dw] : dir4) {

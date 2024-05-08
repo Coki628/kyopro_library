@@ -36,7 +36,7 @@ struct ReRooting {
         g[v].emplace_back((Edge){u, d, ident, ident});
     }
 
-    // 有向 u->vへの遷移にd、v->uへの遷移にe を渡す
+    // u<-vへの遷移にd、v<-uへの遷移にe を渡す
     void add_edge(int u, int v, const key_t &d, const key_t &e) {
         g[u].emplace_back((Edge){v, d, ident, ident});
         g[v].emplace_back((Edge){u, e, ident, ident});

@@ -61,6 +61,16 @@ struct Compress {
         return dat.size();
     }
 
+    // 座圧後の位置[i,i+1)の座圧前の大きさを返す
+    T size(int i) {
+        assert(built and 0 <= i and i < N);
+        if (i == N - 1) {
+            return 1;
+        } else {
+            return unzip(i + 1) - unzip(i);
+        }
+    }
+
     vector<ll> zip(const vector<T> &A) {
         int M = A.size();
         vector<ll> res(M);

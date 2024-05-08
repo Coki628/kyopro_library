@@ -55,4 +55,8 @@ struct RangeEdgedGraph {
     void add_edge(int u, int v, ll w) {
         _add_edge(u + n, v + n, w);
     }
+
+    vv<pil> get_nodes() {
+        return nodes;
+    }
 };

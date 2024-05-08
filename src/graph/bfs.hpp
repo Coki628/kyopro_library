@@ -13,7 +13,7 @@ auto bfs = [](const vvi &nodes, const vector<int> &src) {
         res[s] = 0;
         que.push(s);
     }
-    while (!que.empty()) {
+    while (que.size()) {
         int u = que.front();
         que.pop();
         for (auto v : nodes[u]) {

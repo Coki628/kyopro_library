@@ -66,6 +66,11 @@ struct DualSegmentTree {
         build(A);
     }
 
+    // 取得側の値、特にbuildは不要
+    void set(int k, const Monoid &x) {
+        data[k] = x;
+    }
+
     void build(const vector<Monoid> &A) {
         n = A.size();
         sz = 1;

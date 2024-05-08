@@ -15,7 +15,10 @@
 // ・なお、経過時間はadd_edge,remove_edge,queryを使う度に1ずつ増える。
 // ・solveに、pre_add,post_removeという関数をオプションで渡せるようにして、
 // 　マージ前とundo後に何か見たい時に対応できるようにした。
-// 　これらの関数の引数にはマージとundoに関わった2つの代表点が渡される。
+// 　これらの関数の引数にはマージとundoに関わった2つの代表点par,chが渡される。
+// 　pre_add: parが親になる方、chが子になる方
+// 　post_remove: parが親だった方、chが子だった方
+// ・多重辺が与えられると壊れることが判明(abc163_f参照)したので気をつけること！！
 class OfflineDynamicConnectivity {
 private:
     struct Query {
@@ -25,6 +28,7 @@ private:
     int V, curTime;
     vector<Query> queries;
     vector<map<int, int>> presentEdges;
+    UnionFindUndo uf;
 
     template<typename F>
     void solve(F f, int l, int r, const auto &pre_add, const auto &post_remove) {
@@ -38,8 +42,7 @@ private:
         int curSize = uf.history.size();
         for (int i = m + 1; i <= r; i++) {
             if (queries[i].otherTime < l) {
-                pre_add(queries[i].v, queries[i].w);
-                uf.merge(queries[i].v, queries[i].w);
+                uf.merge(queries[i].v, queries[i].w, pre_add);
             }
         }
         solve(f, l, m, pre_add, post_remove);
@@ -49,8 +52,7 @@ private:
         }
         for (int i = l; i <= m; i++) {
             if (queries[i].otherTime > r) {
-                pre_add(queries[i].v, queries[i].w);
-                uf.merge(queries[i].v, queries[i].w);
+                uf.merge(queries[i].v, queries[i].w, pre_add);
             }
         }
         solve(f, m + 1, r, pre_add, post_remove);
@@ -61,13 +63,28 @@ private:
     }
 
 public:
-    UnionFindUndo uf;
-
     OfflineDynamicConnectivity(int V)
         : V(V),
           curTime(0),
           uf(V),
           presentEdges(V) {
+    }
+
+    // 頂点vを含む連結成分のその時点での代表点を返す。solveに渡す関数fの中で使う。
+    int find(int v) {
+        return uf.find(v);
+    }
+
+    bool same(int x, int y) {
+        return uf.same(x, y);
+    }
+
+    int size(int k) {
+        return uf.size(k);
+    }
+
+    int size() {
+        return uf.size();
     }
 
     void add_edge(int v, int w) {
@@ -99,3 +116,13 @@ public:
         solve(f, 0, curTime - 1, pre_add, post_remove);
     }
 };
+// 使用例
+// auto pre_add = [&](int par, int ch) {
+//     // do something before add edge
+// };
+// auto post_remove = [&](int par, int ch) {
+//     // do something after remove edge
+// };
+// odc.solve([&](int t) {
+//     // do something when answer query at time t
+// }, pre_add, post_remove);

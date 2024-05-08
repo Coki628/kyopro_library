@@ -1,6 +1,5 @@
 #pragma once
 #include "../base.hpp"
-#include "../numbers/extgcd.hpp"
 
 // 任意Mod数え上げ演算ツール
 // 参考：https://betrue12.hateblo.jp/entry/2020/02/23/173513
@@ -33,6 +32,17 @@ private:
     }
     void mul(int64_t &a, int64_t b, int64_t mod) {
         a = a * b % mod;
+    }
+    int64_t extgcd(int64_t a, int64_t b, int64_t &x, int64_t &y) {
+        int64_t d = a;
+        if (b != 0) {
+            d = extgcd(b, a % b, y, x);
+            y -= (a / b) * x;
+        } else {
+            x = 1;
+            y = 0;
+        }
+        return d;
     }
     int64_t inv_mod(int64_t a, int64_t mod) {
         int64_t x, y;
