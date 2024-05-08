@@ -226,7 +226,7 @@ LazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(
 
 template<typename F, typename G, typename H, typename T, typename E>
 ostream &operator<<(ostream &os, LazySegmentTree<F, G, H, T, E> &seg) {
-    rep(i, seg.size()) {
+    for (int i = 0; i < seg.size(); i++) {
         os << seg[i];
         if (i != seg.size() - 1) {
             os << ' ';

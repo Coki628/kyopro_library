@@ -322,7 +322,7 @@ public:
     }
 
     void print(int n) {
-        rep(i, n) {
+        for (int i = 0; i < n; i++) {
             cout << query_sum(i, i + 1);
             if (i == n - 1) cout << endl;
             else cout << ' ';

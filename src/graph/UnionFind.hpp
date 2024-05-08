@@ -16,12 +16,12 @@ struct UnionFind {
     UnionFind(const vector<int> &info) : n(info.size()) {
         build();
         vvi adj(n);
-        rep(i, n) {
+        for (int i = 0; i < n; i++) {
             adj[info[i]].eb(i);
         }
-        rep(i, n) {
+        for (int i = 0; i < n; i++) {
             if (adj[i].size()) {
-                rep(j, adj[i].size() - 1) {
+                for (int j = 0; j < adj[i].size() - 1; j++) {
                     merge(adj[i][j], adj[i][j + 1]);
                 }
             }
@@ -33,7 +33,9 @@ struct UnionFind {
         rank.assign(n, 0);
         sz.assign(n, 1);
         tree.assign(n, true);
-        rep(i, n) par[i] = i;
+        for (int i = 0; i < n; i++) {
+            par[i] = i;
+        }
         groupcnt = n;
     }
 
@@ -43,7 +45,9 @@ struct UnionFind {
         rank.assign(n, 0);
         sz.assign(n, 1);
         tree.assign(n, true);
-        rep(i, n) par[i] = i;
+        for (int i = 0; i < n; i++) {
+            par[i] = i;
+        }
         groupcnt = n;
     }
 
@@ -114,7 +118,7 @@ struct UnionFind {
     // 全ての根を取得
     set<int> get_roots() {
         set<int> res;
-        rep(i, n) {
+        for (int i = 0; i < n; i++) {
             res.insert(find(i));
         }
         return res;
@@ -123,7 +127,7 @@ struct UnionFind {
     // 全頂点のグループ番号を取得
     vector<int> get_info() {
         vector<int> res(n);
-        rep(i, n) {
+        for (int i = 0; i < n; i++) {
             res[i] = find(i);
         }
         return res;

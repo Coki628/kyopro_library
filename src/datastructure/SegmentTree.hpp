@@ -49,7 +49,9 @@ struct SegmentTree {
     void build(const vector<Monoid> &A) {
         n = A.size();
         resize(n);
-        rep(i, n) set(i, A[i]);
+        for (int i = 0; i < n; i++) {
+            set(i, A[i]);
+        }
         build();
     }
 
@@ -154,7 +156,7 @@ SegmentTree<Monoid, F> get_segment_tree(
 
 template<typename Monoid, typename F>
 ostream &operator<<(ostream &os, SegmentTree<Monoid, F> &seg) {
-    rep(i, seg.size()) {
+    for (int i = 0; i < seg.size(); i++) {
         os << seg[i];
         if (i != seg.size() - 1) {
             os << ' ';

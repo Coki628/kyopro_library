@@ -71,10 +71,12 @@ struct Compress {
         }
     }
 
-    vector<ll> zip(const vector<T> &A) {
+    vector<T> zip(const vector<T> &A) {
         int M = A.size();
-        vector<ll> res(M);
-        rep(i, M) res[i] = zip(A[i]);
+        vector<T> res(M);
+        for (int i = 0; i < M; i++) {
+            res[i] = zip(A[i]);
+        }
         return res;
     }
 };
@@ -85,7 +87,7 @@ struct Compress {
 //     map<T, int> zipped;
 //     sort(unzipped.begin(), unzipped.end());
 //     unzipped.erase(unique(unzipped.begin(), unzipped.end()), unzipped.end());
-//     rep(i, unzipped.size()) {
+//     for (int i = 0; i < unzipped.size(); i++) {
 //         zipped[unzipped[i]] = i;
 //     }
 //     return {zipped, unzipped};

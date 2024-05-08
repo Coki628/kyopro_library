@@ -163,7 +163,7 @@ DualSegmentTree<G, H, T, E> get_dual_segment_tree(
 
 template<typename G, typename H, typename T, typename E>
 ostream &operator<<(ostream &os, DualSegmentTree<G, H, T, E> &seg) {
-    rep(i, seg.size()) {
+    for (int i = 0; i < seg.size(); i++) {
         os << seg[i];
         if (i != seg.size() - 1) {
             os << ' ';

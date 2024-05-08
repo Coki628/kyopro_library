@@ -49,28 +49,28 @@ struct SparseTable2D {
         heighth.resize(H + 1);
         heightw.resize(W + 1);
 
-        rep(i, 2, H + 1) {
+        for (int i = 2; i < H + 1; i++) {
             heighth[i] = heighth[i >> 1] + 1;
         }
-        rep(i, 2, W + 1) {
+        for (int i = 2; i < W + 1; i++) {
             heightw[i] = heightw[i >> 1] + 1;
         }
-        rep(i, H) {
-            rep(j, W) {
+        for (int i = 0; i < H; i++) {
+            for (int j = 0; j < W; j++) {
                 dat[0][0][i][j] = grid[i][j];
             }
-            rep(kw, 1, wh) {
-                rep(j, W) {
+            for (int kw = 1; kw < wh; kw++) {
+                for (int j = 0; j < W; j++) {
                     dat[0][kw][i][j] =
                         f(dat[0][kw - 1][i][j],
                           dat[0][kw - 1][i][min((int)j + (1 << (kw - 1)), W - 1)]);
                 }
             }
         }
-        rep(kh, 1, hh) {
-            rep(kw, wh) {
-                rep(i, H) {
-                    rep(j, W) {
+        for (int kh = 1; kh < hh; kh++) {
+            for (int kw = 0; kw < wh; kw++) {
+                for (int i = 0; i < H; i++) {
+                    for (int j = 0; j < W; j++) {
                         dat[kh][kw][i][j] =
                             f(dat[kh - 1][kw][i][j],
                               dat[kh - 1][kw][min((int)i + (1 << (kh - 1)), H - 1)][j]);
