@@ -11,7 +11,7 @@ vv<T> combinations(const vector<T> &A, int N) {
             res.pb(cur);
             return;
         }
-        rep(i, x, M) {
+        for (int i = x; i < M; i++) {
             cur.pb(A[i]);
             f(f, cur, i + 1, n + 1);
             cur.pop_back();

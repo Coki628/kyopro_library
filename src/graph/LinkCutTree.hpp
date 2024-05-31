@@ -4,9 +4,14 @@
 // Link Cut Tree
 // 参考：https://nyaannyaan.github.io/library/lct/link-cut-tree.hpp
 // 使い方
-// ・HLDみたいなパスクエリに加えて、辺追加・削除を動的に行える。
-// 使用例1：abc250_gでLCAやk個遡った祖先の取得など。
+// ・HLDみたいなパスクエリに加えて、辺の追加・削除を動的に行える。頂点も後から追加できる。
+// 使用例1：abc350_gでLCAやk個遡った祖先の取得など。
 // 使用例2：dynamic_tree_vertex_add_path_sumで辺削除やパスクエリの区間和取得など。
+// 使用例3：abc355_fで辺属性への対応。辺を超頂点としてそこに値をつける。
+// 使用例4：AOJ2450で関数tsを使ってマージの左右がある時の対応をしてる。
+// ・単位元をINFや-INFにしたりできない(常に0初期化)っぽいことが発覚したので、
+// 　負数ありの最大最小取得とか乗せる必要がある時が来たら、
+// 　遅延LCTの実装を参考にtidとeidとテンプレート引数に組み込んで対応すること。
 
 // 反転可能平衡二分木(基底クラス)
 // see: https://nyaannyaan.github.io/library/lct/reversible-bbst-base.hpp
@@ -238,7 +243,8 @@ struct ReversibleSplayTree : ReversibleBBST<
 };
 
 // see: https://nyaannyaan.github.io/library/lct/link-cut-base.hpp
-template<typename Splay> struct LinkCutBase : Splay {
+template<typename Splay>
+struct LinkCutBase : Splay {
     using Node = typename Splay::Node;
     using Ptr = Node *;
 
@@ -336,8 +342,7 @@ template<typename Splay> struct LinkCutBase : Splay {
 template<typename T, T (*f)(T, T), T (*ts)(T)>
 struct LinkCutTree : LinkCutBase<ReversibleSplayTree<T, f, ts>> {
     using LCB = LinkCutBase<ReversibleSplayTree<T, f, ts>>;
-    using Node = typename LCB::Node;
-    using Ptr = Node *;
+    using Ptr = typename LCB::Ptr;
 
     vector<Ptr> ptr;
     int N;
@@ -388,7 +393,7 @@ struct LinkCutTree : LinkCutBase<ReversibleSplayTree<T, f, ts>> {
         return LCB::get_key(ptr[k]);
     }
 
-    // パスクエリ
+    // 区間取得(パスクエリ)
     T query(int s, int t) {
         return LCB::fold(ptr[s], ptr[t]);
     }

@@ -106,7 +106,7 @@ public:
         return es;
     }
 
-    explicit HeavyLightDecomposition(const vvi &nodes, int root = 0) : nodes(nodes), N(nodes.size()) {
+    explicit HeavyLightDecomposition(const vvi &nodes, int root = 0) : N(nodes.size()), nodes(nodes) {
         sz.assign(N, 0);
         in.assign(N, 0);
         out.assign(N, 0);

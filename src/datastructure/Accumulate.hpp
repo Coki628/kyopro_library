@@ -4,8 +4,8 @@
 // 累積和
 template<typename T>
 struct Accumulate {
-    vector<T> dat;
     int N;
+    vector<T> dat;
     bool built = false;
 
     Accumulate(int N) : N(N) {

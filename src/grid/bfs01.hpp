@@ -10,7 +10,7 @@ vvl bfs01(const vvl &grid, const vector<pii> &src, ll invalid = -1) {
     auto res = list2d(H, W, INF);
     deque<pii> que;
     for (auto [h, w] : src) {
-        que.pb({h, w});
+        que.push_back({h, w});
         res[h][w] = 0;
     }
     while (que.size()) {
@@ -28,7 +28,7 @@ vvl bfs01(const vvl &grid, const vector<pii> &src, ll invalid = -1) {
                     que.push_front({nh, nw});
                 } else {
                     res[nh][nw] = res[h][w] + 1;
-                    que.pb({nh, nw});
+                    que.push_back({nh, nw});
                 }
             }
         }

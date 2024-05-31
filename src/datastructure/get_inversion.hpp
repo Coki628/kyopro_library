@@ -1,8 +1,10 @@
 #pragma once
 #include "../common/Compress.hpp"
 #include "../macros.hpp"
+#include "BIT.hpp"
 
 // 転倒数取得
+// compは順列じゃなければ基本trueで
 ll get_inversion(vector<ll> A, bool comp = true) {
     int M = A.size();
     if (comp) {

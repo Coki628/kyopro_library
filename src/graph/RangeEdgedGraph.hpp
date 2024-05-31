@@ -27,7 +27,7 @@ struct RangeEdgedGraph {
     // map [3n, 4n) -> [n, 2n)
     void _add_edge(int u, int v, ll w) {
         if (3 * n <= u) u -= 2 * n;
-        nodes[u].pb({v, w});
+        nodes[u].push_back({v, w});
     }
 
     // u -> [l,r) の区間辺を張る

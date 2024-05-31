@@ -30,7 +30,7 @@ struct SuffixArray {
         }
     }
 
-    // S[i]とS[j]のLCPを取得
+    // S[i,N)とS[j,N)のLCPを取得
     int get_lcp(int i, int j) {
         assert(use_seg);
         int l = rsa[i], r = rsa[j];

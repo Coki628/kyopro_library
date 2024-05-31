@@ -17,11 +17,11 @@ struct UnionFind {
         build();
         vvi adj(n);
         for (int i = 0; i < n; i++) {
-            adj[info[i]].eb(i);
+            adj[info[i]].emplace_back(i);
         }
         for (int i = 0; i < n; i++) {
             if (adj[i].size()) {
-                for (int j = 0; j < adj[i].size() - 1; j++) {
+                for (int j = 0; j < (int)adj[i].size() - 1; j++) {
                     merge(adj[i][j], adj[i][j + 1]);
                 }
             }
@@ -61,7 +61,13 @@ struct UnionFind {
         }
     }
 
-    // 併合：マージ後の集合の根(マージ済なら-1)を返す
+    // 頂点aの連結成分とbの連結成分の併合
+    // 戻り値としてマージ後の集合の代表点(マージ済なら-1)を返す。
+    // 関数fを渡す場合、マージ直前にfが実行される。
+    // 引数として
+    // r := マージ後に親となる代表点
+    // ch := マージ後に子となる代表点(マージ済なら-1)
+    // を渡す。
     template<typename F>
     int merge(int a, int b, F f) {
         int x = find(a);

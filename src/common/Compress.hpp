@@ -24,13 +24,13 @@ struct Compress {
 
     void add(T x) {
         assert(not built);
-        dat.eb(x);
+        dat.emplace_back(x);
     }
 
     // 可変長引数、cp.add(l, r); とかできる
     template<typename... Ts>
     void add(const T val, Ts... ts) {
-        dat.eb(val);
+        dat.emplace_back(val);
         if constexpr (sizeof...(Ts) > 0) {
             add(ts...);
         }

@@ -15,14 +15,14 @@ public:
         _factinv.resize(MAX);
         inv.resize(MAX);
         _fact[0] = _fact[1] = 1;
-        rep(i, 2, MAX) {
+        for (int i = 2; i < MAX; i++) {
             _fact[i] = _fact[i - 1] * (Mint)i;
         }
         _factinv[MAX - 1] = (Mint)1 / _fact[MAX - 1];
-        rep(i, MAX - 2, -1, -1) {
+        for (int i = MAX - 2; i >= 0; i--) {
             _factinv[i] = _factinv[i + 1] * (Mint)(i + 1);
         }
-        rep(i, MAX - 1, 0, -1) {
+        for (int i = MAX - 1; i > 0; i--) {
             inv[i] = _factinv[i] * _fact[i - 1];
         }
     }

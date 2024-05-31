@@ -34,11 +34,11 @@ struct DynamicLiChaoTree {
     // x_low,x_highは(多分)半開区間[x_low,x_high)あれば大丈夫。
     // 単位元idは常に(max用でも)INFでよさそう。x_highはidより小さくした方がよさそう。
     DynamicLiChaoTree(ll x_low, ll x_high, T id, bool is_min = true)
-        : root{nullptr},
-          x_low(x_low),
+        : x_low(x_low),
           x_high(x_high),
           id(id),
-          is_min(is_min) {
+          is_min(is_min),
+          root{nullptr} {
     }
 
     Node *add_line(
@@ -98,6 +98,7 @@ struct DynamicLiChaoTree {
         return t;
     }
 
+    // 区間[l,r)に線分ax+bを追加する O(log^2|X|)
     void add_segment(const ll &l, const ll &r, T a, T b) {
         if (!is_min) a *= -1, b *= -1;
         Line x(a, b);
@@ -115,6 +116,7 @@ struct DynamicLiChaoTree {
         else return min(t->x.get(x), query(t->r, m + 1, r, x));
     }
 
+    // 位置xでの現在の最小値 O(log|X|)
     T query(const T &x) const {
         if (is_min) return query(root, x_low, x_high, x);
         return -query(root, x_low, x_high, x);
