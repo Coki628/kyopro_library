@@ -3,9 +3,10 @@
 #include "../macros.hpp"
 
 // ベルマンフォード(頂点数, 辺集合(0-indexed), 始点)
-vector<ll> bellman_ford(int N, vector<array<ll, 3>> edges, int src) {
+template<typename T>
+vector<T> bellman_ford(int N, const vector<tuple<int, int, T>> &edges, int src) {
     // 頂点[ある始点からの最短距離] (経路自体を知りたい時はここに前の頂点も持たせる)
-    vector<ll> res(N, INF);
+    vector<T> res(N, INF);
     res[src] = 0;
     // 各辺によるコストの置き換えを頂点数N-1回繰り返す
     rep(_, N - 1) {
