@@ -20,9 +20,12 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -46,8 +49,8 @@ data:
     \u30EB\u306B\u7F6E\u3051\u306A\u3044\u307F\u305F\u3044\u306A\u306E\u3067\u3002\
     )\nauto bfs = [](const vvi &nodes, const vector<int> &src) {\n    int N = nodes.size();\n\
     \    vector<ll> res(N, INF);\n    queue<int> que;\n    for (int s : src) {\n \
-    \       res[s] = 0;\n        que.push(s);\n    }\n    while (!que.empty()) {\n\
-    \        int u = que.front();\n        que.pop();\n        for (auto v : nodes[u])\
+    \       res[s] = 0;\n        que.push(s);\n    }\n    while (que.size()) {\n \
+    \       int u = que.front();\n        que.pop();\n        for (auto v : nodes[u])\
     \ {\n            if (chmin(res[v], res[u] + 1)) {\n                que.push(v);\n\
     \            }\n        }\n    }\n    return res;\n};\n#line 4 \"src/graph/get_diameter.hpp\"\
     \n\nvector<ll> _bfs(const vvpil &nodes, int s) {\n    int N = nodes.size();\n\
@@ -85,7 +88,7 @@ data:
   isVerificationFile: false
   path: src/graph/get_diameter.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/get_diameter.hpp

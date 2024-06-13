@@ -18,9 +18,12 @@ data:
   attributes:
     links:
     - https://ei1333.github.io/library/structure/segment-tree/lazy-segment-tree.cpp
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -86,40 +89,41 @@ data:
     \ * a + type), M) : f(M, apply(2 * a + type));\n            if (check(nxt)) a\
     \ = 2 * a + type;\n            else M = nxt, a = 2 * a + 1 - type;\n        }\n\
     \        return a - sz;\n    }\n\n    // \u533A\u9593[a,N)\u3067check\u306E\u6761\
-    \u4EF6\u3092\u6E80\u305F\u3059\u3088\u3046\u306A\u6700\u5C0F\u4F4D\u7F6E\u3092\
-    \u8FD4\u3059(\u306A\u3051\u308C\u3070-1)\n    template<typename C>\n    int find_first(int\
-    \ a, const C &check) {\n        Monoid L = M1;\n        if (a <= 0) {\n      \
-    \      if (check(f(L, apply(1)))) return find_subtree(1, check, L, false);\n \
-    \           return -1;\n        }\n        thrust(a + sz);\n        int b = sz;\n\
-    \        for (a += sz, b += sz; a < b; a >>= 1, b >>= 1) {\n            if (a\
-    \ & 1) {\n                Monoid nxt = f(L, apply(a));\n                if (check(nxt))\
-    \ return find_subtree(a, check, L, false);\n                L = nxt;\n       \
-    \         ++a;\n            }\n        }\n        return -1;\n    }\n\n    //\
-    \ \u533A\u9593[0,b)\u3067check\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3088\
-    \u3046\u306A\u6700\u5927\u4F4D\u7F6E\u3092\u8FD4\u3059(\u306A\u3051\u308C\u3070\
-    -1)\n    template<typename C>\n    int find_last(int b, const C &check) {\n  \
-    \      Monoid R = M1;\n        if (b >= sz) {\n            if (check(f(apply(1),\
-    \ R))) return find_subtree(1, check, R, true);\n            return -1;\n     \
-    \   }\n        thrust(b + sz - 1);\n        int a = sz;\n        for (b += sz;\
-    \ a < b; a >>= 1, b >>= 1) {\n            if (b & 1) {\n                Monoid\
-    \ nxt = f(apply(--b), R);\n                if (check(nxt)) return find_subtree(b,\
-    \ check, R, true);\n                R = nxt;\n            }\n        }\n     \
-    \   return -1;\n    }\n};\n\ntemplate<typename F, typename G, typename H, typename\
-    \ T, typename E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(\n    const\
-    \ F &f, const G &g, const H &h, const T &ti, const E &ei\n) {\n    return {f,\
-    \ g, h, ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T,\
-    \ typename E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(\n    int\
-    \ N, const F &f, const G &g, const H &h, const T &ti, const E &ei\n) {\n    return\
-    \ {N, f, g, h, ti, ei};\n}\n\ntemplate<typename F, typename G, typename H, typename\
-    \ T, typename E>\nLazySegmentTree<F, G, H, T, E> get_lazy_segment_tree(\n    const\
-    \ vector<T> &A, const F &f, const G &g, const H &h, const T &ti,\n    const E\
-    \ &ei\n) {\n    return {A, f, g, h, ti, ei};\n}\n\ntemplate<typename F, typename\
-    \ G, typename H, typename T, typename E>\nostream &operator<<(ostream &os, LazySegmentTree<F,\
-    \ G, H, T, E> &seg) {\n    rep(i, seg.size()) {\n        os << seg[i];\n     \
-    \   if (i != seg.size() - 1) {\n            os << ' ';\n        }\n    }\n   \
-    \ return os;\n}\n#line 4 \"src/datastructure/LazySegmentTreeArithmetric.hpp\"\n\
-    \n// \u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728(\u7B49\u5DEE\
-    \u6570\u5217\u7528)\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/segment-tree/lazy-segment-tree.cpp\n\
+    \u4EF6\u3092\u6E80\u305F\u3059\u3088\u3046\u306A[a,r)\u306E\u6700\u5C0F\u3067\u306E\
+    r-1\u3092\u8FD4\u3059(\u306A\u3051\u308C\u3070-1)\n    template<typename C>\n\
+    \    int find_first(int a, const C &check) {\n        Monoid L = M1;\n       \
+    \ if (a <= 0) {\n            if (check(f(L, apply(1)))) return find_subtree(1,\
+    \ check, L, false);\n            return -1;\n        }\n        thrust(a + sz);\n\
+    \        int b = sz;\n        for (a += sz, b += sz; a < b; a >>= 1, b >>= 1)\
+    \ {\n            if (a & 1) {\n                Monoid nxt = f(L, apply(a));\n\
+    \                if (check(nxt)) return find_subtree(a, check, L, false);\n  \
+    \              L = nxt;\n                ++a;\n            }\n        }\n    \
+    \    return -1;\n    }\n\n    // \u533A\u9593[0,b)\u3067check\u306E\u6761\u4EF6\
+    \u3092\u6E80\u305F\u3059\u3088\u3046\u306A[l,b)\u306E\u6700\u5927\u3067\u306E\
+    l\u3092\u8FD4\u3059(\u306A\u3051\u308C\u3070-1)\n    template<typename C>\n  \
+    \  int find_last(int b, const C &check) {\n        Monoid R = M1;\n        if\
+    \ (b >= sz) {\n            if (check(f(apply(1), R))) return find_subtree(1, check,\
+    \ R, true);\n            return -1;\n        }\n        thrust(b + sz - 1);\n\
+    \        int a = sz;\n        for (b += sz; a < b; a >>= 1, b >>= 1) {\n     \
+    \       if (b & 1) {\n                Monoid nxt = f(apply(--b), R);\n       \
+    \         if (check(nxt)) return find_subtree(b, check, R, true);\n          \
+    \      R = nxt;\n            }\n        }\n        return -1;\n    }\n};\n\ntemplate<typename\
+    \ F, typename G, typename H, typename T, typename E>\nLazySegmentTree<F, G, H,\
+    \ T, E> get_lazy_segment_tree(\n    const F &f, const G &g, const H &h, const\
+    \ T &ti, const E &ei\n) {\n    return {f, g, h, ti, ei};\n}\n\ntemplate<typename\
+    \ F, typename G, typename H, typename T, typename E>\nLazySegmentTree<F, G, H,\
+    \ T, E> get_lazy_segment_tree(\n    int N, const F &f, const G &g, const H &h,\
+    \ const T &ti, const E &ei\n) {\n    return {N, f, g, h, ti, ei};\n}\n\ntemplate<typename\
+    \ F, typename G, typename H, typename T, typename E>\nLazySegmentTree<F, G, H,\
+    \ T, E> get_lazy_segment_tree(\n    const vector<T> &A, const F &f, const G &g,\
+    \ const H &h, const T &ti,\n    const E &ei\n) {\n    return {A, f, g, h, ti,\
+    \ ei};\n}\n\ntemplate<typename F, typename G, typename H, typename T, typename\
+    \ E>\nostream &operator<<(ostream &os, LazySegmentTree<F, G, H, T, E> &seg) {\n\
+    \    for (int i = 0; i < seg.size(); i++) {\n        os << seg[i];\n        if\
+    \ (i != seg.size() - 1) {\n            os << ' ';\n        }\n    }\n    return\
+    \ os;\n}\n#line 4 \"src/datastructure/LazySegmentTreeArithmetric.hpp\"\n\n// \u9045\
+    \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728(\u7B49\u5DEE\u6570\u5217\
+    \u7528)\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/segment-tree/lazy-segment-tree.cpp\n\
     template<typename F, typename G, typename H, typename Monoid, typename OperatorMonoid>\n\
     struct LazySegmentTreeArithmetric : LazySegmentTree<F, G, H, Monoid, OperatorMonoid>\
     \ {\n    using LazySegmentTreeType = LazySegmentTree<F, G, H, Monoid, OperatorMonoid>;\n\
@@ -162,7 +166,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/LazySegmentTreeArithmetric.hpp
   requiredBy: []
-  timestamp: '2024-03-07 15:03:55+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/LazySegmentTreeArithmetric.hpp

@@ -27,45 +27,47 @@ data:
   attributes:
     links:
     - https://nyaannyaan.github.io/library/hashmap/hashmap.hpp
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/common/HashMapImpl.hpp\"\n\n// \u53C2\u8003\
-    \uFF1Ahttps://nyaannyaan.github.io/library/hashmap/hashmap-base.hpp\nnamespace\
-    \ HashMapImpl {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\ntemplate<typename\
-    \ Key, typename Data>\nstruct HashMapBase;\n\ntemplate<typename Key, typename\
-    \ Data>\nstruct itrB\n    : iterator<bidirectional_iterator_tag, Data, ptrdiff_t,\
-    \ Data *, Data &> {\n    using base =\n        iterator<bidirectional_iterator_tag,\
-    \ Data, ptrdiff_t, Data *, Data &>;\n    using ptr = typename base::pointer;\n\
-    \    using ref = typename base::reference;\n\n    u32 i;\n    HashMapBase<Key,\
-    \ Data> *p;\n\n    explicit constexpr itrB() : i(0), p(nullptr) {\n    }\n   \
-    \ explicit constexpr itrB(u32 _i, HashMapBase<Key, Data> *_p) : i(_i), p(_p) {\n\
-    \    }\n    explicit constexpr itrB(u32 _i, const HashMapBase<Key, Data> *_p)\n\
-    \        : i(_i),\n          p(const_cast<HashMapBase<Key, Data> *>(_p)) {\n \
-    \   }\n    friend void swap(itrB &l, itrB &r) {\n        swap(l.i, r.i), swap(l.p,\
-    \ r.p);\n    }\n    friend bool operator==(const itrB &l, const itrB &r) {\n \
-    \       return l.i == r.i;\n    }\n    friend bool operator!=(const itrB &l, const\
-    \ itrB &r) {\n        return l.i != r.i;\n    }\n    const ref operator*() const\
-    \ {\n        return const_cast<const HashMapBase<Key, Data> *>(p)->data[i];\n\
-    \    }\n    ref operator*() {\n        return p->data[i];\n    }\n    ptr operator->()\
-    \ const {\n        return &(p->data[i]);\n    }\n\n    itrB &operator++() {\n\
-    \        assert(i != p->cap && \"itr::operator++()\");\n        do {\n       \
-    \     i++;\n            if (i == p->cap) break;\n            if (p->flag[i] ==\
-    \ true && p->dflag[i] == false) break;\n        } while (true);\n        return\
-    \ (*this);\n    }\n    itrB operator++(int) {\n        itrB it(*this);\n     \
-    \   ++(*this);\n        return it;\n    }\n    itrB &operator--() {\n        do\
-    \ {\n            i--;\n            if (p->flag[i] == true && p->dflag[i] == false)\
-    \ break;\n            assert(i != 0 && \"itr::operator--()\");\n        } while\
-    \ (true);\n        return (*this);\n    }\n    itrB operator--(int) {\n      \
-    \  itrB it(*this);\n        --(*this);\n        return it;\n    }\n};\n\ntemplate<typename\
-    \ Key, typename Data>\nstruct HashMapBase {\n    using u32 = uint32_t;\n    using\
-    \ u64 = uint64_t;\n    using iterator = itrB<Key, Data>;\n    using itr = iterator;\n\
-    \nprotected:\n    template<typename K>\n    inline u64 randomized(const K &key)\
-    \ const {\n        return u64(key) ^ r;\n    }\n\n    template<\n        typename\
-    \ K, enable_if_t<is_same<K, Key>::value, nullptr_t> = nullptr,\n        enable_if_t<is_integral<K>::value,\
-    \ nullptr_t> = nullptr>\n    inline u32 inner_hash(const K &key) const {\n   \
-    \     return (randomized(key) * 11995408973635179863ULL) >> shift;\n    }\n  \
-    \  template<\n        typename K, enable_if_t<is_same<K, Key>::value, nullptr_t>\
-    \ = nullptr,\n        enable_if_t<is_integral<decltype(K::first)>::value, nullptr_t>\
-    \ =\n            nullptr,\n        enable_if_t<is_integral<decltype(K::second)>::value,\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/common/HashMapImpl.hpp\"\n\n// \u53C2\u8003\uFF1A\
+    https://nyaannyaan.github.io/library/hashmap/hashmap-base.hpp\nnamespace HashMapImpl\
+    \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\ntemplate<typename Key, typename\
+    \ Data>\nstruct HashMapBase;\n\ntemplate<typename Key, typename Data>\nstruct\
+    \ itrB\n    : iterator<bidirectional_iterator_tag, Data, ptrdiff_t, Data *, Data\
+    \ &> {\n    using base =\n        iterator<bidirectional_iterator_tag, Data, ptrdiff_t,\
+    \ Data *, Data &>;\n    using ptr = typename base::pointer;\n    using ref = typename\
+    \ base::reference;\n\n    u32 i;\n    HashMapBase<Key, Data> *p;\n\n    explicit\
+    \ constexpr itrB() : i(0), p(nullptr) {\n    }\n    explicit constexpr itrB(u32\
+    \ _i, HashMapBase<Key, Data> *_p) : i(_i), p(_p) {\n    }\n    explicit constexpr\
+    \ itrB(u32 _i, const HashMapBase<Key, Data> *_p)\n        : i(_i),\n         \
+    \ p(const_cast<HashMapBase<Key, Data> *>(_p)) {\n    }\n    friend void swap(itrB\
+    \ &l, itrB &r) {\n        swap(l.i, r.i), swap(l.p, r.p);\n    }\n    friend bool\
+    \ operator==(const itrB &l, const itrB &r) {\n        return l.i == r.i;\n   \
+    \ }\n    friend bool operator!=(const itrB &l, const itrB &r) {\n        return\
+    \ l.i != r.i;\n    }\n    const ref operator*() const {\n        return const_cast<const\
+    \ HashMapBase<Key, Data> *>(p)->data[i];\n    }\n    ref operator*() {\n     \
+    \   return p->data[i];\n    }\n    ptr operator->() const {\n        return &(p->data[i]);\n\
+    \    }\n\n    itrB &operator++() {\n        assert(i != p->cap && \"itr::operator++()\"\
+    );\n        do {\n            i++;\n            if (i == p->cap) break;\n    \
+    \        if (p->flag[i] == true && p->dflag[i] == false) break;\n        } while\
+    \ (true);\n        return (*this);\n    }\n    itrB operator++(int) {\n      \
+    \  itrB it(*this);\n        ++(*this);\n        return it;\n    }\n    itrB &operator--()\
+    \ {\n        do {\n            i--;\n            if (p->flag[i] == true && p->dflag[i]\
+    \ == false) break;\n            assert(i != 0 && \"itr::operator--()\");\n   \
+    \     } while (true);\n        return (*this);\n    }\n    itrB operator--(int)\
+    \ {\n        itrB it(*this);\n        --(*this);\n        return it;\n    }\n\
+    };\n\ntemplate<typename Key, typename Data>\nstruct HashMapBase {\n    using u32\
+    \ = uint32_t;\n    using u64 = uint64_t;\n    using iterator = itrB<Key, Data>;\n\
+    \    using itr = iterator;\n\nprotected:\n    template<typename K>\n    inline\
+    \ u64 randomized(const K &key) const {\n        return u64(key) ^ r;\n    }\n\n\
+    \    template<\n        typename K, enable_if_t<is_same<K, Key>::value, nullptr_t>\
+    \ = nullptr,\n        enable_if_t<is_integral<K>::value, nullptr_t> = nullptr>\n\
+    \    inline u32 inner_hash(const K &key) const {\n        return (randomized(key)\
+    \ * 11995408973635179863ULL) >> shift;\n    }\n    template<\n        typename\
+    \ K, enable_if_t<is_same<K, Key>::value, nullptr_t> = nullptr,\n        enable_if_t<is_integral<decltype(K::first)>::value,\
+    \ nullptr_t> =\n            nullptr,\n        enable_if_t<is_integral<decltype(K::second)>::value,\
     \ nullptr_t> =\n            nullptr>\n    inline u32 inner_hash(const K &key)\
     \ const {\n        u64 a = randomized(key.first), b = randomized(key.second);\n\
     \        a *= 11995408973635179863ULL;\n        b *= 10150724397891781847ULL;\n\
@@ -227,11 +229,11 @@ data:
   isVerificationFile: false
   path: src/common/HashMap.hpp
   requiredBy:
-  - src/graph/_OfflineDynamicConnectivity.hpp
-  - src/graph/_AuxiliaryTree.hpp
-  - src/numbers/bsgs.hpp
   - src/datastructure/SparseBIT2D.hpp
-  timestamp: '2023-12-04 15:39:12+09:00'
+  - src/graph/_AuxiliaryTree.hpp
+  - src/graph/_OfflineDynamicConnectivity.hpp
+  - src/numbers/bsgs.hpp
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/HashMap.hpp

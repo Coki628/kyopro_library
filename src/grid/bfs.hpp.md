@@ -20,9 +20,12 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -53,22 +56,21 @@ data:
     \ char invalid = '#') {\n    int H = grid.size();\n    int W = grid[0].size();\n\
     \    auto res = listnd(H, W, INF);\n    queue<pii> que;\n    for (auto [h, w]\
     \ : src) {\n        res[h][w] = 0;\n        que.push({h, w});\n    }\n    while\
-    \ (!que.empty()) {\n        auto [h, w] = que.front();\n        que.pop();\n \
-    \       for (auto [dh, dw] : dir4) {\n            int nh = h + dh;\n         \
-    \   int nw = w + dw;\n            if (nh < 0 or nw < 0 or nh >= H or nw >= W)\
-    \ continue;\n            if (grid[nh][nw] == invalid) continue;\n            if\
-    \ (res[nh][nw] == INF) {\n                res[nh][nw] = res[h][w] + 1;\n     \
-    \           que.push({nh, nw});\n            }\n        }\n    }\n    return res;\n\
-    };\n"
+    \ (que.size()) {\n        auto [h, w] = que.front();\n        que.pop();\n   \
+    \     for (auto [dh, dw] : dir4) {\n            int nh = h + dh;\n           \
+    \ int nw = w + dw;\n            if (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n\
+    \            if (grid[nh][nw] == invalid) continue;\n            if (res[nh][nw]\
+    \ == INF) {\n                res[nh][nw] = res[h][w] + 1;\n                que.push({nh,\
+    \ nw});\n            }\n        }\n    }\n    return res;\n};\n"
   code: "#pragma once\n#include \"../common/listnd.hpp\"\n#include \"../macros.hpp\"\
     \n#include \"constants/dir4.hpp\"\n\n// \u30B0\u30EA\u30C3\u30C9BFS\nauto bfs\
     \ = [](const vector<string> &grid, const vector<pii> &src, char invalid = '#')\
     \ {\n    int H = grid.size();\n    int W = grid[0].size();\n    auto res = listnd(H,\
     \ W, INF);\n    queue<pii> que;\n    for (auto [h, w] : src) {\n        res[h][w]\
-    \ = 0;\n        que.push({h, w});\n    }\n    while (!que.empty()) {\n       \
-    \ auto [h, w] = que.front();\n        que.pop();\n        for (auto [dh, dw] :\
-    \ dir4) {\n            int nh = h + dh;\n            int nw = w + dw;\n      \
-    \      if (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw]\
+    \ = 0;\n        que.push({h, w});\n    }\n    while (que.size()) {\n        auto\
+    \ [h, w] = que.front();\n        que.pop();\n        for (auto [dh, dw] : dir4)\
+    \ {\n            int nh = h + dh;\n            int nw = w + dw;\n            if\
+    \ (nh < 0 or nw < 0 or nh >= H or nw >= W) continue;\n            if (grid[nh][nw]\
     \ == invalid) continue;\n            if (res[nh][nw] == INF) {\n             \
     \   res[nh][nw] = res[h][w] + 1;\n                que.push({nh, nw});\n      \
     \      }\n        }\n    }\n    return res;\n};\n"
@@ -80,7 +82,7 @@ data:
   isVerificationFile: false
   path: src/grid/bfs.hpp
   requiredBy: []
-  timestamp: '2024-02-06 01:26:20+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/grid/bfs.hpp

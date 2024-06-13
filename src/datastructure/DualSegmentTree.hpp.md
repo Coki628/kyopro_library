@@ -20,9 +20,12 @@ data:
     - https://atcoder.jp/contests/abc342/submissions/50580301
     - https://hackmd.io/@tatyam-prime/DualSegmentTree
     - https://ikatakos.com/pot/programming_algorithm/data_structure/segment_tree
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -94,9 +97,11 @@ data:
     \ const G g, const H h,\n        const Monoid &M1, const OperatorMonoid &OM0,\
     \ bool commute = true\n    )\n        : g(g),\n          h(h),\n          M1(M1),\n\
     \          OM0(OM0),\n          commute(commute) {\n        build(A);\n    }\n\
-    \n    void build(const vector<Monoid> &A) {\n        n = A.size();\n        sz\
-    \ = 1;\n        height = 0;\n        while (sz < n) sz <<= 1, height++;\n    \
-    \    data = A;\n        lazy.assign(2 * sz, OM0);\n    }\n\n    inline void propagate(int\
+    \n    // \u53D6\u5F97\u5074\u306E\u5024\u3001\u7279\u306Bbuild\u306F\u4E0D\u8981\
+    \n    void set(int k, const Monoid &x) {\n        data[k] = x;\n    }\n\n    void\
+    \ build(const vector<Monoid> &A) {\n        n = A.size();\n        sz = 1;\n \
+    \       height = 0;\n        while (sz < n) sz <<= 1, height++;\n        data\
+    \ = A;\n        lazy.assign(2 * sz, OM0);\n    }\n\n    inline void propagate(int\
     \ k) {\n        if (lazy[k] == OM0) return;\n        lazy[2 * k + 0] = h(lazy[2\
     \ * k + 0], lazy[k]);\n        lazy[2 * k + 1] = h(lazy[2 * k + 1], lazy[k]);\n\
     \        lazy[k] = OM0;\n    }\n\n    inline void thrust(int k) {\n        for\
@@ -129,9 +134,9 @@ data:
     \ &A, const G &g, const H &h, const T &ti,\n    const E &ei, bool commute = true\n\
     ) {\n    return {A, g, h, ti, ei, commute};\n}\n\ntemplate<typename G, typename\
     \ H, typename T, typename E>\nostream &operator<<(ostream &os, DualSegmentTree<G,\
-    \ H, T, E> &seg) {\n    rep(i, seg.size()) {\n        os << seg[i];\n        if\
-    \ (i != seg.size() - 1) {\n            os << ' ';\n        }\n    }\n    return\
-    \ os;\n}\n"
+    \ H, T, E> &seg) {\n    for (int i = 0; i < seg.size(); i++) {\n        os <<\
+    \ seg[i];\n        if (i != seg.size() - 1) {\n            os << ' ';\n      \
+    \  }\n    }\n    return os;\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u53CC\u5BFE\u30BB\u30B0\u30E1\
     \u30F3\u30C8\u6728\n// \u53C2\u8003\uFF1Ahttps://ikatakos.com/pot/programming_algorithm/data_structure/segment_tree\n\
     // \u3000\u3000\u3000https://hackmd.io/@tatyam-prime/DualSegmentTree\n// \u3000\
@@ -190,9 +195,11 @@ data:
     \ const G g, const H h,\n        const Monoid &M1, const OperatorMonoid &OM0,\
     \ bool commute = true\n    )\n        : g(g),\n          h(h),\n          M1(M1),\n\
     \          OM0(OM0),\n          commute(commute) {\n        build(A);\n    }\n\
-    \n    void build(const vector<Monoid> &A) {\n        n = A.size();\n        sz\
-    \ = 1;\n        height = 0;\n        while (sz < n) sz <<= 1, height++;\n    \
-    \    data = A;\n        lazy.assign(2 * sz, OM0);\n    }\n\n    inline void propagate(int\
+    \n    // \u53D6\u5F97\u5074\u306E\u5024\u3001\u7279\u306Bbuild\u306F\u4E0D\u8981\
+    \n    void set(int k, const Monoid &x) {\n        data[k] = x;\n    }\n\n    void\
+    \ build(const vector<Monoid> &A) {\n        n = A.size();\n        sz = 1;\n \
+    \       height = 0;\n        while (sz < n) sz <<= 1, height++;\n        data\
+    \ = A;\n        lazy.assign(2 * sz, OM0);\n    }\n\n    inline void propagate(int\
     \ k) {\n        if (lazy[k] == OM0) return;\n        lazy[2 * k + 0] = h(lazy[2\
     \ * k + 0], lazy[k]);\n        lazy[2 * k + 1] = h(lazy[2 * k + 1], lazy[k]);\n\
     \        lazy[k] = OM0;\n    }\n\n    inline void thrust(int k) {\n        for\
@@ -225,16 +232,16 @@ data:
     \ &A, const G &g, const H &h, const T &ti,\n    const E &ei, bool commute = true\n\
     ) {\n    return {A, g, h, ti, ei, commute};\n}\n\ntemplate<typename G, typename\
     \ H, typename T, typename E>\nostream &operator<<(ostream &os, DualSegmentTree<G,\
-    \ H, T, E> &seg) {\n    rep(i, seg.size()) {\n        os << seg[i];\n        if\
-    \ (i != seg.size() - 1) {\n            os << ' ';\n        }\n    }\n    return\
-    \ os;\n}\n"
+    \ H, T, E> &seg) {\n    for (int i = 0; i < seg.size(); i++) {\n        os <<\
+    \ seg[i];\n        if (i != seg.size() - 1) {\n            os << ' ';\n      \
+    \  }\n    }\n    return os;\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/datastructure/DualSegmentTree.hpp
   requiredBy: []
-  timestamp: '2024-03-07 15:03:55+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/DualSegmentTree.hpp

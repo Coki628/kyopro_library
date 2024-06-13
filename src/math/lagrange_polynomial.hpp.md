@@ -20,9 +20,12 @@ data:
     - https://ei1333.github.io/library/math/combinatorics/lagrange-polynomial-2.cpp
     - https://ei1333.github.io/library/math/combinatorics/lagrange-polynomial.cpp
     - https://ferin-tech.hatenablog.com/entry/2019/08/11/%E3%83%A9%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B8%E3%83%A5%E8%A3%9C%E9%96%93
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -41,22 +44,22 @@ data:
     \ inv;\n\npublic:\n    // nCr\u306A\u3089n\u3001nHr\u306A\u3089n+r\u307E\u3067\
     \u4F5C\u308B\n    ModTools(int mx) : MAX(++mx) {\n        _fact.resize(MAX);\n\
     \        _factinv.resize(MAX);\n        inv.resize(MAX);\n        _fact[0] = _fact[1]\
-    \ = 1;\n        rep(i, 2, MAX) {\n            _fact[i] = _fact[i - 1] * (Mint)i;\n\
-    \        }\n        _factinv[MAX - 1] = (Mint)1 / _fact[MAX - 1];\n        rep(i,\
-    \ MAX - 2, -1, -1) {\n            _factinv[i] = _factinv[i + 1] * (Mint)(i + 1);\n\
-    \        }\n        rep(i, MAX - 1, 0, -1) {\n            inv[i] = _factinv[i]\
-    \ * _fact[i - 1];\n        }\n    }\n\n    // \u6E96\u5099O(N)\u3001\u64CD\u4F5C\
-    O(1)\u3067log\u304C\u4E57\u3089\u306A\u3044mod\u9664\u7B97\n    Mint div(Mint\
-    \ a, int b) {\n        return a * inv[b];\n    }\n\n    Mint fact(int x) {\n \
-    \       assert(x < MAX);\n        return _fact[x];\n    }\n\n    Mint factinv(int\
-    \ x) {\n        assert(x < MAX);\n        return _factinv[x];\n    }\n\n    Mint\
-    \ nCr(int n, int r) {\n        if (n < r or r < 0) return 0;\n        r = min(r,\
-    \ n - r);\n        Mint num = _fact[n];\n        Mint den = _factinv[r] * _factinv[n\
-    \ - r];\n        return num * den;\n    }\n\n    Mint nHr(int n, int r) {\n  \
-    \      assert(r + n - 1 < MAX);\n        return nCr(r + n - 1, r);\n    }\n\n\
-    \    Mint nPr(int n, int r) {\n        if (n < r or r < 0) return 0;\n       \
-    \ return _fact[n] * _factinv[n - r];\n    }\n\n    // \u4E8C\u91CD\u968E\u4E57\
-    \n    // \u53C2\u8003\uFF1Ahttps://ja.wikipedia.org/wiki/%E4%BA%8C%E9%87%8D%E9%9A%8E%E4%B9%97\n\
+    \ = 1;\n        for (int i = 2; i < MAX; i++) {\n            _fact[i] = _fact[i\
+    \ - 1] * (Mint)i;\n        }\n        _factinv[MAX - 1] = (Mint)1 / _fact[MAX\
+    \ - 1];\n        for (int i = MAX - 2; i >= 0; i--) {\n            _factinv[i]\
+    \ = _factinv[i + 1] * (Mint)(i + 1);\n        }\n        for (int i = MAX - 1;\
+    \ i > 0; i--) {\n            inv[i] = _factinv[i] * _fact[i - 1];\n        }\n\
+    \    }\n\n    // \u6E96\u5099O(N)\u3001\u64CD\u4F5CO(1)\u3067log\u304C\u4E57\u3089\
+    \u306A\u3044mod\u9664\u7B97\n    Mint div(Mint a, int b) {\n        return a *\
+    \ inv[b];\n    }\n\n    Mint fact(int x) {\n        assert(x < MAX);\n       \
+    \ return _fact[x];\n    }\n\n    Mint factinv(int x) {\n        assert(x < MAX);\n\
+    \        return _factinv[x];\n    }\n\n    Mint nCr(int n, int r) {\n        if\
+    \ (n < r or r < 0) return 0;\n        r = min(r, n - r);\n        Mint num = _fact[n];\n\
+    \        Mint den = _factinv[r] * _factinv[n - r];\n        return num * den;\n\
+    \    }\n\n    Mint nHr(int n, int r) {\n        assert(r + n - 1 < MAX);\n   \
+    \     return nCr(r + n - 1, r);\n    }\n\n    Mint nPr(int n, int r) {\n     \
+    \   if (n < r or r < 0) return 0;\n        return _fact[n] * _factinv[n - r];\n\
+    \    }\n\n    // \u4E8C\u91CD\u968E\u4E57\n    // \u53C2\u8003\uFF1Ahttps://ja.wikipedia.org/wiki/%E4%BA%8C%E9%87%8D%E9%9A%8E%E4%B9%97\n\
     \    Mint double_factorial(int n) {\n        if (n % 2 == 0) {\n            int\
     \ k = n / 2;\n            return Mint(2).pow(k) * fact(k);\n        } else {\n\
     \            int k = (n + 1) / 2;\n            return fact(2 * k) / Mint(2).pow(k)\
@@ -141,7 +144,7 @@ data:
   isVerificationFile: false
   path: src/math/lagrange_polynomial.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/lagrange_polynomial.hpp

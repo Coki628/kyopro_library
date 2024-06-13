@@ -12,8 +12,11 @@ data:
   attributes:
     links:
     - https://blog.naskya.net/post/meu0vkh5cpl1/
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/common/debug_print_org.hpp\"\n\n// see: https://blog.naskya.net/post/meu0vkh5cpl1/\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/common/debug_print_org.hpp\"\n\n// see: https://blog.naskya.net/post/meu0vkh5cpl1/\n\
     \n#ifndef DEBUG_PRINT_HPP\n#define DEBUG_PRINT_HPP\n\n#define INCLUDED(n) ((defined\
     \ _GLIBCXX_##n) || (defined _LIBCPP_##n))\n\n#if __cplusplus < 201703L\n#  warning\
     \ Please use C++17 (or later version).\n#endif\n#if !INCLUDED(ALGORITHM)\n#  warning\
@@ -256,7 +259,7 @@ data:
   isVerificationFile: false
   path: src/common/debug_print_org.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/debug_print_org.hpp

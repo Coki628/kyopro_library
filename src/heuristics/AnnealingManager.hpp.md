@@ -13,8 +13,11 @@ data:
     links:
     - https://gasin.hatenadiary.jp/entry/2019/09/03/162613
     - https://shindannin.hatenadiary.com/entry/20121224/1356364040
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/heuristics/AnnealingManager.hpp\"\n\n// \u713C\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/heuristics/AnnealingManager.hpp\"\n\n// \u713C\
     \u304D\u306A\u307E\u3057\u7BA1\u7406\n// \u53C2\u8003\u8CC7\u6599\uFF1Ahttps://gasin.hatenadiary.jp/entry/2019/09/03/162613\n\
     // \u3000\u3000\u3000\u3000\u3000https://shindannin.hatenadiary.com/entry/20121224/1356364040\n\
     // \u30FB\u6E29\u5EA6\u3068\u60AA\u5316\u91CF\u304C\u540C\u3058\u304F\u3089\u3044\
@@ -93,7 +96,7 @@ data:
   isVerificationFile: false
   path: src/heuristics/AnnealingManager.hpp
   requiredBy: []
-  timestamp: '2023-12-11 16:15:31+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/heuristics/AnnealingManager.hpp

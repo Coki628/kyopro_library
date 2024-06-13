@@ -18,9 +18,12 @@ data:
   attributes:
     links:
     - https://suisen-cp.github.io/cp-library-cpp/library/tree/auxiliary_tree.hpp
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -109,9 +112,9 @@ data:
     \ st;\n        for (auto &k : remark) {\n            while (!st.empty() && out[st.top()]\
     \ <= in[k]) st.pop();\n            if (!st.empty()) es.emplace_back(st.top(),\
     \ k);\n            st.emplace(k);\n        }\n        return es;\n    }\n\n  \
-    \  explicit HeavyLightDecomposition(const vvi &nodes, int root = 0) : nodes(nodes),\
-    \ N(nodes.size()) {\n        sz.assign(N, 0);\n        in.assign(N, 0);\n    \
-    \    out.assign(N, 0);\n        head.assign(N, root);\n        rev.assign(N, 0);\n\
+    \  explicit HeavyLightDecomposition(const vvi &nodes, int root = 0) : N(nodes.size()),\
+    \ nodes(nodes) {\n        sz.assign(N, 0);\n        in.assign(N, 0);\n       \
+    \ out.assign(N, 0);\n        head.assign(N, root);\n        rev.assign(N, 0);\n\
     \        par.assign(N, 0);\n        dep.assign(N, 0);\n        dfs_sz(root, -1,\
     \ 0);\n        int t = 0;\n        dfs_hld(root, -1, t);\n    }\n\n    int operator[](int\
     \ u) const {\n        assert(0 <= u && u < N);\n        return in[u];\n    }\n\
@@ -221,7 +224,7 @@ data:
   isVerificationFile: false
   path: src/graph/AuxiliaryTree.hpp
   requiredBy: []
-  timestamp: '2024-02-22 17:15:31+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/AuxiliaryTree.hpp

@@ -13,8 +13,11 @@ data:
     links:
     - https://atcoder.jp/contests/abc339/editorial/9206
     - https://ei1333.github.io/library/math/combinatorics/arbitrary-mod-int.cpp
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/combinatorics/DynamicModInt.hpp\"\n\n// \u52D5\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/combinatorics/DynamicModInt.hpp\"\n\n// \u52D5\
     \u7684ModInt\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/math/combinatorics/arbitrary-mod-int.cpp\n\
     // \u30FBDynamicModInt::set_mod(mod) \u306E\u3088\u3046\u306Bstatic\u30E1\u30BD\
     \u30C3\u30C9\u3067MOD\u3092\u30BB\u30C3\u30C8\u3057\u3066\u4F7F\u3046\u3002\n\
@@ -125,7 +128,7 @@ data:
   isVerificationFile: false
   path: src/combinatorics/DynamicModInt.hpp
   requiredBy: []
-  timestamp: '2024-02-06 11:39:46+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/combinatorics/DynamicModInt.hpp

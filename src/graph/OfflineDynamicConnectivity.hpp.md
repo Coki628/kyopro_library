@@ -15,9 +15,12 @@ data:
   attributes:
     links:
     - https://atcoder.jp/contests/abc334/submissions/48778004
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/graph/UnionFindUndo.hpp\"\n\n// undo\u53EF\
-    \u80FDUF\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/union-find/union-find-undo.cpp\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/graph/UnionFindUndo.hpp\"\n\n// undo\u53EF\u80FD\
+    UF\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/union-find/union-find-undo.cpp\n\
     // \u30FB\u30AA\u30D5\u30E9\u30A4\u30F3\u30C0\u30A4\u30B3\u30CD\u306E\u6539\u4FEE\
     \u306B\u5408\u308F\u305B\u3066\u3053\u3061\u3089\u3082\u6539\u4FEE\u3057\u305F\
     \u3002\n// \u3000\u3068\u8A00\u3063\u3066\u3082\u3001\u975E\u518D\u5E30\u5316\u3057\
@@ -66,27 +69,37 @@ data:
     undo\u5F8C\u306B\u4F55\u304B\u898B\u305F\u3044\u6642\u306B\u5BFE\u5FDC\u3067\u304D\
     \u308B\u3088\u3046\u306B\u3057\u305F\u3002\n// \u3000\u3053\u308C\u3089\u306E\u95A2\
     \u6570\u306E\u5F15\u6570\u306B\u306F\u30DE\u30FC\u30B8\u3068undo\u306B\u95A2\u308F\
-    \u3063\u305F2\u3064\u306E\u4EE3\u8868\u70B9\u304C\u6E21\u3055\u308C\u308B\u3002\
-    \nclass OfflineDynamicConnectivity {\nprivate:\n    struct Query {\n        int\
-    \ type, v, w, otherTime;\n    };\n\n    int V, curTime;\n    vector<Query> queries;\n\
-    \    vector<map<int, int>> presentEdges;\n\n    template<typename F>\n    void\
-    \ solve(F f, int l, int r, const auto &pre_add, const auto &post_remove) {\n \
-    \       if (l >= r) {\n            if (l == r && queries[r].type == 0) {\n   \
-    \             f(r);\n            }\n            return;\n        }\n        int\
-    \ m = l + (r - l) / 2;\n        int curSize = uf.history.size();\n        for\
-    \ (int i = m + 1; i <= r; i++) {\n            if (queries[i].otherTime < l) {\n\
-    \                pre_add(queries[i].v, queries[i].w);\n                uf.merge(queries[i].v,\
-    \ queries[i].w);\n            }\n        }\n        solve(f, l, m, pre_add, post_remove);\n\
-    \        while ((int)uf.history.size() > curSize) {\n            auto [v, w] =\
-    \ uf.undo();\n            post_remove(v, w);\n        }\n        for (int i =\
-    \ l; i <= m; i++) {\n            if (queries[i].otherTime > r) {\n           \
-    \     pre_add(queries[i].v, queries[i].w);\n                uf.merge(queries[i].v,\
-    \ queries[i].w);\n            }\n        }\n        solve(f, m + 1, r, pre_add,\
+    \u3063\u305F2\u3064\u306E\u4EE3\u8868\u70B9par,ch\u304C\u6E21\u3055\u308C\u308B\
+    \u3002\n// \u3000pre_add: par\u304C\u89AA\u306B\u306A\u308B\u65B9\u3001ch\u304C\
+    \u5B50\u306B\u306A\u308B\u65B9\n// \u3000post_remove: par\u304C\u89AA\u3060\u3063\
+    \u305F\u65B9\u3001ch\u304C\u5B50\u3060\u3063\u305F\u65B9\n// \u30FB\u591A\u91CD\
+    \u8FBA\u304C\u4E0E\u3048\u3089\u308C\u308B\u3068\u58CA\u308C\u308B\u3053\u3068\
+    \u304C\u5224\u660E(abc163_f\u53C2\u7167)\u3057\u305F\u306E\u3067\u6C17\u3092\u3064\
+    \u3051\u308B\u3053\u3068\uFF01\uFF01\nclass OfflineDynamicConnectivity {\nprivate:\n\
+    \    struct Query {\n        int type, v, w, otherTime;\n    };\n\n    int V,\
+    \ curTime;\n    vector<Query> queries;\n    vector<map<int, int>> presentEdges;\n\
+    \    UnionFindUndo uf;\n\n    template<typename F>\n    void solve(F f, int l,\
+    \ int r, const auto &pre_add, const auto &post_remove) {\n        if (l >= r)\
+    \ {\n            if (l == r && queries[r].type == 0) {\n                f(r);\n\
+    \            }\n            return;\n        }\n        int m = l + (r - l) /\
+    \ 2;\n        int curSize = uf.history.size();\n        for (int i = m + 1; i\
+    \ <= r; i++) {\n            if (queries[i].otherTime < l) {\n                uf.merge(queries[i].v,\
+    \ queries[i].w, pre_add);\n            }\n        }\n        solve(f, l, m, pre_add,\
     \ post_remove);\n        while ((int)uf.history.size() > curSize) {\n        \
     \    auto [v, w] = uf.undo();\n            post_remove(v, w);\n        }\n   \
-    \ }\n\npublic:\n    UnionFindUndo uf;\n\n    OfflineDynamicConnectivity(int V)\n\
-    \        : V(V),\n          curTime(0),\n          uf(V),\n          presentEdges(V)\
-    \ {\n    }\n\n    void add_edge(int v, int w) {\n        if (v > w) swap(v, w);\n\
+    \     for (int i = l; i <= m; i++) {\n            if (queries[i].otherTime > r)\
+    \ {\n                uf.merge(queries[i].v, queries[i].w, pre_add);\n        \
+    \    }\n        }\n        solve(f, m + 1, r, pre_add, post_remove);\n       \
+    \ while ((int)uf.history.size() > curSize) {\n            auto [v, w] = uf.undo();\n\
+    \            post_remove(v, w);\n        }\n    }\n\npublic:\n    OfflineDynamicConnectivity(int\
+    \ V)\n        : V(V),\n          curTime(0),\n          uf(V),\n          presentEdges(V)\
+    \ {\n    }\n\n    // \u9802\u70B9v\u3092\u542B\u3080\u9023\u7D50\u6210\u5206\u306E\
+    \u305D\u306E\u6642\u70B9\u3067\u306E\u4EE3\u8868\u70B9\u3092\u8FD4\u3059\u3002\
+    solve\u306B\u6E21\u3059\u95A2\u6570f\u306E\u4E2D\u3067\u4F7F\u3046\u3002\n   \
+    \ int find(int v) {\n        return uf.find(v);\n    }\n\n    bool same(int x,\
+    \ int y) {\n        return uf.same(x, y);\n    }\n\n    int size(int k) {\n  \
+    \      return uf.size(k);\n    }\n\n    int size() {\n        return uf.size();\n\
+    \    }\n\n    void add_edge(int v, int w) {\n        if (v > w) swap(v, w);\n\
     \        presentEdges[v][w] = curTime++;\n        queries.push_back({1, v, w,\
     \ INT_MAX});\n    }\n\n    void remove_edge(int v, int w) {\n        if (v > w)\
     \ swap(v, w);\n        int insTime = presentEdges[v][w];\n        queries.push_back({-1,\
@@ -96,7 +109,10 @@ data:
     \ f) {\n        solve(f, 0, curTime - 1, [](int v, int w) {}, [](int v, int w)\
     \ {});\n    }\n\n    template<typename F>\n    void solve(F f, const auto &pre_add,\
     \ const auto &post_remove) {\n        solve(f, 0, curTime - 1, pre_add, post_remove);\n\
-    \    }\n};\n"
+    \    }\n};\n// \u4F7F\u7528\u4F8B\n// auto pre_add = [&](int par, int ch) {\n\
+    //     // do something before add edge\n// };\n// auto post_remove = [&](int par,\
+    \ int ch) {\n//     // do something after remove edge\n// };\n// odc.solve([&](int\
+    \ t) {\n//     // do something when answer query at time t\n// }, pre_add, post_remove);\n"
   code: "#pragma once\n#include \"../base.hpp\"\n#include \"UnionFindUndo.hpp\"\n\n\
     // \u30AA\u30D5\u30E9\u30A4\u30F3\u30C0\u30A4\u30B3\u30CD\n// see: https://atcoder.jp/contests/abc334/submissions/48778004\n\
     // \u4F7F\u3044\u65B9\u53CA\u3073\u65E7\u30E9\u30A4\u30D6\u30E9\u30EA\u3068\u306E\
@@ -122,27 +138,37 @@ data:
     undo\u5F8C\u306B\u4F55\u304B\u898B\u305F\u3044\u6642\u306B\u5BFE\u5FDC\u3067\u304D\
     \u308B\u3088\u3046\u306B\u3057\u305F\u3002\n// \u3000\u3053\u308C\u3089\u306E\u95A2\
     \u6570\u306E\u5F15\u6570\u306B\u306F\u30DE\u30FC\u30B8\u3068undo\u306B\u95A2\u308F\
-    \u3063\u305F2\u3064\u306E\u4EE3\u8868\u70B9\u304C\u6E21\u3055\u308C\u308B\u3002\
-    \nclass OfflineDynamicConnectivity {\nprivate:\n    struct Query {\n        int\
-    \ type, v, w, otherTime;\n    };\n\n    int V, curTime;\n    vector<Query> queries;\n\
-    \    vector<map<int, int>> presentEdges;\n\n    template<typename F>\n    void\
-    \ solve(F f, int l, int r, const auto &pre_add, const auto &post_remove) {\n \
-    \       if (l >= r) {\n            if (l == r && queries[r].type == 0) {\n   \
-    \             f(r);\n            }\n            return;\n        }\n        int\
-    \ m = l + (r - l) / 2;\n        int curSize = uf.history.size();\n        for\
-    \ (int i = m + 1; i <= r; i++) {\n            if (queries[i].otherTime < l) {\n\
-    \                pre_add(queries[i].v, queries[i].w);\n                uf.merge(queries[i].v,\
-    \ queries[i].w);\n            }\n        }\n        solve(f, l, m, pre_add, post_remove);\n\
-    \        while ((int)uf.history.size() > curSize) {\n            auto [v, w] =\
-    \ uf.undo();\n            post_remove(v, w);\n        }\n        for (int i =\
-    \ l; i <= m; i++) {\n            if (queries[i].otherTime > r) {\n           \
-    \     pre_add(queries[i].v, queries[i].w);\n                uf.merge(queries[i].v,\
-    \ queries[i].w);\n            }\n        }\n        solve(f, m + 1, r, pre_add,\
+    \u3063\u305F2\u3064\u306E\u4EE3\u8868\u70B9par,ch\u304C\u6E21\u3055\u308C\u308B\
+    \u3002\n// \u3000pre_add: par\u304C\u89AA\u306B\u306A\u308B\u65B9\u3001ch\u304C\
+    \u5B50\u306B\u306A\u308B\u65B9\n// \u3000post_remove: par\u304C\u89AA\u3060\u3063\
+    \u305F\u65B9\u3001ch\u304C\u5B50\u3060\u3063\u305F\u65B9\n// \u30FB\u591A\u91CD\
+    \u8FBA\u304C\u4E0E\u3048\u3089\u308C\u308B\u3068\u58CA\u308C\u308B\u3053\u3068\
+    \u304C\u5224\u660E(abc163_f\u53C2\u7167)\u3057\u305F\u306E\u3067\u6C17\u3092\u3064\
+    \u3051\u308B\u3053\u3068\uFF01\uFF01\nclass OfflineDynamicConnectivity {\nprivate:\n\
+    \    struct Query {\n        int type, v, w, otherTime;\n    };\n\n    int V,\
+    \ curTime;\n    vector<Query> queries;\n    vector<map<int, int>> presentEdges;\n\
+    \    UnionFindUndo uf;\n\n    template<typename F>\n    void solve(F f, int l,\
+    \ int r, const auto &pre_add, const auto &post_remove) {\n        if (l >= r)\
+    \ {\n            if (l == r && queries[r].type == 0) {\n                f(r);\n\
+    \            }\n            return;\n        }\n        int m = l + (r - l) /\
+    \ 2;\n        int curSize = uf.history.size();\n        for (int i = m + 1; i\
+    \ <= r; i++) {\n            if (queries[i].otherTime < l) {\n                uf.merge(queries[i].v,\
+    \ queries[i].w, pre_add);\n            }\n        }\n        solve(f, l, m, pre_add,\
     \ post_remove);\n        while ((int)uf.history.size() > curSize) {\n        \
     \    auto [v, w] = uf.undo();\n            post_remove(v, w);\n        }\n   \
-    \ }\n\npublic:\n    UnionFindUndo uf;\n\n    OfflineDynamicConnectivity(int V)\n\
-    \        : V(V),\n          curTime(0),\n          uf(V),\n          presentEdges(V)\
-    \ {\n    }\n\n    void add_edge(int v, int w) {\n        if (v > w) swap(v, w);\n\
+    \     for (int i = l; i <= m; i++) {\n            if (queries[i].otherTime > r)\
+    \ {\n                uf.merge(queries[i].v, queries[i].w, pre_add);\n        \
+    \    }\n        }\n        solve(f, m + 1, r, pre_add, post_remove);\n       \
+    \ while ((int)uf.history.size() > curSize) {\n            auto [v, w] = uf.undo();\n\
+    \            post_remove(v, w);\n        }\n    }\n\npublic:\n    OfflineDynamicConnectivity(int\
+    \ V)\n        : V(V),\n          curTime(0),\n          uf(V),\n          presentEdges(V)\
+    \ {\n    }\n\n    // \u9802\u70B9v\u3092\u542B\u3080\u9023\u7D50\u6210\u5206\u306E\
+    \u305D\u306E\u6642\u70B9\u3067\u306E\u4EE3\u8868\u70B9\u3092\u8FD4\u3059\u3002\
+    solve\u306B\u6E21\u3059\u95A2\u6570f\u306E\u4E2D\u3067\u4F7F\u3046\u3002\n   \
+    \ int find(int v) {\n        return uf.find(v);\n    }\n\n    bool same(int x,\
+    \ int y) {\n        return uf.same(x, y);\n    }\n\n    int size(int k) {\n  \
+    \      return uf.size(k);\n    }\n\n    int size() {\n        return uf.size();\n\
+    \    }\n\n    void add_edge(int v, int w) {\n        if (v > w) swap(v, w);\n\
     \        presentEdges[v][w] = curTime++;\n        queries.push_back({1, v, w,\
     \ INT_MAX});\n    }\n\n    void remove_edge(int v, int w) {\n        if (v > w)\
     \ swap(v, w);\n        int insTime = presentEdges[v][w];\n        queries.push_back({-1,\
@@ -152,14 +178,17 @@ data:
     \ f) {\n        solve(f, 0, curTime - 1, [](int v, int w) {}, [](int v, int w)\
     \ {});\n    }\n\n    template<typename F>\n    void solve(F f, const auto &pre_add,\
     \ const auto &post_remove) {\n        solve(f, 0, curTime - 1, pre_add, post_remove);\n\
-    \    }\n};\n"
+    \    }\n};\n// \u4F7F\u7528\u4F8B\n// auto pre_add = [&](int par, int ch) {\n\
+    //     // do something before add edge\n// };\n// auto post_remove = [&](int par,\
+    \ int ch) {\n//     // do something after remove edge\n// };\n// odc.solve([&](int\
+    \ t) {\n//     // do something when answer query at time t\n// }, pre_add, post_remove);\n"
   dependsOn:
   - src/base.hpp
   - src/graph/UnionFindUndo.hpp
   isVerificationFile: false
   path: src/graph/OfflineDynamicConnectivity.hpp
   requiredBy: []
-  timestamp: '2023-12-27 10:46:59+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/OfflineDynamicConnectivity.hpp

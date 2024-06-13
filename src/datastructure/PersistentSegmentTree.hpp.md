@@ -12,9 +12,12 @@ data:
   attributes:
     links:
     - https://ei1333.github.io/library/structure/segment-tree/persistent-segment-tree.cpp
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/datastructure/PersistentSegmentTree.hpp\"\n\
-    \n// \u6C38\u7D9A\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/segment-tree/persistent-segment-tree.cpp\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/datastructure/PersistentSegmentTree.hpp\"\n\n\
+    // \u6C38\u7D9A\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n// \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/segment-tree/persistent-segment-tree.cpp\n\
     // \u4F7F\u3044\u65B9\n// \u30FB\u57FA\u672C\u7684\u306B\u306F\u666E\u901A\u306E\
     \u30BB\u30B0\u6728\u3068\u4E00\u7DD2\u3002\u305F\u3060\u3057\u66F4\u65B0\u30FB\
     \u53D6\u5F97\u3068\u3082\u306B\u6642\u70B9\u3092\u793A\u3059\u30DD\u30A4\u30F3\
@@ -110,7 +113,7 @@ data:
   isVerificationFile: false
   path: src/datastructure/PersistentSegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/PersistentSegmentTree.hpp

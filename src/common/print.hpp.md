@@ -64,9 +64,12 @@ data:
     links:
     - https://blog.naskya.net/post/meu0vkh5cpl1/
     - https://gist.github.com/naskya/1e5e5cd269cfe16a76988378a60e2ca3#file-debug_print-hpp-L150
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -317,23 +320,23 @@ data:
   path: src/common/print.hpp
   requiredBy:
   - src/graph/_AuxiliaryTree.hpp
-  - src/mystl/Deque.hpp
-  - src/mystl/Vector.hpp
-  - src/mystl/Multiset.hpp
-  - src/mystl/Set.hpp
   - src/common/yesno.hpp
-  - src/template.hpp
   - src/math/fps/pow_term2.hpp
   - src/math/fps/pow.hpp
   - src/math/FormalPowerSeries.hpp
-  timestamp: '2024-01-08 14:31:11+09:00'
+  - src/template.hpp
+  - src/mystl/Vector.hpp
+  - src/mystl/Multiset.hpp
+  - src/mystl/Deque.hpp
+  - src/mystl/Set.hpp
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/UnionFind.test.cpp
-  - test/graph/bfs.test.cpp
   - test/graph/WeightedUnionFind.test.cpp
-  - test/matrix/MatPow.test.cpp
+  - test/graph/bfs.test.cpp
   - test/common/bisect.test.cpp
+  - test/matrix/MatPow.test.cpp
 documentation_of: src/common/print.hpp
 layout: document
 redirect_from:

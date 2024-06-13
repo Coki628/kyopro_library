@@ -15,9 +15,12 @@ data:
   attributes:
     links:
     - https://lorent-kyopro.hatenablog.com/entry/2020/07/24/170656
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -51,19 +54,19 @@ data:
     \n            _add_edge(cl + 2 * n, i + 2 * n, 0);\n            _add_edge(cr +\
     \ 2 * n, i + 2 * n, 0);\n        }\n    }\n\n    // map [3n, 4n) -> [n, 2n)\n\
     \    void _add_edge(int u, int v, ll w) {\n        if (3 * n <= u) u -= 2 * n;\n\
-    \        nodes[u].pb({v, w});\n    }\n\n    // u -> [l,r) \u306E\u533A\u9593\u8FBA\
-    \u3092\u5F35\u308B\n    void add_edges(int u, pii seg, ll w) {\n        auto [l,\
-    \ r] = seg;\n        u += n;\n        // \u4E0A\u306E\u30BB\u30B0\u6728\u3068\u7E4B\
+    \        nodes[u].push_back({v, w});\n    }\n\n    // u -> [l,r) \u306E\u533A\u9593\
+    \u8FBA\u3092\u5F35\u308B\n    void add_edges(int u, pii seg, ll w) {\n       \
+    \ auto [l, r] = seg;\n        u += n;\n        // \u4E0A\u306E\u30BB\u30B0\u6728\
+    \u3068\u7E4B\u3050\n        for (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n\
+    \            if (l & 1) _add_edge(u, l++, w);\n            if (r & 1) _add_edge(u,\
+    \ --r, w);\n        }\n    }\n\n    // [l,r) -> v \u306E\u533A\u9593\u8FBA\u3092\
+    \u5F35\u308B\n    void add_edges(pii seg, int v, ll w) {\n        auto [l, r]\
+    \ = seg;\n        v += n;\n        // \u4E0B\u306E\u30BB\u30B0\u6728\u3068\u7E4B\
     \u3050\n        for (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n            if\
-    \ (l & 1) _add_edge(u, l++, w);\n            if (r & 1) _add_edge(u, --r, w);\n\
-    \        }\n    }\n\n    // [l,r) -> v \u306E\u533A\u9593\u8FBA\u3092\u5F35\u308B\
-    \n    void add_edges(pii seg, int v, ll w) {\n        auto [l, r] = seg;\n   \
-    \     v += n;\n        // \u4E0B\u306E\u30BB\u30B0\u6728\u3068\u7E4B\u3050\n \
-    \       for (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n            if (l & 1)\
-    \ _add_edge(l + 2 * n, v, w), l++;\n            if (r & 1) --r, _add_edge(r +\
-    \ 2 * n, v, w);\n        }\n    }\n    // u -> v \u306E\u8FBA\u3092\u5F35\u308B\
+    \ (l & 1) _add_edge(l + 2 * n, v, w), l++;\n            if (r & 1) --r, _add_edge(r\
+    \ + 2 * n, v, w);\n        }\n    }\n    // u -> v \u306E\u8FBA\u3092\u5F35\u308B\
     \n    void add_edge(int u, int v, ll w) {\n        _add_edge(u + n, v + n, w);\n\
-    \    }\n};\n"
+    \    }\n\n    vv<pil> get_nodes() {\n        return nodes;\n    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u533A\u9593\u306B\u8FBA\u3092\
     \u5F35\u308B\u30C6\u30AF\n// \u53C2\u8003\uFF1Ahttps://lorent-kyopro.hatenablog.com/entry/2020/07/24/170656\n\
     // \u30FB\u72B6\u6CC1\u306B\u5FDC\u3058\u3066\u30B0\u30E9\u30D5\u306B\u5BFE\u3057\
@@ -84,26 +87,26 @@ data:
     \n            _add_edge(cl + 2 * n, i + 2 * n, 0);\n            _add_edge(cr +\
     \ 2 * n, i + 2 * n, 0);\n        }\n    }\n\n    // map [3n, 4n) -> [n, 2n)\n\
     \    void _add_edge(int u, int v, ll w) {\n        if (3 * n <= u) u -= 2 * n;\n\
-    \        nodes[u].pb({v, w});\n    }\n\n    // u -> [l,r) \u306E\u533A\u9593\u8FBA\
-    \u3092\u5F35\u308B\n    void add_edges(int u, pii seg, ll w) {\n        auto [l,\
-    \ r] = seg;\n        u += n;\n        // \u4E0A\u306E\u30BB\u30B0\u6728\u3068\u7E4B\
+    \        nodes[u].push_back({v, w});\n    }\n\n    // u -> [l,r) \u306E\u533A\u9593\
+    \u8FBA\u3092\u5F35\u308B\n    void add_edges(int u, pii seg, ll w) {\n       \
+    \ auto [l, r] = seg;\n        u += n;\n        // \u4E0A\u306E\u30BB\u30B0\u6728\
+    \u3068\u7E4B\u3050\n        for (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n\
+    \            if (l & 1) _add_edge(u, l++, w);\n            if (r & 1) _add_edge(u,\
+    \ --r, w);\n        }\n    }\n\n    // [l,r) -> v \u306E\u533A\u9593\u8FBA\u3092\
+    \u5F35\u308B\n    void add_edges(pii seg, int v, ll w) {\n        auto [l, r]\
+    \ = seg;\n        v += n;\n        // \u4E0B\u306E\u30BB\u30B0\u6728\u3068\u7E4B\
     \u3050\n        for (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n            if\
-    \ (l & 1) _add_edge(u, l++, w);\n            if (r & 1) _add_edge(u, --r, w);\n\
-    \        }\n    }\n\n    // [l,r) -> v \u306E\u533A\u9593\u8FBA\u3092\u5F35\u308B\
-    \n    void add_edges(pii seg, int v, ll w) {\n        auto [l, r] = seg;\n   \
-    \     v += n;\n        // \u4E0B\u306E\u30BB\u30B0\u6728\u3068\u7E4B\u3050\n \
-    \       for (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n            if (l & 1)\
-    \ _add_edge(l + 2 * n, v, w), l++;\n            if (r & 1) --r, _add_edge(r +\
-    \ 2 * n, v, w);\n        }\n    }\n    // u -> v \u306E\u8FBA\u3092\u5F35\u308B\
+    \ (l & 1) _add_edge(l + 2 * n, v, w), l++;\n            if (r & 1) --r, _add_edge(r\
+    \ + 2 * n, v, w);\n        }\n    }\n    // u -> v \u306E\u8FBA\u3092\u5F35\u308B\
     \n    void add_edge(int u, int v, ll w) {\n        _add_edge(u + n, v + n, w);\n\
-    \    }\n};\n"
+    \    }\n\n    vv<pil> get_nodes() {\n        return nodes;\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/graph/RangeEdgedGraph.hpp
   requiredBy: []
-  timestamp: '2024-01-04 14:20:58+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/RangeEdgedGraph.hpp

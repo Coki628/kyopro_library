@@ -205,6 +205,9 @@ data:
       path: src/common/sum.hpp
       title: src/common/sum.hpp
     - icon: ':warning:'
+      path: src/common/swap.hpp
+      title: src/common/swap.hpp
+    - icon: ':warning:'
       path: src/common/to_string.hpp
       title: src/common/to_string.hpp
     - icon: ':warning:'
@@ -282,6 +285,9 @@ data:
       path: src/datastructure/Imos2D.hpp
       title: src/datastructure/Imos2D.hpp
     - icon: ':warning:'
+      path: src/datastructure/LazyReversibleRBST.hpp
+      title: src/datastructure/LazyReversibleRBST.hpp
+    - icon: ':warning:'
       path: src/datastructure/LazySegmentTree.hpp
       title: src/datastructure/LazySegmentTree.hpp
     - icon: ':warning:'
@@ -327,6 +333,9 @@ data:
       path: src/datastructure/SparseTable.hpp
       title: src/datastructure/SparseTable.hpp
     - icon: ':warning:'
+      path: src/datastructure/SparseTable2D.hpp
+      title: src/datastructure/SparseTable2D.hpp
+    - icon: ':warning:'
       path: src/datastructure/SuccinctIndexableDictionary.hpp
       title: src/datastructure/SuccinctIndexableDictionary.hpp
     - icon: ':warning:'
@@ -356,6 +365,17 @@ data:
     - icon: ':warning:'
       path: src/datastructure/tree.hpp
       title: src/datastructure/tree.hpp
+  - name: src/dp
+    pages:
+    - icon: ':warning:'
+      path: src/dp/get_smaller_flag.hpp
+      title: src/dp/get_smaller_flag.hpp
+    - icon: ':warning:'
+      path: src/dp/self_loop_adjustment.hpp
+      title: src/dp/self_loop_adjustment.hpp
+    - icon: ':warning:'
+      path: src/dp/subset_enumeration.hpp
+      title: src/dp/subset_enumeration.hpp
   - name: src/geometry
     pages:
     - icon: ':warning:'
@@ -404,6 +424,9 @@ data:
       path: src/geometry/get_distance.hpp
       title: src/geometry/get_distance.hpp
     - icon: ':warning:'
+      path: src/geometry/get_triangle_by_points.hpp
+      title: src/geometry/get_triangle_by_points.hpp
+    - icon: ':warning:'
       path: src/geometry/intersect.hpp
       title: src/geometry/intersect.hpp
     - icon: ':warning:'
@@ -445,11 +468,20 @@ data:
       path: src/graph/HeavyLightDecomposition.hpp
       title: src/graph/HeavyLightDecomposition.hpp
     - icon: ':warning:'
+      path: src/graph/LazyLinkCutTree.hpp
+      title: src/graph/LazyLinkCutTree.hpp
+    - icon: ':warning:'
+      path: src/graph/LinkCutTree.hpp
+      title: src/graph/LinkCutTree.hpp
+    - icon: ':warning:'
       path: src/graph/LowLink.hpp
       title: src/graph/LowLink.hpp
     - icon: ':warning:'
       path: src/graph/LowestCommonAncestor.hpp
       title: src/graph/LowestCommonAncestor.hpp
+    - icon: ':warning:'
+      path: src/graph/MinCostFlow.hpp
+      title: src/graph/MinCostFlow.hpp
     - icon: ':warning:'
       path: src/graph/OfflineDynamicConnectivity.hpp
       title: src/graph/OfflineDynamicConnectivity.hpp
@@ -553,6 +585,9 @@ data:
       path: src/graph/is_bipartite.hpp
       title: src/graph/is_bipartite.hpp
     - icon: ':warning:'
+      path: src/graph/remove_negative_edges.hpp
+      title: src/graph/remove_negative_edges.hpp
+    - icon: ':warning:'
       path: src/graph/topological_sort.hpp
       title: src/graph/topological_sort.hpp
     - icon: ':warning:'
@@ -578,6 +613,9 @@ data:
     - icon: ':warning:'
       path: src/grid/flip.hpp
       title: src/grid/flip.hpp
+    - icon: ':warning:'
+      path: src/grid/get_route.hpp
+      title: src/grid/get_route.hpp
     - icon: ':warning:'
       path: src/grid/gridtoid.hpp
       title: src/grid/gridtoid.hpp

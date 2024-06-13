@@ -23,9 +23,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -63,32 +66,46 @@ data:
     \ SZ3>, SZ1> res{};\n    rep(i, SZ1) {\n        rep(k, SZ2) {\n            if\
     \ (A[i][k] == 0) continue;\n            rep(j, SZ3) {\n                res[i][j]\
     \ += A[i][k] * B[k][j];\n            }\n        }\n    }\n    return res;\n}\n\
-    #line 4 \"src/matrix/MatPow.hpp\"\n\n// \u884C\u5217\u7D2F\u4E57\n// \u30FBDP\u9077\
-    \u79FB\u3068\u306E\u5BFE\u5FDC\u306FABC129f\u3042\u305F\u308A\u304C\u898B\u3084\
-    \u3059\u305D\u3046\u3002\ntemplate<typename T>\nstruct MatPow {\n    MatPow()\
-    \ {}\n\n    vv<T> mat_pow(vv<T> mat, ll k) {\n        int n = mat.size();\n  \
-    \      auto res = list2d(n, n, (T)0);\n        rep(i, n) {\n            res[i][i]\
-    \ = 1;\n        }\n        while (k > 0) {\n            if (k & 1) {\n       \
-    \         res = mat_dot(res, mat);\n            }\n            mat = mat_dot(mat,\
-    \ mat);\n            k >>= 1;\n        }\n        return res;\n    }\n\n    template<size_t\
-    \ SZ>\n    array<array<T, SZ>, SZ> mat_pow(array<array<T, SZ>, SZ> mat, ll k)\
-    \ {\n        int n = mat.size();\n        array<array<T, SZ>, SZ> res = {};\n\
+    #line 4 \"src/matrix/MatPow.hpp\"\n\n// \u884C\u5217\u7D2F\u4E57\n// \u4F7F\u7528\
+    \u65B9\u6CD5\n// \u30FB\u521D\u671F\u5316\u306F\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \u3067\u578B\u3060\u3051\u6C7A\u3081\u3066\u5F15\u6570\u306A\u3057\u3001\n// \u3000\
+    solve\u547C\u3076\u6642\u306B\u9077\u79FB\u884C\u5217\u3001\u521D\u671F\u5024\u306E\
+    \u5217\u3001\u9077\u79FB\u56DE\u6570\u306E3\u3064\u3092\u6E21\u3059\u3002\n//\
+    \ \u30FBDP\u9077\u79FB\u3068\u306E\u5BFE\u5FDC\u306FABC129f\u3042\u305F\u308A\u304C\
+    \u898B\u3084\u3059\u305D\u3046\u3002\n// \u3000\u539F\u5247\u306F(index\u65B9\u5411\
+    \u4EE5\u5916\u306E)\u72B6\u614B1\u3064\u306B\u3064\u304D\u884C\u304C1\u672C\u3001\
+    \u5B9A\u6570\u9805\u30821\u3064\u306E\u72B6\u614B\u3068\u3057\u3066\u7BA1\u7406\
+    \u3002\ntemplate<typename T>\nstruct MatPow {\n    MatPow() {}\n\n    vv<T> mat_pow(vv<T>\
+    \ mat, ll k) {\n        int n = mat.size();\n        auto res = list2d(n, n, (T)0);\n\
     \        rep(i, n) {\n            res[i][i] = 1;\n        }\n        while (k\
     \ > 0) {\n            if (k & 1) {\n                res = mat_dot(res, mat);\n\
     \            }\n            mat = mat_dot(mat, mat);\n            k >>= 1;\n \
-    \       }\n        return res;\n    }\n\n    vector<T> solve(vv<T> mat, const\
-    \ vector<T> &init, ll K) {\n        int n = mat.size();\n        auto base = list2d(n,\
-    \ 1, (T)0);\n        rep(i, n) base[i][0] = init[i];\n        auto res = mat_pow(mat,\
-    \ K);\n        base = mat_dot(res, base);\n        vector<T> ret(n, 0);\n    \
-    \    rep(i, n) ret[i] = base[i][0];\n        return ret;\n    }\n\n    template<size_t\
-    \ SZ>\n    array<T, SZ> solve(array<array<T, SZ>, SZ> mat, const array<T, SZ>\
-    \ &init, ll K) {\n        int n = mat.size();\n        array<array<T, 1>, SZ>\
-    \ base = {};\n        rep(i, n) base[i][0] = init[i];\n        auto res = mat_pow(mat,\
-    \ K);\n        base = mat_dot(res, base);\n        array<T, SZ> ret = {};\n  \
-    \      rep(i, n) ret[i] = base[i][0];\n        return ret;\n    }\n};\n"
+    \       }\n        return res;\n    }\n\n    template<size_t SZ>\n    array<array<T,\
+    \ SZ>, SZ> mat_pow(array<array<T, SZ>, SZ> mat, ll k) {\n        int n = mat.size();\n\
+    \        array<array<T, SZ>, SZ> res = {};\n        rep(i, n) {\n            res[i][i]\
+    \ = 1;\n        }\n        while (k > 0) {\n            if (k & 1) {\n       \
+    \         res = mat_dot(res, mat);\n            }\n            mat = mat_dot(mat,\
+    \ mat);\n            k >>= 1;\n        }\n        return res;\n    }\n\n    vector<T>\
+    \ solve(vv<T> mat, const vector<T> &init, ll K) {\n        int n = mat.size();\n\
+    \        auto base = list2d(n, 1, (T)0);\n        rep(i, n) base[i][0] = init[i];\n\
+    \        auto res = mat_pow(mat, K);\n        base = mat_dot(res, base);\n   \
+    \     vector<T> ret(n, 0);\n        rep(i, n) ret[i] = base[i][0];\n        return\
+    \ ret;\n    }\n\n    template<size_t SZ>\n    array<T, SZ> solve(array<array<T,\
+    \ SZ>, SZ> mat, const array<T, SZ> &init, ll K) {\n        int n = mat.size();\n\
+    \        array<array<T, 1>, SZ> base = {};\n        rep(i, n) base[i][0] = init[i];\n\
+    \        auto res = mat_pow(mat, K);\n        base = mat_dot(res, base);\n   \
+    \     array<T, SZ> ret = {};\n        rep(i, n) ret[i] = base[i][0];\n       \
+    \ return ret;\n    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n#include \"mat_dot.hpp\"\n\n//\
-    \ \u884C\u5217\u7D2F\u4E57\n// \u30FBDP\u9077\u79FB\u3068\u306E\u5BFE\u5FDC\u306F\
-    ABC129f\u3042\u305F\u308A\u304C\u898B\u3084\u3059\u305D\u3046\u3002\ntemplate<typename\
+    \ \u884C\u5217\u7D2F\u4E57\n// \u4F7F\u7528\u65B9\u6CD5\n// \u30FB\u521D\u671F\
+    \u5316\u306F\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\u3067\u578B\u3060\u3051\u6C7A\
+    \u3081\u3066\u5F15\u6570\u306A\u3057\u3001\n// \u3000solve\u547C\u3076\u6642\u306B\
+    \u9077\u79FB\u884C\u5217\u3001\u521D\u671F\u5024\u306E\u5217\u3001\u9077\u79FB\
+    \u56DE\u6570\u306E3\u3064\u3092\u6E21\u3059\u3002\n// \u30FBDP\u9077\u79FB\u3068\
+    \u306E\u5BFE\u5FDC\u306FABC129f\u3042\u305F\u308A\u304C\u898B\u3084\u3059\u305D\
+    \u3046\u3002\n// \u3000\u539F\u5247\u306F(index\u65B9\u5411\u4EE5\u5916\u306E\
+    )\u72B6\u614B1\u3064\u306B\u3064\u304D\u884C\u304C1\u672C\u3001\u5B9A\u6570\u9805\
+    \u30821\u3064\u306E\u72B6\u614B\u3068\u3057\u3066\u7BA1\u7406\u3002\ntemplate<typename\
     \ T>\nstruct MatPow {\n    MatPow() {}\n\n    vv<T> mat_pow(vv<T> mat, ll k) {\n\
     \        int n = mat.size();\n        auto res = list2d(n, n, (T)0);\n       \
     \ rep(i, n) {\n            res[i][i] = 1;\n        }\n        while (k > 0) {\n\
@@ -118,7 +135,7 @@ data:
   isVerificationFile: false
   path: src/matrix/MatPow.hpp
   requiredBy: []
-  timestamp: '2023-12-04 17:57:54+09:00'
+  timestamp: '2024-06-13 19:19:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/MatPow.test.cpp

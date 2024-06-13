@@ -15,9 +15,12 @@ data:
   attributes:
     links:
     - https://ei1333.github.io/library/structure/convex-hull-trick/dynamic-li-chao-tree.hpp
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -43,42 +46,43 @@ data:
     (max\u7528\u3067\u3082)INF\u3067\u3088\u3055\u305D\u3046\u3002x_high\u306Fid\u3088\
     \u308A\u5C0F\u3055\u304F\u3057\u305F\u65B9\u304C\u3088\u3055\u305D\u3046\u3002\
     \n    DynamicLiChaoTree(ll x_low, ll x_high, T id, bool is_min = true)\n     \
-    \   : root{nullptr},\n          x_low(x_low),\n          x_high(x_high),\n   \
-    \       id(id),\n          is_min(is_min) {\n    }\n\n    Node *add_line(\n  \
-    \      Node *t, Line &x, const ll &l, const ll &r, const T &x_l, const T &x_r\n\
-    \    ) {\n        if (!t) return new Node(x);\n\n        T t_l = t->x.get(l),\
-    \ t_r = t->x.get(r);\n\n        if (t_l <= x_l && t_r <= x_r) {\n            return\
-    \ t;\n        } else if (t_l >= x_l && t_r >= x_r) {\n            t->x = x;\n\
-    \            return t;\n        } else {\n            ll m = (l + r) / 2;\n  \
-    \          if (m == r) --m;\n            T t_m = t->x.get(m), x_m = x.get(m);\n\
-    \            if (t_m > x_m) {\n                swap(t->x, x);\n              \
-    \  if (x_l >= t_l) t->l = add_line(t->l, x, l, m, t_l, t_m);\n               \
-    \ else t->r = add_line(t->r, x, m + 1, r, t_m + x.a, t_r);\n            } else\
-    \ {\n                if (t_l >= x_l) t->l = add_line(t->l, x, l, m, x_l, x_m);\n\
-    \                else t->r = add_line(t->r, x, m + 1, r, x_m + x.a, x_r);\n  \
-    \          }\n            return t;\n        }\n    }\n\n    void add_line(T a,\
-    \ T b) {\n        if (!is_min) a *= -1, b *= -1;\n        Line x(a, b);\n    \
-    \    root = add_line(root, x, x_low, x_high, x.get(x_low), x.get(x_high));\n \
-    \   }\n\n    Node *add_segment(\n        Node *t, Line &x, const ll &a, const\
-    \ ll &b, const ll &l, const ll &r,\n        const T &x_l, const T &x_r\n    )\
-    \ {\n        if (r < a || b < l) return t;\n        if (a <= l && r <= b) {\n\
-    \            Line y{x};\n            return add_line(t, y, l, r, x_l, x_r);\n\
-    \        }\n        if (t) {\n            T t_l = t->x.get(l), t_r = t->x.get(r);\n\
-    \            if (t_l <= x_l && t_r <= x_r) return t;\n        } else {\n     \
-    \       t = new Node(Line(0, id));\n        }\n        ll m = (l + r) / 2;\n \
-    \       if (m == r) --m;\n        T x_m = x.get(m);\n        t->l = add_segment(t->l,\
-    \ x, a, b, l, m, x_l, x_m);\n        t->r = add_segment(t->r, x, a, b, m + 1,\
-    \ r, x_m + x.a, x_r);\n        return t;\n    }\n\n    void add_segment(const\
-    \ ll &l, const ll &r, T a, T b) {\n        if (!is_min) a *= -1, b *= -1;\n  \
-    \      Line x(a, b);\n        root = add_segment(\n            root, x, l, r -\
-    \ 1, x_low, x_high, x.get(x_low), x.get(x_high)\n        );\n    }\n\n    T query(const\
-    \ Node *t, const ll &l, const ll &r, const T &x) const {\n        if (!t) return\
-    \ id;\n        if (l == r) return t->x.get(x);\n        ll m = (l + r) / 2;\n\
-    \        if (m == r) --m;\n        if (x <= m) return min(t->x.get(x), query(t->l,\
-    \ l, m, x));\n        else return min(t->x.get(x), query(t->r, m + 1, r, x));\n\
-    \    }\n\n    T query(const T &x) const {\n        if (is_min) return query(root,\
-    \ x_low, x_high, x);\n        return -query(root, x_low, x_high, x);\n    }\n\
-    };\n"
+    \   : x_low(x_low),\n          x_high(x_high),\n          id(id),\n          is_min(is_min),\n\
+    \          root{nullptr} {\n    }\n\n    Node *add_line(\n        Node *t, Line\
+    \ &x, const ll &l, const ll &r, const T &x_l, const T &x_r\n    ) {\n        if\
+    \ (!t) return new Node(x);\n\n        T t_l = t->x.get(l), t_r = t->x.get(r);\n\
+    \n        if (t_l <= x_l && t_r <= x_r) {\n            return t;\n        } else\
+    \ if (t_l >= x_l && t_r >= x_r) {\n            t->x = x;\n            return t;\n\
+    \        } else {\n            ll m = (l + r) / 2;\n            if (m == r) --m;\n\
+    \            T t_m = t->x.get(m), x_m = x.get(m);\n            if (t_m > x_m)\
+    \ {\n                swap(t->x, x);\n                if (x_l >= t_l) t->l = add_line(t->l,\
+    \ x, l, m, t_l, t_m);\n                else t->r = add_line(t->r, x, m + 1, r,\
+    \ t_m + x.a, t_r);\n            } else {\n                if (t_l >= x_l) t->l\
+    \ = add_line(t->l, x, l, m, x_l, x_m);\n                else t->r = add_line(t->r,\
+    \ x, m + 1, r, x_m + x.a, x_r);\n            }\n            return t;\n      \
+    \  }\n    }\n\n    void add_line(T a, T b) {\n        if (!is_min) a *= -1, b\
+    \ *= -1;\n        Line x(a, b);\n        root = add_line(root, x, x_low, x_high,\
+    \ x.get(x_low), x.get(x_high));\n    }\n\n    Node *add_segment(\n        Node\
+    \ *t, Line &x, const ll &a, const ll &b, const ll &l, const ll &r,\n        const\
+    \ T &x_l, const T &x_r\n    ) {\n        if (r < a || b < l) return t;\n     \
+    \   if (a <= l && r <= b) {\n            Line y{x};\n            return add_line(t,\
+    \ y, l, r, x_l, x_r);\n        }\n        if (t) {\n            T t_l = t->x.get(l),\
+    \ t_r = t->x.get(r);\n            if (t_l <= x_l && t_r <= x_r) return t;\n  \
+    \      } else {\n            t = new Node(Line(0, id));\n        }\n        ll\
+    \ m = (l + r) / 2;\n        if (m == r) --m;\n        T x_m = x.get(m);\n    \
+    \    t->l = add_segment(t->l, x, a, b, l, m, x_l, x_m);\n        t->r = add_segment(t->r,\
+    \ x, a, b, m + 1, r, x_m + x.a, x_r);\n        return t;\n    }\n\n    // \u533A\
+    \u9593[l,r)\u306B\u7DDA\u5206ax+b\u3092\u8FFD\u52A0\u3059\u308B O(log^2|X|)\n\
+    \    void add_segment(const ll &l, const ll &r, T a, T b) {\n        if (!is_min)\
+    \ a *= -1, b *= -1;\n        Line x(a, b);\n        root = add_segment(\n    \
+    \        root, x, l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high)\n     \
+    \   );\n    }\n\n    T query(const Node *t, const ll &l, const ll &r, const T\
+    \ &x) const {\n        if (!t) return id;\n        if (l == r) return t->x.get(x);\n\
+    \        ll m = (l + r) / 2;\n        if (m == r) --m;\n        if (x <= m) return\
+    \ min(t->x.get(x), query(t->l, l, m, x));\n        else return min(t->x.get(x),\
+    \ query(t->r, m + 1, r, x));\n    }\n\n    // \u4F4D\u7F6Ex\u3067\u306E\u73FE\u5728\
+    \u306E\u6700\u5C0F\u5024 O(log|X|)\n    T query(const T &x) const {\n        if\
+    \ (is_min) return query(root, x_low, x_high, x);\n        return -query(root,\
+    \ x_low, x_high, x);\n    }\n};\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// Li Chao Tree\n// see: https://ei1333.github.io/library/structure/convex-hull-trick/dynamic-li-chao-tree.hpp\n\
     template<typename T>\nstruct DynamicLiChaoTree {\n    const ll x_low;\n    const\
     \ ll x_high;\n    const T id;\n    const bool is_min;\n\n    struct Line {\n \
@@ -91,49 +95,50 @@ data:
     (max\u7528\u3067\u3082)INF\u3067\u3088\u3055\u305D\u3046\u3002x_high\u306Fid\u3088\
     \u308A\u5C0F\u3055\u304F\u3057\u305F\u65B9\u304C\u3088\u3055\u305D\u3046\u3002\
     \n    DynamicLiChaoTree(ll x_low, ll x_high, T id, bool is_min = true)\n     \
-    \   : root{nullptr},\n          x_low(x_low),\n          x_high(x_high),\n   \
-    \       id(id),\n          is_min(is_min) {\n    }\n\n    Node *add_line(\n  \
-    \      Node *t, Line &x, const ll &l, const ll &r, const T &x_l, const T &x_r\n\
-    \    ) {\n        if (!t) return new Node(x);\n\n        T t_l = t->x.get(l),\
-    \ t_r = t->x.get(r);\n\n        if (t_l <= x_l && t_r <= x_r) {\n            return\
-    \ t;\n        } else if (t_l >= x_l && t_r >= x_r) {\n            t->x = x;\n\
-    \            return t;\n        } else {\n            ll m = (l + r) / 2;\n  \
-    \          if (m == r) --m;\n            T t_m = t->x.get(m), x_m = x.get(m);\n\
-    \            if (t_m > x_m) {\n                swap(t->x, x);\n              \
-    \  if (x_l >= t_l) t->l = add_line(t->l, x, l, m, t_l, t_m);\n               \
-    \ else t->r = add_line(t->r, x, m + 1, r, t_m + x.a, t_r);\n            } else\
-    \ {\n                if (t_l >= x_l) t->l = add_line(t->l, x, l, m, x_l, x_m);\n\
-    \                else t->r = add_line(t->r, x, m + 1, r, x_m + x.a, x_r);\n  \
-    \          }\n            return t;\n        }\n    }\n\n    void add_line(T a,\
-    \ T b) {\n        if (!is_min) a *= -1, b *= -1;\n        Line x(a, b);\n    \
-    \    root = add_line(root, x, x_low, x_high, x.get(x_low), x.get(x_high));\n \
-    \   }\n\n    Node *add_segment(\n        Node *t, Line &x, const ll &a, const\
-    \ ll &b, const ll &l, const ll &r,\n        const T &x_l, const T &x_r\n    )\
-    \ {\n        if (r < a || b < l) return t;\n        if (a <= l && r <= b) {\n\
-    \            Line y{x};\n            return add_line(t, y, l, r, x_l, x_r);\n\
-    \        }\n        if (t) {\n            T t_l = t->x.get(l), t_r = t->x.get(r);\n\
-    \            if (t_l <= x_l && t_r <= x_r) return t;\n        } else {\n     \
-    \       t = new Node(Line(0, id));\n        }\n        ll m = (l + r) / 2;\n \
-    \       if (m == r) --m;\n        T x_m = x.get(m);\n        t->l = add_segment(t->l,\
-    \ x, a, b, l, m, x_l, x_m);\n        t->r = add_segment(t->r, x, a, b, m + 1,\
-    \ r, x_m + x.a, x_r);\n        return t;\n    }\n\n    void add_segment(const\
-    \ ll &l, const ll &r, T a, T b) {\n        if (!is_min) a *= -1, b *= -1;\n  \
-    \      Line x(a, b);\n        root = add_segment(\n            root, x, l, r -\
-    \ 1, x_low, x_high, x.get(x_low), x.get(x_high)\n        );\n    }\n\n    T query(const\
-    \ Node *t, const ll &l, const ll &r, const T &x) const {\n        if (!t) return\
-    \ id;\n        if (l == r) return t->x.get(x);\n        ll m = (l + r) / 2;\n\
-    \        if (m == r) --m;\n        if (x <= m) return min(t->x.get(x), query(t->l,\
-    \ l, m, x));\n        else return min(t->x.get(x), query(t->r, m + 1, r, x));\n\
-    \    }\n\n    T query(const T &x) const {\n        if (is_min) return query(root,\
-    \ x_low, x_high, x);\n        return -query(root, x_low, x_high, x);\n    }\n\
-    };\n"
+    \   : x_low(x_low),\n          x_high(x_high),\n          id(id),\n          is_min(is_min),\n\
+    \          root{nullptr} {\n    }\n\n    Node *add_line(\n        Node *t, Line\
+    \ &x, const ll &l, const ll &r, const T &x_l, const T &x_r\n    ) {\n        if\
+    \ (!t) return new Node(x);\n\n        T t_l = t->x.get(l), t_r = t->x.get(r);\n\
+    \n        if (t_l <= x_l && t_r <= x_r) {\n            return t;\n        } else\
+    \ if (t_l >= x_l && t_r >= x_r) {\n            t->x = x;\n            return t;\n\
+    \        } else {\n            ll m = (l + r) / 2;\n            if (m == r) --m;\n\
+    \            T t_m = t->x.get(m), x_m = x.get(m);\n            if (t_m > x_m)\
+    \ {\n                swap(t->x, x);\n                if (x_l >= t_l) t->l = add_line(t->l,\
+    \ x, l, m, t_l, t_m);\n                else t->r = add_line(t->r, x, m + 1, r,\
+    \ t_m + x.a, t_r);\n            } else {\n                if (t_l >= x_l) t->l\
+    \ = add_line(t->l, x, l, m, x_l, x_m);\n                else t->r = add_line(t->r,\
+    \ x, m + 1, r, x_m + x.a, x_r);\n            }\n            return t;\n      \
+    \  }\n    }\n\n    void add_line(T a, T b) {\n        if (!is_min) a *= -1, b\
+    \ *= -1;\n        Line x(a, b);\n        root = add_line(root, x, x_low, x_high,\
+    \ x.get(x_low), x.get(x_high));\n    }\n\n    Node *add_segment(\n        Node\
+    \ *t, Line &x, const ll &a, const ll &b, const ll &l, const ll &r,\n        const\
+    \ T &x_l, const T &x_r\n    ) {\n        if (r < a || b < l) return t;\n     \
+    \   if (a <= l && r <= b) {\n            Line y{x};\n            return add_line(t,\
+    \ y, l, r, x_l, x_r);\n        }\n        if (t) {\n            T t_l = t->x.get(l),\
+    \ t_r = t->x.get(r);\n            if (t_l <= x_l && t_r <= x_r) return t;\n  \
+    \      } else {\n            t = new Node(Line(0, id));\n        }\n        ll\
+    \ m = (l + r) / 2;\n        if (m == r) --m;\n        T x_m = x.get(m);\n    \
+    \    t->l = add_segment(t->l, x, a, b, l, m, x_l, x_m);\n        t->r = add_segment(t->r,\
+    \ x, a, b, m + 1, r, x_m + x.a, x_r);\n        return t;\n    }\n\n    // \u533A\
+    \u9593[l,r)\u306B\u7DDA\u5206ax+b\u3092\u8FFD\u52A0\u3059\u308B O(log^2|X|)\n\
+    \    void add_segment(const ll &l, const ll &r, T a, T b) {\n        if (!is_min)\
+    \ a *= -1, b *= -1;\n        Line x(a, b);\n        root = add_segment(\n    \
+    \        root, x, l, r - 1, x_low, x_high, x.get(x_low), x.get(x_high)\n     \
+    \   );\n    }\n\n    T query(const Node *t, const ll &l, const ll &r, const T\
+    \ &x) const {\n        if (!t) return id;\n        if (l == r) return t->x.get(x);\n\
+    \        ll m = (l + r) / 2;\n        if (m == r) --m;\n        if (x <= m) return\
+    \ min(t->x.get(x), query(t->l, l, m, x));\n        else return min(t->x.get(x),\
+    \ query(t->r, m + 1, r, x));\n    }\n\n    // \u4F4D\u7F6Ex\u3067\u306E\u73FE\u5728\
+    \u306E\u6700\u5C0F\u5024 O(log|X|)\n    T query(const T &x) const {\n        if\
+    \ (is_min) return query(root, x_low, x_high, x);\n        return -query(root,\
+    \ x_low, x_high, x);\n    }\n};\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/datastructure/DynamicLiChaoTree.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/DynamicLiChaoTree.hpp

@@ -11,12 +11,15 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/common/arraynd.hpp\"\n\n// \u4EFB\u610F\u6B21\
-    \u5143array\n// \u4F7F\u3044\u65B9\uFF1Aarraynd<ll, 2, 3>(INF); \u3067 ll[2][3]\
-    \ = INF \u306B\u306A\u308B\u3002\ntemplate<typename T, size_t N, size_t... Ns>\n\
-    auto arraynd(T a) {\n    if constexpr (sizeof...(Ns) == 0) {\n        array<T,\
-    \ N> res;\n        res.fill(a);\n        return res;\n    } else {\n        static\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/common/arraynd.hpp\"\n\n// \u4EFB\u610F\u6B21\u5143\
+    array\n// \u4F7F\u3044\u65B9\uFF1Aarraynd<ll, 2, 3>(INF); \u3067 ll[2][3] = INF\
+    \ \u306B\u306A\u308B\u3002\ntemplate<typename T, size_t N, size_t... Ns>\nauto\
+    \ arraynd(T a) {\n    if constexpr (sizeof...(Ns) == 0) {\n        array<T, N>\
+    \ res;\n        res.fill(a);\n        return res;\n    } else {\n        static\
     \ auto cur = arraynd<T, Ns...>(a);\n        array<decltype(cur), N> res;\n   \
     \     res.fill(cur);\n        return res;\n    }\n}\n"
   code: "#pragma once\n#include \"../base.hpp\"\n\n// \u4EFB\u610F\u6B21\u5143array\n\
@@ -31,7 +34,7 @@ data:
   isVerificationFile: false
   path: src/common/arraynd.hpp
   requiredBy: []
-  timestamp: '2023-11-30 18:05:09+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/common/arraynd.hpp

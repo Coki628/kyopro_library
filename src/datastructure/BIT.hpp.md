@@ -15,6 +15,9 @@ data:
     path: src/datastructure/PersistentBIT.hpp
     title: src/datastructure/PersistentBIT.hpp
   - icon: ':warning:'
+    path: src/datastructure/get_inversion.hpp
+    title: src/datastructure/get_inversion.hpp
+  - icon: ':warning:'
     path: src/string/RollingHashUpdatable.hpp
     title: src/string/RollingHashUpdatable.hpp
   - icon: ':warning:'
@@ -28,9 +31,12 @@ data:
     links:
     - https://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp
     - https://twitter.com/KakurenboUni/status/1643832177690550273
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/macros.hpp\"\n\nusing ll = long long;\nusing ull\
+    \ = unsigned long long;\nusing ld = long double;\nusing pll = pair<ll, ll>;\n\
     using pii = pair<int, int>;\nusing pli = pair<ll, int>;\nusing pil = pair<int,\
     \ ll>;\ntemplate<typename T>\nusing vv = vector<vector<T>>;\nusing vvl = vv<ll>;\n\
     using vvi = vv<int>;\nusing vvpll = vv<pll>;\nusing vvpli = vv<pli>;\nusing vvpil\
@@ -189,11 +195,12 @@ data:
   isVerificationFile: false
   path: src/datastructure/BIT.hpp
   requiredBy:
-  - src/string/RollingHashUpdatable.hpp
-  - src/template.hpp
   - src/datastructure/AbstractBIT.hpp
   - src/datastructure/PersistentBIT.hpp
-  timestamp: '2023-12-28 12:04:08+09:00'
+  - src/datastructure/get_inversion.hpp
+  - src/string/RollingHashUpdatable.hpp
+  - src/template.hpp
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/BIT.hpp

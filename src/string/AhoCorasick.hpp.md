@@ -12,8 +12,11 @@ data:
   attributes:
     links:
     - https://ei1333.github.io/library/string/aho-corasick.hpp
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/string/AhoCorasick.hpp\"\n\n// Aho-Corasick\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/string/AhoCorasick.hpp\"\n\n// Aho-Corasick\n\
     // \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/string/aho-corasick.hpp\n\
     // \u4F7F\u3044\u65B9\n// \u30FB\u521D\u671F\u5316\u306F\u3001AhoCorasick<\u6587\
     \u5B57\u7A2E\u985E\u6570, \u6700\u521D\u306E\u6587\u5B57>\n// \u30FBadd\u3067\u30D1\
@@ -164,7 +167,7 @@ data:
   isVerificationFile: false
   path: src/string/AhoCorasick.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/AhoCorasick.hpp

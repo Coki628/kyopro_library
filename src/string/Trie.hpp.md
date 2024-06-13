@@ -11,8 +11,11 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/string/Trie.hpp\"\n\n// Trie \u6728\n// \u30FB\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/string/Trie.hpp\"\n\n// Trie \u6728\n// \u30FB\
     \u6587\u5B57\u306E\u7A2E\u985E(char_size)\u3001int\u578B\u30670\u306B\u5BFE\u5FDC\
     \u3059\u308B\u6587\u5B57(base)\n// \u30FBinsert(word): \u5358\u8A9E word \u3092\
     \ Trie \u6728\u306B\u633F\u5165\u3059\u308B\n// \u30FBsearch(word): \u5358\u8A9E\
@@ -111,7 +114,7 @@ data:
   isVerificationFile: false
   path: src/string/Trie.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/Trie.hpp

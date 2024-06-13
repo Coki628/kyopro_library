@@ -10,6 +10,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/common/bisect.hpp
     title: src/common/bisect.hpp
+  - icon: ':warning:'
+    path: src/datastructure/BIT.hpp
+    title: src/datastructure/BIT.hpp
   - icon: ':heavy_check_mark:'
     path: src/macros.hpp
     title: src/macros.hpp
@@ -20,8 +23,11 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/common/bisect.hpp\"\n\ntemplate<typename T>\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/common/bisect.hpp\"\n\ntemplate<typename T>\n\
     int bisect_left(const vector<T> &A, T val, int lo = 0) {\n    return lower_bound(A.begin()\
     \ + lo, A.end(), val) - A.begin();\n}\n\ntemplate<typename T>\nint bisect_right(const\
     \ vector<T> &A, T val, int lo = 0) {\n    return upper_bound(A.begin() + lo, A.end(),\
@@ -46,26 +52,101 @@ data:
     \ {\n        build();\n    }\n\n    void build() {\n        sort(dat.begin(),\
     \ dat.end());\n        dat.erase(unique(dat.begin(), dat.end()), dat.end());\n\
     \        N = dat.size();\n        built = true;\n    }\n\n    void add(T x) {\n\
-    \        assert(not built);\n        dat.eb(x);\n    }\n\n    // \u53EF\u5909\u9577\
-    \u5F15\u6570\u3001cp.add(l, r); \u3068\u304B\u3067\u304D\u308B\n    template<typename...\
-    \ Ts>\n    void add(const T val, Ts... ts) {\n        dat.eb(val);\n        if\
-    \ constexpr (sizeof...(Ts) > 0) {\n            add(ts...);\n        }\n    }\n\
-    \n    void add(const vector<T> &A) {\n        for (auto a : A) {\n           \
-    \ add(a);\n        }\n    }\n\n    int zip(T x) {\n        assert(built);\n  \
-    \      return bisect_left(dat, x);\n    }\n\n    T unzip(int x) {\n        assert(built);\n\
+    \        assert(not built);\n        dat.emplace_back(x);\n    }\n\n    // \u53EF\
+    \u5909\u9577\u5F15\u6570\u3001cp.add(l, r); \u3068\u304B\u3067\u304D\u308B\n \
+    \   template<typename... Ts>\n    void add(const T val, Ts... ts) {\n        dat.emplace_back(val);\n\
+    \        if constexpr (sizeof...(Ts) > 0) {\n            add(ts...);\n       \
+    \ }\n    }\n\n    void add(const vector<T> &A) {\n        for (auto a : A) {\n\
+    \            add(a);\n        }\n    }\n\n    int zip(T x) {\n        assert(built);\n\
+    \        return bisect_left(dat, x);\n    }\n\n    T unzip(int x) {\n        assert(built);\n\
     \        return dat[x];\n    }\n\n    int operator[](T x) {\n        return zip(x);\n\
     \    }\n\n    int size() {\n        assert(built);\n        return dat.size();\n\
-    \    }\n\n    vector<ll> zip(const vector<T> &A) {\n        int M = A.size();\n\
-    \        vector<ll> res(M);\n        rep(i, M) res[i] = zip(A[i]);\n        return\
-    \ res;\n    }\n};\n\n// \u5EA7\u6A19\u5727\u7E2E(map\u30D9\u30FC\u30B9)(\u65E7\
-    )\n// template<typename T>\n// pair<map<T, int>, vector<T>> compress(vector<T>\
-    \ unzipped) {\n//     map<T, int> zipped;\n//     sort(unzipped.begin(), unzipped.end());\n\
-    //     unzipped.erase(unique(unzipped.begin(), unzipped.end()), unzipped.end());\n\
-    //     rep(i, unzipped.size()) {\n//         zipped[unzipped[i]] = i;\n//    \
-    \ }\n//     return {zipped, unzipped};\n// }\n#line 4 \"src/datastructure/get_inversion.hpp\"\
-    \n\n// \u8EE2\u5012\u6570\u53D6\u5F97\nll get_inversion(vector<ll> A, bool comp\
-    \ = true) {\n    int M = A.size();\n    if (comp) {\n        Compress<ll> cp(A);\n\
-    \        A = cp.zip(A);\n        M = cp.size();\n    }\n    BIT<ll> bit(M);\n\
+    \    }\n\n    // \u5EA7\u5727\u5F8C\u306E\u4F4D\u7F6E[i,i+1)\u306E\u5EA7\u5727\
+    \u524D\u306E\u5927\u304D\u3055\u3092\u8FD4\u3059\n    T size(int i) {\n      \
+    \  assert(built and 0 <= i and i < N);\n        if (i == N - 1) {\n          \
+    \  return 1;\n        } else {\n            return unzip(i + 1) - unzip(i);\n\
+    \        }\n    }\n\n    vector<T> zip(const vector<T> &A) {\n        int M =\
+    \ A.size();\n        vector<T> res(M);\n        for (int i = 0; i < M; i++) {\n\
+    \            res[i] = zip(A[i]);\n        }\n        return res;\n    }\n};\n\n\
+    // \u5EA7\u6A19\u5727\u7E2E(map\u30D9\u30FC\u30B9)(\u65E7)\n// template<typename\
+    \ T>\n// pair<map<T, int>, vector<T>> compress(vector<T> unzipped) {\n//     map<T,\
+    \ int> zipped;\n//     sort(unzipped.begin(), unzipped.end());\n//     unzipped.erase(unique(unzipped.begin(),\
+    \ unzipped.end()), unzipped.end());\n//     for (int i = 0; i < unzipped.size();\
+    \ i++) {\n//         zipped[unzipped[i]] = i;\n//     }\n//     return {zipped,\
+    \ unzipped};\n// }\n#line 3 \"src/datastructure/BIT.hpp\"\n\n// Binary Indexed\
+    \ Tree\ntemplate<typename T>\nclass BIT {\nprotected:\n    int n;\n    vector<T>\
+    \ dat;\n\npublic:\n    BIT() = default;\n\n    explicit BIT(int n) : n(n) {\n\
+    \        dat.assign(n + 1, T());\n    }\n\n    explicit BIT(const vector<T> &v)\
+    \ : BIT((int)v.size()) {\n        build(v);\n    }\n\n    virtual void build(const\
+    \ vector<T> &v) {\n        assert(n == (int)v.size());\n        for (int i = 1;\
+    \ i <= n; i++) {\n            dat[i] = v[i - 1];\n        }\n        for (int\
+    \ i = 1; i <= n; i++) {\n            int j = i + (i & -i);\n            if (j\
+    \ <= n) dat[j] += dat[i];\n        }\n    }\n\n    // [0, r)\u3092\u5408\u8A08\
+    \u3059\u308B\n    virtual T sum(int r) {\n        T s = T();\n        for (; r\
+    \ > 0; r -= r & -r) {\n            s += dat[r];\n        }\n        return s;\n\
+    \    }\n\n    virtual void add(int k, const T &x) {\n        for (++k; k <= n;\
+    \ k += k & -k) {\n            dat[k] += x;\n        }\n    }\n\n    // \u533A\u9593\
+    \u548C\u306E\u53D6\u5F97 [l, r)\n    T query(int l, int r) {\n        if (l >=\
+    \ r) return T();\n        return sum(r) - sum(l);\n    }\n\n    virtual T get(int\
+    \ i) {\n        // return query(i, i + 1);\n        // BIT\u306E\u9AD8\u901F\u306A\
+    1\u70B9\u53D6\u5F97\n        // see: https://twitter.com/KakurenboUni/status/1643832177690550273\n\
+    \        T s = this->dat[i + 1];\n        if (i & 1) {\n            int j = i;\n\
+    \            i++;\n            i -= i & -i;\n            for (; j > i; j -= j\
+    \ & -j) {\n                s -= this->dat[j];\n            }\n        }\n    \
+    \    return s;\n    }\n\n    void update(int i, T x) {\n        add(i, x - this->get(i));\n\
+    \    }\n\n    T operator[](int i) {\n        return this->get(i);\n    }\n\n \
+    \   int size() {\n        return n;\n    }\n\n    // log2\u3064\u306E\u65E7\u4ED5\
+    \u69D8\u3002\u65B0\u4ED5\u69D8\u3067\u3042\u308B\u7A0B\u5EA6\u78BA\u8A8D\u304C\
+    \u53D6\u308C\u305F\u3089\u524A\u9664\u3002\n    // ll bisearch_fore(int l, int\
+    \ r, ll x) {\n    //     if (l > r) return -1;\n    //     ll l_sm = sum(l);\n\
+    \    //     int ok = r + 1;\n    //     int ng = l - 1;\n    //     while (ng+1\
+    \ < ok) {\n    //         int mid = (ok+ng) / 2;\n    //         if (sum(mid+1)\
+    \ - l_sm >= x) {\n    //             ok = mid;\n    //         } else {\n    //\
+    \             ng = mid;\n    //         }\n    //     }\n    //     if (ok !=\
+    \ r+1) {\n    //         return ok;\n    //     } else {\n    //         return\
+    \ -1;\n    //     }\n    // }\n    // ll bisearch_back(int l, int r, ll x) {\n\
+    \    //     if (l > r) return -1;\n    //     ll r_sm = sum(r+1);\n    //    \
+    \ int ok = l - 1;\n    //     int ng = r + 1;\n    //     while (ok+1 < ng) {\n\
+    \    //         int mid = (ok+ng) / 2;\n    //         if (r_sm - sum(mid) >=\
+    \ x) {\n    //             ok = mid;\n    //         } else {\n    //        \
+    \     ng = mid;\n    //         }\n    //     }\n    //     if (ok != l-1) {\n\
+    \    //         return ok;\n    //     } else {\n    //         return -1;\n \
+    \   //     }\n    // }\n\n    // \u533A\u9593[l, r]\u3092\u5DE6\u304B\u3089\u53F3\
+    \u306B\u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\
+    \u7F6E(log1\u3064\u7248)\n    int bisearch_fore(int l, int r, T x) {\n       \
+    \ if (l > r) return -1;\n        assert(l >= 0 and r < n);\n        x += query(0,\
+    \ l);\n        int k = lower_bound(x);\n        assert(l <= k);\n        if (k\
+    \ > r) {\n            return -1;\n        } else {\n            return k;\n  \
+    \      }\n    }\n\n    // \u533A\u9593[l, r]\u3092\u53F3\u304B\u3089\u5DE6\u306B\
+    \u5411\u304B\u3063\u3066x\u756A\u76EE\u306E\u5024\u304C\u3042\u308B\u4F4D\u7F6E\
+    (log1\u3064\u7248)\n    int bisearch_back(int l, int r, T x) {\n        if (l\
+    \ > r) return -1;\n        assert(l >= 0 and r < n);\n        T total = query(0,\
+    \ r + 1);\n        if (total - x < 0) {\n            return -1;\n        }\n \
+    \       int k = upper_bound(total - x);\n        assert(k <= r);\n        if (k\
+    \ < l) {\n            return -1;\n        } else {\n            return k;\n  \
+    \      }\n    }\n\n    // \u53C2\u8003\uFF1Ahttps://ei1333.github.io/library/structure/others/binary-indexed-tree.cpp\n\
+    \    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u4EE5\u4E0A\u3068\u306A\u308B\
+    \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
+    \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
+    \ // (log\u304C1\u3064\u306A\u306E\u3067\u3001TL\u53B3\u3057\u3044\u6642\u306F\
+    \u3053\u3061\u3089\u3092\u4F7F\u3046\u3002)\n    int lower_bound(T x) const {\n\
+    \        int i = 0;\n        for (int k = 1 << (__lg(n) + 1); k > 0; k >>= 1)\
+    \ {\n            if (i + k <= n && dat[i + k] < x) {\n                x -= dat[i\
+    \ + k];\n                i += k;\n            }\n        }\n        return i;\n\
+    \    }\n\n    // \u533A\u9593[0,k]\u306E\u7DCF\u548C\u304Cx\u3092\u4E0A\u56DE\u308B\
+    \u6700\u5C0F\u306Ek\u3092\u8FD4\u3059\u3002\u6570\u5217\u304C\u5358\u8ABF\u5897\
+    \u52A0\u3067\u3042\u308B\u3053\u3068\u3092\u8981\u6C42\u3059\u308B\u3002\n   \
+    \ int upper_bound(T x) const {\n        int i = 0;\n        for (int k = 1 <<\
+    \ (__lg(n) + 1); k > 0; k >>= 1) {\n            if (i + k <= n && dat[i + k] <=\
+    \ x) {\n                x -= dat[i + k];\n                i += k;\n          \
+    \  }\n        }\n        return i;\n    }\n};\n\ntemplate<typename T>\nostream\
+    \ &operator<<(ostream &os, BIT<T> &bit) {\n    rep(i, bit.size()) {\n        os\
+    \ << bit[i];\n        if (i != bit.size() - 1) {\n            os << ' ';\n   \
+    \     }\n    }\n    return os;\n}\n#line 5 \"src/datastructure/get_inversion.hpp\"\
+    \n\n// \u8EE2\u5012\u6570\u53D6\u5F97\n// comp\u306F\u9806\u5217\u3058\u3083\u306A\
+    \u3051\u308C\u3070\u57FA\u672Ctrue\u3067\nll get_inversion(vector<ll> A, bool\
+    \ comp = true) {\n    int M = A.size();\n    if (comp) {\n        Compress<ll>\
+    \ cp(A);\n        A = cp.zip(A);\n        M = cp.size();\n    }\n    BIT<ll> bit(M);\n\
     \    ll res = 0;\n    for (auto a : A) {\n        res += bit.query(a + 1, M);\n\
     \        bit.add(a, 1);\n    }\n    return res;\n}\n\n// \u30DE\u30FC\u30B8\u30BD\
     \u30FC\u30C8\u306B\u3088\u308B\u8EE2\u5012\u6570\u53D6\u5F97\n// \u30FB\u5EA7\u5727\
@@ -86,9 +167,10 @@ data:
     //         } else {\n//             cnt += n / 2 - bi;\n//             a[ai++]\
     \ = c[ci++];\n//         }\n//     }\n//     return cnt;\n// }\n"
   code: "#pragma once\n#include \"../common/Compress.hpp\"\n#include \"../macros.hpp\"\
-    \n\n// \u8EE2\u5012\u6570\u53D6\u5F97\nll get_inversion(vector<ll> A, bool comp\
-    \ = true) {\n    int M = A.size();\n    if (comp) {\n        Compress<ll> cp(A);\n\
-    \        A = cp.zip(A);\n        M = cp.size();\n    }\n    BIT<ll> bit(M);\n\
+    \n#include \"BIT.hpp\"\n\n// \u8EE2\u5012\u6570\u53D6\u5F97\n// comp\u306F\u9806\
+    \u5217\u3058\u3083\u306A\u3051\u308C\u3070\u57FA\u672Ctrue\u3067\nll get_inversion(vector<ll>\
+    \ A, bool comp = true) {\n    int M = A.size();\n    if (comp) {\n        Compress<ll>\
+    \ cp(A);\n        A = cp.zip(A);\n        M = cp.size();\n    }\n    BIT<ll> bit(M);\n\
     \    ll res = 0;\n    for (auto a : A) {\n        res += bit.query(a + 1, M);\n\
     \        bit.add(a, 1);\n    }\n    return res;\n}\n\n// \u30DE\u30FC\u30B8\u30BD\
     \u30FC\u30C8\u306B\u3088\u308B\u8EE2\u5012\u6570\u53D6\u5F97\n// \u30FB\u5EA7\u5727\
@@ -113,10 +195,11 @@ data:
   - src/common/bisect.hpp
   - src/base.hpp
   - src/macros.hpp
+  - src/datastructure/BIT.hpp
   isVerificationFile: false
   path: src/datastructure/get_inversion.hpp
   requiredBy: []
-  timestamp: '2024-02-22 17:15:31+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/get_inversion.hpp

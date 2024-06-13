@@ -12,9 +12,12 @@ data:
   attributes:
     links:
     - https://outline.hatenadiary.jp/entry/2020/07/02/205628
-  bundledCode: "#line 2 \"src/base.hpp\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\n\
-    using namespace std;\n#line 3 \"src/math/kitamasa.hpp\"\n\n// \u304D\u305F\u307E\
-    \u3055\u6CD5\n// \u53C2\u8003\uFF1Ahttps://outline.hatenadiary.jp/entry/2020/07/02/205628\n\
+  bundledCode: "#line 2 \"src/base.hpp\"\n// UF\u306E\u7A7A\u30E9\u30E0\u30C0\u6E21\
+    \u3057\u3066\u308B\u6240\u306E\u5F15\u6570\u3067\u6587\u53E5\u8A00\u308F\u308C\
+    \u308B\u306E\u3092\u9ED9\u3089\u305B\u308B\n#pragma GCC diagnostic ignored \"\
+    -Wunused-parameter\"\n#define _USE_MATH_DEFINES\n#include <bits/stdc++.h>\nusing\
+    \ namespace std;\n#line 3 \"src/math/kitamasa.hpp\"\n\n// \u304D\u305F\u307E\u3055\
+    \u6CD5\n// \u53C2\u8003\uFF1Ahttps://outline.hatenadiary.jp/entry/2020/07/02/205628\n\
     // \u4F7F\u3044\u65B9\n// \u30FB\u884C\u5217\u7D2F\u4E57\u3060\u3068N^3logK\u304B\
     \u304B\u308B\u3082\u306E\u3092N^2logK\u3067\u51E6\u7406\u3067\u304D\u308B\u3002\
     \n// \u30FB\u5236\u9650\u3068\u3057\u3066\u3001\u5F53\u7136\u3069\u3093\u306A\u884C\
@@ -78,7 +81,7 @@ data:
   isVerificationFile: false
   path: src/math/kitamasa.hpp
   requiredBy: []
-  timestamp: '2023-12-04 15:39:12+09:00'
+  timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/kitamasa.hpp
