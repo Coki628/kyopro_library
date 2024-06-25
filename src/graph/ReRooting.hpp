@@ -16,10 +16,10 @@ struct ReRooting {
     };
 
     vector<vector<Edge>> g;
-    vector<sum_t> subdp, dp;
-    const sum_t ident;
     const F1 f1;
     const F2 f2;
+    const sum_t ident;
+    vector<sum_t> subdp, dp;
 
     ReRooting(int V, const F1 f1, const F2 f2, const sum_t &ident)
         : g(V),
