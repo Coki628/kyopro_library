@@ -29,7 +29,7 @@ tuple<int, int, int> get_diameter(const vvi &nodes) {
     return {res2[v], u, v};
 }
 
-// 重み付き(未verify)
+// 重み付き
 tuple<ll, int, int> get_diameter(const vvpil &nodes) {
     auto res1 = _bfs(nodes, {0});
     int u = max_element(ALL(res1)) - res1.begin();
