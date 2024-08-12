@@ -15,6 +15,9 @@ data:
     path: src/datastructure/get_inversion.hpp
     title: src/datastructure/get_inversion.hpp
   - icon: ':warning:'
+    path: src/graph/AuxiliaryTree.hpp
+    title: src/graph/AuxiliaryTree.hpp
+  - icon: ':warning:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedVerifiedWith: []
@@ -110,8 +113,9 @@ data:
   isVerificationFile: false
   path: src/common/Compress.hpp
   requiredBy:
-  - src/datastructure/get_inversion.hpp
   - src/template.hpp
+  - src/graph/AuxiliaryTree.hpp
+  - src/datastructure/get_inversion.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

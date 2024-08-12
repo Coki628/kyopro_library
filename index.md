@@ -357,6 +357,9 @@ data:
       path: src/datastructure/get_inversion.hpp
       title: src/datastructure/get_inversion.hpp
     - icon: ':warning:'
+      path: src/datastructure/hash_table.hpp
+      title: src/datastructure/hash_table.hpp
+    - icon: ':warning:'
       path: src/datastructure/merge_segment.hpp
       title: src/datastructure/merge_segment.hpp
     - icon: ':warning:'
@@ -461,6 +464,9 @@ data:
     - icon: ':warning:'
       path: src/graph/BlockCutTree.hpp
       title: src/graph/BlockCutTree.hpp
+    - icon: ':warning:'
+      path: src/graph/DynamicRerooting.hpp
+      title: src/graph/DynamicRerooting.hpp
     - icon: ':warning:'
       path: src/graph/EulerTour.hpp
       title: src/graph/EulerTour.hpp
@@ -667,6 +673,9 @@ data:
     - icon: ':warning:'
       path: src/math/FormalPowerSeries.hpp
       title: src/math/FormalPowerSeries.hpp
+    - icon: ':warning:'
+      path: src/math/Function.hpp
+      title: src/math/Function.hpp
     - icon: ':warning:'
       path: src/math/berlekamp_massey.hpp
       title: src/math/berlekamp_massey.hpp

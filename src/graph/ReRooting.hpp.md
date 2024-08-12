@@ -27,9 +27,9 @@ data:
     \u5F53\u3059\u308B\u611F\u3058\u3002\ntemplate<typename sum_t, typename key_t,\
     \ typename F1, typename F2>\nstruct ReRooting {\n    struct Edge {\n        int\
     \ to;\n        key_t data;\n        sum_t dp, ndp;\n    };\n\n    vector<vector<Edge>>\
-    \ g;\n    vector<sum_t> subdp, dp;\n    const sum_t ident;\n    const F1 f1;\n\
-    \    const F2 f2;\n\n    ReRooting(int V, const F1 f1, const F2 f2, const sum_t\
-    \ &ident)\n        : g(V),\n          f1(f1),\n          f2(f2),\n          ident(ident),\n\
+    \ g;\n    const F1 f1;\n    const F2 f2;\n    const sum_t ident;\n    vector<sum_t>\
+    \ subdp, dp;\n\n    ReRooting(int V, const F1 f1, const F2 f2, const sum_t &ident)\n\
+    \        : g(V),\n          f1(f1),\n          f2(f2),\n          ident(ident),\n\
     \          subdp(V, ident),\n          dp(V, ident) {\n    }\n\n    // \u7121\u5411\
     \ u<->v\u4E21\u65B9\u5411\u3078\u306E\u9077\u79FB\u306Bd\u3092\u6E21\u3059\n \
     \   void add_edge(int u, int v, const key_t &d) {\n        g[u].emplace_back((Edge){v,\
@@ -66,9 +66,9 @@ data:
     \u3059\u308B\u611F\u3058\u3002\ntemplate<typename sum_t, typename key_t, typename\
     \ F1, typename F2>\nstruct ReRooting {\n    struct Edge {\n        int to;\n \
     \       key_t data;\n        sum_t dp, ndp;\n    };\n\n    vector<vector<Edge>>\
-    \ g;\n    vector<sum_t> subdp, dp;\n    const sum_t ident;\n    const F1 f1;\n\
-    \    const F2 f2;\n\n    ReRooting(int V, const F1 f1, const F2 f2, const sum_t\
-    \ &ident)\n        : g(V),\n          f1(f1),\n          f2(f2),\n          ident(ident),\n\
+    \ g;\n    const F1 f1;\n    const F2 f2;\n    const sum_t ident;\n    vector<sum_t>\
+    \ subdp, dp;\n\n    ReRooting(int V, const F1 f1, const F2 f2, const sum_t &ident)\n\
+    \        : g(V),\n          f1(f1),\n          f2(f2),\n          ident(ident),\n\
     \          subdp(V, ident),\n          dp(V, ident) {\n    }\n\n    // \u7121\u5411\
     \ u<->v\u4E21\u65B9\u5411\u3078\u306E\u9077\u79FB\u306Bd\u3092\u6E21\u3059\n \
     \   void add_edge(int u, int v, const key_t &d) {\n        g[u].emplace_back((Edge){v,\
@@ -99,7 +99,7 @@ data:
   isVerificationFile: false
   path: src/graph/ReRooting.hpp
   requiredBy: []
-  timestamp: '2024-05-31 16:19:51+09:00'
+  timestamp: '2024-06-25 17:52:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/ReRooting.hpp

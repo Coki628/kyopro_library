@@ -103,9 +103,9 @@ data:
   isVerificationFile: false
   path: src/geometry/dot.hpp
   requiredBy:
-  - src/geometry/intersect.hpp
-  - src/geometry/project.hpp
   - src/geometry/monotone_chain.hpp
+  - src/geometry/project.hpp
+  - src/geometry/intersect.hpp
   - src/geometry/get_distance.hpp
   - src/geometry/ccw.hpp
   - src/geometry/reflect.hpp

@@ -62,10 +62,10 @@ data:
     \ vvi &nodes) {\n    auto res1 = bfs(nodes, {0});\n    int u = max_element(ALL(res1))\
     \ - res1.begin();\n    auto res2 = bfs(nodes, {u});\n    int v = max_element(ALL(res2))\
     \ - res2.begin();\n    return {res2[v], u, v};\n}\n\n// \u91CD\u307F\u4ED8\u304D\
-    (\u672Averify)\ntuple<ll, int, int> get_diameter(const vvpil &nodes) {\n    auto\
-    \ res1 = _bfs(nodes, {0});\n    int u = max_element(ALL(res1)) - res1.begin();\n\
-    \    auto res2 = _bfs(nodes, {u});\n    int v = max_element(ALL(res2)) - res2.begin();\n\
-    \    return {res2[v], u, v};\n}\n"
+    \ntuple<ll, int, int> get_diameter(const vvpil &nodes) {\n    auto res1 = _bfs(nodes,\
+    \ {0});\n    int u = max_element(ALL(res1)) - res1.begin();\n    auto res2 = _bfs(nodes,\
+    \ {u});\n    int v = max_element(ALL(res2)) - res2.begin();\n    return {res2[v],\
+    \ u, v};\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n#include \"bfs.hpp\"\n\nvector<ll>\
     \ _bfs(const vvpil &nodes, int s) {\n    int N = nodes.size();\n    vector<ll>\
     \ res(N, INF);\n    queue<int> que;\n    res[s] = 0;\n    que.push(s);\n    while\
@@ -76,10 +76,10 @@ data:
     \ &nodes) {\n    auto res1 = bfs(nodes, {0});\n    int u = max_element(ALL(res1))\
     \ - res1.begin();\n    auto res2 = bfs(nodes, {u});\n    int v = max_element(ALL(res2))\
     \ - res2.begin();\n    return {res2[v], u, v};\n}\n\n// \u91CD\u307F\u4ED8\u304D\
-    (\u672Averify)\ntuple<ll, int, int> get_diameter(const vvpil &nodes) {\n    auto\
-    \ res1 = _bfs(nodes, {0});\n    int u = max_element(ALL(res1)) - res1.begin();\n\
-    \    auto res2 = _bfs(nodes, {u});\n    int v = max_element(ALL(res2)) - res2.begin();\n\
-    \    return {res2[v], u, v};\n}\n"
+    \ntuple<ll, int, int> get_diameter(const vvpil &nodes) {\n    auto res1 = _bfs(nodes,\
+    \ {0});\n    int u = max_element(ALL(res1)) - res1.begin();\n    auto res2 = _bfs(nodes,\
+    \ {u});\n    int v = max_element(ALL(res2)) - res2.begin();\n    return {res2[v],\
+    \ u, v};\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
@@ -88,7 +88,7 @@ data:
   isVerificationFile: false
   path: src/graph/get_diameter.hpp
   requiredBy: []
-  timestamp: '2024-05-31 16:19:51+09:00'
+  timestamp: '2024-08-12 17:44:38+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/get_diameter.hpp

@@ -32,8 +32,8 @@ data:
   isVerificationFile: false
   path: src/common/divmod.hpp
   requiredBy:
-  - src/grid/idtogrid.hpp
   - src/template.hpp
+  - src/grid/idtogrid.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

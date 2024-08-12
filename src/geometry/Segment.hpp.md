@@ -101,11 +101,11 @@ data:
   isVerificationFile: false
   path: src/geometry/Segment.hpp
   requiredBy:
-  - src/geometry/intersect.hpp
   - src/geometry/project.hpp
+  - src/geometry/intersect.hpp
   - src/geometry/get_distance.hpp
-  - src/geometry/get_cross_point.hpp
   - src/geometry/Line.hpp
+  - src/geometry/get_cross_point.hpp
   - src/geometry/reflect.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS

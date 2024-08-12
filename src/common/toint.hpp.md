@@ -39,10 +39,10 @@ data:
   isVerificationFile: false
   path: src/common/toint.hpp
   requiredBy:
-  - src/common/split.hpp
   - src/numbers/ntod.hpp
   - src/numbers/digit_sum.hpp
   - src/template.hpp
+  - src/common/split.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

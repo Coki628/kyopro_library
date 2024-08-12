@@ -38,8 +38,8 @@ data:
   isVerificationFile: false
   path: src/common/subarray.hpp
   requiredBy:
-  - src/graph/RangeEdgedTwoSAT.hpp
   - src/template.hpp
+  - src/graph/RangeEdgedTwoSAT.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

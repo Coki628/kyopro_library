@@ -167,8 +167,8 @@ data:
   isVerificationFile: false
   path: src/string/RollingHash.hpp
   requiredBy:
-  - src/string/RollingHashUpdatable.hpp
   - src/string/RollingHash2D.hpp
+  - src/string/RollingHashUpdatable.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

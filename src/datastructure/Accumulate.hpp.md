@@ -100,8 +100,8 @@ data:
   isVerificationFile: false
   path: src/datastructure/Accumulate.hpp
   requiredBy:
-  - src/datastructure/Imos.hpp
   - src/template.hpp
+  - src/datastructure/Imos.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

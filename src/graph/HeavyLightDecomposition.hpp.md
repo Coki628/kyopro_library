@@ -228,8 +228,8 @@ data:
   isVerificationFile: false
   path: src/graph/HeavyLightDecomposition.hpp
   requiredBy:
-  - src/graph/AuxiliaryTree.hpp
   - src/graph/_AuxiliaryTree.hpp
+  - src/graph/AuxiliaryTree.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

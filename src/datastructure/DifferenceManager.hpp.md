@@ -46,34 +46,38 @@ data:
     \u6570\u3068\u304B\u3082\u53D6\u308C\u308B\u3068\u601D\u3046\u3002\n// \u30FB\u9045\
     \u304F\u306A\u3089\u306A\u304B\u3063\u305F\u306E\u3067\u62BD\u8C61\u5316\u3057\
     \u305F\u3002\u3053\u308C\u3067\u5DEE\u5206XOR\u3068\u304B\u5DEE\u5206GCD\u3068\
-    \u304B\u3067\u3082\u3067\u304D\u308B\u3002\ntemplate<typename T, typename F>\n\
-    struct DifferenceManager {\n    // se1: \u73FE\u5728\u306E\u8981\u7D20\u3092\u8868\
-    \u3059\u96C6\u5408\n    // se2: \u73FE\u5728\u306E\u5DEE\u5206\u5217\u306E\u8981\
-    \u7D20\u3092\u8868\u3059\u96C6\u5408\n    multiset<T> se1, se2;\n\n    const F\
-    \ f;\n\n    DifferenceManager(const vector<T> &A, const F &f) : se1(ALL(A)), f(f)\
-    \ {\n        build();\n    }\n\n    void build() {\n        auto itr = se1.begin();\n\
+    \u304B\u3067\u3082\u3067\u304D\u308B\u3002\n// \u30FB\u5143\u306E\u5217\u3068\u5DEE\
+    \u5206\u5217\u3067\u9055\u3046\u30C7\u30FC\u30BF\u5F62\u5F0F(T1\u3068T2)\u3092\
+    \u6301\u3066\u308B\u3088\u3046\u306B\u3057\u305F\u3002(\u4F7F\u7528\u4F8B\uFF1A\
+    past202309_l)\ntemplate<typename T1, typename T2, typename F>\nstruct DifferenceManager\
+    \ {\n    // se1: \u73FE\u5728\u306E\u8981\u7D20\u3092\u8868\u3059\u96C6\u5408\n\
+    \    // se2: \u73FE\u5728\u306E\u5DEE\u5206\u5217\u306E\u8981\u7D20\u3092\u8868\
+    \u3059\u96C6\u5408\n    multiset<T1> se1;\n    multiset<T2> se2;\n\n    const\
+    \ F f;\n\n    DifferenceManager(const vector<T1> &A, const F &f) : se1(ALL(A)),\
+    \ f(f) {\n        build();\n    }\n\n    void build() {\n        auto itr = se1.begin();\n\
     \        while (itr != se1.end() and itr != --se1.end()) {\n            se2.insert(f(*next(itr),\
-    \ *itr));\n            itr++;\n        }\n    }\n\n    void insert(T x) {\n  \
+    \ *itr));\n            itr++;\n        }\n    }\n\n    bool exist(T1 x) {\n  \
+    \      return se1.find(x) != se1.end();\n    }\n\n    void insert(T1 x) {\n  \
     \      auto itr = se1.insert(x);\n        if (itr != se1.begin() and itr != --se1.end())\
     \ {\n            se2.erase(se2.find(f(*next(itr), *prev(itr))));\n        }\n\
     \        if (itr != se1.begin()) {\n            se2.insert(f(*itr, *prev(itr)));\n\
     \        }\n        if (itr != --se1.end()) {\n            se2.insert(f(*next(itr),\
-    \ *itr));\n        }\n    }\n\n    void erase(T x) {\n        auto itr = se1.find(x);\n\
+    \ *itr));\n        }\n    }\n\n    void erase(T1 x) {\n        auto itr = se1.find(x);\n\
     \        assert(itr != se1.end());\n        if (itr != se1.begin()) {\n      \
     \      se2.erase(se2.find(f(*itr, *prev(itr))));\n        }\n        if (itr !=\
     \ --se1.end()) {\n            se2.erase(se2.find(f(*next(itr), *itr)));\n    \
     \    }\n        if (itr != se1.begin() and itr != --se1.end()) {\n           \
     \ se2.insert(f(*next(itr), *prev(itr)));\n        }\n        se1.erase(itr);\n\
-    \    }\n\n    int size() {\n        return se1.size();\n    }\n\n    T max_val()\
+    \    }\n\n    int size() {\n        return se1.size();\n    }\n\n    T1 max_val()\
     \ {\n        assert(size() >= 1);\n        return *--se1.end();\n    }\n\n   \
-    \ T min_val() {\n        assert(size() >= 1);\n        return *se1.begin();\n\
-    \    }\n\n    T max_diff() {\n        assert(size() >= 2);\n        return *--se2.end();\n\
-    \    }\n\n    T min_diff() {\n        assert(size() >= 2);\n        return *se2.begin();\n\
-    \    }\n};\n\ntemplate<typename T, typename F>\nDifferenceManager<T, F> get_difference_manager(const\
+    \ T1 min_val() {\n        assert(size() >= 1);\n        return *se1.begin();\n\
+    \    }\n\n    T2 max_diff() {\n        assert(size() >= 2);\n        return *--se2.end();\n\
+    \    }\n\n    T2 min_diff() {\n        assert(size() >= 2);\n        return *se2.begin();\n\
+    \    }\n};\n\ntemplate<typename T, typename F>\nDifferenceManager<T, T, F> get_difference_manager(const\
     \ vector<T> &A, const F &f) {\n    return {A, f};\n}\n\ntemplate<typename T>\n\
     auto get_difference_manager(const vector<T> &A) {\n    // \u57FA\u672C\u306F\u3053\
     \u308C\u3092\u6E21\u3059\n    const auto f = [](T a, T b) { return a - b; };\n\
-    \    return DifferenceManager<T, decltype(f)>(A, f);\n}\n"
+    \    return DifferenceManager<T, T, decltype(f)>(A, f);\n}\n"
   code: "#pragma once\n#include \"../macros.hpp\"\n\n// \u5DEE\u5206\u5217\u7BA1\u7406\
     \n// \u30FB\u3053\u3069\u3075\u3049\u3067\u305F\u307E\u306B\u51FA\u308Bmultiset\u3067\
     \u3053\u306D\u3053\u306D\u3059\u308B\u3060\u308B\u3044\u3084\u3064\u3002\n// \u4ED5\
@@ -87,41 +91,45 @@ data:
     \u306A\u3044\u3051\u3069\u500B\u6570\u3068\u304B\u3082\u53D6\u308C\u308B\u3068\
     \u601D\u3046\u3002\n// \u30FB\u9045\u304F\u306A\u3089\u306A\u304B\u3063\u305F\u306E\
     \u3067\u62BD\u8C61\u5316\u3057\u305F\u3002\u3053\u308C\u3067\u5DEE\u5206XOR\u3068\
-    \u304B\u5DEE\u5206GCD\u3068\u304B\u3067\u3082\u3067\u304D\u308B\u3002\ntemplate<typename\
-    \ T, typename F>\nstruct DifferenceManager {\n    // se1: \u73FE\u5728\u306E\u8981\
+    \u304B\u5DEE\u5206GCD\u3068\u304B\u3067\u3082\u3067\u304D\u308B\u3002\n// \u30FB\
+    \u5143\u306E\u5217\u3068\u5DEE\u5206\u5217\u3067\u9055\u3046\u30C7\u30FC\u30BF\
+    \u5F62\u5F0F(T1\u3068T2)\u3092\u6301\u3066\u308B\u3088\u3046\u306B\u3057\u305F\
+    \u3002(\u4F7F\u7528\u4F8B\uFF1Apast202309_l)\ntemplate<typename T1, typename T2,\
+    \ typename F>\nstruct DifferenceManager {\n    // se1: \u73FE\u5728\u306E\u8981\
     \u7D20\u3092\u8868\u3059\u96C6\u5408\n    // se2: \u73FE\u5728\u306E\u5DEE\u5206\
-    \u5217\u306E\u8981\u7D20\u3092\u8868\u3059\u96C6\u5408\n    multiset<T> se1, se2;\n\
-    \n    const F f;\n\n    DifferenceManager(const vector<T> &A, const F &f) : se1(ALL(A)),\
-    \ f(f) {\n        build();\n    }\n\n    void build() {\n        auto itr = se1.begin();\n\
-    \        while (itr != se1.end() and itr != --se1.end()) {\n            se2.insert(f(*next(itr),\
-    \ *itr));\n            itr++;\n        }\n    }\n\n    void insert(T x) {\n  \
-    \      auto itr = se1.insert(x);\n        if (itr != se1.begin() and itr != --se1.end())\
-    \ {\n            se2.erase(se2.find(f(*next(itr), *prev(itr))));\n        }\n\
-    \        if (itr != se1.begin()) {\n            se2.insert(f(*itr, *prev(itr)));\n\
-    \        }\n        if (itr != --se1.end()) {\n            se2.insert(f(*next(itr),\
-    \ *itr));\n        }\n    }\n\n    void erase(T x) {\n        auto itr = se1.find(x);\n\
+    \u5217\u306E\u8981\u7D20\u3092\u8868\u3059\u96C6\u5408\n    multiset<T1> se1;\n\
+    \    multiset<T2> se2;\n\n    const F f;\n\n    DifferenceManager(const vector<T1>\
+    \ &A, const F &f) : se1(ALL(A)), f(f) {\n        build();\n    }\n\n    void build()\
+    \ {\n        auto itr = se1.begin();\n        while (itr != se1.end() and itr\
+    \ != --se1.end()) {\n            se2.insert(f(*next(itr), *itr));\n          \
+    \  itr++;\n        }\n    }\n\n    bool exist(T1 x) {\n        return se1.find(x)\
+    \ != se1.end();\n    }\n\n    void insert(T1 x) {\n        auto itr = se1.insert(x);\n\
+    \        if (itr != se1.begin() and itr != --se1.end()) {\n            se2.erase(se2.find(f(*next(itr),\
+    \ *prev(itr))));\n        }\n        if (itr != se1.begin()) {\n            se2.insert(f(*itr,\
+    \ *prev(itr)));\n        }\n        if (itr != --se1.end()) {\n            se2.insert(f(*next(itr),\
+    \ *itr));\n        }\n    }\n\n    void erase(T1 x) {\n        auto itr = se1.find(x);\n\
     \        assert(itr != se1.end());\n        if (itr != se1.begin()) {\n      \
     \      se2.erase(se2.find(f(*itr, *prev(itr))));\n        }\n        if (itr !=\
     \ --se1.end()) {\n            se2.erase(se2.find(f(*next(itr), *itr)));\n    \
     \    }\n        if (itr != se1.begin() and itr != --se1.end()) {\n           \
     \ se2.insert(f(*next(itr), *prev(itr)));\n        }\n        se1.erase(itr);\n\
-    \    }\n\n    int size() {\n        return se1.size();\n    }\n\n    T max_val()\
+    \    }\n\n    int size() {\n        return se1.size();\n    }\n\n    T1 max_val()\
     \ {\n        assert(size() >= 1);\n        return *--se1.end();\n    }\n\n   \
-    \ T min_val() {\n        assert(size() >= 1);\n        return *se1.begin();\n\
-    \    }\n\n    T max_diff() {\n        assert(size() >= 2);\n        return *--se2.end();\n\
-    \    }\n\n    T min_diff() {\n        assert(size() >= 2);\n        return *se2.begin();\n\
-    \    }\n};\n\ntemplate<typename T, typename F>\nDifferenceManager<T, F> get_difference_manager(const\
+    \ T1 min_val() {\n        assert(size() >= 1);\n        return *se1.begin();\n\
+    \    }\n\n    T2 max_diff() {\n        assert(size() >= 2);\n        return *--se2.end();\n\
+    \    }\n\n    T2 min_diff() {\n        assert(size() >= 2);\n        return *se2.begin();\n\
+    \    }\n};\n\ntemplate<typename T, typename F>\nDifferenceManager<T, T, F> get_difference_manager(const\
     \ vector<T> &A, const F &f) {\n    return {A, f};\n}\n\ntemplate<typename T>\n\
     auto get_difference_manager(const vector<T> &A) {\n    // \u57FA\u672C\u306F\u3053\
     \u308C\u3092\u6E21\u3059\n    const auto f = [](T a, T b) { return a - b; };\n\
-    \    return DifferenceManager<T, decltype(f)>(A, f);\n}\n"
+    \    return DifferenceManager<T, T, decltype(f)>(A, f);\n}\n"
   dependsOn:
   - src/macros.hpp
   - src/base.hpp
   isVerificationFile: false
   path: src/datastructure/DifferenceManager.hpp
   requiredBy: []
-  timestamp: '2024-05-31 16:19:51+09:00'
+  timestamp: '2024-06-25 17:52:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/datastructure/DifferenceManager.hpp
