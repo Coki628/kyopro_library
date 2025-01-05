@@ -63,48 +63,49 @@ data:
     \        a.numerator = l / a.denominator * a.numerator;\n        denominator =\
     \ a.denominator = l;\n    }\n\n    // \u7D04\u5206\n    void simplify() {\n  \
     \      if (denominator == (T)1) return;\n        assert(denominator >= 1);\n \
-    \       // gcd\u3084\u308B\u6642\u306F\u6B63\u6570\u306B\n        T g = gcd(abs(numerator),\
-    \ denominator);\n        numerator /= g;\n        denominator /= g;\n    }\n\n\
-    \    Fraction<T> &operator+=(Fraction<T> a) {\n        // reduce(a);\n       \
-    \ // numerator += a.numerator;\n        numerator = numerator * a.denominator\
-    \ + a.numerator * denominator;\n        denominator *= a.denominator;\n      \
-    \  simplify();\n        return *this;\n    }\n\n    Fraction<T> &operator-=(Fraction<T>\
-    \ a) {\n        // reduce(a);\n        // numerator -= a.numerator;\n        numerator\
-    \ = numerator * a.denominator - a.numerator * denominator;\n        denominator\
+    \       // gcd\u3084\u308B\u6642\u306F\u6B63\u6570\u306B(in128\u3067abs\u304C\u52D5\
+    \u304B\u306A\u304B\u3063\u305F\u306E\u3067\u4E09\u9805\u6F14\u7B97\u5B50)\n  \
+    \      T g = gcd(numerator >= 0 ? numerator : -numerator, denominator);\n    \
+    \    numerator /= g;\n        denominator /= g;\n    }\n\n    Fraction<T> &operator+=(Fraction<T>\
+    \ a) {\n        // reduce(a);\n        // numerator += a.numerator;\n        numerator\
+    \ = numerator * a.denominator + a.numerator * denominator;\n        denominator\
     \ *= a.denominator;\n        simplify();\n        return *this;\n    }\n\n   \
-    \ Fraction<T> &operator*=(const Fraction<T> &a) {\n        numerator *= a.numerator;\n\
-    \        denominator *= a.denominator;\n        simplify();\n        return *this;\n\
-    \    }\n\n    Fraction<T> &operator/=(const Fraction<T> &a) {\n        assert(a.numerator\
-    \ != (T)0);\n        numerator *= a.denominator;\n        denominator *= a.numerator;\n\
-    \        // \u30DE\u30A4\u30CA\u30B9\u3092\u5206\u5B50\u5074\u306B\n        if\
-    \ (a.numerator < (T)0) {\n            numerator *= -1;\n            denominator\
-    \ *= -1;\n        }\n        simplify();\n        return *this;\n    }\n\n   \
-    \ Fraction<T> &operator++() {\n        *this += 1;\n        return *this;\n  \
-    \  }\n\n    Fraction<T> &operator--() {\n        *this -= 1;\n        return *this;\n\
-    \    }\n\n    Fraction<T> operator++(int) {\n        Fraction<T> result = *this;\n\
-    \        ++*this;\n        return result;\n    }\n\n    Fraction<T> operator--(int)\
-    \ {\n        Fraction<T> result = *this;\n        --*this;\n        return result;\n\
-    \    }\n\n    Fraction<T> operator-() const {\n        return {-numerator, denominator};\n\
-    \    }\n\n    Fraction<T> operator+(const Fraction<T> &a) const {\n        return\
-    \ Fraction<T>(*this) += a;\n    }\n\n    Fraction<T> operator-(const Fraction<T>\
-    \ &a) const {\n        return Fraction<T>(*this) -= a;\n    }\n\n    Fraction<T>\
-    \ operator*(const Fraction<T> &a) const {\n        return Fraction<T>(*this) *=\
-    \ a;\n    }\n\n    Fraction<T> operator/(const Fraction<T> &a) const {\n     \
-    \   return Fraction<T>(*this) /= a;\n    }\n\n    bool operator==(const Fraction<T>\
-    \ &a) const {\n        return numerator == a.numerator and denominator == a.denominator;\n\
-    \    }\n\n    bool operator!=(const Fraction<T> &a) const {\n        return numerator\
-    \ != a.numerator or denominator != a.denominator;\n    }\n\n    bool operator<(const\
-    \ Fraction<T> &a) const {\n        return numerator * a.denominator < a.numerator\
-    \ * denominator;\n    }\n\n    bool operator<=(const Fraction<T> &a) const {\n\
-    \        return numerator * a.denominator <= a.numerator * denominator;\n    }\n\
-    \n    bool operator>(const Fraction<T> &a) const {\n        return numerator *\
-    \ a.denominator > a.numerator * denominator;\n    }\n\n    bool operator>=(const\
-    \ Fraction<T> &a) const {\n        return numerator * a.denominator >= a.numerator\
-    \ * denominator;\n    }\n\n    friend istream &operator>>(istream &is, Fraction<T>\
-    \ &a) {\n        is >> a.numerator;\n        a.denominator = 1;\n        return\
-    \ (is);\n    }\n\n    friend ostream &operator<<(ostream &os, const Fraction<T>\
-    \ &a) {\n        return os << a.numerator << \"/\" << a.denominator;\n    }\n\
-    };\n"
+    \ Fraction<T> &operator-=(Fraction<T> a) {\n        // reduce(a);\n        //\
+    \ numerator -= a.numerator;\n        numerator = numerator * a.denominator - a.numerator\
+    \ * denominator;\n        denominator *= a.denominator;\n        simplify();\n\
+    \        return *this;\n    }\n\n    Fraction<T> &operator*=(const Fraction<T>\
+    \ &a) {\n        numerator *= a.numerator;\n        denominator *= a.denominator;\n\
+    \        simplify();\n        return *this;\n    }\n\n    Fraction<T> &operator/=(const\
+    \ Fraction<T> &a) {\n        assert(a.numerator != (T)0);\n        numerator *=\
+    \ a.denominator;\n        denominator *= a.numerator;\n        // \u30DE\u30A4\
+    \u30CA\u30B9\u3092\u5206\u5B50\u5074\u306B\n        if (a.numerator < (T)0) {\n\
+    \            numerator *= -1;\n            denominator *= -1;\n        }\n   \
+    \     simplify();\n        return *this;\n    }\n\n    Fraction<T> &operator++()\
+    \ {\n        *this += 1;\n        return *this;\n    }\n\n    Fraction<T> &operator--()\
+    \ {\n        *this -= 1;\n        return *this;\n    }\n\n    Fraction<T> operator++(int)\
+    \ {\n        Fraction<T> result = *this;\n        ++*this;\n        return result;\n\
+    \    }\n\n    Fraction<T> operator--(int) {\n        Fraction<T> result = *this;\n\
+    \        --*this;\n        return result;\n    }\n\n    Fraction<T> operator-()\
+    \ const {\n        return {-numerator, denominator};\n    }\n\n    Fraction<T>\
+    \ operator+(const Fraction<T> &a) const {\n        return Fraction<T>(*this) +=\
+    \ a;\n    }\n\n    Fraction<T> operator-(const Fraction<T> &a) const {\n     \
+    \   return Fraction<T>(*this) -= a;\n    }\n\n    Fraction<T> operator*(const\
+    \ Fraction<T> &a) const {\n        return Fraction<T>(*this) *= a;\n    }\n\n\
+    \    Fraction<T> operator/(const Fraction<T> &a) const {\n        return Fraction<T>(*this)\
+    \ /= a;\n    }\n\n    bool operator==(const Fraction<T> &a) const {\n        return\
+    \ numerator == a.numerator and denominator == a.denominator;\n    }\n\n    bool\
+    \ operator!=(const Fraction<T> &a) const {\n        return numerator != a.numerator\
+    \ or denominator != a.denominator;\n    }\n\n    bool operator<(const Fraction<T>\
+    \ &a) const {\n        return numerator * a.denominator < a.numerator * denominator;\n\
+    \    }\n\n    bool operator<=(const Fraction<T> &a) const {\n        return numerator\
+    \ * a.denominator <= a.numerator * denominator;\n    }\n\n    bool operator>(const\
+    \ Fraction<T> &a) const {\n        return numerator * a.denominator > a.numerator\
+    \ * denominator;\n    }\n\n    bool operator>=(const Fraction<T> &a) const {\n\
+    \        return numerator * a.denominator >= a.numerator * denominator;\n    }\n\
+    \n    friend istream &operator>>(istream &is, Fraction<T> &a) {\n        is >>\
+    \ a.numerator;\n        a.denominator = 1;\n        return (is);\n    }\n\n  \
+    \  friend ostream &operator<<(ostream &os, const Fraction<T> &a) {\n        return\
+    \ os << a.numerator << \"/\" << a.denominator;\n    }\n};\n"
   code: "#pragma once\n#include \"../base.hpp\"\n#include \"gcd.hpp\"\n#include \"\
     lcm.hpp\"\n\ntemplate<typename T>\nstruct Fraction {\n    T numerator, denominator;\n\
     \n    Fraction() : numerator((T)1), denominator((T)1) {}\n\n    Fraction(T nu)\
@@ -119,48 +120,49 @@ data:
     \        a.numerator = l / a.denominator * a.numerator;\n        denominator =\
     \ a.denominator = l;\n    }\n\n    // \u7D04\u5206\n    void simplify() {\n  \
     \      if (denominator == (T)1) return;\n        assert(denominator >= 1);\n \
-    \       // gcd\u3084\u308B\u6642\u306F\u6B63\u6570\u306B\n        T g = gcd(abs(numerator),\
-    \ denominator);\n        numerator /= g;\n        denominator /= g;\n    }\n\n\
-    \    Fraction<T> &operator+=(Fraction<T> a) {\n        // reduce(a);\n       \
-    \ // numerator += a.numerator;\n        numerator = numerator * a.denominator\
-    \ + a.numerator * denominator;\n        denominator *= a.denominator;\n      \
-    \  simplify();\n        return *this;\n    }\n\n    Fraction<T> &operator-=(Fraction<T>\
-    \ a) {\n        // reduce(a);\n        // numerator -= a.numerator;\n        numerator\
-    \ = numerator * a.denominator - a.numerator * denominator;\n        denominator\
+    \       // gcd\u3084\u308B\u6642\u306F\u6B63\u6570\u306B(in128\u3067abs\u304C\u52D5\
+    \u304B\u306A\u304B\u3063\u305F\u306E\u3067\u4E09\u9805\u6F14\u7B97\u5B50)\n  \
+    \      T g = gcd(numerator >= 0 ? numerator : -numerator, denominator);\n    \
+    \    numerator /= g;\n        denominator /= g;\n    }\n\n    Fraction<T> &operator+=(Fraction<T>\
+    \ a) {\n        // reduce(a);\n        // numerator += a.numerator;\n        numerator\
+    \ = numerator * a.denominator + a.numerator * denominator;\n        denominator\
     \ *= a.denominator;\n        simplify();\n        return *this;\n    }\n\n   \
-    \ Fraction<T> &operator*=(const Fraction<T> &a) {\n        numerator *= a.numerator;\n\
-    \        denominator *= a.denominator;\n        simplify();\n        return *this;\n\
-    \    }\n\n    Fraction<T> &operator/=(const Fraction<T> &a) {\n        assert(a.numerator\
-    \ != (T)0);\n        numerator *= a.denominator;\n        denominator *= a.numerator;\n\
-    \        // \u30DE\u30A4\u30CA\u30B9\u3092\u5206\u5B50\u5074\u306B\n        if\
-    \ (a.numerator < (T)0) {\n            numerator *= -1;\n            denominator\
-    \ *= -1;\n        }\n        simplify();\n        return *this;\n    }\n\n   \
-    \ Fraction<T> &operator++() {\n        *this += 1;\n        return *this;\n  \
-    \  }\n\n    Fraction<T> &operator--() {\n        *this -= 1;\n        return *this;\n\
-    \    }\n\n    Fraction<T> operator++(int) {\n        Fraction<T> result = *this;\n\
-    \        ++*this;\n        return result;\n    }\n\n    Fraction<T> operator--(int)\
-    \ {\n        Fraction<T> result = *this;\n        --*this;\n        return result;\n\
-    \    }\n\n    Fraction<T> operator-() const {\n        return {-numerator, denominator};\n\
-    \    }\n\n    Fraction<T> operator+(const Fraction<T> &a) const {\n        return\
-    \ Fraction<T>(*this) += a;\n    }\n\n    Fraction<T> operator-(const Fraction<T>\
-    \ &a) const {\n        return Fraction<T>(*this) -= a;\n    }\n\n    Fraction<T>\
-    \ operator*(const Fraction<T> &a) const {\n        return Fraction<T>(*this) *=\
-    \ a;\n    }\n\n    Fraction<T> operator/(const Fraction<T> &a) const {\n     \
-    \   return Fraction<T>(*this) /= a;\n    }\n\n    bool operator==(const Fraction<T>\
-    \ &a) const {\n        return numerator == a.numerator and denominator == a.denominator;\n\
-    \    }\n\n    bool operator!=(const Fraction<T> &a) const {\n        return numerator\
-    \ != a.numerator or denominator != a.denominator;\n    }\n\n    bool operator<(const\
-    \ Fraction<T> &a) const {\n        return numerator * a.denominator < a.numerator\
-    \ * denominator;\n    }\n\n    bool operator<=(const Fraction<T> &a) const {\n\
-    \        return numerator * a.denominator <= a.numerator * denominator;\n    }\n\
-    \n    bool operator>(const Fraction<T> &a) const {\n        return numerator *\
-    \ a.denominator > a.numerator * denominator;\n    }\n\n    bool operator>=(const\
-    \ Fraction<T> &a) const {\n        return numerator * a.denominator >= a.numerator\
-    \ * denominator;\n    }\n\n    friend istream &operator>>(istream &is, Fraction<T>\
-    \ &a) {\n        is >> a.numerator;\n        a.denominator = 1;\n        return\
-    \ (is);\n    }\n\n    friend ostream &operator<<(ostream &os, const Fraction<T>\
-    \ &a) {\n        return os << a.numerator << \"/\" << a.denominator;\n    }\n\
-    };\n"
+    \ Fraction<T> &operator-=(Fraction<T> a) {\n        // reduce(a);\n        //\
+    \ numerator -= a.numerator;\n        numerator = numerator * a.denominator - a.numerator\
+    \ * denominator;\n        denominator *= a.denominator;\n        simplify();\n\
+    \        return *this;\n    }\n\n    Fraction<T> &operator*=(const Fraction<T>\
+    \ &a) {\n        numerator *= a.numerator;\n        denominator *= a.denominator;\n\
+    \        simplify();\n        return *this;\n    }\n\n    Fraction<T> &operator/=(const\
+    \ Fraction<T> &a) {\n        assert(a.numerator != (T)0);\n        numerator *=\
+    \ a.denominator;\n        denominator *= a.numerator;\n        // \u30DE\u30A4\
+    \u30CA\u30B9\u3092\u5206\u5B50\u5074\u306B\n        if (a.numerator < (T)0) {\n\
+    \            numerator *= -1;\n            denominator *= -1;\n        }\n   \
+    \     simplify();\n        return *this;\n    }\n\n    Fraction<T> &operator++()\
+    \ {\n        *this += 1;\n        return *this;\n    }\n\n    Fraction<T> &operator--()\
+    \ {\n        *this -= 1;\n        return *this;\n    }\n\n    Fraction<T> operator++(int)\
+    \ {\n        Fraction<T> result = *this;\n        ++*this;\n        return result;\n\
+    \    }\n\n    Fraction<T> operator--(int) {\n        Fraction<T> result = *this;\n\
+    \        --*this;\n        return result;\n    }\n\n    Fraction<T> operator-()\
+    \ const {\n        return {-numerator, denominator};\n    }\n\n    Fraction<T>\
+    \ operator+(const Fraction<T> &a) const {\n        return Fraction<T>(*this) +=\
+    \ a;\n    }\n\n    Fraction<T> operator-(const Fraction<T> &a) const {\n     \
+    \   return Fraction<T>(*this) -= a;\n    }\n\n    Fraction<T> operator*(const\
+    \ Fraction<T> &a) const {\n        return Fraction<T>(*this) *= a;\n    }\n\n\
+    \    Fraction<T> operator/(const Fraction<T> &a) const {\n        return Fraction<T>(*this)\
+    \ /= a;\n    }\n\n    bool operator==(const Fraction<T> &a) const {\n        return\
+    \ numerator == a.numerator and denominator == a.denominator;\n    }\n\n    bool\
+    \ operator!=(const Fraction<T> &a) const {\n        return numerator != a.numerator\
+    \ or denominator != a.denominator;\n    }\n\n    bool operator<(const Fraction<T>\
+    \ &a) const {\n        return numerator * a.denominator < a.numerator * denominator;\n\
+    \    }\n\n    bool operator<=(const Fraction<T> &a) const {\n        return numerator\
+    \ * a.denominator <= a.numerator * denominator;\n    }\n\n    bool operator>(const\
+    \ Fraction<T> &a) const {\n        return numerator * a.denominator > a.numerator\
+    \ * denominator;\n    }\n\n    bool operator>=(const Fraction<T> &a) const {\n\
+    \        return numerator * a.denominator >= a.numerator * denominator;\n    }\n\
+    \n    friend istream &operator>>(istream &is, Fraction<T> &a) {\n        is >>\
+    \ a.numerator;\n        a.denominator = 1;\n        return (is);\n    }\n\n  \
+    \  friend ostream &operator<<(ostream &os, const Fraction<T> &a) {\n        return\
+    \ os << a.numerator << \"/\" << a.denominator;\n    }\n};\n"
   dependsOn:
   - src/base.hpp
   - src/numbers/gcd.hpp
@@ -169,7 +171,7 @@ data:
   isVerificationFile: false
   path: src/numbers/Fraction.hpp
   requiredBy: []
-  timestamp: '2024-05-31 16:19:51+09:00'
+  timestamp: '2025-01-05 14:15:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/numbers/Fraction.hpp
