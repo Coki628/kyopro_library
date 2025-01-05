@@ -131,8 +131,8 @@ data:
   path: src/math/ArbitraryModConvolution.hpp
   requiredBy:
   - src/math/FormalPowerSeries.hpp
-  - src/math/fps/pow_term2.hpp
   - src/math/fps/pow.hpp
+  - src/math/fps/pow_term2.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

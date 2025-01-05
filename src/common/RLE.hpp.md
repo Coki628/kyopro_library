@@ -74,9 +74,9 @@ data:
   isVerificationFile: false
   path: src/common/RLE.hpp
   requiredBy:
-  - src/numbers/FastPrimeFactorization.hpp
-  - src/template.hpp
   - src/random/rand_prime.hpp
+  - src/template.hpp
+  - src/numbers/FastPrimeFactorization.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

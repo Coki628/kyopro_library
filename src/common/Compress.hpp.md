@@ -114,8 +114,8 @@ data:
   path: src/common/Compress.hpp
   requiredBy:
   - src/template.hpp
-  - src/graph/AuxiliaryTree.hpp
   - src/datastructure/get_inversion.hpp
+  - src/graph/AuxiliaryTree.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

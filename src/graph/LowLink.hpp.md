@@ -111,9 +111,9 @@ data:
   isVerificationFile: false
   path: src/graph/LowLink.hpp
   requiredBy:
-  - src/graph/BiConnectedComponents.hpp
   - src/graph/BlockCutTree.hpp
   - src/graph/TwoEdgeConnectedComponents.hpp
+  - src/graph/BiConnectedComponents.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -48,11 +48,11 @@ data:
   isVerificationFile: false
   path: src/common/bisect.hpp
   requiredBy:
-  - src/template.hpp
-  - src/common/Compress.hpp
   - src/common/LIS.hpp
-  - src/graph/AuxiliaryTree.hpp
+  - src/common/Compress.hpp
+  - src/template.hpp
   - src/datastructure/get_inversion.hpp
+  - src/graph/AuxiliaryTree.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -197,8 +197,8 @@ data:
   requiredBy:
   - src/string/RollingHashUpdatable.hpp
   - src/template.hpp
-  - src/datastructure/PersistentBIT.hpp
   - src/datastructure/get_inversion.hpp
+  - src/datastructure/PersistentBIT.hpp
   - src/datastructure/AbstractBIT.hpp
   timestamp: '2024-05-31 16:19:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
