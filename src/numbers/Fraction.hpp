@@ -39,8 +39,8 @@ struct Fraction {
     void simplify() {
         if (denominator == (T)1) return;
         assert(denominator >= 1);
-        // gcdやる時は正数に
-        T g = gcd(abs(numerator), denominator);
+        // gcdやる時は正数に(in128でabsが動かなかったので三項演算子)
+        T g = gcd(numerator >= 0 ? numerator : -numerator, denominator);
         numerator /= g;
         denominator /= g;
     }
