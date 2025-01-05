@@ -33,7 +33,18 @@ cd src
 sudo g++ template.hpp -std=c++17
 ```
 
-## ACLの更新
+## ACL
+
+### 導入
+
+```bash
+# cloneに "--recursive" をつけないとsubmoduleが付いてこない
+git clone --recursive https://github.com/Coki628/kyopro_library.git
+# clone時に忘れたら以下
+git submodule update --init --recursive
+```
+
+### 更新
 
 ```bash
 git submodule update --remote
